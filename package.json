@@ -1,0 +1,29 @@
+{
+  "name": "val-api",
+  "version": "1.0.0",
+  "description": "Valorant Api - Support MFA",
+  "engines": {
+    "node": ">=17.4.0"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/KTNG-3/val-api.git"
+  },
+  "keywords": [
+    "valorant",
+    "api",
+    "mfa",
+    "2fa",
+    "multifactor"
+  ],
+  "author": "ING3_",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KTNG-3/val-api/issues"
+  },
+  "homepage": "https://github.com/KTNG-3/val-api#readme"
+}
