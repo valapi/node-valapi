@@ -19,7 +19,7 @@ First We Need To **Login** To Valorant Account
 const ValAuth = new ValApi.Account();
 await ValAuth.login('USERNAME', 'PASSWORD');
 
-const Save_ValAccount = ValAuth.toJSON()
+const Save_ValAuth = ValAuth.toJSON()
 ```
 
 *But We Have 2 Type Of Account*
@@ -35,9 +35,9 @@ const Multifactor = new ValApi.Multifactor(MultifactorAccount.cookie);
 const VerifyCode = 123456;  // <---------- Example Verify Code
 await Multifactor.verify(VerifyCode);
 
-const Save_ValAccount = Multifactor.toJSON()
+const Save_ValAuth = Multifactor.toJSON()
 ```
-Save The `Save_ValAccount` And Go To Next Step
+Save The `Save_ValAuth` And Go To Next Step
 ## Client
 After We Get **"Account"**, Then We Will Create an **"API Client"**
 ### Region
@@ -54,7 +54,7 @@ const Region = new ValApi.Region("ap");
 ```
 ### Valorant Client / ValClient
 ```javascript
-const ValAccount = new ValApi.ValClient(Save_ValAccount, Region.toJSON(), 'release-04.03-shipping-6-671292');  // <---------- Example Client Version
+const ValAccount = new ValApi.ValClient(Save_ValAuth, Region.toJSON(), 'release-04.03-shipping-6-671292');  // <---------- Example Client Version
 ```
 **Account  --->  Save**
 ```javascript
