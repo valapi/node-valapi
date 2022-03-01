@@ -32,7 +32,7 @@ Use This Script And Save It. Because We Need **Cookie**,
 The Verify Code Will Send To Mail
 ```javascript
 const Multifactor = new ValApi.Multifactor(MultifactorAccount.cookie);
-const VerifyCode = 123456;
+const VerifyCode = 123456;  // <---------- Example Verify Code
 await Multifactor.verify(VerifyCode);
 
 const Save_ValAccount = Multifactor.toJSON()
