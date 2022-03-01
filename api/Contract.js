@@ -7,8 +7,6 @@ class Contract {
     }
 
     /**
-    * @description Get contract definitions
-    * @return {Promise<any>}
     */
     async DefinitionsFetch() {
         const Account = this.Account;
@@ -23,9 +21,7 @@ class Contract {
     }
 
     /**
-    * @description Get active story contracts
     * @param {string} puuid PlayerUUID
-    * @return {Promise<any>}
     */
     async Fetch(puuid) {
         const Account = this.Account;
@@ -40,10 +36,8 @@ class Contract {
     }
 
     /**
-    * @description Active story contracts
     * @param {string} puuid PlayerUUID
     * @param {string} contractId ContractID
-    * @return {Promise<any>}
     */
     async Activate(puuid, contractId) {
         const Account = this.Account;

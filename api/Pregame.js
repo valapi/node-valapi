@@ -7,9 +7,7 @@ class Pregame {
     }
 
     /**
-    * @description Get contract definitions
     * @param {string} puuid PlayerUUID
-    * @return {Promise<any>}
     */
      async GetPlayer(puuid) {
         const Account = this.Account;
@@ -24,9 +22,7 @@ class Pregame {
     }
 
     /**
-    * @description Get contract definitions
     * @param {string} matchId MatchID
-    * @return {Promise<any>}
     */
      async GetMatch(matchId) {
         const Account = this.Account;
@@ -41,9 +37,7 @@ class Pregame {
     }
 
     /**
-    * @description Get contract definitions
     * @param {string} matchId MatchID
-    * @return {Promise<any>}
     */
      async GetMatchLoadouts(matchId) {
         const Account = this.Account;
@@ -58,9 +52,7 @@ class Pregame {
     }
 
     /**
-    * @description Get contract definitions
     * @param {string} matchId MatchID
-    * @return {Promise<any>}
     */
      async QuitMatch(matchId) {
         const Account = this.Account;
@@ -75,10 +67,8 @@ class Pregame {
     }
 
     /**
-    * @description Get contract definitions
     * @param {string} matchId MatchID
     * @param {string} agentId CharacterID
-    * @return {Promise<any>}
     */
      async SelectCharacter(matchId, agentId) {
         const Account = this.Account;
@@ -93,10 +83,8 @@ class Pregame {
     }
 
     /**
-    * @description Get contract definitions
     * @param {string} matchId MatchID
     * @param {string} agentId CharacterID
-    * @return {Promise<any>}
     */
      async LockCharacter(matchId, agentId) {
         const Account = this.Account;

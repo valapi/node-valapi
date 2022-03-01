@@ -14,6 +14,10 @@ class Multifactor {
         this.entitlements = undefined;
     }
 
+    /**
+    * @param {number} verificationCode Riot Username
+    * @return {Promise<any>}
+    */
     async verify(verificationCode) {
         const _cookie = this.cookie;
         const axiosClient = wrapper(axios.create({ _cookie }));
@@ -47,7 +51,7 @@ class Multifactor {
         this.entitlements = entitlements_response.data.entitlements_token;
     }
 
-    async toJSON() {
+    toJSON() {
         return {
             cookie: this.cookie.toJSON(),
             accessToken: this.accessToken,

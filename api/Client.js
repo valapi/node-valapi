@@ -7,9 +7,7 @@ class Client {
     }
 
     /**
-    * @description Get contract definitions
     * @param {string} puuid PlayerUUID
-    * @return {Promise<any>}
     */
      async GetSession(puuid) {
         const Account = this.Account;
@@ -24,8 +22,6 @@ class Client {
     }
 
     /**
-    * @description Get contract definitions
-    * @return {Promise<any>}
     */
      async FetchContent() {
         const Account = this.Account;

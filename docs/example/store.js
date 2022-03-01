@@ -6,4 +6,5 @@ for(const Items of Bundle.Items){
     const _id = Items.Item.ItemID
 
     console.log("[ ID: " + _id + ", Price: " + _Price + " " + _Currency + " ]")
+    //console.log(`[ ID: ${_id}, Price: ${_Price} ${_Currency} ]`)
 }

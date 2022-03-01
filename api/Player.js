@@ -7,8 +7,6 @@ class Player {
     }
 
     /**
-    * @description Get user info
-    * @return {Promise<any>}
     */
     async GetUserInfo() {
         const Account = this.Account;
@@ -23,9 +21,7 @@ class Player {
     }
 
     /**
-    * @description Get contract definitions
     * @param {string} puuid PlayerUUID
-    * @return {Promise<any>}
     */
     async FetchPlayer(puuid) {
         const Account = this.Account;
@@ -40,9 +36,7 @@ class Player {
     }
 
     /**
-    * @description Get contract definitions
     * @param {string} puuid PlayerUUID
-    * @return {Promise<any>}
     */
      async GetUsername(puuid) {
         const Account = this.Account;
@@ -59,12 +53,10 @@ class Player {
     }
 
     /**
-    * @description Get contract definitions
     * @param {string} puuid PlayerUUID
     * @param {string} queueId QueueID
     * @param {number} startIndex startIndex
     * @param {number} endIndex endIndex
-    * @return {Promise<any>}
     */
     async FetchCompetitiveUpdates(puuid, queueId = null, startIndex = 0, endIndex = 10) {
         const Account = this.Account;
@@ -84,9 +76,7 @@ class Player {
     }
 
     /**
-    * @description Get contract definitions
     * @param {string} puuid PlayerUUID
-    * @return {Promise<any>}
     */
     async Loadout(puuid) {
         const Account = this.Account;
@@ -101,9 +91,7 @@ class Player {
     }
 
     /**
-    * @description Get contract definitions
     * @param {string} puuid PlayerUUID
-    * @return {Promise<any>}
     */
     async AccountXP(puuid) {
         const Account = this.Account;

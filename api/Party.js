@@ -7,9 +7,7 @@ class Party {
     }
 
     /**
-    * @description Get contract definitions
     * @param {string} puuid PlayerUUID
-    * @return {Promise<any>}
     */
      async FetchPlayer(puuid) {
         const Account = this.Account;
@@ -24,9 +22,7 @@ class Party {
     }
 
     /**
-    * @description Get contract definitions
     * @param {string} partyId PartyID
-    * @return {Promise<any>}
     */
      async FetchParty(partyId) {
         const Account = this.Account;
@@ -41,10 +37,8 @@ class Party {
     }
 
     /**
-    * @description Get contract definitions
     * @param {string} partyId PartyID
     * @param {string} queueId QueueID
-    * @return {Promise<any>}
     */
      async ChangeQueue(partyId, queueId) {
         const Account = this.Account;
@@ -61,9 +55,7 @@ class Party {
     }
 
     /**
-    * @description Get contract definitions
     * @param {string} partyId PartyID
-    * @return {Promise<any>}
     */
      async LeaveQueue(partyId) {
         const Account = this.Account;
@@ -78,10 +70,8 @@ class Party {
     }
 
     /**
-    * @description Get contract definitions
     * @param {string} partyId PartyID
     * @param {string} accessibility Accessibility, Example: OPEN, CLOSED
-    * @return {Promise<any>}
     */
      async SetAccessibility(partyId, accessibility = 'CLOSED') {
         const Account = this.Account;

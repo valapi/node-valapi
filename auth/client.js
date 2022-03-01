@@ -1,14 +1,14 @@
 //import
 const AxiosClient = require('../resources/request');
 
+const Client = require('../api/Client');
 const Contract = require('../api/Contract');
 const Coregame = require('../api/Coregame');
-const Party = require('../api/Party');
-const Pregame = require('../api/Pregame');
-const Client = require('../api/Client');
-const Store = require('../api/Store');
 const Match = require('../api/Match');
+const Party = require('../api/Party');
 const Player = require('../api/Player');
+const Pregame = require('../api/Pregame');
+const Store = require('../api/Store');
 
 //class
 class ValClient {
@@ -30,19 +30,16 @@ class ValClient {
         this.Region = Region;
         this.clientVersion = clientVersion;
 
+        this.Client = new Client(this.toJSON());
         this.Contract = new Contract(this.toJSON());
         this.Coregame = new Coregame(this.toJSON());
-        this.Party = new Party(this.toJSON());
-        this.Pregame = new Pregame(this.toJSON());
-        this.Client = new Client(this.toJSON());
-        this.Store = new Store(this.toJSON());
         this.Match = new Match(this.toJSON());
+        this.Party = new Party(this.toJSON());
         this.Player = new Player(this.toJSON());
+        this.Pregame = new Pregame(this.toJSON());
+        this.Store = new Store(this.toJSON());
     }
 
-    /**
-    * @description Get Account
-    */
     toJSON() {
         return {
             request: {
@@ -65,7 +62,7 @@ class ValClient {
     }
 
     /**
-    * @description Get Account
+    * @param {JSON} toJSON_Account ValClient In Json
     */
     fromJSON(toJSON_Account) {
         this.Account = {

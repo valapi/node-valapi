@@ -7,10 +7,8 @@ class Store {
     }
 
     /**
-    * @description Get contract definitions
     * @param {string} puuid PlayerUUID
     * @param {string} itemTypeId ItemTypeID
-    * @return {Promise<any>}
     */
      async GetEntitlements(puuid, itemTypeId) {
         const Account = this.Account;
@@ -19,14 +17,13 @@ class Store {
             headers: Account.request.headers,
         });
 
-        const response = await axiosClient.get(Account.url.playerData + `/store/v1/entitlements/${puuid}`);
+        const response = await axiosClient.get(Account.url.playerData + `/store/v1/entitlements/${puuid}/${itemTypeId}`);
 
         return response.data;
     }
 
     /**
-    * @description Get contract definitions
-    * @return {Promise<any>}
+
     */
      async GetOffers() {
         const Account = this.Account;
@@ -41,9 +38,7 @@ class Store {
     }
 
     /**
-    * @description Get contract definitions
     * @param {string} puuid PlayerUUID
-    * @return {Promise<any>}
     */
      async GetStorefront(puuid) {
         const Account = this.Account;
@@ -58,9 +53,7 @@ class Store {
     }
 
     /**
-    * @description Get contract definitions
     * @param {string} puuid PlayerUUID
-    * @return {Promise<any>}
     */
      async GetWallet(puuid) {
         const Account = this.Account;

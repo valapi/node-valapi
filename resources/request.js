@@ -12,8 +12,6 @@ class AxiosClient {
         this.headers = data.headers;
     }
 
-    //client
-
     async client() {
         const cookie = this.cookie
         const axiosClient = wrapper(axios.create({ cookie }));
@@ -21,8 +19,10 @@ class AxiosClient {
         return axiosClient;
     }
 
-    //request
-
+    
+    /**
+    * @param {string} url URL
+    */
     async get(url) {
         const axiosClient = await this.client();
 
@@ -33,6 +33,10 @@ class AxiosClient {
         })
     }
 
+    /**
+    * @param {string} url URL
+    * @param {JSON} body Body
+    */
     async post(url, body = {}) {
         const axiosClient = await this.client();
 
@@ -43,6 +47,10 @@ class AxiosClient {
         })
     }
 
+    /**
+    * @param {string} url URL
+    * @param {JSON} body Body
+    */
     async put(url, body = {}) {
         const axiosClient = await this.client();
 
@@ -53,6 +61,10 @@ class AxiosClient {
         })
     }
 
+    /**
+    * @param {string} url URL
+    * @param {JSON} body Body
+    */
     async delete(url, body = {}) {
         const axiosClient = await this.client();
 

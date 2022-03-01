@@ -7,7 +7,7 @@ class Region {
         this.sharedDataUrl = `https://shared.${this.region}.a.pvp.net`;
     }
 
-    async toJSON() {
+    toJSON() {
         return {
             region: this.region,
             playerData: this.playerDataUrl,

@@ -9,7 +9,6 @@ class Match {
     /**
     * @description Get contract definitions
     * @param {string} matchId MatchID
-    * @return {Promise<any>}
     */
      async FetchMatchDetails(matchId) {
         const Account = this.Account;
@@ -24,12 +23,10 @@ class Match {
     }
 
     /**
-    * @description Get contract definitions
     * @param {string} puuid PlayerUUID
     * @param {string} queueId QueueID
     * @param {number} startIndex startIndex
     * @param {number} endIndex endIndex
-    * @return {Promise<any>}
     */
      async FetchMatchHistory(puuid, queueId = null, startIndex = 0, endIndex = 10) {
         const Account = this.Account;

@@ -7,9 +7,7 @@ class Coregame {
     }
 
     /**
-    * @description Get contract definitions
     * @param {string} matchId MatchID
-    * @return {Promise<any>}
     */
     async FetchMatch(matchId) {
         const Account = this.Account;
@@ -24,9 +22,7 @@ class Coregame {
     }
 
     /**
-    * @description Get contract definitions
     * @param {string} matchId MatchID
-    * @return {Promise<any>}
     */
      async FetchMatchLoadouts(matchId) {
         const Account = this.Account;
@@ -41,9 +37,7 @@ class Coregame {
     }
 
     /**
-    * @description Get contract definitions
     * @param {string} puuid PlayerUUID
-    * @return {Promise<any>}
     */
      async FetchPlayer(puuid) {
         const Account = this.Account;

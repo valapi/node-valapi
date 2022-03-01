@@ -12,6 +12,11 @@ class Account {
         this.entitlements = undefined;
     }
 
+    /**
+    * @param {string} username Riot Username
+    * @param {string} password Riot Account Password
+    * @return {Promise<any>}
+    */
     async login(username, password) {
         const _cookie = this.cookie;
         const axiosClient = wrapper(axios.create({ _cookie }));
@@ -64,7 +69,7 @@ class Account {
         this.entitlements = entitlements_response.data.entitlements_token;
     }
 
-    async toJSON() {
+    toJSON() {
         return {
             cookie: this.cookie.toJSON(),
             accessToken: this.accessToken,
