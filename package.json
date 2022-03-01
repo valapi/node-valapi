@@ -1,10 +1,7 @@
 {
   "name": "@ing3kth/val-api",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Valorant Api - Support MFA",
-  "engines": {
-    "node": ">=17.4.0"
-  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,7 +15,10 @@
     "api",
     "mfa",
     "2fa",
-    "multifactor"
+    "multifactor",
+    "val-api",
+    "ing3",
+    "ing3kth"
   ],
   "author": "ING3_",
   "license": "ISC",

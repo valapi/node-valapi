@@ -1,21 +1,43 @@
 //import
 const AxiosClient = require('../resources/request');
 
+const Contract = require('../api/Contract');
+const Coregame = require('../api/Coregame');
+const Party = require('../api/Party');
+const Pregame = require('../api/Pregame');
+const Client = require('../api/Client');
+const Store = require('../api/Store');
+const Match = require('../api/Match');
+const Player = require('../api/Player');
+
 //class
 class ValClient {
-    constructor(PreAccount, Region, clientVersion) {
+    constructor(
+        PreAccount = {
+            accessToken: null,
+            entitlements: null,
+            cookie: null
+        }, 
+        Region = {
+            region: null,
+            playerData: null,
+            partyService: null,
+            sharedData: null
+        },
+        clientVersion = null
+    ) {
         this.Account = PreAccount;
         this.Region = Region;
         this.clientVersion = clientVersion;
 
-        const Contract = require('../api/Contract');
         this.Contract = new Contract(this.toJSON());
-
-        const Coregame = require('../api/Coregame');
         this.Coregame = new Coregame(this.toJSON());
-
-        const Party = require('../api/Party');
         this.Party = new Party(this.toJSON());
+        this.Pregame = new Pregame(this.toJSON());
+        this.Client = new Client(this.toJSON());
+        this.Store = new Store(this.toJSON());
+        this.Match = new Match(this.toJSON());
+        this.Player = new Player(this.toJSON());
     }
 
     /**
@@ -32,9 +54,9 @@ class ValClient {
                 },
                 cookie: this.Account.cookie,
                 accessToken: this.Account.accessToken,
-                entitlement: this.Account.entitlements,
             },
             url: {
+                region: this.Region.region,
                 playerData: this.Region.playerData,
                 partyService: this.Region.partyService,
                 sharedData: this.Region.sharedData
@@ -43,19 +65,32 @@ class ValClient {
     }
 
     /**
-    * @description Get user info
-    * @return {Promise<any>}
+    * @description Get Account
     */
-    async getUserInfo() {
-        const Account = this.toJSON();
-        const axiosClient = new AxiosClient({
-            cookie: Account.request.cookie,
-            headers: Account.request.headers,
-        });
+    fromJSON(toJSON_Account) {
+        this.Account = {
+            accessToken: toJSON_Account.request.accessToken,
+            entitlements: toJSON_Account.request.headers['X-Riot-Entitlements-JWT'],
+            cookie: toJSON_Account.request.cookie
+        }
+        this.clientVersion = toJSON_Account.request.headers['X-Riot-ClientVersion'],
+        this.Region = {
+            region: toJSON_Account.url.region,
+            playerData: toJSON_Account.url.playerData,
+            partyService: toJSON_Account.url.partyService,
+            sharedData: toJSON_Account.url.sharedData
+        }
 
-        const response = await axiosClient.post(`https://auth.riotgames.com/userinfo`);
+        this.Contract = new Contract(this.toJSON());
+        this.Coregame = new Coregame(this.toJSON());
+        this.Party = new Party(this.toJSON());
+        this.Pregame = new Pregame(this.toJSON());
+        this.Client = new Client(this.toJSON());
+        this.Store = new Store(this.toJSON());
+        this.Match = new Match(this.toJSON());
+        this.Player = new Player(this.toJSON());
 
-        return response.data;
+        return this.toJSON();
     }
 }
 
