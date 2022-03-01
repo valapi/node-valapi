@@ -63,7 +63,7 @@ const Save_ValAccount = ValAccount.toJSON();
 **Save  --->  Account**
 ```javascript
 const ValAccount = new ValApi.ValClient()
-ValClient.fromJSON(Save_ValAccount);
+ValAccount.fromJSON(Save_ValAccount);
 ```
 Now We Have **"Api Client"** !!
 ## API
@@ -111,8 +111,6 @@ After We Get **"Api Client"**, Then We Will Use **Valorant Api**
 Example Script For **Copy And Paste**
 ## Valorant Client
 ```javascript
-    const ValApi = require('@ing3kth/val-api')
-
     const ValAuth = new ValApi.Account();
     const UnknownAccount = await ValAuth.login('USERNAME', 'PASSWORD');
 
