@@ -1,5 +1,5 @@
 //import
-const function_Userinfo = require('../api/userinfo');
+const AxiosClient = require('../resources/request');
 
 //class
 class ValClient {
@@ -7,10 +7,21 @@ class ValClient {
         this.Account = PreAccount;
         this.Region = Region;
         this.clientVersion = clientVersion;
+
+        const Contract = require('../api/Contract');
+        this.Contract = new Contract(this.toJSON());
+
+        const Coregame = require('../api/Coregame');
+        this.Coregame = new Coregame(this.toJSON());
+
+        const Party = require('../api/Party');
+        this.Party = new Party(this.toJSON());
     }
 
-    //account
-    async toJSON() {
+    /**
+    * @description Get Account
+    */
+    toJSON() {
         return {
             request: {
                 headers: {
@@ -31,11 +42,28 @@ class ValClient {
         }
     }
 
-    //function
+    /**
+    * @description Get user info
+    * @return {Promise<any>}
+    */
     async getUserInfo() {
-        return await function_Userinfo(await this.toJSON());
+        const Account = this.toJSON();
+        const axiosClient = new AxiosClient({
+            cookie: Account.request.cookie,
+            headers: Account.request.headers,
+        });
+
+        const response = await axiosClient.post(`https://auth.riotgames.com/userinfo`);
+
+        return response.data;
     }
 }
 
 //export
 module.exports = ValClient;
+
+/*
+this.playerDataUrl = `https://pd.${this.region}.a.pvp.net`;
+this.partyServiceUrl = `https://glz-${this.region}-1.${this.region}.a.pvp.net`;
+this.sharedDataUrl = `https://shared.${this.region}.a.pvp.net`;
+*/

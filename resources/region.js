@@ -1,7 +1,7 @@
 //class
 class Region {
     constructor(region) {
-        this.region = region.toUpperCase();
+        this.region = region.toLowerCase();
         this.playerDataUrl = `https://pd.${this.region}.a.pvp.net`;
         this.partyServiceUrl = `https://glz-${this.region}-1.${this.region}.a.pvp.net`;
         this.sharedDataUrl = `https://shared.${this.region}.a.pvp.net`;

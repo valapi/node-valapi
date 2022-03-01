@@ -2,4 +2,4 @@
 
 ## Installation
 
-> npm install @ing3kth/val-apival-api
+> npm install @ing3kth/val-api

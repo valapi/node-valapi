@@ -1,6 +1,6 @@
 {
   "name": "@ing3kth/val-api",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Valorant Api - Support MFA",
   "engines": {
     "node": ">=17.4.0"
