@@ -1,4 +1,4 @@
-const ValApi = require('../../index');
+const ValApi = require('@ing3kth/val-api');
 
 //login to account
 const AccountMFA = new ValApi.Account();

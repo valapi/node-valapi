@@ -1,6 +1,6 @@
 (async () => {
     //import
-    const ValApi = require('../../index');
+    const ValApi = require('@ing3kth/val-api');
 
     //login to account
     const Account = new ValApi.Account();

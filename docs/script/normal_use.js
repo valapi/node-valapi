@@ -1,4 +1,4 @@
-const ValApi = require('../../index');
+const ValApi = require('@ing3kth/val-api');
 
 // From Database 
 // "./Val-Api/docs/auth/" For Example
