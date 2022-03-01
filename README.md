@@ -119,7 +119,7 @@ Example Script For **Copy And Paste**
     var Save_ValAuth
     if (UnknownAccount != undefined) {
         const Multifactor = new ValApi.Multifactor(UnknownAccount.cookie);
-        const VerifyCode = 123456;
+        const VerifyCode = 123456;  // <---------- Example Verify Code
 
         await Multifactor.verify(VerifyCode);
         Save_ValAuth = Multifactor.toJSON();
