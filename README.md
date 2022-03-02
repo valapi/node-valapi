@@ -102,6 +102,7 @@ After We Get **"Api Client"**, Then We Will Use **Valorant Api**
 |  | GetStorefront(puuid) |
 |  | GetWallet(puuid) |
 
+
 ### Usage
 ```javascript
     await ValAccount.[Service].[Function]
@@ -152,7 +153,7 @@ Thanks For Use My Package.
 - I am new Developer
 - I am not great at grammar
 
-#### link
+#### 
 
 - [Report Bug](https://github.com/KTNG-3/val-api/issues) (Github)
 - [Discord](https://discord.gg/pbyWbUYjyt)
