@@ -152,9 +152,6 @@ Thanks For Use My Package.
 
 - I am new Developer
 - I am not great at grammar
-
-#### 
-
 - [Report Bug](https://github.com/KTNG-3/val-api/issues) (Github)
 - [Discord](https://discord.gg/pbyWbUYjyt)
 - [Website](https://ingkth.wordpress.com/)
