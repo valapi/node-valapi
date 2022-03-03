@@ -122,7 +122,7 @@ Example Script For **Copy And Paste**
 
     const ValAccount_Client = new ValApi.ValClient({
         Account: ValAuth_Save,
-        Region: "ap",  // <---------- Example Region
+        Region: "ap",  // <---------- Example Region //OR //ValApi.Resource.Region.data.AsiaPacific
     });
 
     const GetUserInfo = await ValAccount_Client.Player.GetUserInfo();

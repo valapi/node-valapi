@@ -20,7 +20,6 @@ class Multifactor {
 
     /**
     * @param {number} verificationCode Verification Code
-    * @return {Promise<any>}
     */
      async verify(verificationCode) {
         const _cookie = this.cookie;

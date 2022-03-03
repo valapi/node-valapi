@@ -15,5 +15,6 @@ module.exports = {
         QueueId: require(`./resources/data/QueueId`),
         ItemTypeId: require(`./resources/data/ItemTypeId`),
         Currency: require(`./resources/data/Currency`),
+        Region: require(`./resources/data/Region`),
     }
 }
