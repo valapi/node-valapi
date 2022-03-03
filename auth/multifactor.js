@@ -8,17 +8,21 @@ const toughCookie = tough.CookieJar;
 
 //class
 class Multifactor {
-    constructor(getCookie) {
-        this.cookie = toughCookie.fromJSON(getCookie);
-        this.accessToken = undefined;
-        this.entitlements = undefined;
+    constructor(data = {
+        cookie: new toughCookie().toJSON(),
+        accessToken: null,
+        entitlements: null,
+    }) {
+        this.cookie = toughCookie.fromJSON(data.cookie);
+        this.accessToken = data.accessToken;
+        this.entitlements = data.entitlements;
     }
 
     /**
-    * @param {number} verificationCode Riot Username
+    * @param {number} verificationCode Verification Code
     * @return {Promise<any>}
     */
-    async verify(verificationCode) {
+     async verify(verificationCode) {
         const _cookie = this.cookie;
         const axiosClient = wrapper(axios.create({ _cookie }));
 
@@ -49,14 +53,16 @@ class Multifactor {
         })
 
         this.entitlements = entitlements_response.data.entitlements_token;
+
+        this.cookie = _cookie;
     }
 
     toJSON() {
         return {
             cookie: this.cookie.toJSON(),
             accessToken: this.accessToken,
-            entitlements: this.entitlements
-        };
+            entitlements: this.entitlements,
+        }
     }
 }
 

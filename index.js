@@ -1,12 +1,19 @@
 module.exports = {
-    //class
-    Account: require(`./auth/account`),
-    Multifactor: require(`./auth/multifactor`),
-    ValClient: require(`./auth/client`),
-    Region: require(`./resources/region`),
+    //client
+    Auth: {
+        Account: require('./auth/Account'),
+        Multifactor: require('./auth/MultiFactor'),
+    },
+    ValClient: require('./auth/ValClient'),
+
+    //api
+    ValRegion: require('./resources/ValRegion'),
+    AxiosClient: require('./resources/AxiosClient'),
 
     //data
-    QueueId: require(`./resources/data/queueId`),
-    ItemTypeId: require(`./resources/data/itemTypeId`),
-    Currency: require(`./resources/data/currency`),
+    Resource: {
+        QueueId: require(`./resources/data/QueueId`),
+        ItemTypeId: require(`./resources/data/ItemTypeId`),
+        Currency: require(`./resources/data/Currency`),
+    }
 }

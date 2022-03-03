@@ -16,28 +16,28 @@ const ValApi = require('@ing3kth/val-api')
 First We Need To **Login** To Valorant Account
 
 ```javascript
-const ValAuth = new ValApi.Account();
-await ValAuth.login('USERNAME', 'PASSWORD');
+const ValAuth_Account = new ValApi.Auth.Account();
+await ValAuth_Account.login('USERNAME', 'PASSWORD');
 
-const Save_ValAuth = ValAuth.toJSON()
+const ValAuth_Save = ValAuth.toJSON()
 ```
 
 *But We Have 2 Type Of Account*
 ### Multi-Factor Authentication
 When The Account Have **"Multi-Factor"** You Can't Use Normal Method
 ```javascript
-const MultifactorAccount = await ValAuth.login('USERNAME', 'PASSWORD');
+const Multifactor_Account = await ValAuth.login('USERNAME', 'PASSWORD');
 ```
 Use This Script And Save It. Because We Need **Cookie**,
 The Verify Code Will Send To Mail
 ```javascript
-const Multifactor = new ValApi.Multifactor(MultifactorAccount.cookie);
+const Multifactor_Auth = new ValApi.Auth.Multifactor(Multifactor_Account);
 const VerifyCode = 123456;  // <---------- Example Verify Code
-await Multifactor.verify(VerifyCode);
+await Multifactor_Auth.verify(VerifyCode);
 
-const Save_ValAuth = Multifactor.toJSON()
+const ValAuth_Save = Multifactor.toJSON()
 ```
-Save The `Save_ValAuth` And Go To Next Step
+Save The `ValAuth_Save` And Go To Next Step
 ## Client
 After We Get **"Account"**, Then We Will Create an **"API Client"**
 ### Region
@@ -49,21 +49,21 @@ After We Get **"Account"**, Then We Will Create an **"API Client"**
 | Asia Pacific | ap |
 | Korea | ko |
 
-```javascript
-const Region = new ValApi.Region("ap");
-```
 ### Valorant Client / ValClient
 ```javascript
-const ValAccount = new ValApi.ValClient(Save_ValAuth, Region.toJSON(), 'release-04.03-shipping-6-671292');  // <---------- Example Client Version
+const ValAccount_Client = new ValApi.ValClient({
+        Account: ValAuth_Save,
+        Region: "ap",  // <---------- Region
+    });
 ```
 **Account  --->  Save**
 ```javascript
-const Save_ValAccount = ValAccount.toJSON();
+const Save_ValAccount = ValAccount_Client.toJSON();
 ```
 **Save  --->  Account**
 ```javascript
-const ValAccount = new ValApi.ValClient()
-ValAccount.fromJSON(Save_ValAccount);
+const ValAccount_Client = new ValApi.ValClient()
+ValAccount_Client.fromJSON(Save_ValAccount);
 ```
 Now We Have **"Api Client"** !!
 ## API
@@ -105,38 +105,34 @@ After We Get **"Api Client"**, Then We Will Use **Valorant Api**
 
 ### Usage
 ```javascript
-    await ValAccount.[Service].[Function]
+    await ValAccount_Client.[Service].[Function]
 ```
 
 # Example
 Example Script For **Copy And Paste**
 ## Valorant Client
 ```javascript
-    const ValAuth = new ValApi.Account();
-    const UnknownAccount = await ValAuth.login('USERNAME', 'PASSWORD');
+    //auth
+    const ValAuth_Account = new ValApi.Auth.Account();
 
-    var Save_ValAuth
-    if (UnknownAccount != undefined) {
-        const Multifactor = new ValApi.Multifactor(UnknownAccount.cookie);
-        const VerifyCode = 123456;  // <---------- Example Verify Code
+    const ValAuth_Auth = await ValAuth_Account.login("USERNAME", "PASSWORD")
+    const ValAuth_Save = ValAuth_Account.toJSON();
 
-        await Multifactor.verify(VerifyCode);
-        Save_ValAuth = Multifactor.toJSON();
-    }else {
-        Save_ValAuth = ValAuth.toJSON();
-    }
+    //client
 
-    const Region = new ValApi.Region("ap");  // <---------- Example Region
-    const ValAccount = new ValApi.ValClient(Save_ValAuth, Region.toJSON(), 'release-04.03-shipping-6-671292');  // <---------- Example Client Version
+    const ValAccount_Client = new ValApi.ValClient({
+        Account: ValAuth_Save,
+        Region: "ap",  // <---------- Example Region
+    });
 
-    const GetUserInfo = await ValAccount.Player.GetUserInfo();
+    const GetUserInfo = await ValAccount_Client.Player.GetUserInfo();
 
     const Valorant_Puuid = GetUserInfo.sub;  // <---------- This is Player UUID
-    const Valorant_Account = ValAccount.toJSON();  // <---------- This is Valorant Account
+    const Valorant_Account = ValAccount_Client.toJSON();  // <---------- This is Valorant Account
 ```
 ## API
 ```javascript
-    const GetStore = await ValAccount.Store.GetStorefront(Valorant_Puuid);
+    const GetStore = await ValAccount_Client.Store.GetStorefront(Valorant_Puuid);
     const Bundle = GetStore.FeaturedBundle.Bundles[0]
     for(const Items of Bundle.Items){
         const _Price = Items.BasePrice
@@ -150,8 +146,8 @@ Example Script For **Copy And Paste**
 
 Thanks For Use My Package.
 
-- I am new Developer
-- I am not great at grammar
+I am new Developer, I am not great at grammar
+
 - [Report Bug](https://github.com/KTNG-3/val-api/issues) (Github)
 - [Discord](https://discord.gg/pbyWbUYjyt)
 - [Website](https://ingkth.wordpress.com/)
@@ -162,3 +158,4 @@ Thanks For Use My Package.
 - [RumbleMike](https://github.com/RumbleMike/ValorantClientAPI) (API Docs)
 - [Officer](https://valorant-api.com/) (valorant-api.com)
 - [Valorant Community Developer Discord](https://discord.gg/sCgvpXJfEE)
+- [Play Valorant](https://playvalorant.com/) (VALORANT)

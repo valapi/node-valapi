@@ -7,26 +7,22 @@ const toughCookie = tough.CookieJar;
 
 //class
 class AxiosClient {
-    constructor(data) {
+    constructor(data = {
+        cookie: new toughCookie().toJSON(),
+        headers: {},
+    }) {
         this.cookie = toughCookie.fromJSON(data.cookie);
         this.headers = data.headers;
+
+        const _cookie = this.cookie
+        this.axiosClient = wrapper(axios.create({ _cookie }));
     }
-
-    async client() {
-        const cookie = this.cookie
-        const axiosClient = wrapper(axios.create({ cookie }));
-
-        return axiosClient;
-    }
-
     
     /**
     * @param {string} url URL
     */
     async get(url) {
-        const axiosClient = await this.client();
-
-        return await axiosClient.get(url, {
+        return await this.axiosClient.get(url, {
             jar: this.cookie,
             withCredentials: true,
             headers: this.headers,
@@ -38,9 +34,7 @@ class AxiosClient {
     * @param {JSON} body Body
     */
     async post(url, body = {}) {
-        const axiosClient = await this.client();
-
-        return await axiosClient.post(url, body, {
+        return await this.axiosClient.post(url, body, {
             jar: this.cookie,
             withCredentials: true,
             headers: this.headers,
@@ -52,9 +46,7 @@ class AxiosClient {
     * @param {JSON} body Body
     */
     async put(url, body = {}) {
-        const axiosClient = await this.client();
-
-        return await axiosClient.put(url, body, {
+        return await this.axiosClient.put(url, body, {
             jar: this.cookie,
             withCredentials: true,
             headers: this.headers,
@@ -66,9 +58,7 @@ class AxiosClient {
     * @param {JSON} body Body
     */
     async delete(url, body = {}) {
-        const axiosClient = await this.client();
-
-        return await axiosClient.delete(url, body, {
+        return await this.axiosClient.delete(url, body, {
             jar: this.cookie,
             withCredentials: true,
             headers: this.headers,

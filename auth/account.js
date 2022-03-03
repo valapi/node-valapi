@@ -4,12 +4,14 @@ const { wrapper } = require('axios-cookiejar-support')
 const tough = require('tough-cookie');
 const url = require('url');
 
+const toughCookie = tough.CookieJar;
+
 //class
 class Account {
     constructor() {
-        this.cookie = new tough.CookieJar();
-        this.accessToken = undefined;
-        this.entitlements = undefined;
+        this.cookie = null;
+        this.accessToken = null;
+        this.entitlements = null;
     }
 
     /**
@@ -17,8 +19,8 @@ class Account {
     * @param {string} password Riot Account Password
     * @return {Promise<any>}
     */
-    async login(username, password) {
-        const _cookie = this.cookie;
+     async login(username, password) {
+        const _cookie = new toughCookie();
         const axiosClient = wrapper(axios.create({ _cookie }));
 
         await axiosClient.post('https://auth.riotgames.com/api/v1/authorization', {
@@ -43,11 +45,8 @@ class Account {
 
         //multifactor
         if (auth_response.data.type == 'multifactor') {
-            return {
-                data: auth_response.data,
-                cookie: _cookie.toJSON(),
-                isError: false
-            }
+            this.cookie = _cookie;
+            return this.toJSON();
         }
 
         // get asscess token
@@ -67,14 +66,17 @@ class Account {
         })
 
         this.entitlements = entitlements_response.data.entitlements_token;
+
+        this.cookie = _cookie;
+        return this.toJSON();
     }
 
     toJSON() {
         return {
             cookie: this.cookie.toJSON(),
             accessToken: this.accessToken,
-            entitlements: this.entitlements
-        };
+            entitlements: this.entitlements,
+        }
     }
 }
 
