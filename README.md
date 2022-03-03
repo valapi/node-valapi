@@ -7,7 +7,6 @@ npm install @ing3kth/val-api
 ```
 
 # Usage
-## Account
 
 ```javascript
 const ValApi = require('@ing3kth/val-api')
@@ -28,7 +27,7 @@ When The Account Have **"Multi-Factor"** You Can't Use Normal Method
 ```javascript
 const Multifactor_Account = await ValAuth.login('USERNAME', 'PASSWORD');
 ```
-Use This Script And Save It. Because We Need **Cookie**,
+Use This Script And Save It. Because We Need **"Cookie"**,
 The Verify Code Will Send To Mail
 ```javascript
 const Multifactor_Auth = new ValApi.Auth.Multifactor(Multifactor_Account);
@@ -37,37 +36,54 @@ await Multifactor_Auth.verify(VerifyCode);
 
 const ValAuth_Save = Multifactor.toJSON()
 ```
-Save The `ValAuth_Save` And Go To Next Step
-## Client
-After We Get **"Account"**, Then We Will Create an **"API Client"**
-### Region
- 
-| Region | String |
-| - | - |
-| North America | na |
-| Europe | eu |
-| Asia Pacific | ap |
-| Korea | ko |
+Save The *`ValAuth_Save`* And Go To Next Step
 
-### Valorant Client / ValClient
+### Resource
+ 
+- QueueId
+- ItemTypeId
+- Currency
+- Region
+
+```javascript
+const Resource[] = ValApi.Resource.{NAME}[{String}]
+const Resource. = ValApi.Resource.{NAME}.data.{String}
+```
+
+## Valorant Client / ValClient
+After We Get **"Account"**, Then We Will Create an **"API Client"**
+
 ```javascript
 const ValAccount_Client = new ValApi.ValClient({
         Account: ValAuth_Save,
         Region: "ap",  // <---------- Region
     });
 ```
-**Account  --->  Save**
+### Setting
+| Set | Function |
+| - | - |
+| Region | setRegion(region) |
+| Client Platfrom | setClientPlatfrom_fromJSON(clientPlatfrom) |
+|  | setClientPlatfrom_from64(clientPlatfrom) |
+| Client Version | setClientVersion(clientVersion) |
+
+```javascript
+ValAccount_Client.{Function}
+```
+
+### Save
+#### Account  --->  Save
 ```javascript
 const Save_ValAccount = ValAccount_Client.toJSON();
 ```
-**Save  --->  Account**
+#### Save  --->  Account
 ```javascript
 const ValAccount_Client = new ValApi.ValClient()
 ValAccount_Client.fromJSON(Save_ValAccount);
 ```
 Now We Have **"Api Client"** !!
 ## API
-After We Get **"Api Client"**, Then We Will Use **Valorant Api**
+After We Get **"Api Client"**, Then We Will Use **"Valorant Api"**
 | Service | Function |
 | - | - |
 | Client | GetSession(puuid) |
@@ -103,9 +119,8 @@ After We Get **"Api Client"**, Then We Will Use **Valorant Api**
 |  | GetWallet(puuid) |
 
 
-### Usage
 ```javascript
-    await ValAccount_Client.[Service].[Function]
+    await ValAccount_Client.{Service}.{Function}
 ```
 
 # Example
@@ -129,6 +144,11 @@ Example Script For **Copy And Paste**
 
     const Valorant_Puuid = GetUserInfo.sub;  // <---------- This is Player UUID
     const Valorant_Account = ValAccount_Client.toJSON();  // <---------- This is Valorant Account
+```
+## Resource
+```javascript
+   const Currency[] = ValApi.Currency['85ad13f7-3d1b-5128-9eb2-7cd8ee0b5741']
+   const Currency. = ValApi.Currency.data.ValorantPoints
 ```
 ## API
 ```javascript

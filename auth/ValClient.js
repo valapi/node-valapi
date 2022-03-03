@@ -110,7 +110,7 @@ class ValClient {
 
     /**
     * @param {JSON} clientPlatfrom Client Platfrom in json
-    * @example {"platformType": "PC", "platformOS": "Windows", "platformOSVersion": "10.0.12345.1.256.64bit", "platformChipset": "Unknown"}
+    * @example {"platformType": "PC", "platformOS": "Windows", "platformOSVersion": "11.0.12345.1.256.64bit", "platformChipset": "Unknown"}
     */
     setClientPlatfrom_fromJSON(clientPlatfrom) {
         this.client.platfrom = Buffer.from(JSON.stringify(clientPlatfrom)).toString('base64');
