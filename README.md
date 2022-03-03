@@ -19,7 +19,7 @@ First We Need To **Login** To Valorant Account
 const ValAuth_Account = new ValApi.Auth.Account();
 await ValAuth_Account.login('USERNAME', 'PASSWORD');
 
-const ValAuth_Save = ValAuth.toJSON()
+const ValAuth_Save = ValAuth_Account.toJSON()
 ```
 
 *But We Have 2 Type Of Account*
