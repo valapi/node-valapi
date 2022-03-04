@@ -29,7 +29,7 @@ class ValClient {
         this.accessToken = data.Account.accessToken;
         this.entitlements = data.Account.entitlements;
         this.client = {
-            version: 'release-04.04-shipping-15-678808',
+            version: 'release-04.04-shipping-16-679250',
             platfrom: 'ew0KCSJwbGF0Zm9ybVR5cGUiOiAiUEMiLA0KCSJwbGF0Zm9ybU9TIjogIldpbmRvd3MiLA0KCSJwbGF0Zm9ybU9TVmVyc2lvbiI6ICIxMC4wLjE5MDQyLjEuMjU2LjY0Yml0IiwNCgkicGxhdGZvcm1DaGlwc2V0IjogIlVua25vd24iDQp9'
         }
         this.Region = data.Region;
