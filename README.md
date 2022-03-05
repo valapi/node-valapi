@@ -137,8 +137,11 @@ Example Script For **Copy And Paste**
     const ValAuth_Auth = await ValAuth_Account.login("USERNAME", "PASSWORD")
     const ValAuth_Save = ValAuth_Account.toJSON();
 
-    //client
+    if(ValAuth_Auth.accessToken == null || ValAuth_Auth.entitlements == null) {
+        //multifactor
+    }
 
+    //client
     const ValAccount_Client = new ValApi.ValClient({
         Account: ValAuth_Save,
         Region: "ap",  // <---------- Example Region //OR //ValApi.Resource.Region.data.AsiaPacific
