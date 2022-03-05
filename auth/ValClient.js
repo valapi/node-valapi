@@ -22,7 +22,7 @@ class ValClient {
             accessToken: null,
             entitlements: null,
         },
-        Region: null
+        Region: 'ap',
     }) {
         //data
         this.cookie = data.Account.cookie;

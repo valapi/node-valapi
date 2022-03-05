@@ -99,6 +99,10 @@ After We Get **"Api Client"**, Then We Will Use **"Valorant Api"**
 | Party | FetchPlayer(puuid) |
 |  | FetchParty(partyId) |
 |  | ChangeQueue(partyId, queueId) |
+|  | FetchCustomGameConfigs() |
+|  | StartCustomGame(partyId) |
+|  | EnterMatchmakingQueue(partyId) |
+|  | LeaveMatchmakingQueue(partyId) |
 |  | LeaveQueue(partyId) |
 |  | SetAccessibility(partyId, accessibility?) |
 | Player | GetUserInfo() |

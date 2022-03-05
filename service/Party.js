@@ -40,6 +40,41 @@ class Party {
     }
 
     /**
+    */
+     async FetchCustomGameConfigs() {
+        const response = await this.AxiosClient.get(this.Region.url.partyService + `/parties/v1/parties/customgameconfigs`);
+
+        return response.data;
+    }
+
+    /**
+    * @param {string} partyId PartyID
+    */
+     async StartCustomGame(partyId) {
+        const response = await this.AxiosClient.post(this.Region.url.partyService + `/parties/v1/parties/${partyId}/startcustomgame`);
+
+        return response.data;
+    }
+
+    /**
+    * @param {string} partyId PartyID
+    */
+     async EnterMatchmakingQueue(partyId) {
+        const response = await this.AxiosClient.post(this.Region.url.partyService + `/parties/v1/parties/${partyId}/matchmaking/join`);
+
+        return response.data;
+    }
+
+    /**
+    * @param {string} partyId PartyID
+    */
+     async LeaveMatchmakingQueue(partyId) {
+        const response = await this.AxiosClient.post(this.Region.url.partyService + `/parties/v1/parties/${partyId}/matchmaking/leave`);
+
+        return response.data;
+    }
+
+    /**
     * @param {string} partyId PartyID
     */
      async LeaveQueue(partyId) {
