@@ -104,7 +104,7 @@ After We Get **"Api Client"**, Then We Will Use **"Valorant Api"**
 |  | EnterMatchmakingQueue(partyId) |
 |  | LeaveMatchmakingQueue(partyId) |
 |  | LeaveQueue(partyId) |
-|  | SetAccessibility(partyId, accessibility?) |
+|  | SetAccessibility(partyId, accessibility) |
 | Player | GetUserInfo() |
 |  | FetchPlayer(puuid) |
 |  | GetUsername(puuid) |

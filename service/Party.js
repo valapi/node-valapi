@@ -85,9 +85,10 @@ class Party {
 
     /**
     * @param {string} partyId PartyID
-    * @param {string} accessibility Accessibility, Example: OPEN, CLOSED
+    * @param {string} accessibility Accessibility
+    * @example "OPEN", "CLOSED"
     */
-     async SetAccessibility(partyId, accessibility = 'CLOSED') {
+     async SetAccessibility(partyId, accessibility) {
         const response = await this.AxiosClient.post(this.Region.url.partyService + `/parties/v1/parties/${partyId}/accessibility`, {
             "accessibility": `${accessibility}`
         });
