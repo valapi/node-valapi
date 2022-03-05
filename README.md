@@ -137,7 +137,7 @@ Example Script For **Copy And Paste**
     const ValAuth_Auth = await ValAuth_Account.login("USERNAME", "PASSWORD")
     const ValAuth_Save = ValAuth_Account.toJSON();
 
-    if(ValAuth_Auth.accessToken == null || ValAuth_Auth.entitlements == null) {
+    if(ValAuth_Save.accessToken == null || ValAuth_Save.entitlements == null) {
         //multifactor
     }
 
