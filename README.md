@@ -1,3 +1,12 @@
+<div align="center">
+
+   <a href="https://www.npmjs.com/package/@ing3kth/val-api"><img src="https://badgen.net/npm/dt/@ing3kth/val-api?icon=github" alt="NPM-Downloads"/></a>
+   <a href="https://discord.gg/pbyWbUYjyt"><img src="https://badgen.net/badge/icon/discord?icon=discord&label" alt="Discord"/></a>
+
+   <a href="https://www.npmjs.com/package/@ing3kth/val-api"><img src="https://nodei.co/npm/@ing3kth/val-api.png" alt="NPM"/></a>
+
+</div>
+
 # **Valorant API - Support MFA**
 
 ## Installation
