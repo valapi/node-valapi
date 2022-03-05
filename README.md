@@ -140,7 +140,7 @@ After We Get **"Api Client"**, Then We Will Use **"Valorant Api"**
 
 # Example
 Example Script For **Copy And Paste**
-## Valorant Client
+### Valorant Client
 ```javascript
     //auth
     const ValAuth_Account = new ValApi.Auth.Account();
@@ -163,12 +163,12 @@ Example Script For **Copy And Paste**
     const Valorant_Puuid = GetUserInfo.sub;  // <---------- This is Player UUID
     const Valorant_Account = ValAccount_Client.toJSON();  // <---------- This is Valorant Account
 ```
-## Resource
+### Resource
 ```javascript
    const Currency[] = ValApi.Currency['85ad13f7-3d1b-5128-9eb2-7cd8ee0b5741']
    const Currency. = ValApi.Currency.data.ValorantPoints
 ```
-## API
+### API
 ```javascript
     const GetStore = await ValAccount_Client.Store.GetStorefront(Valorant_Puuid);
     const Bundle = GetStore.FeaturedBundle.Bundles[0]
