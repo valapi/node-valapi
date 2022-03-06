@@ -17,7 +17,6 @@ class Account {
     /**
     * @param {string} username Riot Username
     * @param {string} password Riot Account Password
-    * @return {Promise<any>}
     */
      async login(username, password) {
         const _cookie = new toughCookie();

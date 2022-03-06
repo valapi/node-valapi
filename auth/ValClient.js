@@ -38,6 +38,7 @@ class ValClient {
     }
 
     //save
+    
     toJSON() {
         return {
             cookie: this.cookie,
