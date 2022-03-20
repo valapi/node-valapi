@@ -139,7 +139,7 @@ After We Get **"Api Client"**, Then We Will Use **"Valorant Api"**
     await ValAccount_Client.{Service}.{Function}
 ```
 
-## Riot Api
+## Riot API
 Official Api From Riot Games
 ```javascript
     const RiotApi_Client = new ValApi.RiotApi({
@@ -202,7 +202,7 @@ Example Script For **Copy And Paste**
         console.log(`[ ID: ${_id}, Price: ${_Price} ${_Currency} ]`)
     }
 ```
-### Riot Api
+### Riot API
 ```javascript
     const RiotApi_Client = new ValApi.RiotApi({
         key: 'ABCDEF-ghi1j234-k5l6-78mn-9012-345op678q901',  // <---------- Example API Key
