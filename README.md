@@ -204,12 +204,12 @@ Example Script For **Copy And Paste**
 ```
 ### Riot Api
 ```javascript
-    const RiotApiClient = new ValApi.RiotApi({
+    const RiotApi_Client = new ValApi.RiotApi({
         key: 'ABCDEF-ghi1j234-k5l6-78mn-9012-345op678q901',  // <---------- Example API Key
         region: ValApi.Resource.Region.data.NorthAmerica,  // <---------- Example Region
     })
 
-    const getContent = await RiotApiClient.ContentV1.Contents(ValApi.Resource.Locale.data.Japanese_Japan)
+    const getContent = await RiotApi_Client.ContentV1.Contents(ValApi.Resource.Locale.data.Japanese_Japan)
     console.log(getContent)
 ```
 
