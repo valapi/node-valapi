@@ -91,7 +91,7 @@ class ValClient {
 
     /**
     * @param {string} region Region String
-    * @example 'ap'
+    * @example region = 'ap'
     */
     setRegion(region) {
         this.Region = region;
@@ -101,7 +101,7 @@ class ValClient {
 
     /**
     * @param {string} clientVersion Client Version
-    * @example 'release-04.04-shipping-15-678808'
+    * @example clientVersion = 'release-04.04-shipping-15-678808'
     */
     setClientVersion(clientVersion) {
         this.client.version = clientVersion;
@@ -111,7 +111,7 @@ class ValClient {
 
     /**
     * @param {JSON} clientPlatfrom Client Platfrom in json
-    * @example {"platformType": "PC", "platformOS": "Windows", "platformOSVersion": "11.0.12345.1.256.64bit", "platformChipset": "Unknown"}
+    * @example clientPlatfrom = {"platformType": "PC", "platformOS": "Windows", "platformOSVersion": "11.0.12345.1.256.64bit", "platformChipset": "Unknown"}
     */
     setClientPlatfrom_fromJSON(clientPlatfrom) {
         this.client.platfrom = Buffer.from(JSON.stringify(clientPlatfrom)).toString('base64');
@@ -121,7 +121,7 @@ class ValClient {
 
     /**
     * @param {string} clientPlatfrom Client Platfrom in base64
-    * @example 'ew0KCSJwbGF0Zm9ybVR5cGUiOiAiUEMiLA0KCSJwbGF0Zm9ybU9TIjogIldpbmRvd3MiLA0KCSJwbGF0Zm9ybU9TVmVyc2lvbiI6ICIxMC4wLjE5MDQyLjEuMjU2LjY0Yml0IiwNCgkicGxhdGZvcm1DaGlwc2V0IjogIlVua25vd24iDQp9'
+    * @example clientPlatfrom = 'ew0KCSJwbGF0Zm9ybVR5cGUiOiAiUEMiLA0KCSJwbGF0Zm9ybU9TIjogIldpbmRvd3MiLA0KCSJwbGF0Zm9ybU9TVmVyc2lvbiI6ICIxMC4wLjE5MDQyLjEuMjU2LjY0Yml0IiwNCgkicGxhdGZvcm1DaGlwc2V0IjogIlVua25vd24iDQp9'
     */
      setClientPlatfrom_from64(clientPlatfrom) {
         this.client.platfrom = clientPlatfrom;

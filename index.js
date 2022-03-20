@@ -9,6 +9,7 @@ module.exports = {
     //api
     ValRegion: require('./resources/ValRegion'),
     AxiosClient: require('./resources/AxiosClient'),
+    RiotApi: require('./auth/RiotApi'),
 
     //data
     Resource: {
@@ -16,5 +17,6 @@ module.exports = {
         ItemTypeId: require(`./resources/data/ItemTypeId`),
         Currency: require(`./resources/data/Currency`),
         Region: require(`./resources/data/Region`),
+        Locale: require(`./resources/data/Locale`),
     }
 }

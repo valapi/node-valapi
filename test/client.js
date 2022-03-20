@@ -1,5 +1,5 @@
 (async () => {
-    const ValApi = require('./index.js');
+    const ValApi = require('../index.js');
 
     const ValAuth_Account = new ValApi.Auth.Account();
     await ValAuth_Account.login('USERNAME', 'PASSWORD');
@@ -15,7 +15,13 @@
     const puuid = GetUserDAta.sub;
 
     //party id
-    const GetPartyDAta = await ValAccount_Client.Party.FetchPlayer(puuid)
+    var GetPartyDAta;
+    try {
+        GetPartyDAta = await ValAccount_Client.Party.FetchPlayer(puuid)
+    }catch(err){
+        const ErrorData = err.response.data
+        console.log(ErrorData)
+    }
     const partyId = GetPartyDAta.CurrentPartyID;
 
     //script

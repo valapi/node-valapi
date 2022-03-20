@@ -55,6 +55,7 @@ Save The *`ValAuth_Save`* And Go To Next Step
 - ItemTypeId
 - Currency
 - Region
+- Locale
 
 ```javascript
 const Resource[] = ValApi.Resource.{NAME}[{String}]
@@ -138,6 +139,27 @@ After We Get **"Api Client"**, Then We Will Use **"Valorant Api"**
     await ValAccount_Client.{Service}.{Function}
 ```
 
+## Riot Api
+Official Api From Riot Games
+```javascript
+    const RiotApi_Client = new ValApi.RiotApi({
+        key: 'API-KEY-123',  // <---------- API Key
+        region: 'na',  // <---------- Region
+    })
+```
+You Can Get Api Key From [developer.riotgames.com](https://developer.riotgames.com/)
+| Service | Function |
+| - | - |
+| AccountV1 | ByRiotId(gameName, tagLine) |
+|  | ByPuuid(puuid) |
+|  | ByGame(puuid, game?) |
+| ContentV1 | Contents(locale?) |
+| StatusV1 | PlatformData() |
+
+```javascript
+    await RiotApi_Client.{Service}.{Function}
+```
+
 # Example
 Example Script For **Copy And Paste**
 ### Valorant Client
@@ -180,6 +202,17 @@ Example Script For **Copy And Paste**
         console.log(`[ ID: ${_id}, Price: ${_Price} ${_Currency} ]`)
     }
 ```
+### Riot Api
+```javascript
+    const RiotApiClient = new ValApi.RiotApi({
+        key: 'ABCDEF-ghi1j234-k5l6-78mn-9012-345op678q901',  // <---------- Example API Key
+        region: ValApi.Resource.Region.data.NorthAmerica,  // <---------- Example Region
+    })
+
+    const getContent = await RiotApiClient.ContentV1.Contents(ValApi.Resource.Locale.data.Japanese_Japan)
+    console.log(getContent)
+```
+
 # Message From Developer
 
 Thanks For Use My Package.

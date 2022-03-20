@@ -3,14 +3,19 @@ const QueueId = {
     'na': 'North America',
     'eu': 'Europe',
     'ap': 'Asia Pacific',
-    'ko': 'Korea',
+    'kr': 'Korea',
+    'latam': 'Latin America',
+    'br': 'Brazil',
+
 
     data: {
         //format 2
         NorthAmerica: 'na',
         Europe: 'eu',
         AsiaPacific: 'ap',
-        Korea: 'ko',
+        Korea: 'kr',
+        LatinAmerica: 'latam',
+        Brazil: 'br',
     },
 };
 

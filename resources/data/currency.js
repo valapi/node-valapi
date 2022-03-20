@@ -12,4 +12,5 @@ const Currency = {
     },
 }
 
+//export
 module.exports = Currency;
