@@ -30,7 +30,29 @@ class RiotApi {
         this.StatusV1 = new StatusV1(this.services);
         this.ContentV1 = new ContentV1(this.services);
     }
+
+    toJSON() {
+        return {
+            key: this.apiKey,
+            region: this.region,
+        }
+    }
+
+    fromJSON(data) {
+        this.apiKey = data.key;
+        this.region = data.region;
+
+        this.reload();
+    }
+
+    static fromJSONSync(data) {
+        const RiotApiClient = new RiotApi();
+        RiotApiClient.fromJSON(data);
+
+        return RiotApiClient;
+    }
 }
+RiotApi.fromJSON = RiotApi.fromJSONSync;
 
 //export
 module.exports = RiotApi;

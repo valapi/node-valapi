@@ -129,7 +129,15 @@ class ValClient {
         this.reload();
     }
 
+    static fromJSONSync(data) {
+        const ValApiClient = new ValClient();
+        ValApiClient.fromJSON(data);
+
+        return ValApiClient;
+    }
+
 }
+ValClient.fromJSON = ValClient.fromJSONSync;
 
 //export
 module.exports = ValClient;
