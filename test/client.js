@@ -1,5 +1,5 @@
 (async () => {
-    const ValApi = require('../index.js');
+    const ValApi = require('../src/index.js');
 
     const ValAuth_Account = new ValApi.Auth.Account();
     await ValAuth_Account.login('USERNAME', 'PASSWORD');

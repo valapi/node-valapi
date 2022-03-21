@@ -2,9 +2,9 @@
   "name": "@ing3kth/val-api",
   "version": "1.4.1",
   "description": "Valorant Api - Support MFA",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "nodemon test.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
