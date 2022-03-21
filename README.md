@@ -230,3 +230,8 @@ I am new Developer, I am not great at grammar
 - [Officer](https://valorant-api.com/) (valorant-api.com)
 - [Valorant Community Developer Discord](https://discord.gg/sCgvpXJfEE)
 - [Play Valorant](https://playvalorant.com/) (VALORANT)
+
+# Copyright
+**@ing3kth/val-api** is not authorized, maintained, sponsored, or endorsed by Riot Games, Inc or any of its affiliates or subsidiaries.
+
+Riot Games, Valorant, and all associated properties are trademarks or registered trademarks of Riot Games, Inc.
