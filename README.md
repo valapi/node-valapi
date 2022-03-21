@@ -187,8 +187,8 @@ Example Script For **Copy And Paste**
 ```
 ### Resource
 ```javascript
-   const Currency[] = ValApi.Currency['85ad13f7-3d1b-5128-9eb2-7cd8ee0b5741']
-   const Currency. = ValApi.Currency.data.ValorantPoints
+   const Currency[] = ValApi.Resource.Currency['85ad13f7-3d1b-5128-9eb2-7cd8ee0b5741']
+   const Currency. = ValApi.Resource.Currency.data.ValorantPoints
 ```
 ### API
 ```javascript
