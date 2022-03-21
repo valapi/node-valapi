@@ -13,7 +13,8 @@
    <a href="https://discord.gg/pbyWbUYjyt"><img src="https://badgen.net/badge/icon/discord?icon=discord&label" alt="Discord"/></a>
 
 </div>
-[![NPM](https://snyk.io/test/npm/@ing3kth/val-api/badge.svg)](https://snyk.io/test/npm/@ing3kth/val-api)
+
+[![NPM](https://nodei.co/npm/@ing3kth/val-api.png)](https://snyk.io/test/npm/@ing3kth/val-api)
 
 [![Downloads](https://snyk.io/test/npm/@ing3kth/val-api/badge.svg)](https://snyk.io/test/npm/@ing3kth/val-api)
 [![Install Size](https://snyk.io/test/npm/@ing3kth/val-api/badge.svg)](https://snyk.io/test/npm/@ing3kth/val-api)
