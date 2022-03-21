@@ -5,11 +5,23 @@
    <a href="https://www.npmjs.com/package/@ing3kth/val-api"><img src="https://nodei.co/npm/@ing3kth/val-api.png" alt="NPM"/></a>
 
    <a href="https://www.npmjs.com/package/@ing3kth/val-api"><img src="https://badgen.net/npm/dt/@ing3kth/val-api?icon=npm" alt="Downloads"/></a>
+   <a href="https://packagephobia.com/result?p=@ing3kth/val-api"><img src="https://packagephobia.com/badge?p=@ing3kth/val-api" alt="Install Size"/></a>
+   <a href="https://snyk.io/test/npm/@ing3kth/val-api"><img src="https://snyk.io/test/npm/@ing3kth/val-api/badge.svg" alt="Known Vulnerabilities"/></a>
+
    <a href="https://github.com/KTNG-3/val-api"><img src="https://badgen.net/badge/icon/github?icon=github&label" alt="Github"/></a>
-   <a href="https://www.npmjs.com/package/@ing3kth/val-api"><img src="https://badgen.net/badge/license/MIT/blue" alt="LICENSE"/></a>
+   <a href="https://github.com/KTNG-3/val-api/blob/main/LICENSE"><img src="https://badgen.net/badge/license/MIT/blue" alt="LICENSE"/></a>
    <a href="https://discord.gg/pbyWbUYjyt"><img src="https://badgen.net/badge/icon/discord?icon=discord&label" alt="Discord"/></a>
 
 </div>
+[![NPM](https://snyk.io/test/npm/@ing3kth/val-api/badge.svg)](https://snyk.io/test/npm/@ing3kth/val-api)
+
+[![Downloads](https://snyk.io/test/npm/@ing3kth/val-api/badge.svg)](https://snyk.io/test/npm/@ing3kth/val-api)
+[![Install Size](https://snyk.io/test/npm/@ing3kth/val-api/badge.svg)](https://snyk.io/test/npm/@ing3kth/val-api)
+[![Known Vulnerabilities](https://snyk.io/test/npm/@ing3kth/val-api/badge.svg)](https://snyk.io/test/npm/@ing3kth/val-api)
+
+[![Github](https://snyk.io/test/npm/@ing3kth/val-api/badge.svg)](https://snyk.io/test/npm/@ing3kth/val-api)
+[![LICENSE](https://snyk.io/test/npm/@ing3kth/val-api/badge.svg)](https://snyk.io/test/npm/@ing3kth/val-api)
+[![Discord](https://snyk.io/test/npm/@ing3kth/val-api/badge.svg)](https://snyk.io/test/npm/@ing3kth/val-api)
 
 ## Installation
 
