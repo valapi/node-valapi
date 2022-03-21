@@ -1,0 +1,12 @@
+/*
+party service for wrapper api
+*/
+let Party_RequestToJoinParty = `POST https://glz-ap-1.ap.a.pvp.net/parties/v1/parties/${partyId}/request`
+let Party_PlayerJoin = `POST https://glz-ap-1.ap.a.pvp.net/parties/v1/players/${puuid}/joinparty/${partyId}`
+let Party_DeclineRequest = `POST https://glz-ap-1.ap.a.pvp.net/parties/v1/parties/${partyId}/request/${requestId}/decline`
+let Party_RemovePlayer = `DELETE https://glz-ap-1.ap.a.pvp.net/parties/v1/players/${puuid}`
+
+/*
+put in readme(# Special Thanks) after create "valorant-api.com" class --> third party api
+*/
+- [Officer](https://valorant-api.com/) (valorant-api.com)

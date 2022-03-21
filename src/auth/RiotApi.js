@@ -45,6 +45,9 @@ class RiotApi {
         this.reload();
     }
 
+    /**
+    * @param {JSON} data toJSON data
+    */
     static fromJSONSync(data) {
         const RiotApiClient = new RiotApi();
         RiotApiClient.fromJSON(data);

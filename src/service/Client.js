@@ -4,8 +4,7 @@ const AxiosClient = require('../resources/AxiosClient');
 //service
 class Client {
     constructor(data) {
-        this.AxiosData = data.AxiosData;
-        this.AxiosClient = new AxiosClient(this.AxiosData);
+        this.AxiosClient = new AxiosClient(data.AxiosData);
         this.Region = data.Region;
     }
 
@@ -22,6 +21,14 @@ class Client {
     */
      async FetchContent() {
         const response = await this.AxiosClient.get(this.Region.url.sharedData + `/content-service/v3/content`);
+
+        return response.data;
+    }
+
+    /**
+    */
+     async FetchConfig() {
+        const response = await this.AxiosClient.get(this.Region.url.sharedData + `/v1/config/${this.Region.data.api}`);
 
         return response.data;
     }

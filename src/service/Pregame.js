@@ -4,8 +4,7 @@ const AxiosClient = require('../resources/AxiosClient');
 //service
 class Pregame {
     constructor(data) {
-        this.AxiosData = data.AxiosData;
-        this.AxiosClient = new AxiosClient(this.AxiosData);
+        this.AxiosClient = new AxiosClient(data.AxiosData);
         this.Region = data.Region;
     }
 

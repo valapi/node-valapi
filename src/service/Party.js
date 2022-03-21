@@ -4,8 +4,7 @@ const AxiosClient = require('../resources/AxiosClient');
 //service
 class Party {
     constructor(data) {
-        this.AxiosData = data.AxiosData;
-        this.AxiosClient = new AxiosClient(this.AxiosData);
+        this.AxiosClient = new AxiosClient(data.AxiosData);
         this.Region = data.Region;
     }
 
@@ -23,6 +22,27 @@ class Party {
     */
      async FetchParty(partyId) {
         const response = await this.AxiosClient.get(this.Region.url.partyService + `/parties/v1/parties/${partyId}`);
+
+        return response.data;
+    }
+
+    /**
+    * @param {string} partyId PartyID
+    * @param {String} gameName In-Game Name
+    * @param {String} tagLine In-Game Tag
+    */
+     async InviteToParty(partyId, gameName, tagLine) {
+        const response = await this.AxiosClient.post(this.Region.url.partyService + `/parties/v1/parties/${partyId}/invites/name/${gameName}/tag/${tagLine}`);
+
+        return response.data;
+    }
+
+    /**
+    * @param {string} puuid PlayerUUID
+    * @param {string} partyId PartyID
+    */
+     async LeaveParty(puuid, partyId) {
+        const response = await this.AxiosClient.post(this.Region.url.partyService + `/parties/v1/players/${puuid}/leaveparty/${partyId}`);
 
         return response.data;
     }

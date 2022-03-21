@@ -4,8 +4,7 @@ const AxiosClient = require('../resources/AxiosClient');
 //service
 class Coregame {
     constructor(data) {
-        this.AxiosData = data.AxiosData;
-        this.AxiosClient = new AxiosClient(this.AxiosData);
+        this.AxiosClient = new AxiosClient(data.AxiosData);
         this.Region = data.Region;
     }
 
@@ -32,6 +31,16 @@ class Coregame {
     */
      async FetchPlayer(puuid) {
         const response = await this.AxiosClient.get(this.Region.url.partyService + `/core-game/v1/players/${puuid}`);
+
+        return response.data;
+    }
+
+    /**
+    * @param {string} puuid PlayerUUID
+    * @param {string} matchId MatchID
+    */
+     async DisassociatePlayer(puuid, matchId) {
+        const response = await this.AxiosClient.post(this.Region.url.partyService + `/core-game/v1/players/${puuid}/disassociate/${matchId}`);
 
         return response.data;
     }

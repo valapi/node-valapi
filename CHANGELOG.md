@@ -1,0 +1,13 @@
+# 1.4.2 (March 21, 2022)
+
+- axois 0.26.0 --> 0.26.1
+- remove "AxiosData" from ValClient/Service class
+- more function in ValClient/Service
+
+# 1.4.1 (March 21, 2022)
+
+- MIT License
+
+## before 1.4.1 (~ March 1, 2022 --> March 20, 2022)
+
+no data

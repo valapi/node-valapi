@@ -129,6 +129,9 @@ class ValClient {
         this.reload();
     }
 
+    /**
+    * @param {JSON} data toJSON data
+    */
     static fromJSONSync(data) {
         const ValApiClient = new ValClient();
         ValApiClient.fromJSON(data);

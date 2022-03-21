@@ -100,16 +100,20 @@ After We Get **"Api Client"**, Then We Will Use **"Valorant Api"**
 | - | - |
 | Client | GetSession(puuid) |
 |  | FetchContent() |
+|  | FetchConfig() |
 | Contract | DefinitionsFetch() |
 |  | Fetch(puuid) |
 |  | Activate(puuid, contractId) |
 | Coregame | FetchMatch(matchId) |
 |  | FetchMatchLoadouts(matchId) |
 |  | FetchPlayer(puuid) |
+|  | DisassociatePlayer(puuid, matchId) |
 | Match | FetchMatchDetails(matchId) |
 |  | FetchMatchHistory(puuid, queueId?, startIndex?, endIndex?) |
 | Party | FetchPlayer(puuid) |
 |  | FetchParty(partyId) |
+|  | InviteToParty(partyId, gameName, tagLine) |
+|  | LeaveParty(puuid, partyId) |
 |  | SetAccessibility(partyId, accessibility) |
 |  | ChangeQueue(partyId, queueId) |
 |  | LeaveQueue(partyId) |
@@ -123,6 +127,7 @@ After We Get **"Api Client"**, Then We Will Use **"Valorant Api"**
 |  | FetchCompetitiveUpdates(puuid, queueId?, startIndex?, endIndex?) |
 |  | Loadout(puuid) |
 |  | AccountXP(puuid) |
+|  | FetchRestrictions() |
 | Pregame | GetPlayer(puuid) |
 |  | GetMatch(matchId) |
 |  | GetMatchLoadouts(matchId) |
@@ -227,7 +232,6 @@ I am new Developer, I am not great at grammar
 
 - [Techchrism](https://github.com/techchrism/valorant-api-docs) (API Docs)
 - [RumbleMike](https://github.com/RumbleMike/ValorantClientAPI) (API Docs)
-- [Officer](https://valorant-api.com/) (valorant-api.com)
 - [Valorant Community Developer Discord](https://discord.gg/sCgvpXJfEE)
 - [Play Valorant](https://playvalorant.com/) (VALORANT)
 - [developer.riotgames.com](https://developer.riotgames.com/) (Official Api From Riot Games)
