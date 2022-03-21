@@ -1,6 +1,5 @@
 # 1.4.2 (March 21, 2022)
 
-- axois 0.26.0 --> 0.26.1
 - remove "AxiosData" from ValClient/Service class
 - more function in ValClient/Service
 
