@@ -7,7 +7,7 @@ class StatusV1 {
         this.apiKey = data.key;
         this.region = data.region;
 
-        this.AxiosClient = new AxiosClient();
+        this.AxiosClient = new AxiosClient(data.AxiosData);
     }
 
     /**

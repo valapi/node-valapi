@@ -1,4 +1,7 @@
 //import
+const tough = require('tough-cookie');
+const toughCookie = tough.CookieJar;
+
 const ValRegion = require('../resources/ValRegion');
 
 const AccountV1 = require('../api/AccountV1');
@@ -24,6 +27,10 @@ class RiotApi {
         this.services = {
             key: this.apiKey,
             region: this.RegionServices,
+            AxiosData: {
+                cookie: new toughCookie().toJSON(),
+                headers: {}
+            }
         }
 
         this.AccountV1 = new AccountV1(this.services);
