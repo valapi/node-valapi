@@ -74,13 +74,14 @@ const ValAccount_Client = new ValApi.ValClient({
         Region: "ap",  // <---------- Region
     });
 ```
-### Setting
-| Set | Function |
+### Settings
+| Setting | Function |
 | - | - |
 | Region | setRegion(region) |
 | Client Platfrom | setClientPlatfrom_fromJSON(clientPlatfrom) |
 |  | setClientPlatfrom_from64(clientPlatfrom) |
 | Client Version | setClientVersion(clientVersion) |
+| Cookie | setCookie(cookie?) |
 
 ```javascript
 ValAccount_Client.{Function}

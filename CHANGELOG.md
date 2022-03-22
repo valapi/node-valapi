@@ -1,3 +1,8 @@
+# 1.4.3 (March 22, 2022)
+
+- RiotApi Settings
+- ValClient Cookie Setting
+
 # 1.4.2 (March 21, 2022)
 
 - remove "AxiosData" from ValClient/Service class

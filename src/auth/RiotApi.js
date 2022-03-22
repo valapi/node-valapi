@@ -52,6 +52,27 @@ class RiotApi {
         this.reload();
     }
 
+    //settings
+
+    /**
+    * @param {string} region Region
+    * @example region = 'na'
+    */
+    setRegion(region) {
+        this.region = region;
+
+        this.reload();
+    }
+
+    /**
+    * @param {string} key API Key
+    */
+    setApiKey(key) {
+        this.apiKey = key
+
+        this.reload();
+    }
+
     /**
     * @param {JSON} data toJSON data
     */

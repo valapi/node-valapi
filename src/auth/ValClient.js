@@ -90,7 +90,7 @@ class ValClient {
     //settings
 
     /**
-    * @param {string} region Region String
+    * @param {string} region Region
     * @example region = 'ap'
     */
     setRegion(region) {
@@ -120,11 +120,10 @@ class ValClient {
     }
 
     /**
-    * @param {string} clientPlatfrom Client Platfrom in base64
-    * @example clientPlatfrom = 'ew0KCSJwbGF0Zm9ybVR5cGUiOiAiUEMiLA0KCSJwbGF0Zm9ybU9TIjogIldpbmRvd3MiLA0KCSJwbGF0Zm9ybU9TVmVyc2lvbiI6ICIxMC4wLjE5MDQyLjEuMjU2LjY0Yml0IiwNCgkicGxhdGZvcm1DaGlwc2V0IjogIlVua25vd24iDQp9'
+    * @param {JSON} cookie Cookie
     */
-     setClientPlatfrom_from64(clientPlatfrom) {
-        this.client.platfrom = clientPlatfrom;
+    setCookie(cookie = new toughCookie().toJSON()) {
+        this.cookie = cookie;
         
         this.reload();
     }
