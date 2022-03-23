@@ -36,26 +36,6 @@ class ValClient {
         this.reload();
     }
 
-    //save
-    
-    toJSON() {
-        return {
-            cookie: this.cookie,
-            accessToken: this.accessToken,
-            entitlements: this.entitlements,
-            region: this.region,
-        }
-    }
-
-    fromJSON(data) {
-        this.cookie = data.cookie;
-        this.accessToken = data.accessToken;
-        this.entitlements = data.entitlements;
-        this.region = data.region;
-
-        this.reload();
-    }
-
     reload() {
         this.RegionServices = new ValRegion(this.region).toJSON();
 
@@ -84,6 +64,26 @@ class ValClient {
         this.Player = new Player(this.services);
         this.Pregame = new Pregame(this.services);
         this.Store = new Store(this.services);
+    }
+
+    //save
+    
+    toJSON() {
+        return {
+            cookie: this.cookie,
+            accessToken: this.accessToken,
+            entitlements: this.entitlements,
+            region: this.region,
+        }
+    }
+
+    fromJSON(data) {
+        this.cookie = data.cookie;
+        this.accessToken = data.accessToken;
+        this.entitlements = data.entitlements;
+        this.region = data.region;
+
+        this.reload();
     }
 
     //settings
