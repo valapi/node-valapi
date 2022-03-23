@@ -1,5 +1,5 @@
 //import
-const AxiosClient = require('../resources/AxiosClient');
+const AxiosClient = require('../../resources/AxiosClient');
 
 //service
 class Party {
@@ -9,7 +9,7 @@ class Party {
     }
 
     /**
-    * @param {string} puuid PlayerUUID
+    * @param {String} puuid PlayerUUID
     */
      async FetchPlayer(puuid) {
         const response = await this.AxiosClient.get(this.Region.url.partyService + `/parties/v1/players/${puuid}`);
@@ -18,7 +18,7 @@ class Party {
     }
 
     /**
-    * @param {string} partyId PartyID
+    * @param {String} partyId PartyID
     */
      async FetchParty(partyId) {
         const response = await this.AxiosClient.get(this.Region.url.partyService + `/parties/v1/parties/${partyId}`);
@@ -27,7 +27,7 @@ class Party {
     }
 
     /**
-    * @param {string} partyId PartyID
+    * @param {String} partyId PartyID
     * @param {String} gameName In-Game Name
     * @param {String} tagLine In-Game Tag
     */
@@ -38,8 +38,8 @@ class Party {
     }
 
     /**
-    * @param {string} puuid PlayerUUID
-    * @param {string} partyId PartyID
+    * @param {String} puuid PlayerUUID
+    * @param {String} partyId PartyID
     */
      async LeaveParty(puuid, partyId) {
         const response = await this.AxiosClient.post(this.Region.url.partyService + `/parties/v1/players/${puuid}/leaveparty/${partyId}`);
@@ -48,8 +48,8 @@ class Party {
     }
 
     /**
-    * @param {string} partyId PartyID
-    * @param {string} accessibility Accessibility
+    * @param {String} partyId PartyID
+    * @param {String} accessibility Accessibility
     * @example "OPEN", "CLOSED"
     */
      async SetAccessibility(partyId, accessibility) {
@@ -61,8 +61,8 @@ class Party {
     }
 
     /**
-    * @param {string} partyId PartyID
-    * @param {string} queueId QueueID
+    * @param {String} partyId PartyID
+    * @param {String} queueId QueueID
     */
      async ChangeQueue(partyId, queueId) {
         const response = await this.AxiosClient.post(this.Region.url.partyService + `/parties/v1/parties/${partyId}/queue`, {
@@ -73,7 +73,7 @@ class Party {
     }
 
     /**
-    * @param {string} partyId PartyID
+    * @param {String} partyId PartyID
     */
      async LeaveQueue(partyId) {
         const response = await this.AxiosClient.post(this.Region.url.partyService + `/parties/v1/parties/${partyId}/matchmaking/leave`);
@@ -90,7 +90,7 @@ class Party {
     }
 
     /**
-    * @param {string} partyId PartyID
+    * @param {String} partyId PartyID
     */
      async StartCustomGame(partyId) {
         const response = await this.AxiosClient.post(this.Region.url.partyService + `/parties/v1/parties/${partyId}/startcustomgame`);
@@ -99,7 +99,7 @@ class Party {
     }
 
     /**
-    * @param {string} partyId PartyID
+    * @param {String} partyId PartyID
     */
      async EnterMatchmakingQueue(partyId) {
         const response = await this.AxiosClient.post(this.Region.url.partyService + `/parties/v1/parties/${partyId}/matchmaking/join`);
@@ -108,7 +108,7 @@ class Party {
     }
 
     /**
-    * @param {string} partyId PartyID
+    * @param {String} partyId PartyID
     */
      async LeaveMatchmakingQueue(partyId) {
         const response = await this.AxiosClient.post(this.Region.url.partyService + `/parties/v1/parties/${partyId}/matchmaking/leave`);

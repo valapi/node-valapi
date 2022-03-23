@@ -3,16 +3,15 @@ const tough = require('tough-cookie');
 const toughCookie = tough.CookieJar;
 
 const ValRegion = require('../resources/ValRegion');
-const AxiosClient = require('../resources/AxiosClient');
 
-const Client = require('../service/Client');
-const Contract = require('../service/Contract');
-const Coregame = require('../service/Coregame');
-const Match = require('../service/Match');
-const Party = require('../service/Party');
-const Player = require('../service/Player');
-const Pregame = require('../service/Pregame');
-const Store = require('../service/Store');
+const Client = require('../service/ValClient/Client');
+const Contract = require('../service/ValClient/Contract');
+const Coregame = require('../service/ValClient/Coregame');
+const Match = require('../service/ValClient/Match');
+const Party = require('../service/ValClient/Party');
+const Player = require('../service/ValClient/Player');
+const Pregame = require('../service/ValClient/Pregame');
+const Store = require('../service/ValClient/Store');
 
 //class
 class ValClient {
@@ -32,7 +31,7 @@ class ValClient {
             version: 'release-04.04-shipping-16-679250',
             platfrom: 'ew0KCSJwbGF0Zm9ybVR5cGUiOiAiUEMiLA0KCSJwbGF0Zm9ybU9TIjogIldpbmRvd3MiLA0KCSJwbGF0Zm9ybU9TVmVyc2lvbiI6ICIxMC4wLjE5MDQyLjEuMjU2LjY0Yml0IiwNCgkicGxhdGZvcm1DaGlwc2V0IjogIlVua25vd24iDQp9'
         }
-        this.Region = data.Region;
+        this.region = data.Region;
 
         this.reload();
     }
@@ -44,7 +43,7 @@ class ValClient {
             cookie: this.cookie,
             accessToken: this.accessToken,
             entitlements: this.entitlements,
-            Region: this.Region,
+            region: this.region,
         }
     }
 
@@ -52,13 +51,13 @@ class ValClient {
         this.cookie = data.cookie;
         this.accessToken = data.accessToken;
         this.entitlements = data.entitlements;
-        this.Region = data.Region;
+        this.region = data.region;
 
         this.reload();
     }
 
     reload() {
-        this.RegionServices = new ValRegion(this.Region).toJSON();
+        this.RegionServices = new ValRegion(this.region).toJSON();
 
         //axios client
         this.AxiosData = {
@@ -90,17 +89,17 @@ class ValClient {
     //settings
 
     /**
-    * @param {string} region Region
+    * @param {String} region Region
     * @example region = 'ap'
     */
     setRegion(region) {
-        this.Region = region;
+        this.region = region;
 
         this.reload();
     }
 
     /**
-    * @param {string} clientVersion Client Version
+    * @param {String} clientVersion Client Version
     * @example clientVersion = 'release-04.04-shipping-15-678808'
     */
     setClientVersion(clientVersion) {

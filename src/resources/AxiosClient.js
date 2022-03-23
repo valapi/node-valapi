@@ -14,57 +14,78 @@ class AxiosClient {
         this.cookie = toughCookie.fromJSON(data.cookie);
         this.headers = data.headers;
 
-        const _cookie = this.cookie
-        this.axiosClient = wrapper(axios.create({ _cookie }));
-    }
-    
-    /**
-    * @param {string} url URL
-    */
-    async get(url) {
-        return await this.axiosClient.get(url, {
-            jar: this.cookie,
-            withCredentials: true,
-            headers: this.headers,
-        })
+        this.axiosClient = wrapper(axios.create({ jar: this.cookie, withCredentials: true, headers: this.headers }));
     }
 
     /**
-    * @param {string} url URL
+    * @param {String} url URL
+    */
+     async get(url) {
+        var response;
+        try{
+            response = await this.axiosClient.get(url)
+        }catch(err){
+            response = err.response;
+        }finally {
+            return response;
+        }
+    }
+
+    /**
+    * @param {String} url URL
     * @param {JSON} body Body
     */
     async post(url, body = {}) {
-        return await this.axiosClient.post(url, body, {
-            jar: this.cookie,
-            withCredentials: true,
-            headers: this.headers,
-        })
+        var response;
+        try{
+            response = await this.axiosClient.post(url, body)
+        }catch(err){
+            response = err.response;
+        }finally {
+            return response;
+        }
     }
 
     /**
-    * @param {string} url URL
+    * @param {String} url URL
     * @param {JSON} body Body
     */
     async put(url, body = {}) {
-        return await this.axiosClient.put(url, body, {
-            jar: this.cookie,
-            withCredentials: true,
-            headers: this.headers,
-        })
+        var response;
+        try{
+            response = await this.axiosClient.put(url, body)
+        }catch(err){
+            response = err.response;
+        }finally {
+            return response;
+        }
     }
 
     /**
-    * @param {string} url URL
+    * @param {String} url URL
     * @param {JSON} body Body
     */
     async delete(url, body = {}) {
-        return await this.axiosClient.delete(url, body, {
-            jar: this.cookie,
-            withCredentials: true,
-            headers: this.headers,
-        })
+        var response;
+        try{
+            response = await this.axiosClient.delete(url, body)
+        }catch(err){
+            response = err.response;
+        }finally {
+            return response;
+        }
+    }
+
+    static clientSync(data = {
+        cookie: new toughCookie().toJSON(),
+        headers: {},
+    }) {
+        const NewClient = new AxiosClient(data);
+        return NewClient.axiosClient;
     }
 }
 
 //export
+AxiosClient.client = AxiosClient.clientSync;
+
 module.exports = AxiosClient;

@@ -9,6 +9,9 @@ class ValRegion {
             this.riotRegion = 'europe'
         }else if (this.region == 'na' || this.region == 'latam' || this.region == 'br') {
             this.riotRegion = 'americas'
+        }else {
+            //unknown region
+            this.riotRegion = 'esports'
         }
 
         if (this.region == 'na' || this.region == 'latam' || this.region == 'br') {

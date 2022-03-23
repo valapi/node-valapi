@@ -1,5 +1,5 @@
 //import
-const AxiosClient = require('../resources/AxiosClient');
+const AxiosClient = require('../../resources/AxiosClient');
 
 //service
 class Player {
@@ -17,7 +17,7 @@ class Player {
     }
 
     /**
-    * @param {string} puuid PlayerUUID
+    * @param {String} puuid PlayerUUID
     */
     async FetchPlayer(puuid) {
         const response = await this.AxiosClient.get(this.Region.url.playerData + `/mmr/v1/players/${puuid}`);
@@ -26,7 +26,7 @@ class Player {
     }
 
     /**
-    * @param {string} puuid PlayerUUID
+    * @param {String} puuid PlayerUUID
     */
      async GetUsername(puuid) {
         const response = await this.AxiosClient.put(this.Region.url.playerData + `/name-service/v2/players`, [
@@ -37,10 +37,10 @@ class Player {
     }
 
     /**
-    * @param {string} puuid PlayerUUID
-    * @param {string} queueId QueueID
-    * @param {number} startIndex startIndex
-    * @param {number} endIndex endIndex
+    * @param {String} puuid PlayerUUID
+    * @param {String} queueId QueueID
+    * @param {Number} startIndex startIndex
+    * @param {Number} endIndex endIndex
     */
     async FetchCompetitiveUpdates(puuid, queueId = null, startIndex = 0, endIndex = 10) {
         let _url = this.Region.url.playerData + `/mmr/v1/players/${puuid}/competitiveupdates?startIndex=${startIndex}&endIndex=${endIndex}`;
@@ -54,7 +54,7 @@ class Player {
     }
 
     /**
-    * @param {string} puuid PlayerUUID
+    * @param {String} puuid PlayerUUID
     */
     async Loadout(puuid) {
         const response = await this.AxiosClient.get(this.Region.url.playerData + `/personalization/v2/players/${puuid}/playerloadout`);
@@ -63,7 +63,7 @@ class Player {
     }
 
     /**
-    * @param {string} puuid PlayerUUID
+    * @param {String} puuid PlayerUUID
     */
     async AccountXP(puuid) {
         const response = await this.AxiosClient.get(this.Region.url.playerData + `/account-xp/v1/players/${puuid}`);

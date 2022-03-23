@@ -1,5 +1,5 @@
 //import
-const AxiosClient = require('../resources/AxiosClient');
+const AxiosClient = require('../../resources/AxiosClient');
 
 //class
 class AccountV1 {

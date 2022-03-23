@@ -15,14 +15,11 @@
     const puuid = GetUserDAta.sub;
 
     //party id
-    var GetPartyDAta;
-    try {
-        GetPartyDAta = await ValAccount_Client.Party.FetchPlayer(puuid)
-    }catch(err){
-        const ErrorData = err.response.data
-        console.log(ErrorData)
+    const GetPartyDAta = await ValAccount_Client.Party.FetchPlayer(puuid);
+    var partyId;
+    if(!GetPartyDAta.errorCode){
+        partyId = GetPartyDAta.CurrentPartyID;
     }
-    const partyId = GetPartyDAta.CurrentPartyID;
 
     //script
     await ValAccount_Client.Party.EnterMatchmakingQueue(partyId)

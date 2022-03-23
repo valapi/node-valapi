@@ -19,20 +19,19 @@ class Multifactor {
     }
 
     /**
-    * @param {number} verificationCode Verification Code
+    * @param {Number} verificationCode Verification Code
     */
      async verify(verificationCode) {
         const _cookie = this.cookie;
-        const axiosClient = wrapper(axios.create({ _cookie }));
+        const axiosClient = wrapper(axios.create({ jar: _cookie, withCredentials: true }));
 
         //ACCESS TOKEN
         const auth_response = await axiosClient.put('https://auth.riotgames.com/api/v1/authorization', {
             "type": "multifactor",
             "code": verificationCode.toString(),
-            "rememberDevice": false
+            "rememberDevice": true
         }, {
             jar: _cookie,
-            withCredentials: true,
         })
 
         // get asscess token
@@ -45,7 +44,6 @@ class Multifactor {
         //ENTITLEMENTS
         const entitlements_response = await axiosClient.post('https://entitlements.auth.riotgames.com/api/token/v1', {}, {
             jar: _cookie,
-            withCredentials: true,
             headers: {
                 'Authorization': `Bearer ${this.accessToken}`,
             },
@@ -63,7 +61,24 @@ class Multifactor {
             entitlements: this.entitlements,
         }
     }
+
+    /**
+    * @param {JSON} data ValAuth_Account toJSON data
+    * @param {Number} verificationCode Verification Code
+    * @param {Boolean} toJSON return with toJSON data
+    */
+    static async verifySync(data, verificationCode, toJSON = false) {
+        const MultifactorAccount = new Multifactor(data);
+        await MultifactorAccount.verify(verificationCode);
+
+        if(toJSON){
+            return MultifactorAccount.toJSON();
+        }
+        return MultifactorAccount;
+    }
 }
 
 //export
+Multifactor.verify = Multifactor.verifySync;
+
 module.exports = Multifactor;

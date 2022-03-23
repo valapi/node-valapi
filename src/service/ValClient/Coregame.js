@@ -1,5 +1,5 @@
 //import
-const AxiosClient = require('../resources/AxiosClient');
+const AxiosClient = require('../../resources/AxiosClient');
 
 //service
 class Coregame {
@@ -9,7 +9,7 @@ class Coregame {
     }
 
     /**
-    * @param {string} matchId MatchID
+    * @param {String} matchId MatchID
     */
     async FetchMatch(matchId) {
         const response = await this.AxiosClient.get(this.Region.url.partyService + `/core-game/v1/matches/${matchId}`);
@@ -18,7 +18,7 @@ class Coregame {
     }
 
     /**
-    * @param {string} matchId MatchID
+    * @param {String} matchId MatchID
     */
      async FetchMatchLoadouts(matchId) {
         const response = await this.AxiosClient.get(this.Region.url.partyService + `/core-game/v1/matches/${matchId}/loadouts`);
@@ -27,7 +27,7 @@ class Coregame {
     }
 
     /**
-    * @param {string} puuid PlayerUUID
+    * @param {String} puuid PlayerUUID
     */
      async FetchPlayer(puuid) {
         const response = await this.AxiosClient.get(this.Region.url.partyService + `/core-game/v1/players/${puuid}`);
@@ -36,8 +36,8 @@ class Coregame {
     }
 
     /**
-    * @param {string} puuid PlayerUUID
-    * @param {string} matchId MatchID
+    * @param {String} puuid PlayerUUID
+    * @param {String} matchId MatchID
     */
      async DisassociatePlayer(puuid, matchId) {
         const response = await this.AxiosClient.post(this.Region.url.partyService + `/core-game/v1/players/${puuid}/disassociate/${matchId}`);

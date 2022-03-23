@@ -1,17 +1,15 @@
 module.exports = {
-    //client
+    //auth
     Auth: {
         Account: require('./auth/Account'),
         Multifactor: require('./auth/MultiFactor'),
     },
-    ValClient: require('./auth/ValClient'),
 
-    //api
-    ValRegion: require('./resources/ValRegion'),
-    AxiosClient: require('./resources/AxiosClient'),
-    RiotApi: require('./auth/RiotApi'),
+    //client
+    ValClient: require('./client/ValClient'),
+    RiotApi: require('./client/RiotApi'),
 
-    //data
+    //resource
     Resource: {
         QueueId: require(`./resources/data/QueueId`),
         ItemTypeId: require(`./resources/data/ItemTypeId`),

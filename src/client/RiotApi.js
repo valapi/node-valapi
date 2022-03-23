@@ -4,9 +4,9 @@ const toughCookie = tough.CookieJar;
 
 const ValRegion = require('../resources/ValRegion');
 
-const AccountV1 = require('../api/AccountV1');
-const StatusV1 = require('../api/StatusV1');
-const ContentV1 = require('../api/ContentV1');
+const AccountV1 = require('../service/RiotApi/AccountV1');
+const StatusV1 = require('../service/RiotApi/StatusV1');
+const ContentV1 = require('../service/RiotApi/ContentV1');
 
 //class
 class RiotApi {
@@ -55,7 +55,7 @@ class RiotApi {
     //settings
 
     /**
-    * @param {string} region Region
+    * @param {String} region Region
     * @example region = 'na'
     */
     setRegion(region) {
@@ -65,7 +65,7 @@ class RiotApi {
     }
 
     /**
-    * @param {string} key API Key
+    * @param {String} key API Key
     */
     setApiKey(key) {
         this.apiKey = key

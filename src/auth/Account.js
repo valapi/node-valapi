@@ -15,21 +15,23 @@ class Account {
     }
 
     /**
-    * @param {string} username Riot Username
-    * @param {string} password Riot Account Password
+    * @param {String} username Riot Account Username
+    * @param {String} password Riot Account Password
     */
      async login(username, password) {
         const _cookie = new toughCookie();
-        const axiosClient = wrapper(axios.create({ _cookie }));
+        const axiosClient = wrapper(axios.create({ jar: _cookie, withCredentials: true }));
 
-        await axiosClient.post('https://auth.riotgames.com/api/v1/authorization', {
+        const auth_cookie = await axiosClient.post('https://auth.riotgames.com/api/v1/authorization', {
             'client_id': 'play-valorant-web-prod',
             'nonce': '1',
             'redirect_uri': 'https://playvalorant.com/opt_in',
             'response_type': 'token id_token',
         }, {
             jar: _cookie,
-            withCredentials: true,
+            headers: {
+                'Content-Type': 'application/json'
+            }
         })
 
         //ACCESS TOKEN
@@ -37,9 +39,9 @@ class Account {
             'type': 'auth',
             'username': username,
             'password': password,
+            'remember': true,
         }, {
             jar: _cookie,
-            withCredentials: true,
         })
 
         //multifactor
@@ -58,7 +60,6 @@ class Account {
         //ENTITLEMENTS
         const entitlements_response = await axiosClient.post('https://entitlements.auth.riotgames.com/api/token/v1', {}, {
             jar: _cookie,
-            withCredentials: true,
             headers: {
                 'Authorization': `Bearer ${this.accessToken}`,
             },
@@ -77,7 +78,24 @@ class Account {
             entitlements: this.entitlements,
         }
     }
+
+    /**
+    * @param {String} username Riot Account Username
+    * @param {String} password Riot Account Password
+    * @param {Boolean} toJSON return with toJSON data
+    */
+    static async loginSync(username, password, toJSON = false) {
+        const NewAccount = new Account();
+        await NewAccount.login(username, password);
+
+        if(toJSON){
+            return NewAccount.toJSON();
+        }
+        return NewAccount;
+    }
 }
 
 //export
+Account.login = Account.loginSync;
+
 module.exports = Account;

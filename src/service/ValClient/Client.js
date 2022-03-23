@@ -1,5 +1,5 @@
 //import
-const AxiosClient = require('../resources/AxiosClient');
+const AxiosClient = require('../../resources/AxiosClient');
 
 //service
 class Client {
@@ -9,7 +9,7 @@ class Client {
     }
 
     /**
-    * @param {string} puuid PlayerUUID
+    * @param {String} puuid PlayerUUID
     */
      async GetSession(puuid) {
         const response = await this.AxiosClient.get(this.Region.url.partyService + `/session/v1/sessions/${puuid}`);
