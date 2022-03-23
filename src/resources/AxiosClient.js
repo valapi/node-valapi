@@ -21,7 +21,7 @@ class AxiosClient {
     * @param {String} url URL
     */
      async get(url) {
-        var response;
+        var response = false;
         try{
             response = await this.axiosClient.get(url)
         }catch(err){
@@ -36,7 +36,7 @@ class AxiosClient {
     * @param {JSON} body Body
     */
     async post(url, body = {}) {
-        var response;
+        var response = false;
         try{
             response = await this.axiosClient.post(url, body)
         }catch(err){
@@ -51,7 +51,7 @@ class AxiosClient {
     * @param {JSON} body Body
     */
     async put(url, body = {}) {
-        var response;
+        var response = false;
         try{
             response = await this.axiosClient.put(url, body)
         }catch(err){
@@ -66,7 +66,7 @@ class AxiosClient {
     * @param {JSON} body Body
     */
     async delete(url, body = {}) {
-        var response;
+        var response = false;
         try{
             response = await this.axiosClient.delete(url, body)
         }catch(err){
