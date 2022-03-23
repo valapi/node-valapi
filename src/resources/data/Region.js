@@ -1,4 +1,4 @@
-const QueueId = {
+const Region = {
     //format 1
     'na': 'North America',
     'eu': 'Europe',
@@ -20,4 +20,4 @@ const QueueId = {
 };
 
 //export
-module.exports = QueueId;
+module.exports = Region;

@@ -1,4 +1,4 @@
-const locale = {
+const Locale = {
     //format 1
     "ar-AE": "Arabic (U.A.E.)",
     "de-DE": "German (Germany)",
@@ -45,4 +45,4 @@ const locale = {
 }
 
 //export
-module.exports = locale;
+module.exports = Locale;

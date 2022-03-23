@@ -1,7 +1,19 @@
+//import
+const Region = require(`./data/Region`);
+
 //class
+
+/**
+* @param {String} region Region
+* @example region = 'br'
+*/
 class ValRegion {
     constructor(region = 'na') {
         this.region = region.toLowerCase();
+
+        if(!Region[this.region]) {
+            throw new Error(`Unknown Region: ${this.region}`);
+        }
 
         if (this.region == 'kr' || this.region == 'ap') {
             this.riotRegion = 'asia'
@@ -9,9 +21,6 @@ class ValRegion {
             this.riotRegion = 'europe'
         }else if (this.region == 'na' || this.region == 'latam' || this.region == 'br') {
             this.riotRegion = 'americas'
-        }else {
-            //unknown region
-            this.riotRegion = 'esports'
         }
 
         if (this.region == 'na' || this.region == 'latam' || this.region == 'br') {
