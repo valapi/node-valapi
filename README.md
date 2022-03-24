@@ -1,4 +1,4 @@
-# **Valorant API - Support MFA**
+# Valorant API - Support MFA
 
 <!-- Main -->
 <div align="center">
@@ -20,7 +20,21 @@
 
 ### Table of Contents
 
-- [Introduction](#introduction)
+- [Valorant API - Support MFA](#valorant-api---support-mfa)
+  - [Introduced](#introduced)
+    - [Table of Contents](#table-of-contents)
+    - [Installation](#installation)
+    - [Usage](#usage)
+  - [Valorant Client / ValClient](#valorant-client--valclient)
+    - [Authentication](#authentication)
+      - [Multi-Factor Authentication](#multi-factor-authentication)
+    - [Client](#client)
+    - [API](#api)
+  - [Riot API](#riot-api)
+    - [API](#api-1)
+  - [Resource](#resource)
+- [Example](#example)
+- [Epilogue](#epilogue)
 
 ### Installation
 
