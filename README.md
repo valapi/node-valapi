@@ -32,6 +32,8 @@
 
 ### Auth
 
+***
+
 First We Need To **Login** To `Valorant Account`
 
 ```javascript
