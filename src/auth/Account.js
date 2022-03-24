@@ -51,7 +51,7 @@ class Account {
             'remember': true,
         }, {
             jar: _cookie,
-        })
+        });
 
         //multifactor
         if (auth_response.data.type == 'multifactor') {
