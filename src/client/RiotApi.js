@@ -46,7 +46,7 @@ class RiotApi {
         return {
             key: this.apiKey,
             region: this.region,
-        }
+        };
     }
 
     fromJSON(data) {

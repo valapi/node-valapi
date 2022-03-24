@@ -55,7 +55,7 @@ class Multifactor {
             headers: {
                 'Authorization': `Bearer ${this.accessToken}`,
             },
-        })
+        });
 
         this.entitlements = entitlements_response.data.entitlements_token;
 

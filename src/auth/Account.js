@@ -41,7 +41,7 @@ class Account {
             headers: {
                 'Content-Type': 'application/json'
             }
-        })
+        });
 
         //ACCESS TOKEN
         const auth_response = await axiosClient.put('https://auth.riotgames.com/api/v1/authorization', {
