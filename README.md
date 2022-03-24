@@ -1,6 +1,7 @@
 # **Valorant API - Support MFA**
 
-<div align="center">
+<!-- Main -->
+<!-- <div align="center">
 
    <a href="https://www.npmjs.com/package/@ing3kth/val-api"><img src="https://nodei.co/npm/@ing3kth/val-api.png" alt="NPM"/></a>
 
@@ -13,96 +14,99 @@
    <a href="https://github.com/KTNG-3/val-api/blob/main/LICENSE"><img src="https://badgen.net/badge/license/MIT/blue" alt="LICENSE"/></a>
    <a href="https://discord.gg/pbyWbUYjyt"><img src="https://badgen.net/badge/icon/discord?icon=discord&label" alt="Discord"/></a>
 
-</div>
+</div> -->
 
 ## Installation
 
 ```bash
-npm install @ing3kth/val-api
+    npm install @ing3kth/val-api
 ```
 
-# Usage
+### Usage
 
 ```javascript
-const ValApi = require('@ing3kth/val-api')
+    const ValApi = require('@ing3kth/val-api')
 ```
 
-First We Need To **Login** To Valorant Account
+# Auth
+
+First We Need To **Login** To `Valorant Account`
 
 ```javascript
-const ValAuth_Account = await ValApi.Auth.Account.login('USERNAME', 'PASSWORD');
+    const ValAuth_Account = await ValApi.Auth.Account.login('USERNAME', 'PASSWORD');
 
-const ValAuth_Save = ValAuth_Account.toJSON()
+    const ValAuth_Save = ValAuth_Account.toJSON()
 ```
 
 *But We Have 2 Type Of Account*
+
 ### Multi-Factor Authentication
-When The Account Have **"Multi-Factor"** You Can't Use Normal Method
+
+When The Account Have **Multi-Factor** You Can't Use Normal Method
 
 ```javascript
-const Multifactor_Account = await ValAuth.login('USERNAME', 'PASSWORD');
+    const Multifactor_Account = await ValApi.Auth.Account.login('USERNAME', 'PASSWORD');
+    //Use This Script And Save It. Because We Need "Cookie"
 ```
 
-Use This Script And Save It. Because We Need **"Cookie"**,
-The Verify Code Will Send To Mail
+The **Verify Code** Will Send To **Mail**
 
 ```javascript
-const Multifactor_Auth = new ValApi.Auth.Multifactor(Multifactor_Account);
-const VerifyCode = 123456;  // <---------- Example Verify Code
-await Multifactor_Auth.verify(VerifyCode);
+    const Multifactor_Auth = new ValApi.Auth.Multifactor(Multifactor_Account);
+    const VerifyCode = 123456;  // <---------- Example Verify Code
+    await Multifactor_Auth.verify(VerifyCode);
 
-const ValAuth_Save = Multifactor.toJSON()
+    const ValAuth_Save = Multifactor.toJSON()
 ```
 
-Save The *`ValAuth_Save`* And Go To Next Step
-
-### Resource
- 
-- QueueId
-- ItemTypeId
-- Currency
-- Region
-- Locale
-
-```javascript
-const Resource[] = ValApi.Resource.{NAME}[{String}]
-const Resource. = ValApi.Resource.{NAME}.data.{String}
-```
+Save The **`ValAuth_Save`** And Go To Next Step
 
 ## Valorant Client / ValClient
-After We Get **"Account"**, Then We Will Create an **"API Client"**
+
+After We Get **Account**, Then We Will Create an **API Client**
 
 ```javascript
-const ValAccount_Client = new ValApi.ValClient({
-        Account: ValAuth_Save,
-        Region: "ap",  // <---------- Region
-    });
-```
-### Settings
-| Setting | Function |
-| - | - |
-| Region | setRegion(region) |
-| Client Platfrom | setClientPlatfrom_fromJSON(clientPlatfrom) |
-|  | setClientPlatfrom_from64(clientPlatfrom) |
-| Client Version | setClientVersion(clientVersion) |
-
-```javascript
-ValAccount_Client.{Function}
+    const ValAccount_Client = new ValApi.ValClient({
+            Account: ValAuth_Save,
+            Region: "ap",  // <---------- Region
+        });
 ```
 
-### Save
-#### Account  --->  Save
-```javascript
-const Save_ValAccount = ValAccount_Client.toJSON();
-```
-#### Save  --->  Account
-```javascript
-const ValAccount_Client = new ValApi.ValClient()
-ValAccount_Client.fromJSON(Save_ValAccount);
-```
-Now We Have **"Api Client"** !!
-## API
-After We Get **"Api Client"**, Then We Will Use **"Valorant Api"**
+Now We Have **`API Client`** !!
+
+<!-- Settings -->
+<details><summary>Settings</summary>
+
+>| Setting | Function |
+>| - | - |
+>| Region | setRegion(region) |
+>| Client Platfrom | setClientPlatfrom_fromJSON(clientPlatfrom) |
+>|  | setClientPlatfrom_from64(clientPlatfrom) |
+>| Client Version | setClientVersion(clientVersion) |
+>
+>```javascript
+>    ValAccount_Client.{Function}
+>```
+
+</details>
+
+<!-- Saves -->
+<details><summary>Saves</summary>
+
+>#### Account  --->  Save
+>```javascript
+>    const Save_ValAccount = ValAccount_Client.toJSON();
+>```
+>#### Save  --->  Account
+>```javascript
+>    const ValAccount_Client = ValApi.ValClient.fromJSON(Save_ValAccount);
+>```
+
+</details>
+
+### API
+
+After We Get **`API Client`**, Then We Will Use **`Valorant API`**
 | Service | Function |
 | - | - |
 | Client | GetSession(puuid) |
@@ -151,6 +155,7 @@ After We Get **"Api Client"**, Then We Will Use **"Valorant Api"**
 ```
 
 ## Riot API
+
 Official Api From Riot Games
 ```javascript
     const RiotApi_Client = new ValApi.RiotApi({
@@ -159,6 +164,23 @@ Official Api From Riot Games
     })
 ```
 You Can Get Api Key From [developer.riotgames.com](https://developer.riotgames.com/)
+
+<!-- Settings -->
+<details><summary>Settings</summary>
+
+>| Setting | Function |
+>| - | - |
+>| Region | setRegion(region) |
+>| API Key | setApiKey(key) |
+>
+>```javascript
+>    RiotApi_Client.{Function}
+>```
+
+</details>
+
+### API
+
 | Service | Function |
 | - | - |
 | AccountV1 | ByRiotId(gameName, tagLine) |
@@ -171,58 +193,114 @@ You Can Get Api Key From [developer.riotgames.com](https://developer.riotgames.c
     await RiotApi_Client.{Service}.{Function}
 ```
 
+## Resource
+ 
+- QueueId
+- ItemTypeId
+- Currency
+- Region
+- Locale
+
+```javascript
+    const Resource[] = ValApi.Resource.{NAME}[{String}]
+    const Resource. = ValApi.Resource.{NAME}.data.{String}
+```
+
 # Example
-Example Script For **Copy And Paste**
-### Valorant Client
-```javascript
-    //auth
-    const ValAuth_Account = new ValApi.Auth.Account();
 
-    const ValAuth_Auth = await ValAuth_Account.login("USERNAME", "PASSWORD")
-    const ValAuth_Save = ValAuth_Account.toJSON();
+Example Script
 
-    if(ValAuth_Save.accessToken == null || ValAuth_Save.entitlements == null) {
-        //multifactor
-    }
+<!-- Auth -->
+<details><summary>Auth</summary>
 
-    //client
-    const ValAccount_Client = new ValApi.ValClient({
-        Account: ValAuth_Save,
-        Region: "ap",  // <---------- Example Region //OR //ValApi.Resource.Region.data.AsiaPacific
-    });
+>#### Auth
+>
+>```javascript
+>    const ValAuth_Account = new ValApi.Auth.Account();
+>
+>    const ValAuth_Auth = await ValAuth_Account.login("USERNAME", "PASSWORD")
+>    const ValAuth_Save = ValAuth_Account.toJSON();
+>
+>    if(ValAuth_Save.multifactor) {
+>        //multifactor
+>    }
+>```
+>
+>#### Multi-Factor
+>
+>```javascript
+>    const Multifactor_Auth = new ValApi.Auth.Multifactor(Multifactor_Account);
+>    const VerifyCode = 123456;  // <---------- Example Verify Code
+>    await Multifactor_Auth.verify(VerifyCode);
+>    
+>    const ValAuth_Save = Multifactor.toJSON()
+>```
 
-    const GetUserInfo = await ValAccount_Client.Player.GetUserInfo();
+</details>
 
-    const Valorant_Puuid = GetUserInfo.sub;  // <---------- This is Player UUID
-    const Valorant_Account = ValAccount_Client.toJSON();  // <---------- This is Valorant Account
-```
-### Resource
-```javascript
-   const Currency[] = ValApi.Resource.Currency['85ad13f7-3d1b-5128-9eb2-7cd8ee0b5741']
-   const Currency. = ValApi.Resource.Currency.data.ValorantPoints
-```
-### API
-```javascript
-    const GetStore = await ValAccount_Client.Store.GetStorefront(Valorant_Puuid);
-    const Bundle = GetStore.FeaturedBundle.Bundles[0]
-    for(const Items of Bundle.Items){
-        const _Price = Items.BasePrice
-        const _Currency = ValApi.Resource.Currency[Items.CurrencyID]
-        const _id = Items.Item.ItemID
+<!-- Valorant Client -->
+<details><summary>Valorant Client</summary>
 
-        console.log(`[ ID: ${_id}, Price: ${_Price} ${_Currency} ]`)
-    }
-```
-### Riot API
-```javascript
-    const RiotApi_Client = new ValApi.RiotApi({
-        key: 'ABCDEF-ghi1j234-k5l6-78mn-9012-345op678q901',  // <---------- Example API Key
-        region: ValApi.Resource.Region.data.NorthAmerica,  // <---------- Example Region
-    })
+>#### Client
+>
+>```javascript
+>    const ValAccount_Client = new ValApi.ValClient({
+>        Account: ValAuth_Save,
+>        Region: "ap",  // <---------- Example Region //OR //ValApi.Resource.Region.data.AsiaPacific
+>    });
+>
+>    const GetUserInfo = await ValAccount_Client.Player.GetUserInfo();
+>
+>    const Valorant_Puuid = GetUserInfo.sub;  // <---------- This is Player UUID
+>    const Valorant_Account = ValAccount_Client.toJSON();  // <---------- This is Valorant Account
+>```
+>
+>#### API
+>
+>```javascript
+>    const GetStore = await ValAccount_Client.Store.GetStorefront(Valorant_Puuid);
+>    const Bundle = GetStore.FeaturedBundle.Bundles[0]
+>    for(const Items of Bundle.Items){
+>        const _Price = Items.BasePrice
+>        const _Currency = ValApi.Resource.Currency[Items.CurrencyID]
+>        const _id = Items.Item.ItemID
+>
+>        console.log(`[ ID: ${_id}, Price: ${_Price} ${_Currency} ]`)
+>    }
+>```
 
-    const getContent = await RiotApi_Client.ContentV1.Contents(ValApi.Resource.Locale.data.Japanese_Japan)
-    console.log(getContent)
-```
+</details>
+
+<!-- Riot API -->
+<details><summary>Riot API</summary>
+
+>#### Client
+>
+>```javascript
+>    const RiotApi_Client = new ValApi.RiotApi({
+>        key: 'ABCDEF-ghi1j234-k5l6-78mn-9012-345op678q901',  // <---------- Example API Key
+>        region: ValApi.Resource.Region.data.NorthAmerica,  // <---------- Example Region
+>    })
+>```
+>
+>#### API
+>
+>```javascript
+>    const getContent = await RiotApi_Client.ContentV1.Contents(ValApi.Resource.Locale.data.Japanese_Japan)
+>    console.log(getContent)
+>```
+
+</details>
+
+<!-- Resource -->
+<details><summary>Resource</summary>
+
+>```javascript
+>   const Currency[] = ValApi.Resource.Currency['85ad13f7-3d1b-5128-9eb2-7cd8ee0b5741']
+>   const Currency. = ValApi.Resource.Currency.data.ValorantPoints
+>```
+
+</details>
 
 # Message From Developer
 
