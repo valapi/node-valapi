@@ -16,7 +16,13 @@
 
 </div>
 
-## Installation
+## Introduced
+
+### Table of Contents
+
+- [Introduction](#introduction)
+
+### Installation
 
 ```bash
     npm install @ing3kth/val-api
@@ -30,7 +36,7 @@
 
 ## Valorant Client / ValClient
 
-### Auth
+### Authentication
 
 First We Need To **Login** To `Valorant Account`
 
@@ -42,7 +48,7 @@ First We Need To **Login** To `Valorant Account`
 
 *But We Have 2 Type Of Account*
 
-### Multi-Factor Authentication
+#### Multi-Factor Authentication
 
 When The Account Have **Multi-Factor** You Can't Use Normal Method
 
@@ -217,8 +223,8 @@ Example Script
 <!-- Valorant Client -->
 <details><summary>Valorant Client</summary>
 
-><!-- Auth -->
-><details><summary>Auth</summary>
+><!-- Authentication -->
+><details><summary>Authentication</summary>
 >
 >>#### Auth
 >>
