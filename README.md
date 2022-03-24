@@ -72,7 +72,7 @@ After We Get **Account**, Then We Will Create an **API Client**
         });
 ```
 
-Now We Have **`API Client`** !!
+Now We Have `API Client` !!
 
 <!-- Settings -->
 <details><summary>Settings</summary>
@@ -106,7 +106,7 @@ Now We Have **`API Client`** !!
 
 ### API
 
-After We Get **`API Client`**, Then We Will Use **`Valorant API`**
+After We Get `API Client`, Then We Will Use `Valorant API`
 | Service | Function |
 | - | - |
 | Client | GetSession(puuid) |
@@ -194,12 +194,12 @@ You Can Get Api Key From [developer.riotgames.com](https://developer.riotgames.c
 ```
 
 ## Resource
- 
-- QueueId
-- ItemTypeId
+
 - Currency
-- Region
+- ItemTypeId
 - Locale
+- QueueId
+- Region
 
 ```javascript
     const Resource[] = ValApi.Resource.{NAME}[{String}]
@@ -223,6 +223,7 @@ Example Script
 >
 >    if(ValAuth_Save.multifactor) {
 >        //multifactor
+>        const Multifactor_Account = ValAuth_Save;
 >    }
 >```
 >
@@ -302,26 +303,21 @@ Example Script
 
 </details>
 
-# Message From Developer
+# Epilogue
 
 Thanks For Use My Package.
 
-I am new Developer, I am not great at grammar
-
-- [Report Bug](https://github.com/KTNG-3/val-api/issues) (Github)
-- [Discord](https://discord.gg/pbyWbUYjyt)
 - [Website](https://ingkth.wordpress.com/)
-
-# Special Thanks
-
-- [Techchrism](https://github.com/techchrism/valorant-api-docs) (API Docs)
-- [RumbleMike](https://github.com/RumbleMike/ValorantClientAPI) (API Docs)
-- [Valorant Community Developer Discord](https://discord.gg/sCgvpXJfEE)
-- [Play Valorant](https://playvalorant.com/) (VALORANT)
-- [developer.riotgames.com](https://developer.riotgames.com/) (Official Api From Riot Games)
-
-# Legal
-
-**@ing3kth/val-api** isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games, and all associated properties are trademarks or registered trademarks of Riot Games, Inc.
-
-[MIT License](https://github.com/KTNG-3/val-api/blob/main/LICENSE)
+- *Report Bug*
+  - [Github](https://github.com/KTNG-3/val-api/issues)
+  - [Discord](https://discord.gg/pbyWbUYjyt)
+    - INg3_#9509
+- *Special Thanks*
+  - [Techchrism](https://github.com/techchrism/valorant-api-docs) (API Docs)
+  - [RumbleMike](https://github.com/RumbleMike/ValorantClientAPI) (API Docs)
+  - [Valorant Community Developer Discord](https://discord.gg/sCgvpXJfEE)
+  - [Play Valorant](https://playvalorant.com/) (VALORANT)
+  - [developer.riotgames.com](https://developer.riotgames.com/) (Official Api From Riot Games)
+- *Legal*
+  - >**@ing3kth/val-api** isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games, and all associated properties are trademarks or registered trademarks of Riot Games, Inc.
+  - [MIT License](https://github.com/KTNG-3/val-api/blob/main/LICENSE)
