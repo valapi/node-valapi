@@ -10,6 +10,7 @@ module.exports = {
     RiotApi: require('./client/RiotApi'),
 
     //resource
+    ValRegion: require('./resources/ValRegion'),
     Resource: {
         QueueId: require(`./resources/data/QueueId`),
         ItemTypeId: require(`./resources/data/ItemTypeId`),

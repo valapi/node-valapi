@@ -29,8 +29,7 @@ const ValApi = require('@ing3kth/val-api')
 First We Need To **Login** To Valorant Account
 
 ```javascript
-const ValAuth_Account = new ValApi.Auth.Account();
-await ValAuth_Account.login('USERNAME', 'PASSWORD');
+const ValAuth_Account = await ValApi.Auth.Account.login('USERNAME', 'PASSWORD');
 
 const ValAuth_Save = ValAuth_Account.toJSON()
 ```
@@ -81,7 +80,6 @@ const ValAccount_Client = new ValApi.ValClient({
 | Client Platfrom | setClientPlatfrom_fromJSON(clientPlatfrom) |
 |  | setClientPlatfrom_from64(clientPlatfrom) |
 | Client Version | setClientVersion(clientVersion) |
-| Cookie | setCookie(cookie?) |
 
 ```javascript
 ValAccount_Client.{Function}

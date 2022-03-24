@@ -8,10 +8,19 @@ const toughCookie = tough.CookieJar;
 
 //class
 class Account {
-    constructor() {
+    /**
+    * @param {String} username Riot Account Username
+    * @param {String} password Riot Account Password
+    */
+    constructor(username = false, password = false) {
         this.cookie = null;
         this.accessToken = null;
         this.entitlements = null;
+        this.multifactor = false;
+
+        if(username && password){
+            return this.login(username, password);
+        }
     }
 
     /**
@@ -46,7 +55,9 @@ class Account {
 
         //multifactor
         if (auth_response.data.type == 'multifactor') {
+            this.multifactor = true;
             this.cookie = _cookie;
+
             return this.toJSON();
         }
 
@@ -76,6 +87,7 @@ class Account {
             cookie: this.cookie.toJSON(),
             accessToken: this.accessToken,
             entitlements: this.entitlements,
+            multifactor: this.multifactor,
         }
     }
 

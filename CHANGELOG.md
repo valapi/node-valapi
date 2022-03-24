@@ -1,5 +1,6 @@
-# 1.4.5 (Some day)
+# 1.4.5 (March 24, 2022)
 
+- New Method For "Auth.Account"
 - A little changes
 
 # 1.4.4 (March 23, 2022)

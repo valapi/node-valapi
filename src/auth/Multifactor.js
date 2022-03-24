@@ -8,11 +8,19 @@ const toughCookie = tough.CookieJar;
 
 //class
 class Multifactor {
+    /**
+    * @param {JSON} data Account toJSON data
+    */
     constructor(data = {
         cookie: new toughCookie().toJSON(),
         accessToken: null,
         entitlements: null,
+        multifactor: true,
     }) {
+        if(!data.multifactor){
+            throw new Error('This Account is not have a Multifactor');
+        }
+
         this.cookie = toughCookie.fromJSON(data.cookie);
         this.accessToken = data.accessToken;
         this.entitlements = data.entitlements;

@@ -2,12 +2,11 @@
 const Region = require(`./data/Region`);
 
 //class
-
-/**
-* @param {String} region Region
-* @example region = 'br'
-*/
 class ValRegion {
+    /**
+    * @param {String} region Region
+    * @example region = 'br'
+    */
     constructor(region = 'na') {
         this.region = region.toLowerCase();
 
@@ -28,6 +27,8 @@ class ValRegion {
         }else {
             this.server = this.region
         }
+
+        return this.toJSON();
     }
 
     toJSON() {

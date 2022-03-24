@@ -1,12 +1,10 @@
 (async () => {
     const ValApi = require('../src/index.js');
 
-    const ValAuth_Account = new ValApi.Auth.Account();
-    await ValAuth_Account.login('USERNAME', 'PASSWORD');
-    const ValAuth_Save = ValAuth_Account.toJSON()
+    const ValAuth_Account = await ValApi.Auth.Account.login('USERNAME', 'PASSWORD', true);
 
     const ValAccount_Client = new ValApi.ValClient({
-        Account: ValAuth_Save,
+        Account: ValAuth_Account,
         Region: ValApi.Resource.Region.data.AsiaPacific,
     });
 

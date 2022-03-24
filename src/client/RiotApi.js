@@ -10,6 +10,10 @@ const ContentV1 = require('../service/RiotApi/ContentV1');
 
 //class
 class RiotApi {
+    /**
+    * @param {JSON} data Account toJSON data
+    * @example data = { key: 'long-string', region: 'kr' }
+    */
     constructor(data = {
         key: '',
         region: 'na',
@@ -21,7 +25,7 @@ class RiotApi {
     }
 
     reload() {
-        this.RegionServices = new ValRegion(this.region).toJSON();
+        this.RegionServices = new ValRegion(this.region);
 
         //services
         this.services = {

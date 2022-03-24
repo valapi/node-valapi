@@ -15,6 +15,10 @@ const Store = require('../service/ValClient/Store');
 
 //class
 class ValClient {
+    /**
+    * @param {JSON} data Account toJSON data
+    * @example data = { Account: ValAuth_Save, Region: 'latam' }
+    */
     constructor(data = {
         Account: {
             cookie: new toughCookie().toJSON(),
@@ -37,7 +41,7 @@ class ValClient {
     }
 
     reload() {
-        this.RegionServices = new ValRegion(this.region).toJSON();
+        this.RegionServices = new ValRegion(this.region);
 
         //axios client
         this.AxiosData = {
