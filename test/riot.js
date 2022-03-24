@@ -6,11 +6,11 @@
     const RiotApiClient = new ValApi.RiotApi({
         key: _apikey,
         region: _region,
-    })
+    });
 
-    const getPuuid = await RiotApiClient.AccountV1.ByRiotId('KawinTH', 'In3gG')
-    const _puuid = getPuuid.puuid
+    const getPuuid = await RiotApiClient.AccountV1.ByRiotId('KawinTH', 'In3gG');
+    const _puuid = getPuuid.puuid;
 
-    const getDataS = await RiotApiClient.ContentV1.Contents(ValApi.Resource.Locale.data.Thai_Thailand)
-    console.log(getDataS)
+    const getDataS = await RiotApiClient.ContentV1.Contents(ValApi.Resource.Locale.data.Thai_Thailand);
+    console.log(getDataS);
 })();

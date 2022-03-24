@@ -18,4 +18,4 @@ module.exports = {
         Region: require(`./resources/data/Region`),
         Locale: require(`./resources/data/Locale`),
     }
-}
+};

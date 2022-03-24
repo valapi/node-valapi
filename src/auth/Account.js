@@ -1,6 +1,6 @@
 //import
 const axios = require('axios').default;
-const { wrapper } = require('axios-cookiejar-support')
+const { wrapper } = require('axios-cookiejar-support');
 const tough = require('tough-cookie');
 const url = require('url');
 
@@ -88,7 +88,7 @@ class Account {
             accessToken: this.accessToken,
             entitlements: this.entitlements,
             multifactor: this.multifactor,
-        }
+        };
     }
 
     /**

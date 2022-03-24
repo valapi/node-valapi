@@ -1,6 +1,6 @@
 //import
 const axios = require('axios').default;
-const { wrapper } = require('axios-cookiejar-support')
+const { wrapper } = require('axios-cookiejar-support');
 const tough = require('tough-cookie');
 
 const toughCookie = tough.CookieJar;
@@ -23,7 +23,7 @@ class AxiosClient {
      async get(url) {
         var response = false;
         try{
-            response = await this.axiosClient.get(url)
+            response = await this.axiosClient.get(url);
         }catch(err){
             response = err.response;
         }finally {
@@ -38,7 +38,7 @@ class AxiosClient {
     async post(url, body = {}) {
         var response = false;
         try{
-            response = await this.axiosClient.post(url, body)
+            response = await this.axiosClient.post(url, body);
         }catch(err){
             response = err.response;
         }finally {
@@ -53,7 +53,7 @@ class AxiosClient {
     async put(url, body = {}) {
         var response = false;
         try{
-            response = await this.axiosClient.put(url, body)
+            response = await this.axiosClient.put(url, body);
         }catch(err){
             response = err.response;
         }finally {
@@ -68,7 +68,7 @@ class AxiosClient {
     async delete(url, body = {}) {
         var response = false;
         try{
-            response = await this.axiosClient.delete(url, body)
+            response = await this.axiosClient.delete(url, body);
         }catch(err){
             response = err.response;
         }finally {

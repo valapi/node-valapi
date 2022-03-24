@@ -35,7 +35,7 @@ class RiotApi {
                 cookie: new toughCookie().toJSON(),
                 headers: {}
             }
-        }
+        };
 
         this.AccountV1 = new AccountV1(this.services);
         this.StatusV1 = new StatusV1(this.services);
@@ -72,7 +72,7 @@ class RiotApi {
     * @param {String} key API Key
     */
     setApiKey(key) {
-        this.apiKey = key
+        this.apiKey = key;
 
         this.reload();
     }

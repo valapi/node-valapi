@@ -1,6 +1,6 @@
 //import
 const axios = require('axios').default;
-const { wrapper } = require('axios-cookiejar-support')
+const { wrapper } = require('axios-cookiejar-support');
 const tough = require('tough-cookie');
 const url = require('url');
 
@@ -40,7 +40,7 @@ class Multifactor {
             "rememberDevice": true
         }, {
             jar: _cookie,
-        })
+        });
 
         // get asscess token
         const get_url = auth_response.data.response.parameters.uri;
@@ -67,7 +67,7 @@ class Multifactor {
             cookie: this.cookie.toJSON(),
             accessToken: this.accessToken,
             entitlements: this.entitlements,
-        }
+        };
     }
 
     /**

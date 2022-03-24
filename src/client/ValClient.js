@@ -34,7 +34,7 @@ class ValClient {
         this.client = {
             version: 'release-04.04-shipping-16-679250',
             platfrom: 'ew0KCSJwbGF0Zm9ybVR5cGUiOiAiUEMiLA0KCSJwbGF0Zm9ybU9TIjogIldpbmRvd3MiLA0KCSJwbGF0Zm9ybU9TVmVyc2lvbiI6ICIxMC4wLjE5MDQyLjEuMjU2LjY0Yml0IiwNCgkicGxhdGZvcm1DaGlwc2V0IjogIlVua25vd24iDQp9'
-        }
+        };
         this.region = data.Region;
 
         this.reload();
@@ -58,7 +58,7 @@ class ValClient {
         this.services = {
             AxiosData: this.AxiosData,
             Region: this.RegionServices,
-        }
+        };
 
         this.Client = new Client(this.services);
         this.Contract = new Contract(this.services);
@@ -78,7 +78,7 @@ class ValClient {
             accessToken: this.accessToken,
             entitlements: this.entitlements,
             region: this.region,
-        }
+        };
     }
 
     fromJSON(data) {

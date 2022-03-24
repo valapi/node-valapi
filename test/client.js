@@ -9,7 +9,7 @@
     });
 
     //player uuid
-    const GetUserDAta = await ValAccount_Client.Player.GetUserInfo()
+    const GetUserDAta = await ValAccount_Client.Player.GetUserInfo();
     const puuid = GetUserDAta.sub;
 
     //party id
@@ -20,7 +20,7 @@
     }
 
     //script
-    await ValAccount_Client.Party.EnterMatchmakingQueue(partyId)
-    const getDataS = await ValAccount_Client.Party.LeaveMatchmakingQueue(partyId)
-    console.log(getDataS)
+    await ValAccount_Client.Party.EnterMatchmakingQueue(partyId);
+    const getDataS = await ValAccount_Client.Party.LeaveMatchmakingQueue(partyId);
+    console.log(getDataS);
 })();

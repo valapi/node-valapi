@@ -4,18 +4,16 @@
 
    <a href="https://www.npmjs.com/package/@ing3kth/val-api"><img src="https://nodei.co/npm/@ing3kth/val-api.png" alt="NPM"/></a>
 
-   <a href="https://www.npmjs.com/package/@ing3kth/val-api"><img src="https://badgen.net/npm/dt/@ing3kth/val-api?icon=npm" alt="Downloads"/></a>
-   <a href="https://packagephobia.com/result?p=@ing3kth/val-api"><img src="https://packagephobia.com/badge?p=@ing3kth/val-api" alt="Install Size"/></a>
-   <a href="https://www.codacy.com/gh/KTNG-3/val-api/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=KTNG-3/val-api&amp;utm_campaign=Badge_Grade"><img src="https://app.codacy.com/project/badge/Grade/b3bd20059ade46e78a605bf6a0b1f1e1" alt="Codacy Badge"/></a>
-   <a href="https://snyk.io/test/npm/@ing3kth/val-api"><img src="https://snyk.io/test/npm/@ing3kth/val-api/badge.svg" alt="Known Vulnerabilities"/></a>
+   <b href="https://www.npmjs.com/package/@ing3kth/val-api"><img src="https://badgen.net/npm/dt/@ing3kth/val-api?icon=npm" alt="Downloads"/></b>
+   <c href="https://packagephobia.com/result?p=@ing3kth/val-api"><img src="https://packagephobia.com/badge?p=@ing3kth/val-api" alt="Install Size"/></c>
+   <d href="https://www.codacy.com/gh/KTNG-3/val-api/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=KTNG-3/val-api&amp;utm_campaign=Badge_Grade"><img src="https://app.codacy.com/project/badge/Grade/b3bd20059ade46e78a605bf6a0b1f1e1" alt="Codacy Badge"/></d>
+   <e href="https://snyk.io/test/npm/@ing3kth/val-api"><img src="https://snyk.io/test/npm/@ing3kth/val-api/badge.svg" alt="Known Vulnerabilities"/></e>
 
-   <a href="https://github.com/KTNG-3/val-api"><img src="https://badgen.net/badge/icon/github?icon=github&label" alt="Github"/></a>
-   <a href="https://github.com/KTNG-3/val-api/blob/main/LICENSE"><img src="https://badgen.net/badge/license/MIT/blue" alt="LICENSE"/></a>
-   <a href="https://discord.gg/pbyWbUYjyt"><img src="https://badgen.net/badge/icon/discord?icon=discord&label" alt="Discord"/></a>
+   <f href="https://github.com/KTNG-3/val-api"><img src="https://badgen.net/badge/icon/github?icon=github&label" alt="Github"/></f>
+   <g href="https://github.com/KTNG-3/val-api/blob/main/LICENSE"><img src="https://badgen.net/badge/license/MIT/blue" alt="LICENSE"/></g>
+   <h href="https://discord.gg/pbyWbUYjyt"><img src="https://badgen.net/badge/icon/discord?icon=discord&label" alt="Discord"/></h>
 
 </div>
-
-[![]()]()
 
 ## Installation
 
@@ -40,11 +38,14 @@ const ValAuth_Save = ValAuth_Account.toJSON()
 *But We Have 2 Type Of Account*
 ### Multi-Factor Authentication
 When The Account Have **"Multi-Factor"** You Can't Use Normal Method
+
 ```javascript
 const Multifactor_Account = await ValAuth.login('USERNAME', 'PASSWORD');
 ```
+
 Use This Script And Save It. Because We Need **"Cookie"**,
 The Verify Code Will Send To Mail
+
 ```javascript
 const Multifactor_Auth = new ValApi.Auth.Multifactor(Multifactor_Account);
 const VerifyCode = 123456;  // <---------- Example Verify Code
@@ -52,6 +53,7 @@ await Multifactor_Auth.verify(VerifyCode);
 
 const ValAuth_Save = Multifactor.toJSON()
 ```
+
 Save The *`ValAuth_Save`* And Go To Next Step
 
 ### Resource
@@ -143,7 +145,6 @@ After We Get **"Api Client"**, Then We Will Use **"Valorant Api"**
 |  | GetOffers() |
 |  | GetStorefront(puuid) |
 |  | GetWallet(puuid) |
-
 
 ```javascript
     await ValAccount_Client.{Service}.{Function}

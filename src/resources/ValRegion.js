@@ -15,17 +15,17 @@ class ValRegion {
         }
 
         if (this.region == 'kr' || this.region == 'ap') {
-            this.riotRegion = 'asia'
+            this.riotRegion = 'asia';
         }else if (this.region == 'eu') {
-            this.riotRegion = 'europe'
+            this.riotRegion = 'europe';
         }else if (this.region == 'na' || this.region == 'latam' || this.region == 'br') {
-            this.riotRegion = 'americas'
+            this.riotRegion = 'americas';
         }
 
         if (this.region == 'na' || this.region == 'latam' || this.region == 'br') {
-            this.server = 'na'
+            this.server = 'na';
         }else {
-            this.server = this.region
+            this.server = this.region;
         }
 
         return this.toJSON();

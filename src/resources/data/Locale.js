@@ -42,7 +42,7 @@ const Locale = {
         Chinese_China: "zh-CN", //recommend
         Chinese_Taiwan: "zh-TW", //recommend
     }
-}
+};
 
 //export
 module.exports = Locale;

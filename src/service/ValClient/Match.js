@@ -27,7 +27,7 @@ class Match {
      async FetchMatchHistory(puuid, queueId = null, startIndex = 0, endIndex = 10) {
         let _url = this.Region.url.playerData + `/match-history/v1/history/${puuid}?startIndex=${startIndex}&endIndex=${endIndex}` ;
         if(queueId != null) {
-            _url += `&queue=${queueId}`
+            _url += `&queue=${queueId}`;
         }
 
         const response = await this.AxiosClient.get(_url);
