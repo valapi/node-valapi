@@ -39,13 +39,13 @@
 ### Installation
 
 ```bash
-    npm install @ing3kth/val-api
+  npm install @ing3kth/val-api
 ```
 
 ### Usage
 
 ```javascript
-    const ValApi = require('@ing3kth/val-api')
+  const ValApi = require('@ing3kth/val-api')
 ```
 
 ## Valorant Client / ValClient
@@ -55,9 +55,9 @@
 First We Need To **Login** To `Valorant Account`
 
 ```javascript
-    const ValAuth_Account = await ValApi.Auth.Account.login('USERNAME', 'PASSWORD');
+  const ValAuth_Account = await ValApi.Auth.Account.login('USERNAME', 'PASSWORD');
 
-    const ValAuth_Save = ValAuth_Account.toJSON()
+  const ValAuth_Save = ValAuth_Account.toJSON()
 ```
 
 *But We Have 2 Type Of Account*
@@ -67,18 +67,18 @@ First We Need To **Login** To `Valorant Account`
 When The Account Have **Multi-Factor** You Can't Use Normal Method
 
 ```javascript
-    const Multifactor_Account = await ValApi.Auth.Account.login('USERNAME', 'PASSWORD');
-    //Use This Script And Save It. Because We Need "Cookie"
+  const Multifactor_Account = await ValApi.Auth.Account.login('USERNAME', 'PASSWORD');
+  //Use This Script And Save It. Because We Need "Cookie"
 ```
 
 The **Verify Code** Will Send To **Mail**
 
 ```javascript
-    const Multifactor_Auth = new ValApi.Auth.Multifactor(Multifactor_Account);
-    const VerifyCode = 123456;  // <---------- Example Verify Code
-    await Multifactor_Auth.verify(VerifyCode);
+  const Multifactor_Auth = new ValApi.Auth.Multifactor(Multifactor_Account);
+  const VerifyCode = 123456;  // <---------- Example Verify Code
+  await Multifactor_Auth.verify(VerifyCode);
 
-    const ValAuth_Save = Multifactor.toJSON()
+  const ValAuth_Save = Multifactor.toJSON()
 ```
 
 Save The **`ValAuth_Save`** And Go To Next Step
@@ -88,10 +88,10 @@ Save The **`ValAuth_Save`** And Go To Next Step
 After We Get **Account**, Then We Will Create an **API Client**
 
 ```javascript
-    const ValAccount_Client = new ValApi.ValClient({
-            Account: ValAuth_Save,
-            Region: "ap",  // <---------- Region
-        });
+  const ValAccount_Client = new ValApi.ValClient({
+          Account: ValAuth_Save,
+          Region: "ap",  // <---------- Region
+      });
 ```
 
 Now We Have `API Client` !!
@@ -181,10 +181,10 @@ After We Get `API Client`, Then We Will Use `Valorant API`
 Official Api From Riot Games
 
 ```javascript
-    const RiotApi_Client = new ValApi.RiotApi({
-        key: 'API-KEY-123',  // <---------- API Key
-        region: 'na',  // <---------- Region
-    })
+  const RiotApi_Client = new ValApi.RiotApi({
+      key: 'API-KEY-123',  // <---------- API Key
+      region: 'na',  // <---------- Region
+  })
 ```
 
 You Can Get Api Key From [developer.riotgames.com](https://developer.riotgames.com/)
@@ -214,7 +214,7 @@ You Can Get Api Key From [developer.riotgames.com](https://developer.riotgames.c
 | StatusV1 | PlatformData() |
 
 ```javascript
-    await RiotApi_Client.{Service}.{Function}
+  await RiotApi_Client.{Service}.{Function}
 ```
 
 ## Resource
@@ -226,8 +226,8 @@ You Can Get Api Key From [developer.riotgames.com](https://developer.riotgames.c
 - Region
 
 ```javascript
-    const Resource[] = ValApi.Resource.{NAME}[{String}]
-    const Resource. = ValApi.Resource.{NAME}.data.{String}
+  const Resource[] = ValApi.Resource.{NAME}[{String}]
+  const Resource. = ValApi.Resource.{NAME}.data.{String}
 ```
 
 # Example
@@ -329,7 +329,10 @@ Example Script
 
 # Epilogue
 
-Thanks For Use My Package.
+Thanks For Use My Package,
+On [GitHub](https://github.com/KTNG-3/val-api) Will Update Before This Package Update.
+
+***
 
 - [Website](https://ingkth.wordpress.com/)
 - *Report Bug*
