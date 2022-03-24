@@ -6,6 +6,7 @@
 
    <a href="https://www.npmjs.com/package/@ing3kth/val-api"><img src="https://badgen.net/npm/dt/@ing3kth/val-api?icon=npm" alt="Downloads"/></a>
    <a href="https://packagephobia.com/result?p=@ing3kth/val-api"><img src="https://packagephobia.com/badge?p=@ing3kth/val-api" alt="Install Size"/></a>
+   <a href="https://www.codacy.com/gh/KTNG-3/val-api/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=KTNG-3/val-api&amp;utm_campaign=Badge_Grade"><img src="https://app.codacy.com/project/badge/Grade/b3bd20059ade46e78a605bf6a0b1f1e1" alt="Codacy Badge"/></a>
    <a href="https://snyk.io/test/npm/@ing3kth/val-api"><img src="https://snyk.io/test/npm/@ing3kth/val-api/badge.svg" alt="Known Vulnerabilities"/></a>
 
    <a href="https://github.com/KTNG-3/val-api"><img src="https://badgen.net/badge/icon/github?icon=github&label" alt="Github"/></a>
@@ -13,6 +14,8 @@
    <a href="https://discord.gg/pbyWbUYjyt"><img src="https://badgen.net/badge/icon/discord?icon=discord&label" alt="Discord"/></a>
 
 </div>
+
+[![]()]()
 
 ## Installation
 
@@ -238,5 +241,8 @@ I am new Developer, I am not great at grammar
 - [Play Valorant](https://playvalorant.com/) (VALORANT)
 - [developer.riotgames.com](https://developer.riotgames.com/) (Official Api From Riot Games)
 
-# Copyright
+# Legal
+
 **@ing3kth/val-api** isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games, and all associated properties are trademarks or registered trademarks of Riot Games, Inc.
+
+[MIT License](https://github.com/KTNG-3/val-api/blob/main/LICENSE)
