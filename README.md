@@ -1,7 +1,7 @@
 # **Valorant API - Support MFA**
 
 <!-- Main -->
-<!-- <div align="center">
+<div align="center">
 
    <a href="https://www.npmjs.com/package/@ing3kth/val-api"><img src="https://nodei.co/npm/@ing3kth/val-api.png" alt="NPM"/></a>
 
@@ -14,7 +14,7 @@
    <a href="https://github.com/KTNG-3/val-api/blob/main/LICENSE"><img src="https://badgen.net/badge/license/MIT/blue" alt="LICENSE"/></a>
    <a href="https://discord.gg/pbyWbUYjyt"><img src="https://badgen.net/badge/icon/discord?icon=discord&label" alt="Discord"/></a>
 
-</div> -->
+</div>
 
 ## Installation
 
@@ -28,7 +28,9 @@
     const ValApi = require('@ing3kth/val-api')
 ```
 
-# Auth
+## Valorant Client / ValClient
+
+### Auth
 
 First We Need To **Login** To `Valorant Account`
 
@@ -61,7 +63,7 @@ The **Verify Code** Will Send To **Mail**
 
 Save The **`ValAuth_Save`** And Go To Next Step
 
-## Valorant Client / ValClient
+### Client
 
 After We Get **Account**, Then We Will Create an **API Client**
 
@@ -157,12 +159,14 @@ After We Get `API Client`, Then We Will Use `Valorant API`
 ## Riot API
 
 Official Api From Riot Games
+
 ```javascript
     const RiotApi_Client = new ValApi.RiotApi({
         key: 'API-KEY-123',  // <---------- API Key
         region: 'na',  // <---------- Region
     })
 ```
+
 You Can Get Api Key From [developer.riotgames.com](https://developer.riotgames.com/)
 
 <!-- Settings -->
@@ -210,38 +214,38 @@ You Can Get Api Key From [developer.riotgames.com](https://developer.riotgames.c
 
 Example Script
 
-<!-- Auth -->
-<details><summary>Auth</summary>
-
->#### Auth
->
->```javascript
->    const ValAuth_Account = new ValApi.Auth.Account();
->
->    const ValAuth_Auth = await ValAuth_Account.login("USERNAME", "PASSWORD")
->    const ValAuth_Save = ValAuth_Account.toJSON();
->
->    if(ValAuth_Save.multifactor) {
->        //multifactor
->        const Multifactor_Account = ValAuth_Save;
->    }
->```
->
->#### Multi-Factor
->
->```javascript
->    const Multifactor_Auth = new ValApi.Auth.Multifactor(Multifactor_Account);
->    const VerifyCode = 123456;  // <---------- Example Verify Code
->    await Multifactor_Auth.verify(VerifyCode);
->    
->    const ValAuth_Save = Multifactor.toJSON()
->```
-
-</details>
-
 <!-- Valorant Client -->
 <details><summary>Valorant Client</summary>
 
+><!-- Auth -->
+><details><summary>Auth</summary>
+>
+>>#### Auth
+>>
+>>```javascript
+>>    const ValAuth_Account = new ValApi.Auth.Account();
+>>
+>>    const ValAuth_Auth = await ValAuth_Account.login("USERNAME", "PASSWORD")
+>>    const ValAuth_Save = ValAuth_Account.toJSON();
+>>
+>>    if(ValAuth_Save.multifactor) {
+>>        //multifactor
+>>        const Multifactor_Account = ValAuth_Save;
+>>    }
+>>```
+>>
+>>#### Multi-Factor
+>>
+>>```javascript
+>>    const Multifactor_Auth = new ValApi.Auth.Multifactor(Multifactor_Account);
+>>    const VerifyCode = 123456;  // <---------- Example Verify Code
+>>    await Multifactor_Auth.verify(VerifyCode);
+>>    
+>>    const ValAuth_Save = Multifactor.toJSON()
+>>```
+>
+></details>
+> 
 >#### Client
 >
 >```javascript
