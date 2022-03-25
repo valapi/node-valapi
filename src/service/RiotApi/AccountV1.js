@@ -3,6 +3,9 @@ const AxiosClient = require('../../resources/AxiosClient');
 
 //class
 class AccountV1 {
+    /**
+    * @param {JSON} data Services Data
+    */
     constructor(data) {
         this.apiKey = data.key;
         this.region = data.region;

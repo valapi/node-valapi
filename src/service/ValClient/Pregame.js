@@ -3,6 +3,9 @@ const AxiosClient = require('../../resources/AxiosClient');
 
 //service
 class Pregame {
+    /**
+    * @param {JSON} data Services Data
+    */
     constructor(data) {
         this.AxiosClient = new AxiosClient(data.AxiosData);
         this.Region = data.Region;

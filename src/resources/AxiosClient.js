@@ -7,6 +7,9 @@ const toughCookie = tough.CookieJar;
 
 //class
 class AxiosClient {
+    /**
+    * @param {JSON} data Services Data
+    */
     constructor(data = {
         cookie: new toughCookie().toJSON(),
         headers: {},

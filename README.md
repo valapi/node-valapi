@@ -38,8 +38,16 @@
 
 ### Installation
 
+NPM:
+
 ```bash
   npm install @ing3kth/val-api
+```
+
+Yarn:
+
+```bash
+  yarn add @ing3kth/val-api
 ```
 
 ### Usage
