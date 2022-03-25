@@ -11,7 +11,9 @@ class ValRegion {
         this.region = region.toLowerCase();
 
         if(!Region[this.region]) {
-            throw new Error(`Unknown Region: ${this.region}`);
+            require(`./logs/Logs`).log(`Region '${this.region}' not found`, 'err', true);
+        }else {
+            require(`./logs/Logs`).log(`ValRegion '${this.region}'`, 'log');
         }
 
         if (this.region == 'kr' || this.region == 'ap') {

@@ -5,6 +5,8 @@ const tough = require('tough-cookie');
 
 const toughCookie = tough.CookieJar;
 
+const Logs = require(`./logs/Logs`);
+
 //class
 class AxiosClient {
     /**
@@ -27,8 +29,10 @@ class AxiosClient {
         var response = false;
         try{
             response = await this.axiosClient.get(url);
+            await Logs.log("GET " + url, 'log');
         }catch(err){
             response = err.response;
+            await Logs.log("GET " + url, 'err', false);
         }finally {
             return response;
         }
@@ -42,8 +46,10 @@ class AxiosClient {
         var response = false;
         try{
             response = await this.axiosClient.post(url, body);
+            await Logs.log("POST " + url, 'log');
         }catch(err){
             response = err.response;
+            await Logs.log("POST " + url, 'err', false);
         }finally {
             return response;
         }
@@ -57,8 +63,10 @@ class AxiosClient {
         var response = false;
         try{
             response = await this.axiosClient.put(url, body);
+            await Logs.log("PUT " + url, 'log');
         }catch(err){
             response = err.response;
+            await Logs.log("PUT " + url, 'err', false);
         }finally {
             return response;
         }
@@ -72,8 +80,10 @@ class AxiosClient {
         var response = false;
         try{
             response = await this.axiosClient.delete(url, body);
+            await Logs.log("DELETE " + url, 'log');
         }catch(err){
             response = err.response;
+            await Logs.log("DELETE " + url, 'err', false);
         }finally {
             return response;
         }

@@ -1,6 +1,6 @@
 {
   "name": "@ing3kth/val-api",
-  "version": "1.4.6-1",
+  "version": "1.5.0",
   "description": "Valorant Api - Support MFA",
   "main": "src/index.js",
   "types": "./src/index.d.ts",
@@ -8,7 +8,7 @@
     "typescript": "npx -p typescript tsc src/index.js --declaration --allowJs --emitDeclarationOnly --outDir src",
     "tsc": "npx tsc --project tsconfig.json",
     "build": "npm install --save && npm run typescript && yarn",
-    "uptodate": "npm install --save && npm install -g",
+    "uptodate": "npm install --g && npm install --save",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
