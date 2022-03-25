@@ -1,6 +1,10 @@
 # 1.4.6 (March 24, 2022)
 
 - Update [README.md](README.md)
+- TypeScript Support
+- Yarn Support
+- .gitignore
+- .npmignore
 
 # 1.4.5 (March 24, 2022)
 
