@@ -8,7 +8,7 @@
     "typescript": "npx -p typescript tsc src/index.js --declaration --allowJs --emitDeclarationOnly --outDir src",
     "tsc": "npx tsc --project tsconfig.json",
     "build": "npm install --save && npm run typescript && yarn",
-    "install": "npm install --save && npm install -g",
+    "uptodate": "npm install --save && npm install -g",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
