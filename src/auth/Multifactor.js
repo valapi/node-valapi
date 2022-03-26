@@ -1,6 +1,4 @@
 //import
-const axios = require('axios').default;
-const { wrapper } = require('axios-cookiejar-support');
 const tough = require('tough-cookie');
 const url = require('url');
 
@@ -36,7 +34,10 @@ class Multifactor {
     */
      async verify(verificationCode) {
         const _cookie = this.cookie;
-        const axiosClient = wrapper(axios.create({ jar: _cookie, withCredentials: true }));
+        const axiosClient = AxiosClient.client({
+            cookie: _cookie.toJSON(),
+            headers: {}
+        })
 
         //ACCESS TOKEN
         const auth_response = await axiosClient.put('https://auth.riotgames.com/api/v1/authorization', {

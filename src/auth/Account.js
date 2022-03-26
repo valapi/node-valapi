@@ -1,6 +1,4 @@
 //import
-const axios = require('axios').default;
-const { wrapper } = require('axios-cookiejar-support');
 const tough = require('tough-cookie');
 const url = require('url');
 
@@ -34,7 +32,10 @@ class Account {
     */
      async login(username, password) {
         const _cookie = new toughCookie();
-        const axiosClient = wrapper(axios.create({ jar: _cookie, withCredentials: true }));
+        const axiosClient = AxiosClient.client({
+            cookie: _cookie.toJSON(),
+            headers: {}
+        })
 
         const auth_cookie = await axiosClient.post('https://auth.riotgames.com/api/v1/authorization', {
             'client_id': 'play-valorant-web-prod',

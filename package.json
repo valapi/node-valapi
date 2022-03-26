@@ -34,8 +34,6 @@
   "homepage": "https://github.com/KTNG-3/val-api#readme",
   "dependencies": {
     "@ing3kth/core": "^1.2.1",
-    "axios": "^0.26.1",
-    "axios-cookiejar-support": "^2.0.4",
     "tough-cookie": "^4.0.0",
     "url": "^0.11.0"
   }
