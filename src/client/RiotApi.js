@@ -20,7 +20,7 @@ class RiotApi {
         key: '',
         region: 'na',
     }) {
-        Logs.log("RiotApi Create")
+        Logs.log("RiotApi Create");
         this.apiKey = data.key;
         this.region = data.region;
 

@@ -35,7 +35,7 @@ class Account {
         const axiosClient = AxiosClient.client({
             cookie: _cookie.toJSON(),
             headers: {}
-        })
+        });
 
         const auth_cookie = await axiosClient.post('https://auth.riotgames.com/api/v1/authorization', {
             'client_id': 'play-valorant-web-prod',

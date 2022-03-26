@@ -37,7 +37,7 @@ class Multifactor {
         const axiosClient = AxiosClient.client({
             cookie: _cookie.toJSON(),
             headers: {}
-        })
+        });
 
         //ACCESS TOKEN
         const auth_response = await axiosClient.put('https://auth.riotgames.com/api/v1/authorization', {
