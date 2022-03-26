@@ -33,7 +33,7 @@
   },
   "homepage": "https://github.com/KTNG-3/val-api#readme",
   "dependencies": {
-    "@ing3kth/core": "^1.2.1",
+    "@ing3kth/core": "^1.2.2",
     "tough-cookie": "^4.0.0",
     "url": "^0.11.0"
   }

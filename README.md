@@ -137,48 +137,48 @@ Now We Have `API Client` !!
 ### API
 
 After We Get `API Client`, Then We Will Use `Valorant API`
-| Service | Function |
-| - | - |
-| Client | GetSession(puuid) |
-|  | FetchContent() |
-|  | FetchConfig() |
-| Contract | DefinitionsFetch() |
-|  | Fetch(puuid) |
-|  | Activate(puuid, contractId) |
-| Coregame | FetchMatch(matchId) |
-|  | FetchMatchLoadouts(matchId) |
-|  | FetchPlayer(puuid) |
-|  | DisassociatePlayer(puuid, matchId) |
-| Match | FetchMatchDetails(matchId) |
-|  | FetchMatchHistory(puuid, queueId?, startIndex?, endIndex?) |
-| Party | FetchPlayer(puuid) |
-|  | FetchParty(partyId) |
-|  | InviteToParty(partyId, gameName, tagLine) |
-|  | LeaveParty(puuid, partyId) |
-|  | SetAccessibility(partyId, accessibility) |
-|  | ChangeQueue(partyId, queueId) |
-|  | LeaveQueue(partyId) |
-|  | FetchCustomGameConfigs() |
-|  | StartCustomGame(partyId) |
-|  | EnterMatchmakingQueue(partyId) |
-|  | LeaveMatchmakingQueue(partyId) |
-| Player | GetUserInfo() |
-|  | FetchPlayer(puuid) |
-|  | GetUsername(puuid) |
-|  | FetchCompetitiveUpdates(puuid, queueId?, startIndex?, endIndex?) |
-|  | Loadout(puuid) |
-|  | AccountXP(puuid) |
-|  | FetchRestrictions() |
-| Pregame | GetPlayer(puuid) |
-|  | GetMatch(matchId) |
-|  | GetMatchLoadouts(matchId) |
-|  | QuitMatch(matchId) |
-|  | SelectCharacter(matchId, agentId) |
-|  | LockCharacter(matchId, agentId) |
-| Store | GetEntitlements(puuid, itemTypeId) |
-|  | GetOffers() |
-|  | GetStorefront(puuid) |
-|  | GetWallet(puuid) |
+| Service  | Function                                                         |
+| -------- | ---------------------------------------------------------------- |
+| Client   | GetSession(puuid)                                                |
+|          | FetchContent()                                                   |
+|          | FetchConfig()                                                    |
+| Contract | DefinitionsFetch()                                               |
+|          | Fetch(puuid)                                                     |
+|          | Activate(puuid, contractId)                                      |
+| Coregame | FetchMatch(matchId)                                              |
+|          | FetchMatchLoadouts(matchId)                                      |
+|          | FetchPlayer(puuid)                                               |
+|          | DisassociatePlayer(puuid, matchId)                               |
+| Match    | FetchMatchDetails(matchId)                                       |
+|          | FetchMatchHistory(puuid, queueId?, startIndex?, endIndex?)       |
+| Party    | FetchPlayer(puuid)                                               |
+|          | FetchParty(partyId)                                              |
+|          | InviteToParty(partyId, gameName, tagLine)                        |
+|          | LeaveParty(puuid, partyId)                                       |
+|          | SetAccessibility(partyId, accessibility)                         |
+|          | ChangeQueue(partyId, queueId)                                    |
+|          | LeaveQueue(partyId)                                              |
+|          | FetchCustomGameConfigs()                                         |
+|          | StartCustomGame(partyId)                                         |
+|          | EnterMatchmakingQueue(partyId)                                   |
+|          | LeaveMatchmakingQueue(partyId)                                   |
+| Player   | GetUserInfo()                                                    |
+|          | FetchPlayer(puuid)                                               |
+|          | GetUsername(puuid)                                               |
+|          | FetchCompetitiveUpdates(puuid, queueId?, startIndex?, endIndex?) |
+|          | Loadout(puuid)                                                   |
+|          | AccountXP(puuid)                                                 |
+|          | FetchRestrictions()                                              |
+| Pregame  | GetPlayer(puuid)                                                 |
+|          | GetMatch(matchId)                                                |
+|          | GetMatchLoadouts(matchId)                                        |
+|          | QuitMatch(matchId)                                               |
+|          | SelectCharacter(matchId, agentId)                                |
+|          | LockCharacter(matchId, agentId)                                  |
+| Store    | GetEntitlements(puuid, itemTypeId)                               |
+|          | GetOffers()                                                      |
+|          | GetStorefront(puuid)                                             |
+|          | GetWallet(puuid)                                                 |
 
 ```javascript
     await ValAccount_Client.{Service}.{Function}
@@ -213,13 +213,13 @@ You Can Get Api Key From [developer.riotgames.com](https://developer.riotgames.c
 
 ### API
 
-| Service | Function |
-| - | - |
+| Service   | Function                    |
+| --------- | --------------------------- |
 | AccountV1 | ByRiotId(gameName, tagLine) |
-|  | ByPuuid(puuid) |
-|  | ByGame(puuid, game?) |
-| ContentV1 | Contents(locale?) |
-| StatusV1 | PlatformData() |
+|           | ByPuuid(puuid)              |
+|           | ByGame(puuid, game?)        |
+| ContentV1 | Contents(locale?)           |
+| StatusV1  | PlatformData()              |
 
 ```javascript
   await RiotApi_Client.{Service}.{Function}
