@@ -2,6 +2,8 @@
 
 - Logs System
 - Config File
+- Using @ing3kth/core
+- Local API
 
 # 1.4.6 (March 25, 2022)
 

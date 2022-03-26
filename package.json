@@ -3,14 +3,12 @@
   "version": "1.5.0",
   "description": "Valorant Api - Support MFA",
   "main": "src/index.js",
-  "types": "./src/index.d.ts",
+  "types": "./types/index.d.ts",
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "typescript": "npx -p typescript tsc src/index.js --declaration --allowJs --emitDeclarationOnly --outDir src",
-    "tsc": "npx tsc --project tsconfig.json",
-    "build": "npm run typescript && yarn",
+    "typescript": "npx tsc --project tsconfig.json",
     "uptodate": "npm install --g && npm install --save",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -33,7 +31,8 @@
   },
   "homepage": "https://github.com/KTNG-3/val-api#readme",
   "dependencies": {
-    "@ing3kth/core": "^1.2.2",
+    "@ing3kth/core": "^1.2.8",
+    "https": "^1.0.0",
     "tough-cookie": "^4.0.0",
     "url": "^0.11.0"
   }

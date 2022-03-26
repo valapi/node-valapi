@@ -2,13 +2,16 @@
 # yarn lockfile v1
 
 
-"@ing3kth/core@^1.2.2":
-  "integrity" "sha512-wuNwkiqOgWY8HVxMyDF/kTYT97pJMb+4Qt3eXYAwKOgnv3L4q7GaVTGTVyGenBppXKXfU4E2dQQAgVRzwpVpqg=="
-  "resolved" "https://registry.npmjs.org/@ing3kth/core/-/core-1.2.2.tgz"
-  "version" "1.2.2"
+"@ing3kth/core@^1.2.8":
+  "integrity" "sha512-PBNFeKGVpvZiUJUteY8+Qi5SjJk5H3LDK1glAt4IkVgroyPPxq1pVgJM2VGIGv9ykPYaoVY3a0WI9whLK32Rbw=="
+  "resolved" "https://registry.npmjs.org/@ing3kth/core/-/core-1.2.8.tgz"
+  "version" "1.2.8"
   dependencies:
     "axios" "^0.26.1"
     "axios-cookiejar-support" "^2.0.4"
+    "crypto-js" "^4.1.1"
+    "http-cookie-agent" "^1.0.5"
+    "tough" "^0.6.0"
     "tough-cookie" "^4.0.0"
 
 "agent-base@^6.0.2":
@@ -32,10 +35,40 @@
   dependencies:
     "follow-redirects" "^1.14.8"
 
+"color-name@^1.0.0":
+  "integrity" "sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA=="
+  "resolved" "https://registry.npmjs.org/color-name/-/color-name-1.1.4.tgz"
+  "version" "1.1.4"
+
+"color-parse@^1.4.2":
+  "integrity" "sha512-RI7s49/8yqDj3fECFZjUI1Yi0z/Gq1py43oNJivAIIDSyJiOZLfYCRQEgn8HEVAj++PcRe8AnL2XF0fRJ3BTnA=="
+  "resolved" "https://registry.npmjs.org/color-parse/-/color-parse-1.4.2.tgz"
+  "version" "1.4.2"
+  dependencies:
+    "color-name" "^1.0.0"
+
+"color-rgba@^2.1.1":
+  "integrity" "sha512-Nti4qbzr/z2LbUWySr7H9dk3Rl7gZt7ihHAxlgT4Ho90EXWkjtkL1avTleu9yeGuqrt/chxTB6GKK8nZZ6V0+Q=="
+  "resolved" "https://registry.npmjs.org/color-rgba/-/color-rgba-2.4.0.tgz"
+  "version" "2.4.0"
+  dependencies:
+    "color-parse" "^1.4.2"
+    "color-space" "^2.0.0"
+
+"color-space@^2.0.0":
+  "integrity" "sha512-Bu8P/usGNuVWushjxcuaGSkhT+L2KX0cvgMGMTF0KJ7lFeqonhsntT68d6Yu3uwZzCmbF7KTB9EV67AGcUXhJw=="
+  "resolved" "https://registry.npmjs.org/color-space/-/color-space-2.0.0.tgz"
+  "version" "2.0.0"
+
+"crypto-js@^4.1.1":
+  "integrity" "sha512-o2JlM7ydqd3Qk9CA0L4NL6mTzU2sdx96a+oOfPu8Mkl/PK51vSyoi8/rQ8NknZtk44vq15lmhAj9CIAGwgeWKw=="
+  "resolved" "https://registry.npmjs.org/crypto-js/-/crypto-js-4.1.1.tgz"
+  "version" "4.1.1"
+
 "debug@4":
-  "integrity" "sha512-/zxw5+vh1Tfv+4Qn7a5nsbcJKPaSvCDhojn6FEl9vupwK2VCSDtEiEtqr8DFtzYFOdz63LBkxec7DYuc2jon6Q=="
-  "resolved" "https://registry.npmjs.org/debug/-/debug-4.3.3.tgz"
-  "version" "4.3.3"
+  "integrity" "sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ=="
+  "resolved" "https://registry.npmjs.org/debug/-/debug-4.3.4.tgz"
+  "version" "4.3.4"
   dependencies:
     "ms" "2.1.2"
 
@@ -44,12 +77,17 @@
   "resolved" "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.14.9.tgz"
   "version" "1.14.9"
 
-"http-cookie-agent@^1.0.2":
+"http-cookie-agent@^1.0.2", "http-cookie-agent@^1.0.5":
   "integrity" "sha512-X8QM/rGPu/cb7A37uNLuz+PZfkmlQ9PycDD+/QsmqICXBd9grKWdWKMzg/BDkzxIbV+P/FYTsKZn08KcXgbLsQ=="
   "resolved" "https://registry.npmjs.org/http-cookie-agent/-/http-cookie-agent-1.0.5.tgz"
   "version" "1.0.5"
   dependencies:
     "agent-base" "^6.0.2"
+
+"https@^1.0.0":
+  "integrity" "sha1-PDfHrhqO65ZpBKKtHpdaGUt+06Q="
+  "resolved" "https://registry.npmjs.org/https/-/https-1.0.0.tgz"
+  "version" "1.0.0"
 
 "ms@2.1.2":
   "integrity" "sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w=="
@@ -84,6 +122,13 @@
     "psl" "^1.1.33"
     "punycode" "^2.1.1"
     "universalify" "^0.1.2"
+
+"tough@^0.6.0":
+  "integrity" "sha512-TzR1qavB1T/diTqQ6AvYp+sDwsC6HKLamiI2kq1r/tDWvgP9Se6KBn+DHThRtezgtLK7wIHab4gIXKP8ICPiCg=="
+  "resolved" "https://registry.npmjs.org/tough/-/tough-0.6.0.tgz"
+  "version" "0.6.0"
+  dependencies:
+    "color-rgba" "^2.1.1"
 
 "universalify@^0.1.2":
   "integrity" "sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg=="
