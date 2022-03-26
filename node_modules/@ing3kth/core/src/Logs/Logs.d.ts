@@ -14,6 +14,6 @@ declare class Logs {
     get(showup?: any): Promise<any>;
 }
 declare namespace Logs {
-    export { logSync as log, _new as new };
+    import log = Logs.logSync;
+    export { log };
 }
-declare function logSync(data: any, mode?: string, showup?: any): Promise<void>;
