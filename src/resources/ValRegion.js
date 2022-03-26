@@ -1,7 +1,7 @@
 //import
 const Region = require(`./data/Region`);
 
-const Logs = require('@ing3kth/core').Logs
+const Logs = require('@ing3kth/core').Logs;
 
 //class
 class ValRegion {

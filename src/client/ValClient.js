@@ -2,7 +2,7 @@
 const tough = require('tough-cookie');
 const toughCookie = tough.CookieJar;
 
-const Logs = require('@ing3kth/core').Logs
+const Logs = require('@ing3kth/core').Logs;
 
 const ValRegion = require('../resources/ValRegion');
 
@@ -29,7 +29,7 @@ class ValClient {
         },
         Region: 'ap',
     }) {
-        Logs.log("ValClient Create")
+        Logs.log("ValClient Create");
         //data
         this.cookie = data.Account.cookie;
         this.accessToken = data.Account.accessToken;
@@ -72,13 +72,13 @@ class ValClient {
         this.Pregame = new Pregame(this.services);
         this.Store = new Store(this.services);
 
-        Logs.log("ValClient Reload")
+        Logs.log("ValClient Reload");
     }
 
     //save
     
     toJSON() {
-        Logs.log("Export ValClient")
+        Logs.log("Export ValClient");
         return {
             cookie: this.cookie,
             accessToken: this.accessToken,
@@ -93,7 +93,7 @@ class ValClient {
         this.entitlements = data.entitlements;
         this.region = data.region;
 
-        Logs.log("Import ValClient")
+        Logs.log("Import ValClient");
         this.reload();
     }
 
@@ -106,7 +106,7 @@ class ValClient {
     setRegion(region) {
         this.region = region;
 
-        Logs.log("ValClient SetRegion '" + this.region + "'")
+        Logs.log("ValClient SetRegion '" + this.region + "'");
         this.reload();
     }
 
@@ -117,7 +117,7 @@ class ValClient {
     setClientVersion(clientVersion) {
         this.client.version = clientVersion;
         
-        Logs.log("ValClient SetClientPlatfrom '" + this.client.version + "'")
+        Logs.log("ValClient SetClientPlatfrom '" + this.client.version + "'");
         this.reload();
     }
 
@@ -128,7 +128,7 @@ class ValClient {
     setClientPlatfrom_fromJSON(clientPlatfrom) {
         this.client.platfrom = Buffer.from(JSON.stringify(clientPlatfrom)).toString('base64');
         
-        Logs.log("ValClient SetClientPlatfrom '" + this.client.platfrom + "'")
+        Logs.log("ValClient SetClientPlatfrom '" + this.client.platfrom + "'");
         this.reload();
     }
 
@@ -138,7 +138,7 @@ class ValClient {
     setCookie(cookie = new toughCookie().toJSON()) {
         this.cookie = cookie;
         
-        Logs.log("ValClient SetCookie '" + this.cookie + "'")
+        Logs.log("ValClient SetCookie '" + this.cookie + "'");
         this.reload();
     }
 

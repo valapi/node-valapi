@@ -2,8 +2,8 @@
 const tough = require('tough-cookie');
 const url = require('url');
 
-const Logs = require('@ing3kth/core').Logs
-const AxiosClient = require('@ing3kth/core').AxiosClient
+const Logs = require('@ing3kth/core').Logs;
+const AxiosClient = require('@ing3kth/core').AxiosClient;
 
 const toughCookie = tough.CookieJar;
 
@@ -26,7 +26,7 @@ class Multifactor {
         this.accessToken = data.accessToken;
         this.entitlements = data.entitlements;
 
-        Logs.log("Multifactor Create")
+        Logs.log("Multifactor Create");
     }
 
     /**
@@ -47,7 +47,7 @@ class Multifactor {
         }, {
             jar: _cookie,
         });
-        await Logs.log("Multifactor Auth")
+        await Logs.log("Multifactor Auth");
 
         // get asscess token
         const get_url = auth_response.data.response.parameters.uri;
@@ -55,7 +55,7 @@ class Multifactor {
         const removeSharpTag = url_parts.hash.replace('#', '');
         const accessToken_params = new URLSearchParams(removeSharpTag);
         this.accessToken = accessToken_params.get('access_token');
-        await Logs.log("Multifactor AccessToken")
+        await Logs.log("Multifactor AccessToken");
 
         //ENTITLEMENTS
         const entitlements_response = await axiosClient.post('https://entitlements.auth.riotgames.com/api/token/v1', {}, {
@@ -66,14 +66,14 @@ class Multifactor {
         });
 
         this.entitlements = entitlements_response.data.entitlements_token;
-        await Logs.log("Multifactor Entitlements")
+        await Logs.log("Multifactor Entitlements");
 
         this.cookie = _cookie;
-        return this.toJSON()
+        return this.toJSON();
     }
 
     toJSON() {
-        Logs.log("Export Multifactor")
+        Logs.log("Export Multifactor");
         return {
             cookie: this.cookie.toJSON(),
             accessToken: this.accessToken,

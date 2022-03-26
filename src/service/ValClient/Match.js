@@ -1,5 +1,5 @@
 //import
-const AxiosClient = require('@ing3kth/core').AxiosClient
+const AxiosClient = require('@ing3kth/core').AxiosClient;
 
 //service
 class Match {
