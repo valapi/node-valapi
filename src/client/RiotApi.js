@@ -2,6 +2,8 @@
 const tough = require('tough-cookie');
 const toughCookie = tough.CookieJar;
 
+const Logs = require('@ing3kth/core').Logs.log
+
 const ValRegion = require('../resources/ValRegion');
 
 const AccountV1 = require('../service/RiotApi/AccountV1');
@@ -18,6 +20,7 @@ class RiotApi {
         key: '',
         region: 'na',
     }) {
+        Logs("RiotApi Create")
         this.apiKey = data.key;
         this.region = data.region;
 
@@ -40,9 +43,12 @@ class RiotApi {
         this.AccountV1 = new AccountV1(this.services);
         this.StatusV1 = new StatusV1(this.services);
         this.ContentV1 = new ContentV1(this.services);
+
+        Logs("RiotApi Reload")
     }
 
     toJSON() {
+        Logs("Export RiotApi")
         return {
             key: this.apiKey,
             region: this.region,
@@ -53,6 +59,7 @@ class RiotApi {
         this.apiKey = data.key;
         this.region = data.region;
 
+        Logs("Import RiotApi")
         this.reload();
     }
 
@@ -65,6 +72,7 @@ class RiotApi {
     setRegion(region) {
         this.region = region;
 
+        Logs("RiotApi SetRegion '" + this.region + "'")
         this.reload();
     }
 
@@ -74,6 +82,7 @@ class RiotApi {
     setApiKey(key) {
         this.apiKey = key;
 
+        Logs("RiotApi setApiKey '" + this.apiKey + "'")
         this.reload();
     }
 

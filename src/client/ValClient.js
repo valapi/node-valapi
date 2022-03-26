@@ -2,6 +2,8 @@
 const tough = require('tough-cookie');
 const toughCookie = tough.CookieJar;
 
+const Logs = require('@ing3kth/core').Logs.log
+
 const ValRegion = require('../resources/ValRegion');
 
 const Client = require('../service/ValClient/Client');
@@ -27,6 +29,7 @@ class ValClient {
         },
         Region: 'ap',
     }) {
+        Logs("ValClient Create")
         //data
         this.cookie = data.Account.cookie;
         this.accessToken = data.Account.accessToken;
@@ -68,11 +71,14 @@ class ValClient {
         this.Player = new Player(this.services);
         this.Pregame = new Pregame(this.services);
         this.Store = new Store(this.services);
+
+        Logs("ValClient Reload")
     }
 
     //save
     
     toJSON() {
+        Logs("Export ValClient")
         return {
             cookie: this.cookie,
             accessToken: this.accessToken,
@@ -87,6 +93,7 @@ class ValClient {
         this.entitlements = data.entitlements;
         this.region = data.region;
 
+        Logs("Import ValClient")
         this.reload();
     }
 
@@ -99,6 +106,7 @@ class ValClient {
     setRegion(region) {
         this.region = region;
 
+        Logs("ValClient SetRegion '" + this.region + "'")
         this.reload();
     }
 
@@ -109,6 +117,7 @@ class ValClient {
     setClientVersion(clientVersion) {
         this.client.version = clientVersion;
         
+        Logs("ValClient SetClientPlatfrom '" + this.client.version + "'")
         this.reload();
     }
 
@@ -119,6 +128,7 @@ class ValClient {
     setClientPlatfrom_fromJSON(clientPlatfrom) {
         this.client.platfrom = Buffer.from(JSON.stringify(clientPlatfrom)).toString('base64');
         
+        Logs("ValClient SetClientPlatfrom '" + this.client.platfrom + "'")
         this.reload();
     }
 
@@ -128,6 +138,7 @@ class ValClient {
     setCookie(cookie = new toughCookie().toJSON()) {
         this.cookie = cookie;
         
+        Logs("ValClient SetCookie '" + this.cookie + "'")
         this.reload();
     }
 

@@ -1,5 +1,5 @@
 //import
-const AxiosClient = require('../../resources/AxiosClient');
+const AxiosClient = require('@ing3kth/core').AxiosClient
 
 //class
 class ContentV1 {

@@ -1,6 +1,8 @@
 //import
 const Region = require(`./data/Region`);
 
+const Logs = require('@ing3kth/core').Logs.log
+
 //class
 class ValRegion {
     /**
@@ -11,9 +13,9 @@ class ValRegion {
         this.region = region.toLowerCase();
 
         if(!Region[this.region]) {
-            require(`./logs/Logs`).log(`Region '${this.region}' not found`, 'err', true);
+            Logs(`Region '${this.region}' not found`, 'err', true);
         }else {
-            require(`./logs/Logs`).log(`ValRegion '${this.region}'`, 'log');
+            Logs(`ValRegion Create '${this.region}'`, 'log');
         }
 
         if (this.region == 'kr' || this.region == 'ap') {

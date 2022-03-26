@@ -1,7 +1,7 @@
 (async () => {
     const ValApi = require('../src/index.js');
 
-    const ValAuth_Account = await ValApi.Auth.Account.login('USERNAME', 'PASSWORD', true);
+    const ValAuth_Account = await ValApi.Auth.Account.login('KawinThailand', 'ingkth0808', true);
 
     const ValAccount_Client = new ValApi.ValClient({
         Account: ValAuth_Account,
@@ -13,14 +13,6 @@
     const puuid = GetUserDAta.sub;
 
     //party id
-    const GetPartyDAta = await ValAccount_Client.Party.FetchPlayer(puuid);
-    var partyId;
-    if(!GetPartyDAta.errorCode){
-        partyId = GetPartyDAta.CurrentPartyID;
-    }
-
-    //script
-    await ValAccount_Client.Party.EnterMatchmakingQueue(partyId);
-    const getDataS = await ValAccount_Client.Party.LeaveMatchmakingQueue(partyId);
-    console.log(getDataS);
+    const getDataS = await ValAccount_Client.Match.FetchMatchHistory(puuid);
+    console.log(getDataS)
 })();
