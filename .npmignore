@@ -1,5 +1,8 @@
 .env
+.env.test
 .DS_Store
+.dynamodb
+.dynamodb/
 .vscode
 .vscode/
 .git
@@ -8,12 +11,18 @@
 .node_modules/
 node_modules
 node_modules/
+jspm_packages
+jspm_packages/
 dist
 dist/
 test
 test/
 tests
 tests/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
 package-lock.json
 CHANGELOG.md
 yarn.lock
