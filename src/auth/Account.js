@@ -4,7 +4,7 @@ const { wrapper } = require('axios-cookiejar-support');
 const tough = require('tough-cookie');
 const url = require('url');
 
-const Logs = require('@ing3kth/core').Logs.log
+const Logs = require('@ing3kth/core').Logs
 const AxiosClient = require('@ing3kth/core').AxiosClient
 
 const toughCookie = tough.CookieJar;
@@ -25,7 +25,7 @@ class Account {
             return this.login(username, password);
         }
 
-        Logs("Account Create")
+        Logs.log("Account Create")
     }
 
     /**
@@ -47,7 +47,7 @@ class Account {
                 'Content-Type': 'application/json'
             }
         });
-        await Logs("Account Auth Cookie")
+        await Logs.log("Account Auth Cookie")
 
         //ACCESS TOKEN
         const auth_response = await axiosClient.put('https://auth.riotgames.com/api/v1/authorization', {
@@ -58,14 +58,14 @@ class Account {
         }, {
             jar: _cookie,
         });
-        await Logs("Account Auth")
+        await Logs.log("Account Auth")
 
         //multifactor
         if (auth_response.data.type == 'multifactor') {
             this.multifactor = true;
             this.cookie = _cookie;
 
-            await Logs("Account Multi-Factor")
+            await Logs.log("Account Multi-Factor")
             return this.toJSON();
         }
 
@@ -75,7 +75,7 @@ class Account {
         const removeSharpTag = url_parts.hash.replace('#', '');
         const accessToken_params = new URLSearchParams(removeSharpTag);
         this.accessToken = accessToken_params.get('access_token');
-        await Logs("Account AccessToken")
+        await Logs.log("Account AccessToken")
 
         //ENTITLEMENTS
         const entitlements_response = await axiosClient.post('https://entitlements.auth.riotgames.com/api/token/v1', {}, {
@@ -86,14 +86,14 @@ class Account {
         });
 
         this.entitlements = entitlements_response.data.entitlements_token;
-        await Logs("Account Entitlements")
+        await Logs.log("Account Entitlements")
 
         this.cookie = _cookie;
         return this.toJSON();
     }
 
     toJSON() {
-        Logs("Export Account")
+        Logs.log("Export Account")
         return {
             cookie: this.cookie.toJSON(),
             accessToken: this.accessToken,
