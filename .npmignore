@@ -1,10 +1,10 @@
 .env
 .env.test
 .DS_Store
-.dynamodb
-.dynamodb/
 .vscode
 .vscode/
+.dynamodb
+.dynamodb/
 .git
 .git/
 .node_modules

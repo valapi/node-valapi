@@ -5,6 +5,12 @@
 .vscode/
 .dynamodb
 .dynamodb/
+.node_modules
+.node_modules/
+node_modules
+node_modules/
+jspm_packages
+jspm_packages/
 dist
 dist/
 test
