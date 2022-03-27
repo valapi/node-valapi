@@ -29,8 +29,8 @@ class ValClient {
         },
         Region: 'ap',
     }) {
-        Logs.log("ValClient Create");
         //data
+        this.classId = '@ing3kth/val-api/ValClient';
         this.cookie = data.Account.cookie;
         this.accessToken = data.Account.accessToken;
         this.entitlements = data.Account.entitlements;
@@ -48,7 +48,8 @@ class ValClient {
 
         //axios client
         this.AxiosData = {
-            cookie: this.cookie,
+            cookie: true,
+            jar: this.cookie,
             headers: {
                 'Authorization': `Bearer ${this.accessToken}`,
                 'X-Riot-Entitlements-JWT': this.entitlements,
@@ -72,13 +73,13 @@ class ValClient {
         this.Pregame = new Pregame(this.services);
         this.Store = new Store(this.services);
 
-        Logs.log("ValClient Reload");
+        Logs.log(this.classId + " Reload");
     }
 
     //save
     
     toJSON() {
-        Logs.log("Export ValClient");
+        Logs.log("Export " + this.classId);
         return {
             cookie: this.cookie,
             accessToken: this.accessToken,
@@ -93,7 +94,7 @@ class ValClient {
         this.entitlements = data.entitlements;
         this.region = data.region;
 
-        Logs.log("Import ValClient");
+        Logs.log("Import " + this.classId);
         this.reload();
     }
 
@@ -106,7 +107,7 @@ class ValClient {
     setRegion(region) {
         this.region = region;
 
-        Logs.log("ValClient SetRegion '" + this.region + "'");
+        Logs.log(this.classId +  " SetRegion '" + this.region + "'");
         this.reload();
     }
 
@@ -117,7 +118,7 @@ class ValClient {
     setClientVersion(clientVersion) {
         this.client.version = clientVersion;
         
-        Logs.log("ValClient SetClientPlatfrom '" + this.client.version + "'");
+        Logs.log(this.classId +  " SetClientPlatfrom '" + this.client.version + "'");
         this.reload();
     }
 
@@ -128,7 +129,7 @@ class ValClient {
     setClientPlatfrom_fromJSON(clientPlatfrom) {
         this.client.platfrom = Buffer.from(JSON.stringify(clientPlatfrom)).toString('base64');
         
-        Logs.log("ValClient SetClientPlatfrom '" + this.client.platfrom + "'");
+        Logs.log(this.classId +  " SetClientPlatfrom '" + this.client.platfrom + "'");
         this.reload();
     }
 
@@ -138,7 +139,7 @@ class ValClient {
     setCookie(cookie = new toughCookie().toJSON()) {
         this.cookie = cookie;
         
-        Logs.log("ValClient SetCookie '" + this.cookie + "'");
+        Logs.log(this.classId +  " SetCookie '" + this.cookie + "'");
         this.reload();
     }
 

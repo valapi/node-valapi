@@ -7,6 +7,7 @@ class Coregame {
     * @param {JSON} data Services Data
     */
     constructor(data) {
+        this.classId = '@ing3kth/val-api/ValClient/Coregame';
         this.AxiosClient = new AxiosClient(data.AxiosData);
         this.Region = data.Region;
     }

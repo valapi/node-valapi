@@ -3,7 +3,7 @@ const fs = require('fs');
 
 const IngCore = require('@ing3kth/core')
 
-const _path = process.env.LOCALAPPDATA + '/Riot Games/Riot Client/Config/lockfile';
+const Client = require('../service/RiotLocal/Client');
 
 //class
 class RiotLocal {
@@ -14,6 +14,7 @@ class RiotLocal {
         password: null,
         protocol: null,
     }) {
+        this.classId = '@ing3kth/val-api/RiotLocal';
         this.lockfile = {
             name: lockfile.name,
             pid: lockfile.pid,
@@ -31,21 +32,28 @@ class RiotLocal {
 
         const _base64 = IngCore.Base64.toBase64(`riot:${this.lockfile.password}`);
         this.AxiosData = {
-            cookie: new IngCore.AxiosCookie().toJSON(),
+            cookie: false,
+            jar: null,
             headers: {
                 'Authorization': `Basic ${_base64}`,
             },
         }
 
-        this.baseUrl = `${this.lockfile.protocol}://${this.ip}:${this.lockfile.port}`
+        this.services = {
+            ip: this.ip,
+            AxiosData: this.AxiosData,
+            lockfile: this.lockfile,
+        }
 
-        //remove me
-        this.AxiosClient = new IngCore.AxiosClient(this.AxiosData);
-        //remove me
+        this.Client = new Client(this.services);
     }
 
-    async getlockfile(path = _path) {
-        const _getFile = fs.readFileSync(path, 'utf8');
+    async getlockfile(path = IngCore.Config['val-api'].local.lockfile) {
+        try{
+            var _getFile = fs.readFileSync(path, 'utf8');
+        }catch(err){
+            await IngCore.Logs.log(this.classId +  " Lockfile not found", 'err', true);
+        }
         
         const _spilt_file = _getFile.split(":")
         const _lockfile = {
@@ -60,13 +68,19 @@ class RiotLocal {
     }
 
     async login(username, password) {
-        return await this.AxiosClient.get(this.baseUrl + '/help');
+        const response = await this.AxiosClient.put('/rso-auth/v1/session/credentials', {
+            'username': username,
+            'password': password,
+            'persistLogin': true,
+        });
+
+        return response.data;
     }
 
-    async test() {
+    async help() {
         const response = await this.AxiosClient.get(this.baseUrl + '/help');
 
-        return response;
+        return response.data;
     }
 }
 
@@ -74,6 +88,6 @@ module.exports = RiotLocal;
 
 (async (RiotLocal) => {
     const RiotLocalsss = await new RiotLocal();
-    //const _getDataS = 
-    console.log(await RiotLocalsss.login("KawinThailand", "ingkawin0808"))
+    const _getDataS = await RiotLocalsss.Client.GetSettings();
+    console.log(_getDataS)
 })(RiotLocal);

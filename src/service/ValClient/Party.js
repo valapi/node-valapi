@@ -7,6 +7,7 @@ class Party {
     * @param {JSON} data Services Data
     */
     constructor(data) {
+        this.classId = '@ing3kth/val-api/ValClient/Party';
         this.AxiosClient = new AxiosClient(data.AxiosData);
         this.Region = data.Region;
     }

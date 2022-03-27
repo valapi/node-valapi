@@ -7,6 +7,7 @@ class AccountV1 {
     * @param {JSON} data Services Data
     */
     constructor(data) {
+        this.classId = '@ing3kth/val-api/RiotApi/AccountV1';
         this.apiKey = data.key;
         this.region = data.region;
 

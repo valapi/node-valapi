@@ -10,6 +10,7 @@ class ValRegion {
     * @example region = 'br'
     */
     constructor(region = 'na') {
+        this.classId = '@ing3kth/val-api/ValRegion';
         this.region = region.toLowerCase();
 
         if(!Region[this.region]) {

@@ -7,6 +7,7 @@ class Contract {
     * @param {JSON} data Services Data
     */
     constructor(data) {
+        this.classId = '@ing3kth/val-api/ValClient/Contract';
         this.AxiosClient = new AxiosClient(data.AxiosData);
         this.Region = data.Region;
     }

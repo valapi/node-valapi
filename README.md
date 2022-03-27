@@ -18,6 +18,11 @@
 
 ## Introduced
 
+This Version `>= 1.5.0` is **in Development**, Use a [Stable Version `< 1.5.0`](https://www.npmjs.com/package/@ing3kth/val-api/v/1.4.6-1) for efficiency.
+
+- [1.4.6-1](https://www.npmjs.com/package/@ing3kth/val-api/v/1.4.6-1) (Recommended)
+- [1.4.5](https://www.npmjs.com/package/@ing3kth/val-api/v/1.4.5)
+
 ### Table of Contents
 
 - [Valorant API - Support MFA](#valorant-api---support-mfa)

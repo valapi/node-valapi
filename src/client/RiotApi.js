@@ -20,7 +20,7 @@ class RiotApi {
         key: '',
         region: 'na',
     }) {
-        Logs.log("RiotApi Create");
+        this.classId = '@ing3kth/val-api/RiotApi';
         this.apiKey = data.key;
         this.region = data.region;
 
@@ -35,7 +35,8 @@ class RiotApi {
             key: this.apiKey,
             region: this.RegionServices,
             AxiosData: {
-                cookie: new toughCookie().toJSON(),
+                cookie: true,
+                jar: new toughCookie().toJSON(),
                 headers: {}
             }
         };
@@ -44,11 +45,11 @@ class RiotApi {
         this.StatusV1 = new StatusV1(this.services);
         this.ContentV1 = new ContentV1(this.services);
 
-        Logs.log("RiotApi Reload");
+        Logs.log(this.classId + " Reload");
     }
 
     toJSON() {
-        Logs.log("Export RiotApi");
+        Logs.log("Export " + this.classId);
         return {
             key: this.apiKey,
             region: this.region,
@@ -59,7 +60,7 @@ class RiotApi {
         this.apiKey = data.key;
         this.region = data.region;
 
-        Logs.log("Import RiotApi");
+        Logs.log("Import " + this.classId);
         this.reload();
     }
 
@@ -72,7 +73,7 @@ class RiotApi {
     setRegion(region) {
         this.region = region;
 
-        Logs.log("RiotApi SetRegion '" + this.region + "'");
+        Logs.log(this.classId + " SetRegion '" + this.region + "'");
         this.reload();
     }
 
@@ -82,7 +83,7 @@ class RiotApi {
     setApiKey(key) {
         this.apiKey = key;
 
-        Logs.log("RiotApi setApiKey '" + this.apiKey + "'");
+        Logs.log(this.classId + " setApiKey '" + this.apiKey + "'");
         this.reload();
     }
 

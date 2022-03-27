@@ -22,11 +22,10 @@ class Multifactor {
             Logs.log('This Account is not have a Multifactor', 'err', true);
         }
 
+        this.classId = '@ing3kth/val-api/Multifactor';
         this.cookie = toughCookie.fromJSON(data.cookie);
         this.accessToken = data.accessToken;
         this.entitlements = data.entitlements;
-
-        Logs.log("Multifactor Create");
     }
 
     /**
@@ -35,7 +34,8 @@ class Multifactor {
      async verify(verificationCode) {
         const _cookie = this.cookie;
         const axiosClient = AxiosClient.client({
-            cookie: _cookie.toJSON(),
+            cookie: true,
+            jar: _cookie.toJSON(),
             headers: {}
         });
 
@@ -47,7 +47,7 @@ class Multifactor {
         }, {
             jar: _cookie,
         });
-        await Logs.log("Multifactor Auth");
+        await Logs.log(this.classId + " Auth");
 
         // get asscess token
         const get_url = auth_response.data.response.parameters.uri;
@@ -55,7 +55,7 @@ class Multifactor {
         const removeSharpTag = url_parts.hash.replace('#', '');
         const accessToken_params = new URLSearchParams(removeSharpTag);
         this.accessToken = accessToken_params.get('access_token');
-        await Logs.log("Multifactor AccessToken");
+        await Logs.log(this.classId + " AccessToken");
 
         //ENTITLEMENTS
         const entitlements_response = await axiosClient.post('https://entitlements.auth.riotgames.com/api/token/v1', {}, {
@@ -66,14 +66,14 @@ class Multifactor {
         });
 
         this.entitlements = entitlements_response.data.entitlements_token;
-        await Logs.log("Multifactor Entitlements");
+        await Logs.log(this.classId + " Entitlements");
 
         this.cookie = _cookie;
         return this.toJSON();
     }
 
     toJSON() {
-        Logs.log("Export Multifactor");
+        Logs.log("Export " + this.classId);
         return {
             cookie: this.cookie.toJSON(),
             accessToken: this.accessToken,

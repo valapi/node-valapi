@@ -2,14 +2,13 @@
 # yarn lockfile v1
 
 
-"@ing3kth/core@^1.2.8":
-  "integrity" "sha512-PBNFeKGVpvZiUJUteY8+Qi5SjJk5H3LDK1glAt4IkVgroyPPxq1pVgJM2VGIGv9ykPYaoVY3a0WI9whLK32Rbw=="
-  "resolved" "https://registry.npmjs.org/@ing3kth/core/-/core-1.2.8.tgz"
-  "version" "1.2.8"
+"@ing3kth/core@^1.3.0":
+  "integrity" "sha512-quZLAJOk85nmjWdDHVXH4RYqyDwP9kUOwEl++G+EuSBveCEEmQx4YMZqCDgK63pwIM6h50fCEyG2JWndPWKhsQ=="
+  "resolved" "https://registry.npmjs.org/@ing3kth/core/-/core-1.3.0.tgz"
+  "version" "1.3.0"
   dependencies:
     "axios" "^0.26.1"
     "axios-cookiejar-support" "^2.0.4"
-    "crypto-js" "^4.1.1"
     "http-cookie-agent" "^1.0.5"
     "tough" "^0.6.0"
     "tough-cookie" "^4.0.0"
@@ -59,11 +58,6 @@
   "integrity" "sha512-Bu8P/usGNuVWushjxcuaGSkhT+L2KX0cvgMGMTF0KJ7lFeqonhsntT68d6Yu3uwZzCmbF7KTB9EV67AGcUXhJw=="
   "resolved" "https://registry.npmjs.org/color-space/-/color-space-2.0.0.tgz"
   "version" "2.0.0"
-
-"crypto-js@^4.1.1":
-  "integrity" "sha512-o2JlM7ydqd3Qk9CA0L4NL6mTzU2sdx96a+oOfPu8Mkl/PK51vSyoi8/rQ8NknZtk44vq15lmhAj9CIAGwgeWKw=="
-  "resolved" "https://registry.npmjs.org/crypto-js/-/crypto-js-4.1.1.tgz"
-  "version" "4.1.1"
 
 "debug@4":
   "integrity" "sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ=="

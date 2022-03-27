@@ -2,7 +2,7 @@ module.exports = {
     //auth
     Auth: {
         Account: require('./auth/Account'),
-        Multifactor: require('./auth/MultiFactor'),
+        Multifactor: require('./auth/Multifactor'),
     },
 
     //client
