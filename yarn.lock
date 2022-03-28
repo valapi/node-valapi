@@ -2,15 +2,15 @@
 # yarn lockfile v1
 
 
-"@ing3kth/core@^1.3.0":
-  "integrity" "sha512-quZLAJOk85nmjWdDHVXH4RYqyDwP9kUOwEl++G+EuSBveCEEmQx4YMZqCDgK63pwIM6h50fCEyG2JWndPWKhsQ=="
-  "resolved" "https://registry.npmjs.org/@ing3kth/core/-/core-1.3.0.tgz"
-  "version" "1.3.0"
+"@ing3kth/core@^1.4.4":
+  "integrity" "sha512-jCpLnoawkX9yMnhDrcOxqnrlTgYL9QRlG+7sVWBcZ4vJ2tFwpZNJ0ApPLD6cMQgJgvVJsx8m77kLN0vHw6qy/w=="
+  "resolved" "https://registry.npmjs.org/@ing3kth/core/-/core-1.4.4.tgz"
+  "version" "1.4.4"
   dependencies:
+    "async" "^3.2.3"
     "axios" "^0.26.1"
     "axios-cookiejar-support" "^2.0.4"
-    "http-cookie-agent" "^1.0.5"
-    "tough" "^0.6.0"
+    "commander" "^9.1.0"
     "tough-cookie" "^4.0.0"
 
 "agent-base@^6.0.2":
@@ -19,6 +19,11 @@
   "version" "6.0.2"
   dependencies:
     "debug" "4"
+
+"async@^3.2.3":
+  "integrity" "sha512-spZRyzKL5l5BZQrr/6m/SqFdBN0q3OCI0f9rjfBzCMBIP4p75P620rR3gTmaksNOhmzgdxcaxdNfMy6anrbM0g=="
+  "resolved" "https://registry.npmjs.org/async/-/async-3.2.3.tgz"
+  "version" "3.2.3"
 
 "axios-cookiejar-support@^2.0.4":
   "integrity" "sha512-N4MwaEp5zCAv+wIp5OFZOPiD2qXCCnx21mMQu7yvO8E9j6YlZWazEHXpz7iJlk6HhZ8vh09ujYJJ594H+iVKmA=="
@@ -34,30 +39,10 @@
   dependencies:
     "follow-redirects" "^1.14.8"
 
-"color-name@^1.0.0":
-  "integrity" "sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA=="
-  "resolved" "https://registry.npmjs.org/color-name/-/color-name-1.1.4.tgz"
-  "version" "1.1.4"
-
-"color-parse@^1.4.2":
-  "integrity" "sha512-RI7s49/8yqDj3fECFZjUI1Yi0z/Gq1py43oNJivAIIDSyJiOZLfYCRQEgn8HEVAj++PcRe8AnL2XF0fRJ3BTnA=="
-  "resolved" "https://registry.npmjs.org/color-parse/-/color-parse-1.4.2.tgz"
-  "version" "1.4.2"
-  dependencies:
-    "color-name" "^1.0.0"
-
-"color-rgba@^2.1.1":
-  "integrity" "sha512-Nti4qbzr/z2LbUWySr7H9dk3Rl7gZt7ihHAxlgT4Ho90EXWkjtkL1avTleu9yeGuqrt/chxTB6GKK8nZZ6V0+Q=="
-  "resolved" "https://registry.npmjs.org/color-rgba/-/color-rgba-2.4.0.tgz"
-  "version" "2.4.0"
-  dependencies:
-    "color-parse" "^1.4.2"
-    "color-space" "^2.0.0"
-
-"color-space@^2.0.0":
-  "integrity" "sha512-Bu8P/usGNuVWushjxcuaGSkhT+L2KX0cvgMGMTF0KJ7lFeqonhsntT68d6Yu3uwZzCmbF7KTB9EV67AGcUXhJw=="
-  "resolved" "https://registry.npmjs.org/color-space/-/color-space-2.0.0.tgz"
-  "version" "2.0.0"
+"commander@^9.1.0":
+  "integrity" "sha512-i0/MaqBtdbnJ4XQs4Pmyb+oFQl+q0lsAmokVUH92SlSw4fkeAcG3bVon+Qt7hmtF+u3Het6o4VgrcY3qAoEB6w=="
+  "resolved" "https://registry.npmjs.org/commander/-/commander-9.1.0.tgz"
+  "version" "9.1.0"
 
 "debug@4":
   "integrity" "sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ=="
@@ -71,7 +56,7 @@
   "resolved" "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.14.9.tgz"
   "version" "1.14.9"
 
-"http-cookie-agent@^1.0.2", "http-cookie-agent@^1.0.5":
+"http-cookie-agent@^1.0.2":
   "integrity" "sha512-X8QM/rGPu/cb7A37uNLuz+PZfkmlQ9PycDD+/QsmqICXBd9grKWdWKMzg/BDkzxIbV+P/FYTsKZn08KcXgbLsQ=="
   "resolved" "https://registry.npmjs.org/http-cookie-agent/-/http-cookie-agent-1.0.5.tgz"
   "version" "1.0.5"
@@ -116,13 +101,6 @@
     "psl" "^1.1.33"
     "punycode" "^2.1.1"
     "universalify" "^0.1.2"
-
-"tough@^0.6.0":
-  "integrity" "sha512-TzR1qavB1T/diTqQ6AvYp+sDwsC6HKLamiI2kq1r/tDWvgP9Se6KBn+DHThRtezgtLK7wIHab4gIXKP8ICPiCg=="
-  "resolved" "https://registry.npmjs.org/tough/-/tough-0.6.0.tgz"
-  "version" "0.6.0"
-  dependencies:
-    "color-rgba" "^2.1.1"
 
 "universalify@^0.1.2":
   "integrity" "sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg=="

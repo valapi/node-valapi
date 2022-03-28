@@ -1,4 +1,4 @@
-const Locale = {
+module.exports = {
     //format 1
     "ar-AE": "Arabic (U.A.E.)",
     "de-DE": "German (Germany)",
@@ -43,6 +43,3 @@ const Locale = {
         Chinese_Taiwan: "zh-TW", //recommend
     }
 };
-
-//export
-module.exports = Locale;

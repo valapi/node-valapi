@@ -1,4 +1,4 @@
-const ItemTypeId = {
+module.exports = {
     //format 1
     '01bb38e1-da47-4e6a-9b3d-945fe4655707': 'Agents',
     'f85cb6f7-33e5-4dc8-b609-ec7212301948': 'Contracts',
@@ -21,6 +21,3 @@ const ItemTypeId = {
         Titles: 'de7caa6b-adf7-4588-bbd1-143831e786c6',
     },
 };
-
-//export
-module.exports = ItemTypeId;

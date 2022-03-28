@@ -1,4 +1,4 @@
-const QueueId = {
+module.exports = {
     //format 1
     'unrated': 'Unrated',
     'competitive': 'Competitive',
@@ -27,6 +27,3 @@ const QueueId = {
     //Unknown
     'seeding': 'Unknown'
 };
-
-//export
-module.exports = QueueId;

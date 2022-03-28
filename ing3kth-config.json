@@ -1,0 +1,12 @@
+{
+    "logs": {
+        "mode": true,
+        "show": false
+    },
+    "val-api": {
+        "local": {
+            "mode": true,
+            "lockfile": null
+        }
+    }
+}

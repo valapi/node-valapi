@@ -42,14 +42,13 @@ declare class RiotLocal {
         };
     } | undefined;
     Client: Client | undefined;
-    getlockfile(path?: string): Promise<{
+    getlockfile(path?: any): Promise<{
         name: any;
         pid: any;
         port: any;
         password: any;
         protocol: any;
-    }>;
-    login(username: any, password: any): Promise<any>;
+    } | undefined>;
     help(): Promise<any>;
 }
 import Client = require("../service/RiotLocal/Client");

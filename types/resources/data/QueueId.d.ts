@@ -1,5 +1,4 @@
-export = QueueId;
-declare const QueueId: {
+declare const _exports: {
     unrated: string;
     competitive: string;
     spikerush: string;
@@ -21,4 +20,5 @@ declare const QueueId: {
     };
     seeding: string;
 };
+export = _exports;
 //# sourceMappingURL=QueueId.d.ts.map

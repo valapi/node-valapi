@@ -3,22 +3,21 @@
 <!-- Main -->
 <div align="center">
 
-   <a href="https://www.npmjs.com/package/@ing3kth/val-api"><img src="https://nodei.co/npm/@ing3kth/val-api.png" alt="NPM"/></a>
+  [![NPM](https://nodei.co/npm/@ing3kth/val-api.png)](https://www.npmjs.com/package/@ing3kth/val-api)
 
-   <a href="https://www.npmjs.com/package/@ing3kth/val-api"><img src="https://badgen.net/npm/dt/@ing3kth/val-api?icon=npm" alt="Downloads"/></a>
-   <a href="https://packagephobia.com/result?p=@ing3kth/val-api"><img src="https://packagephobia.com/badge?p=@ing3kth/val-api" alt="Install Size"/></a>
-   <a href="https://www.codacy.com/gh/KTNG-3/val-api/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=KTNG-3/val-api&amp;utm_campaign=Badge_Grade"><img src="https://app.codacy.com/project/badge/Grade/b3bd20059ade46e78a605bf6a0b1f1e1" alt="Codacy Badge"/></a>
-   <a href="https://snyk.io/test/npm/@ing3kth/val-api"><img src="https://snyk.io/test/npm/@ing3kth/val-api/badge.svg" alt="Known Vulnerabilities"/></a>
+   [![Downloads](https://badgen.net/npm/dt/@ing3kth/val-api?icon=npm)](https://www.npmjs.com/package/@ing3kth/val-api)
+   [![install size](https://packagephobia.com/badge?p=@ing3kth/val-api)](https://packagephobia.com/result?p=@ing3kth/val-api)
+   [![LICENSE](https://badgen.net/badge/license/MIT/blue)](https://github.com/KTNG-3/val-api/blob/main/LICENSE)
+   [![Known Vulnerabilities](https://snyk.io/test/npm/@ing3kth/val-api/badge.svg)](https://snyk.io/test/npm/@ing3kth/val-api)
 
-   <a href="https://github.com/KTNG-3/val-api"><img src="https://badgen.net/badge/icon/github?icon=github&label" alt="Github"/></a>
-   <a href="https://github.com/KTNG-3/val-api/blob/main/LICENSE"><img src="https://badgen.net/badge/license/MIT/blue" alt="LICENSE"/></a>
-   <a href="https://discord.gg/pbyWbUYjyt"><img src="https://badgen.net/badge/icon/discord?icon=discord&label" alt="Discord"/></a>
+   [![Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/KTNG-3/val-api)
+   [![Discord](https://badgen.net/badge/icon/discord?icon=discord&label)](https://discord.gg/pbyWbUYjyt)
 
 </div>
 
 ## Introduced
 
-This Version `>= 1.5.0` is **in Development**, Use a [Stable Version `< 1.5.0`](https://www.npmjs.com/package/@ing3kth/val-api/v/1.4.6-1) for efficiency.
+This Version `>= 1.5.0` is **in Development**, Use a [Stable Version](https://www.npmjs.com/package/@ing3kth/val-api/v/1.4.6-1) `< 1.5.0` for efficiency.
 
 - [1.4.6-1](https://www.npmjs.com/package/@ing3kth/val-api/v/1.4.6-1) (Recommended)
 - [1.4.5](https://www.npmjs.com/package/@ing3kth/val-api/v/1.4.5)
@@ -344,6 +343,8 @@ Example Script
 
 Thanks For Use My Package,
 On [GitHub](https://github.com/KTNG-3/val-api) Will Update Before This Package Update.
+
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/b3bd20059ade46e78a605bf6a0b1f1e1)](https://www.codacy.com/gh/KTNG-3/val-api/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=KTNG-3/val-api&amp;utm_campaign=Badge_Grade)
 
 ***
 

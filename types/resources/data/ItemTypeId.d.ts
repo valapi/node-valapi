@@ -1,5 +1,4 @@
-export = ItemTypeId;
-declare const ItemTypeId: {
+declare const _exports: {
     '01bb38e1-da47-4e6a-9b3d-945fe4655707': string;
     'f85cb6f7-33e5-4dc8-b609-ec7212301948': string;
     'd5f120f8-ff8c-4aac-92ea-f2b5acbe9475': string;
@@ -19,4 +18,5 @@ declare const ItemTypeId: {
         Titles: string;
     };
 };
+export = _exports;
 //# sourceMappingURL=ItemTypeId.d.ts.map

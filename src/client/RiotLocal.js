@@ -49,32 +49,22 @@ class RiotLocal {
     }
 
     async getlockfile(path = IngCore.Config['val-api'].local.lockfile) {
-        try{
+        try {
             var _getFile = fs.readFileSync(path, 'utf8');
-        }catch(err){
-            await IngCore.Logs.log(this.classId +  " Lockfile not found", 'err', true);
+
+            const _spilt_file = _getFile.split(":")
+            const _lockfile = {
+                name: _spilt_file[0],
+                pid: _spilt_file[1],
+                port: _spilt_file[2],
+                password: _spilt_file[3],
+                protocol: _spilt_file[4],
+            }
+
+            return _lockfile;
+        } catch (err) {
+            await IngCore.Logs.log(this.classId + " Lockfile not found", 'err', true);
         }
-        
-        const _spilt_file = _getFile.split(":")
-        const _lockfile = {
-            name: _spilt_file[0],
-            pid: _spilt_file[1],
-            port: _spilt_file[2],
-            password: _spilt_file[3],
-            protocol: _spilt_file[4],
-        }
-
-        return _lockfile;
-    }
-
-    async login(username, password) {
-        const response = await this.AxiosClient.put('/rso-auth/v1/session/credentials', {
-            'username': username,
-            'password': password,
-            'persistLogin': true,
-        });
-
-        return response.data;
     }
 
     async help() {
@@ -87,7 +77,6 @@ class RiotLocal {
 module.exports = RiotLocal;
 
 (async (RiotLocal) => {
-    const RiotLocalsss = await new RiotLocal();
-    const _getDataS = await RiotLocalsss.Client.GetSettings();
-    console.log(_getDataS)
+    const RiotLocalsss = await new RiotLocal().open();
+    console.log(RiotLocalsss)
 })(RiotLocal);

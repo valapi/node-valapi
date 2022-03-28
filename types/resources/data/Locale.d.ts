@@ -1,5 +1,4 @@
-export = Locale;
-declare const Locale: {
+declare const _exports: {
     "ar-AE": string;
     "de-DE": string;
     "en-GB": string;
@@ -41,4 +40,5 @@ declare const Locale: {
         Chinese_Taiwan: string;
     };
 };
+export = _exports;
 //# sourceMappingURL=Locale.d.ts.map

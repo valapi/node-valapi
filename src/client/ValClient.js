@@ -2,7 +2,8 @@
 const tough = require('tough-cookie');
 const toughCookie = tough.CookieJar;
 
-const Logs = require('@ing3kth/core').Logs;
+const IngCore = require('@ing3kth/core')
+const Logs = IngCore.Logs;
 
 const ValRegion = require('../resources/ValRegion');
 
@@ -127,7 +128,7 @@ class ValClient {
     * @example clientPlatfrom = {"platformType": "PC", "platformOS": "Windows", "platformOSVersion": "11.0.12345.1.256.64bit", "platformChipset": "Unknown"}
     */
     setClientPlatfrom_fromJSON(clientPlatfrom) {
-        this.client.platfrom = Buffer.from(JSON.stringify(clientPlatfrom)).toString('base64');
+        this.client.platfrom = IngCore.Base64.toBase64(clientPlatfrom);
         
         Logs.log(this.classId +  " SetClientPlatfrom '" + this.client.platfrom + "'");
         this.reload();

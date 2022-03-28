@@ -1,4 +1,4 @@
-const Region = {
+module.exports = {
     //format 1
     'na': 'North America',
     'eu': 'Europe',
@@ -18,6 +18,3 @@ const Region = {
         Brazil: 'br',
     },
 };
-
-//export
-module.exports = Region;
