@@ -1,5 +1,5 @@
 //import
-const AxiosClient = require('@ing3kth/core').AxiosClient;
+const AxiosClient = require('@ing3kth/core').Core.AxiosClient;
 
 //service
 class Pregame {
@@ -16,36 +16,28 @@ class Pregame {
     * @param {String} puuid PlayerUUID
     */
      async GetPlayer(puuid) {
-        const response = await this.AxiosClient.get(this.Region.url.partyService + `/pregame/v1/players/${puuid}`);
-
-        return response.data;
+        return await this.AxiosClient.get(this.Region.url.partyService + `/pregame/v1/players/${puuid}`);
     }
 
     /**
     * @param {String} matchId MatchID
     */
      async GetMatch(matchId) {
-        const response = await this.AxiosClient.get(this.Region.url.partyService + `/pregame/v1/matches/${matchId}`);
-
-        return response.data;
+        return await this.AxiosClient.get(this.Region.url.partyService + `/pregame/v1/matches/${matchId}`);
     }
 
     /**
     * @param {String} matchId MatchID
     */
      async GetMatchLoadouts(matchId) {
-        const response = await this.AxiosClient.get(this.Region.url.partyService + `/pregame/v1/matches/${matchId}/loadouts`);
-
-        return response.data;
+        return await this.AxiosClient.get(this.Region.url.partyService + `/pregame/v1/matches/${matchId}/loadouts`);
     }
 
     /**
     * @param {String} matchId MatchID
     */
      async QuitMatch(matchId) {
-        const response = await this.AxiosClient.post(this.Region.url.partyService + `/pregame/v1/matches/${matchId}/quit`);
-
-        return response.data;
+        return await this.AxiosClient.post(this.Region.url.partyService + `/pregame/v1/matches/${matchId}/quit`);
     }
 
     /**
@@ -53,9 +45,7 @@ class Pregame {
     * @param {String} agentId CharacterID
     */
      async SelectCharacter(matchId, agentId) {
-        const response = await this.AxiosClient.post(this.Region.url.partyService + `/pregame/v1/matches/${matchId}/select/${agentId}`);
-
-        return response.data;
+        return await this.AxiosClient.post(this.Region.url.partyService + `/pregame/v1/matches/${matchId}/select/${agentId}`);
     }
 
     /**
@@ -63,9 +53,7 @@ class Pregame {
     * @param {String} agentId CharacterID
     */
      async LockCharacter(matchId, agentId) {
-        const response = await this.AxiosClient.post(this.Region.url.partyService + `/pregame/v1/matches/${matchId}/lock/${agentId}`);
-
-        return response.data;
+        return await this.AxiosClient.post(this.Region.url.partyService + `/pregame/v1/matches/${matchId}/lock/${agentId}`);
     }
 }
 

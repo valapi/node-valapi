@@ -1,5 +1,5 @@
 //import
-const AxiosClient = require('@ing3kth/core').AxiosClient;
+const AxiosClient = require('@ing3kth/core').Core.AxiosClient;
 
 //service
 class Party {
@@ -16,18 +16,14 @@ class Party {
     * @param {String} puuid PlayerUUID
     */
      async FetchPlayer(puuid) {
-        const response = await this.AxiosClient.get(this.Region.url.partyService + `/parties/v1/players/${puuid}`);
-
-        return response.data;
+        return await this.AxiosClient.get(this.Region.url.partyService + `/parties/v1/players/${puuid}`);
     }
 
     /**
     * @param {String} partyId PartyID
     */
      async FetchParty(partyId) {
-        const response = await this.AxiosClient.get(this.Region.url.partyService + `/parties/v1/parties/${partyId}`);
-
-        return response.data;
+        return await this.AxiosClient.get(this.Region.url.partyService + `/parties/v1/parties/${partyId}`);
     }
 
     /**
@@ -36,9 +32,7 @@ class Party {
     * @param {String} tagLine In-Game Tag
     */
      async InviteToParty(partyId, gameName, tagLine) {
-        const response = await this.AxiosClient.post(this.Region.url.partyService + `/parties/v1/parties/${partyId}/invites/name/${gameName}/tag/${tagLine}`);
-
-        return response.data;
+        return await this.AxiosClient.post(this.Region.url.partyService + `/parties/v1/parties/${partyId}/invites/name/${gameName}/tag/${tagLine}`);
     }
 
     /**
@@ -46,9 +40,7 @@ class Party {
     * @param {String} partyId PartyID
     */
      async LeaveParty(puuid, partyId) {
-        const response = await this.AxiosClient.post(this.Region.url.partyService + `/parties/v1/players/${puuid}/leaveparty/${partyId}`);
-
-        return response.data;
+        return await this.AxiosClient.post(this.Region.url.partyService + `/parties/v1/players/${puuid}/leaveparty/${partyId}`);
     }
 
     /**
@@ -57,11 +49,9 @@ class Party {
     * @example "OPEN", "CLOSED"
     */
      async SetAccessibility(partyId, accessibility) {
-        const response = await this.AxiosClient.post(this.Region.url.partyService + `/parties/v1/parties/${partyId}/accessibility`, {
+        return await this.AxiosClient.post(this.Region.url.partyService + `/parties/v1/parties/${partyId}/accessibility`, {
             "accessibility": `${accessibility}`
         });
-
-        return response.data;
     }
 
     /**
@@ -69,55 +59,43 @@ class Party {
     * @param {String} queueId QueueID
     */
      async ChangeQueue(partyId, queueId) {
-        const response = await this.AxiosClient.post(this.Region.url.partyService + `/parties/v1/parties/${partyId}/queue`, {
+        return await this.AxiosClient.post(this.Region.url.partyService + `/parties/v1/parties/${partyId}/queue`, {
             "queueID": `${queueId}`
         });
-
-        return response.data;
     }
 
     /**
     * @param {String} partyId PartyID
     */
      async LeaveQueue(partyId) {
-        const response = await this.AxiosClient.post(this.Region.url.partyService + `/parties/v1/parties/${partyId}/matchmaking/leave`);
-
-        return response.data;
+        return await this.AxiosClient.post(this.Region.url.partyService + `/parties/v1/parties/${partyId}/matchmaking/leave`);
     }
 
     /**
     */
      async FetchCustomGameConfigs() {
-        const response = await this.AxiosClient.get(this.Region.url.partyService + `/parties/v1/parties/customgameconfigs`);
-
-        return response.data;
+        return await this.AxiosClient.get(this.Region.url.partyService + `/parties/v1/parties/customgameconfigs`);
     }
 
     /**
     * @param {String} partyId PartyID
     */
      async StartCustomGame(partyId) {
-        const response = await this.AxiosClient.post(this.Region.url.partyService + `/parties/v1/parties/${partyId}/startcustomgame`);
-
-        return response.data;
+        return await this.AxiosClient.post(this.Region.url.partyService + `/parties/v1/parties/${partyId}/startcustomgame`);
     }
 
     /**
     * @param {String} partyId PartyID
     */
      async EnterMatchmakingQueue(partyId) {
-        const response = await this.AxiosClient.post(this.Region.url.partyService + `/parties/v1/parties/${partyId}/matchmaking/join`);
-
-        return response.data;
+        return await this.AxiosClient.post(this.Region.url.partyService + `/parties/v1/parties/${partyId}/matchmaking/join`);
     }
 
     /**
     * @param {String} partyId PartyID
     */
      async LeaveMatchmakingQueue(partyId) {
-        const response = await this.AxiosClient.post(this.Region.url.partyService + `/parties/v1/parties/${partyId}/matchmaking/leave`);
-
-        return response.data;
+        return await this.AxiosClient.post(this.Region.url.partyService + `/parties/v1/parties/${partyId}/matchmaking/leave`);
     }
 }
 

@@ -1,5 +1,5 @@
 //import
-const AxiosClient = require('@ing3kth/core').AxiosClient;
+const AxiosClient = require('@ing3kth/core').Core.AxiosClient;
 
 //class
 class AccountV1 {
@@ -20,9 +20,7 @@ class AccountV1 {
      * @param {String} tagLine In-Game Tag
      */
     async ByRiotId(gameName, tagLine) {
-        const response = await this.AxiosClient.get(this.region.riot.api + `/riot/account/v1/accounts/by-riot-id/${gameName}/${tagLine}` + `?api_key=${this.apiKey}`);
-
-        return response.data;
+        return await this.AxiosClient.get(this.region.riot.api + `/riot/account/v1/accounts/by-riot-id/${gameName}/${tagLine}` + `?api_key=${this.apiKey}`);
     }
 
     /**
@@ -30,9 +28,7 @@ class AccountV1 {
      * @param {String} puuid Player UUID
      */
      async ByPuuid(puuid) {
-        const response = await this.AxiosClient.get(this.region.riot.api + `/riot/account/v1/accounts/by-puuid/${puuid}` + `?api_key=${this.apiKey}`);
-
-        return response.data;
+        return await this.AxiosClient.get(this.region.riot.api + `/riot/account/v1/accounts/by-puuid/${puuid}` + `?api_key=${this.apiKey}`);
     }
 
     /**
@@ -42,9 +38,7 @@ class AccountV1 {
      * @example game = 'val' && 'lor'
      */
     async ByGame(puuid, game = 'val') {
-        const response = await this.AxiosClient.get(this.region.riot.api + `/riot/account/v1/active-shards/by-game/${game}/by-puuid/${puuid}` + `?api_key=${this.apiKey}`);
-
-        return response.data;
+        return await this.AxiosClient.get(this.region.riot.api + `/riot/account/v1/active-shards/by-game/${game}/by-puuid/${puuid}` + `?api_key=${this.apiKey}`);
     }
 }
 

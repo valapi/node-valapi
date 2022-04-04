@@ -7,8 +7,8 @@ declare class ValRegion {
     constructor(region?: string);
     classId: string;
     region: string;
-    riotRegion: string | undefined;
     server: string;
+    riotRegion: string | undefined;
     toJSON(): {
         data: {
             api: string;

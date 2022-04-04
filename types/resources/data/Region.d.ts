@@ -4,6 +4,7 @@ export const ap: string;
 export const kr: string;
 export const latam: string;
 export const br: string;
+export const pbe: string;
 export namespace data {
     const NorthAmerica: string;
     const Europe: string;
@@ -11,5 +12,6 @@ export namespace data {
     const Korea: string;
     const LatinAmerica: string;
     const Brazil: string;
+    const PublicBetaEnvironment: string;
 }
 //# sourceMappingURL=Region.d.ts.map

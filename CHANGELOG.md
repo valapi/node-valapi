@@ -1,3 +1,13 @@
+# 1.5.2 (April 4, 2020 | In Development)
+
+- Change [@ing3kth/core](https://www.npmjs.com/package/@ing3kth/core) Path To Folder
+- Public Beta Environment (PBE) - Region
+- A little bit changes
+
+# 1.5.1 (March 28, 2022 | In Development)
+
+- A little bit changes
+
 # 1.5.0 (March 27, 2022 | In Development)
 
 - Logs System

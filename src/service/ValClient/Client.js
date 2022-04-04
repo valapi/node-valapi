@@ -1,5 +1,5 @@
 //import
-const AxiosClient = require('@ing3kth/core').AxiosClient;
+const AxiosClient = require('@ing3kth/core').Core.AxiosClient;
 
 //service
 class Client {
@@ -16,25 +16,19 @@ class Client {
     * @param {String} puuid PlayerUUID
     */
      async GetSession(puuid) {
-        const response = await this.AxiosClient.get(this.Region.url.partyService + `/session/v1/sessions/${puuid}`);
-
-        return response.data;
+        return await this.AxiosClient.get(this.Region.url.partyService + `/session/v1/sessions/${puuid}`);
     }
 
     /**
     */
      async FetchContent() {
-        const response = await this.AxiosClient.get(this.Region.url.sharedData + `/content-service/v3/content`);
-
-        return response.data;
+        return await this.AxiosClient.get(this.Region.url.sharedData + `/content-service/v3/content`);
     }
 
     /**
     */
      async FetchConfig() {
-        const response = await this.AxiosClient.get(this.Region.url.sharedData + `/v1/config/${this.Region.data.api}`);
-
-        return response.data;
+        return await this.AxiosClient.get(this.Region.url.sharedData + `/v1/config/${this.Region.data.api}`);
     }
 }
 

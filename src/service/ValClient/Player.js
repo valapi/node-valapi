@@ -1,5 +1,5 @@
 //import
-const AxiosClient = require('@ing3kth/core').AxiosClient;
+const AxiosClient = require('@ing3kth/core').Core.AxiosClient;
 
 //service
 class Player {
@@ -15,29 +15,23 @@ class Player {
     /**
     */
     async GetUserInfo() {
-        const response = await this.AxiosClient.post(`https://auth.riotgames.com/userinfo`);
-
-        return response.data;
+        return await this.AxiosClient.post(`https://auth.riotgames.com/userinfo`);
     }
 
     /**
     * @param {String} puuid PlayerUUID
     */
     async FetchPlayer(puuid) {
-        const response = await this.AxiosClient.get(this.Region.url.playerData + `/mmr/v1/players/${puuid}`);
-
-        return response.data;
+        return await this.AxiosClient.get(this.Region.url.playerData + `/mmr/v1/players/${puuid}`);
     }
 
     /**
     * @param {String} puuid PlayerUUID
     */
      async GetUsername(puuid) {
-        const response = await this.AxiosClient.put(this.Region.url.playerData + `/name-service/v2/players`, [
+        return await this.AxiosClient.put(this.Region.url.playerData + `/name-service/v2/players`, [
             `${puuid}`
         ]);
-
-        return response.data;
     }
 
     /**
@@ -46,41 +40,33 @@ class Player {
     * @param {Number} startIndex startIndex
     * @param {Number} endIndex endIndex
     */
-    async FetchCompetitiveUpdates(puuid, queueId = null, startIndex = 0, endIndex = 10) {
+    async FetchCompetitiveUpdates(puuid, queueId = false, startIndex = 0, endIndex = 10) {
         let _url = this.Region.url.playerData + `/mmr/v1/players/${puuid}/competitiveupdates?startIndex=${startIndex}&endIndex=${endIndex}`;
-        if (queueId != null) {
+        if (!queueId) {
             _url += `&queue=${queueId}`;
         }
 
-        const response = await this.AxiosClient.get(_url);
-
-        return response.data;
+        return await this.AxiosClient.get(_url);
     }
 
     /**
     * @param {String} puuid PlayerUUID
     */
     async Loadout(puuid) {
-        const response = await this.AxiosClient.get(this.Region.url.playerData + `/personalization/v2/players/${puuid}/playerloadout`);
-
-        return response.data;
+        return await this.AxiosClient.get(this.Region.url.playerData + `/personalization/v2/players/${puuid}/playerloadout`);
     }
 
     /**
     * @param {String} puuid PlayerUUID
     */
     async AccountXP(puuid) {
-        const response = await this.AxiosClient.get(this.Region.url.playerData + `/account-xp/v1/players/${puuid}`);
-
-        return response.data;
+        return await this.AxiosClient.get(this.Region.url.playerData + `/account-xp/v1/players/${puuid}`);
     }
 
     /**
     */
      async FetchRestrictions() {
-        const response = await this.AxiosClient.get(this.Region.url.playerData + `/restrictions/v3/penalties`);
-
-        return response.data;
+        return await this.AxiosClient.get(this.Region.url.playerData + `/restrictions/v3/penalties`);
     }
 }
 

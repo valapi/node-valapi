@@ -1,9 +1,6 @@
 //import
-const tough = require('tough-cookie');
-const toughCookie = tough.CookieJar;
-
 const IngCore = require('@ing3kth/core')
-const Logs = IngCore.Logs;
+const Logs = IngCore.Core.Logs;
 
 const ValRegion = require('../resources/ValRegion');
 
@@ -24,12 +21,15 @@ class ValClient {
     */
     constructor(data = {
         Account: {
-            cookie: new toughCookie().toJSON(),
+            cookie: new IngCore.Core.AxiosCookie().toJSON(),
             accessToken: null,
             entitlements: null,
         },
         Region: 'ap',
     }) {
+        if(data.classId && data.classId === '@ing3kth/val-api/Account' || '@ing3kth/val-api/Multifactor'){
+            data = data.toJSON();
+        }
         //data
         this.classId = '@ing3kth/val-api/ValClient';
         this.cookie = data.Account.cookie;
@@ -128,7 +128,7 @@ class ValClient {
     * @example clientPlatfrom = {"platformType": "PC", "platformOS": "Windows", "platformOSVersion": "11.0.12345.1.256.64bit", "platformChipset": "Unknown"}
     */
     setClientPlatfrom_fromJSON(clientPlatfrom) {
-        this.client.platfrom = IngCore.Base64.toBase64(clientPlatfrom);
+        this.client.platfrom = IngCore.Utils.Base64.toBase64(clientPlatfrom);
         
         Logs.log(this.classId +  " SetClientPlatfrom '" + this.client.platfrom + "'");
         this.reload();
@@ -137,7 +137,7 @@ class ValClient {
     /**
     * @param {JSON} cookie Cookie
     */
-    setCookie(cookie = new toughCookie().toJSON()) {
+    setCookie(cookie = new IngCore.Core.AxiosCookie().toJSON()) {
         this.cookie = cookie;
         
         Logs.log(this.classId +  " SetCookie '" + this.cookie + "'");

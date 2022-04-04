@@ -1,0 +1,8 @@
+/*
+put in readme(# Special Thanks) after create "valorant-api.com" class --> third party api
+*/
+
+- [Officer](https://valorant-api.com/) (valorant-api.com)
+
+
+//\+\// REWORK --> ValClient //\+\//

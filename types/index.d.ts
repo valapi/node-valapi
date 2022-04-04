@@ -65,6 +65,7 @@ export namespace Resource {
         kr: string;
         latam: string;
         br: string;
+        pbe: string;
         data: {
             NorthAmerica: string;
             Europe: string;
@@ -72,6 +73,7 @@ export namespace Resource {
             Korea: string;
             LatinAmerica: string;
             Brazil: string;
+            PublicBetaEnvironment: string;
         };
     };
     const Locale: {

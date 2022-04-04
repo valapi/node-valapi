@@ -1,8 +1,6 @@
 //import
-const tough = require('tough-cookie');
-const toughCookie = tough.CookieJar;
-
-const Logs = require('@ing3kth/core').Logs;
+const IngCore = require('@ing3kth/core')
+const Logs = IngCore.Core.Logs;
 
 const ValRegion = require('../resources/ValRegion');
 
@@ -36,7 +34,7 @@ class RiotApi {
             region: this.RegionServices,
             AxiosData: {
                 cookie: true,
-                jar: new toughCookie().toJSON(),
+                jar: new IngCore.Core.AxiosCookie().toJSON(),
                 headers: {}
             }
         };

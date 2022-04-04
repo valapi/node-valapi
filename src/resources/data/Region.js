@@ -6,6 +6,7 @@ module.exports = {
     'kr': 'Korea',
     'latam': 'Latin America',
     'br': 'Brazil',
+    'pbe': 'Public Beta Environment',
 
 
     data: {
@@ -16,5 +17,6 @@ module.exports = {
         Korea: 'kr',
         LatinAmerica: 'latam',
         Brazil: 'br',
+        PublicBetaEnvironment: 'pbe',
     },
 };

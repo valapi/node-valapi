@@ -1,5 +1,5 @@
 //import
-const AxiosClient = require('@ing3kth/core').AxiosClient;
+const AxiosClient = require('@ing3kth/core').Core.AxiosClient;
 
 //service
 class Contract {
@@ -15,18 +15,14 @@ class Contract {
     /**
     */
     async DefinitionsFetch() {
-        const response = await this.AxiosClient.get(this.Region.url.playerData + `/contract-definitions/v3/item-upgrades`);
-
-        return response.data;
+        return await this.AxiosClient.get(this.Region.url.playerData + `/contract-definitions/v3/item-upgrades`);
     }
 
     /**
     * @param {String} puuid PlayerUUID
     */
     async Fetch(puuid) {
-        const response = await this.AxiosClient.get(this.Region.url.playerData + `/contracts/v1/contracts/${puuid}`);
-
-        return response.data;
+        return await this.AxiosClient.get(this.Region.url.playerData + `/contracts/v1/contracts/${puuid}`);
     }
 
     /**
@@ -34,9 +30,7 @@ class Contract {
     * @param {String} contractId ContractID
     */
     async Activate(puuid, contractId) {
-        const response = await this.AxiosClient.post(this.Region.url.playerData + `/contracts/v1/contracts/${puuid}/special/${contractId}`);
-
-        return response.data;
+        return await this.AxiosClient.post(this.Region.url.playerData + `/contracts/v1/contracts/${puuid}/special/${contractId}`);
     }
 }
 

@@ -1,5 +1,5 @@
 //import
-const AxiosClient = require('@ing3kth/core').AxiosClient;
+const AxiosClient = require('@ing3kth/core').Core.AxiosClient;
 
 //class
 class ContentV1 {
@@ -20,9 +20,7 @@ class ContentV1 {
      * @example locale = 'en-US' && 'th-TH'
      */
     async Contents(locale = 'en-US') {
-        const response = await this.AxiosClient.get(this.region.riot.server + `/val/content/v1/contents?locale=${locale}` + `&api_key=${this.apiKey}`);
-
-        return response.data;
+        return await this.AxiosClient.get(this.region.riot.server + `/val/content/v1/contents?locale=${locale}` + `&api_key=${this.apiKey}`);
     }
 }
 

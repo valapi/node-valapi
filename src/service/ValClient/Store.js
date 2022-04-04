@@ -1,5 +1,5 @@
 //import
-const AxiosClient = require('@ing3kth/core').AxiosClient;
+const AxiosClient = require('@ing3kth/core').Core.AxiosClient;
 
 //service
 class Store {
@@ -17,36 +17,28 @@ class Store {
     * @param {String} itemTypeId ItemTypeID
     */
      async GetEntitlements(puuid, itemTypeId) {
-        const response = await this.AxiosClient.get(this.Region.url.playerData + `/store/v1/entitlements/${puuid}/${itemTypeId}`);
-
-        return response.data;
+        return await this.AxiosClient.get(this.Region.url.playerData + `/store/v1/entitlements/${puuid}/${itemTypeId}`);
     }
 
     /**
 
     */
      async GetOffers() {
-        const response = await this.AxiosClient.get(this.Region.url.playerData + `/store/v1/offers/`);
-
-        return response.data;
+        return await this.AxiosClient.get(this.Region.url.playerData + `/store/v1/offers/`);
     }
 
     /**
     * @param {String} puuid PlayerUUID
     */
      async GetStorefront(puuid) {
-        const response = await this.AxiosClient.get(this.Region.url.playerData + `/store/v2/storefront/${puuid}`);
-
-        return response.data;
+        return await this.AxiosClient.get(this.Region.url.playerData + `/store/v2/storefront/${puuid}`);
     }
 
     /**
     * @param {String} puuid PlayerUUID
     */
      async GetWallet(puuid) {
-        const response = await this.AxiosClient.get(this.Region.url.playerData + `/store/v1/wallet/${puuid}`);
-
-        return response.data;
+        return await this.AxiosClient.get(this.Region.url.playerData + `/store/v1/wallet/${puuid}`);
     }
 }
 

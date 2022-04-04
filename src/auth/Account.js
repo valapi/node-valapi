@@ -1,11 +1,9 @@
 //import
-const tough = require('tough-cookie');
 const url = require('url');
 
-const Logs = require('@ing3kth/core').Logs;
-const AxiosClient = require('@ing3kth/core').AxiosClient;
-
-const toughCookie = tough.CookieJar;
+const IngCore = require('@ing3kth/core');
+const Logs = IngCore.Logs;
+const AxiosClient = IngCore.AxiosClient;
 
 //class
 class Account {
@@ -30,7 +28,7 @@ class Account {
     * @param {String} password Riot Account Password
     */
      async login(username, password) {
-        const _cookie = new toughCookie();
+        const _cookie = new IngCore.AxiosCookie();
         const axiosClient = AxiosClient.client({
             cookie: true,
             jar: _cookie.toJSON(),

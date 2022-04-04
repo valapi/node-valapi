@@ -1,5 +1,5 @@
 //import
-const AxiosClient = require('@ing3kth/core').AxiosClient;
+const AxiosClient = require('@ing3kth/core').Core.AxiosClient;
 
 //service
 class Match {
@@ -17,9 +17,7 @@ class Match {
     * @param {String} matchId MatchID
     */
      async FetchMatchDetails(matchId) {
-        const response = await this.AxiosClient.get(this.Region.url.playerData + `/match-details/v1/matches/${matchId}`);
-
-        return response.data;
+        return await this.AxiosClient.get(this.Region.url.playerData + `/match-details/v1/matches/${matchId}`);
     }
 
     /**
@@ -34,9 +32,7 @@ class Match {
             _url += `&queue=${queueId}`;
         }
 
-        const response = await this.AxiosClient.get(_url);
-
-        return response.data;
+        return await this.AxiosClient.get(_url);
     }
 }
 

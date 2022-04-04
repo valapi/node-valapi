@@ -5,7 +5,7 @@ declare class Client {
     */
     constructor(data: JSON);
     classId: string;
-    AxiosClient: import("@ing3kth/core/types/core/AxiosClient");
+    AxiosClient: any;
     lockfile: any;
     baseUrl: string;
     /**

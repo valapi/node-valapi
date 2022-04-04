@@ -1,7 +1,7 @@
 //import
 const Region = require(`./data/Region`);
 
-const Logs = require('@ing3kth/core').Logs;
+const Logs = require('@ing3kth/core').Core.Logs;
 
 //class
 class ValRegion {
@@ -15,22 +15,25 @@ class ValRegion {
 
         if(!Region[this.region]) {
             Logs.log(`Region '${this.region}' not found`, 'err', true);
-        }else {
-            Logs.log(`ValRegion Create '${this.region}'`, 'log');
         }
 
-        if (this.region == 'kr' || this.region == 'ap') {
-            this.riotRegion = 'asia';
-        }else if (this.region == 'eu') {
-            this.riotRegion = 'europe';
-        }else if (this.region == 'na' || this.region == 'latam' || this.region == 'br') {
-            this.riotRegion = 'americas';
-        }
-
-        if (this.region == 'na' || this.region == 'latam' || this.region == 'br') {
-            this.server = 'na';
-        }else {
-            this.server = this.region;
+        switch (this.region) {
+            case 'na' || 'latam' || 'br':
+                this.server = 'na';
+                this.riotRegion = 'americas';
+                break;
+            case 'pbe':
+                this.region = 'na';
+                this.server = 'pbe';
+                this.riotRegion = 'americas';
+                break;
+            case 'kr' || 'ap':
+                this.riotRegion = 'asia';
+            case 'eu':
+                this.riotRegion = 'europe';
+            default: 
+                this.server = this.region;
+                break;
         }
 
         return this.toJSON();

@@ -7,7 +7,7 @@ declare class AccountV1 {
     classId: string;
     apiKey: any;
     region: any;
-    AxiosClient: import("@ing3kth/core/types/core/AxiosClient");
+    AxiosClient: any;
     /**
      *
      * @param {String} gameName In-Game Name

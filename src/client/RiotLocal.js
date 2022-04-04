@@ -30,7 +30,7 @@ class RiotLocal {
     async reload() {
         this.lockfile = await this.getlockfile();
 
-        const _base64 = IngCore.Base64.toBase64(`riot:${this.lockfile.password}`);
+        const _base64 = IngCore.Utils.Base64.toBase64(`riot:${this.lockfile.password}`);
         this.AxiosData = {
             cookie: false,
             jar: null,
@@ -48,7 +48,7 @@ class RiotLocal {
         this.Client = new Client(this.services);
     }
 
-    async getlockfile(path = IngCore.Config['val-api'].local.lockfile) {
+    async getlockfile(path = IngCore.Core.Config['val-api'].local.lockfile) {
         try {
             var _getFile = fs.readFileSync(path, 'utf8');
 
@@ -63,7 +63,7 @@ class RiotLocal {
 
             return _lockfile;
         } catch (err) {
-            await IngCore.Logs.log(this.classId + " Lockfile not found", 'err', true);
+            await IngCore.Core.Logs.log(this.classId + " Lockfile not found", 'err', true);
         }
     }
 

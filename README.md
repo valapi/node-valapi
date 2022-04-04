@@ -22,6 +22,8 @@ This Version `>= 1.5.0` is **in Development**, Use a [Stable Version](https://ww
 - [1.4.6-1](https://www.npmjs.com/package/@ing3kth/val-api/v/1.4.6-1) (Recommended)
 - [1.4.5](https://www.npmjs.com/package/@ing3kth/val-api/v/1.4.5)
 
+When You Find A Bug Please Report It [here](https://github.com/KTNG-3/val-api/issues), And You Can Pull Requests [here](https://github.com/KTNG-3/val-api/pulls), Thanks!
+
 ### Table of Contents
 
 - [Valorant API - Support MFA](#valorant-api---support-mfa)

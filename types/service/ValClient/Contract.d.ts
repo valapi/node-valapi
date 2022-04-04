@@ -5,7 +5,7 @@ declare class Contract {
     */
     constructor(data: JSON);
     classId: string;
-    AxiosClient: import("@ing3kth/core/types/core/AxiosClient");
+    AxiosClient: any;
     Region: any;
     /**
     */

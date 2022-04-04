@@ -1,11 +1,9 @@
 //import
-const tough = require('tough-cookie');
 const url = require('url');
 
-const Logs = require('@ing3kth/core').Logs;
-const AxiosClient = require('@ing3kth/core').AxiosClient;
-
-const toughCookie = tough.CookieJar;
+const IngCore = require('@ing3kth/core');
+const Logs = IngCore.Logs;
+const AxiosClient = IngCore.AxiosClient;
 
 //class
 class Multifactor {
@@ -13,17 +11,21 @@ class Multifactor {
     * @param {JSON} data Account toJSON data
     */
     constructor(data = {
-        cookie: new toughCookie().toJSON(),
+        cookie: new IngCore.AxiosCookie().toJSON(),
         accessToken: null,
         entitlements: null,
         multifactor: true,
     }) {
+        if(data.classId && data.classId === '@ing3kth/val-api/Account'){
+            data = data.toJSON();
+        }
+
         if(!data.multifactor){
             Logs.log('This Account is not have a Multifactor', 'err', true);
         }
 
         this.classId = '@ing3kth/val-api/Multifactor';
-        this.cookie = toughCookie.fromJSON(data.cookie);
+        this.cookie = IngCore.AxiosCookie.fromJSON(data.cookie);
         this.accessToken = data.accessToken;
         this.entitlements = data.entitlements;
     }

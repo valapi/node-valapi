@@ -1,0 +1,16 @@
+{
+    "logs": {
+        "mode": true,
+        "show": false,
+        "path": "C:\\Users\\Windows10\\Documents\\GitHub\\val-api/ing3kth/logs"
+    },
+    "val-api": {
+        "local": {
+            "lockfile": "C:\\Users\\Windows10\\AppData\\Local/Riot Games/Riot Client/Config/lockfile"
+        }
+    },
+    "cache": {
+        "mode": false,
+        "path": "C:\\Users\\Windows10\\Documents\\GitHub\\val-api/ing3kth/cache"
+    }
+}

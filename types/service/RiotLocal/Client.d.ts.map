@@ -1,1 +1,1 @@
-{"version":3,"file":"Client.d.ts","sourceRoot":"","sources":["../../../src/service/RiotLocal/Client.js"],"names":[],"mappings":";AAIA;IACI;;MAEE;IACF,kBAFU,IAAI,EASb;IANG,gBAAkD;IAElD,4DAAkD;IAClD,cAA6B;IAE7B,gBAA6E;IAGjF;OACG;IACF,qBAIA;IAED;OACG;IACF,8BAIA;IAED;OACG;IACF,4BAIA;CACJ"}
+{"version":3,"file":"Client.d.ts","sourceRoot":"","sources":["../../../src/service/RiotLocal/Client.js"],"names":[],"mappings":";AAIA;IACI;;MAEE;IACF,kBAFU,IAAI,EASb;IANG,gBAAkD;IAElD,iBAAkD;IAClD,cAA6B;IAE7B,gBAA6E;IAGjF;OACG;IACF,qBAIA;IAED;OACG;IACF,8BAIA;IAED;OACG;IACF,4BAIA;CACJ"}
