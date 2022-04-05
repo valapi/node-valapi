@@ -79,8 +79,8 @@ class ValRegion {
                 server: `https://${this.region}.api.riotgames.com`,
             }
         };
-    };
-};
+    }
+}
 
 //export
 module.exports = ValRegion;
