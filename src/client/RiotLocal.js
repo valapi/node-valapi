@@ -112,14 +112,14 @@ class RiotLocal {
             const _change = data.replace;
             const _args = arguments[i + 1];
             if (_change[i].where === 'url') {
-                if (_args && _args !== undefined) {
+                if (_args) {
                     const _newURL = await _string_endpoint.replace(_change[i].with, String(_args));
                     _string_endpoint = _newURL;
                 } else {
                     return await IngCore.Core.Logs.log(this.classId + ` '${_change[i].name}' not found at 'argument ${i + 1}'`, 'err', true);
                 }
             } else if (_change[i].where === 'body') {
-                if (_args && _args !== undefined) {
+                if (_args) {
                     const _newBODY = await _string_body.replace(_change[i].with, String(_args));
                     _string_body = _newBODY;
                 } else {
