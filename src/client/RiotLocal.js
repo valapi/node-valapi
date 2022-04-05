@@ -43,7 +43,7 @@ class RiotLocal {
             Chat: require('../service/RiotLocal/Chat'),
             Main: require('../service/RiotLocal/Main'),
             More: require('../service/RiotLocal/More'),
-        }
+        };
     }
 
     async reload() {
@@ -109,21 +109,21 @@ class RiotLocal {
         var _string_body = String(JSON.stringify(_body));
 
         for (let i = 0; i < data.replace.length; i++) {
-            const _change = data.replace;
+            const _change = data.replace[i];
             const _args = arguments[i + 1];
-            if (_change[i].where === 'url') {
+            if (_change.where === 'url') {
                 if (_args) {
-                    const _newURL = await _string_endpoint.replace(_change[i].with, String(_args));
+                    const _newURL = await _string_endpoint.replace(_change.with, String(_args));
                     _string_endpoint = _newURL;
                 } else {
-                    return await IngCore.Core.Logs.log(this.classId + ` '${_change[i].name}' not found at 'argument ${i + 1}'`, 'err', true);
+                    return await IngCore.Core.Logs.log(this.classId + ` '${_change.name}' not found at 'argument ${i + 1}'`, 'err', true);
                 }
-            } else if (_change[i].where === 'body') {
+            } else if (_change.where === 'body') {
                 if (_args) {
-                    const _newBODY = await _string_body.replace(_change[i].with, String(_args));
+                    const _newBODY = await _string_body.replace(_change.with, String(_args));
                     _string_body = _newBODY;
                 } else {
-                    return await IngCore.Core.Logs.log(this.classId + ` '${_change[i].name}' not found at 'argument ${i + 1}'`, 'err', true);
+                    return await IngCore.Core.Logs.log(this.classId + ` '${_change.name}' not found at 'argument ${i + 1}'`, 'err', true);
                 }
             } else {
                 continue;

@@ -58,7 +58,7 @@ class ValRegion {
         }
 
         return this.toJSON();
-    };
+    }
 
     toJSON() {
         return {
