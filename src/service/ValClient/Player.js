@@ -12,19 +12,7 @@ class Player {
         this.Region = data.Region;
     }
 
-    /**
-    */
-    async GetUserInfo() {
-        return await this.AxiosClient.post(`https://auth.riotgames.com/userinfo`);
-    }
-
-    /**
-    * @param {String} puuid PlayerUUID
-    */
-    async FetchPlayer(puuid) {
-        return await this.AxiosClient.get(this.Region.url.playerData + `/mmr/v1/players/${puuid}`);
-    }
-
+    //Mike - Username From ID
     /**
     * @param {String} puuid PlayerUUID
     */
@@ -32,6 +20,22 @@ class Player {
         return await this.AxiosClient.put(this.Region.url.playerData + `/name-service/v2/players`, [
             `${puuid}`
         ]);
+    }
+
+    //Riot Auth
+    /**
+    */
+    async GetUserInfo() {
+        return await this.AxiosClient.post(`https://auth.riotgames.com/userinfo`);
+    }
+
+    //PVP Endpoints
+
+    /**
+    * @param {String} puuid PlayerUUID
+    */
+     async FetchPlayer(puuid) {
+        return await this.AxiosClient.get(this.Region.url.playerData + `/mmr/v1/players/${puuid}`);
     }
 
     /**
@@ -65,7 +69,7 @@ class Player {
 
     /**
     */
-     async FetchRestrictions() {
+     async FetchPlayerRestrictions() {
         return await this.AxiosClient.get(this.Region.url.playerData + `/restrictions/v3/penalties`);
     }
 }

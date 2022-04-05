@@ -8,14 +8,16 @@ module.exports = {
     //client
     ValClient: require('./client/ValClient'),
     RiotApi: require('./client/RiotApi'),
+    RiotLocal: require('./client/RiotLocal'),
 
     //resource
     ValRegion: require('./resources/ValRegion'),
     Resource: {
-        QueueId: require(`./resources/data/QueueId`),
-        ItemTypeId: require(`./resources/data/ItemTypeId`),
         Currency: require(`./resources/data/Currency`),
-        Region: require(`./resources/data/Region`),
+        ItemTypeId: require(`./resources/data/ItemTypeId`),
         Locale: require(`./resources/data/Locale`),
+        QueueId: require(`./resources/data/QueueId`),
+        Region: require(`./resources/data/Region`),
+        HTTP_Response: require(`./resources/data/HTTP_Response`),
     }
 };

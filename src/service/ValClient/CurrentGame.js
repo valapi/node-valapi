@@ -2,7 +2,7 @@
 const AxiosClient = require('@ing3kth/core').Core.AxiosClient;
 
 //service
-class Coregame {
+class CurrentGame {
     /**
     * @param {JSON} data Services Data
     */
@@ -42,4 +42,4 @@ class Coregame {
     }
 }
 
-module.exports = Coregame;
+module.exports = CurrentGame;

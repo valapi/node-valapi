@@ -1,3 +1,11 @@
+# 1.5.3 (April 5, 2022  | In Development)
+
+- Local API (RiotLocal) is now available to use. `90% DONE`
+- [HTTP_Response](/src/resources/data/HTTP_Response.js) Resource
+- Update [README.md](README.md)
+- Update [ValClient](/src/client/ValClient.js) [Services](/src/service/ValClient/)
+- A little bit changes
+
 # 1.5.2 (April 4, 2020 | In Development)
 
 - Change [@ing3kth/core](https://www.npmjs.com/package/@ing3kth/core) Path To Folder

@@ -12,6 +12,7 @@ class Client {
         this.Region = data.Region;
     }
 
+    //SESSION
     /**
     * @param {String} puuid PlayerUUID
     */
@@ -19,6 +20,8 @@ class Client {
         return await this.AxiosClient.get(this.Region.url.partyService + `/session/v1/sessions/${puuid}`);
     }
 
+    //PVP Endpoints
+    
     /**
     */
      async FetchContent() {

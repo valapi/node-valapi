@@ -1,13 +1,24 @@
 //import
 const fs = require('fs');
-
 const IngCore = require('@ing3kth/core')
 
-const Client = require('../service/RiotLocal/Client');
+const local_normal_ip = '127.0.0.1'
 
 //class
+
+/**
+ * All Api Base On https://github.com/techchrism/valorant-api-docs
+ * Because I'm lazy to write all api endpoint
+ * 
+ * * READ DOCS BEFORE USE
+ */
 class RiotLocal {
-    constructor(ip = '127.0.0.1', lockfile = {
+    /**
+     * 
+     * @param {String} ip ip of local api
+     * @param {JSON} lockfile lockfile data
+     */
+    constructor(ip = local_normal_ip, lockfile = {
         name: null,
         pid: null,
         port: null,
@@ -27,28 +38,34 @@ class RiotLocal {
         this.reload();
     }
 
+    getResource() {
+        return {
+            Chat: require('../service/RiotLocal/Chat'),
+            Main: require('../service/RiotLocal/Main'),
+            More: require('../service/RiotLocal/More'),
+        }
+    }
+
     async reload() {
         this.lockfile = await this.getlockfile();
 
         const _base64 = IngCore.Utils.Base64.toBase64(`riot:${this.lockfile.password}`);
-        this.AxiosData = {
+        this.AxiosClient = new IngCore.Core.AxiosClient({
             cookie: false,
             jar: null,
             headers: {
                 'Authorization': `Basic ${_base64}`,
             },
-        }
+        })
+        this.baseUrl = `${this.lockfile.protocol}://${this.ip}:${this.lockfile.port}`;
 
-        this.services = {
-            ip: this.ip,
-            AxiosData: this.AxiosData,
-            lockfile: this.lockfile,
-        }
-
-        this.Client = new Client(this.services);
+        this.resourse = this.getResource()
     }
 
-    async getlockfile(path = IngCore.Core.Config['val-api'].local.lockfile) {
+    /**
+     * @param {String} path path to lockfile
+     */
+    async getlockfile(path = IngCore.Config['val-api'].local.lockfile) {
         try {
             var _getFile = fs.readFileSync(path, 'utf8');
 
@@ -67,16 +84,122 @@ class RiotLocal {
         }
     }
 
-    async help() {
-        const response = await this.AxiosClient.get(this.baseUrl + '/help');
+    /**
+     * 
+     * @param {JSON} data Data from LocalResourse
+     * @param {any} args.. Replace With Arguments
+     */
+    async requestFromJSON(data = {
+        method: 'get',
+        endpoint: '/help',
+        body: {},
+        replace: [],
+    }) {
+        if(!data.method || !data.endpoint){
+            return await IngCore.Core.Logs.log(this.classId + ` Missing Data`, 'err', true);
+        }else if(!data.body || !data.replace){
+            data.body = {};
+            data.replace = [];
+        }
 
-        return response.data;
+        var _endpoint = data.endpoint;
+        var _body = data.body;
+
+        var _string_endpoint = String(_endpoint)
+        var _string_body = String(JSON.stringify(_body));
+
+        for (let i = 0; i < data.replace.length; i++) {
+            const _change = data.replace[i];
+            const _args = arguments[i + 1];
+            if (_change.where === 'url') {
+                if (_args && _args !== undefined) {
+                    const _newURL = await _string_endpoint.replace(_change.with, String(_args));
+                    _string_endpoint = _newURL;
+                } else {
+                    return await IngCore.Core.Logs.log(this.classId + ` '${_change.name}' not found at 'argument ${i + 1}'`, 'err', true);
+                }
+            } else if (_change.where === 'body') {
+                if (_args && _args !== undefined) {
+                    const _newBODY = await _string_body.replace(_change.with, String(_args));
+                    _string_body = _newBODY;
+                } else {
+                    return await IngCore.Core.Logs.log(this.classId + ` '${_change.name}' not found at 'argument ${i + 1}'`, 'err', true);
+                }
+            } else {
+                continue;
+            }
+        }
+
+        _endpoint = _string_endpoint;
+        _body = JSON.parse(_string_body);
+
+        return await this.request(data.method, _endpoint, _body);
+    }
+
+    /**
+     * 
+     * @param {String} method Method to request
+     * @param {String} endpoint Url Endpoint
+     * @param {String} body Request Body
+     */
+    async request(method = 'get', endpoint = '/help', body = {}) {
+        switch (method) {
+            case 'get':
+                return await this.AxiosClient.get(this.baseUrl + endpoint);
+            case 'post':
+                return await this.AxiosClient.post(this.baseUrl + endpoint, body);
+            case 'put':
+                return await this.AxiosClient.put(this.baseUrl + endpoint, body);
+            case 'delete':
+                return await this.AxiosClient.delete(this.baseUrl + endpoint);
+        }
+    }
+
+    // SETTINGS //
+
+    async setIp(ip = local_normal_ip) {
+        this.ip = ip;
+
+        await this.reload()
+    }
+
+    // STATIC //
+
+    /**
+     * 
+     * @param {String} method Method to request
+     * @param {String} endpoint Url Endpoint
+     * @param {String} body Request Body
+     */
+    static async requestSync(method = 'get', endpoint = '/help', body = {}) {
+        const newRiotLocal = await new RiotLocal();
+        return await newRiotLocal.request(method, endpoint, body);
+    }
+
+    /**
+     * 
+     * @param {JSON} data Data from LocalResourse
+     * @param {any} args.. Replace With Arguments
+     */
+     static async requestFromJSONSync(data = {
+        method: 'get',
+        endpoint: '/help',
+        body: {},
+        replace: [],
+    }) {
+        const newRiotLocal = await new RiotLocal();
+        return await newRiotLocal.requestFromJSON(data);
+    }
+
+    static getResourceSync() {
+        const newRiotLocal = new RiotLocal();
+        return newRiotLocal.getResource();
     }
 }
 
-module.exports = RiotLocal;
+//export
+RiotLocal.request = RiotLocal.requestSync;
+RiotLocal.requestFromJSON = RiotLocal.requestFromJSONSync;
+RiotLocal.getResource = RiotLocal.getResourceSync;
 
-(async (RiotLocal) => {
-    const RiotLocalsss = await new RiotLocal().open();
-    console.log(RiotLocalsss)
-})(RiotLocal);
+module.exports = RiotLocal;

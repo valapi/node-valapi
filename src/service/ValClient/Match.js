@@ -12,6 +12,8 @@ class Match {
         this.Region = data.Region;
     }
 
+    //PVP Endpoints
+
     /**
     * @description Get contract definitions
     * @param {String} matchId MatchID

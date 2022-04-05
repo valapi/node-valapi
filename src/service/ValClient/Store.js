@@ -21,7 +21,6 @@ class Store {
     }
 
     /**
-
     */
      async GetOffers() {
         return await this.AxiosClient.get(this.Region.url.playerData + `/store/v1/offers/`);

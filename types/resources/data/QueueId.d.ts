@@ -8,6 +8,7 @@ declare const _exports: {
     snowball: string;
     '': string;
     newmap: string;
+    seeding: string;
     data: {
         Unrated: string;
         Competitive: string;
@@ -18,7 +19,6 @@ declare const _exports: {
         SnowballFight: string;
         Custom: string;
     };
-    seeding: string;
 };
 export = _exports;
 //# sourceMappingURL=QueueId.d.ts.map

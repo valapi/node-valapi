@@ -13,7 +13,6 @@ declare class Store {
     */
     GetEntitlements(puuid: string, itemTypeId: string): Promise<any>;
     /**
-
     */
     GetOffers(): Promise<any>;
     /**

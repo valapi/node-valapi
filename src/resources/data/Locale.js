@@ -22,24 +22,24 @@ module.exports = {
 
     data: {
         //format 2
-        Arabic_UAE: "ar-AE", //recommend
-        German_Germany: "de-DE", //recommend
-        English_UnitedKingdom: "en-GB",
-        English_UnitedStates: "en-US", //recommend
-        Spanish_Spain: "es-ES",
-        Spanish_Mexico: "es-MX", //recommend
-        French_France: "fr-FR", //recommend
-        Indonesian_Indonesia: "id-ID", //recommend
-        Italian_Italy: "it-IT", //recommend
-        Japanese_Japan: "ja-JP", //recommend
-        Korean_Korea: "ko-KR", //recommend
-        Polish_Poland: "pl-PL", //recommend
-        Portuguese_Brazil: "pt-BR", //recommend
-        Russian_Russia: "ru-RU", //recommend
-        Thai_Thailand: "th-TH", //recommend
-        Turkish_Turkey: "tr-TR", //recommend
-        Vietnamese_Vietnam: "vi-VN", //recommend
-        Chinese_China: "zh-CN", //recommend
-        Chinese_Taiwan: "zh-TW", //recommend
-    }
+        Arabic_UAE: "ar-AE",
+        German_Germany: "de-DE",
+        English_UnitedKingdom: "en-GB", //not recommend
+        English_UnitedStates: "en-US",
+        Spanish_Spain: "es-ES", //not recommend
+        Spanish_Mexico: "es-MX",
+        French_France: "fr-FR",
+        Indonesian_Indonesia: "id-ID",
+        Italian_Italy: "it-IT",
+        Japanese_Japan: "ja-JP",
+        Korean_Korea: "ko-KR",
+        Polish_Poland: "pl-PL",
+        Portuguese_Brazil: "pt-BR",
+        Russian_Russia: "ru-RU",
+        Thai_Thailand: "th-TH",
+        Turkish_Turkey: "tr-TR",
+        Vietnamese_Vietnam: "vi-VN",
+        Chinese_China: "zh-CN",
+        Chinese_Taiwan: "zh-TW",
+    },
 };

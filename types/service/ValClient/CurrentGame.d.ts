@@ -1,5 +1,5 @@
-export = Coregame;
-declare class Coregame {
+export = CurrentGame;
+declare class CurrentGame {
     /**
     * @param {JSON} data Services Data
     */
@@ -25,4 +25,4 @@ declare class Coregame {
     */
     DisassociatePlayer(puuid: string, matchId: string): Promise<any>;
 }
-//# sourceMappingURL=Coregame.d.ts.map
+//# sourceMappingURL=CurrentGame.d.ts.map

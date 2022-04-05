@@ -11,14 +11,25 @@ class ValRegion {
     */
     constructor(region = 'na') {
         this.classId = '@ing3kth/val-api/ValRegion';
-        this.region = region.toLowerCase();
+        this.base = region.toLowerCase();
 
-        if(!Region[this.region]) {
-            Logs.log(`Region '${this.region}' not found`, 'err', true);
+        if(!Region[this.base]) {
+            Logs.log(`Region '${this.base}' not found`, 'err', true);
         }
 
-        switch (this.region) {
-            case 'na' || 'latam' || 'br':
+        switch (this.base) {
+            case 'na':
+                this.region = 'na';
+                this.server = 'na';
+                this.riotRegion = 'americas';
+                break;
+            case 'latam':
+                this.region = 'latam';
+                this.server = 'na';
+                this.riotRegion = 'americas';
+                break;
+            case 'br':
+                this.region = 'br';
                 this.server = 'na';
                 this.riotRegion = 'americas';
                 break;
@@ -27,21 +38,32 @@ class ValRegion {
                 this.server = 'pbe';
                 this.riotRegion = 'americas';
                 break;
-            case 'kr' || 'ap':
-                this.riotRegion = 'asia';
             case 'eu':
+                this.region = 'eu';
+                this.server = 'eu';
                 this.riotRegion = 'europe';
-            default: 
-                this.server = this.region;
                 break;
-        }
+            case 'kr':
+                this.region = 'kr';
+                this.server = 'kr';
+                this.riotRegion = 'asia';
+                break;
+            case 'ap':
+                this.region = 'ap';
+                this.server = 'ap';
+                this.riotRegion = 'asia';
+                break;
+            default:
+                return new ValRegion('na');
+        };
 
         return this.toJSON();
-    }
+    };
 
     toJSON() {
         return {
             data: {
+                base: this.base,
                 api: this.region,
                 server: this.server,
                 riot: this.riotRegion,
@@ -57,8 +79,8 @@ class ValRegion {
                 server: `https://${this.region}.api.riotgames.com`,
             }
         };
-    }
-}
+    };
+};
 
 //export
 module.exports = ValRegion;

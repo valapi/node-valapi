@@ -1,4 +1,7 @@
 export = RiotApi;
+/**
+ * Official Api From Riot Games
+ */
 declare class RiotApi {
     /**
     * @param {JSON} data toJSON data

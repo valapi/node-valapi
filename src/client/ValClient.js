@@ -6,14 +6,15 @@ const ValRegion = require('../resources/ValRegion');
 
 const Client = require('../service/ValClient/Client');
 const Contract = require('../service/ValClient/Contract');
-const Coregame = require('../service/ValClient/Coregame');
+const CurrentGame = require('../service/ValClient/CurrentGame');
 const Match = require('../service/ValClient/Match');
 const Party = require('../service/ValClient/Party');
 const Player = require('../service/ValClient/Player');
-const Pregame = require('../service/ValClient/Pregame');
+const PreGame = require('../service/ValClient/PreGame');
 const Store = require('../service/ValClient/Store');
 
 //class
+
 class ValClient {
     /**
     * @param {JSON} data Account toJSON data
@@ -67,11 +68,11 @@ class ValClient {
 
         this.Client = new Client(this.services);
         this.Contract = new Contract(this.services);
-        this.Coregame = new Coregame(this.services);
+        this.Coregame = new CurrentGame(this.services);
         this.Match = new Match(this.services);
         this.Party = new Party(this.services);
         this.Player = new Player(this.services);
-        this.Pregame = new Pregame(this.services);
+        this.Pregame = new PreGame(this.services);
         this.Store = new Store(this.services);
 
         Logs.log(this.classId + " Reload");

@@ -8,16 +8,16 @@ declare class Player {
     AxiosClient: any;
     Region: any;
     /**
+    * @param {String} puuid PlayerUUID
+    */
+    GetUsername(puuid: string): Promise<any>;
+    /**
     */
     GetUserInfo(): Promise<any>;
     /**
     * @param {String} puuid PlayerUUID
     */
     FetchPlayer(puuid: string): Promise<any>;
-    /**
-    * @param {String} puuid PlayerUUID
-    */
-    GetUsername(puuid: string): Promise<any>;
     /**
     * @param {String} puuid PlayerUUID
     * @param {String} queueId QueueID
@@ -35,6 +35,6 @@ declare class Player {
     AccountXP(puuid: string): Promise<any>;
     /**
     */
-    FetchRestrictions(): Promise<any>;
+    FetchPlayerRestrictions(): Promise<any>;
 }
 //# sourceMappingURL=Player.d.ts.map

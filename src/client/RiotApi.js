@@ -9,6 +9,10 @@ const StatusV1 = require('../service/RiotApi/StatusV1');
 const ContentV1 = require('../service/RiotApi/ContentV1');
 
 //class
+
+/**
+ * Official Api From Riot Games
+ */
 class RiotApi {
     /**
     * @param {JSON} data Account toJSON data

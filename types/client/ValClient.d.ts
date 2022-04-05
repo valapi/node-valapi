@@ -45,11 +45,11 @@ declare class ValClient {
     } | undefined;
     Client: Client | undefined;
     Contract: Contract | undefined;
-    Coregame: Coregame | undefined;
+    Coregame: CurrentGame | undefined;
     Match: Match | undefined;
     Party: Party | undefined;
     Player: Player | undefined;
-    Pregame: Pregame | undefined;
+    Pregame: PreGame | undefined;
     Store: Store | undefined;
     toJSON(): {
         cookie: any;
@@ -85,10 +85,10 @@ declare namespace ValClient {
 import ValRegion = require("../resources/ValRegion");
 import Client = require("../service/ValClient/Client");
 import Contract = require("../service/ValClient/Contract");
-import Coregame = require("../service/ValClient/Coregame");
+import CurrentGame = require("../service/ValClient/CurrentGame");
 import Match = require("../service/ValClient/Match");
 import Party = require("../service/ValClient/Party");
 import Player = require("../service/ValClient/Player");
-import Pregame = require("../service/ValClient/Pregame");
+import PreGame = require("../service/ValClient/PreGame");
 import Store = require("../service/ValClient/Store");
 //# sourceMappingURL=ValClient.d.ts.map

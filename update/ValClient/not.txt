@@ -3,3 +3,20 @@ let Party_RequestToJoinParty = `POST https://glz-ap-1.ap.a.pvp.net/parties/v1/pa
 let Party_PlayerJoin = `POST https://glz-ap-1.ap.a.pvp.net/parties/v1/players/${puuid}/joinparty/${partyId}`
 let Party_DeclineRequest = `POST https://glz-ap-1.ap.a.pvp.net/parties/v1/parties/${partyId}/request/${requestId}/decline`
 let Party_RemovePlayer = `DELETE https://glz-ap-1.ap.a.pvp.net/parties/v1/players/${puuid}`
+
+// CONTRACTS //
+ContractDefinitions_FetchActiveStory
+ItemProgressionDefinitionsV2_Fetch
+
+// PVP ENDPOINT //
+GET MMR_FetchLeaderboard
+
+// STORE //
+    /**
+     * 
+     * @param {String} orderId Order ID
+     * @returns 
+     */
+    async GetOrder(orderId) {
+        return await this.AxiosClient.get(this.Region.url.playerData + `/store/v1/order/${orderId}`);
+    }

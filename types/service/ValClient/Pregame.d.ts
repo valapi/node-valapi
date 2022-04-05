@@ -1,5 +1,5 @@
-export = Pregame;
-declare class Pregame {
+export = PreGame;
+declare class PreGame {
     /**
     * @param {JSON} data Services Data
     */
@@ -7,10 +7,6 @@ declare class Pregame {
     classId: string;
     AxiosClient: any;
     Region: any;
-    /**
-    * @param {String} puuid PlayerUUID
-    */
-    GetPlayer(puuid: string): Promise<any>;
     /**
     * @param {String} matchId MatchID
     */
@@ -20,6 +16,15 @@ declare class Pregame {
     */
     GetMatchLoadouts(matchId: string): Promise<any>;
     /**
+    * @param {String} puuid PlayerUUID
+    */
+    GetPlayer(puuid: string): Promise<any>;
+    /**
+    * @param {String} matchId MatchID
+    * @param {String} agentId CharacterID
+    */
+    LockCharacter(matchId: string, agentId: string): Promise<any>;
+    /**
     * @param {String} matchId MatchID
     */
     QuitMatch(matchId: string): Promise<any>;
@@ -28,10 +33,5 @@ declare class Pregame {
     * @param {String} agentId CharacterID
     */
     SelectCharacter(matchId: string, agentId: string): Promise<any>;
-    /**
-    * @param {String} matchId MatchID
-    * @param {String} agentId CharacterID
-    */
-    LockCharacter(matchId: string, agentId: string): Promise<any>;
 }
-//# sourceMappingURL=Pregame.d.ts.map
+//# sourceMappingURL=PreGame.d.ts.map

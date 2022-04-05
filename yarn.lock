@@ -2,15 +2,15 @@
 # yarn lockfile v1
 
 
-"@ing3kth/core@^1.6.1":
-  version "1.6.1"
-  resolved "https://registry.npmjs.org/@ing3kth/core/-/core-1.6.1.tgz"
-  integrity sha512-lDd9y/+qsRLqfqMuecM1b0Tv6yPQanqQ/t5NA1em32RncZzLG6qmLG9ygPnSfKFefcWVugPR600DUO+VnyqJNw==
+"@ing3kth/core@^1.6.6":
+  version "1.6.6"
+  resolved "https://registry.npmjs.org/@ing3kth/core/-/core-1.6.6.tgz"
+  integrity sha512-xwB1gaY2CAZPVjyR62fhAqZViggwW+6YFvur+t/PHDiXk5L2aD03ehamSMJZXe8a/88/iDlFaxhqRzH7N69vFQ==
   dependencies:
-    async "^3.2.3"
     axios "^0.26.1"
     axios-cookiejar-support "^2.0.4"
     commander "^9.1.0"
+    systeminformation "^5.11.9"
     tough-cookie "^4.0.0"
 
 agent-base@^6.0.2:
@@ -19,11 +19,6 @@ agent-base@^6.0.2:
   integrity sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==
   dependencies:
     debug "4"
-
-async@^3.2.3:
-  version "3.2.3"
-  resolved "https://registry.npmjs.org/async/-/async-3.2.3.tgz"
-  integrity sha512-spZRyzKL5l5BZQrr/6m/SqFdBN0q3OCI0f9rjfBzCMBIP4p75P620rR3gTmaksNOhmzgdxcaxdNfMy6anrbM0g==
 
 axios-cookiejar-support@^2.0.4:
   version "2.0.4"
@@ -92,6 +87,11 @@ querystring@0.2.0:
   version "0.2.0"
   resolved "https://registry.npmjs.org/querystring/-/querystring-0.2.0.tgz"
   integrity sha1-sgmEkgO7Jd+CDadW50cAWHhSFiA=
+
+systeminformation@^5.11.9:
+  version "5.11.9"
+  resolved "https://registry.npmjs.org/systeminformation/-/systeminformation-5.11.9.tgz"
+  integrity sha512-eeMtL9UJFR/LYG+2rpeAgZ0Va4ojlNQTkYiQH/xbbPwDjDMsaetj3Pkc+C1aH5G8mav6HvDY8kI4Vl4noksSkA==
 
 tough-cookie@^4.0.0:
   version "4.0.0"
