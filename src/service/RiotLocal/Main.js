@@ -68,4 +68,4 @@ module.exports = {
         body: {},
         replace: [],
     },
-}
+};

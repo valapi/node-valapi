@@ -186,4 +186,4 @@ module.exports = {
         body: {},
         replace: [],
     }
-}
+};

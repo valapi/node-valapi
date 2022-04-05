@@ -55,7 +55,7 @@ class ValRegion {
                 break;
             default:
                 return new ValRegion('na');
-        };
+        }
 
         return this.toJSON();
     };

@@ -59,6 +59,7 @@ Yarn:
 *Documentation is comming soon!* `~ 1.6.x`
 
 [Old README](/docs.md) (/docs.md)
+
 [Old Package](https://www.npmjs.com/package/@ing3kth/val-api/v/1.5.2) (@ing3kth/val-api v1.5.2)
 
 # Epilogue

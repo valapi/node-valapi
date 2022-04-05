@@ -1,5 +1,5 @@
 //import
-const IngCore = require('@ing3kth/core')
+const IngCore = require('@ing3kth/core');
 const Logs = IngCore.Core.Logs;
 
 const ValRegion = require('../resources/ValRegion');

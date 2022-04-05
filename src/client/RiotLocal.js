@@ -1,8 +1,8 @@
 //import
 const fs = require('fs');
-const IngCore = require('@ing3kth/core')
+const IngCore = require('@ing3kth/core');
 
-const local_normal_ip = '127.0.0.1'
+const local_normal_ip = '127.0.0.1';
 
 //class
 
@@ -32,7 +32,7 @@ class RiotLocal {
             port: lockfile.port,
             password: lockfile.password,
             protocol: lockfile.protocol,
-        }
+        };
         this.ip = ip;
 
         this.reload();
@@ -56,10 +56,10 @@ class RiotLocal {
             headers: {
                 'Authorization': `Basic ${_base64}`,
             },
-        })
+        });
         this.baseUrl = `${this.lockfile.protocol}://${this.ip}:${this.lockfile.port}`;
 
-        this.resourse = this.getResource()
+        this.resourse = this.getResource();
     }
 
     /**
@@ -69,14 +69,14 @@ class RiotLocal {
         try {
             var _getFile = fs.readFileSync(path, 'utf8');
 
-            const _spilt_file = _getFile.split(":")
+            const _spilt_file = _getFile.split(":");
             const _lockfile = {
                 name: _spilt_file[0],
                 pid: _spilt_file[1],
                 port: _spilt_file[2],
                 password: _spilt_file[3],
                 protocol: _spilt_file[4],
-            }
+            };
 
             return _lockfile;
         } catch (err) {
@@ -105,25 +105,25 @@ class RiotLocal {
         var _endpoint = data.endpoint;
         var _body = data.body;
 
-        var _string_endpoint = String(_endpoint)
+        var _string_endpoint = String(_endpoint);
         var _string_body = String(JSON.stringify(_body));
 
         for (let i = 0; i < data.replace.length; i++) {
-            const _change = data.replace[i];
+            const _change = data.replace;
             const _args = arguments[i + 1];
-            if (_change.where === 'url') {
+            if (_change[i].where === 'url') {
                 if (_args && _args !== undefined) {
-                    const _newURL = await _string_endpoint.replace(_change.with, String(_args));
+                    const _newURL = await _string_endpoint.replace(_change[i].with, String(_args));
                     _string_endpoint = _newURL;
                 } else {
-                    return await IngCore.Core.Logs.log(this.classId + ` '${_change.name}' not found at 'argument ${i + 1}'`, 'err', true);
+                    return await IngCore.Core.Logs.log(this.classId + ` '${_change[i].name}' not found at 'argument ${i + 1}'`, 'err', true);
                 }
-            } else if (_change.where === 'body') {
+            } else if (_change[i].where === 'body') {
                 if (_args && _args !== undefined) {
-                    const _newBODY = await _string_body.replace(_change.with, String(_args));
+                    const _newBODY = await _string_body.replace(_change[i].with, String(_args));
                     _string_body = _newBODY;
                 } else {
-                    return await IngCore.Core.Logs.log(this.classId + ` '${_change.name}' not found at 'argument ${i + 1}'`, 'err', true);
+                    return await IngCore.Core.Logs.log(this.classId + ` '${_change[i].name}' not found at 'argument ${i + 1}'`, 'err', true);
                 }
             } else {
                 continue;
@@ -160,7 +160,7 @@ class RiotLocal {
     async setIp(ip = local_normal_ip) {
         this.ip = ip;
 
-        await this.reload()
+        await this.reload();
     }
 
     // STATIC //
