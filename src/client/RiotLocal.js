@@ -2,8 +2,6 @@
 const fs = require('fs');
 const IngCore = require('@ing3kth/core');
 
-const local_normal_ip = '127.0.0.1';
-
 //class
 
 /**
@@ -18,7 +16,7 @@ class RiotLocal {
      * @param {String} ip ip of local api
      * @param {JSON} lockfile lockfile data
      */
-    constructor(ip = local_normal_ip, lockfile = {
+    constructor(ip = IngCore.Config['val-api'].local.ip, lockfile = {
         name: null,
         pid: null,
         port: null,
@@ -157,7 +155,7 @@ class RiotLocal {
 
     // SETTINGS //
 
-    async setIp(ip = local_normal_ip) {
+    async setIp(ip = IngCore.Config['val-api'].local.ip) {
         this.ip = ip;
 
         await this.reload();
@@ -171,7 +169,7 @@ class RiotLocal {
      * @param {String} endpoint Url Endpoint
      * @param {String} body Request Body
      */
-    static async requestSync(method = 'get', endpoint = '/help', body = {}) {
+    static async request(method = 'get', endpoint = '/help', body = {}) {
         const newRiotLocal = await new RiotLocal();
         return await newRiotLocal.request(method, endpoint, body);
     }
@@ -179,9 +177,9 @@ class RiotLocal {
     /**
      * 
      * @param {JSON} data Data from LocalResourse
-     * @param {any} args.. Replace With Arguments
+     * @param {any} args.. Replace Data With Arguments
      */
-     static async requestFromJSONSync(data = {
+     static async requestFromJSON(data = {
         method: 'get',
         endpoint: '/help',
         body: {},
@@ -191,15 +189,11 @@ class RiotLocal {
         return await newRiotLocal.requestFromJSON(data);
     }
 
-    static getResourceSync() {
+    static getResource() {
         const newRiotLocal = new RiotLocal();
         return newRiotLocal.getResource();
     }
 }
 
 //export
-RiotLocal.request = RiotLocal.requestSync;
-RiotLocal.requestFromJSON = RiotLocal.requestFromJSONSync;
-RiotLocal.getResource = RiotLocal.getResourceSync;
-
 module.exports = RiotLocal;

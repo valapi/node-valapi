@@ -1,9 +1,5 @@
 //import
-const url = require('url');
-
 const IngCore = require('@ing3kth/core');
-const Logs = IngCore.Logs;
-const AxiosClient = IngCore.AxiosClient;
 
 //class
 class Multifactor {
@@ -11,23 +7,20 @@ class Multifactor {
     * @param {JSON} data Account toJSON data
     */
     constructor(data = {
-        cookie: new IngCore.AxiosCookie().toJSON(),
+        cookie: new IngCore.Core.AxiosCookie().toJSON(),
         accessToken: null,
         entitlements: null,
         multifactor: true,
     }) {
-        if(data.classId && data.classId === '@ing3kth/val-api/Account'){
-            data = data.toJSON();
-        }
-
         if(!data.multifactor){
-            Logs.log('This Account is not have a Multifactor', 'err', true);
+            IngCore.Core.Logs.log('This Account is not have a Multifactor', 'err', true);
         }
 
         this.classId = '@ing3kth/val-api/Multifactor';
-        this.cookie = IngCore.AxiosCookie.fromJSON(data.cookie);
+        this.cookie = IngCore.Core.AxiosCookie.fromJSON(data.cookie);
         this.accessToken = data.accessToken;
         this.entitlements = data.entitlements;
+        this.multifactor = data.multifactor;
     }
 
     /**
@@ -35,7 +28,7 @@ class Multifactor {
     */
      async verify(verificationCode) {
         const _cookie = this.cookie;
-        const axiosClient = AxiosClient.client({
+        const axiosClient = IngCore.Core.AxiosClient.client({
             cookie: true,
             jar: _cookie.toJSON(),
             headers: {}
@@ -49,15 +42,23 @@ class Multifactor {
         }, {
             jar: _cookie,
         });
-        await Logs.log(this.classId + " Auth");
+        await IngCore.Core.Logs.log(this.classId + " Auth - PUT https://auth.riotgames.com/api/v1/authorization");
 
         // get asscess token
-        const get_url = auth_response.data.response.parameters.uri;
-        const url_parts = url.parse(get_url, true);
-        const removeSharpTag = url_parts.hash.replace('#', '');
-        const accessToken_params = new URLSearchParams(removeSharpTag);
-        this.accessToken = accessToken_params.get('access_token');
-        await Logs.log(this.classId + " AccessToken");
+        const _search = new URL(auth_response.data.response.parameters.uri)
+        var _get_where;
+        var _get_accessToken;
+
+        if (_search.search) {
+            _get_where = _search.search;
+            _get_accessToken = 'access_token';
+        } else {
+            _get_where = _search.hash;
+            _get_accessToken = '#access_token';
+        }
+
+        this.accessToken = new URLSearchParams(_get_where).get(_get_accessToken);
+        await IngCore.Core.Logs.log(this.classId + " AccessToken");
 
         //ENTITLEMENTS
         const entitlements_response = await axiosClient.post('https://entitlements.auth.riotgames.com/api/token/v1', {}, {
@@ -68,18 +69,20 @@ class Multifactor {
         });
 
         this.entitlements = entitlements_response.data.entitlements_token;
-        await Logs.log(this.classId + " Entitlements");
+        await IngCore.Core.Logs.log(this.classId + " Entitlements - POST https://entitlements.auth.riotgames.com/api/token/v1");
 
         this.cookie = _cookie;
+        this.multifactor = false;
         return this.toJSON();
     }
 
     toJSON() {
-        Logs.log("Export " + this.classId);
+        IngCore.Core.Logs.log("Export " + this.classId);
         return {
             cookie: this.cookie.toJSON(),
             accessToken: this.accessToken,
             entitlements: this.entitlements,
+            multifactor: this.multifactor,
         };
     }
 
@@ -88,7 +91,7 @@ class Multifactor {
     * @param {Number} verificationCode Verification Code
     * @param {Boolean} toJSON return with toJSON data
     */
-    static async verifySync(data, verificationCode, toJSON = false) {
+    static async verify(data, verificationCode, toJSON = false) {
         const MultifactorAccount = new Multifactor(data);
         await MultifactorAccount.verify(verificationCode);
 
@@ -100,6 +103,4 @@ class Multifactor {
 }
 
 //export
-Multifactor.verify = Multifactor.verifySync;
-
 module.exports = Multifactor;

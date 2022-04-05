@@ -1,30 +1,30 @@
 export = Account;
 declare class Account {
     /**
-    * @param {String} username Riot Account Username
-    * @param {String} password Riot Account Password
-    * @param {Boolean} toJSON return with toJSON data
-    */
-    static loginSync(username: string, password: string, toJSON?: boolean): Promise<{
+     * @param {String} username Riot Account Username
+     * @param {String} password Riot Account Password
+     * @param {Boolean} toJSON return with toJSON data
+     */
+    static login(username: string, password: string, toJSON?: boolean): Promise<{
         cookie: any;
         accessToken: string | null;
         entitlements: any;
         multifactor: boolean;
     }>;
     /**
-    * @param {String} username Riot Account Username
-    * @param {String} password Riot Account Password
-    */
+     * @param {String} username Riot Account Username
+     * @param {String} password Riot Account Password
+     */
     constructor(username?: string, password?: string);
     classId: string;
-    cookie: any;
+    cookie: import("@ing3kth/core/types/core/AxiosCookie") | null;
     accessToken: string | null;
     entitlements: any;
     multifactor: boolean;
     /**
-    * @param {String} username Riot Account Username
-    * @param {String} password Riot Account Password
-    */
+     * @param {String} username Riot Account Username
+     * @param {String} password Riot Account Password
+     */
     login(username: string, password: string): Promise<{
         cookie: any;
         accessToken: string | null;
@@ -37,9 +37,5 @@ declare class Account {
         entitlements: any;
         multifactor: boolean;
     };
-}
-declare namespace Account {
-    import login = Account.loginSync;
-    export { login };
 }
 //# sourceMappingURL=Account.d.ts.map

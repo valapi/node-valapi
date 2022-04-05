@@ -1,16 +1,18 @@
 {
+    "create": "2022-04-05T16:01:15.519Z",
     "logs": {
         "mode": true,
         "show": false,
         "path": "C:\\Users\\Windows10\\Documents\\GitHub\\val-api/ing3kth/logs"
     },
-    "val-api": {
-        "local": {
-            "lockfile": "C:\\Users\\Windows10\\AppData\\Local/Riot Games/Riot Client/Config/lockfile"
-        }
-    },
     "cache": {
         "mode": false,
         "path": "C:\\Users\\Windows10\\Documents\\GitHub\\val-api/ing3kth/cache"
+    },
+    "val-api": {
+        "local": {
+            "ip": "127.0.0.1",
+            "lockfile": "C:\\Users\\Windows10\\AppData\\Local/Riot Games/Riot Client/Config/lockfile"
+        }
     }
 }

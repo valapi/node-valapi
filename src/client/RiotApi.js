@@ -1,6 +1,5 @@
 //import
 const IngCore = require('@ing3kth/core');
-const Logs = IngCore.Core.Logs;
 
 const ValRegion = require('../resources/ValRegion');
 
@@ -47,11 +46,11 @@ class RiotApi {
         this.StatusV1 = new StatusV1(this.services);
         this.ContentV1 = new ContentV1(this.services);
 
-        Logs.log(this.classId + " Reload");
+        IngCore.Core.Logs.log(this.classId + " Reload");
     }
 
     toJSON() {
-        Logs.log("Export " + this.classId);
+        IngCore.Core.Logs.log("Export " + this.classId);
         return {
             key: this.apiKey,
             region: this.region,
@@ -62,7 +61,7 @@ class RiotApi {
         this.apiKey = data.key;
         this.region = data.region;
 
-        Logs.log("Import " + this.classId);
+        IngCore.Core.Logs.log("Import " + this.classId);
         this.reload();
     }
 
@@ -75,7 +74,7 @@ class RiotApi {
     setRegion(region) {
         this.region = region;
 
-        Logs.log(this.classId + " SetRegion '" + this.region + "'");
+        IngCore.Core.Logs.log(this.classId + " SetRegion '" + this.region + "'");
         this.reload();
     }
 
@@ -85,21 +84,20 @@ class RiotApi {
     setApiKey(key) {
         this.apiKey = key;
 
-        Logs.log(this.classId + " setApiKey '" + this.apiKey + "'");
+        IngCore.Core.Logs.log(this.classId + " setApiKey '" + this.apiKey + "'");
         this.reload();
     }
 
     /**
     * @param {JSON} data toJSON data
     */
-    static fromJSONSync(data) {
+    static fromJSON(data) {
         const RiotApiClient = new RiotApi();
         RiotApiClient.fromJSON(data);
 
         return RiotApiClient;
     }
 }
-RiotApi.fromJSON = RiotApi.fromJSONSync;
 
 //export
 module.exports = RiotApi;

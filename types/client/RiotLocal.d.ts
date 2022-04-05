@@ -12,14 +12,14 @@ declare class RiotLocal {
      * @param {String} endpoint Url Endpoint
      * @param {String} body Request Body
      */
-    static requestSync(method?: string, endpoint?: string, body?: string): Promise<any>;
+    static request(method?: string, endpoint?: string, body?: string): Promise<any>;
     /**
      *
      * @param {JSON} data Data from LocalResourse
-     * @param {any} args.. Replace With Arguments
+     * @param {any} args.. Replace Data With Arguments
      */
-    static requestFromJSONSync(data?: JSON): Promise<any>;
-    static getResourceSync(): {
+    static requestFromJSON(data?: JSON): Promise<any>;
+    static getResource(): {
         Chat: {
             'All Chat History': {
                 method: string;
@@ -167,9 +167,6 @@ declare class RiotLocal {
                 body: {};
                 replace: never[];
             };
-            /**
-             * @param {String} path path to lockfile
-             */
             RiotKV_RNet_GetSettingsTEXT_CHAT_RNet_FetchSession: {
                 method: string;
                 endpoint: string;
@@ -182,11 +179,6 @@ declare class RiotLocal {
                 method: string;
                 endpoint: string;
                 body: {};
-                /**
-                 *
-                 * @param {String} ip ip of local api
-                 * @param {JSON} lockfile lockfile data
-                 */
                 replace: never[];
             };
             ANTI_ADDICTION_RNet_FetchWarningMessagePolicyState: {
@@ -351,13 +343,13 @@ declare class RiotLocal {
             };
             VOICE_CHAT_RNet_FetchSessions: {
                 method: string;
-                endpoint: string;
                 /**
                  *
                  * @param {String} method Method to request
                  * @param {String} endpoint Url Endpoint
                  * @param {String} body Request Body
                  */
+                endpoint: string;
                 body: {};
                 replace: never[];
             };
@@ -538,9 +530,6 @@ declare class RiotLocal {
                 body: {};
                 replace: never[];
             };
-            /**
-             * @param {String} path path to lockfile
-             */
             RiotKV_RNet_GetSettingsTEXT_CHAT_RNet_FetchSession: {
                 method: string;
                 endpoint: string;
@@ -553,11 +542,6 @@ declare class RiotLocal {
                 method: string;
                 endpoint: string;
                 body: {};
-                /**
-                 *
-                 * @param {String} ip ip of local api
-                 * @param {JSON} lockfile lockfile data
-                 */
                 replace: never[];
             };
             ANTI_ADDICTION_RNet_FetchWarningMessagePolicyState: {
@@ -722,13 +706,13 @@ declare class RiotLocal {
             };
             VOICE_CHAT_RNet_FetchSessions: {
                 method: string;
-                endpoint: string;
                 /**
                  *
                  * @param {String} method Method to request
                  * @param {String} endpoint Url Endpoint
                  * @param {String} body Request Body
                  */
+                endpoint: string;
                 body: {};
                 replace: never[];
             };
@@ -897,9 +881,6 @@ declare class RiotLocal {
                 body: {};
                 replace: never[];
             };
-            /**
-             * @param {String} path path to lockfile
-             */
             RiotKV_RNet_GetSettingsTEXT_CHAT_RNet_FetchSession: {
                 method: string;
                 endpoint: string;
@@ -912,11 +893,6 @@ declare class RiotLocal {
                 method: string;
                 endpoint: string;
                 body: {};
-                /**
-                 *
-                 * @param {String} ip ip of local api
-                 * @param {JSON} lockfile lockfile data
-                 */
                 replace: never[];
             };
             ANTI_ADDICTION_RNet_FetchWarningMessagePolicyState: {
@@ -1081,13 +1057,13 @@ declare class RiotLocal {
             };
             VOICE_CHAT_RNet_FetchSessions: {
                 method: string;
-                endpoint: string;
                 /**
                  *
                  * @param {String} method Method to request
                  * @param {String} endpoint Url Endpoint
                  * @param {String} body Request Body
                  */
+                endpoint: string;
                 body: {};
                 replace: never[];
             };
@@ -1128,14 +1104,6 @@ declare class RiotLocal {
      * @param {String} body Request Body
      */
     request(method?: string, endpoint?: string, body?: string): Promise<any>;
-    setIp(ip?: string): Promise<void>;
-}
-declare namespace RiotLocal {
-    import request = RiotLocal.requestSync;
-    export { request };
-    import requestFromJSON = RiotLocal.requestFromJSONSync;
-    export { requestFromJSON };
-    import getResource = RiotLocal.getResourceSync;
-    export { getResource };
+    setIp(ip?: any): Promise<void>;
 }
 //# sourceMappingURL=RiotLocal.d.ts.map

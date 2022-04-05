@@ -5,19 +5,21 @@ declare class Multifactor {
     * @param {Number} verificationCode Verification Code
     * @param {Boolean} toJSON return with toJSON data
     */
-    static verifySync(data: JSON, verificationCode: number, toJSON?: boolean): Promise<{
+    static verify(data: JSON, verificationCode: number, toJSON?: boolean): Promise<{
         cookie: any;
         accessToken: any;
         entitlements: any;
+        multifactor: any;
     }>;
     /**
     * @param {JSON} data Account toJSON data
     */
     constructor(data?: JSON);
     classId: string;
-    cookie: any;
+    cookie: import("@ing3kth/core/types/core/AxiosCookie");
     accessToken: any;
     entitlements: any;
+    multifactor: any;
     /**
     * @param {Number} verificationCode Verification Code
     */
@@ -25,15 +27,13 @@ declare class Multifactor {
         cookie: any;
         accessToken: any;
         entitlements: any;
+        multifactor: any;
     }>;
     toJSON(): {
         cookie: any;
         accessToken: any;
         entitlements: any;
+        multifactor: any;
     };
-}
-declare namespace Multifactor {
-    import verify = Multifactor.verifySync;
-    export { verify };
 }
 //# sourceMappingURL=Multifactor.d.ts.map

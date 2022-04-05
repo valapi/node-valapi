@@ -20,3 +20,8 @@ GET MMR_FetchLeaderboard
     async GetOrder(orderId) {
         return await this.AxiosClient.get(this.Region.url.playerData + `/store/v1/order/${orderId}`);
     }
+
+// NOT SORT //
+
+//Reauth Cookie
+https://auth.riotgames.com/authorize?redirect_uri=https%3A%2F%2Fplayvalorant.com%2Fopt_in&client_id=play-valorant-web-prod&response_type=token%20id_token&nonce=1

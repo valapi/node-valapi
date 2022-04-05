@@ -1,3 +1,7 @@
+# 1.5.4
+
+- A little bit changes
+
 # 1.5.3 (April 5, 2022  | In Development)
 
 - Local API (RiotLocal) is now available to use. `90% DONE`

@@ -3,21 +3,21 @@ declare class ValClient {
     /**
     * @param {JSON} data toJSON data
     */
-    static fromJSONSync(data: JSON): ValClient;
+    static fromJSON(data: JSON): ValClient;
     /**
-    * @param {JSON} data Account toJSON data
-    * @example data = { Account: ValAuth_Save, Region: 'latam' }
+    * @param {JSON} Account Account toJSON data
+    * @param {String} Region Region
     */
-    constructor(data?: JSON);
-    classId: string;
+    constructor(Account?: JSON, Region?: string);
+    classId: string | undefined;
     cookie: any;
     accessToken: any;
     entitlements: any;
     client: {
         version: string;
         platfrom: string;
-    };
-    region: any;
+    } | undefined;
+    region: string | undefined;
     reload(): void;
     RegionServices: ValRegion | undefined;
     AxiosData: {
@@ -55,7 +55,7 @@ declare class ValClient {
         cookie: any;
         accessToken: any;
         entitlements: any;
-        region: any;
+        region: string | undefined;
     };
     fromJSON(data: any): void;
     /**
@@ -77,10 +77,6 @@ declare class ValClient {
     * @param {JSON} cookie Cookie
     */
     setCookie(cookie?: JSON): void;
-}
-declare namespace ValClient {
-    import fromJSON = ValClient.fromJSONSync;
-    export { fromJSON };
 }
 import ValRegion = require("../resources/ValRegion");
 import Client = require("../service/ValClient/Client");

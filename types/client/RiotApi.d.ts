@@ -6,7 +6,7 @@ declare class RiotApi {
     /**
     * @param {JSON} data toJSON data
     */
-    static fromJSONSync(data: JSON): RiotApi;
+    static fromJSON(data: JSON): RiotApi;
     /**
     * @param {JSON} data Account toJSON data
     * @example data = { key: 'long-string', region: 'kr' }
@@ -43,10 +43,6 @@ declare class RiotApi {
     * @param {String} key API Key
     */
     setApiKey(key: string): void;
-}
-declare namespace RiotApi {
-    import fromJSON = RiotApi.fromJSONSync;
-    export { fromJSON };
 }
 import ValRegion = require("../resources/ValRegion");
 import AccountV1 = require("../service/RiotApi/AccountV1");

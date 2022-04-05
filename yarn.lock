@@ -2,115 +2,92 @@
 # yarn lockfile v1
 
 
-"@ing3kth/core@^1.6.6":
-  version "1.6.6"
-  resolved "https://registry.npmjs.org/@ing3kth/core/-/core-1.6.6.tgz"
-  integrity sha512-xwB1gaY2CAZPVjyR62fhAqZViggwW+6YFvur+t/PHDiXk5L2aD03ehamSMJZXe8a/88/iDlFaxhqRzH7N69vFQ==
+"@ing3kth/core@^1.6.7":
+  "integrity" "sha512-fvIE+5wALGes0PFCbshrWXEDsKIzI/JQC/3dMgCQrtuHlx+xBX/4BRp9pPziA3nFC7Kk/xaYviUTknEnyvUXOg=="
+  "resolved" "https://registry.npmjs.org/@ing3kth/core/-/core-1.6.7.tgz"
+  "version" "1.6.7"
   dependencies:
-    axios "^0.26.1"
-    axios-cookiejar-support "^2.0.4"
-    commander "^9.1.0"
-    systeminformation "^5.11.9"
-    tough-cookie "^4.0.0"
+    "axios" "^0.26.1"
+    "axios-cookiejar-support" "^2.0.4"
+    "commander" "^9.1.0"
+    "systeminformation" "^5.11.9"
+    "tough-cookie" "^4.0.0"
 
-agent-base@^6.0.2:
-  version "6.0.2"
-  resolved "https://registry.npmjs.org/agent-base/-/agent-base-6.0.2.tgz"
-  integrity sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==
+"agent-base@^6.0.2":
+  "integrity" "sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ=="
+  "resolved" "https://registry.npmjs.org/agent-base/-/agent-base-6.0.2.tgz"
+  "version" "6.0.2"
   dependencies:
-    debug "4"
+    "debug" "4"
 
-axios-cookiejar-support@^2.0.4:
-  version "2.0.4"
-  resolved "https://registry.npmjs.org/axios-cookiejar-support/-/axios-cookiejar-support-2.0.4.tgz"
-  integrity sha512-N4MwaEp5zCAv+wIp5OFZOPiD2qXCCnx21mMQu7yvO8E9j6YlZWazEHXpz7iJlk6HhZ8vh09ujYJJ594H+iVKmA==
+"axios-cookiejar-support@^2.0.4":
+  "integrity" "sha512-N4MwaEp5zCAv+wIp5OFZOPiD2qXCCnx21mMQu7yvO8E9j6YlZWazEHXpz7iJlk6HhZ8vh09ujYJJ594H+iVKmA=="
+  "resolved" "https://registry.npmjs.org/axios-cookiejar-support/-/axios-cookiejar-support-2.0.4.tgz"
+  "version" "2.0.4"
   dependencies:
-    http-cookie-agent "^1.0.2"
+    "http-cookie-agent" "^1.0.2"
 
-axios@^0.26.1:
-  version "0.26.1"
-  resolved "https://registry.npmjs.org/axios/-/axios-0.26.1.tgz"
-  integrity sha512-fPwcX4EvnSHuInCMItEhAGnaSEXRBjtzh9fOtsE6E1G6p7vl7edEeZe11QHf18+6+9gR5PbKV/sGKNaD8YaMeA==
+"axios@^0.26.1", "axios@>=0.20.0":
+  "integrity" "sha512-fPwcX4EvnSHuInCMItEhAGnaSEXRBjtzh9fOtsE6E1G6p7vl7edEeZe11QHf18+6+9gR5PbKV/sGKNaD8YaMeA=="
+  "resolved" "https://registry.npmjs.org/axios/-/axios-0.26.1.tgz"
+  "version" "0.26.1"
   dependencies:
-    follow-redirects "^1.14.8"
+    "follow-redirects" "^1.14.8"
 
-commander@^9.1.0:
-  version "9.1.0"
-  resolved "https://registry.npmjs.org/commander/-/commander-9.1.0.tgz"
-  integrity sha512-i0/MaqBtdbnJ4XQs4Pmyb+oFQl+q0lsAmokVUH92SlSw4fkeAcG3bVon+Qt7hmtF+u3Het6o4VgrcY3qAoEB6w==
+"commander@^9.1.0":
+  "integrity" "sha512-i0/MaqBtdbnJ4XQs4Pmyb+oFQl+q0lsAmokVUH92SlSw4fkeAcG3bVon+Qt7hmtF+u3Het6o4VgrcY3qAoEB6w=="
+  "resolved" "https://registry.npmjs.org/commander/-/commander-9.1.0.tgz"
+  "version" "9.1.0"
 
-debug@4:
-  version "4.3.4"
-  resolved "https://registry.npmjs.org/debug/-/debug-4.3.4.tgz"
-  integrity sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==
+"debug@4":
+  "integrity" "sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ=="
+  "resolved" "https://registry.npmjs.org/debug/-/debug-4.3.4.tgz"
+  "version" "4.3.4"
   dependencies:
-    ms "2.1.2"
+    "ms" "2.1.2"
 
-follow-redirects@^1.14.8:
-  version "1.14.9"
-  resolved "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.14.9.tgz"
-  integrity sha512-MQDfihBQYMcyy5dhRDJUHcw7lb2Pv/TuE6xP1vyraLukNDHKbDxDNaOE3NbCAdKQApno+GPRyo1YAp89yCjK4w==
+"follow-redirects@^1.14.8":
+  "integrity" "sha512-MQDfihBQYMcyy5dhRDJUHcw7lb2Pv/TuE6xP1vyraLukNDHKbDxDNaOE3NbCAdKQApno+GPRyo1YAp89yCjK4w=="
+  "resolved" "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.14.9.tgz"
+  "version" "1.14.9"
 
-http-cookie-agent@^1.0.2:
-  version "1.0.5"
-  resolved "https://registry.npmjs.org/http-cookie-agent/-/http-cookie-agent-1.0.5.tgz"
-  integrity sha512-X8QM/rGPu/cb7A37uNLuz+PZfkmlQ9PycDD+/QsmqICXBd9grKWdWKMzg/BDkzxIbV+P/FYTsKZn08KcXgbLsQ==
+"http-cookie-agent@^1.0.2":
+  "integrity" "sha512-X8QM/rGPu/cb7A37uNLuz+PZfkmlQ9PycDD+/QsmqICXBd9grKWdWKMzg/BDkzxIbV+P/FYTsKZn08KcXgbLsQ=="
+  "resolved" "https://registry.npmjs.org/http-cookie-agent/-/http-cookie-agent-1.0.5.tgz"
+  "version" "1.0.5"
   dependencies:
-    agent-base "^6.0.2"
+    "agent-base" "^6.0.2"
 
-https@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.npmjs.org/https/-/https-1.0.0.tgz"
-  integrity sha1-PDfHrhqO65ZpBKKtHpdaGUt+06Q=
+"ms@2.1.2":
+  "integrity" "sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w=="
+  "resolved" "https://registry.npmjs.org/ms/-/ms-2.1.2.tgz"
+  "version" "2.1.2"
 
-ms@2.1.2:
-  version "2.1.2"
-  resolved "https://registry.npmjs.org/ms/-/ms-2.1.2.tgz"
-  integrity sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==
+"psl@^1.1.33":
+  "integrity" "sha512-RIdOzyoavK+hA18OGGWDqUTsCLhtA7IcZ/6NCs4fFJaHBDab+pDDmDIByWFRQJq2Cd7r1OoQxBGKOaztq+hjIQ=="
+  "resolved" "https://registry.npmjs.org/psl/-/psl-1.8.0.tgz"
+  "version" "1.8.0"
 
-psl@^1.1.33:
-  version "1.8.0"
-  resolved "https://registry.npmjs.org/psl/-/psl-1.8.0.tgz"
-  integrity sha512-RIdOzyoavK+hA18OGGWDqUTsCLhtA7IcZ/6NCs4fFJaHBDab+pDDmDIByWFRQJq2Cd7r1OoQxBGKOaztq+hjIQ==
+"punycode@^2.1.1":
+  "integrity" "sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A=="
+  "resolved" "https://registry.npmjs.org/punycode/-/punycode-2.1.1.tgz"
+  "version" "2.1.1"
 
-punycode@1.3.2:
-  version "1.3.2"
-  resolved "https://registry.npmjs.org/punycode/-/punycode-1.3.2.tgz"
-  integrity sha1-llOgNvt8HuQjQvIyXM7v6jkmxI0=
+"systeminformation@^5.11.9":
+  "integrity" "sha512-eeMtL9UJFR/LYG+2rpeAgZ0Va4ojlNQTkYiQH/xbbPwDjDMsaetj3Pkc+C1aH5G8mav6HvDY8kI4Vl4noksSkA=="
+  "resolved" "https://registry.npmjs.org/systeminformation/-/systeminformation-5.11.9.tgz"
+  "version" "5.11.9"
 
-punycode@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.npmjs.org/punycode/-/punycode-2.1.1.tgz"
-  integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
-
-querystring@0.2.0:
-  version "0.2.0"
-  resolved "https://registry.npmjs.org/querystring/-/querystring-0.2.0.tgz"
-  integrity sha1-sgmEkgO7Jd+CDadW50cAWHhSFiA=
-
-systeminformation@^5.11.9:
-  version "5.11.9"
-  resolved "https://registry.npmjs.org/systeminformation/-/systeminformation-5.11.9.tgz"
-  integrity sha512-eeMtL9UJFR/LYG+2rpeAgZ0Va4ojlNQTkYiQH/xbbPwDjDMsaetj3Pkc+C1aH5G8mav6HvDY8kI4Vl4noksSkA==
-
-tough-cookie@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.npmjs.org/tough-cookie/-/tough-cookie-4.0.0.tgz"
-  integrity sha512-tHdtEpQCMrc1YLrMaqXXcj6AxhYi/xgit6mZu1+EDWUn+qhUf8wMQoFIy9NXuq23zAwtcB0t/MjACGR18pcRbg==
+"tough-cookie@^4.0.0", "tough-cookie@>=4.0.0":
+  "integrity" "sha512-tHdtEpQCMrc1YLrMaqXXcj6AxhYi/xgit6mZu1+EDWUn+qhUf8wMQoFIy9NXuq23zAwtcB0t/MjACGR18pcRbg=="
+  "resolved" "https://registry.npmjs.org/tough-cookie/-/tough-cookie-4.0.0.tgz"
+  "version" "4.0.0"
   dependencies:
-    psl "^1.1.33"
-    punycode "^2.1.1"
-    universalify "^0.1.2"
+    "psl" "^1.1.33"
+    "punycode" "^2.1.1"
+    "universalify" "^0.1.2"
 
-universalify@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.npmjs.org/universalify/-/universalify-0.1.2.tgz"
-  integrity sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg==
-
-url@^0.11.0:
-  version "0.11.0"
-  resolved "https://registry.npmjs.org/url/-/url-0.11.0.tgz"
-  integrity sha1-ODjpfPxgUh63PFJajlW/3Z4uKPE=
-  dependencies:
-    punycode "1.3.2"
-    querystring "0.2.0"
+"universalify@^0.1.2":
+  "integrity" "sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg=="
+  "resolved" "https://registry.npmjs.org/universalify/-/universalify-0.1.2.tgz"
+  "version" "0.1.2"

@@ -1,16 +1,12 @@
 //import
-const url = require('url');
-
 const IngCore = require('@ing3kth/core');
-const Logs = IngCore.Logs;
-const AxiosClient = IngCore.AxiosClient;
 
 //class
 class Account {
     /**
-    * @param {String} username Riot Account Username
-    * @param {String} password Riot Account Password
-    */
+     * @param {String} username Riot Account Username
+     * @param {String} password Riot Account Password
+     */
     constructor(username = false, password = false) {
         this.classId = '@ing3kth/val-api/Account';
         this.cookie = null;
@@ -18,24 +14,24 @@ class Account {
         this.entitlements = null;
         this.multifactor = false;
 
-        if(username && password){
+        if (username && password) {
             return this.login(username, password);
         }
     }
 
     /**
-    * @param {String} username Riot Account Username
-    * @param {String} password Riot Account Password
-    */
-     async login(username, password) {
-        const _cookie = new IngCore.AxiosCookie();
-        const axiosClient = AxiosClient.client({
+     * @param {String} username Riot Account Username
+     * @param {String} password Riot Account Password
+     */
+    async login(username, password) {
+        const _cookie = new IngCore.Core.AxiosCookie();
+        const axiosClient = IngCore.Core.AxiosClient.client({
             cookie: true,
             jar: _cookie.toJSON(),
             headers: {}
         });
 
-        const auth_cookie = await axiosClient.post('https://auth.riotgames.com/api/v1/authorization', {
+        await axiosClient.post('https://auth.riotgames.com/api/v1/authorization', {
             'client_id': 'play-valorant-web-prod',
             'nonce': '1',
             'redirect_uri': 'https://playvalorant.com/opt_in',
@@ -46,7 +42,7 @@ class Account {
                 'Content-Type': 'application/json'
             }
         });
-        await Logs.log(this.classId + " Auth Cookie");
+        await IngCore.Core.Logs.log(this.classId + " Auth Cookie - POST https://auth.riotgames.com/api/v1/authorization");
 
         //ACCESS TOKEN
         const auth_response = await axiosClient.put('https://auth.riotgames.com/api/v1/authorization', {
@@ -57,24 +53,32 @@ class Account {
         }, {
             jar: _cookie,
         });
-        await Logs.log(this.classId + " Auth");
+        await IngCore.Core.Logs.log(this.classId + " Auth - PUT https://auth.riotgames.com/api/v1/authorization");
 
         //multifactor
         if (auth_response.data.type == 'multifactor') {
             this.multifactor = true;
             this.cookie = _cookie;
 
-            await Logs.log(this.classId + " Multi-Factor");
+            await IngCore.Core.Logs.log(this.classId + " Export Multi-Factor");
             return this.toJSON();
         }
 
         // get asscess token
-        const get_url = auth_response.data.response.parameters.uri;
-        const url_parts = url.parse(get_url, true);
-        const removeSharpTag = url_parts.hash.replace('#', '');
-        const accessToken_params = new URLSearchParams(removeSharpTag);
-        this.accessToken = accessToken_params.get('access_token');
-        await Logs.log(this.classId + " AccessToken");
+        const _search = new URL(auth_response.data.response.parameters.uri)
+        var _get_where;
+        var _get_accessToken;
+
+        if (_search.search) {
+            _get_where = _search.search;
+            _get_accessToken = 'access_token';
+        } else {
+            _get_where = _search.hash;
+            _get_accessToken = '#access_token';
+        }
+
+        this.accessToken = new URLSearchParams(_get_where).get(_get_accessToken);
+        await IngCore.Core.Logs.log(this.classId + " AccessToken");
 
         //ENTITLEMENTS
         const entitlements_response = await axiosClient.post('https://entitlements.auth.riotgames.com/api/token/v1', {}, {
@@ -85,14 +89,14 @@ class Account {
         });
 
         this.entitlements = entitlements_response.data.entitlements_token;
-        await Logs.log(this.classId + " Entitlements");
+        await IngCore.Core.Logs.log(this.classId + " Entitlements - POST https://entitlements.auth.riotgames.com/api/token/v1");
 
         this.cookie = _cookie;
         return this.toJSON();
     }
 
     toJSON() {
-        Logs.log("Export " + this.classId);
+        IngCore.Core.Logs.log("Export " + this.classId);
         return {
             cookie: this.cookie.toJSON(),
             accessToken: this.accessToken,
@@ -102,15 +106,15 @@ class Account {
     }
 
     /**
-    * @param {String} username Riot Account Username
-    * @param {String} password Riot Account Password
-    * @param {Boolean} toJSON return with toJSON data
-    */
-    static async loginSync(username, password, toJSON = false) {
+     * @param {String} username Riot Account Username
+     * @param {String} password Riot Account Password
+     * @param {Boolean} toJSON return with toJSON data
+     */
+    static async login(username, password, toJSON = false) {
         const NewAccount = new Account();
         await NewAccount.login(username, password);
 
-        if(toJSON){
+        if (toJSON) {
             return NewAccount.toJSON();
         }
         return NewAccount;
@@ -118,6 +122,4 @@ class Account {
 }
 
 //export
-Account.login = Account.loginSync;
-
 module.exports = Account;

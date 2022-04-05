@@ -1,6 +1,5 @@
 //import
 const IngCore = require('@ing3kth/core');
-const Logs = IngCore.Core.Logs;
 
 const ValRegion = require('../resources/ValRegion');
 
@@ -17,30 +16,30 @@ const Store = require('../service/ValClient/Store');
 
 class ValClient {
     /**
-    * @param {JSON} data Account toJSON data
-    * @example data = { Account: ValAuth_Save, Region: 'latam' }
+    * @param {JSON} Account Account toJSON data
+    * @param {String} Region Region
     */
-    constructor(data = {
-        Account: {
-            cookie: new IngCore.Core.AxiosCookie().toJSON(),
-            accessToken: null,
-            entitlements: null,
-        },
-        Region: 'ap',
-    }) {
-        if(data.classId && data.classId === '@ing3kth/val-api/Account' || '@ing3kth/val-api/Multifactor'){
-            data = data.toJSON();
+    constructor(Account = {
+        cookie: new IngCore.Core.AxiosCookie().toJSON(),
+        accessToken: null,
+        entitlements: null,
+        multifactor: false,
+    }, Region = 'ap') {
+        if(Account.multifactor){
+            IngCore.Core.Logs.log('This Account is have a Multifactor', 'err', true);
+            return;
         }
+
         //data
         this.classId = '@ing3kth/val-api/ValClient';
-        this.cookie = data.Account.cookie;
-        this.accessToken = data.Account.accessToken;
-        this.entitlements = data.Account.entitlements;
+        this.cookie = Account.cookie;
+        this.accessToken = Account.accessToken;
+        this.entitlements = Account.entitlements;
         this.client = {
             version: 'release-04.04-shipping-16-679250',
             platfrom: 'ew0KCSJwbGF0Zm9ybVR5cGUiOiAiUEMiLA0KCSJwbGF0Zm9ybU9TIjogIldpbmRvd3MiLA0KCSJwbGF0Zm9ybU9TVmVyc2lvbiI6ICIxMC4wLjE5MDQyLjEuMjU2LjY0Yml0IiwNCgkicGxhdGZvcm1DaGlwc2V0IjogIlVua25vd24iDQp9'
         };
-        this.region = data.Region;
+        this.region = Region;
 
         this.reload();
     }
@@ -75,13 +74,13 @@ class ValClient {
         this.Pregame = new PreGame(this.services);
         this.Store = new Store(this.services);
 
-        Logs.log(this.classId + " Reload");
+        IngCore.Core.Logs.log(this.classId + " Reload");
     }
 
     //save
     
     toJSON() {
-        Logs.log("Export " + this.classId);
+        IngCore.Core.Logs.log("Export " + this.classId);
         return {
             cookie: this.cookie,
             accessToken: this.accessToken,
@@ -96,7 +95,7 @@ class ValClient {
         this.entitlements = data.entitlements;
         this.region = data.region;
 
-        Logs.log("Import " + this.classId);
+        IngCore.Core.Logs.log("Import " + this.classId);
         this.reload();
     }
 
@@ -109,7 +108,7 @@ class ValClient {
     setRegion(region) {
         this.region = region;
 
-        Logs.log(this.classId +  " SetRegion '" + this.region + "'");
+        IngCore.Core.Logs.log(this.classId +  " SetRegion '" + this.region + "'");
         this.reload();
     }
 
@@ -120,7 +119,7 @@ class ValClient {
     setClientVersion(clientVersion) {
         this.client.version = clientVersion;
         
-        Logs.log(this.classId +  " SetClientPlatfrom '" + this.client.version + "'");
+        IngCore.Core.Logs.log(this.classId +  " SetClientPlatfrom '" + this.client.version + "'");
         this.reload();
     }
 
@@ -131,7 +130,7 @@ class ValClient {
     setClientPlatfrom_fromJSON(clientPlatfrom) {
         this.client.platfrom = IngCore.Utils.Base64.toBase64(clientPlatfrom);
         
-        Logs.log(this.classId +  " SetClientPlatfrom '" + this.client.platfrom + "'");
+        IngCore.Core.Logs.log(this.classId +  " SetClientPlatfrom '" + this.client.platfrom + "'");
         this.reload();
     }
 
@@ -141,22 +140,20 @@ class ValClient {
     setCookie(cookie = new IngCore.Core.AxiosCookie().toJSON()) {
         this.cookie = cookie;
         
-        Logs.log(this.classId +  " SetCookie '" + this.cookie + "'");
+        IngCore.Core.Logs.log(this.classId +  " SetCookie '" + this.cookie + "'");
         this.reload();
     }
 
     /**
     * @param {JSON} data toJSON data
     */
-    static fromJSONSync(data) {
+    static fromJSON(data) {
         const ValApiClient = new ValClient();
         ValApiClient.fromJSON(data);
 
         return ValApiClient;
     }
-
 }
-ValClient.fromJSON = ValClient.fromJSONSync;
 
 //export
 module.exports = ValClient;
