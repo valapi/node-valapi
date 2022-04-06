@@ -19,5 +19,17 @@ module.exports = {
         QueueId: require(`./resources/data/QueueId`),
         Region: require(`./resources/data/Region`),
         HTTP_Response: require(`./resources/data/HTTP_Response`),
-    }
+    },
+
+    //interface
+    Interface: {
+        RiotApi: require('./resources/interface/i_RiotApi'),
+        RiotLocalJSON: require('./resources/interface/i_RiotLocalJSON'),
+        RiotLocalLockfile: require('./resources/interface/i_RiotLocalLockfile'),
+        RiotLocalReplace: require('./resources/interface/i_RiotLocalReplace'),
+        RiotLocalResources: require('./resources/interface/i_RiotLocalResources'),
+        ValClient: require('./resources/interface/i_ValClient'),
+        ValClientAuth: require('./resources/interface/i_ValClientAuth'),
+        ValRegion: require('./resources/interface/i_ValRegion'),
+    },
 };

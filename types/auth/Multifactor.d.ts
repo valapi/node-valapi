@@ -1,39 +1,56 @@
 export = Multifactor;
+/**
+ * * Class ID: @ing3kth/val-api/RiotApi
+ */
 declare class Multifactor {
     /**
-    * @param {JSON} data ValAuth_Account toJSON data
+    * @param {i_ValClientAuth} data ValAuth_Account toJSON data
     * @param {Number} verificationCode Verification Code
-    * @param {Boolean} toJSON return with toJSON data
     */
-    static verify(data: JSON, verificationCode: number, toJSON?: boolean): Promise<{
-        cookie: any;
-        accessToken: any;
-        entitlements: any;
-        multifactor: any;
+    static verify(data: {
+        cookie: ObjectConstructor;
+        accessToken: StringConstructor;
+        entitlements: StringConstructor;
+        multifactor: BooleanConstructor;
+    }, verificationCode: number): Promise<{
+        cookie: ObjectConstructor;
+        accessToken: StringConstructor;
+        entitlements: StringConstructor;
+        multifactor: BooleanConstructor;
     }>;
     /**
-    * @param {JSON} data Account toJSON data
+    * @param {i_ValClientAuth} data Account toJSON data
     */
-    constructor(data?: JSON);
+    constructor(data?: {
+        cookie: ObjectConstructor;
+        accessToken: StringConstructor;
+        entitlements: StringConstructor;
+        multifactor: BooleanConstructor;
+    });
     classId: string;
-    cookie: import("@ing3kth/core/types/core/AxiosCookie");
-    accessToken: any;
-    entitlements: any;
-    multifactor: any;
+    cookie: void;
+    accessToken: StringConstructor;
+    entitlements: StringConstructor;
+    multifactor: BooleanConstructor;
     /**
     * @param {Number} verificationCode Verification Code
+    * @returns {i_ValClientAuth}
     */
-    verify(verificationCode: number): Promise<{
-        cookie: any;
-        accessToken: any;
-        entitlements: any;
-        multifactor: any;
-    }>;
+    execute(verificationCode: number): {
+        cookie: ObjectConstructor;
+        accessToken: StringConstructor;
+        entitlements: StringConstructor;
+        multifactor: BooleanConstructor;
+    };
+    /**
+     *
+     * @returns {i_ValClientAuth}
+     */
     toJSON(): {
-        cookie: any;
-        accessToken: any;
-        entitlements: any;
-        multifactor: any;
+        cookie: ObjectConstructor;
+        accessToken: StringConstructor;
+        entitlements: StringConstructor;
+        multifactor: BooleanConstructor;
     };
 }
 //# sourceMappingURL=Multifactor.d.ts.map

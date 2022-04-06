@@ -2,9 +2,14 @@
 const AxiosClient = require('@ing3kth/core').Core.AxiosClient;
 
 //service
+
+/**
+ * * Class ID: @ing3kth/val-api/ValClient/Contract
+ */
 class Contract {
     /**
     * @param {JSON} data Services Data
+    * @returns {Object}
     */
     constructor(data) {
         this.classId = '@ing3kth/val-api/ValClient/Contract';
@@ -13,6 +18,7 @@ class Contract {
     }
 
     /**
+     * @returns {Object}
     */
     async DefinitionsFetch() {
         return await this.AxiosClient.get(this.Region.url.playerData + `/contract-definitions/v3/item-upgrades`);
@@ -20,6 +26,7 @@ class Contract {
 
     /**
     * @param {String} puuid PlayerUUID
+    * @returns {Object}
     */
     async Fetch(puuid) {
         return await this.AxiosClient.get(this.Region.url.playerData + `/contracts/v1/contracts/${puuid}`);

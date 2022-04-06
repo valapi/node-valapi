@@ -24,9 +24,9 @@ module.exports = {
         //format 2
         Arabic_UAE: "ar-AE",
         German_Germany: "de-DE",
-        English_UnitedKingdom: "en-GB", //not recommend
+        English_UnitedKingdom: "en-GB",
         English_UnitedStates: "en-US",
-        Spanish_Spain: "es-ES", //not recommend
+        Spanish_Spain: "es-ES",
         Spanish_Mexico: "es-MX",
         French_France: "fr-FR",
         Indonesian_Indonesia: "id-ID",

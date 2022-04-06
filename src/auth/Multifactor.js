@@ -1,10 +1,15 @@
 //import
 const IngCore = require('@ing3kth/core');
+const i_ValClientAuth = require('../resources/interface/i_ValClientAuth');
 
 //class
+
+/**
+ * * Class ID: @ing3kth/val-api/RiotApi
+ */
 class Multifactor {
     /**
-    * @param {JSON} data Account toJSON data
+    * @param {i_ValClientAuth} data Account toJSON data
     */
     constructor(data = {
         cookie: new IngCore.Core.AxiosCookie().toJSON(),
@@ -25,8 +30,9 @@ class Multifactor {
 
     /**
     * @param {Number} verificationCode Verification Code
+    * @returns {i_ValClientAuth}
     */
-     async verify(verificationCode) {
+     async execute(verificationCode) {
         const _cookie = this.cookie;
         const axiosClient = IngCore.Core.AxiosClient.client({
             cookie: true,
@@ -76,6 +82,10 @@ class Multifactor {
         return this.toJSON();
     }
 
+    /**
+     * 
+     * @returns {i_ValClientAuth}
+     */
     toJSON() {
         IngCore.Core.Logs.log("Export " + this.classId);
         return {
@@ -87,18 +97,12 @@ class Multifactor {
     }
 
     /**
-    * @param {JSON} data ValAuth_Account toJSON data
+    * @param {i_ValClientAuth} data ValAuth_Account toJSON data
     * @param {Number} verificationCode Verification Code
-    * @param {Boolean} toJSON return with toJSON data
     */
-    static async verify(data, verificationCode, toJSON = false) {
+    static async verify(data, verificationCode) {
         const MultifactorAccount = new Multifactor(data);
-        await MultifactorAccount.verify(verificationCode);
-
-        if(toJSON){
-            return MultifactorAccount.toJSON();
-        }
-        return MultifactorAccount;
+        return await MultifactorAccount.execute(verificationCode);
     }
 }
 

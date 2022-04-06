@@ -1,4 +1,7 @@
 export = ContentV1;
+/**
+ * * Class ID: @ing3kth/val-api/RiotApi/ContentV1
+ */
 declare class ContentV1 {
     /**
     * @param {JSON} data Services Data

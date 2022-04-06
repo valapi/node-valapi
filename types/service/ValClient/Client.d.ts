@@ -1,4 +1,7 @@
 export = Client;
+/**
+ * * Class ID: @ing3kth/val-api/ValClient/Client
+ */
 declare class Client {
     /**
     * @param {JSON} data Services Data
@@ -9,13 +12,16 @@ declare class Client {
     Region: any;
     /**
     * @param {String} puuid PlayerUUID
+    * @returns {Object}
     */
-    GetSession(puuid: string): Promise<any>;
+    GetSession(puuid: string): Object;
     /**
+     * @returns {Object}
     */
-    FetchContent(): Promise<any>;
+    FetchContent(): Object;
     /**
+     * @returns {Object}
     */
-    FetchConfig(): Promise<any>;
+    FetchConfig(): Object;
 }
 //# sourceMappingURL=Client.d.ts.map

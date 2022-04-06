@@ -2,6 +2,10 @@
 const AxiosClient = require('@ing3kth/core').Core.AxiosClient;
 
 //class
+
+/**
+ * * Class ID: @ing3kth/val-api/RiotApi/ContentV1
+ */
 class ContentV1 {
     /**
     * @param {JSON} data Services Data

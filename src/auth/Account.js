@@ -1,7 +1,12 @@
 //import
 const IngCore = require('@ing3kth/core');
+const i_ValClientAuth = require('../resources/interface/i_ValClientAuth');
 
 //class
+
+/**
+ * * Class ID: @ing3kth/val-api/Account
+ */
 class Account {
     /**
      * @param {String} username Riot Account Username
@@ -14,16 +19,17 @@ class Account {
         this.entitlements = null;
         this.multifactor = false;
 
-        if (username && password) {
-            return this.login(username, password);
+        if(username && password){
+            return this.execute(username, password);
         }
     }
 
     /**
      * @param {String} username Riot Account Username
      * @param {String} password Riot Account Password
+     * @returns {i_ValClientAuth}
      */
-    async login(username, password) {
+    async execute(username, password) {
         const _cookie = new IngCore.Core.AxiosCookie();
         const axiosClient = IngCore.Core.AxiosClient.client({
             cookie: true,
@@ -95,6 +101,10 @@ class Account {
         return this.toJSON();
     }
 
+    /**
+     * 
+     * @returns {i_ValClientAuth}
+     */
     toJSON() {
         IngCore.Core.Logs.log("Export " + this.classId);
         return {
@@ -108,16 +118,11 @@ class Account {
     /**
      * @param {String} username Riot Account Username
      * @param {String} password Riot Account Password
-     * @param {Boolean} toJSON return with toJSON data
+     * @returns {i_ValClientAuth}
      */
-    static async login(username, password, toJSON = false) {
+    static async login(username, password) {
         const NewAccount = new Account();
-        await NewAccount.login(username, password);
-
-        if (toJSON) {
-            return NewAccount.toJSON();
-        }
-        return NewAccount;
+        return await NewAccount.execute(username, password);
     }
 }
 

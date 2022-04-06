@@ -1,7 +1,11 @@
 export = Player;
+/**
+ * * Class ID: @ing3kth/val-api/ValClient/Player
+ */
 declare class Player {
     /**
     * @param {JSON} data Services Data
+    * @returns {Object}
     */
     constructor(data: JSON);
     classId: string;
@@ -9,32 +13,39 @@ declare class Player {
     Region: any;
     /**
     * @param {String} puuid PlayerUUID
+    * @returns {Object}
     */
-    GetUsername(puuid: string): Promise<any>;
+    GetUsername(puuid: string): Object;
     /**
+     * @returns {Object}
     */
-    GetUserInfo(): Promise<any>;
+    GetUserInfo(): Object;
     /**
     * @param {String} puuid PlayerUUID
+    * @returns {Object}
     */
-    FetchPlayer(puuid: string): Promise<any>;
+    FetchPlayer(puuid: string): Object;
     /**
     * @param {String} puuid PlayerUUID
     * @param {String} queueId QueueID
     * @param {Number} startIndex startIndex
     * @param {Number} endIndex endIndex
+    * @returns {Object}
     */
-    FetchCompetitiveUpdates(puuid: string, queueId?: string, startIndex?: number, endIndex?: number): Promise<any>;
+    FetchCompetitiveUpdates(puuid: string, queueId?: string, startIndex?: number, endIndex?: number): Object;
     /**
     * @param {String} puuid PlayerUUID
+    * @returns {Object}
     */
-    Loadout(puuid: string): Promise<any>;
+    Loadout(puuid: string): Object;
     /**
     * @param {String} puuid PlayerUUID
+    * @returns {Object}
     */
-    AccountXP(puuid: string): Promise<any>;
+    AccountXP(puuid: string): Object;
     /**
+     * @returns {Object}
     */
-    FetchPlayerRestrictions(): Promise<any>;
+    FetchPlayerRestrictions(): Object;
 }
 //# sourceMappingURL=Player.d.ts.map

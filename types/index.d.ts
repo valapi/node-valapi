@@ -250,4 +250,70 @@ export namespace Resource {
         };
     };
 }
+export namespace Interface {
+    const RiotApi_2: {
+        apiKey: StringConstructor;
+        region: StringConstructor;
+    };
+    export { RiotApi_2 as RiotApi };
+    export const RiotLocalJSON: {
+        method: StringConstructor;
+        endpoint: StringConstructor;
+        body: ObjectConstructor;
+        replace: {
+            name: StringConstructor;
+            with: StringConstructor;
+            where: StringConstructor;
+        }[];
+    };
+    export const RiotLocalLockfile: {
+        name: StringConstructor;
+        pid: NumberConstructor;
+        port: NumberConstructor;
+        password: StringConstructor;
+        protocol: StringConstructor;
+    };
+    export const RiotLocalReplace: {
+        name: StringConstructor;
+        with: StringConstructor;
+        where: StringConstructor;
+    };
+    export const RiotLocalResources: {
+        Chat: ObjectConstructor;
+        Main: ObjectConstructor;
+        More: ObjectConstructor;
+    };
+    const ValClient_2: {
+        cookie: ObjectConstructor;
+        accessToken: StringConstructor;
+        entitlements: StringConstructor;
+        region: StringConstructor;
+    };
+    export { ValClient_2 as ValClient };
+    export const ValClientAuth: {
+        cookie: ObjectConstructor;
+        accessToken: StringConstructor;
+        entitlements: StringConstructor;
+        multifactor: BooleanConstructor;
+    };
+    const ValRegion_2: {
+        data: {
+            base: StringConstructor;
+            api: StringConstructor;
+            server: StringConstructor;
+            riot: StringConstructor;
+        };
+        url: {
+            playerData: StringConstructor;
+            partyService: StringConstructor;
+            sharedData: StringConstructor;
+        };
+        riot: {
+            api: StringConstructor;
+            esports: StringConstructor;
+            server: StringConstructor;
+        };
+    };
+    export { ValRegion_2 as ValRegion };
+}
 //# sourceMappingURL=index.d.ts.map

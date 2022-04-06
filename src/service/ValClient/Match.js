@@ -2,9 +2,14 @@
 const AxiosClient = require('@ing3kth/core').Core.AxiosClient;
 
 //service
+
+/**
+ * * Class ID: @ing3kth/val-api/ValClient/Match
+ */
 class Match {
     /**
     * @param {JSON} data Services Data
+    * @returns {Object}
     */
     constructor(data) {
         this.classId = '@ing3kth/val-api/ValClient/Match';
@@ -17,6 +22,7 @@ class Match {
     /**
     * @description Get contract definitions
     * @param {String} matchId MatchID
+    * @returns {Object}
     */
      async FetchMatchDetails(matchId) {
         return await this.AxiosClient.get(this.Region.url.playerData + `/match-details/v1/matches/${matchId}`);
@@ -27,6 +33,7 @@ class Match {
     * @param {String} queueId QueueID
     * @param {Number} startIndex startIndex
     * @param {Number} endIndex endIndex
+    * @returns {Object}
     */
      async FetchMatchHistory(puuid, queueId = null, startIndex = 0, endIndex = 10) {
         let _url = this.Region.url.playerData + `/match-history/v1/history/${puuid}?startIndex=${startIndex}&endIndex=${endIndex}` ;

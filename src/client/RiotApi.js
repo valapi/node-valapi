@@ -1,6 +1,7 @@
 //import
 const IngCore = require('@ing3kth/core');
 
+const i_RiotApi = require('../resources/interface/i_RiotApi');
 const ValRegion = require('../resources/ValRegion');
 
 const AccountV1 = require('../service/RiotApi/AccountV1');
@@ -11,23 +12,35 @@ const ContentV1 = require('../service/RiotApi/ContentV1');
 
 /**
  * Official Api From Riot Games
+ * 
+ * You Can Get API Key From https://developer.riotgames.com/
+ * 
+ * * Class ID: @ing3kth/val-api/RiotApi
+ * * Use Anywhere: true
  */
 class RiotApi {
     /**
-    * @param {JSON} data Account toJSON data
-    * @example data = { key: 'long-string', region: 'kr' }
+    * @param {i_RiotApi} data RiotApi toJSON Data
     */
     constructor(data = {
-        key: '',
-        region: 'na',
+        apiKey: null,
+        region: 'ap',
     }) {
+        if(!key){
+            IngCore.Core.Logs.log(this.classId + " Missing API Key", 'err', true);
+            return;
+        }
+
         this.classId = '@ing3kth/val-api/RiotApi';
-        this.apiKey = data.key;
+        this.apiKey = data.apiKey;
         this.region = data.region;
 
         this.reload();
     }
 
+    /**
+     * @returns {void}
+     */
     reload() {
         this.RegionServices = new ValRegion(this.region);
 
@@ -49,6 +62,10 @@ class RiotApi {
         IngCore.Core.Logs.log(this.classId + " Reload");
     }
 
+    /**
+     * 
+     * @returns {i_RiotApi}
+     */
     toJSON() {
         IngCore.Core.Logs.log("Export " + this.classId);
         return {
@@ -57,6 +74,10 @@ class RiotApi {
         };
     }
 
+    /**
+     * 
+     * @param {i_RiotApi} data RiotApi toJSON Data
+     */
     fromJSON(data) {
         this.apiKey = data.key;
         this.region = data.region;

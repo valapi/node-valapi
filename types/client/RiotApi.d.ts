@@ -1,6 +1,11 @@
 export = RiotApi;
 /**
  * Official Api From Riot Games
+ *
+ * You Can Get API Key From https://developer.riotgames.com/
+ *
+ * * Class ID: @ing3kth/val-api/RiotApi
+ * * Use Anywhere: true
  */
 declare class RiotApi {
     /**
@@ -8,32 +13,48 @@ declare class RiotApi {
     */
     static fromJSON(data: JSON): RiotApi;
     /**
-    * @param {JSON} data Account toJSON data
-    * @example data = { key: 'long-string', region: 'kr' }
+    * @param {i_RiotApi} data RiotApi toJSON Data
     */
-    constructor(data?: JSON);
-    classId: string;
-    apiKey: any;
-    region: any;
+    constructor(data?: {
+        apiKey: StringConstructor;
+        region: StringConstructor;
+    });
+    classId: string | undefined;
+    apiKey: StringConstructor | undefined;
+    region: StringConstructor | undefined;
+    /**
+     * @returns {void}
+     */
     reload(): void;
     RegionServices: ValRegion | undefined;
     services: {
-        key: any;
+        key: StringConstructor | undefined;
         region: ValRegion;
         AxiosData: {
             cookie: boolean;
-            jar: any;
+            jar: Object;
             headers: {};
         };
     } | undefined;
     AccountV1: AccountV1 | undefined;
     StatusV1: StatusV1 | undefined;
     ContentV1: ContentV1 | undefined;
+    /**
+     *
+     * @returns {i_RiotApi}
+     */
     toJSON(): {
-        key: any;
-        region: any;
+        apiKey: StringConstructor;
+        region: StringConstructor;
     };
-    fromJSON(data: any): void;
+    /**
+     *
+     * @param {i_RiotApi} data RiotApi toJSON Data
+     */
+    fromJSON(data: {
+        apiKey: StringConstructor;
+        region: StringConstructor;
+    }): void;
     /**
     * @param {String} region Region
     * @example region = 'na'

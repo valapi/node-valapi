@@ -1,19 +1,25 @@
 export = Contract;
+/**
+ * * Class ID: @ing3kth/val-api/ValClient/Contract
+ */
 declare class Contract {
     /**
     * @param {JSON} data Services Data
+    * @returns {Object}
     */
     constructor(data: JSON);
     classId: string;
     AxiosClient: any;
     Region: any;
     /**
+     * @returns {Object}
     */
-    DefinitionsFetch(): Promise<any>;
+    DefinitionsFetch(): Object;
     /**
     * @param {String} puuid PlayerUUID
+    * @returns {Object}
     */
-    Fetch(puuid: string): Promise<any>;
+    Fetch(puuid: string): Object;
     /**
     * @param {String} puuid PlayerUUID
     * @param {String} contractId ContractID

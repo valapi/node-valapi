@@ -1,5 +1,7 @@
 //import
 const IngCore = require('@ing3kth/core');
+const i_ValClient = require('../resources/interface/i_ValClient');
+const i_ValClientAuth = require('../resources/interface/i_ValClientAuth');
 
 const ValRegion = require('../resources/ValRegion');
 
@@ -14,9 +16,13 @@ const Store = require('../service/ValClient/Store');
 
 //class
 
+/**
+ * * Class ID: @ing3kth/val-api/ValClient
+ * * Use Anywhere: true
+ */
 class ValClient {
     /**
-    * @param {JSON} Account Account toJSON data
+    * @param {i_ValClientAuth} Account Account toJSON data
     * @param {String} Region Region
     */
     constructor(Account = {
@@ -36,7 +42,7 @@ class ValClient {
         this.accessToken = Account.accessToken;
         this.entitlements = Account.entitlements;
         this.client = {
-            version: 'release-04.04-shipping-16-679250',
+            version: 'release-04.05-shipping-23-687347',
             platfrom: 'ew0KCSJwbGF0Zm9ybVR5cGUiOiAiUEMiLA0KCSJwbGF0Zm9ybU9TIjogIldpbmRvd3MiLA0KCSJwbGF0Zm9ybU9TVmVyc2lvbiI6ICIxMC4wLjE5MDQyLjEuMjU2LjY0Yml0IiwNCgkicGxhdGZvcm1DaGlwc2V0IjogIlVua25vd24iDQp9'
         };
         this.region = Region;
@@ -44,6 +50,9 @@ class ValClient {
         this.reload();
     }
 
+    /***
+     * @returns {void}
+     */
     reload() {
         this.RegionServices = new ValRegion(this.region);
 
@@ -79,6 +88,10 @@ class ValClient {
 
     //save
     
+    /**
+     * 
+     * @returns {i_ValClient}
+     */
     toJSON() {
         IngCore.Core.Logs.log("Export " + this.classId);
         return {
@@ -89,6 +102,11 @@ class ValClient {
         };
     }
 
+    /**
+     * 
+     * @param {i_ValClient} data ValClient toJSON Data
+     * @returns {void}
+     */
     fromJSON(data) {
         this.cookie = data.cookie;
         this.accessToken = data.accessToken;
@@ -104,6 +122,7 @@ class ValClient {
     /**
     * @param {String} region Region
     * @example region = 'ap'
+    * @returns {void}
     */
     setRegion(region) {
         this.region = region;
@@ -115,6 +134,7 @@ class ValClient {
     /**
     * @param {String} clientVersion Client Version
     * @example clientVersion = 'release-04.04-shipping-15-678808'
+    * @returns {void}
     */
     setClientVersion(clientVersion) {
         this.client.version = clientVersion;
@@ -126,6 +146,7 @@ class ValClient {
     /**
     * @param {JSON} clientPlatfrom Client Platfrom in json
     * @example clientPlatfrom = {"platformType": "PC", "platformOS": "Windows", "platformOSVersion": "11.0.12345.1.256.64bit", "platformChipset": "Unknown"}
+    * @returns {void}
     */
     setClientPlatfrom_fromJSON(clientPlatfrom) {
         this.client.platfrom = IngCore.Utils.Base64.toBase64(clientPlatfrom);
@@ -136,6 +157,7 @@ class ValClient {
 
     /**
     * @param {JSON} cookie Cookie
+    * @returns {void}
     */
     setCookie(cookie = new IngCore.Core.AxiosCookie().toJSON()) {
         this.cookie = cookie;
@@ -146,6 +168,7 @@ class ValClient {
 
     /**
     * @param {JSON} data toJSON data
+    * @returns {void}
     */
     static fromJSON(data) {
         const ValApiClient = new ValClient();

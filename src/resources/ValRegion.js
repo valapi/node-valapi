@@ -1,13 +1,19 @@
 //import
 const Region = require(`./data/Region`);
+const i_ValRegion = require('./i_ValRegion');
 
 const Logs = require('@ing3kth/core').Core.Logs;
 
 //class
+
+/**
+ * * Class ID: @ing3kth/val-api/ValRegion
+ */
 class ValRegion {
     /**
     * @param {String} region Region
     * @example region = 'br'
+    * @returns {i_ValRegion}
     */
     constructor(region = 'na') {
         this.classId = '@ing3kth/val-api/ValRegion';
@@ -60,6 +66,10 @@ class ValRegion {
         return this.toJSON();
     }
 
+    /**
+     * 
+     * @returns {i_ValRegion}
+     */
     toJSON() {
         return {
             data: {

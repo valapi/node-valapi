@@ -1,1 +1,1 @@
-{"version":3,"file":"StatusV1.d.ts","sourceRoot":"","sources":["../../../src/service/RiotApi/StatusV1.js"],"names":[],"mappings":";AAIA;IACI;;MAEE;IACF,kBAFU,IAAI,EAQb;IALG,gBAAkD;IAClD,YAAsB;IACtB,YAAyB;IAEzB,iBAAkD;IAGtD;;OAEG;IACH,6BAEC;CACJ"}
+{"version":3,"file":"StatusV1.d.ts","sourceRoot":"","sources":["../../../src/service/RiotApi/StatusV1.js"],"names":[],"mappings":";AAKA;;GAEG;AACH;IACI;;MAEE;IACF,kBAFU,IAAI,EAQb;IALG,gBAAkD;IAClD,YAAsB;IACtB,YAAyB;IAEzB,iBAAkD;IAGtD;;OAEG;IACH,6BAEC;CACJ"}

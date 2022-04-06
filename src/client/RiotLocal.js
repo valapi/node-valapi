@@ -2,19 +2,25 @@
 const fs = require('fs');
 const IngCore = require('@ing3kth/core');
 
+const i_RiotLocalJSON = require('../resources/interface/i_RiotLocalJSON');
+const i_RiotLocalLockfile = require('../resources/interface/i_RiotLocalLockfile');
+const i_RiotLocalResources = require('../resources/interface/i_RiotLocalResources');
+
 //class
 
 /**
  * All Api Base On https://github.com/techchrism/valorant-api-docs
+ * 
  * Because I'm lazy to write all api endpoint
  * 
- * * READ DOCS BEFORE USE
+ * * Class ID: @ing3kth/val-api/RiotLocal
+ * * Use Anywhere: false
  */
 class RiotLocal {
     /**
      * 
-     * @param {String} ip ip of local api
-     * @param {JSON} lockfile lockfile data
+     * @param {String} ip IP of local api
+     * @param {i_RiotLocalLockfile} lockfile lockfile data
      */
     constructor(ip = IngCore.Config['val-api'].local.ip, lockfile = {
         name: null,
@@ -36,6 +42,10 @@ class RiotLocal {
         this.reload();
     }
 
+    /**
+     * 
+     * @returns {i_RiotLocalResources}
+     */
     getResource() {
         return {
             Chat: require('../service/RiotLocal/Chat'),
@@ -44,6 +54,9 @@ class RiotLocal {
         };
     }
 
+    /**
+     * @returns {void}
+     */
     async reload() {
         this.lockfile = await this.getlockfile();
 
@@ -62,6 +75,7 @@ class RiotLocal {
 
     /**
      * @param {String} path path to lockfile
+     * @returns {i_RiotLocalLockfile}
      */
     async getlockfile(path = IngCore.Config['val-api'].local.lockfile) {
         try {
@@ -84,8 +98,9 @@ class RiotLocal {
 
     /**
      * 
-     * @param {JSON} data Data from LocalResourse
+     * @param {i_RiotLocalJSON} data Data from LocalResourse
      * @param {any} args.. Replace With Arguments
+     * @returns {Object}
      */
     async requestFromJSON(data = {
         method: 'get',
@@ -139,9 +154,10 @@ class RiotLocal {
      * @param {String} method Method to request
      * @param {String} endpoint Url Endpoint
      * @param {String} body Request Body
+     * @returns {Object}
      */
     async request(method = 'get', endpoint = '/help', body = {}) {
-        switch (method) {
+        switch (method.toLowerCase()) {
             case 'get':
                 return await this.AxiosClient.get(this.baseUrl + endpoint);
             case 'post':
@@ -155,6 +171,11 @@ class RiotLocal {
 
     // SETTINGS //
 
+    /**
+     * 
+     * @param {String} ip IP of local api
+     * @returns {void}
+     */
     async setIp(ip = IngCore.Config['val-api'].local.ip) {
         this.ip = ip;
 
@@ -168,6 +189,7 @@ class RiotLocal {
      * @param {String} method Method to request
      * @param {String} endpoint Url Endpoint
      * @param {String} body Request Body
+     * @returns {Object}
      */
     static async request(method = 'get', endpoint = '/help', body = {}) {
         const newRiotLocal = await new RiotLocal();
@@ -178,6 +200,7 @@ class RiotLocal {
      * 
      * @param {JSON} data Data from LocalResourse
      * @param {any} args.. Replace Data With Arguments
+     * @returns {Object}
      */
      static async requestFromJSON(data = {
         method: 'get',
@@ -188,7 +211,11 @@ class RiotLocal {
         const newRiotLocal = await new RiotLocal();
         return await newRiotLocal.requestFromJSON(data);
     }
-
+    
+    /**
+     * 
+     * @returns {i_RiotLocalResources}
+     */
     static getResource() {
         const newRiotLocal = new RiotLocal();
         return newRiotLocal.getResource();

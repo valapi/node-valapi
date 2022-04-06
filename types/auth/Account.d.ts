@@ -1,16 +1,19 @@
 export = Account;
+/**
+ * * Class ID: @ing3kth/val-api/Account
+ */
 declare class Account {
     /**
      * @param {String} username Riot Account Username
      * @param {String} password Riot Account Password
-     * @param {Boolean} toJSON return with toJSON data
+     * @returns {i_ValClientAuth}
      */
-    static login(username: string, password: string, toJSON?: boolean): Promise<{
-        cookie: any;
-        accessToken: string | null;
-        entitlements: any;
-        multifactor: boolean;
-    }>;
+    static login(username: string, password: string): {
+        cookie: ObjectConstructor;
+        accessToken: StringConstructor;
+        entitlements: StringConstructor;
+        multifactor: BooleanConstructor;
+    };
     /**
      * @param {String} username Riot Account Username
      * @param {String} password Riot Account Password
@@ -24,18 +27,23 @@ declare class Account {
     /**
      * @param {String} username Riot Account Username
      * @param {String} password Riot Account Password
+     * @returns {i_ValClientAuth}
      */
-    login(username: string, password: string): Promise<{
-        cookie: any;
-        accessToken: string | null;
-        entitlements: any;
-        multifactor: boolean;
-    }>;
+    execute(username: string, password: string): {
+        cookie: ObjectConstructor;
+        accessToken: StringConstructor;
+        entitlements: StringConstructor;
+        multifactor: BooleanConstructor;
+    };
+    /**
+     *
+     * @returns {i_ValClientAuth}
+     */
     toJSON(): {
-        cookie: any;
-        accessToken: string | null;
-        entitlements: any;
-        multifactor: boolean;
+        cookie: ObjectConstructor;
+        accessToken: StringConstructor;
+        entitlements: StringConstructor;
+        multifactor: BooleanConstructor;
     };
 }
 //# sourceMappingURL=Account.d.ts.map

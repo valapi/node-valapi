@@ -1,7 +1,11 @@
 export = Store;
+/**
+ * * Class ID: @ing3kth/val-api/ValClient/Store
+ */
 declare class Store {
     /**
     * @param {JSON} data Services Data
+    * @returns {Object}
     */
     constructor(data: JSON);
     classId: string;
@@ -10,18 +14,22 @@ declare class Store {
     /**
     * @param {String} puuid PlayerUUID
     * @param {String} itemTypeId ItemTypeID
+    * @returns {Object}
     */
-    GetEntitlements(puuid: string, itemTypeId: string): Promise<any>;
+    GetEntitlements(puuid: string, itemTypeId: string): Object;
     /**
+     * @returns {Object}
     */
-    GetOffers(): Promise<any>;
-    /**
-    * @param {String} puuid PlayerUUID
-    */
-    GetStorefront(puuid: string): Promise<any>;
+    GetOffers(): Object;
     /**
     * @param {String} puuid PlayerUUID
+    * @returns {Object}
     */
-    GetWallet(puuid: string): Promise<any>;
+    GetStorefront(puuid: string): Object;
+    /**
+    * @param {String} puuid PlayerUUID
+    * @returns {Object}
+    */
+    GetWallet(puuid: string): Object;
 }
 //# sourceMappingURL=Store.d.ts.map
