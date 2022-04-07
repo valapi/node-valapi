@@ -94,11 +94,7 @@ declare class RiotLocal {
         method: StringConstructor;
         endpoint: StringConstructor;
         body: ObjectConstructor;
-        replace: {
-            name: StringConstructor;
-            with: StringConstructor;
-            where: StringConstructor;
-        }[];
+        replace: ArrayConstructor;
     }, ...args: any[]): Object;
     /**
      *

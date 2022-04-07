@@ -42,7 +42,7 @@ class ValRegion {
             case 'pbe':
                 this.region = 'na';
                 this.server = 'pbe';
-                this.riotRegion = 'americas';
+                this.riotRegion = 'pbe1';
                 break;
             case 'eu':
                 this.region = 'eu';

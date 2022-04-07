@@ -260,11 +260,7 @@ export namespace Interface {
         method: StringConstructor;
         endpoint: StringConstructor;
         body: ObjectConstructor;
-        replace: {
-            name: StringConstructor;
-            with: StringConstructor;
-            where: StringConstructor;
-        }[];
+        replace: ArrayConstructor;
     };
     export const RiotLocalLockfile: {
         name: StringConstructor;

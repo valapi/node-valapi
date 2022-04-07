@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@ing3kth/core@^1.6.9":
-  "integrity" "sha512-1Z0QItactfktqitR6qG+zgtLyTyNpyBxHI3hFWDQ+SAJAX6bGnUxV7zNahpr6Wz1AOVboMonD3U59TROyMo4LQ=="
-  "resolved" "https://registry.npmjs.org/@ing3kth/core/-/core-1.6.9.tgz"
-  "version" "1.6.9"
+"@ing3kth/core@^1.6.10":
+  "integrity" "sha512-PJPCJ5/A0Jq5hFJSfciAnjftJTcLh9QbiVg8MZwPbCCMZVW7QnimDCdY3n3RsWpCH+OUMYz9ZPT67/w+A4UzMQ=="
+  "resolved" "https://registry.npmjs.org/@ing3kth/core/-/core-1.6.10.tgz"
+  "version" "1.6.10"
   dependencies:
     "axios" "^0.26.1"
     "axios-cookiejar-support" "^2.0.4"
