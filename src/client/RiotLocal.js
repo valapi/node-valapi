@@ -2,9 +2,8 @@
 const fs = require('fs');
 const IngCore = require('@ing3kth/core');
 
-const i_RiotLocalJSON = require('../resources/interface/i_RiotLocalJSON');
-const i_RiotLocalLockfile = require('../resources/interface/i_RiotLocalLockfile');
-const i_RiotLocalResources = require('../resources/interface/i_RiotLocalResources');
+const IRiotLocalJSON = require('../resources/interface/IRiotLocalJSON');
+const IRiotLocalLockfile = require('../resources/interface/IRiotLocalLockfile');
 
 //class
 
@@ -20,7 +19,7 @@ class RiotLocal {
     /**
      * 
      * @param {String} ip IP of local api
-     * @param {i_RiotLocalLockfile} lockfile lockfile data
+     * @param {IRiotLocalLockfile} lockfile lockfile data
      */
     constructor(ip = IngCore.Config['val-api'].local.ip, lockfile = {
         name: null,
@@ -42,10 +41,6 @@ class RiotLocal {
         this.reload();
     }
 
-    /**
-     * 
-     * @returns {i_RiotLocalResources}
-     */
     getResource() {
         return {
             Chat: require('../service/RiotLocal/Chat'),
@@ -75,7 +70,7 @@ class RiotLocal {
 
     /**
      * @param {String} path path to lockfile
-     * @returns {i_RiotLocalLockfile}
+     * @returns {IRiotLocalLockfile}
      */
     async getlockfile(path = IngCore.Config['val-api'].local.lockfile) {
         try {
@@ -98,7 +93,7 @@ class RiotLocal {
 
     /**
      * 
-     * @param {i_RiotLocalJSON} data Data from LocalResourse
+     * @param {IRiotLocalJSON} data Data from LocalResourse
      * @param {any} args.. Replace With Arguments
      * @returns {Object}
      */
@@ -212,10 +207,6 @@ class RiotLocal {
         return await newRiotLocal.requestFromJSON(data);
     }
     
-    /**
-     * 
-     * @returns {i_RiotLocalResources}
-     */
     static getResource() {
         const newRiotLocal = new RiotLocal();
         return newRiotLocal.getResource();

@@ -6,7 +6,7 @@ declare class Account {
     /**
      * @param {String} username Riot Account Username
      * @param {String} password Riot Account Password
-     * @returns {i_ValClientAuth}
+     * @returns {IValClientAuth}
      */
     static login(username: string, password: string): {
         cookie: ObjectConstructor;
@@ -27,7 +27,7 @@ declare class Account {
     /**
      * @param {String} username Riot Account Username
      * @param {String} password Riot Account Password
-     * @returns {i_ValClientAuth}
+     * @returns {IValClientAuth}
      */
     execute(username: string, password: string): {
         cookie: ObjectConstructor;
@@ -37,7 +37,7 @@ declare class Account {
     };
     /**
      *
-     * @returns {i_ValClientAuth}
+     * @returns {IValClientAuth}
      */
     toJSON(): {
         cookie: ObjectConstructor;

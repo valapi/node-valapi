@@ -10,7 +10,7 @@ declare class ValClient {
     */
     static fromJSON(data: JSON): void;
     /**
-    * @param {i_ValClientAuth} Account Account toJSON data
+    * @param {IValClientAuth} Account Account toJSON data
     * @param {String} Region Region
     */
     constructor(Account?: {
@@ -66,7 +66,7 @@ declare class ValClient {
     Store: Store | undefined;
     /**
      *
-     * @returns {i_ValClient}
+     * @returns {IValClient}
      */
     toJSON(): {
         cookie: ObjectConstructor;
@@ -76,7 +76,7 @@ declare class ValClient {
     };
     /**
      *
-     * @param {i_ValClient} data ValClient toJSON Data
+     * @param {IValClient} data ValClient toJSON Data
      * @returns {void}
      */
     fromJSON(data: {

@@ -4,7 +4,7 @@ export = Multifactor;
  */
 declare class Multifactor {
     /**
-    * @param {i_ValClientAuth} data ValAuth_Account toJSON data
+    * @param {IValClientAuth} data ValAuth_Account toJSON data
     * @param {Number} verificationCode Verification Code
     */
     static verify(data: {
@@ -19,7 +19,7 @@ declare class Multifactor {
         multifactor: BooleanConstructor;
     }>;
     /**
-    * @param {i_ValClientAuth} data Account toJSON data
+    * @param {IValClientAuth} data Account toJSON data
     */
     constructor(data?: {
         cookie: ObjectConstructor;
@@ -34,7 +34,7 @@ declare class Multifactor {
     multifactor: BooleanConstructor;
     /**
     * @param {Number} verificationCode Verification Code
-    * @returns {i_ValClientAuth}
+    * @returns {IValClientAuth}
     */
     execute(verificationCode: number): {
         cookie: ObjectConstructor;
@@ -44,7 +44,7 @@ declare class Multifactor {
     };
     /**
      *
-     * @returns {i_ValClientAuth}
+     * @returns {IValClientAuth}
      */
     toJSON(): {
         cookie: ObjectConstructor;

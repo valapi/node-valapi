@@ -23,13 +23,13 @@ module.exports = {
 
     //interface
     Interface: {
-        RiotApi: require('./resources/interface/i_RiotApi'),
-        RiotLocalJSON: require('./resources/interface/i_RiotLocalJSON'),
-        RiotLocalLockfile: require('./resources/interface/i_RiotLocalLockfile'),
-        RiotLocalReplace: require('./resources/interface/i_RiotLocalReplace'),
-        RiotLocalResources: require('./resources/interface/i_RiotLocalResources'),
-        ValClient: require('./resources/interface/i_ValClient'),
-        ValClientAuth: require('./resources/interface/i_ValClientAuth'),
-        ValRegion: require('./resources/interface/i_ValRegion'),
+        RiotApi: require('./resources/interface/IRiotApi'),
+        RiotLocalJSON: require('./resources/interface/IRiotLocalJSON'),
+        RiotLocalLockfile: require('./resources/interface/IRiotLocalLockfile'),
+        RiotLocalReplace: require('./resources/interface/IRiotLocalReplace'),
+        RiotLocalResources: require('./resources/interface/IRiotLocalResources'),
+        ValClient: require('./resources/interface/IValClient'),
+        ValClientAuth: require('./resources/interface/IValClientAuth'),
+        ValRegion: require('./resources/interface/IValRegion'),
     },
 };

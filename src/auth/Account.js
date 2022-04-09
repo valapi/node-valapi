@@ -1,6 +1,6 @@
 //import
 const IngCore = require('@ing3kth/core');
-const i_ValClientAuth = require('../resources/interface/i_ValClientAuth');
+const IValClientAuth = require('../resources/interface/IValClientAuth');
 
 //class
 
@@ -27,7 +27,7 @@ class Account {
     /**
      * @param {String} username Riot Account Username
      * @param {String} password Riot Account Password
-     * @returns {i_ValClientAuth}
+     * @returns {IValClientAuth}
      */
     async execute(username, password) {
         const _cookie = new IngCore.Core.AxiosCookie();
@@ -103,7 +103,7 @@ class Account {
 
     /**
      * 
-     * @returns {i_ValClientAuth}
+     * @returns {IValClientAuth}
      */
     toJSON() {
         IngCore.Core.Logs.log("Export " + this.classId);
@@ -118,7 +118,7 @@ class Account {
     /**
      * @param {String} username Riot Account Username
      * @param {String} password Riot Account Password
-     * @returns {i_ValClientAuth}
+     * @returns {IValClientAuth}
      */
     static async login(username, password) {
         const NewAccount = new Account();

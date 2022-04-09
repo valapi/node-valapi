@@ -17,4 +17,4 @@ export declare namespace riot_1 {
     export { server_1 as server };
 }
 export { riot_1 as riot };
-//# sourceMappingURL=i_ValRegion.d.ts.map
+//# sourceMappingURL=IValRegion.d.ts.map

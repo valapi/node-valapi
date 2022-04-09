@@ -13,7 +13,7 @@ declare class RiotApi {
     */
     static fromJSON(data: JSON): RiotApi;
     /**
-    * @param {i_RiotApi} data RiotApi toJSON Data
+    * @param {IRiotApi} data RiotApi toJSON Data
     */
     constructor(data?: {
         apiKey: StringConstructor;
@@ -41,7 +41,7 @@ declare class RiotApi {
     ContentV1: ContentV1 | undefined;
     /**
      *
-     * @returns {i_RiotApi}
+     * @returns {IRiotApi}
      */
     toJSON(): {
         apiKey: StringConstructor;
@@ -49,7 +49,7 @@ declare class RiotApi {
     };
     /**
      *
-     * @param {i_RiotApi} data RiotApi toJSON Data
+     * @param {IRiotApi} data RiotApi toJSON Data
      */
     fromJSON(data: {
         apiKey: StringConstructor;

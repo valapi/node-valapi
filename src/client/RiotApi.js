@@ -1,7 +1,7 @@
 //import
 const IngCore = require('@ing3kth/core');
 
-const i_RiotApi = require('../resources/interface/i_RiotApi');
+const IRiotApi = require('../resources/interface/IRiotApi');
 const ValRegion = require('../resources/ValRegion');
 
 const AccountV1 = require('../service/RiotApi/AccountV1');
@@ -20,7 +20,7 @@ const ContentV1 = require('../service/RiotApi/ContentV1');
  */
 class RiotApi {
     /**
-    * @param {i_RiotApi} data RiotApi toJSON Data
+    * @param {IRiotApi} data RiotApi toJSON Data
     */
     constructor(data = {
         apiKey: null,
@@ -64,7 +64,7 @@ class RiotApi {
 
     /**
      * 
-     * @returns {i_RiotApi}
+     * @returns {IRiotApi}
      */
     toJSON() {
         IngCore.Core.Logs.log("Export " + this.classId);
@@ -76,7 +76,7 @@ class RiotApi {
 
     /**
      * 
-     * @param {i_RiotApi} data RiotApi toJSON Data
+     * @param {IRiotApi} data RiotApi toJSON Data
      */
     fromJSON(data) {
         this.apiKey = data.key;

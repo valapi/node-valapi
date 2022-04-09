@@ -1,3 +1,3 @@
 export const apiKey: StringConstructor;
 export const region: StringConstructor;
-//# sourceMappingURL=i_RiotApi.d.ts.map
+//# sourceMappingURL=IRiotApi.d.ts.map

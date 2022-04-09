@@ -1,6 +1,6 @@
 //import
 const IngCore = require('@ing3kth/core');
-const i_ValClientAuth = require('../resources/interface/i_ValClientAuth');
+const IValClientAuth = require('../resources/interface/IValClientAuth');
 
 //class
 
@@ -9,7 +9,7 @@ const i_ValClientAuth = require('../resources/interface/i_ValClientAuth');
  */
 class Multifactor {
     /**
-    * @param {i_ValClientAuth} data Account toJSON data
+    * @param {IValClientAuth} data Account toJSON data
     */
     constructor(data = {
         cookie: new IngCore.Core.AxiosCookie().toJSON(),
@@ -30,7 +30,7 @@ class Multifactor {
 
     /**
     * @param {Number} verificationCode Verification Code
-    * @returns {i_ValClientAuth}
+    * @returns {IValClientAuth}
     */
      async execute(verificationCode) {
         const _cookie = this.cookie;
@@ -84,7 +84,7 @@ class Multifactor {
 
     /**
      * 
-     * @returns {i_ValClientAuth}
+     * @returns {IValClientAuth}
      */
     toJSON() {
         IngCore.Core.Logs.log("Export " + this.classId);
@@ -97,7 +97,7 @@ class Multifactor {
     }
 
     /**
-    * @param {i_ValClientAuth} data ValAuth_Account toJSON data
+    * @param {IValClientAuth} data ValAuth_Account toJSON data
     * @param {Number} verificationCode Verification Code
     */
     static async verify(data, verificationCode) {

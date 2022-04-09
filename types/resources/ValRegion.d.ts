@@ -6,7 +6,7 @@ declare class ValRegion {
     /**
     * @param {String} region Region
     * @example region = 'br'
-    * @returns {i_ValRegion}
+    * @returns {IValRegion}
     */
     constructor(region?: string);
     classId: string;
@@ -16,8 +16,29 @@ declare class ValRegion {
     riotRegion: string | undefined;
     /**
      *
-     * @returns {i_ValRegion}
+     * @returns {IValRegion}
      */
-    toJSON(): i_ValRegion;
+    toJSON(): {
+        data: {
+            base: StringConstructor;
+            api: StringConstructor;
+            server: StringConstructor;
+            riot: StringConstructor;
+        };
+        url: {
+            playerData: StringConstructor;
+            partyService: StringConstructor;
+            sharedData: StringConstructor; /**
+            * @param {String} region Region
+            * @example region = 'br'
+            * @returns {IValRegion}
+            */
+        };
+        riot: {
+            api: StringConstructor;
+            esports: StringConstructor;
+            server: StringConstructor;
+        };
+    };
 }
 //# sourceMappingURL=ValRegion.d.ts.map

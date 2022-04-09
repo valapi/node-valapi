@@ -1,7 +1,7 @@
 //import
 const IngCore = require('@ing3kth/core');
-const i_ValClient = require('../resources/interface/i_ValClient');
-const i_ValClientAuth = require('../resources/interface/i_ValClientAuth');
+const IValClient = require('../resources/interface/IValClient');
+const IValClientAuth = require('../resources/interface/IValClientAuth');
 
 const ValRegion = require('../resources/ValRegion');
 
@@ -22,7 +22,7 @@ const Store = require('../service/ValClient/Store');
  */
 class ValClient {
     /**
-    * @param {i_ValClientAuth} Account Account toJSON data
+    * @param {IValClientAuth} Account Account toJSON data
     * @param {String} Region Region
     */
     constructor(Account = {
@@ -90,7 +90,7 @@ class ValClient {
     
     /**
      * 
-     * @returns {i_ValClient}
+     * @returns {IValClient}
      */
     toJSON() {
         IngCore.Core.Logs.log("Export " + this.classId);
@@ -104,7 +104,7 @@ class ValClient {
 
     /**
      * 
-     * @param {i_ValClient} data ValClient toJSON Data
+     * @param {IValClient} data ValClient toJSON Data
      * @returns {void}
      */
     fromJSON(data) {
