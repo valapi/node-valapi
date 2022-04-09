@@ -34,6 +34,6 @@
   },
   "homepage": "https://github.com/KTNG-3/val-api#readme",
   "devDependencies": {
-    "@ing3kth/core": "^1.6.10"
+    "@ing3kth/core": "^1.7.0"
   }
 }
