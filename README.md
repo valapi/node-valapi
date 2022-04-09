@@ -31,7 +31,6 @@ When You Find A Bug Please Report It [here](https://github.com/KTNG-3/val-api/is
     - [Table of Contents](#table-of-contents)
     - [Installation](#installation)
     - [Usage](#usage)
-  - [Docs](#docs)
 - [Epilogue](#epilogue)
 
 ### Installation
@@ -54,13 +53,9 @@ Yarn:
   const ValApi = require('@ing3kth/val-api')
 ```
 
-## Docs
+<h1><a style="color:black" href="https://ktng-3.github.io/val-api/docs.html">Documentation</a></h1>
 
-*Documentation is comming soon!* `~ 1.6.x`
-
-[Old README](/docs.md) (/docs.md)
-
-[Old Package](https://www.npmjs.com/package/@ing3kth/val-api/v/1.5.2) (@ing3kth/val-api v1.5.2)
+Documentation Website: [Click Here](https://ktng-3.github.io/val-api/docs.html)
 
 # Epilogue
 

@@ -1,7 +1,8 @@
 # 1.5.4
 
-- More Comments
-- interfaces
+- Local API (RiotLocal)
+- Documentation
+- Interfaces
 - A little bit changes
 
 # 1.5.3 (April 5, 2022  | In Development)
