@@ -2,6 +2,7 @@
 const fs = require('fs');
 const IngCore = require('@ing3kth/core');
 
+const IRiotLocal = require('../resources/interface/IRiotLocal')
 const IRiotLocalJSON = require('../resources/interface/IRiotLocalJSON');
 const IRiotLocalLockfile = require('../resources/interface/IRiotLocalLockfile');
 
@@ -22,11 +23,11 @@ class RiotLocal {
      * @param {IRiotLocalLockfile} lockfile lockfile data
      */
     constructor(ip = IngCore.Config['val-api'].local.ip, lockfile = {
-        name: null,
-        pid: null,
-        port: null,
-        password: null,
-        protocol: null,
+        name: 'Riot Game',
+        pid: 10500,
+        port: 52500,
+        password: 'AbcXY12z',
+        protocol: 'https',
     }) {
         this.classId = '@ing3kth/val-api/RiotLocal';
         this.lockfile = {
@@ -38,6 +39,7 @@ class RiotLocal {
         };
         this.ip = ip;
 
+        this.lockfile = this.getlockfile();
         this.reload();
     }
 
@@ -52,9 +54,7 @@ class RiotLocal {
     /**
      * @returns {void}
      */
-    async reload() {
-        this.lockfile = await this.getlockfile();
-
+    reload() {
         const _base64 = IngCore.Utils.Base64.toBase64(`riot:${this.lockfile.password}`);
         this.AxiosClient = new IngCore.Core.AxiosClient({
             cookie: false,
@@ -72,7 +72,7 @@ class RiotLocal {
      * @param {String} path path to lockfile
      * @returns {IRiotLocalLockfile}
      */
-    async getlockfile(path = IngCore.Config['val-api'].local.lockfile) {
+    getlockfile(path = IngCore.Config['val-api'].local.lockfile) {
         try {
             var _getFile = fs.readFileSync(path, 'utf8');
 
@@ -87,7 +87,7 @@ class RiotLocal {
 
             return _lockfile;
         } catch (err) {
-            await IngCore.Core.Logs.log(this.classId + " Lockfile not found", 'err', true);
+            IngCore.Core.Logs.log(this.classId + " Lockfile not found", 'err', true);
         }
     }
 
@@ -103,9 +103,9 @@ class RiotLocal {
         body: {},
         replace: [],
     }) {
-        if(!data.method || !data.endpoint){
+        if (!data.method || !data.endpoint) {
             return await IngCore.Core.Logs.log(this.classId + ` Missing Data`, 'err', true);
-        }else if(!data.body || !data.replace){
+        } else if (!data.body || !data.replace) {
             data.body = {};
             data.replace = [];
         }
@@ -164,6 +164,40 @@ class RiotLocal {
         }
     }
 
+    // SAVE //
+
+    /**
+     * 
+     * @returns {IRiotLocal}
+     */
+    toJSON() {
+        return {
+            ip: this.ip,
+            lockfile: this.lockfile,
+        };
+    }
+
+    /**
+     * 
+     * @param {IRiotLocal} data RiotLocal toJSON Data
+     * @returns {void}
+     */
+    fromJSON(data = {
+        ip: IngCore.Config['val-api'].local.ip,
+        lockfile: {
+            name: 'Riot Game',
+            pid: 10500,
+            port: 52500,
+            password: 'AbcXY12z',
+            protocol: 'https',
+        }
+    }) {
+        this.ip = data.ip;
+        this.lockfile = data.lockfile;
+
+        this.reload();
+    }
+
     // SETTINGS //
 
     /**
@@ -171,10 +205,60 @@ class RiotLocal {
      * @param {String} ip IP of local api
      * @returns {void}
      */
-    async setIp(ip = IngCore.Config['val-api'].local.ip) {
+    setIp(ip = IngCore.Config['val-api'].local.ip) {
         this.ip = ip;
 
-        await this.reload();
+        this.reload();
+    }
+
+    /**
+     * @param {String} name
+     * @returns {void}
+     */
+    setLockfileName(name = 'Riot Client') {
+        this.lockfile.name = name;
+
+        this.reload();
+    }
+
+    /**
+     * @param {Number} pid
+     * @returns {void}
+     */
+    setLockfilePid(pid) {
+        this.lockfile.pid = pid;
+
+        this.reload();
+    }
+
+    /**
+     * @param {Number} port
+     * @returns {void}
+     */
+    setLockfilePort(port) {
+        this.lockfile.port = port;
+
+        this.reload();
+    }
+
+    /**
+     * @param {String} password
+     * @returns {void}
+     */
+    setLockfilePassword(password) {
+        this.lockfile.password = password;
+
+        this.reload();
+    }
+
+    /**
+     * @param {String} protocol
+     * @returns {void}
+     */
+    setLockfileProtocol(protocol = 'https') {
+        this.lockfile.protocol = protocol;
+
+        this.reload();
     }
 
     // STATIC //
@@ -197,7 +281,7 @@ class RiotLocal {
      * @param {any} args.. Replace Data With Arguments
      * @returns {Object}
      */
-     static async requestFromJSON(data = {
+    static async requestFromJSON(data = {
         method: 'get',
         endpoint: '/help',
         body: {},
@@ -206,7 +290,28 @@ class RiotLocal {
         const newRiotLocal = await new RiotLocal();
         return await newRiotLocal.requestFromJSON(data);
     }
-    
+
+    /**
+     * 
+     * @param {IRiotLocal} data RiotLocal toJSON Data
+     * @returns {RiotLocal}
+     */
+    static fromJSON(data = {
+        ip: IngCore.Config['val-api'].local.ip,
+        lockfile: {
+            name: 'Riot Game',
+            pid: 10500,
+            port: 52500,
+            password: 'AbcXY12z',
+            protocol: 'https',
+        }
+    }) {
+        const newRiotLocal = new RiotLocal();
+        newRiotLocal.fromJSON(data);
+
+        return newRiotLocal;
+    }
+
     static getResource() {
         const newRiotLocal = new RiotLocal();
         return newRiotLocal.getResource();
