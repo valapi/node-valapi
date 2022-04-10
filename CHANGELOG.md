@@ -3,7 +3,7 @@
 - RiotLocal Save
 - RiotLocal Interface
 
-# 1.5.4 (April 8,2022 | In Development)
+# 1.5.4 (~ April 8,2022 | In Development)
 
 - Local API (RiotLocal)
 - Documentation
