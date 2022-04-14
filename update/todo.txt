@@ -3,6 +3,7 @@ put in readme(# Special Thanks) after create "valorant-api.com" class --> third 
 */
 
 - [Officer](https://valorant-api.com/) (valorant-api.com)
+// Valorant-API.com have 'all' languages (website.com/?lang=all)
 
 
 //\+\// REWORK --> ValClient //\+\//
