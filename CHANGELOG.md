@@ -1,4 +1,10 @@
-# 1.5.4
+# 1.5.5 (April 9, 2022 | In Development)
+
+- More RiotLocal Settings
+- RiotLocal Save
+- RiotLocal Interface
+
+# 1.5.4 (~ April 8, 2022 | In Development)
 
 - Local API (RiotLocal)
 - Documentation
