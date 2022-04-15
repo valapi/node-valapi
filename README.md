@@ -3,7 +3,7 @@
 <!-- Main -->
 <div align="center">
 
-  [![NPM](https://nodei.co/npm/@ing3kth/val-api.png)](https://www.npmjs.com/package/@ing3kth/val-api)
+  [![NPM](https://nodei.co/npm/@ing3kth/val-api.png)](https://nodei.co/npm/@ing3kth/val-api)
 
    [![Downloads](https://badgen.net/npm/dt/@ing3kth/val-api?icon=npm)](https://www.npmjs.com/package/@ing3kth/val-api)
    [![install size](https://packagephobia.com/badge?p=@ing3kth/val-api)](https://packagephobia.com/result?p=@ing3kth/val-api)
