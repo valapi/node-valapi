@@ -8,7 +8,7 @@
     "access": "public"
   },
   "scripts": {
-    "postinstall": "npx ing3kth update",
+    "postinstall": "npx ing3kth update && npx ing3kth init",
     "typescript": "npx tsc --project tsconfig.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
