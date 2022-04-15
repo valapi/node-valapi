@@ -1,6 +1,9 @@
 {
-    "create": "2022-04-09T04:50:02.428Z",
-    "platfrom": "Windows",
+    "create": "2022-04-15T06:28:13.502Z",
+    "process": {
+        "platform": "Windows",
+        "directory": "C:\\Users\\Windows10\\Documents\\GitHub\\val-api"
+    },
     "logs": {
         "mode": true,
         "show": false,

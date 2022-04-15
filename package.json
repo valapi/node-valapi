@@ -1,6 +1,6 @@
 {
   "name": "@ing3kth/val-api",
-  "version": "1.5.5",
+  "version": "1.5.6",
   "description": "Valorant Api - Support MFA",
   "main": "src/index.js",
   "types": "./types/index.d.ts",
@@ -8,6 +8,7 @@
     "access": "public"
   },
   "scripts": {
+    "postinstall": "npx ing3kth update",
     "typescript": "npx tsc --project tsconfig.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -33,7 +34,7 @@
     "url": "https://github.com/KTNG-3/val-api/issues"
   },
   "homepage": "https://github.com/KTNG-3/val-api#readme",
-  "devDependencies": {
-    "@ing3kth/core": "^1.7.0"
+  "dependencies": {
+    "@ing3kth/core": "^1.7.1"
   }
 }

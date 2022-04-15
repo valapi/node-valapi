@@ -1,3 +1,7 @@
+# 1.5.6 (April 15, 2022 | In Development)
+
+- A little bit changes (maybe i will change back)
+
 # 1.5.5 (April 9, 2022 | In Development)
 
 - More RiotLocal Settings
