@@ -12,8 +12,8 @@ declare class StatusV1 {
     region: any;
     AxiosClient: any;
     /**
-     *
+     * @returns {AxiosClientOut}
      */
-    PlatformData(): Promise<any>;
+    PlatformData(): AxiosClientOut;
 }
 //# sourceMappingURL=StatusV1.d.ts.map

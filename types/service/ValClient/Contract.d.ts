@@ -5,25 +5,25 @@ export = Contract;
 declare class Contract {
     /**
     * @param {JSON} data Services Data
-    * @returns {Object}
     */
     constructor(data: JSON);
     classId: string;
     AxiosClient: any;
     Region: any;
     /**
-     * @returns {Object}
+     * @returns {AxiosClientOut}
     */
-    DefinitionsFetch(): Object;
+    DefinitionsFetch(): AxiosClientOut;
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
-    Fetch(puuid: string): Object;
+    Fetch(puuid: string): AxiosClientOut;
     /**
     * @param {String} puuid PlayerUUID
     * @param {String} contractId ContractID
+    * @returns {AxiosClientOut}
     */
-    Activate(puuid: string, contractId: string): Promise<any>;
+    Activate(puuid: string, contractId: string): AxiosClientOut;
 }
 //# sourceMappingURL=Contract.d.ts.map

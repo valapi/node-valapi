@@ -5,7 +5,6 @@ export = Match;
 declare class Match {
     /**
     * @param {JSON} data Services Data
-    * @returns {Object}
     */
     constructor(data: JSON);
     classId: string;
@@ -14,16 +13,16 @@ declare class Match {
     /**
     * @description Get contract definitions
     * @param {String} matchId MatchID
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
-    FetchMatchDetails(matchId: string): Object;
+    FetchMatchDetails(matchId: string): AxiosClientOut;
     /**
     * @param {String} puuid PlayerUUID
     * @param {String} queueId QueueID
     * @param {Number} startIndex startIndex
     * @param {Number} endIndex endIndex
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
-    FetchMatchHistory(puuid: string, queueId?: string, startIndex?: number, endIndex?: number): Object;
+    FetchMatchHistory(puuid: string, queueId?: string, startIndex?: number, endIndex?: number): AxiosClientOut;
 }
 //# sourceMappingURL=Match.d.ts.map

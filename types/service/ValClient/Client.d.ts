@@ -12,16 +12,16 @@ declare class Client {
     Region: any;
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
-    GetSession(puuid: string): Object;
+    GetSession(puuid: string): AxiosClientOut;
     /**
-     * @returns {Object}
+     * @returns {AxiosClientOut}
     */
-    FetchContent(): Object;
+    FetchContent(): AxiosClientOut;
     /**
-     * @returns {Object}
+     * @returns {AxiosClientOut}
     */
-    FetchConfig(): Object;
+    FetchConfig(): AxiosClientOut;
 }
 //# sourceMappingURL=Client.d.ts.map

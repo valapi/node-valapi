@@ -1,5 +1,6 @@
 //import
 const AxiosClient = require('@ing3kth/core').Core.AxiosClient;
+const AxiosClientOut = require('@ing3kth/core').Interface.AxiosClientOut;
 
 //class
 
@@ -22,6 +23,7 @@ class AccountV1 {
      * 
      * @param {String} gameName In-Game Name
      * @param {String} tagLine In-Game Tag
+     * @returns {AxiosClientOut}
      */
     async ByRiotId(gameName, tagLine) {
         return await this.AxiosClient.get(this.region.riot.api + `/riot/account/v1/accounts/by-riot-id/${gameName}/${tagLine}` + `?api_key=${this.apiKey}`);
@@ -30,6 +32,7 @@ class AccountV1 {
     /**
      * 
      * @param {String} puuid Player UUID
+     * @returns {AxiosClientOut}
      */
      async ByPuuid(puuid) {
         return await this.AxiosClient.get(this.region.riot.api + `/riot/account/v1/accounts/by-puuid/${puuid}` + `?api_key=${this.apiKey}`);
@@ -40,6 +43,7 @@ class AccountV1 {
      * @param {String} puuid Player UUID
      * @param {String} game Game
      * @example game = 'val' && 'lor'
+     * @returns {AxiosClientOut}
      */
     async ByGame(puuid, game = 'val') {
         return await this.AxiosClient.get(this.region.riot.api + `/riot/account/v1/active-shards/by-game/${game}/by-puuid/${puuid}` + `?api_key=${this.apiKey}`);

@@ -5,7 +5,6 @@ export = PreGame;
 declare class PreGame {
     /**
     * @param {JSON} data Services Data
-    * @returns {Object}
     */
     constructor(data: JSON);
     classId: string;
@@ -13,35 +12,35 @@ declare class PreGame {
     Region: any;
     /**
     * @param {String} matchId MatchID
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
-    GetMatch(matchId: string): Object;
+    GetMatch(matchId: string): AxiosClientOut;
     /**
     * @param {String} matchId MatchID
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
-    GetMatchLoadouts(matchId: string): Object;
+    GetMatchLoadouts(matchId: string): AxiosClientOut;
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
-    GetPlayer(puuid: string): Object;
+    GetPlayer(puuid: string): AxiosClientOut;
     /**
     * @param {String} matchId MatchID
     * @param {String} agentId CharacterID
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
-    LockCharacter(matchId: string, agentId: string): Object;
+    LockCharacter(matchId: string, agentId: string): AxiosClientOut;
     /**
     * @param {String} matchId MatchID
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
-    QuitMatch(matchId: string): Object;
+    QuitMatch(matchId: string): AxiosClientOut;
     /**
     * @param {String} matchId MatchID
     * @param {String} agentId CharacterID
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
-    SelectCharacter(matchId: string, agentId: string): Object;
+    SelectCharacter(matchId: string, agentId: string): AxiosClientOut;
 }
 //# sourceMappingURL=PreGame.d.ts.map

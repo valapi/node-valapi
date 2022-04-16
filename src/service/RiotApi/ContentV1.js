@@ -1,5 +1,6 @@
 //import
 const AxiosClient = require('@ing3kth/core').Core.AxiosClient;
+const AxiosClientOut = require('@ing3kth/core').Interface.AxiosClientOut;
 
 //class
 
@@ -22,6 +23,7 @@ class ContentV1 {
      * 
      * @param {String} locale Locale
      * @example locale = 'en-US' && 'th-TH'
+     * @returns {AxiosClientOut}
      */
     async Contents(locale = 'en-US') {
         return await this.AxiosClient.get(this.region.riot.server + `/val/content/v1/contents?locale=${locale}` + `&api_key=${this.apiKey}`);

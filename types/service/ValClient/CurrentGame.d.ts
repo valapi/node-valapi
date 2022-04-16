@@ -5,7 +5,6 @@ export = CurrentGame;
 declare class CurrentGame {
     /**
     * @param {JSON} data Services Data
-    * @returns {Object}
     */
     constructor(data: JSON);
     classId: string;
@@ -13,24 +12,24 @@ declare class CurrentGame {
     Region: any;
     /**
     * @param {String} matchId MatchID
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
-    FetchMatch(matchId: string): Object;
+    FetchMatch(matchId: string): AxiosClientOut;
     /**
     * @param {String} matchId MatchID
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
-    FetchMatchLoadouts(matchId: string): Object;
+    FetchMatchLoadouts(matchId: string): AxiosClientOut;
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
-    FetchPlayer(puuid: string): Object;
+    FetchPlayer(puuid: string): AxiosClientOut;
     /**
     * @param {String} puuid PlayerUUID
     * @param {String} matchId MatchID
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
-    DisassociatePlayer(puuid: string, matchId: string): Object;
+    DisassociatePlayer(puuid: string, matchId: string): AxiosClientOut;
 }
 //# sourceMappingURL=CurrentGame.d.ts.map

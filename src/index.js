@@ -24,6 +24,7 @@ module.exports = {
     //interface
     Interface: {
         RiotApi: require('./resources/interface/IRiotApi'),
+        RiotLocal: require('./resources/interface/IRiotLocal'),
         RiotLocalJSON: require('./resources/interface/IRiotLocalJSON'),
         RiotLocalLockfile: require('./resources/interface/IRiotLocalLockfile'),
         RiotLocalReplace: require('./resources/interface/IRiotLocalReplace'),

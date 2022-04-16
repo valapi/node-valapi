@@ -1,5 +1,6 @@
 //import
 const AxiosClient = require('@ing3kth/core').Core.AxiosClient;
+const AxiosClientOut = require('@ing3kth/core').Interface.AxiosClientOut;
 
 //service
 
@@ -9,7 +10,6 @@ const AxiosClient = require('@ing3kth/core').Core.AxiosClient;
 class Store {
     /**
     * @param {JSON} data Services Data
-    * @returns {Object}
     */
     constructor(data) {
         this.classId = '@ing3kth/val-api/ValClient/Store';
@@ -20,14 +20,14 @@ class Store {
     /**
     * @param {String} puuid PlayerUUID
     * @param {String} itemTypeId ItemTypeID
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
      async GetEntitlements(puuid, itemTypeId) {
         return await this.AxiosClient.get(this.Region.url.playerData + `/store/v1/entitlements/${puuid}/${itemTypeId}`);
     }
 
     /**
-     * @returns {Object}
+     * @returns {AxiosClientOut}
     */
      async GetOffers() {
         return await this.AxiosClient.get(this.Region.url.playerData + `/store/v1/offers/`);
@@ -35,7 +35,7 @@ class Store {
 
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
      async GetStorefront(puuid) {
         return await this.AxiosClient.get(this.Region.url.playerData + `/store/v2/storefront/${puuid}`);
@@ -43,7 +43,7 @@ class Store {
 
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
      async GetWallet(puuid) {
         return await this.AxiosClient.get(this.Region.url.playerData + `/store/v1/wallet/${puuid}`);

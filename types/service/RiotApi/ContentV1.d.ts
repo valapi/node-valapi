@@ -15,7 +15,8 @@ declare class ContentV1 {
      *
      * @param {String} locale Locale
      * @example locale = 'en-US' && 'th-TH'
+     * @returns {AxiosClientOut}
      */
-    Contents(locale?: string): Promise<any>;
+    Contents(locale?: string): AxiosClientOut;
 }
 //# sourceMappingURL=ContentV1.d.ts.map

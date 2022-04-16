@@ -1,6 +1,6 @@
 {
   "name": "@ing3kth/val-api",
-  "version": "1.5.6",
+  "version": "1.5.7",
   "description": "Valorant Api - Support MFA",
   "main": "src/index.js",
   "types": "./types/index.d.ts",
@@ -35,6 +35,6 @@
   },
   "homepage": "https://github.com/KTNG-3/val-api#readme",
   "dependencies": {
-    "@ing3kth/core": "^1.7.1"
+    "@ing3kth/core": "^1.7.2"
   }
 }

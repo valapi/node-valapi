@@ -5,7 +5,6 @@ export = Party;
 declare class Party {
     /**
     * @param {JSON} data Services Data
-    * @returns {Object}
     */
     constructor(data: JSON);
     classId: string;
@@ -16,59 +15,59 @@ declare class Party {
     FetchCustomGameConfigs(): Promise<any>;
     /**
     * @param {String} partyId PartyID
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
-    FetchParty(partyId: string): Object;
+    FetchParty(partyId: string): AxiosClientOut;
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
-    FetchPlayer(puuid: string): Object;
+    FetchPlayer(puuid: string): AxiosClientOut;
     /**
     * @param {String} partyId PartyID
     * @param {String} queueId QueueID
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
-    ChangeQueue(partyId: string, queueId: string): Object;
+    ChangeQueue(partyId: string, queueId: string): AxiosClientOut;
     /**
     * @param {String} partyId PartyID
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
-    EnterMatchmakingQueue(partyId: string): Object;
+    EnterMatchmakingQueue(partyId: string): AxiosClientOut;
     /**
     * @param {String} partyId PartyID
     * @param {String} gameName In-Game Name
     * @param {String} tagLine In-Game Tag
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
-    InviteToPartyByDisplayName(partyId: string, gameName: string, tagLine: string): Object;
+    InviteToPartyByDisplayName(partyId: string, gameName: string, tagLine: string): AxiosClientOut;
     /**
     * @param {String} partyId PartyID
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
-    LeaveMatchmakingQueue(partyId: string): Object;
+    LeaveMatchmakingQueue(partyId: string): AxiosClientOut;
     /**
     * @param {String} partyId PartyID
     * @param {String} accessibility Accessibility
     * @default accessibility = "OPEN" || "CLOSED"
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
-    SetAccessibility(partyId: string, accessibility: string): Object;
+    SetAccessibility(partyId: string, accessibility: string): AxiosClientOut;
     /**
     * @param {String} partyId PartyID
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
-    StartCustomGame(partyId: string): Object;
+    StartCustomGame(partyId: string): AxiosClientOut;
     /**
     * @param {String} puuid PlayerUUID
     * @param {String} partyId PartyID
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
-    LeaveParty(puuid: string, partyId: string): Object;
+    LeaveParty(puuid: string, partyId: string): AxiosClientOut;
     /**
     * @param {String} partyId PartyID
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
-    LeaveQueue(partyId: string): Object;
+    LeaveQueue(partyId: string): AxiosClientOut;
 }
 //# sourceMappingURL=Party.d.ts.map

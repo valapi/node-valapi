@@ -1,5 +1,6 @@
 //import
 const AxiosClient = require('@ing3kth/core').Core.AxiosClient;
+const AxiosClientOut = require('@ing3kth/core').Interface.AxiosClientOut;
 
 //service
 
@@ -9,7 +10,6 @@ const AxiosClient = require('@ing3kth/core').Core.AxiosClient;
 class Player {
     /**
     * @param {JSON} data Services Data
-    * @returns {Object}
     */
     constructor(data) {
         this.classId = '@ing3kth/val-api/ValClient/Player';
@@ -20,7 +20,7 @@ class Player {
     //Mike - Username From ID
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
      async GetUsername(puuid) {
         return await this.AxiosClient.put(this.Region.url.playerData + `/name-service/v2/players`, [
@@ -31,7 +31,7 @@ class Player {
     //Riot Auth
 
     /**
-     * @returns {Object}
+     * @returns {AxiosClientOut}
     */
     async GetUserInfo() {
         return await this.AxiosClient.post(`https://auth.riotgames.com/userinfo`);
@@ -41,7 +41,7 @@ class Player {
 
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
      async FetchPlayer(puuid) {
         return await this.AxiosClient.get(this.Region.url.playerData + `/mmr/v1/players/${puuid}`);
@@ -52,7 +52,7 @@ class Player {
     * @param {String} queueId QueueID
     * @param {Number} startIndex startIndex
     * @param {Number} endIndex endIndex
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
     async FetchCompetitiveUpdates(puuid, queueId = false, startIndex = 0, endIndex = 10) {
         let _url = this.Region.url.playerData + `/mmr/v1/players/${puuid}/competitiveupdates?startIndex=${startIndex}&endIndex=${endIndex}`;
@@ -65,7 +65,7 @@ class Player {
 
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
     async Loadout(puuid) {
         return await this.AxiosClient.get(this.Region.url.playerData + `/personalization/v2/players/${puuid}/playerloadout`);
@@ -73,14 +73,14 @@ class Player {
 
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
     async AccountXP(puuid) {
         return await this.AxiosClient.get(this.Region.url.playerData + `/account-xp/v1/players/${puuid}`);
     }
 
     /**
-     * @returns {Object}
+     * @returns {AxiosClientOut}
     */
      async FetchPlayerRestrictions() {
         return await this.AxiosClient.get(this.Region.url.playerData + `/restrictions/v3/penalties`);

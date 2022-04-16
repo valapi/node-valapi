@@ -1,5 +1,6 @@
 //import
 const AxiosClient = require('@ing3kth/core').Core.AxiosClient;
+const AxiosClientOut = require('@ing3kth/core').Interface.AxiosClientOut;
 
 //service
 
@@ -19,7 +20,7 @@ class Client {
     //SESSION
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
      async GetSession(puuid) {
         return await this.AxiosClient.get(this.Region.url.partyService + `/session/v1/sessions/${puuid}`);
@@ -28,14 +29,14 @@ class Client {
     //PVP Endpoints
     
     /**
-     * @returns {Object}
+     * @returns {AxiosClientOut}
     */
      async FetchContent() {
         return await this.AxiosClient.get(this.Region.url.sharedData + `/content-service/v3/content`);
     }
 
     /**
-     * @returns {Object}
+     * @returns {AxiosClientOut}
     */
      async FetchConfig() {
         return await this.AxiosClient.get(this.Region.url.sharedData + `/v1/config/${this.Region.data.api}`);

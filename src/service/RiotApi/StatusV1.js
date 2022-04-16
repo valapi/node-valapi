@@ -1,5 +1,6 @@
 //import
 const AxiosClient = require('@ing3kth/core').Core.AxiosClient;
+const AxiosClientOut = require('@ing3kth/core').Interface.AxiosClientOut;
 
 //class
 
@@ -19,7 +20,7 @@ class StatusV1 {
     }
 
     /**
-     * 
+     * @returns {AxiosClientOut}
      */
     async PlatformData() {
         return await this.AxiosClient.get(this.region.riot.server + `/val/status/v1/platform-data` + `?api_key=${this.apiKey}`);

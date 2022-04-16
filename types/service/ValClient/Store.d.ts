@@ -5,7 +5,6 @@ export = Store;
 declare class Store {
     /**
     * @param {JSON} data Services Data
-    * @returns {Object}
     */
     constructor(data: JSON);
     classId: string;
@@ -14,22 +13,22 @@ declare class Store {
     /**
     * @param {String} puuid PlayerUUID
     * @param {String} itemTypeId ItemTypeID
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
-    GetEntitlements(puuid: string, itemTypeId: string): Object;
+    GetEntitlements(puuid: string, itemTypeId: string): AxiosClientOut;
     /**
-     * @returns {Object}
+     * @returns {AxiosClientOut}
     */
-    GetOffers(): Object;
-    /**
-    * @param {String} puuid PlayerUUID
-    * @returns {Object}
-    */
-    GetStorefront(puuid: string): Object;
+    GetOffers(): AxiosClientOut;
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
-    GetWallet(puuid: string): Object;
+    GetStorefront(puuid: string): AxiosClientOut;
+    /**
+    * @param {String} puuid PlayerUUID
+    * @returns {AxiosClientOut}
+    */
+    GetWallet(puuid: string): AxiosClientOut;
 }
 //# sourceMappingURL=Store.d.ts.map

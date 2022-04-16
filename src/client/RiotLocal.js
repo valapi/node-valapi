@@ -1,9 +1,12 @@
 //import
 const fs = require('fs');
+
 const IngCore = require('@ing3kth/core');
+const AxiosClientOut = require('@ing3kth/core').Interface.AxiosClientOut;
 
 const IRiotLocal = require('../resources/interface/IRiotLocal')
 const IRiotLocalJSON = require('../resources/interface/IRiotLocalJSON');
+const IRiotLocalResources = require('../resources/interface/IRiotLocalResources');
 const IRiotLocalLockfile = require('../resources/interface/IRiotLocalLockfile');
 
 //class
@@ -43,6 +46,10 @@ class RiotLocal {
         this.reload();
     }
 
+    /**
+     * 
+     * @returns {IRiotLocalResources}
+     */
     getResource() {
         return {
             Chat: require('../service/RiotLocal/Chat'),
@@ -95,7 +102,7 @@ class RiotLocal {
      * 
      * @param {IRiotLocalJSON} data Data from LocalResourse
      * @param {any} args.. Replace With Arguments
-     * @returns {Object}
+     * @returns {AxiosClientOut}
      */
     async requestFromJSON(data = {
         method: 'get',
@@ -149,7 +156,7 @@ class RiotLocal {
      * @param {String} method Method to request
      * @param {String} endpoint Url Endpoint
      * @param {String} body Request Body
-     * @returns {Object}
+     * @returns {AxiosClientOut}
      */
     async request(method = 'get', endpoint = '/help', body = {}) {
         switch (method.toLowerCase()) {
@@ -312,6 +319,10 @@ class RiotLocal {
         return newRiotLocal;
     }
 
+    /**
+     * 
+     * @returns {IRiotLocalResources}
+     */
     static getResource() {
         const newRiotLocal = new RiotLocal();
         return newRiotLocal.getResource();

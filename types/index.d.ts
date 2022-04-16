@@ -256,6 +256,17 @@ export namespace Interface {
         region: StringConstructor;
     };
     export { RiotApi_2 as RiotApi };
+    const RiotLocal_2: {
+        ip: StringConstructor;
+        lockfile: {
+            name: StringConstructor;
+            pid: NumberConstructor;
+            port: NumberConstructor;
+            password: StringConstructor;
+            protocol: StringConstructor;
+        };
+    };
+    export { RiotLocal_2 as RiotLocal };
     export const RiotLocalJSON: {
         method: StringConstructor;
         endpoint: StringConstructor;

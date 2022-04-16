@@ -1,5 +1,6 @@
 //import
 const AxiosClient = require('@ing3kth/core').Core.AxiosClient;
+const AxiosClientOut = require('@ing3kth/core').Interface.AxiosClientOut;
 
 //service
 
@@ -9,7 +10,6 @@ const AxiosClient = require('@ing3kth/core').Core.AxiosClient;
 class PreGame {
     /**
     * @param {JSON} data Services Data
-    * @returns {Object}
     */
     constructor(data) {
         this.classId = '@ing3kth/val-api/ValClient/Pregame';
@@ -19,7 +19,7 @@ class PreGame {
 
     /**
     * @param {String} matchId MatchID
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
      async GetMatch(matchId) {
         return await this.AxiosClient.get(this.Region.url.partyService + `/pregame/v1/matches/${matchId}`);
@@ -27,7 +27,7 @@ class PreGame {
 
     /**
     * @param {String} matchId MatchID
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
      async GetMatchLoadouts(matchId) {
         return await this.AxiosClient.get(this.Region.url.partyService + `/pregame/v1/matches/${matchId}/loadouts`);
@@ -35,7 +35,7 @@ class PreGame {
 
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
      async GetPlayer(puuid) {
         return await this.AxiosClient.get(this.Region.url.partyService + `/pregame/v1/players/${puuid}`);
@@ -44,7 +44,7 @@ class PreGame {
     /**
     * @param {String} matchId MatchID
     * @param {String} agentId CharacterID
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
      async LockCharacter(matchId, agentId) {
         return await this.AxiosClient.post(this.Region.url.partyService + `/pregame/v1/matches/${matchId}/lock/${agentId}`);
@@ -52,7 +52,7 @@ class PreGame {
 
     /**
     * @param {String} matchId MatchID
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
      async QuitMatch(matchId) {
         return await this.AxiosClient.post(this.Region.url.partyService + `/pregame/v1/matches/${matchId}/quit`);
@@ -61,7 +61,7 @@ class PreGame {
     /**
     * @param {String} matchId MatchID
     * @param {String} agentId CharacterID
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
      async SelectCharacter(matchId, agentId) {
         return await this.AxiosClient.post(this.Region.url.partyService + `/pregame/v1/matches/${matchId}/select/${agentId}`);

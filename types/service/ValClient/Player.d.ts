@@ -5,7 +5,6 @@ export = Player;
 declare class Player {
     /**
     * @param {JSON} data Services Data
-    * @returns {Object}
     */
     constructor(data: JSON);
     classId: string;
@@ -13,39 +12,39 @@ declare class Player {
     Region: any;
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
-    GetUsername(puuid: string): Object;
+    GetUsername(puuid: string): AxiosClientOut;
     /**
-     * @returns {Object}
+     * @returns {AxiosClientOut}
     */
-    GetUserInfo(): Object;
+    GetUserInfo(): AxiosClientOut;
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
-    FetchPlayer(puuid: string): Object;
+    FetchPlayer(puuid: string): AxiosClientOut;
     /**
     * @param {String} puuid PlayerUUID
     * @param {String} queueId QueueID
     * @param {Number} startIndex startIndex
     * @param {Number} endIndex endIndex
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
-    FetchCompetitiveUpdates(puuid: string, queueId?: string, startIndex?: number, endIndex?: number): Object;
+    FetchCompetitiveUpdates(puuid: string, queueId?: string, startIndex?: number, endIndex?: number): AxiosClientOut;
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
-    Loadout(puuid: string): Object;
+    Loadout(puuid: string): AxiosClientOut;
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Object}
+    * @returns {AxiosClientOut}
     */
-    AccountXP(puuid: string): Object;
+    AccountXP(puuid: string): AxiosClientOut;
     /**
-     * @returns {Object}
+     * @returns {AxiosClientOut}
     */
-    FetchPlayerRestrictions(): Object;
+    FetchPlayerRestrictions(): AxiosClientOut;
 }
 //# sourceMappingURL=Player.d.ts.map
