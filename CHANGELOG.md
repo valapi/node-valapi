@@ -1,5 +1,6 @@
 # 1.5.7 (April 16, 2022 | In Development)
 
+- change all API return that makes you know if the request is a success or not.
 - A little bit changes
 
 # 1.5.6 (April 15, 2022 | In Development)
