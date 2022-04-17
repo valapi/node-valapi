@@ -26,7 +26,7 @@ class RiotApi {
         apiKey: null,
         region: 'ap',
     }) {
-        if(!key){
+        if(!data.apiKey){
             IngCore.Core.Logs.log(this.classId + " Missing API Key", 'err', true);
             return;
         }

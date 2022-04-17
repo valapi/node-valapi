@@ -71,7 +71,7 @@ class Account {
         }
 
         // get asscess token
-        const _search = new URL(auth_response.data.response.parameters.uri)
+        const _search = new URL(auth_response.data.response.parameters.uri);
         var _get_where;
         var _get_accessToken;
 

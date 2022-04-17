@@ -4,7 +4,7 @@ const fs = require('fs');
 const IngCore = require('@ing3kth/core');
 const AxiosClientOut = require('@ing3kth/core').Interface.AxiosClientOut;
 
-const IRiotLocal = require('../resources/interface/IRiotLocal')
+const IRiotLocal = require('../resources/interface/IRiotLocal');
 const IRiotLocalJSON = require('../resources/interface/IRiotLocalJSON');
 const IRiotLocalResources = require('../resources/interface/IRiotLocalResources');
 const IRiotLocalLockfile = require('../resources/interface/IRiotLocalLockfile');
