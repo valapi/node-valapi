@@ -10,20 +10,26 @@ declare class AccountV1 {
     classId: string;
     apiKey: any;
     region: any;
-    AxiosClient: any;
+    AxiosClient: import("@ing3kth/core/types/core/AxiosClient");
     /**
      *
      * @param {String} gameName In-Game Name
      * @param {String} tagLine In-Game Tag
      * @returns {AxiosClientOut}
      */
-    ByRiotId(gameName: string, tagLine: string): AxiosClientOut;
+    ByRiotId(gameName: string, tagLine: string): {
+        isError: BooleanConstructor;
+        data: ObjectConstructor;
+    };
     /**
      *
      * @param {String} puuid Player UUID
      * @returns {AxiosClientOut}
      */
-    ByPuuid(puuid: string): AxiosClientOut;
+    ByPuuid(puuid: string): {
+        isError: BooleanConstructor;
+        data: ObjectConstructor;
+    };
     /**
      *
      * @param {String} puuid Player UUID
@@ -31,6 +37,9 @@ declare class AccountV1 {
      * @example game = 'val' && 'lor'
      * @returns {AxiosClientOut}
      */
-    ByGame(puuid: string, game?: string): AxiosClientOut;
+    ByGame(puuid: string, game?: string): {
+        isError: BooleanConstructor;
+        data: ObjectConstructor;
+    };
 }
 //# sourceMappingURL=AccountV1.d.ts.map

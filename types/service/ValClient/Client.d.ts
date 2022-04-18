@@ -8,20 +8,29 @@ declare class Client {
     */
     constructor(data: JSON);
     classId: string;
-    AxiosClient: any;
+    AxiosClient: import("@ing3kth/core/types/core/AxiosClient");
     Region: any;
     /**
     * @param {String} puuid PlayerUUID
     * @returns {AxiosClientOut}
     */
-    GetSession(puuid: string): AxiosClientOut;
+    GetSession(puuid: string): {
+        isError: BooleanConstructor;
+        data: ObjectConstructor;
+    };
     /**
      * @returns {AxiosClientOut}
     */
-    FetchContent(): AxiosClientOut;
+    FetchContent(): {
+        isError: BooleanConstructor;
+        data: ObjectConstructor;
+    };
     /**
      * @returns {AxiosClientOut}
     */
-    FetchConfig(): AxiosClientOut;
+    FetchConfig(): {
+        isError: BooleanConstructor;
+        data: ObjectConstructor;
+    };
 }
 //# sourceMappingURL=Client.d.ts.map

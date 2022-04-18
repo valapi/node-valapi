@@ -8,66 +8,99 @@ declare class Party {
     */
     constructor(data: JSON);
     classId: string;
-    AxiosClient: any;
+    AxiosClient: import("@ing3kth/core/types/core/AxiosClient");
     Region: any;
     /**
     */
-    FetchCustomGameConfigs(): Promise<any>;
+    FetchCustomGameConfigs(): Promise<{
+        isError: BooleanConstructor;
+        data: ObjectConstructor;
+    }>;
     /**
     * @param {String} partyId PartyID
     * @returns {AxiosClientOut}
     */
-    FetchParty(partyId: string): AxiosClientOut;
+    FetchParty(partyId: string): {
+        isError: BooleanConstructor;
+        data: ObjectConstructor;
+    };
     /**
     * @param {String} puuid PlayerUUID
     * @returns {AxiosClientOut}
     */
-    FetchPlayer(puuid: string): AxiosClientOut;
+    FetchPlayer(puuid: string): {
+        isError: BooleanConstructor;
+        data: ObjectConstructor;
+    };
     /**
     * @param {String} partyId PartyID
     * @param {String} queueId QueueID
     * @returns {AxiosClientOut}
     */
-    ChangeQueue(partyId: string, queueId: string): AxiosClientOut;
+    ChangeQueue(partyId: string, queueId: string): {
+        isError: BooleanConstructor;
+        data: ObjectConstructor;
+    };
     /**
     * @param {String} partyId PartyID
     * @returns {AxiosClientOut}
     */
-    EnterMatchmakingQueue(partyId: string): AxiosClientOut;
+    EnterMatchmakingQueue(partyId: string): {
+        isError: BooleanConstructor;
+        data: ObjectConstructor;
+    };
     /**
     * @param {String} partyId PartyID
     * @param {String} gameName In-Game Name
     * @param {String} tagLine In-Game Tag
     * @returns {AxiosClientOut}
     */
-    InviteToPartyByDisplayName(partyId: string, gameName: string, tagLine: string): AxiosClientOut;
+    InviteToPartyByDisplayName(partyId: string, gameName: string, tagLine: string): {
+        isError: BooleanConstructor;
+        data: ObjectConstructor;
+    };
     /**
     * @param {String} partyId PartyID
     * @returns {AxiosClientOut}
     */
-    LeaveMatchmakingQueue(partyId: string): AxiosClientOut;
+    LeaveMatchmakingQueue(partyId: string): {
+        isError: BooleanConstructor;
+        data: ObjectConstructor;
+    };
     /**
     * @param {String} partyId PartyID
     * @param {String} accessibility Accessibility
     * @default accessibility = "OPEN" || "CLOSED"
     * @returns {AxiosClientOut}
     */
-    SetAccessibility(partyId: string, accessibility: string): AxiosClientOut;
+    SetAccessibility(partyId: string, accessibility: string): {
+        isError: BooleanConstructor;
+        data: ObjectConstructor;
+    };
     /**
     * @param {String} partyId PartyID
     * @returns {AxiosClientOut}
     */
-    StartCustomGame(partyId: string): AxiosClientOut;
+    StartCustomGame(partyId: string): {
+        isError: BooleanConstructor;
+        data: ObjectConstructor;
+    };
     /**
     * @param {String} puuid PlayerUUID
     * @param {String} partyId PartyID
     * @returns {AxiosClientOut}
     */
-    LeaveParty(puuid: string, partyId: string): AxiosClientOut;
+    LeaveParty(puuid: string, partyId: string): {
+        isError: BooleanConstructor;
+        data: ObjectConstructor;
+    };
     /**
     * @param {String} partyId PartyID
     * @returns {AxiosClientOut}
     */
-    LeaveQueue(partyId: string): AxiosClientOut;
+    LeaveQueue(partyId: string): {
+        isError: BooleanConstructor;
+        data: ObjectConstructor;
+    };
 }
 //# sourceMappingURL=Party.d.ts.map

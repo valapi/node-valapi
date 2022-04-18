@@ -2,7 +2,7 @@
 const fs = require('fs');
 
 const IngCore = require('@ing3kth/core');
-const AxiosClientOut = require('@ing3kth/core').Interface.AxiosClientOut;
+const { AxiosClientOut } = require('@ing3kth/core').Interface;
 
 const IRiotLocal = require('../resources/interface/IRiotLocal');
 const IRiotLocalJSON = require('../resources/interface/IRiotLocalJSON');
@@ -123,8 +123,7 @@ class RiotLocal {
         var _string_endpoint = String(_endpoint);
         var _string_body = String(JSON.stringify(_body));
 
-        for (let i = 0; i < data.replace.length; i++) {
-            const _change = data.replace[i];
+        for (const _change of data.replace) {
             const _args = arguments[i + 1];
             if (_change.where === 'url') {
                 if (_args) {

@@ -1,6 +1,6 @@
 //import
-const AxiosClient = require('@ing3kth/core').Core.AxiosClient;
-const AxiosClientOut = require('@ing3kth/core').Interface.AxiosClientOut;
+const { AxiosClient } = require('@ing3kth/core').Core;
+const { AxiosClientOut } = require('@ing3kth/core').Interface;
 
 //class
 

@@ -8,28 +8,40 @@ declare class CurrentGame {
     */
     constructor(data: JSON);
     classId: string;
-    AxiosClient: any;
+    AxiosClient: import("@ing3kth/core/types/core/AxiosClient");
     Region: any;
     /**
     * @param {String} matchId MatchID
     * @returns {AxiosClientOut}
     */
-    FetchMatch(matchId: string): AxiosClientOut;
+    FetchMatch(matchId: string): {
+        isError: BooleanConstructor;
+        data: ObjectConstructor;
+    };
     /**
     * @param {String} matchId MatchID
     * @returns {AxiosClientOut}
     */
-    FetchMatchLoadouts(matchId: string): AxiosClientOut;
+    FetchMatchLoadouts(matchId: string): {
+        isError: BooleanConstructor;
+        data: ObjectConstructor;
+    };
     /**
     * @param {String} puuid PlayerUUID
     * @returns {AxiosClientOut}
     */
-    FetchPlayer(puuid: string): AxiosClientOut;
+    FetchPlayer(puuid: string): {
+        isError: BooleanConstructor;
+        data: ObjectConstructor;
+    };
     /**
     * @param {String} puuid PlayerUUID
     * @param {String} matchId MatchID
     * @returns {AxiosClientOut}
     */
-    DisassociatePlayer(puuid: string, matchId: string): AxiosClientOut;
+    DisassociatePlayer(puuid: string, matchId: string): {
+        isError: BooleanConstructor;
+        data: ObjectConstructor;
+    };
 }
 //# sourceMappingURL=CurrentGame.d.ts.map

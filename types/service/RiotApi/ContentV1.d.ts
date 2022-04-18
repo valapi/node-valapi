@@ -10,13 +10,16 @@ declare class ContentV1 {
     classId: string;
     apiKey: any;
     region: any;
-    AxiosClient: any;
+    AxiosClient: import("@ing3kth/core/types/core/AxiosClient");
     /**
      *
      * @param {String} locale Locale
      * @example locale = 'en-US' && 'th-TH'
      * @returns {AxiosClientOut}
      */
-    Contents(locale?: string): AxiosClientOut;
+    Contents(locale?: string): {
+        isError: BooleanConstructor;
+        data: ObjectConstructor;
+    };
 }
 //# sourceMappingURL=ContentV1.d.ts.map

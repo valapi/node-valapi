@@ -8,14 +8,17 @@ declare class Match {
     */
     constructor(data: JSON);
     classId: string;
-    AxiosClient: any;
+    AxiosClient: import("@ing3kth/core/types/core/AxiosClient");
     Region: any;
     /**
     * @description Get contract definitions
     * @param {String} matchId MatchID
     * @returns {AxiosClientOut}
     */
-    FetchMatchDetails(matchId: string): AxiosClientOut;
+    FetchMatchDetails(matchId: string): {
+        isError: BooleanConstructor;
+        data: ObjectConstructor;
+    };
     /**
     * @param {String} puuid PlayerUUID
     * @param {String} queueId QueueID
@@ -23,6 +26,9 @@ declare class Match {
     * @param {Number} endIndex endIndex
     * @returns {AxiosClientOut}
     */
-    FetchMatchHistory(puuid: string, queueId?: string, startIndex?: number, endIndex?: number): AxiosClientOut;
+    FetchMatchHistory(puuid: string, queueId?: string, startIndex?: number, endIndex?: number): {
+        isError: BooleanConstructor;
+        data: ObjectConstructor;
+    };
 }
 //# sourceMappingURL=Match.d.ts.map

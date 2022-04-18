@@ -8,39 +8,57 @@ declare class PreGame {
     */
     constructor(data: JSON);
     classId: string;
-    AxiosClient: any;
+    AxiosClient: import("@ing3kth/core/types/core/AxiosClient");
     Region: any;
     /**
     * @param {String} matchId MatchID
     * @returns {AxiosClientOut}
     */
-    GetMatch(matchId: string): AxiosClientOut;
+    GetMatch(matchId: string): {
+        isError: BooleanConstructor;
+        data: ObjectConstructor;
+    };
     /**
     * @param {String} matchId MatchID
     * @returns {AxiosClientOut}
     */
-    GetMatchLoadouts(matchId: string): AxiosClientOut;
+    GetMatchLoadouts(matchId: string): {
+        isError: BooleanConstructor;
+        data: ObjectConstructor;
+    };
     /**
     * @param {String} puuid PlayerUUID
     * @returns {AxiosClientOut}
     */
-    GetPlayer(puuid: string): AxiosClientOut;
+    GetPlayer(puuid: string): {
+        isError: BooleanConstructor;
+        data: ObjectConstructor;
+    };
     /**
     * @param {String} matchId MatchID
     * @param {String} agentId CharacterID
     * @returns {AxiosClientOut}
     */
-    LockCharacter(matchId: string, agentId: string): AxiosClientOut;
+    LockCharacter(matchId: string, agentId: string): {
+        isError: BooleanConstructor;
+        data: ObjectConstructor;
+    };
     /**
     * @param {String} matchId MatchID
     * @returns {AxiosClientOut}
     */
-    QuitMatch(matchId: string): AxiosClientOut;
+    QuitMatch(matchId: string): {
+        isError: BooleanConstructor;
+        data: ObjectConstructor;
+    };
     /**
     * @param {String} matchId MatchID
     * @param {String} agentId CharacterID
     * @returns {AxiosClientOut}
     */
-    SelectCharacter(matchId: string, agentId: string): AxiosClientOut;
+    SelectCharacter(matchId: string, agentId: string): {
+        isError: BooleanConstructor;
+        data: ObjectConstructor;
+    };
 }
 //# sourceMappingURL=PreGame.d.ts.map

@@ -110,7 +110,10 @@ declare class RiotLocal {
         endpoint: StringConstructor;
         body: ObjectConstructor;
         replace: ArrayConstructor;
-    }, ...args: any[]): AxiosClientOut;
+    }, ...args: any[]): {
+        isError: BooleanConstructor;
+        data: ObjectConstructor;
+    };
     /**
      *
      * @param {String} method Method to request
@@ -118,7 +121,10 @@ declare class RiotLocal {
      * @param {String} body Request Body
      * @returns {AxiosClientOut}
      */
-    request(method?: string, endpoint?: string, body?: string): AxiosClientOut;
+    request(method?: string, endpoint?: string, body?: string): {
+        isError: BooleanConstructor;
+        data: ObjectConstructor;
+    };
     /**
      *
      * @returns {IRiotLocal}

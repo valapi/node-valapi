@@ -8,22 +8,43 @@ declare class Player {
     */
     constructor(data: JSON);
     classId: string;
-    AxiosClient: any;
+    AxiosClient: import("@ing3kth/core/types/core/AxiosClient");
     Region: any;
     /**
     * @param {String} puuid PlayerUUID
     * @returns {AxiosClientOut}
     */
-    GetUsername(puuid: string): AxiosClientOut;
+    GetUsername(puuid: string): {
+        /**
+        * @param {String} puuid PlayerUUID
+        * @returns {AxiosClientOut}
+        */
+        isError: BooleanConstructor;
+        data: ObjectConstructor;
+    };
     /**
      * @returns {AxiosClientOut}
     */
-    GetUserInfo(): AxiosClientOut;
+    GetUserInfo(): {
+        /**
+        * @param {String} puuid PlayerUUID
+        * @returns {AxiosClientOut}
+        */
+        isError: BooleanConstructor;
+        data: ObjectConstructor;
+    };
     /**
     * @param {String} puuid PlayerUUID
     * @returns {AxiosClientOut}
     */
-    FetchPlayer(puuid: string): AxiosClientOut;
+    FetchPlayer(puuid: string): {
+        /**
+        * @param {String} puuid PlayerUUID
+        * @returns {AxiosClientOut}
+        */
+        isError: BooleanConstructor;
+        data: ObjectConstructor;
+    };
     /**
     * @param {String} puuid PlayerUUID
     * @param {String} queueId QueueID
@@ -31,20 +52,44 @@ declare class Player {
     * @param {Number} endIndex endIndex
     * @returns {AxiosClientOut}
     */
-    FetchCompetitiveUpdates(puuid: string, queueId?: string, startIndex?: number, endIndex?: number): AxiosClientOut;
+    FetchCompetitiveUpdates(puuid: string, queueId?: string, startIndex?: number, endIndex?: number): {
+        /**
+        * @param {String} puuid PlayerUUID
+        * @returns {AxiosClientOut}
+        */
+        isError: BooleanConstructor;
+        data: ObjectConstructor;
+    };
     /**
     * @param {String} puuid PlayerUUID
     * @returns {AxiosClientOut}
     */
-    Loadout(puuid: string): AxiosClientOut;
+    Loadout(puuid: string): {
+        /**
+        * @param {String} puuid PlayerUUID
+        * @returns {AxiosClientOut}
+        */
+        isError: BooleanConstructor;
+        data: ObjectConstructor;
+    };
     /**
     * @param {String} puuid PlayerUUID
     * @returns {AxiosClientOut}
     */
-    AccountXP(puuid: string): AxiosClientOut;
+    AccountXP(puuid: string): {
+        isError: BooleanConstructor;
+        data: ObjectConstructor;
+    };
     /**
      * @returns {AxiosClientOut}
     */
-    FetchPlayerRestrictions(): AxiosClientOut;
+    FetchPlayerRestrictions(): {
+        /**
+        * @param {String} puuid PlayerUUID
+        * @returns {AxiosClientOut}
+        */
+        isError: BooleanConstructor;
+        data: ObjectConstructor;
+    };
 }
 //# sourceMappingURL=Player.d.ts.map

@@ -32,8 +32,8 @@ class ValClient {
         multifactor: false,
     }, Region = 'ap') {
         if(Account.multifactor){
-            IngCore.Core.Logs.log('This Account is have a Multifactor', 'err', true);
-            return;
+            const havedMultifactor = IngCore.Core.Logs.log('This Account is have a Multifactor', 'err', true);
+            return Promise.reject(havedMultifactor);
         }
 
         //data
@@ -42,7 +42,7 @@ class ValClient {
         this.accessToken = Account.accessToken;
         this.entitlements = Account.entitlements;
         this.client = {
-            version: 'release-04.05-shipping-23-687347',
+            version: 'release-04.07-shipping-13-697073',
             platfrom: 'ew0KCSJwbGF0Zm9ybVR5cGUiOiAiUEMiLA0KCSJwbGF0Zm9ybU9TIjogIldpbmRvd3MiLA0KCSJwbGF0Zm9ybU9TVmVyc2lvbiI6ICIxMC4wLjE5MDQyLjEuMjU2LjY0Yml0IiwNCgkicGxhdGZvcm1DaGlwc2V0IjogIlVua25vd24iDQp9'
         };
         this.region = Region;
