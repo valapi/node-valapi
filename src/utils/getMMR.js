@@ -11,7 +11,7 @@ function execute(Tier, RankedRating) {
         return 1800 + RankedRating;
     }
 
-    return ((Tier * 100) - 300) + RankedRating;
+    return (Tier * 100) - 300 + RankedRating;
 }
 
 module.exports = execute;
