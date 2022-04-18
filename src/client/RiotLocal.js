@@ -123,7 +123,7 @@ class RiotLocal {
         var _string_endpoint = String(_endpoint);
         var _string_body = String(JSON.stringify(_body));
 
-        for (let i in data.replace) {
+        for (let i = 0; i < data.replace.length; i++) {
             const _change = data.replace[i];
             const _args = arguments[i + 1];
             if (_change.where === 'url') {
