@@ -44,6 +44,7 @@ declare class PreGame {
         data: ObjectConstructor;
     };
     /**
+     * * Careful to use, Riot will immediately shut down your Project.
     * @param {String} matchId MatchID
     * @returns {AxiosClientOut}
     */

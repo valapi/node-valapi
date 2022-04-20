@@ -42,6 +42,7 @@ class CurrentGame {
     }
 
     /**
+    * * Careful to use, Riot will immediately shut down your Project.
     * @param {String} puuid PlayerUUID
     * @param {String} matchId MatchID
     * @returns {AxiosClientOut}

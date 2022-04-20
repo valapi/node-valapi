@@ -80,4 +80,5 @@ On [GitHub](https://github.com/KTNG-3/val-api) Will Update Before This Package U
   - [developer.riotgames.com](https://developer.riotgames.com/) (Official Api From Riot Games)
 - *Legal*
   - >**@ing3kth/val-api** isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games, and all associated properties are trademarks or registered trademarks of Riot Games, Inc.
+  - **@ing3kth/val-api** was created under [Riot Games' "Legal Jibber Jabber"](https://www.riotgames.com/en/legal)
   - [MIT License](https://github.com/KTNG-3/val-api/blob/main/LICENSE)

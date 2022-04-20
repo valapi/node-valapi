@@ -1,3 +1,8 @@
+# 1.5.9 (Day Here | In Development | About Legal)
+
+- Remove Utils (MMO || ELO culculator is banned)
+- Update [README.md](README.md)
+
 # 1.5.8 (April 18, 2022 | In Development)
 
 - Utils

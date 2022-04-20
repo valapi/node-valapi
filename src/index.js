@@ -21,11 +21,6 @@ module.exports = {
         HTTP_Response: require(`./resources/data/HTTP_Response`),
     },
 
-    //util
-    Utils: {
-        getMMR: require('./utils/getMMR'),
-    },
-
     //interface
     Interface: {
         RiotApi: require('./resources/interface/IRiotApi'),

@@ -250,9 +250,6 @@ export namespace Resource {
         };
     };
 }
-export namespace Utils {
-    const getMMR: typeof import("./utils/getMMR");
-}
 export namespace Interface {
     const RiotApi_2: {
         apiKey: StringConstructor;

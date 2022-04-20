@@ -1,6 +1,6 @@
 {
   "name": "@ing3kth/val-api",
-  "version": "1.5.8",
+  "version": "1.5.9",
   "description": "Valorant Api - Support MFA",
   "main": "src/index.js",
   "types": "./types/index.d.ts",
