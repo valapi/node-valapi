@@ -1,1 +1,157 @@
 date|||mode|||data
+2022-04-25T15:14:17.914Z|||info|||@ing3kth/core/AxiosClient POST https://auth.riotgames.com/api/v1/authorization
+2022-04-25T15:14:19.304Z|||info|||@ing3kth/core/AxiosClient PUT https://auth.riotgames.com/api/v1/authorization
+2022-04-25T15:14:19.822Z|||info|||@ing3kth/core/AxiosClient POST https://entitlements.auth.riotgames.com/api/token/v1
+2022-04-25T15:14:19.858Z|||info|||@ing3kth/val-api/ValClient Reload
+2022-04-25T15:14:49.714Z|||info|||@ing3kth/val-api/RiotApi Reload
+2022-04-25T15:14:51.464Z|||info|||@ing3kth/core/AxiosClient GET https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/KawinTH/In3gG?api_key=RGAPI-624fa164-a4e0-4d8f-804a-f89a1829b515
+2022-04-25T15:18:22.772Z|||info|||@ing3kth/val-api/RiotApi Reload
+2022-04-25T15:18:24.351Z|||info|||@ing3kth/core/AxiosClient GET https://americas.api.riotgames.com/riot/account/v1/active-shards/by-game/lor/by-puuid/M_zqxaqXmw9j7BmXkgCOAdiJkQBpRh_vwwcLNNTHMBnLBSnaHDBUM4leFWJJZLow3UheuwUhZNcz2w?api_key=RGAPI-624fa164-a4e0-4d8f-804a-f89a1829b515
+2022-04-25T15:18:44.690Z|||info|||@ing3kth/val-api/RiotApi Reload
+2022-04-25T15:18:46.157Z|||info|||@ing3kth/core/AxiosClient GET https://americas.api.riotgames.com/riot/account/v1/active-shards/by-game/val/by-puuid/M_zqxaqXmw9j7BmXkgCOAdiJkQBpRh_vwwcLNNTHMBnLBSnaHDBUM4leFWJJZLow3UheuwUhZNcz2w?api_key=RGAPI-624fa164-a4e0-4d8f-804a-f89a1829b515
+2022-04-25T15:20:51.009Z|||info|||@ing3kth/val-api/RiotApi Reload
+2022-04-25T15:20:52.535Z|||info|||@ing3kth/core/AxiosClient GET https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/KawinTH/In3gG?api_key=RGAPI-624fa164-a4e0-4d8f-804a-f89a1829b515
+2022-04-25T15:21:06.390Z|||info|||@ing3kth/val-api/RiotApi Reload
+2022-04-25T15:21:07.472Z|||info|||@ing3kth/core/AxiosClient GET https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/KawinTH/In3gG?api_key=RGAPI-624fa164-a4e0-4d8f-804a-f89a1829b515
+2022-04-25T15:21:11.376Z|||info|||@ing3kth/core/AxiosClient GET https://na.api.riotgames.com/val/content/v1/contents?locale=th-TH&api_key=RGAPI-624fa164-a4e0-4d8f-804a-f89a1829b515
+2022-04-25T15:21:19.107Z|||info|||@ing3kth/val-api/RiotApi Reload
+2022-04-25T15:21:20.580Z|||info|||@ing3kth/core/AxiosClient GET https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/KawinTH/In3gG?api_key=RGAPI-624fa164-a4e0-4d8f-804a-f89a1829b515
+2022-04-25T15:21:25.525Z|||info|||@ing3kth/core/AxiosClient GET https://na.api.riotgames.com/val/content/v1/contents?locale=th-TH&api_key=RGAPI-624fa164-a4e0-4d8f-804a-f89a1829b515
+2022-04-25T15:25:52.360Z|||info|||@ing3kth/core/AxiosClient GET https://127.0.0.1:51212/help
+2022-04-25T15:29:18.858Z|||error|||Error: @ing3kth/core/AxiosClient GET https://127.0.0.1:51212/chat/v6/messages
+    at Logs.<anonymous> (C:\Users\Windows10\Documents\GitHub\val-api\node_modules\@ing3kth\core\dist\core\Logs.js:97:28)
+    at Generator.next (<anonymous>)
+    at C:\Users\Windows10\Documents\GitHub\val-api\node_modules\@ing3kth\core\dist\core\Logs.js:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\Windows10\Documents\GitHub\val-api\node_modules\@ing3kth\core\dist\core\Logs.js:27:12)
+    at Logs.log (C:\Users\Windows10\Documents\GitHub\val-api\node_modules\@ing3kth\core\dist\core\Logs.js:91:16)
+    at Function.<anonymous> (C:\Users\Windows10\Documents\GitHub\val-api\node_modules\@ing3kth\core\dist\core\Logs.js:177:26)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Windows10\Documents\GitHub\val-api\node_modules\@ing3kth\core\dist\core\Logs.js:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+2022-04-25T15:29:48.774Z|||info|||@ing3kth/core/AxiosClient GET https://127.0.0.1:51212/entitlements/v1/token
+2022-04-25T15:33:55.023Z|||info|||@ing3kth/core/AxiosClient GET https://127.0.0.1:51212/chat/v6/messages
+2022-04-25T15:34:13.114Z|||info|||@ing3kth/core/AxiosClient GET https://127.0.0.1:51212/chat/v6/messages
+2022-04-25T15:35:26.524Z|||info|||@ing3kth/val-api/RiotApi Reload
+2022-04-25T15:35:27.747Z|||info|||@ing3kth/core/AxiosClient GET https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/KawinTH/In3gG?api_key=RGAPI-624fa164-a4e0-4d8f-804a-f89a1829b515
+2022-04-25T15:35:31.540Z|||info|||@ing3kth/core/AxiosClient GET https://na.api.riotgames.com/val/content/v1/contents?locale=th-TH&api_key=RGAPI-624fa164-a4e0-4d8f-804a-f89a1829b515
+2022-04-25T15:37:11.732Z|||info|||@ing3kth/val-api/RiotApi Reload
+2022-04-25T15:37:13.306Z|||info|||@ing3kth/core/AxiosClient GET https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/KawinTH/In3gG?api_key=RGAPI-624fa164-a4e0-4d8f-804a-f89a1829b515
+2022-04-25T15:37:17.965Z|||info|||@ing3kth/core/AxiosClient GET https://na.api.riotgames.com/val/content/v1/contents?locale=th-TH&api_key=RGAPI-624fa164-a4e0-4d8f-804a-f89a1829b515
+2022-04-25T15:37:33.877Z|||info|||@ing3kth/val-api/RiotApi Reload
+2022-04-25T15:37:35.116Z|||info|||@ing3kth/core/AxiosClient GET https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/KawinTH/In3gG?api_key=RGAPI-624fa164-a4e0-4d8f-804a-f89a1829b515
+2022-04-25T15:37:38.814Z|||info|||@ing3kth/core/AxiosClient GET https://na.api.riotgames.com/val/content/v1/contents?locale=th-TH&api_key=RGAPI-624fa164-a4e0-4d8f-804a-f89a1829b515
+2022-04-25T15:45:58.740Z|||info|||@ing3kth/val-api/RiotApi Reload
+2022-04-25T15:46:00.055Z|||info|||@ing3kth/core/AxiosClient GET https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/KawinTH/In3gG?api_key=RGAPI-624fa164-a4e0-4d8f-804a-f89a1829b515
+2022-04-25T15:46:04.130Z|||info|||@ing3kth/core/AxiosClient GET https://na.api.riotgames.com/val/content/v1/contents?locale=th-TH&api_key=RGAPI-624fa164-a4e0-4d8f-804a-f89a1829b515
+2022-04-25T15:48:22.122Z|||info|||@ing3kth/val-api/RiotApi Reload
+2022-04-25T15:48:39.615Z|||info|||@ing3kth/val-api/RiotApi Reload
+2022-04-25T15:48:40.664Z|||info|||@ing3kth/core/AxiosClient GET https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/KawinTH/In3gG?api_key=RGAPI-624fa164-a4e0-4d8f-804a-f89a1829b515
+2022-04-25T15:48:44.148Z|||info|||@ing3kth/core/AxiosClient GET https://na.api.riotgames.com/val/content/v1/contents?locale=th-TH&api_key=RGAPI-624fa164-a4e0-4d8f-804a-f89a1829b515
+2022-04-25T15:58:32.586Z|||info|||@ing3kth/val-api/RiotApi Reload
+2022-04-25T15:58:33.646Z|||info|||@ing3kth/core/AxiosClient GET https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/KawinTH/In3gG?api_key=RGAPI-624fa164-a4e0-4d8f-804a-f89a1829b515
+2022-04-25T15:58:36.969Z|||info|||@ing3kth/core/AxiosClient GET https://na.api.riotgames.com/val/content/v1/contents?locale=th-TH&api_key=RGAPI-624fa164-a4e0-4d8f-804a-f89a1829b515
+2022-04-25T16:02:21.221Z|||info|||@ing3kth/val-api/RiotApi Reload
+2022-04-25T16:02:22.297Z|||info|||@ing3kth/core/AxiosClient GET https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/KawinTH/In3gG?api_key=RGAPI-624fa164-a4e0-4d8f-804a-f89a1829b515
+2022-04-25T16:02:25.558Z|||info|||@ing3kth/core/AxiosClient GET https://na.api.riotgames.com/val/content/v1/contents?locale=th-TH&api_key=RGAPI-624fa164-a4e0-4d8f-804a-f89a1829b515
+2022-04-25T16:02:38.769Z|||info|||@ing3kth/val-api/RiotApi Reload
+2022-04-25T16:02:39.758Z|||info|||@ing3kth/core/AxiosClient GET https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/KawinTH/In3gG?api_key=RGAPI-624fa164-a4e0-4d8f-804a-f89a1829b515
+2022-04-25T16:02:42.991Z|||info|||@ing3kth/core/AxiosClient GET https://na.api.riotgames.com/val/content/v1/contents?locale=th-TH&api_key=RGAPI-624fa164-a4e0-4d8f-804a-f89a1829b515
+2022-04-25T16:03:00.171Z|||info|||@ing3kth/val-api/RiotApi Reload
+2022-04-25T16:03:01.163Z|||info|||@ing3kth/core/AxiosClient GET https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/KawinTH/In3gG?api_key=RGAPI-624fa164-a4e0-4d8f-804a-f89a1829b515
+2022-04-25T16:03:04.359Z|||info|||@ing3kth/core/AxiosClient GET https://na.api.riotgames.com/val/content/v1/contents?locale=th-TH&api_key=RGAPI-624fa164-a4e0-4d8f-804a-f89a1829b515
+2022-04-25T16:03:43.436Z|||info|||@ing3kth/val-api/RiotApi Reload
+2022-04-25T16:03:44.477Z|||info|||@ing3kth/core/AxiosClient GET https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/KawinTH/In3gG?api_key=RGAPI-624fa164-a4e0-4d8f-804a-f89a1829b515
+2022-04-25T16:03:47.733Z|||info|||@ing3kth/core/AxiosClient GET https://na.api.riotgames.com/val/content/v1/contents?locale=th-TH&api_key=RGAPI-624fa164-a4e0-4d8f-804a-f89a1829b515
+2022-04-25T16:04:22.820Z|||info|||@ing3kth/val-api/RiotApi Reload
+2022-04-25T16:04:23.799Z|||info|||@ing3kth/core/AxiosClient GET https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/KawinTH/In3gG?api_key=RGAPI-624fa164-a4e0-4d8f-804a-f89a1829b515
+2022-04-25T16:04:26.982Z|||info|||@ing3kth/core/AxiosClient GET https://na.api.riotgames.com/val/content/v1/contents?locale=th-TH&api_key=RGAPI-624fa164-a4e0-4d8f-804a-f89a1829b515
+2022-04-25T16:05:01.537Z|||info|||@ing3kth/core/AxiosClient GET https://127.0.0.1:51212/chat/v6/messages
+2022-04-25T16:05:04.911Z|||info|||@ing3kth/val-api/RiotApi Reload
+2022-04-25T16:05:05.997Z|||info|||@ing3kth/core/AxiosClient GET https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/KawinTH/In3gG?api_key=RGAPI-624fa164-a4e0-4d8f-804a-f89a1829b515
+2022-04-25T16:05:09.255Z|||info|||@ing3kth/core/AxiosClient GET https://na.api.riotgames.com/val/content/v1/contents?locale=th-TH&api_key=RGAPI-624fa164-a4e0-4d8f-804a-f89a1829b515
+2022-04-25T16:05:36.803Z|||info|||@ing3kth/val-api/RiotApi Reload
+2022-04-25T16:05:37.798Z|||info|||@ing3kth/core/AxiosClient GET https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/KawinTH/In3gG?api_key=RGAPI-624fa164-a4e0-4d8f-804a-f89a1829b515
+2022-04-25T16:05:40.979Z|||info|||@ing3kth/core/AxiosClient GET https://na.api.riotgames.com/val/content/v1/contents?locale=th-TH&api_key=RGAPI-624fa164-a4e0-4d8f-804a-f89a1829b515
+2022-04-25T16:05:47.429Z|||info|||@ing3kth/core/AxiosClient POST https://auth.riotgames.com/api/v1/authorization
+2022-04-25T16:05:48.597Z|||info|||@ing3kth/core/AxiosClient PUT https://auth.riotgames.com/api/v1/authorization
+2022-04-25T16:05:48.806Z|||info|||@ing3kth/core/AxiosClient POST https://entitlements.auth.riotgames.com/api/token/v1
+2022-04-25T16:05:48.846Z|||info|||@ing3kth/val-api/ValClient Reload
+2022-04-25T16:06:23.617Z|||info|||@ing3kth/core/AxiosClient POST https://auth.riotgames.com/api/v1/authorization
+2022-04-25T16:06:24.776Z|||info|||@ing3kth/core/AxiosClient PUT https://auth.riotgames.com/api/v1/authorization
+2022-04-25T16:06:24.957Z|||info|||@ing3kth/core/AxiosClient POST https://entitlements.auth.riotgames.com/api/token/v1
+2022-04-25T16:06:24.996Z|||info|||@ing3kth/val-api/ValClient Reload
+2022-04-25T16:07:20.215Z|||info|||@ing3kth/val-api/RiotApi Reload
+2022-04-25T16:07:21.251Z|||info|||@ing3kth/core/AxiosClient GET https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/KawinTH/In3gG?api_key=RGAPI-624fa164-a4e0-4d8f-804a-f89a1829b515
+2022-04-25T16:07:24.721Z|||info|||@ing3kth/core/AxiosClient GET https://na.api.riotgames.com/val/content/v1/contents?locale=th-TH&api_key=RGAPI-624fa164-a4e0-4d8f-804a-f89a1829b515
+2022-04-25T16:08:47.590Z|||info|||@ing3kth/val-api/RiotApi Reload
+2022-04-25T16:08:48.706Z|||info|||@ing3kth/core/AxiosClient GET https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/KawinTH/In3gG?api_key=RGAPI-624fa164-a4e0-4d8f-804a-f89a1829b515
+2022-04-25T16:08:51.940Z|||info|||@ing3kth/core/AxiosClient GET https://na.api.riotgames.com/val/content/v1/contents?locale=th-TH&api_key=RGAPI-624fa164-a4e0-4d8f-804a-f89a1829b515
+2022-04-25T16:09:17.257Z|||info|||@ing3kth/val-api/RiotApi Reload
+2022-04-25T16:09:17.912Z|||info|||@ing3kth/core/AxiosClient GET https://asia.api.riotgames.com/riot/account/v1/accounts/by-riot-id/KawinTH/In3gG?api_key=RGAPI-624fa164-a4e0-4d8f-804a-f89a1829b515
+2022-04-25T16:09:20.089Z|||info|||@ing3kth/core/AxiosClient GET https://ap.api.riotgames.com/val/content/v1/contents?locale=th-TH&api_key=RGAPI-624fa164-a4e0-4d8f-804a-f89a1829b515
+2022-04-25T16:10:02.603Z|||info|||@ing3kth/core/AxiosClient GET https://127.0.0.1:51212/chat/v6/messages
+2022-04-25T16:10:07.619Z|||info|||@ing3kth/core/AxiosClient POST https://auth.riotgames.com/api/v1/authorization
+2022-04-25T16:10:08.747Z|||info|||@ing3kth/core/AxiosClient PUT https://auth.riotgames.com/api/v1/authorization
+2022-04-25T16:10:08.876Z|||info|||@ing3kth/core/AxiosClient POST https://entitlements.auth.riotgames.com/api/token/v1
+2022-04-25T16:10:08.908Z|||info|||@ing3kth/val-api/ValClient Reload
+2022-04-25T16:10:55.211Z|||info|||@ing3kth/core/AxiosClient POST https://auth.riotgames.com/api/v1/authorization
+2022-04-25T16:10:56.378Z|||info|||@ing3kth/core/AxiosClient PUT https://auth.riotgames.com/api/v1/authorization
+2022-04-25T16:10:56.499Z|||info|||@ing3kth/core/AxiosClient POST https://entitlements.auth.riotgames.com/api/token/v1
+2022-04-25T16:10:56.505Z|||info|||@ing3kth/val-api/ValClient Reload
+2022-04-25T16:10:56.670Z|||info|||@ing3kth/core/AxiosClient POST https://auth.riotgames.com/userinfo
+2022-04-25T16:10:56.886Z|||error|||Error: @ing3kth/core/AxiosClient GET https://pd.ap.a.pvp.net/store/v2/storefront/undefined
+    at Logs.<anonymous> (C:\Users\Windows10\Documents\GitHub\val-api\node_modules\@ing3kth\core\dist\core\Logs.js:97:28)
+    at Generator.next (<anonymous>)
+    at C:\Users\Windows10\Documents\GitHub\val-api\node_modules\@ing3kth\core\dist\core\Logs.js:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\Windows10\Documents\GitHub\val-api\node_modules\@ing3kth\core\dist\core\Logs.js:27:12)
+    at Logs.log (C:\Users\Windows10\Documents\GitHub\val-api\node_modules\@ing3kth\core\dist\core\Logs.js:91:16)
+    at Function.<anonymous> (C:\Users\Windows10\Documents\GitHub\val-api\node_modules\@ing3kth\core\dist\core\Logs.js:177:26)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Windows10\Documents\GitHub\val-api\node_modules\@ing3kth\core\dist\core\Logs.js:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+2022-04-25T16:11:21.405Z|||info|||@ing3kth/core/AxiosClient POST https://auth.riotgames.com/api/v1/authorization
+2022-04-25T16:11:22.540Z|||info|||@ing3kth/core/AxiosClient PUT https://auth.riotgames.com/api/v1/authorization
+2022-04-25T16:11:22.690Z|||info|||@ing3kth/core/AxiosClient POST https://entitlements.auth.riotgames.com/api/token/v1
+2022-04-25T16:11:22.700Z|||info|||@ing3kth/val-api/ValClient Reload
+2022-04-25T16:11:22.857Z|||info|||@ing3kth/core/AxiosClient POST https://auth.riotgames.com/userinfo
+2022-04-25T16:11:22.996Z|||error|||Error: @ing3kth/core/AxiosClient GET https://pd.ap.a.pvp.net/store/v2/storefront/undefined
+    at Logs.<anonymous> (C:\Users\Windows10\Documents\GitHub\val-api\node_modules\@ing3kth\core\dist\core\Logs.js:97:28)
+    at Generator.next (<anonymous>)
+    at C:\Users\Windows10\Documents\GitHub\val-api\node_modules\@ing3kth\core\dist\core\Logs.js:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\Windows10\Documents\GitHub\val-api\node_modules\@ing3kth\core\dist\core\Logs.js:27:12)
+    at Logs.log (C:\Users\Windows10\Documents\GitHub\val-api\node_modules\@ing3kth\core\dist\core\Logs.js:91:16)
+    at Function.<anonymous> (C:\Users\Windows10\Documents\GitHub\val-api\node_modules\@ing3kth\core\dist\core\Logs.js:177:26)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Windows10\Documents\GitHub\val-api\node_modules\@ing3kth\core\dist\core\Logs.js:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+2022-04-25T16:11:25.608Z|||info|||@ing3kth/core/AxiosClient POST https://auth.riotgames.com/api/v1/authorization
+2022-04-25T16:11:26.736Z|||info|||@ing3kth/core/AxiosClient PUT https://auth.riotgames.com/api/v1/authorization
+2022-04-25T16:11:26.927Z|||info|||@ing3kth/core/AxiosClient POST https://entitlements.auth.riotgames.com/api/token/v1
+2022-04-25T16:11:26.939Z|||info|||@ing3kth/val-api/ValClient Reload
+2022-04-25T16:11:27.120Z|||info|||@ing3kth/core/AxiosClient POST https://auth.riotgames.com/userinfo
+2022-04-25T16:11:27.248Z|||error|||Error: @ing3kth/core/AxiosClient GET https://pd.ap.a.pvp.net/store/v2/storefront/undefined
+    at Logs.<anonymous> (C:\Users\Windows10\Documents\GitHub\val-api\node_modules\@ing3kth\core\dist\core\Logs.js:97:28)
+    at Generator.next (<anonymous>)
+    at C:\Users\Windows10\Documents\GitHub\val-api\node_modules\@ing3kth\core\dist\core\Logs.js:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\Windows10\Documents\GitHub\val-api\node_modules\@ing3kth\core\dist\core\Logs.js:27:12)
+    at Logs.log (C:\Users\Windows10\Documents\GitHub\val-api\node_modules\@ing3kth\core\dist\core\Logs.js:91:16)
+    at Function.<anonymous> (C:\Users\Windows10\Documents\GitHub\val-api\node_modules\@ing3kth\core\dist\core\Logs.js:177:26)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Windows10\Documents\GitHub\val-api\node_modules\@ing3kth\core\dist\core\Logs.js:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+2022-04-25T16:11:37.038Z|||info|||@ing3kth/core/AxiosClient POST https://auth.riotgames.com/api/v1/authorization
+2022-04-25T16:11:38.178Z|||info|||@ing3kth/core/AxiosClient PUT https://auth.riotgames.com/api/v1/authorization
+2022-04-25T16:11:38.318Z|||info|||@ing3kth/core/AxiosClient POST https://entitlements.auth.riotgames.com/api/token/v1
+2022-04-25T16:11:38.330Z|||info|||@ing3kth/val-api/ValClient Reload
+2022-04-25T16:11:38.482Z|||info|||@ing3kth/core/AxiosClient POST https://auth.riotgames.com/userinfo
+2022-04-25T16:11:38.624Z|||info|||@ing3kth/core/AxiosClient GET https://pd.ap.a.pvp.net/store/v2/storefront/191f651d-dccf-5e97-a9c4-1509a0484d3c
+2022-04-25T16:11:45.656Z|||info|||@ing3kth/core/AxiosClient POST https://auth.riotgames.com/api/v1/authorization
+2022-04-25T16:11:46.789Z|||info|||@ing3kth/core/AxiosClient PUT https://auth.riotgames.com/api/v1/authorization
+2022-04-25T16:11:46.917Z|||info|||@ing3kth/core/AxiosClient POST https://entitlements.auth.riotgames.com/api/token/v1
+2022-04-25T16:11:46.924Z|||info|||@ing3kth/val-api/ValClient Reload
+2022-04-25T16:11:47.099Z|||info|||@ing3kth/core/AxiosClient POST https://auth.riotgames.com/userinfo
+2022-04-25T16:11:47.226Z|||info|||@ing3kth/core/AxiosClient GET https://pd.ap.a.pvp.net/store/v2/storefront/191f651d-dccf-5e97-a9c4-1509a0484d3c

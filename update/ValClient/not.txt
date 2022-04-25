@@ -1,8 +1,6 @@
 // PARTY //
 let Party_RequestToJoinParty = `POST https://glz-ap-1.ap.a.pvp.net/parties/v1/parties/${partyId}/request`
 let Party_PlayerJoin = `POST https://glz-ap-1.ap.a.pvp.net/parties/v1/players/${puuid}/joinparty/${partyId}`
-let Party_DeclineRequest = `POST https://glz-ap-1.ap.a.pvp.net/parties/v1/parties/${partyId}/request/${requestId}/decline`
-let Party_RemovePlayer = `DELETE https://glz-ap-1.ap.a.pvp.net/parties/v1/players/${puuid}`
 
 // CONTRACTS //
 ContractDefinitions_FetchActiveStory

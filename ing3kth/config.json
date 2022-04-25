@@ -1,22 +1,36 @@
 {
-    "create": "2022-04-15T06:28:13.502Z",
-    "process": {
-        "platform": "Windows",
-        "directory": "C:\\Users\\Windows10\\Documents\\GitHub\\val-api"
-    },
+    "create": "2022-04-25T05:34:55.068Z",
+    "version": "1",
     "logs": {
-        "mode": true,
-        "show": false,
-        "path": "C:\\Users\\Windows10\\Documents\\GitHub\\val-api/ing3kth/logs"
+        "save": true,
+        "show": true,
+        "file": {
+            "path": "/logs",
+            "extension": "log"
+        }
     },
     "cache": {
-        "mode": false,
-        "path": "C:\\Users\\Windows10\\Documents\\GitHub\\val-api/ing3kth/cache"
+        "file": {
+            "path": "/cache",
+            "extension": "json"
+        }
     },
     "val-api": {
-        "local": {
+        "RiotLocal": {
             "ip": "127.0.0.1",
+            "username": "riot",
             "lockfile": "C:\\Users\\Windows10\\AppData\\Local/Riot Games/Riot Client/Config/lockfile"
+        },
+        "ValClient": {
+            "client": {
+                "version": "release-04.07-shipping-15-699063",
+                "platfrom": {
+                    "platformType": "PC",
+                    "platformOS": "Windows",
+                    "platformOSVersion": "10.0.19042.1.256.64bit",
+                    "platformChipset": "Unknown"
+                }
+            }
         }
     }
 }

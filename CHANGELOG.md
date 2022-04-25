@@ -1,7 +1,12 @@
-# 1.5.9 (Day Here | In Development | About Legal)
+# 1.6.0 (Day Here | In Development)
 
-- Remove Utils (MMO || ELO culculator is banned)
-- Update [README.md](README.md)
+#### 1.5.9 is moved to 1.6.0
+
+- About Legal
+- - Remove Utils (**MMO** and **ELO** culculator is banned)
+- - Update [README.md](README.md)
+- Full [TypeScript](https://www.typescriptlang.org/) Support !!!
+- Remove [HTTP_Response](/src/resources/HTTP_Response.ts) Resource from module
 
 # 1.5.8 (April 18, 2022 | In Development)
 
