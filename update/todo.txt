@@ -9,4 +9,5 @@ https://developer.riotgames.com/app-type
 //Create Riot App To Make This module legal
 //Recommended: PRODUCTION API KEY
 
-Full Typescript Support
+//Update => (val-api) Docs && (npm-core) Docs
+//Check Multifactor
