@@ -146,4 +146,4 @@ class Party {
     }
 }
 
-export { Party, type Party_SetAccessibility_accessibility }
+export { Party, type Party_SetAccessibility_accessibility };

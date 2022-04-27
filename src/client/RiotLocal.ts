@@ -187,8 +187,8 @@ class RiotLocal {
 
         return {
             isError: true,
-            data: undefined,
-        }
+            data: null,
+        };
     }
 
     // SAVE //

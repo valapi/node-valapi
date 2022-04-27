@@ -61,4 +61,4 @@ class Store {
     }
 }
 
-export { Store }
+export { Store };

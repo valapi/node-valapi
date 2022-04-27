@@ -76,4 +76,4 @@ class PreGame {
     }
 }
 
-export { PreGame }
+export { PreGame };

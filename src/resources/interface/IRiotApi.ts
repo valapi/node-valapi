@@ -5,7 +5,7 @@ import { IValRegion } from "./IValRegion";
 interface IRiotApi {
     apiKey: string,
     region: keyof typeof _Region.data,
-};
+}
 
 interface IRiotApi_Service {
     key: string,

@@ -4,7 +4,7 @@ import { CookieJar as toughCookie } from "tough-cookie";
 import * as IngCore from "@ing3kth/core";
 import type { IValClient_Auth } from "../resources/interface/IValClient";
 
-import "axios-cookiejar-support"
+import "axios-cookiejar-support";
 
 //class
 

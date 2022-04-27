@@ -15,6 +15,6 @@ interface IValRegion {
         esports: string,
         server: string,
     }
-};
+}
 
 export type { IValRegion };

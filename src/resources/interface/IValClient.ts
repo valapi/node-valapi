@@ -6,7 +6,7 @@ interface IValClient {
     accessToken: string,
     entitlements: string,
     region: keyof typeof _Region.data,
-};
+}
 
 import { IValRegion } from "./IValRegion";
 import { IAxiosClient } from "@ing3kth/core/dist/interface/IAxiosClient";
