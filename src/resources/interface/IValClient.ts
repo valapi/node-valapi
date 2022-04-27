@@ -21,7 +21,7 @@ interface IValClient_Auth {
     accessToken: string,
     entitlements: string,
     multifactor: boolean,
-};
+}
 
 interface IValClient_ClientPlatfrom {
     "platformType": string, 
