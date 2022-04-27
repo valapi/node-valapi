@@ -17,6 +17,8 @@ test
 test/
 tests
 tests/
+src
+src/
 update
 update/
 npm-debug.log*

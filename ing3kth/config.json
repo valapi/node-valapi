@@ -1,8 +1,8 @@
 {
-    "create": "2022-04-25T05:34:55.068Z",
+    "create": "2022-04-27T04:00:51.229Z",
     "version": "1",
     "logs": {
-        "save": true,
+        "save": false,
         "show": true,
         "file": {
             "path": "/logs",
