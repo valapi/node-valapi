@@ -105,8 +105,6 @@ class Party {
      async StartCustomGame(partyId:string):Promise<IAxiosClient_Out> {
         return await this.AxiosClient.post(this.Region.url.partyService + `/parties/v1/parties/${partyId}/startcustomgame`);
     }
-    
-    //Not Sort Yet
 
     /**
      * 
@@ -125,8 +123,6 @@ class Party {
     async DeclineRequest(partyId:string, requestId:string):Promise<IAxiosClient_Out> {
         return await this.AxiosClient.post(this.Region.url.partyService + `/parties/v1/parties/${partyId}/request/${requestId}/decline`);
     }
-
-    //NOT IN DOCS
 
     /**
     * @param {String} puuid PlayerUUID

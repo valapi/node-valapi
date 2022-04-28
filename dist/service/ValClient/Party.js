@@ -115,7 +115,6 @@ class Party {
             return yield this.AxiosClient.post(this.Region.url.partyService + `/parties/v1/parties/${partyId}/startcustomgame`);
         });
     }
-    //Not Sort Yet
     /**
      *
      * @param {String} puuid PlayerUUID
@@ -136,7 +135,6 @@ class Party {
             return yield this.AxiosClient.post(this.Region.url.partyService + `/parties/v1/parties/${partyId}/request/${requestId}/decline`);
         });
     }
-    //NOT IN DOCS
     /**
     * @param {String} puuid PlayerUUID
     * @param {String} partyId PartyID
