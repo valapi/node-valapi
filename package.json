@@ -29,7 +29,16 @@
     "twofactor",
     "ing3kth"
   ],
-  "author": "ing3kth",
+  "author": {
+    "name": "ing3kth",
+    "url": "https://github.com/KTNG-3/"
+  },
+  "contributors": [
+    {
+      "name": "ING3_",
+      "url": "https://github.com/KTNG-3/"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/KTNG-3/val-api/issues"
