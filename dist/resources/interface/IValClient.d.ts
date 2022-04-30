@@ -3,19 +3,28 @@ import _Region from "../../resources/data/Region";
 interface IValClient {
     cookie: CookieJar.Serialized;
     accessToken: string;
+    id_token: string;
+    token_type: string;
     entitlements: string;
-    region: keyof typeof _Region.data;
+    region: keyof typeof _Region;
 }
 import { IValRegion } from "./IValRegion";
-import { IAxiosClient } from "@ing3kth/core/dist/interface/IAxiosClient";
+import { Interface_AxiosClient } from "@ing3kth/core";
 interface ValClient_Service {
-    AxiosData: IAxiosClient;
+    AxiosData: Interface_AxiosClient.IAxiosClient;
     Region: IValRegion;
 }
 interface IValClient_Auth {
     cookie: CookieJar.Serialized;
     accessToken: string;
+    id_token: string;
+    expires_in: number;
+    token_type: string;
     entitlements: string;
+    region: {
+        pbe: string;
+        live: string;
+    };
     multifactor: boolean;
 }
 interface IValClient_ClientPlatfrom {

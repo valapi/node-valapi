@@ -36,7 +36,7 @@ exports.Account = void 0;
 //import
 const tough_cookie_1 = require("tough-cookie");
 const IngCore = __importStar(require("@ing3kth/core"));
-require("axios-cookiejar-support");
+const AuthFlow_1 = require("./AuthFlow");
 //class
 /**
  * * Class ID: @ing3kth/val-api/Account
@@ -46,7 +46,14 @@ class Account {
         this.classId = '@ing3kth/val-api/Account';
         this.cookie = new tough_cookie_1.CookieJar();
         this.accessToken = '';
+        this.id_token = '';
+        this.expires_in = 3600;
+        this.token_type = '';
         this.entitlements = '';
+        this.region = {
+            pbe: '',
+            live: '',
+        };
         this.multifactor = false;
     }
     /**
@@ -56,20 +63,21 @@ class Account {
      */
     execute(username, password) {
         return __awaiter(this, void 0, void 0, function* () {
-            const axiosClient = new IngCore.Core.AxiosClient({
+            const axiosClient = new IngCore.AxiosClient({
                 cookie: true,
                 jar: this.cookie.toJSON(),
                 headers: {}
             });
             yield axiosClient.post('https://auth.riotgames.com/api/v1/authorization', {
-                'client_id': 'play-valorant-web-prod',
-                'nonce': '1',
-                'redirect_uri': 'https://playvalorant.com/opt_in',
-                'response_type': 'token id_token',
+                "client_id": "play-valorant-web-prod",
+                "nonce": "1",
+                "redirect_uri": "https://playvalorant.com/opt_in",
+                "response_type": "token id_token",
+                "scope": "account openid"
             }, {
-                jar: this.cookie,
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'User-Agent': 'RiotClient/43.0.1.4195386.4190634 rso-auth (Windows; 10;;Professional, x64)'
                 }
             });
             //ACCESS TOKEN
@@ -79,37 +87,12 @@ class Account {
                 'password': password,
                 'remember': true,
             }, {
-                jar: this.cookie,
-            });
-            //multifactor
-            if (auth_response.data.type == 'multifactor') {
-                this.multifactor = true;
-                this.cookie = this.cookie;
-                yield IngCore.Core.Logs.log(this.classId + " Export Multi-Factor");
-                return this.toJSON();
-            }
-            // get asscess token
-            const _search = new URL(auth_response.data.response.parameters.uri);
-            var _get_where;
-            var _get_accessToken;
-            if (_search.search) {
-                _get_where = _search.search;
-                _get_accessToken = 'access_token';
-            }
-            else {
-                _get_where = _search.hash;
-                _get_accessToken = '#access_token';
-            }
-            this.accessToken = String(new URLSearchParams(_get_where).get(_get_accessToken));
-            //ENTITLEMENTS
-            const entitlements_response = yield axiosClient.post('https://entitlements.auth.riotgames.com/api/token/v1', {}, {
-                jar: this.cookie,
                 headers: {
-                    'Authorization': `Bearer ${this.accessToken}`,
-                },
+                    'User-Agent': 'RiotClient/43.0.1.4195386.4190634 rso-auth (Windows; 10;;Professional, x64)'
+                }
             });
-            this.entitlements = entitlements_response.data.entitlements_token;
-            return this.toJSON();
+            this.cookie = tough_cookie_1.CookieJar.fromJSON(JSON.stringify(axiosClient.jar));
+            return AuthFlow_1.AuthFlow.execute(this.toJSON(), auth_response);
         });
     }
     /**
@@ -117,11 +100,15 @@ class Account {
      * @returns {IValClient_Auth}
      */
     toJSON() {
-        IngCore.Core.Logs.log("Export " + this.classId);
+        IngCore.Logs.log("Export " + this.classId);
         return {
             cookie: this.cookie.toJSON(),
             accessToken: this.accessToken,
+            id_token: this.id_token,
+            expires_in: this.expires_in,
+            token_type: this.token_type,
             entitlements: this.entitlements,
+            region: this.region,
             multifactor: this.multifactor,
         };
     }

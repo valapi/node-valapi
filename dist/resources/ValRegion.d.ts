@@ -13,12 +13,22 @@ declare class ValRegion {
     * @param {String} region Region
     * @returns {IValRegion}
     */
-    constructor(region?: keyof typeof _Region.data);
+    constructor(region?: keyof typeof _Region);
     /**
      *
      * @returns {IValRegion}
      */
     toJSON(): IValRegion;
+    /**
+     * @param {String} region Region
+     * @returns {String}
+     */
+    static toString(region: keyof typeof _Region.data): keyof typeof _Region;
+    /**
+     * @param {String} region Region
+     * @returns {IValRegion}
+     */
+    static fromString(region: keyof typeof _Region.data): IValRegion;
 }
 export { ValRegion };
 //# sourceMappingURL=ValRegion.d.ts.map

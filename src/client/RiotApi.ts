@@ -43,14 +43,14 @@ class RiotApi {
     */
     constructor(data:IRiotApi = {
         apiKey: '',
-        region: 'Asia_Pacific',
+        region: 'ap',
     }) {
         this.classId = '@ing3kth/val-api/RiotApi';
         this.apiKey = data.apiKey;
         this.region = data.region;
 
         if(!this.apiKey){
-            IngCore.Core.Logs.log(this.classId + " Missing API Key", 'error', true);
+            IngCore.Logs.log(this.classId + " Missing API Key", 'error', true);
             return;
         }
 
@@ -78,7 +78,7 @@ class RiotApi {
         this.StatusV1 = new StatusV1(this.services);
         this.ContentV1 = new ContentV1(this.services);
 
-        IngCore.Core.Logs.log(this.classId + " Reload");
+        IngCore.Logs.log(this.classId + " Reload");
     }
 
     /**
@@ -86,7 +86,7 @@ class RiotApi {
      * @returns {IRiotApi}
      */
     toJSON():IRiotApi {
-        IngCore.Core.Logs.log("Export " + this.classId);
+        IngCore.Logs.log("Export " + this.classId);
         return {
             apiKey: this.apiKey,
             region: this.region,
@@ -101,7 +101,7 @@ class RiotApi {
         this.apiKey = data.apiKey;
         this.region = data.region;
 
-        IngCore.Core.Logs.log("Import " + this.classId);
+        IngCore.Logs.log("Import " + this.classId);
         this.reload();
     }
 
@@ -113,7 +113,7 @@ class RiotApi {
     setRegion(region:string):void {
         this.region = region;
 
-        IngCore.Core.Logs.log(this.classId + " SetRegion '" + this.region + "'");
+        IngCore.Logs.log(this.classId + " SetRegion '" + this.region + "'");
         this.reload();
     }
 
@@ -123,7 +123,7 @@ class RiotApi {
     setApiKey(key:string):void {
         this.apiKey = key;
 
-        IngCore.Core.Logs.log(this.classId + " setApiKey '" + this.apiKey + "'");
+        IngCore.Logs.log(this.classId + " setApiKey '" + this.apiKey + "'");
         this.reload();
     }
 

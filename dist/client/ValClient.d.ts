@@ -11,6 +11,9 @@ import { Party } from "../service/ValClient/Party";
 import { Player } from "../service/ValClient/Player";
 import { PreGame } from "../service/ValClient/PreGame";
 import { Store } from "../service/ValClient/Store";
+import { Account as Auth_Account } from "../auth/ValClient/Account";
+import { Multifactor as Auth_Multifactor } from "../auth/ValClient/Multifactor";
+import { AuthFlow as Auth_AuthFlow } from "../auth/ValClient/AuthFlow";
 /**
  * * Class ID: @ing3kth/val-api/ValClient
  * * Use Anywhere: true
@@ -19,12 +22,14 @@ declare class ValClient {
     classId: string;
     cookie: toughCookie.Serialized;
     accessToken: string;
+    id_token: string;
+    token_type: string;
     entitlements: string;
     client: {
         version: string;
         platfrom: string;
     };
-    region: keyof typeof _Region.data;
+    region: keyof typeof _Region;
     RegionServices: IValRegion | undefined;
     AxiosData: IAxiosClient | undefined;
     services: ValClient_Service | undefined;
@@ -38,9 +43,8 @@ declare class ValClient {
     Store: Store | undefined;
     /**
     * @param {IValClient_Auth} Account Account toJSON data
-    * @param {String} Region Region
     */
-    constructor(Account?: IValClient_Auth, Region?: keyof typeof _Region.data);
+    constructor(Account?: IValClient_Auth);
     /***
      * @returns {void}
      */
@@ -60,7 +64,7 @@ declare class ValClient {
     * @param {String} region Region
     * @returns {void}
     */
-    setRegion(region: keyof typeof _Region.data): void;
+    setRegion(region: keyof typeof _Region): void;
     /**
     * @param {String} clientVersion Client Version
     * @returns {void}
@@ -72,7 +76,7 @@ declare class ValClient {
     */
     setClientPlatfrom_fromJSON(clientPlatfrom?: IValClient_ClientPlatfrom): void;
     /**
-    * @param {JSON} cookie Cookie
+    * @param {toughCookie.Serialized} cookie Cookie
     * @returns {void}
     */
     setCookie(cookie?: toughCookie.Serialized): void;
@@ -81,6 +85,11 @@ declare class ValClient {
     * @returns {void}
     */
     static fromJSON(data: IValClient): ValClient;
+    static Auth: {
+        Account: typeof Auth_Account;
+        Multifactor: typeof Auth_Multifactor;
+        AuthFlow: typeof Auth_AuthFlow;
+    };
 }
 export { ValClient, type ValClient_Service };
 //# sourceMappingURL=ValClient.d.ts.map

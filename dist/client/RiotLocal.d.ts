@@ -119,6 +119,7 @@ declare class RiotLocal {
      * @returns {IRiotLocal_Resources}
      */
     static getResource(): IRiotLocal_Resources;
+    static Resource: IRiotLocal_Resources;
 }
 export { RiotLocal };
 //# sourceMappingURL=RiotLocal.d.ts.map

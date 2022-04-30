@@ -40,9 +40,7 @@ exports.RiotLocal = void 0;
 const fs = __importStar(require("fs"));
 const IngCore = __importStar(require("@ing3kth/core"));
 const Uft8_1 = require("../utils/Uft8");
-const Chat_1 = __importDefault(require("../service/RiotLocal/Chat"));
-const Main_1 = __importDefault(require("../service/RiotLocal/Main"));
-const More_1 = __importDefault(require("../service/RiotLocal/More"));
+const Resource_1 = __importDefault(require("../auth/RiotLocal/Resource"));
 const config_1 = require("@ing3kth/core/dist/config");
 //class
 /**
@@ -74,7 +72,7 @@ class RiotLocal {
         else {
             this.lockfile = this.getlockfile();
         }
-        this.AxiosClient = new IngCore.Core.AxiosClient({
+        this.AxiosClient = new IngCore.AxiosClient({
             cookie: false,
             jar: null,
             headers: {},
@@ -86,18 +84,14 @@ class RiotLocal {
      * @returns {IRiotLocal_Resources}
      */
     getResource() {
-        return {
-            Chat: Chat_1.default,
-            Main: Main_1.default,
-            More: More_1.default,
-        };
+        return Resource_1.default;
     }
     /**
      * @returns {void}
      */
     reload() {
         const _base64 = (0, Uft8_1.toBase64)(`${config_1._config['val-api'].RiotLocal.username}:${this.lockfile.password}`);
-        this.AxiosClient = new IngCore.Core.AxiosClient({
+        this.AxiosClient = new IngCore.AxiosClient({
             cookie: false,
             jar: null,
             headers: {
@@ -106,6 +100,7 @@ class RiotLocal {
         });
         this.baseUrl = `${this.lockfile.protocol}://${this.ip}:${this.lockfile.port}`;
         this.resourse = this.getResource();
+        IngCore.Logs.log(this.classId + " Reload");
     }
     /**
      * @param {String} path path to lockfile
@@ -137,7 +132,7 @@ class RiotLocal {
     }) {
         return __awaiter(this, arguments, void 0, function* () {
             if (!data.method || !data.endpoint) {
-                yield IngCore.Core.Logs.log(this.classId + ` Missing Data`, 'error', true);
+                yield IngCore.Logs.log(this.classId + ` Missing Data`, 'error', true);
             }
             else if (!data.body) {
                 data.body = {};
@@ -158,7 +153,7 @@ class RiotLocal {
                         _string_endpoint = _newURL;
                     }
                     else {
-                        yield IngCore.Core.Logs.log(this.classId + ` '${_change.name}' not found at 'argument ${i + 1}'`, 'error', true);
+                        yield IngCore.Logs.log(this.classId + ` '${_change.name}' not found at 'argument ${i + 1}'`, 'error', true);
                     }
                 }
                 else if (_change.where === 'body') {
@@ -167,7 +162,7 @@ class RiotLocal {
                         _string_body = _newBODY;
                     }
                     else {
-                        yield IngCore.Core.Logs.log(this.classId + ` '${_change.name}' not found at 'argument ${i + 1}'`, 'error', true);
+                        yield IngCore.Logs.log(this.classId + ` '${_change.name}' not found at 'argument ${i + 1}'`, 'error', true);
                     }
                 }
                 else {
@@ -212,6 +207,7 @@ class RiotLocal {
      * @returns {IRiotLocal}
      */
     toJSON() {
+        IngCore.Logs.log("Export " + this.classId);
         return {
             ip: this.ip,
             lockfile: this.lockfile,
@@ -225,6 +221,7 @@ class RiotLocal {
     fromJSON(data) {
         this.ip = data.ip;
         this.lockfile = data.lockfile;
+        IngCore.Logs.log("Import " + this.classId);
         this.reload();
     }
     // SETTINGS //
@@ -235,6 +232,7 @@ class RiotLocal {
      */
     setIp(ip = config_1._config['val-api'].RiotLocal.ip) {
         this.ip = ip;
+        IngCore.Logs.log(this.classId + " SetIp '" + this.ip + "'");
         this.reload();
     }
     /**
@@ -243,6 +241,7 @@ class RiotLocal {
      */
     setLockfileName(name = 'Riot Client') {
         this.lockfile.name = name;
+        IngCore.Logs.log(this.classId + " SetLockfileName '" + this.lockfile.name + "'");
         this.reload();
     }
     /**
@@ -251,6 +250,7 @@ class RiotLocal {
      */
     setLockfilePid(pid) {
         this.lockfile.pid = pid;
+        IngCore.Logs.log(this.classId + " SetLockfilePid '" + this.lockfile.pid + "'");
         this.reload();
     }
     /**
@@ -259,6 +259,7 @@ class RiotLocal {
      */
     setLockfilePort(port) {
         this.lockfile.port = port;
+        IngCore.Logs.log(this.classId + " SetLockfilePort '" + this.lockfile.port + "'");
         this.reload();
     }
     /**
@@ -267,6 +268,7 @@ class RiotLocal {
      */
     setLockfilePassword(password) {
         this.lockfile.password = password;
+        IngCore.Logs.log(this.classId + " SetLockfilePassword '" + this.lockfile.password + "'");
         this.reload();
     }
     /**
@@ -275,6 +277,7 @@ class RiotLocal {
      */
     setLockfileProtocol(protocol) {
         this.lockfile.protocol = protocol;
+        IngCore.Logs.log(this.classId + " SetLockfileProtocal '" + this.lockfile.protocol + "'");
         this.reload();
     }
     // STATIC //
@@ -337,4 +340,6 @@ class RiotLocal {
     }
 }
 exports.RiotLocal = RiotLocal;
+//auth
+RiotLocal.Resource = Resource_1.default;
 //# sourceMappingURL=RiotLocal.js.map

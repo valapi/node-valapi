@@ -38,6 +38,9 @@ const Party_1 = require("../service/ValClient/Party");
 const Player_1 = require("../service/ValClient/Player");
 const PreGame_1 = require("../service/ValClient/PreGame");
 const Store_1 = require("../service/ValClient/Store");
+const Account_1 = require("../auth/ValClient/Account");
+const Multifactor_1 = require("../auth/ValClient/Multifactor");
+const AuthFlow_1 = require("../auth/ValClient/AuthFlow");
 //class
 /**
  * * Class ID: @ing3kth/val-api/ValClient
@@ -46,27 +49,40 @@ const Store_1 = require("../service/ValClient/Store");
 class ValClient {
     /**
     * @param {IValClient_Auth} Account Account toJSON data
-    * @param {String} Region Region
     */
     constructor(Account = {
         cookie: new tough_cookie_1.CookieJar().toJSON(),
         accessToken: '',
+        id_token: '',
+        expires_in: 3600,
+        token_type: '',
         entitlements: '',
+        region: {
+            pbe: '',
+            live: '',
+        },
         multifactor: false,
-    }, Region = 'Asia_Pacific') {
+    }) {
         if (Account.multifactor) {
-            IngCore.Core.Logs.log('This Account is have a Multifactor', 'error', true);
+            IngCore.Logs.log('This Account is have a Multifactor', 'error', true);
         }
         //data
         this.classId = '@ing3kth/val-api/ValClient';
         this.cookie = Account.cookie;
         this.accessToken = Account.accessToken;
+        this.id_token = Account.id_token;
+        this.token_type = Account.token_type;
         this.entitlements = Account.entitlements;
         this.client = {
             version: IngCore.Config["val-api"].ValClient.client.version,
             platfrom: (0, Uft8_1.toBase64)(JSON.stringify(IngCore.Config["val-api"].ValClient.client.version)),
         };
-        this.region = Region;
+        if (Account.region.live) {
+            this.region = Account.region.live;
+        }
+        else {
+            this.region = 'na';
+        }
         this.reload();
     }
     /***
@@ -79,7 +95,7 @@ class ValClient {
             cookie: true,
             jar: this.cookie,
             headers: {
-                'Authorization': `Bearer ${this.accessToken}`,
+                'Authorization': `${this.token_type} ${this.accessToken}`,
                 'X-Riot-Entitlements-JWT': this.entitlements,
                 'X-Riot-ClientVersion': this.client.version,
                 'X-Riot-ClientPlatform': this.client.platfrom,
@@ -98,7 +114,7 @@ class ValClient {
         this.Player = new Player_1.Player(this.services);
         this.Pregame = new PreGame_1.PreGame(this.services);
         this.Store = new Store_1.Store(this.services);
-        IngCore.Core.Logs.log(this.classId + " Reload");
+        IngCore.Logs.log(this.classId + " Reload");
     }
     //save
     /**
@@ -106,10 +122,12 @@ class ValClient {
      * @returns {IValClient}
      */
     toJSON() {
-        IngCore.Core.Logs.log("Export " + this.classId);
+        IngCore.Logs.log("Export " + this.classId);
         return {
             cookie: this.cookie,
             accessToken: this.accessToken,
+            id_token: this.id_token,
+            token_type: this.token_type,
             entitlements: this.entitlements,
             region: this.region,
         };
@@ -122,9 +140,11 @@ class ValClient {
     fromJSON(data) {
         this.cookie = data.cookie;
         this.accessToken = data.accessToken;
+        this.id_token = data.id_token;
+        this.token_type = data.token_type;
         this.entitlements = data.entitlements;
         this.region = data.region;
-        IngCore.Core.Logs.log("Import " + this.classId);
+        IngCore.Logs.log("Import " + this.classId);
         this.reload();
     }
     //settings
@@ -134,7 +154,7 @@ class ValClient {
     */
     setRegion(region) {
         this.region = region;
-        IngCore.Core.Logs.log(this.classId + " SetRegion '" + this.region + "'");
+        IngCore.Logs.log(this.classId + " SetRegion '" + this.region + "'");
         this.reload();
     }
     /**
@@ -143,7 +163,7 @@ class ValClient {
     */
     setClientVersion(clientVersion = config_1._config["val-api"].ValClient.client.version) {
         this.client.version = clientVersion;
-        IngCore.Core.Logs.log(this.classId + " SetClientPlatfrom '" + this.client.version + "'");
+        IngCore.Logs.log(this.classId + " SetClientPlatfrom '" + this.client.version + "'");
         this.reload();
     }
     /**
@@ -152,16 +172,16 @@ class ValClient {
     */
     setClientPlatfrom_fromJSON(clientPlatfrom = config_1._config["val-api"].ValClient.client.platform) {
         this.client.platfrom = (0, Uft8_1.toBase64)(JSON.stringify(clientPlatfrom));
-        IngCore.Core.Logs.log(this.classId + " SetClientPlatfrom '" + this.client.platfrom + "'");
+        IngCore.Logs.log(this.classId + " SetClientPlatfrom '" + this.client.platfrom + "'");
         this.reload();
     }
     /**
-    * @param {JSON} cookie Cookie
+    * @param {toughCookie.Serialized} cookie Cookie
     * @returns {void}
     */
     setCookie(cookie = new tough_cookie_1.CookieJar().toJSON()) {
         this.cookie = cookie;
-        IngCore.Core.Logs.log(this.classId + " SetCookie '" + this.cookie + "'");
+        IngCore.Logs.log(this.classId + " SetCookie '" + this.cookie + "'");
         this.reload();
     }
     /**
@@ -175,4 +195,10 @@ class ValClient {
     }
 }
 exports.ValClient = ValClient;
+//auth
+ValClient.Auth = {
+    Account: Account_1.Account,
+    Multifactor: Multifactor_1.Multifactor,
+    AuthFlow: AuthFlow_1.AuthFlow
+};
 //# sourceMappingURL=ValClient.js.map

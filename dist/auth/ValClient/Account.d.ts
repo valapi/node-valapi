@@ -1,6 +1,5 @@
 import { CookieJar as toughCookie } from "tough-cookie";
-import type { IValClient_Auth } from "../resources/interface/IValClient";
-import "axios-cookiejar-support";
+import type { IValClient_Auth } from "../../resources/interface/IValClient";
 /**
  * * Class ID: @ing3kth/val-api/Account
  */
@@ -8,7 +7,14 @@ declare class Account {
     classId: string;
     cookie: toughCookie;
     accessToken: string;
+    id_token: string;
+    expires_in: number;
+    token_type: string;
     entitlements: string;
+    region: {
+        pbe: string;
+        live: string;
+    };
     multifactor: boolean;
     constructor();
     /**

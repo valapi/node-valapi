@@ -16,50 +16,50 @@ class ValRegion {
     * @param {String} region Region
     * @returns {IValRegion}
     */
-    constructor(region = 'North_America') {
+    constructor(region = 'na') {
         this.classId = '@ing3kth/val-api/ValRegion';
-        this.base = Region_1.default.data[region];
-        if (!this.base) {
+        this.base = region;
+        if (!Region_1.default[region] || region === 'data') {
             Logs_1.Logs.log(`Region '${String(this.base)}' not found`, 'error', true);
         }
-        switch (String(region)) {
-            case 'North_America':
+        switch (region) {
+            case 'na':
                 this.region = 'na';
                 this.server = 'na';
                 this.riotRegion = 'americas';
                 break;
-            case 'Latin_America':
+            case 'latam':
                 this.region = 'latam';
                 this.server = 'na';
                 this.riotRegion = 'americas';
                 break;
-            case 'Brazil':
+            case 'br':
                 this.region = 'br';
                 this.server = 'na';
                 this.riotRegion = 'americas';
                 break;
-            case 'Public_Beta_Environment':
+            case 'pbe':
                 this.region = 'na';
                 this.server = 'pbe';
                 this.riotRegion = 'pbe1';
                 break;
-            case 'Europe':
+            case 'eu':
                 this.region = 'eu';
                 this.server = 'eu';
                 this.riotRegion = 'europe';
                 break;
-            case 'Korea':
+            case 'kr':
                 this.region = 'kr';
                 this.server = 'kr';
                 this.riotRegion = 'asia';
                 break;
-            case 'Asia_Pacific':
+            case 'ap':
                 this.region = 'ap';
                 this.server = 'ap';
                 this.riotRegion = 'asia';
                 break;
             default:
-                return new ValRegion('North_America');
+                return new ValRegion('na');
         }
     }
     /**
@@ -85,6 +85,21 @@ class ValRegion {
                 server: `https://${this.region}.api.riotgames.com`,
             }
         };
+    }
+    /**
+     * @param {String} region Region
+     * @returns {String}
+     */
+    static toString(region) {
+        return Region_1.default.data[region];
+    }
+    /**
+     * @param {String} region Region
+     * @returns {IValRegion}
+     */
+    static fromString(region) {
+        const _region = new ValRegion(ValRegion.toString(region));
+        return _region.toJSON();
     }
 }
 exports.ValRegion = ValRegion;

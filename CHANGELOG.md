@@ -1,4 +1,17 @@
-# 1.6.0 (Day Here | In Development)
+# 1.6.1-beta.0 (Date Here | In Development)
+
+**Please Don't Use This Version**
+
+- Use Sort Region (old school)
+- - Example: `na` , `eu` , `ap`
+- ValClient Reworked
+- - id_token, token_type
+- - ~~ValClient(ValClient_Auth, Region)~~ **-->** ValClient(ValClient_Auth)
+- - - Auto Region For You - *Thanks To: **ev3nvy#9996***
+- - - Still can use `.setRegion(Region)`
+- - New Method for auth: `ValClient.Auth.{type}` (Delte Old Ones)
+
+# 1.6.0 (April 29, 2022 | In Development)
 
 #### 1.5.9 is moved to 1.6.0
 

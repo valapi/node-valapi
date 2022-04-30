@@ -23,9 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Interface = exports.Resource = exports.ValRegion = exports.RiotLocal = exports.RiotApi = exports.ValClient = exports.Auth = void 0;
-//auth
-exports.Auth = __importStar(require("./export/Auth"));
+exports.Interface_ValRegion = exports.Interface_ValClient = exports.Interface_RiotLocal = exports.Interface_RiotApi = exports.Region = exports.QueueId = exports.Locale = exports.ItemTypeId = exports.Currency = exports.ValRegion = exports.RiotLocal = exports.RiotApi = exports.ValClient = void 0;
 //client
 var ValClient_1 = require("./client/ValClient");
 Object.defineProperty(exports, "ValClient", { enumerable: true, get: function () { return ValClient_1.ValClient; } });
@@ -36,7 +34,14 @@ Object.defineProperty(exports, "RiotLocal", { enumerable: true, get: function ()
 //resource
 var ValRegion_1 = require("./resources/ValRegion");
 Object.defineProperty(exports, "ValRegion", { enumerable: true, get: function () { return ValRegion_1.ValRegion; } });
-exports.Resource = __importStar(require("./export/Resource"));
+exports.Currency = __importStar(require("./resources/data/Currency"));
+exports.ItemTypeId = __importStar(require("./resources/data/ItemTypeId"));
+exports.Locale = __importStar(require("./resources/data/Locale"));
+exports.QueueId = __importStar(require("./resources/data/QueueId"));
+exports.Region = __importStar(require("./resources/data/Region"));
 //interface
-exports.Interface = __importStar(require("./export/Interface"));
+exports.Interface_RiotApi = __importStar(require("./resources/interface/IRiotApi"));
+exports.Interface_RiotLocal = __importStar(require("./resources/interface/IRiotLocal"));
+exports.Interface_ValClient = __importStar(require("./resources/interface/IValClient"));
+exports.Interface_ValRegion = __importStar(require("./resources/interface/IValRegion"));
 //# sourceMappingURL=index.js.map

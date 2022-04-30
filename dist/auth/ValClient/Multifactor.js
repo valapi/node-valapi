@@ -36,10 +36,10 @@ exports.Multifactor = void 0;
 //import
 const tough_cookie_1 = require("tough-cookie");
 const IngCore = __importStar(require("@ing3kth/core"));
-require("axios-cookiejar-support");
+const AuthFlow_1 = require("./AuthFlow");
 //class
 /**
- * * Class ID: @ing3kth/val-api/RiotApi
+ * * Class ID: @ing3kth/val-api/Multifactor
  */
 class Multifactor {
     /**
@@ -48,16 +48,27 @@ class Multifactor {
     constructor(data = {
         cookie: new tough_cookie_1.CookieJar().toJSON(),
         accessToken: '',
+        id_token: '',
+        expires_in: 3600,
+        token_type: '',
+        region: {
+            pbe: '',
+            live: '',
+        },
         entitlements: '',
         multifactor: true,
     }) {
         if (!data.multifactor) {
-            IngCore.Core.Logs.log('This Account is not have a Multifactor', 'error', true);
+            IngCore.Logs.log('This Account is not have a Multifactor', 'error', true);
         }
         this.classId = '@ing3kth/val-api/Multifactor';
         this.cookie = tough_cookie_1.CookieJar.fromJSON(JSON.stringify(data.cookie));
         this.accessToken = data.accessToken;
+        this.id_token = data.id_token;
+        this.expires_in = data.expires_in;
+        this.token_type = data.token_type;
         this.entitlements = data.entitlements;
+        this.region = data.region;
         this.multifactor = data.multifactor;
     }
     /**
@@ -66,10 +77,9 @@ class Multifactor {
     */
     execute(verificationCode) {
         return __awaiter(this, void 0, void 0, function* () {
-            const _cookie = this.cookie;
-            const axiosClient = new IngCore.Core.AxiosClient({
+            const axiosClient = new IngCore.AxiosClient({
                 cookie: true,
-                jar: _cookie.toJSON(),
+                jar: this.cookie.toJSON(),
                 headers: {}
             });
             //ACCESS TOKEN
@@ -78,32 +88,12 @@ class Multifactor {
                 "code": verificationCode.toString(),
                 "rememberDevice": true
             }, {
-                jar: _cookie,
-            });
-            // get asscess token
-            const _search = new URL(auth_response.data.response.parameters.uri);
-            var _get_where;
-            var _get_accessToken;
-            if (_search.search) {
-                _get_where = _search.search;
-                _get_accessToken = 'access_token';
-            }
-            else {
-                _get_where = _search.hash;
-                _get_accessToken = '#access_token';
-            }
-            this.accessToken = String(new URLSearchParams(_get_where).get(_get_accessToken));
-            //ENTITLEMENTS
-            const entitlements_response = yield axiosClient.post('https://entitlements.auth.riotgames.com/api/token/v1', {}, {
-                jar: _cookie,
                 headers: {
-                    'Authorization': `Bearer ${this.accessToken}`,
-                },
+                    'User-Agent': 'RiotClient/43.0.1.4195386.4190634 rso-auth (Windows; 10;;Professional, x64)'
+                }
             });
-            this.entitlements = entitlements_response.data.entitlements_token;
-            this.cookie = _cookie;
-            this.multifactor = false;
-            return this.toJSON();
+            this.cookie = tough_cookie_1.CookieJar.fromJSON(JSON.stringify(axiosClient.jar));
+            return AuthFlow_1.AuthFlow.execute(this.toJSON(), auth_response);
         });
     }
     /**
@@ -111,11 +101,15 @@ class Multifactor {
      * @returns {IValClient_Auth}
      */
     toJSON() {
-        IngCore.Core.Logs.log("Export " + this.classId);
+        IngCore.Logs.log("Export " + this.classId);
         return {
             cookie: this.cookie.toJSON(),
             accessToken: this.accessToken,
+            id_token: this.id_token,
+            expires_in: this.expires_in,
+            token_type: this.token_type,
             entitlements: this.entitlements,
+            region: this.region,
             multifactor: this.multifactor,
         };
     }

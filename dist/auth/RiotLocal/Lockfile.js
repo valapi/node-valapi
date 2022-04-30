@@ -23,10 +23,23 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Region = exports.QueueId = exports.Locale = exports.ItemTypeId = exports.Currency = void 0;
-exports.Currency = __importStar(require("../resources/data/Currency"));
-exports.ItemTypeId = __importStar(require("../resources/data/ItemTypeId"));
-exports.Locale = __importStar(require("../resources/data/Locale"));
-exports.QueueId = __importStar(require("../resources/data/QueueId"));
-exports.Region = __importStar(require("../resources/data/Region"));
-//# sourceMappingURL=Resource.js.map
+const core_1 = require("@ing3kth/core");
+const fs = __importStar(require("fs"));
+/**
+ * @param {String} path path to lockfile
+ * @returns {IRiotLocalLockfile}
+ */
+function getLockfile(path = core_1.Config['val-api'].RiotLocal.lockfile) {
+    var _getFile = fs.readFileSync(path, 'utf8');
+    const _spilt_file = _getFile.split(":");
+    const _lockfile = {
+        name: _spilt_file[0],
+        pid: Number(_spilt_file[1]),
+        port: Number(_spilt_file[2]),
+        password: _spilt_file[3],
+        protocol: _spilt_file[4],
+    };
+    return _lockfile;
+}
+exports.default = getLockfile;
+//# sourceMappingURL=Lockfile.js.map
