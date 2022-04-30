@@ -346,7 +346,7 @@ class RiotLocal {
 
     //auth
 
-    static Resource = Auth_Resource;
+    static Resource:IRiotLocal_Resources = Auth_Resource;
 }
 
 //export
