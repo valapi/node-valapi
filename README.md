@@ -1,6 +1,6 @@
 # Valorant API - Support MFA
 
-<strong><u>This module changes very often. If you use any version then don't change it.</u></strong>
+***This module changes very often. If you use any version then don't change it.***
 
 <!-- Main -->
 <div align="center">

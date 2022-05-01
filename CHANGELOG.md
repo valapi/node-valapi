@@ -1,15 +1,15 @@
-# 1.6.1-beta.0 (Date Here | In Development)
-
-**Please Don't Use This Version**
+# 1.6.1-beta.1 (Date Here | In Development)
 
 - Use Sort Region (old school)
 - - Example: `na` , `eu` , `ap`
 - ValClient Reworked
 - - id_token, token_type
-- - ~~ValClient(ValClient_Auth, Region)~~ **-->** ValClient(ValClient_Auth)
+- - ~~ValClient(ValClient_Auth, Region)~~ **--->** `ValClient(ValClient_Auth)`
 - - - Auto Region For You - *Thanks To: **ev3nvy#9996***
 - - - Still can use `.setRegion(Region)`
-- - New Method for auth: `ValClient.Auth.{type}` (Delte Old Ones)
+- - New Method for auth (Delte Old Ones)
+- - - ~~ValApi.Auth.Account.login~~ **--->** `ValClient.Auth.login`
+- - - ~~ValApi.Auth.Multifactor.verify~~ **--->** `ValClient.Auth.verify`
 
 # 1.6.0 (April 29, 2022 | In Development)
 

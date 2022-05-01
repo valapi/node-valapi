@@ -23,7 +23,6 @@ import { Store } from "../service/ValClient/Store";
 
 import { Account as Auth_Account } from "../auth/ValClient/Account";
 import { Multifactor as Auth_Multifactor } from "../auth/ValClient/Multifactor";
-import { AuthFlow as Auth_AuthFlow } from "../auth/ValClient/AuthFlow";
 
 //class
 
@@ -231,9 +230,8 @@ class ValClient {
     //auth
 
     static Auth = {
-        Account: Auth_Account,
-        Multifactor: Auth_Multifactor,
-        AuthFlow: Auth_AuthFlow
+        login: Auth_Account.login,
+        verify: Auth_Multifactor.verify,
     }
 }
 
