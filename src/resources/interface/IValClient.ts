@@ -4,8 +4,7 @@ import _Region from "../../resources/data/Region";
 interface IValClient {
     cookie: CookieJar.Serialized,
     accessToken: string,
-    id_token:string,
-    token_type: string,
+    tokenType:string,
     entitlements: string,
     region: keyof typeof _Region,
 }

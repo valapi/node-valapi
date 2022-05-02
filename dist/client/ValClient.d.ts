@@ -19,8 +19,7 @@ declare class ValClient {
     classId: string;
     private cookie;
     private accessToken;
-    private id_token;
-    private token_type;
+    private tokenType;
     private entitlements;
     private client;
     private region;

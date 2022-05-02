@@ -69,8 +69,7 @@ class ValClient {
         this.classId = '@ing3kth/val-api/ValClient';
         this.cookie = Account.cookie;
         this.accessToken = Account.accessToken;
-        this.id_token = Account.id_token;
-        this.token_type = Account.token_type;
+        this.tokenType = Account.token_type;
         this.entitlements = Account.entitlements;
         this.client = {
             version: IngCore.Config["val-api"].ValClient.client.version,
@@ -95,7 +94,7 @@ class ValClient {
                 cookie: true,
                 jar: this.cookie,
                 headers: {
-                    'Authorization': `${this.token_type} ${this.accessToken}`,
+                    'Authorization': `${this.tokenType} ${this.accessToken}`,
                     'X-Riot-Entitlements-JWT': this.entitlements,
                     'X-Riot-ClientVersion': this.client.version,
                     'X-Riot-ClientPlatform': this.client.platfrom,
@@ -123,8 +122,7 @@ class ValClient {
         return {
             cookie: this.cookie,
             accessToken: this.accessToken,
-            id_token: this.id_token,
-            token_type: this.token_type,
+            tokenType: this.tokenType,
             entitlements: this.entitlements,
             region: this.region,
         };
@@ -137,8 +135,7 @@ class ValClient {
     fromJSON(data) {
         this.cookie = data.cookie;
         this.accessToken = data.accessToken;
-        this.id_token = data.id_token;
-        this.token_type = data.token_type;
+        this.tokenType = data.tokenType;
         this.entitlements = data.entitlements;
         this.region = data.region;
         IngCore.Logs.log("Import " + this.classId);

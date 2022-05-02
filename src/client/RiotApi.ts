@@ -129,7 +129,7 @@ class RiotApi {
     * @param {IRiotApi} data toJSON data
     */
     static fromJSON(data:IRiotApi):RiotApi {
-        const RiotApiClient = new RiotApi();
+        const RiotApiClient:RiotApi = new RiotApi();
         RiotApiClient.fromJSON(data);
 
         return RiotApiClient;
