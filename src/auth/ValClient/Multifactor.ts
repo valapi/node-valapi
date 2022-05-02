@@ -2,8 +2,10 @@
 import { CookieJar as toughCookie } from "tough-cookie";
 
 import * as IngCore from "@ing3kth/core";
-import type { IValClient_Auth } from "../../resources/interface/IValClient";
 import { AuthFlow } from "./AuthFlow";
+
+import type { IValClient_Auth } from "../../resources/interface/IValClient";
+import type { IAxiosClient_Out } from "@ing3kth/core/dist/interface/IAxiosClient";
 
 //class
 
@@ -11,18 +13,18 @@ import { AuthFlow } from "./AuthFlow";
  * * Class ID: @ing3kth/val-api/Multifactor
  */
 class Multifactor {
-    classId:string;
-    cookie:toughCookie;
-    accessToken:string;
-    id_token:string;
-    expires_in:number;
-    token_type:string;
-    entitlements:string;
-    region: {
+    public classId:string;
+    private cookie:toughCookie;
+    private accessToken:string;
+    private id_token:string;
+    private expires_in:number;
+    private token_type:string;
+    private entitlements:string;
+    private region: {
         pbe: string,
         live: string,
     };
-    multifactor:boolean
+    public multifactor:boolean;
     
     /**
     * @param {IValClient_Auth} data Account toJSON data
@@ -60,15 +62,15 @@ class Multifactor {
     * @param {Number} verificationCode Verification Code
     * @returns {Promise<IValClient_Auth>}
     */
-     async execute(verificationCode:number):Promise<IValClient_Auth> {
-        const axiosClient = new IngCore.AxiosClient({
+    public async execute(verificationCode:number):Promise<IValClient_Auth> {
+        const axiosClient:IngCore.AxiosClient = new IngCore.AxiosClient({
             cookie: true,
             jar: this.cookie.toJSON(),
             headers: {}
         });
 
         //ACCESS TOKEN
-        const auth_response = await axiosClient.put('https://auth.riotgames.com/api/v1/authorization', {
+        const auth_response:IAxiosClient_Out = await axiosClient.put('https://auth.riotgames.com/api/v1/authorization', {
             "type": "multifactor",
             "code": verificationCode.toString(),
             "rememberDevice": true
@@ -86,7 +88,7 @@ class Multifactor {
      * 
      * @returns {IValClient_Auth}
      */
-    toJSON():IValClient_Auth {
+    public toJSON():IValClient_Auth {
         IngCore.Logs.log("Export " + this.classId);
 
         return {
@@ -107,7 +109,7 @@ class Multifactor {
     * @returns {Promise<IValClient_Auth>}
     */
     static async verify(data:IValClient_Auth, verificationCode:number):Promise<IValClient_Auth> {
-        const MultifactorAccount = new Multifactor(data);
+        const MultifactorAccount:Multifactor = new Multifactor(data);
         return await MultifactorAccount.execute(verificationCode);
     }
 }

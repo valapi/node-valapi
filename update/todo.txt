@@ -8,3 +8,5 @@ put in readme(# Special Thanks) after create "valorant-api.com" class --> third 
 https://developer.riotgames.com/app-type
 //Create Riot App To Make This module legal
 //Recommended: PRODUCTION API KEY
+
+**interface rework

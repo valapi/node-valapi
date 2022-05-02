@@ -6,8 +6,6 @@ import type { IValRegion } from "../../resources/interface/IValRegion";
 import type { IAxiosClient_Out } from "@ing3kth/core/dist/interface/IAxiosClient";
 
 import ItemTypeId from "../../resources/data/ItemTypeId";
-//delelte
-import { ValRegion } from "../../resources/ValRegion";
 
 //service
 

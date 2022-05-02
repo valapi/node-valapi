@@ -1,6 +1,6 @@
 import type { IAxiosClient_Out } from '@ing3kth/core/dist/interface/IAxiosClient';
 import type { IRiotLocal, IRiotLocal_JSON, IRiotLocal_Resources, IRiotLocal_Lockfile, IRiotLocal_Lockfile_Protocol, IRiotLocal_JSON_Method } from "../resources/interface/IRiotLocal";
-import { AxiosClient } from '@ing3kth/core/dist/core/AxiosClient';
+import getLockfile from '../auth/RiotLocal/Lockfile';
 /**
  * All Api Base On https://github.com/techchrism/valorant-api-docs
  *
@@ -11,31 +11,19 @@ import { AxiosClient } from '@ing3kth/core/dist/core/AxiosClient';
  */
 declare class RiotLocal {
     classId: string;
-    lockfile: IRiotLocal_Lockfile;
-    ip: string;
-    AxiosClient: AxiosClient;
-    baseUrl: string | undefined;
-    resourse: IRiotLocal_Resources | undefined;
+    private lockfile;
+    private ip;
+    private AxiosClient;
+    private baseUrl;
     /**
-     *
-     * @param {String} ip IP of local api
      * @param {IRiotLocal_Lockfile} lockfile lockfile data
+     * @param {String} ip IP of local api
      */
-    constructor(ip?: string, lockfile?: IRiotLocal_Lockfile);
-    /**
-     *
-     * @returns {IRiotLocal_Resources}
-     */
-    getResource(): IRiotLocal_Resources;
+    constructor(lockfile: IRiotLocal_Lockfile, ip?: string);
     /**
      * @returns {void}
      */
-    reload(): void;
-    /**
-     * @param {String} path path to lockfile
-     * @returns {IRiotLocalLockfile}
-     */
-    getlockfile(path?: string): IRiotLocal_Lockfile;
+    private reload;
     /**
      *
      * @param {IRiotLocal_JSON} data Data from LocalResourse
@@ -114,11 +102,9 @@ declare class RiotLocal {
      * @returns {RiotLocal}
      */
     static fromJSON(data?: IRiotLocal): RiotLocal;
-    /**
-     *
-     * @returns {IRiotLocal_Resources}
-     */
-    static getResource(): IRiotLocal_Resources;
+    static Auth: {
+        lockfile: typeof getLockfile;
+    };
     static Resource: IRiotLocal_Resources;
 }
 export { RiotLocal };

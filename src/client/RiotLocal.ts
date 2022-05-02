@@ -1,15 +1,15 @@
 //import
-import * as fs from 'fs';
-
 import * as IngCore from "@ing3kth/core";
-import { toBase64 } from '../utils/Uft8';
-
-import Auth_Resource from '../auth/RiotLocal/Resource';
+import { Config as _config } from "@ing3kth/core";
 
 import type { IAxiosClient_Out } from '@ing3kth/core/dist/interface/IAxiosClient';
 import type { IRiotLocal, IRiotLocal_JSON, IRiotLocal_Resources, IRiotLocal_Lockfile, IRiotLocal_Lockfile_Protocol, IRiotLocal_JSON_Method } from "../resources/interface/IRiotLocal";
+
+import { toBase64 } from '../utils/Uft8';
+import Auth_Resource from '../auth/RiotLocal/Resource';
 import { AxiosClient } from '@ing3kth/core/dist/core/AxiosClient';
-import { _config } from '@ing3kth/core/dist/config';
+
+import getLockfile from '../auth/RiotLocal/Lockfile';
 
 //class
 
@@ -22,35 +22,29 @@ import { _config } from '@ing3kth/core/dist/config';
  * * Use Anywhere: false
  */
 class RiotLocal {
-    classId: string;
-    lockfile: IRiotLocal_Lockfile;
-    ip: string;
+    public classId: string;
+    private lockfile: IRiotLocal_Lockfile;
+    private ip: string;
 
     //reload
-    AxiosClient: AxiosClient;
-    baseUrl: string | undefined;
-    resourse: IRiotLocal_Resources | undefined;
+    private AxiosClient: AxiosClient;
+    private baseUrl: string | undefined;
 
     /**
-     * 
-     * @param {String} ip IP of local api
      * @param {IRiotLocal_Lockfile} lockfile lockfile data
+     * @param {String} ip IP of local api
      */
-    constructor(ip: string = _config['val-api'].RiotLocal.ip, lockfile?: IRiotLocal_Lockfile) {
+    constructor(lockfile: IRiotLocal_Lockfile, ip: string = _config['val-api'].RiotLocal.ip) {
         this.classId = '@ing3kth/val-api/RiotLocal';
         this.ip = ip;
 
-        if (lockfile) {
-            this.lockfile = {
-                name: lockfile.name,
-                pid: lockfile.pid,
-                port: lockfile.port,
-                password: lockfile.password,
-                protocol: lockfile.protocol,
-            };
-        }else {
-            this.lockfile = this.getlockfile();
-        }
+        this.lockfile = {
+            name: lockfile.name,
+            pid: lockfile.pid,
+            port: lockfile.port,
+            password: lockfile.password,
+            protocol: lockfile.protocol,
+        };
 
         this.AxiosClient = new IngCore.AxiosClient({
             cookie: false,
@@ -61,17 +55,9 @@ class RiotLocal {
     }
 
     /**
-     * 
-     * @returns {IRiotLocal_Resources}
-     */
-    getResource():IRiotLocal_Resources {
-        return Auth_Resource;
-    }
-
-    /**
      * @returns {void}
      */
-    reload():void {
+    private reload():void {
         const _base64 = toBase64(`${_config['val-api'].RiotLocal.username}:${this.lockfile.password}`);
         this.AxiosClient = new IngCore.AxiosClient({
             cookie: false,
@@ -81,29 +67,8 @@ class RiotLocal {
             },
         });
         this.baseUrl = `${this.lockfile.protocol}://${this.ip}:${this.lockfile.port}`;
-
-        this.resourse = this.getResource();
         
         IngCore.Logs.log(this.classId + " Reload");
-    }
-
-    /**
-     * @param {String} path path to lockfile
-     * @returns {IRiotLocalLockfile}
-     */
-    getlockfile(path:string = _config['val-api'].RiotLocal.lockfile):IRiotLocal_Lockfile {
-        var _getFile = fs.readFileSync(path, 'utf8');
-
-        const _spilt_file = _getFile.split(":");
-        const _lockfile = {
-            name: _spilt_file[0],
-            pid: Number(_spilt_file[1]),
-            port: Number(_spilt_file[2]),
-            password: _spilt_file[3],
-            protocol: _spilt_file[4] as IRiotLocal_Lockfile_Protocol,
-        };
-
-        return _lockfile;
     }
 
     /**
@@ -112,7 +77,7 @@ class RiotLocal {
      * @param {any} args.. Replace With Arguments
      * @returns {Promise<IAxiosClient_Out>}
      */
-    async requestFromJSON(data:IRiotLocal_JSON = {
+    public async requestFromJSON(data:IRiotLocal_JSON = {
         method: 'get',
         endpoint: '/help',
         body: {},
@@ -167,7 +132,7 @@ class RiotLocal {
      * @param {Object} body Request Body
      * @returns {Promise<IAxiosClient_Out>}
      */
-    async request(method:IRiotLocal_JSON_Method = 'get', endpoint = '/help', body = {}):Promise<IAxiosClient_Out> {
+    public async request(method:IRiotLocal_JSON_Method = 'get', endpoint = '/help', body = {}):Promise<IAxiosClient_Out> {
         switch (method.toLowerCase()) {
             case 'get':
                 return await this.AxiosClient.get(this.baseUrl + endpoint);
@@ -193,7 +158,7 @@ class RiotLocal {
      * 
      * @returns {IRiotLocal}
      */
-    toJSON():IRiotLocal {
+    public toJSON():IRiotLocal {
         IngCore.Logs.log("Export " + this.classId);
 
         return {
@@ -207,7 +172,7 @@ class RiotLocal {
      * @param {IRiotLocal} data RiotLocal toJSON Data
      * @returns {void}
      */
-    fromJSON(data:IRiotLocal):void {
+    public fromJSON(data:IRiotLocal):void {
         this.ip = data.ip;
         this.lockfile = data.lockfile;
 
@@ -222,7 +187,7 @@ class RiotLocal {
      * @param {String} ip IP of local api
      * @returns {void}
      */
-    setIp(ip:string = _config['val-api'].RiotLocal.ip):void {
+    public setIp(ip:string = _config['val-api'].RiotLocal.ip):void {
         this.ip = ip;
 
         IngCore.Logs.log(this.classId +  " SetIp '" + this.ip + "'");
@@ -233,7 +198,7 @@ class RiotLocal {
      * @param {String} name
      * @returns {void}
      */
-    setLockfileName(name:string = 'Riot Client'):void {
+    public setLockfileName(name:string = 'Riot Client'):void {
         this.lockfile.name = name;
 
         IngCore.Logs.log(this.classId +  " SetLockfileName '" + this.lockfile.name + "'");
@@ -244,7 +209,7 @@ class RiotLocal {
      * @param {Number} pid
      * @returns {void}
      */
-    setLockfilePid(pid:number):void {
+    public setLockfilePid(pid:number):void {
         this.lockfile.pid = pid;
 
         IngCore.Logs.log(this.classId +  " SetLockfilePid '" + this.lockfile.pid + "'");
@@ -255,7 +220,7 @@ class RiotLocal {
      * @param {Number} port
      * @returns {void}
      */
-    setLockfilePort(port:number):void {
+    public setLockfilePort(port:number):void {
         this.lockfile.port = port;
 
         IngCore.Logs.log(this.classId +  " SetLockfilePort '" + this.lockfile.port + "'");
@@ -266,7 +231,7 @@ class RiotLocal {
      * @param {String} password
      * @returns {void}
      */
-    setLockfilePassword(password:string):void {
+    public setLockfilePassword(password:string):void {
         this.lockfile.password = password;
 
         IngCore.Logs.log(this.classId +  " SetLockfilePassword '" + this.lockfile.password + "'");
@@ -277,7 +242,7 @@ class RiotLocal {
      * @param {String} protocol
      * @returns {void}
      */
-    setLockfileProtocol(protocol:IRiotLocal_Lockfile_Protocol):void {
+    public setLockfileProtocol(protocol:IRiotLocal_Lockfile_Protocol):void {
         this.lockfile.protocol = protocol;
 
         IngCore.Logs.log(this.classId +  " SetLockfileProtocal '" + this.lockfile.protocol + "'");
@@ -294,7 +259,9 @@ class RiotLocal {
      * @returns {Promise<IAxiosClient_Out>}
      */
     static async request(method:IRiotLocal_JSON_Method = 'get', endpoint:string = '/help', body:object = {}):Promise<IAxiosClient_Out> {
-        const newRiotLocal = await new RiotLocal();
+        const AuthLockfile:IRiotLocal_Lockfile = RiotLocal.Auth.lockfile();
+        const newRiotLocal:RiotLocal = await new RiotLocal(AuthLockfile);
+
         return await newRiotLocal.request(method, endpoint, body);
     }
 
@@ -310,7 +277,9 @@ class RiotLocal {
         body: {},
         replace: [],
     }):Promise<IAxiosClient_Out> {
-        const newRiotLocal = await new RiotLocal();
+        const AuthLockfile:IRiotLocal_Lockfile = RiotLocal.Auth.lockfile()
+        const newRiotLocal:RiotLocal = await new RiotLocal(AuthLockfile);
+
         return await newRiotLocal.requestFromJSON(data);
     }
 
@@ -329,22 +298,18 @@ class RiotLocal {
             protocol: 'https',
         }
     }):RiotLocal {
-        const newRiotLocal = new RiotLocal();
+        const AuthLockfile:IRiotLocal_Lockfile = RiotLocal.Auth.lockfile();
+        const newRiotLocal:RiotLocal = new RiotLocal(AuthLockfile);
         newRiotLocal.fromJSON(data);
 
         return newRiotLocal;
     }
 
-    /**
-     * 
-     * @returns {IRiotLocal_Resources}
-     */
-    static getResource():IRiotLocal_Resources {
-        const newRiotLocal = new RiotLocal();
-        return newRiotLocal.getResource();
-    }
-
     //auth
+
+    static Auth = {
+        lockfile: getLockfile,
+    }
 
     static Resource:IRiotLocal_Resources = Auth_Resource;
 }

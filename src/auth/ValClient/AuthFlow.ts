@@ -2,8 +2,9 @@
 import { CookieJar as toughCookie } from "tough-cookie";
 
 import * as IngCore from "@ing3kth/core";
+
 import type { IValClient_Auth } from "../../resources/interface/IValClient";
-import { IAxiosClient_Out } from "@ing3kth/core/dist/interface/IAxiosClient";
+import type { IAxiosClient_Out } from "@ing3kth/core/dist/interface/IAxiosClient";
 
 //class
 
@@ -11,18 +12,18 @@ import { IAxiosClient_Out } from "@ing3kth/core/dist/interface/IAxiosClient";
  * * Class ID: @ing3kth/val-api/AuthFlow
  */
 class AuthFlow {
-    classId:string;
-    cookie:toughCookie;
-    accessToken:string;
-    id_token:string;
-    expires_in:number;
-    token_type:string;
-    entitlements:string;
-    region: {
+    public classId:string;
+    private cookie:toughCookie;
+    private accessToken:string;
+    private id_token:string;
+    private expires_in:number;
+    private token_type:string;
+    private entitlements:string;
+    private region: {
         pbe: string,
         live: string,
     };
-    multifactor:boolean;
+    public multifactor:boolean;
 
     /**
     * @param {IValClient_Auth} data Account toJSON data
@@ -55,8 +56,8 @@ class AuthFlow {
      * @param {IAxiosClient_Out} auth_response First Auth Response
      * @returns {Promise<IValClient_Auth>}
      */
-    async execute(auth_response:IAxiosClient_Out):Promise<IValClient_Auth> {
-        const axiosClient = new IngCore.AxiosClient({
+    public async execute(auth_response:IAxiosClient_Out):Promise<IValClient_Auth> {
+        const axiosClient:IngCore.AxiosClient = new IngCore.AxiosClient({
             cookie: true,
             jar: this.cookie.toJSON(),
             headers: {}
@@ -84,7 +85,7 @@ class AuthFlow {
         }
 
         // get asscess token
-        const _search = new URL(auth_response.data.response.parameters.uri);
+        const _search:URL = new URL(auth_response.data.response.parameters.uri);
         var _get_where;
         var _get_accessToken;
 
@@ -102,7 +103,7 @@ class AuthFlow {
         this.token_type = String(new URLSearchParams(_get_where).get('token_type'));
 
         //ENTITLEMENTS
-        const entitlements_response = await axiosClient.post('https://entitlements.auth.riotgames.com/api/token/v1', {}, {
+        const entitlements_response:IAxiosClient_Out = await axiosClient.post('https://entitlements.auth.riotgames.com/api/token/v1', {}, {
             headers: {
                 'Authorization': `${this.token_type} ${this.accessToken}`,
                 'User-Agent': 'RiotClient/43.0.1.4195386.4190634 rso-auth (Windows; 10;;Professional, x64)'
@@ -112,7 +113,7 @@ class AuthFlow {
         this.entitlements = entitlements_response.data.entitlements_token;
 
         //REGION
-        const region_response = await axiosClient.put('https://riot-geo.pas.si.riotgames.com/pas/v1/product/valorant', {
+        const region_response:IAxiosClient_Out = await axiosClient.put('https://riot-geo.pas.si.riotgames.com/pas/v1/product/valorant', {
             "id_token": this.id_token,
         }, {
             headers: {
@@ -130,7 +131,7 @@ class AuthFlow {
      * 
      * @returns {IValClient_Auth}
      */
-    toJSON():IValClient_Auth {
+    public toJSON():IValClient_Auth {
         IngCore.Logs.log("Export " + this.classId);
 
         return {
@@ -151,7 +152,7 @@ class AuthFlow {
      * @returns {Promise<IValClient_Auth>}
      */
     static async execute(data:IValClient_Auth, auth_response:IAxiosClient_Out):Promise<IValClient_Auth> {
-        const _newAuthFlow = new AuthFlow(data);
+        const _newAuthFlow:AuthFlow = new AuthFlow(data);
         return await _newAuthFlow.execute(auth_response);
     }
 }

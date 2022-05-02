@@ -3,19 +3,23 @@ import CryptoJS from "crypto-js";
 /**
  * 
  * @param {String} data Data
- * @param {String} unicode Unicode
+ * @param {String} encrypt Encrypt mode
  */
-function toBase64(data:string, unicode:keyof typeof CryptoJS.enc = 'Utf8'):string {
-    return CryptoJS.enc[unicode].parse(String(data)).toString(CryptoJS.enc.Base64);
+function toBase64(data:string, encrypt:keyof typeof CryptoJS.enc = 'Utf8'):string {
+    return CryptoJS.enc[encrypt].parse(String(data)).toString(CryptoJS.enc.Base64);
+
+    if(encrypt === 'Utf8'){
+        return Buffer.from(data).toString('base64');
+    }
 }
 
 /**
  * 
  * @param {String} data Data
- * @param {String} unicode Unicode
+ * @param {String} decrypt Decrypt mode
  */
-function fromBase64(data:string, unicode:keyof typeof CryptoJS.enc = 'Utf8'):string {
-    return CryptoJS.enc.Base64.parse(data).toString(CryptoJS.enc[unicode]);
+function fromBase64(data:string, decrypt:keyof typeof CryptoJS.enc = 'Utf8'):string {
+    return CryptoJS.enc.Base64.parse(data).toString(CryptoJS.enc[decrypt]);
 }
 
 export {

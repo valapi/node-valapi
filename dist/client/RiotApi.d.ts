@@ -1,6 +1,4 @@
-import type { IValRegion } from "../resources/interface/IValRegion";
-import type { IAxiosClient } from "@ing3kth/core/dist/interface/IAxiosClient";
-import type { IRiotApi, IRiotApi_Service } from "../resources/interface/IRiotApi";
+import type { IRiotApi } from "../resources/interface/IRiotApi";
 import { AccountV1 } from "../service/RiotApi/AccountV1";
 import { StatusV1 } from "../service/RiotApi/StatusV1";
 import { ContentV1 } from "../service/RiotApi/ContentV1";
@@ -14,11 +12,10 @@ import { ContentV1 } from "../service/RiotApi/ContentV1";
  */
 declare class RiotApi {
     classId: string;
-    apiKey: string;
-    region: string | any;
-    RegionServices: IValRegion | undefined;
-    AxiosData: IAxiosClient | undefined;
-    services: IRiotApi_Service | undefined;
+    private apiKey;
+    private region;
+    private RegionServices;
+    private services;
     AccountV1: AccountV1 | undefined;
     StatusV1: StatusV1 | undefined;
     ContentV1: ContentV1 | undefined;
@@ -29,7 +26,7 @@ declare class RiotApi {
     /**
      * @returns {void}
      */
-    reload(): void;
+    private reload;
     /**
      *
      * @returns {IRiotApi}

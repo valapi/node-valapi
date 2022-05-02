@@ -1,4 +1,4 @@
-import { IValRegion } from "./interface/IValRegion";
+import type { IValRegion } from "./interface/IValRegion";
 
 //import
 import _Region from "./data/Region";
@@ -11,11 +11,11 @@ import { Logs } from "@ing3kth/core/dist/core/Logs";
  * * Class ID: @ing3kth/val-api/ValRegion
  */
 class ValRegion {
-    classId:string;
-    base:keyof typeof _Region | string;
-    region:any;
-    server:any;
-    riotRegion:any;
+    public classId:string;
+    private base:keyof typeof _Region | string;
+    private region:any;
+    private server:any;
+    private riotRegion:any;
     /**
     * @param {String} region Region
     * @returns {IValRegion}
@@ -73,7 +73,7 @@ class ValRegion {
      * 
      * @returns {IValRegion}
      */
-    toJSON():IValRegion {
+    public toJSON():IValRegion {
         return {
             data: {
                 base: this.base,

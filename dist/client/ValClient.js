@@ -26,7 +26,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ValClient = void 0;
 //import
 const IngCore = __importStar(require("@ing3kth/core"));
-const config_1 = require("@ing3kth/core/dist/config");
+const core_1 = require("@ing3kth/core");
 const Uft8_1 = require("../utils/Uft8");
 const tough_cookie_1 = require("tough-cookie");
 const ValRegion_1 = require("../resources/ValRegion");
@@ -40,7 +40,6 @@ const PreGame_1 = require("../service/ValClient/PreGame");
 const Store_1 = require("../service/ValClient/Store");
 const Account_1 = require("../auth/ValClient/Account");
 const Multifactor_1 = require("../auth/ValClient/Multifactor");
-const AuthFlow_1 = require("../auth/ValClient/AuthFlow");
 //class
 /**
  * * Class ID: @ing3kth/val-api/ValClient
@@ -90,20 +89,18 @@ class ValClient {
      */
     reload() {
         this.RegionServices = new ValRegion_1.ValRegion(this.region).toJSON();
-        //axios client
-        this.AxiosData = {
-            cookie: true,
-            jar: this.cookie,
-            headers: {
-                'Authorization': `${this.token_type} ${this.accessToken}`,
-                'X-Riot-Entitlements-JWT': this.entitlements,
-                'X-Riot-ClientVersion': this.client.version,
-                'X-Riot-ClientPlatform': this.client.platfrom,
-            },
-        };
         //services
         this.services = {
-            AxiosData: this.AxiosData,
+            AxiosData: {
+                cookie: true,
+                jar: this.cookie,
+                headers: {
+                    'Authorization': `${this.token_type} ${this.accessToken}`,
+                    'X-Riot-Entitlements-JWT': this.entitlements,
+                    'X-Riot-ClientVersion': this.client.version,
+                    'X-Riot-ClientPlatform': this.client.platfrom,
+                },
+            },
             Region: this.RegionServices,
         };
         this.Client = new Client_1.Client(this.services);
@@ -161,7 +158,7 @@ class ValClient {
     * @param {String} clientVersion Client Version
     * @returns {void}
     */
-    setClientVersion(clientVersion = config_1._config["val-api"].ValClient.client.version) {
+    setClientVersion(clientVersion = core_1.Config["val-api"].ValClient.client.version) {
         this.client.version = clientVersion;
         IngCore.Logs.log(this.classId + " SetClientPlatfrom '" + this.client.version + "'");
         this.reload();
@@ -170,7 +167,7 @@ class ValClient {
     * @param {IValClient_ClientPlatfrom} clientPlatfrom Client Platfrom in json
     * @returns {void}
     */
-    setClientPlatfrom_fromJSON(clientPlatfrom = config_1._config["val-api"].ValClient.client.platform) {
+    setClientPlatfrom_fromJSON(clientPlatfrom = core_1.Config["val-api"].ValClient.client.platform) {
         this.client.platfrom = (0, Uft8_1.toBase64)(JSON.stringify(clientPlatfrom));
         IngCore.Logs.log(this.classId + " SetClientPlatfrom '" + this.client.platfrom + "'");
         this.reload();
@@ -197,8 +194,7 @@ class ValClient {
 exports.ValClient = ValClient;
 //auth
 ValClient.Auth = {
-    Account: Account_1.Account,
-    Multifactor: Multifactor_1.Multifactor,
-    AuthFlow: AuthFlow_1.AuthFlow
+    login: Account_1.Account.login,
+    verify: Multifactor_1.Multifactor.verify,
 };
 //# sourceMappingURL=ValClient.js.map

@@ -1,7 +1,7 @@
 //import
 import { AxiosClient } from "@ing3kth/core/dist/core/AxiosClient";
 
-import { IRiotApi_Service } from "../../resources/interface/IRiotApi";
+import type { IRiotApi_Service } from "../../resources/interface/IRiotApi";
 import type { IValRegion } from "../../resources/interface/IValRegion";
 import type { IAxiosClient_Out } from "@ing3kth/core/dist/interface/IAxiosClient";
 

@@ -1,8 +1,6 @@
 import { CookieJar as toughCookie } from "tough-cookie";
 import _Region from "../resources/data/Region";
 import type { IValClient, ValClient_Service, IValClient_Auth, IValClient_ClientPlatfrom } from "../resources/interface/IValClient";
-import type { IValRegion } from "../resources/interface/IValRegion";
-import type { IAxiosClient } from "@ing3kth/core/dist/interface/IAxiosClient";
 import { Client } from "../service/ValClient/Client";
 import { Contract } from "../service/ValClient/Contract";
 import { CurrentGame } from "../service/ValClient/CurrentGame";
@@ -13,26 +11,21 @@ import { PreGame } from "../service/ValClient/PreGame";
 import { Store } from "../service/ValClient/Store";
 import { Account as Auth_Account } from "../auth/ValClient/Account";
 import { Multifactor as Auth_Multifactor } from "../auth/ValClient/Multifactor";
-import { AuthFlow as Auth_AuthFlow } from "../auth/ValClient/AuthFlow";
 /**
  * * Class ID: @ing3kth/val-api/ValClient
  * * Use Anywhere: true
  */
 declare class ValClient {
     classId: string;
-    cookie: toughCookie.Serialized;
-    accessToken: string;
-    id_token: string;
-    token_type: string;
-    entitlements: string;
-    client: {
-        version: string;
-        platfrom: string;
-    };
-    region: keyof typeof _Region;
-    RegionServices: IValRegion | undefined;
-    AxiosData: IAxiosClient | undefined;
-    services: ValClient_Service | undefined;
+    private cookie;
+    private accessToken;
+    private id_token;
+    private token_type;
+    private entitlements;
+    private client;
+    private region;
+    private RegionServices;
+    private services;
     Client: Client | undefined;
     Contract: Contract | undefined;
     CurrentGame: CurrentGame | undefined;
@@ -48,7 +41,7 @@ declare class ValClient {
     /***
      * @returns {void}
      */
-    reload(): void;
+    private reload;
     /**
      *
      * @returns {IValClient}
@@ -86,9 +79,8 @@ declare class ValClient {
     */
     static fromJSON(data: IValClient): ValClient;
     static Auth: {
-        Account: typeof Auth_Account;
-        Multifactor: typeof Auth_Multifactor;
-        AuthFlow: typeof Auth_AuthFlow;
+        login: typeof Auth_Account.login;
+        verify: typeof Auth_Multifactor.verify;
     };
 }
 export { ValClient, type ValClient_Service };

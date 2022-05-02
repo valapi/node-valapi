@@ -8,10 +8,10 @@ import * as fs from 'fs';
  * @returns {IRiotLocalLockfile}
  */
 function getLockfile(path:string = _config['val-api'].RiotLocal.lockfile):IRiotLocal_Lockfile {
-    var _getFile = fs.readFileSync(path, 'utf8');
+    var _getFile:string = fs.readFileSync(path, 'utf8');
 
-    const _spilt_file = _getFile.split(":");
-    const _lockfile = {
+    const _spilt_file:Array<string> = _getFile.split(":");
+    const _lockfile:IRiotLocal_Lockfile = {
         name: _spilt_file[0],
         pid: Number(_spilt_file[1]),
         port: Number(_spilt_file[2]),

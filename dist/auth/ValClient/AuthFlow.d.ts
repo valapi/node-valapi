@@ -1,21 +1,17 @@
-import { CookieJar as toughCookie } from "tough-cookie";
 import type { IValClient_Auth } from "../../resources/interface/IValClient";
-import { IAxiosClient_Out } from "@ing3kth/core/dist/interface/IAxiosClient";
+import type { IAxiosClient_Out } from "@ing3kth/core/dist/interface/IAxiosClient";
 /**
  * * Class ID: @ing3kth/val-api/AuthFlow
  */
 declare class AuthFlow {
     classId: string;
-    cookie: toughCookie;
-    accessToken: string;
-    id_token: string;
-    expires_in: number;
-    token_type: string;
-    entitlements: string;
-    region: {
-        pbe: string;
-        live: string;
-    };
+    private cookie;
+    private accessToken;
+    private id_token;
+    private expires_in;
+    private token_type;
+    private entitlements;
+    private region;
     multifactor: boolean;
     /**
     * @param {IValClient_Auth} data Account toJSON data

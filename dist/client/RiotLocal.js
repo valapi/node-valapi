@@ -37,11 +37,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RiotLocal = void 0;
 //import
-const fs = __importStar(require("fs"));
 const IngCore = __importStar(require("@ing3kth/core"));
+const core_1 = require("@ing3kth/core");
 const Uft8_1 = require("../utils/Uft8");
 const Resource_1 = __importDefault(require("../auth/RiotLocal/Resource"));
-const config_1 = require("@ing3kth/core/dist/config");
+const Lockfile_1 = __importDefault(require("../auth/RiotLocal/Lockfile"));
 //class
 /**
  * All Api Base On https://github.com/techchrism/valorant-api-docs
@@ -53,25 +53,19 @@ const config_1 = require("@ing3kth/core/dist/config");
  */
 class RiotLocal {
     /**
-     *
-     * @param {String} ip IP of local api
      * @param {IRiotLocal_Lockfile} lockfile lockfile data
+     * @param {String} ip IP of local api
      */
-    constructor(ip = config_1._config['val-api'].RiotLocal.ip, lockfile) {
+    constructor(lockfile, ip = core_1.Config['val-api'].RiotLocal.ip) {
         this.classId = '@ing3kth/val-api/RiotLocal';
         this.ip = ip;
-        if (lockfile) {
-            this.lockfile = {
-                name: lockfile.name,
-                pid: lockfile.pid,
-                port: lockfile.port,
-                password: lockfile.password,
-                protocol: lockfile.protocol,
-            };
-        }
-        else {
-            this.lockfile = this.getlockfile();
-        }
+        this.lockfile = {
+            name: lockfile.name,
+            pid: lockfile.pid,
+            port: lockfile.port,
+            password: lockfile.password,
+            protocol: lockfile.protocol,
+        };
         this.AxiosClient = new IngCore.AxiosClient({
             cookie: false,
             jar: null,
@@ -80,17 +74,10 @@ class RiotLocal {
         this.reload();
     }
     /**
-     *
-     * @returns {IRiotLocal_Resources}
-     */
-    getResource() {
-        return Resource_1.default;
-    }
-    /**
      * @returns {void}
      */
     reload() {
-        const _base64 = (0, Uft8_1.toBase64)(`${config_1._config['val-api'].RiotLocal.username}:${this.lockfile.password}`);
+        const _base64 = (0, Uft8_1.toBase64)(`${core_1.Config['val-api'].RiotLocal.username}:${this.lockfile.password}`);
         this.AxiosClient = new IngCore.AxiosClient({
             cookie: false,
             jar: null,
@@ -99,24 +86,7 @@ class RiotLocal {
             },
         });
         this.baseUrl = `${this.lockfile.protocol}://${this.ip}:${this.lockfile.port}`;
-        this.resourse = this.getResource();
         IngCore.Logs.log(this.classId + " Reload");
-    }
-    /**
-     * @param {String} path path to lockfile
-     * @returns {IRiotLocalLockfile}
-     */
-    getlockfile(path = config_1._config['val-api'].RiotLocal.lockfile) {
-        var _getFile = fs.readFileSync(path, 'utf8');
-        const _spilt_file = _getFile.split(":");
-        const _lockfile = {
-            name: _spilt_file[0],
-            pid: Number(_spilt_file[1]),
-            port: Number(_spilt_file[2]),
-            password: _spilt_file[3],
-            protocol: _spilt_file[4],
-        };
-        return _lockfile;
     }
     /**
      *
@@ -230,7 +200,7 @@ class RiotLocal {
      * @param {String} ip IP of local api
      * @returns {void}
      */
-    setIp(ip = config_1._config['val-api'].RiotLocal.ip) {
+    setIp(ip = core_1.Config['val-api'].RiotLocal.ip) {
         this.ip = ip;
         IngCore.Logs.log(this.classId + " SetIp '" + this.ip + "'");
         this.reload();
@@ -290,7 +260,8 @@ class RiotLocal {
      */
     static request(method = 'get', endpoint = '/help', body = {}) {
         return __awaiter(this, void 0, void 0, function* () {
-            const newRiotLocal = yield new RiotLocal();
+            const AuthLockfile = RiotLocal.Auth.lockfile();
+            const newRiotLocal = yield new RiotLocal(AuthLockfile);
             return yield newRiotLocal.request(method, endpoint, body);
         });
     }
@@ -307,7 +278,8 @@ class RiotLocal {
         replace: [],
     }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const newRiotLocal = yield new RiotLocal();
+            const AuthLockfile = RiotLocal.Auth.lockfile();
+            const newRiotLocal = yield new RiotLocal(AuthLockfile);
             return yield newRiotLocal.requestFromJSON(data);
         });
     }
@@ -326,20 +298,16 @@ class RiotLocal {
             protocol: 'https',
         }
     }) {
-        const newRiotLocal = new RiotLocal();
+        const AuthLockfile = RiotLocal.Auth.lockfile();
+        const newRiotLocal = new RiotLocal(AuthLockfile);
         newRiotLocal.fromJSON(data);
         return newRiotLocal;
-    }
-    /**
-     *
-     * @returns {IRiotLocal_Resources}
-     */
-    static getResource() {
-        const newRiotLocal = new RiotLocal();
-        return newRiotLocal.getResource();
     }
 }
 exports.RiotLocal = RiotLocal;
 //auth
+RiotLocal.Auth = {
+    lockfile: Lockfile_1.default,
+};
 RiotLocal.Resource = Resource_1.default;
 //# sourceMappingURL=RiotLocal.js.map

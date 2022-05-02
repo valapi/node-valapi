@@ -1,14 +1,14 @@
-import { IValRegion } from "./interface/IValRegion";
+import type { IValRegion } from "./interface/IValRegion";
 import _Region from "./data/Region";
 /**
  * * Class ID: @ing3kth/val-api/ValRegion
  */
 declare class ValRegion {
     classId: string;
-    base: keyof typeof _Region | string;
-    region: any;
-    server: any;
-    riotRegion: any;
+    private base;
+    private region;
+    private server;
+    private riotRegion;
     /**
     * @param {String} region Region
     * @returns {IValRegion}

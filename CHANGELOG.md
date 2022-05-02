@@ -1,15 +1,25 @@
-# 1.6.1-beta.1 (Date Here | In Development)
+# 1.6.1 (Date Here | In Development)
 
-- Use Sort Region (old school)
+- Use Sort Region (old school) *||* ValRegion
 - - Example: `na` , `eu` , `ap`
-- ValClient Reworked
-- - id_token, token_type
+- ValClient
+- - id_token
+- - token_type
 - - ~~ValClient(ValClient_Auth, Region)~~ **--->** `ValClient(ValClient_Auth)`
 - - - Auto Region For You - *Thanks To: **ev3nvy#9996***
 - - - Still can use `.setRegion(Region)`
-- - New Method for auth (Delte Old Ones)
+- - New Method for auth
 - - - ~~ValApi.Auth.Account.login~~ **--->** `ValClient.Auth.login`
 - - - ~~ValApi.Auth.Multifactor.verify~~ **--->** `ValClient.Auth.verify`
+- RiotLocal
+- - New Method for auth
+- - - lockfile = RiotLocal.Auth.lockfile()
+- - - ~~RiotLocal(ip, lockfile)~~ **--->** `RiotLocal(lockfile, ip)`
+- - Resource
+- - - ~~RiotLocal.getResource()~~ **--->** `RiotLocal.Resource`
+- Interface (TypeScript)
+- - left a comment on [comment channel](https://discord.com/channels/870655534993399848/889152216332640277) at my [Discord server](https://discord.gg/pbyWbUYjyt) about Interface to let me know if you have any idea
+- Data Modifiers (TypeScript)
 
 # 1.6.0 (April 29, 2022 | In Development)
 

@@ -1,6 +1,6 @@
 import { Interface_AxiosClient } from "@ing3kth/core";
 import _Region from "../data/Region";
-import { IValRegion } from "./IValRegion";
+import type { IValRegion } from "./IValRegion";
 
 interface IRiotApi {
     apiKey: string,

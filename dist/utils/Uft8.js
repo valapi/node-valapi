@@ -8,19 +8,22 @@ const crypto_js_1 = __importDefault(require("crypto-js"));
 /**
  *
  * @param {String} data Data
- * @param {String} unicode Unicode
+ * @param {String} encrypt Encrypt mode
  */
-function toBase64(data, unicode = 'Utf8') {
-    return crypto_js_1.default.enc[unicode].parse(String(data)).toString(crypto_js_1.default.enc.Base64);
+function toBase64(data, encrypt = 'Utf8') {
+    return crypto_js_1.default.enc[encrypt].parse(String(data)).toString(crypto_js_1.default.enc.Base64);
+    if (encrypt === 'Utf8') {
+        return Buffer.from(data).toString('base64');
+    }
 }
 exports.toBase64 = toBase64;
 /**
  *
  * @param {String} data Data
- * @param {String} unicode Unicode
+ * @param {String} decrypt Decrypt mode
  */
-function fromBase64(data, unicode = 'Utf8') {
-    return crypto_js_1.default.enc.Base64.parse(data).toString(crypto_js_1.default.enc[unicode]);
+function fromBase64(data, decrypt = 'Utf8') {
+    return crypto_js_1.default.enc.Base64.parse(data).toString(crypto_js_1.default.enc[decrypt]);
 }
 exports.fromBase64 = fromBase64;
 //# sourceMappingURL=Uft8.js.map

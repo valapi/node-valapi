@@ -1,12 +1,11 @@
 //import
 import * as IngCore from "@ing3kth/core";
-import { _config } from "@ing3kth/core/dist/config";
+import { Config as _config } from "@ing3kth/core";
 
 import { ValRegion } from "../resources/ValRegion";
 import _Region from "../resources/data/Region";
 
 import type { IValRegion } from "../resources/interface/IValRegion";
-import type { IAxiosClient } from "@ing3kth/core/dist/interface/IAxiosClient";
 import type { IRiotApi, IRiotApi_Service } from  "../resources/interface/IRiotApi";
 
 import { AccountV1 } from "../service/RiotApi/AccountV1";
@@ -24,19 +23,18 @@ import { ContentV1 } from "../service/RiotApi/ContentV1";
  * * Use Anywhere: true
  */
 class RiotApi {
-    classId:string;
-    apiKey:string;
-    region:string | any;
+    public classId:string;
+    private apiKey:string;
+    private region:string | any;
 
     //reload
-    RegionServices:IValRegion | undefined;
-    AxiosData:IAxiosClient | undefined;
-    services:IRiotApi_Service | undefined;
+    private RegionServices:IValRegion | undefined;
+    private services:IRiotApi_Service | undefined;
 
     //service
-    AccountV1:AccountV1 | undefined;
-    StatusV1:StatusV1 | undefined;
-    ContentV1:ContentV1 | undefined;
+    public AccountV1:AccountV1 | undefined;
+    public StatusV1:StatusV1 | undefined;
+    public ContentV1:ContentV1 | undefined;
 
     /**
     * @param {IRiotApi} data RiotApi toJSON Data
@@ -60,7 +58,7 @@ class RiotApi {
     /**
      * @returns {void}
      */
-    reload():void {
+    private reload():void {
         this.RegionServices = new ValRegion(this.region).toJSON();
 
         //services
@@ -85,7 +83,7 @@ class RiotApi {
      * 
      * @returns {IRiotApi}
      */
-    toJSON():IRiotApi {
+    public toJSON():IRiotApi {
         IngCore.Logs.log("Export " + this.classId);
         return {
             apiKey: this.apiKey,
@@ -97,7 +95,7 @@ class RiotApi {
      * 
      * @param {IRiotApi} data RiotApi toJSON Data
      */
-    fromJSON(data:IRiotApi):void {
+    public fromJSON(data:IRiotApi):void {
         this.apiKey = data.apiKey;
         this.region = data.region;
 
@@ -110,7 +108,7 @@ class RiotApi {
     /**
     * @param {String} region Region
     */
-    setRegion(region:string):void {
+    public setRegion(region:string):void {
         this.region = region;
 
         IngCore.Logs.log(this.classId + " SetRegion '" + this.region + "'");
@@ -120,7 +118,7 @@ class RiotApi {
     /**
     * @param {String} key API Key
     */
-    setApiKey(key:string):void {
+    public setApiKey(key:string):void {
         this.apiKey = key;
 
         IngCore.Logs.log(this.classId + " setApiKey '" + this.apiKey + "'");
