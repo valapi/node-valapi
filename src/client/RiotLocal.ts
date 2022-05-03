@@ -77,7 +77,7 @@ class RiotLocal {
     /**
      * 
      * @param {IRiotLocal_JSON} data Data from LocalResourse
-     * @param {any} args.. Replace With Arguments
+     * @param {Array<string>} args Insert more data to request
      * @returns {Promise<IAxiosClient>}
      */
     public async requestFromJSON(data:IRiotLocal_JSON = {
@@ -85,7 +85,7 @@ class RiotLocal {
         endpoint: '/help',
         body: {},
         replace: [],
-    }):Promise<IAxiosClient> {
+    }, ...args:Array<string>):Promise<IAxiosClient> {
         if (!data.method || !data.endpoint) {
             await IngCore.Logs.log(this.classId + ` Missing Data`, 'error', true);
         } else if (!data.body) {
@@ -102,7 +102,7 @@ class RiotLocal {
 
         for (let i = 0; i < data.replace.length; i++) {
             const _change = data.replace[i];
-            const _args = arguments[i + 1];
+            const _args = args[i + 1];
             if (_change.where === 'url') {
                 if (_args) {
                     const _newURL = await _string_endpoint.replace(_change.with, String(_args));
@@ -271,7 +271,7 @@ class RiotLocal {
     /**
      * 
      * @param {IRiotLocal_JSON} data Data from LocalResourse
-     * @param {any} args.. Replace Data With Arguments
+     * @param {Array<string>} args Insert more data to request
      * @returns {Promise<IAxiosClient>}
      */
     static async requestFromJSON(data:IRiotLocal_JSON = {
@@ -279,11 +279,11 @@ class RiotLocal {
         endpoint: '/help',
         body: {},
         replace: [],
-    }):Promise<IAxiosClient> {
+    }, ...args:Array<string>):Promise<IAxiosClient> {
         const AuthLockfile:IRiotLocal_Lockfile = RiotLocal.Auth.lockfile();
         const newRiotLocal:RiotLocal = await new RiotLocal(AuthLockfile);
 
-        return await newRiotLocal.requestFromJSON(data);
+        return await newRiotLocal.requestFromJSON(data, ...args);
     }
 
     /**

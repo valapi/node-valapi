@@ -27,10 +27,10 @@ declare class RiotLocal {
     /**
      *
      * @param {IRiotLocal_JSON} data Data from LocalResourse
-     * @param {any} args.. Replace With Arguments
+     * @param {Array<string>} args Insert more data to request
      * @returns {Promise<IAxiosClient>}
      */
-    requestFromJSON(data?: IRiotLocal_JSON): Promise<IAxiosClient>;
+    requestFromJSON(data?: IRiotLocal_JSON, ...args: Array<string>): Promise<IAxiosClient>;
     /**
      *
      * @param {String} method Method to request
@@ -92,10 +92,10 @@ declare class RiotLocal {
     /**
      *
      * @param {IRiotLocal_JSON} data Data from LocalResourse
-     * @param {any} args.. Replace Data With Arguments
+     * @param {Array<string>} args Insert more data to request
      * @returns {Promise<IAxiosClient>}
      */
-    static requestFromJSON(data?: IRiotLocal_JSON): Promise<IAxiosClient>;
+    static requestFromJSON(data?: IRiotLocal_JSON, ...args: Array<string>): Promise<IAxiosClient>;
     /**
      *
      * @param {IRiotLocal} data RiotLocal toJSON Data

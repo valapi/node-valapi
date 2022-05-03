@@ -95,7 +95,7 @@ class RiotLocal {
     /**
      *
      * @param {IRiotLocal_JSON} data Data from LocalResourse
-     * @param {any} args.. Replace With Arguments
+     * @param {Array<string>} args Insert more data to request
      * @returns {Promise<IAxiosClient>}
      */
     requestFromJSON(data = {
@@ -103,8 +103,8 @@ class RiotLocal {
         endpoint: '/help',
         body: {},
         replace: [],
-    }) {
-        return __awaiter(this, arguments, void 0, function* () {
+    }, ...args) {
+        return __awaiter(this, void 0, void 0, function* () {
             if (!data.method || !data.endpoint) {
                 yield IngCore.Logs.log(this.classId + ` Missing Data`, 'error', true);
             }
@@ -120,7 +120,7 @@ class RiotLocal {
             var _string_body = String(JSON.stringify(_body));
             for (let i = 0; i < data.replace.length; i++) {
                 const _change = data.replace[i];
-                const _args = arguments[i + 1];
+                const _args = args[i + 1];
                 if (_change.where === 'url') {
                     if (_args) {
                         const _newURL = yield _string_endpoint.replace(_change.with, String(_args));
@@ -272,7 +272,7 @@ class RiotLocal {
     /**
      *
      * @param {IRiotLocal_JSON} data Data from LocalResourse
-     * @param {any} args.. Replace Data With Arguments
+     * @param {Array<string>} args Insert more data to request
      * @returns {Promise<IAxiosClient>}
      */
     static requestFromJSON(data = {
@@ -280,11 +280,11 @@ class RiotLocal {
         endpoint: '/help',
         body: {},
         replace: [],
-    }) {
+    }, ...args) {
         return __awaiter(this, void 0, void 0, function* () {
             const AuthLockfile = RiotLocal.Auth.lockfile();
             const newRiotLocal = yield new RiotLocal(AuthLockfile);
-            return yield newRiotLocal.requestFromJSON(data);
+            return yield newRiotLocal.requestFromJSON(data, ...args);
         });
     }
     /**
