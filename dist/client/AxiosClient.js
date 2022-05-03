@@ -33,7 +33,6 @@ class AxiosClient {
             ];
             config.httpAgent = new http_cookie_agent_1.HttpCookieAgent({ jar: config.jar });
             config.httpsAgent = new http_cookie_agent_1.HttpsCookieAgent({ jar: config.jar, ciphers: ciphers.join(':'), honorCipherOrder: true, minVersion: 'TLSv1.2' });
-            config.jar = undefined;
         }
         this.axiosClient = axios_1.default.create(config);
     }
