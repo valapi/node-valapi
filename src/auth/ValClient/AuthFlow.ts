@@ -57,6 +57,12 @@ class AuthFlow {
      * @returns {Promise<IValClient_Auth>}
      */
     public async execute(auth_response:IAxiosClient_Out):Promise<IValClient_Auth> {
+        if(auth_response.isError){
+            IngCore.Logs.log('wrong username or password', 'warning', true);
+            return this.toJSON();
+        }
+
+
         const axiosClient:IngCore.AxiosClient = new IngCore.AxiosClient({
             cookie: true,
             jar: this.cookie.toJSON(),

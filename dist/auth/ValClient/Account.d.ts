@@ -14,7 +14,7 @@ declare class Account {
     multifactor: boolean;
     constructor();
     /**
-     * @param {String} username Riot Account Username
+     * @param {String} username Riot Account Username (not email)
      * @param {String} password Riot Account Password
      * @returns {Promise<IValClient_Auth>}
      */

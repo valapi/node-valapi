@@ -42,7 +42,7 @@ class Account {
     }
 
     /**
-     * @param {String} username Riot Account Username
+     * @param {String} username Riot Account Username (not email)
      * @param {String} password Riot Account Password
      * @returns {Promise<IValClient_Auth>}
      */
@@ -63,7 +63,7 @@ class Account {
             headers: {
                 'Content-Type': 'application/json',
                 'User-Agent': 'RiotClient/43.0.1.4195386.4190634 rso-auth (Windows; 10;;Professional, x64)'
-            }
+            },
         });
 
         //ACCESS TOKEN

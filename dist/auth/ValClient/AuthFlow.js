@@ -73,6 +73,10 @@ class AuthFlow {
      */
     execute(auth_response) {
         return __awaiter(this, void 0, void 0, function* () {
+            if (auth_response.isError) {
+                IngCore.Logs.log('wrong username or password', 'warning', true);
+                return this.toJSON();
+            }
             const axiosClient = new IngCore.AxiosClient({
                 cookie: true,
                 jar: this.cookie.toJSON(),
