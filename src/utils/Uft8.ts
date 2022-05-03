@@ -6,11 +6,11 @@ import CryptoJS from "crypto-js";
  * @param {String} encrypt Encrypt mode
  */
 function toBase64(data:string, encrypt:keyof typeof CryptoJS.enc = 'Utf8'):string {
-    return CryptoJS.enc[encrypt].parse(String(data)).toString(CryptoJS.enc.Base64);
+    // if(encrypt === 'Utf8'){
+    //     return Buffer.from(data).toString('base64');
+    // }
 
-    if(encrypt === 'Utf8'){
-        return Buffer.from(data).toString('base64');
-    }
+    return CryptoJS.enc[encrypt].parse(String(data)).toString(CryptoJS.enc.Base64);
 }
 
 /**

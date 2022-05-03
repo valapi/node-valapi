@@ -210,7 +210,7 @@ class RiotLocal {
         this.reload();
     }
     /**
-     * @param {String} name
+     * @param {String} name Name
      * @returns {void}
      */
     setLockfileName(name = 'Riot Client') {
@@ -219,7 +219,7 @@ class RiotLocal {
         this.reload();
     }
     /**
-     * @param {Number} pid
+     * @param {Number} pid Process ID
      * @returns {void}
      */
     setLockfilePid(pid) {
@@ -228,7 +228,7 @@ class RiotLocal {
         this.reload();
     }
     /**
-     * @param {Number} port
+     * @param {Number} port Port
      * @returns {void}
      */
     setLockfilePort(port) {
@@ -237,7 +237,7 @@ class RiotLocal {
         this.reload();
     }
     /**
-     * @param {String} password
+     * @param {String} password Password
      * @returns {void}
      */
     setLockfilePassword(password) {
@@ -246,7 +246,7 @@ class RiotLocal {
         this.reload();
     }
     /**
-     * @param {String} protocol
+     * @param {String} protocol Http or Https
      * @returns {void}
      */
     setLockfileProtocol(protocol) {

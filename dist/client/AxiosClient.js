@@ -15,8 +15,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AxiosClient = void 0;
 //import
 const axios_1 = __importDefault(require("axios"));
-const axios_cookiejar_support_1 = require("axios-cookiejar-support");
 const core_1 = require("@ing3kth/core");
+const http_cookie_agent_1 = require("http-cookie-agent");
 //class
 class AxiosClient {
     /**
@@ -25,11 +25,16 @@ class AxiosClient {
     constructor(config = {}) {
         this.classId = '@ing3kth/core/AxiosClient';
         if (config.jar) {
-            this.axiosClient = (0, axios_cookiejar_support_1.wrapper)(axios_1.default.create(config));
+            const ciphers = [
+                'TLS_CHACHA20_POLY1305_SHA256',
+                'TLS_AES_128_GCM_SHA256',
+                'TLS_AES_256_GCM_SHA384',
+                'TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256'
+            ];
+            config.httpAgent = new http_cookie_agent_1.HttpCookieAgent({ jar: config.jar });
+            config.httpsAgent = new http_cookie_agent_1.HttpsCookieAgent({ jar: config.jar, ciphers: ciphers.join(':'), honorCipherOrder: true, minVersion: 'TLSv1.2' });
         }
-        else {
-            this.axiosClient = axios_1.default.create(config);
-        }
+        this.axiosClient = axios_1.default.create(config);
     }
     /**
     * @param {String} url URL

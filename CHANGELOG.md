@@ -1,27 +1,30 @@
 # 1.6.1 (3 May, 2022 | In Development)
 
-- ### ValRegion
-- - Use Sort Region (old school)
-- - Example: `na` , `eu` , `ap`
-- ### ValClient
-- - id_token
-- - token_type
-- - ~~ValClient(ValClient_Auth, Region)~~ **--->** `ValClient(ValClient_Auth)`
-- - - Auto Region For You - *Thanks To: **ev3nvy#9996***
-- - - Still can use `.setRegion(Region)`
-- - New Method for auth
-- - - ~~ValApi.Auth.Account.login~~ **--->** `ValClient.Auth.login`
-- - - ~~ValApi.Auth.Multifactor.verify~~ **--->** `ValClient.Auth.verify`
-- ### RiotLocal
-- - New Method for auth
-- - - lockfile = RiotLocal.Auth.lockfile()
-- - - ~~RiotLocal(ip, lockfile)~~ **--->** `RiotLocal(lockfile, ip)`
-- ### Resource
-- - - ~~RiotLocal.getResource()~~ **--->** `RiotLocal.Resource`
-- ### Typescript
-- - Interface
-- - - left a comment on [comment channel](https://discord.com/channels/870655534993399848/889152216332640277) at my [Discord server](https://discord.gg/pbyWbUYjyt) about Interface to let me know if you have any idea
-- - Data Modifiers
+### ValRegion
+- Use Sort Region (old school)
+- Example: `na` , `eu` , `ap`
+### ValClient
+- Fix error code: `403`, `1020`
+- - Thanks To: **teyd#8766** for the report
+- - Sometime **403** error code is still not working.
+- id_token
+- token_type
+- ~~ValClient(ValClient_Auth, Region)~~ **--->** `ValClient(ValClient_Auth)`
+- - Auto Region For You - *Thanks To: **ev3nvy#9996***
+- - Still can use `.setRegion(Region)`
+- New Method for auth
+- - ~~ValApi.Auth.Account.login~~ **--->** `ValClient.Auth.login`
+- - ~~ValApi.Auth.Multifactor.verify~~ **--->** `ValClient.Auth.verify`
+### RiotLocal
+- New Method for auth
+- - lockfile = RiotLocal.Auth.lockfile()
+- - ~~RiotLocal(ip, lockfile)~~ **--->** `RiotLocal(lockfile, ip)`
+### Resource
+- - ~~RiotLocal.getResource()~~ **--->** `RiotLocal.Resource`
+### Typescript
+- Interface
+- - left a comment on [comment channel](https://discord.com/channels/870655534993399848/889152216332640277) at my [Discord server](https://discord.gg/pbyWbUYjyt) about Interface to let me know if you have any idea
+- Data Modifiers
 
 # 1.6.0 (April 29, 2022 | In Development)
 

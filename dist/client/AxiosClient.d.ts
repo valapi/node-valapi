@@ -1,5 +1,11 @@
 import { type Axios, type AxiosRequestConfig } from 'axios';
-import { IAxiosClient } from "../resources/interface/IAxiosClient";
+import type { CookieJar } from 'tough-cookie';
+import type { IAxiosClient } from "../resources/interface/IAxiosClient";
+declare module 'axios' {
+    interface AxiosRequestConfig {
+        jar?: CookieJar;
+    }
+}
 declare class AxiosClient {
     classId: string;
     axiosClient: Axios;

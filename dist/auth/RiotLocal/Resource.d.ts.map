@@ -1,1 +1,1 @@
-{"version":3,"file":"Resource.d.ts","sourceRoot":"","sources":["../../../src/auth/RiotLocal/Resource.ts"],"names":[],"mappings":"AAIA,OAAO,EAAE,oBAAoB,EAAE,MAAM,sCAAsC,CAAC;AAE5E,QAAA,MAAM,mBAAmB,EAAC,oBAIzB,CAAA;AAED,eAAe,mBAAmB,CAAC"}
+{"version":3,"file":"Resource.d.ts","sourceRoot":"","sources":["../../../src/auth/RiotLocal/Resource.ts"],"names":[],"mappings":"AAIA,OAAO,EAAE,oBAAoB,EAAE,MAAM,sCAAsC,CAAC;AAE5E,QAAA,MAAM,mBAAmB,EAAC,oBAIzB,CAAC;AAEF,eAAe,mBAAmB,CAAC"}

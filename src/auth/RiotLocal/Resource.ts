@@ -8,6 +8,6 @@ const RiotLocal_Resources:IRiotLocal_Resources = {
     Chat: _Chat,
     Main: _Main,
     More: _More,
-}
+};
 
 export default RiotLocal_Resources;

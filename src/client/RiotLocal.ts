@@ -198,7 +198,7 @@ class RiotLocal {
     }
 
     /**
-     * @param {String} name
+     * @param {String} name Name
      * @returns {void}
      */
     public setLockfileName(name:string = 'Riot Client'):void {
@@ -209,7 +209,7 @@ class RiotLocal {
     }
 
     /**
-     * @param {Number} pid
+     * @param {Number} pid Process ID
      * @returns {void}
      */
     public setLockfilePid(pid:number):void {
@@ -220,7 +220,7 @@ class RiotLocal {
     }
 
     /**
-     * @param {Number} port
+     * @param {Number} port Port
      * @returns {void}
      */
     public setLockfilePort(port:number):void {
@@ -231,7 +231,7 @@ class RiotLocal {
     }
 
     /**
-     * @param {String} password
+     * @param {String} password Password
      * @returns {void}
      */
     public setLockfilePassword(password:string):void {
@@ -242,7 +242,7 @@ class RiotLocal {
     }
 
     /**
-     * @param {String} protocol
+     * @param {String} protocol Http or Https
      * @returns {void}
      */
     public setLockfileProtocol(protocol:IRiotLocal_Lockfile_Protocol):void {
@@ -280,7 +280,7 @@ class RiotLocal {
         body: {},
         replace: [],
     }):Promise<IAxiosClient> {
-        const AuthLockfile:IRiotLocal_Lockfile = RiotLocal.Auth.lockfile()
+        const AuthLockfile:IRiotLocal_Lockfile = RiotLocal.Auth.lockfile();
         const newRiotLocal:RiotLocal = await new RiotLocal(AuthLockfile);
 
         return await newRiotLocal.requestFromJSON(data);

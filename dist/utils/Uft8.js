@@ -11,10 +11,10 @@ const crypto_js_1 = __importDefault(require("crypto-js"));
  * @param {String} encrypt Encrypt mode
  */
 function toBase64(data, encrypt = 'Utf8') {
+    // if(encrypt === 'Utf8'){
+    //     return Buffer.from(data).toString('base64');
+    // }
     return crypto_js_1.default.enc[encrypt].parse(String(data)).toString(crypto_js_1.default.enc.Base64);
-    if (encrypt === 'Utf8') {
-        return Buffer.from(data).toString('base64');
-    }
 }
 exports.toBase64 = toBase64;
 /**

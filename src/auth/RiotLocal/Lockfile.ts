@@ -22,4 +22,4 @@ function getLockfile(path:string = _config['val-api'].RiotLocal.lockfile):IRiotL
     return _lockfile;
 }
 
-export default getLockfile
+export default getLockfile;

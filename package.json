@@ -48,8 +48,8 @@
   "dependencies": {
     "@ing3kth/core": "^1.8.3-beta.3",
     "axios": "^0.27.2",
-    "axios-cookiejar-support": "^3.0.0",
     "crypto-js": "^4.1.1",
+    "http-cookie-agent": "^2.0.0",
     "tough-cookie": "^4.0.0"
   },
   "devDependencies": {

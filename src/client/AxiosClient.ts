@@ -1,10 +1,18 @@
 //import
 import axios, { type Axios, type AxiosError, type AxiosRequestConfig } from 'axios';
-import { wrapper } from 'axios-cookiejar-support';
+import type { CookieJar } from 'tough-cookie';
 
 import { Logs } from '@ing3kth/core';
 
-import { IAxiosClient } from "../resources/interface/IAxiosClient";
+import type { IAxiosClient } from "../resources/interface/IAxiosClient";
+import { HttpsCookieAgent, HttpCookieAgent } from 'http-cookie-agent';
+
+//update
+declare module 'axios' {
+    interface AxiosRequestConfig {
+      jar?: CookieJar;
+    }
+}
 
 //class
 class AxiosClient {
@@ -17,10 +25,18 @@ class AxiosClient {
     constructor(config: AxiosRequestConfig = {}) {
         this.classId = '@ing3kth/core/AxiosClient';
         if(config.jar){
-            this.axiosClient = wrapper(axios.create(config));
-        } else {
-            this.axiosClient = axios.create(config);
+            const ciphers = [
+                'TLS_CHACHA20_POLY1305_SHA256',
+                'TLS_AES_128_GCM_SHA256',
+                'TLS_AES_256_GCM_SHA384',
+                'TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256'
+            ];
+
+            config.httpAgent = new HttpCookieAgent({ jar: config.jar });
+            config.httpsAgent = new HttpsCookieAgent({ jar: config.jar, ciphers: ciphers.join(':'), honorCipherOrder: true, minVersion: 'TLSv1.2' });  
         }
+
+        this.axiosClient = axios.create(config);
     }
 
     /**

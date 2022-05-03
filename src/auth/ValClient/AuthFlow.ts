@@ -89,7 +89,7 @@ class AuthFlow {
             headers: {
                 'Authorization': `${this.token_type} ${this.access_token}`,
             }
-        })
+        });
 
         this.region.pbe = region_response.data.affinities.pbe;
         this.region.live = region_response.data.affinities.live;
