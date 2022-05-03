@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ContentV1 = void 0;
 //import
-const AxiosClient_1 = require("@ing3kth/core/dist/core/AxiosClient");
+const AxiosClient_1 = require("../../client/AxiosClient");
 const Locale_1 = __importDefault(require("../../resources/data/Locale"));
 //class
 /**
@@ -33,7 +33,7 @@ class ContentV1 {
     /**
      *
      * @param {String} locale Locale
-     * @returns {Promise<IAxiosClient_Out>}
+     * @returns {Promise<IAxiosClient>}
      */
     Contents(locale = 'English_United_States') {
         return __awaiter(this, void 0, void 0, function* () {

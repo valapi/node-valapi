@@ -1,7 +1,7 @@
-import { AxiosClient } from "@ing3kth/core/dist/core/AxiosClient";
+import { AxiosClient } from "../../client/AxiosClient";
 import type { ValClient_Service } from "../../client/ValClient";
 import type { IValRegion } from "../../resources/interface/IValRegion";
-import type { IAxiosClient_Out } from "@ing3kth/core/dist/interface/IAxiosClient";
+import type { IAxiosClient } from "../../resources/interface/IAxiosClient";
 import QueueId from "../../resources/data/QueueId";
 /**
  * * Class ID: @ing3kth/val-api/ValClient/Player
@@ -16,40 +16,40 @@ declare class Player {
     constructor(data: ValClient_Service);
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
-    GetUsername(puuid: string): Promise<IAxiosClient_Out>;
+    GetUsername(puuid: string): Promise<IAxiosClient>;
     /**
-     * @returns {Promise<IAxiosClient_Out>}
+     * @returns {Promise<IAxiosClient>}
     */
-    GetUserInfo(): Promise<IAxiosClient_Out>;
+    GetUserInfo(): Promise<IAxiosClient>;
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
-    FetchPlayer(puuid: string): Promise<IAxiosClient_Out>;
+    FetchPlayer(puuid: string): Promise<IAxiosClient>;
     /**
     * @param {String} puuid PlayerUUID
     * @param {String} queue Queue
     * @param {Number} startIndex startIndex
     * @param {Number} endIndex endIndex
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
-    FetchCompetitiveUpdates(puuid: string, queue?: keyof typeof QueueId.data, startIndex?: number, endIndex?: number): Promise<IAxiosClient_Out>;
+    FetchCompetitiveUpdates(puuid: string, queue?: keyof typeof QueueId.data, startIndex?: number, endIndex?: number): Promise<IAxiosClient>;
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
-    Loadout(puuid: string): Promise<IAxiosClient_Out>;
+    Loadout(puuid: string): Promise<IAxiosClient>;
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
-    AccountXP(puuid: string): Promise<IAxiosClient_Out>;
+    AccountXP(puuid: string): Promise<IAxiosClient>;
     /**
-     * @returns {Promise<IAxiosClient_Out>}
+     * @returns {Promise<IAxiosClient>}
     */
-    FetchPlayerRestrictions(): Promise<IAxiosClient_Out>;
+    FetchPlayerRestrictions(): Promise<IAxiosClient>;
 }
 export { Player };
 //# sourceMappingURL=Player.d.ts.map

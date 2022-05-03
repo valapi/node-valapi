@@ -1,9 +1,9 @@
 //import
-import { AxiosClient } from "@ing3kth/core/dist/core/AxiosClient";
+import { AxiosClient } from "../../client/AxiosClient";
 
 import type { ValClient_Service } from "../../client/ValClient";
 import type { IValRegion } from "../../resources/interface/IValRegion";
-import type { IAxiosClient_Out } from "@ing3kth/core/dist/interface/IAxiosClient";
+import type { IAxiosClient } from "../../resources/interface/IAxiosClient";
 
 //service
 
@@ -25,26 +25,26 @@ class Contract {
     }
 
     /**
-     * @returns {Promise<IAxiosClient_Out>}
+     * @returns {Promise<IAxiosClient>}
     */
-    async DefinitionsFetch():Promise<IAxiosClient_Out> {
+    async DefinitionsFetch():Promise<IAxiosClient> {
         return await this.AxiosClient.get(this.Region.url.playerData + `/contract-definitions/v3/item-upgrades`);
     }
 
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
-    async Fetch(puuid:string):Promise<IAxiosClient_Out> {
+    async Fetch(puuid:string):Promise<IAxiosClient> {
         return await this.AxiosClient.get(this.Region.url.playerData + `/contracts/v1/contracts/${puuid}`);
     }
 
     /**
     * @param {String} puuid PlayerUUID
     * @param {String} contractId ContractID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
-    async Activate(puuid:string, contractId:string):Promise<IAxiosClient_Out> {
+    async Activate(puuid:string, contractId:string):Promise<IAxiosClient> {
         return await this.AxiosClient.post(this.Region.url.playerData + `/contracts/v1/contracts/${puuid}/special/${contractId}`);
     }
 }

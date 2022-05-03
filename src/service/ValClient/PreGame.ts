@@ -1,9 +1,9 @@
 //import
-import { AxiosClient } from "@ing3kth/core/dist/core/AxiosClient";
+import { AxiosClient } from "../../client/AxiosClient";
 
 import type { ValClient_Service } from "../../client/ValClient";
 import type { IValRegion } from "../../resources/interface/IValRegion";
-import type { IAxiosClient_Out } from "@ing3kth/core/dist/interface/IAxiosClient";
+import type { IAxiosClient } from "../../resources/interface/IAxiosClient";
 
 //service
 
@@ -26,52 +26,52 @@ class PreGame {
 
     /**
     * @param {String} matchId MatchID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
-     async GetMatch(matchId:string):Promise<IAxiosClient_Out> {
+     async GetMatch(matchId:string):Promise<IAxiosClient> {
         return await this.AxiosClient.get(this.Region.url.partyService + `/pregame/v1/matches/${matchId}`);
     }
 
     /**
     * @param {String} matchId MatchID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
-     async GetMatchLoadouts(matchId:string):Promise<IAxiosClient_Out> {
+     async GetMatchLoadouts(matchId:string):Promise<IAxiosClient> {
         return await this.AxiosClient.get(this.Region.url.partyService + `/pregame/v1/matches/${matchId}/loadouts`);
     }
 
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
-     async GetPlayer(puuid:string):Promise<IAxiosClient_Out> {
+     async GetPlayer(puuid:string):Promise<IAxiosClient> {
         return await this.AxiosClient.get(this.Region.url.partyService + `/pregame/v1/players/${puuid}`);
     }
 
     /**
     * @param {String} matchId MatchID
     * @param {String} agentId CharacterID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
-     async LockCharacter(matchId:string, agentId:string):Promise<IAxiosClient_Out> {
+     async LockCharacter(matchId:string, agentId:string):Promise<IAxiosClient> {
         return await this.AxiosClient.post(this.Region.url.partyService + `/pregame/v1/matches/${matchId}/lock/${agentId}`);
     }
 
     /**
      * * Careful to use, Riot will immediately shut down your Project.
     * @param {String} matchId MatchID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
-     async QuitMatch(matchId:string):Promise<IAxiosClient_Out> {
+     async QuitMatch(matchId:string):Promise<IAxiosClient> {
         return await this.AxiosClient.post(this.Region.url.partyService + `/pregame/v1/matches/${matchId}/quit`);
     }
 
     /**
     * @param {String} matchId MatchID
     * @param {String} agentId CharacterID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
-     async SelectCharacter(matchId:string, agentId:string):Promise<IAxiosClient_Out> {
+     async SelectCharacter(matchId:string, agentId:string):Promise<IAxiosClient> {
         return await this.AxiosClient.post(this.Region.url.partyService + `/pregame/v1/matches/${matchId}/select/${agentId}`);
     }
 }

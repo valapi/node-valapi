@@ -11,7 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Client = void 0;
 //import
-const AxiosClient_1 = require("@ing3kth/core/dist/core/AxiosClient");
+const AxiosClient_1 = require("../../client/AxiosClient");
 //service
 /**
  * * Class ID: @ing3kth/val-api/ValClient/Client
@@ -28,7 +28,7 @@ class Client {
     //SESSION
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
     GetSession(puuid) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -37,7 +37,7 @@ class Client {
     }
     //PVP Endpoints
     /**
-     * @returns {Promise<IAxiosClient_Out>}
+     * @returns {Promise<IAxiosClient>}
     */
     FetchContent() {
         return __awaiter(this, void 0, void 0, function* () {
@@ -45,7 +45,7 @@ class Client {
         });
     }
     /**
-     * @returns {Promise<IAxiosClient_Out>}
+     * @returns {Promise<IAxiosClient>}
     */
     FetchConfig() {
         return __awaiter(this, void 0, void 0, function* () {

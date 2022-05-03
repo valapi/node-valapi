@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Player = void 0;
 //import
-const AxiosClient_1 = require("@ing3kth/core/dist/core/AxiosClient");
+const AxiosClient_1 = require("../../client/AxiosClient");
 const QueueId_1 = __importDefault(require("../../resources/data/QueueId"));
 //service
 /**
@@ -32,7 +32,7 @@ class Player {
     //Mike - Username From ID
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
     GetUsername(puuid) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -43,7 +43,7 @@ class Player {
     }
     //Riot Auth
     /**
-     * @returns {Promise<IAxiosClient_Out>}
+     * @returns {Promise<IAxiosClient>}
     */
     GetUserInfo() {
         return __awaiter(this, void 0, void 0, function* () {
@@ -53,7 +53,7 @@ class Player {
     //PVP Endpoints
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
     FetchPlayer(puuid) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -65,7 +65,7 @@ class Player {
     * @param {String} queue Queue
     * @param {Number} startIndex startIndex
     * @param {Number} endIndex endIndex
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
     FetchCompetitiveUpdates(puuid, queue, startIndex = 0, endIndex = 10) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -78,7 +78,7 @@ class Player {
     }
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
     Loadout(puuid) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -87,7 +87,7 @@ class Player {
     }
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
     AccountXP(puuid) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -95,7 +95,7 @@ class Player {
         });
     }
     /**
-     * @returns {Promise<IAxiosClient_Out>}
+     * @returns {Promise<IAxiosClient>}
     */
     FetchPlayerRestrictions() {
         return __awaiter(this, void 0, void 0, function* () {

@@ -50,11 +50,21 @@ class RiotApi {
         this.classId = '@ing3kth/val-api/RiotApi';
         this.apiKey = data.apiKey;
         this.region = data.region;
+        //first reload
+        this.RegionServices = new ValRegion_1.ValRegion(this.region).toJSON();
+        this.services = {
+            key: this.apiKey,
+            region: this.RegionServices,
+            AxiosData: {},
+        };
+        this.AccountV1 = new AccountV1_1.AccountV1(this.services);
+        this.StatusV1 = new StatusV1_1.StatusV1(this.services);
+        this.ContentV1 = new ContentV1_1.ContentV1(this.services);
+        //check
         if (!this.apiKey) {
             IngCore.Logs.log(this.classId + " Missing API Key", 'error', true);
             return;
         }
-        this.reload();
     }
     /**
      * @returns {void}
@@ -65,11 +75,7 @@ class RiotApi {
         this.services = {
             key: this.apiKey,
             region: this.RegionServices,
-            AxiosData: {
-                cookie: false,
-                jar: null,
-                headers: {}
-            }
+            AxiosData: {},
         };
         this.AccountV1 = new AccountV1_1.AccountV1(this.services);
         this.StatusV1 = new StatusV1_1.StatusV1(this.services);

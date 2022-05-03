@@ -11,7 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CurrentGame = void 0;
 //import
-const AxiosClient_1 = require("@ing3kth/core/dist/core/AxiosClient");
+const AxiosClient_1 = require("../../client/AxiosClient");
 //service
 /**
  * * Class ID: @ing3kth/val-api/ValClient/Coregame
@@ -27,7 +27,7 @@ class CurrentGame {
     }
     /**
     * @param {String} matchId MatchID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
     FetchMatch(matchId) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -36,7 +36,7 @@ class CurrentGame {
     }
     /**
     * @param {String} matchId MatchID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
     FetchMatchLoadouts(matchId) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -45,7 +45,7 @@ class CurrentGame {
     }
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
     FetchPlayer(puuid) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -56,7 +56,7 @@ class CurrentGame {
     * * Careful to use, Riot will immediately shut down your Project.
     * @param {String} puuid PlayerUUID
     * @param {String} matchId MatchID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
     DisassociatePlayer(puuid, matchId) {
         return __awaiter(this, void 0, void 0, function* () {

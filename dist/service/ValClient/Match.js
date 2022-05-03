@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Match = void 0;
 //import
-const AxiosClient_1 = require("@ing3kth/core/dist/core/AxiosClient");
+const AxiosClient_1 = require("../../client/AxiosClient");
 const QueueId_1 = __importDefault(require("../../resources/data/QueueId"));
 //service
 /**
@@ -33,7 +33,7 @@ class Match {
     /**
     * @description Get contract definitions
     * @param {String} matchId MatchID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
     FetchMatchDetails(matchId) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -45,7 +45,7 @@ class Match {
     * @param {String} queue Queue
     * @param {Number} startIndex startIndex
     * @param {Number} endIndex endIndex
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
     FetchMatchHistory(puuid, queue, startIndex = 0, endIndex = 10) {
         return __awaiter(this, void 0, void 0, function* () {

@@ -1,9 +1,9 @@
 //import
-import { AxiosClient } from "@ing3kth/core/dist/core/AxiosClient";
+import { AxiosClient } from "../../client/AxiosClient";
 
 import type { ValClient_Service } from "../../client/ValClient";
 import type { IValRegion } from "../../resources/interface/IValRegion";
-import type { IAxiosClient_Out } from "@ing3kth/core/dist/interface/IAxiosClient";
+import type { IAxiosClient } from "../../resources/interface/IAxiosClient";
 
 import QueueId from "../../resources/data/QueueId";
 
@@ -29,9 +29,9 @@ class Player {
     //Mike - Username From ID
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
-     async GetUsername(puuid:string):Promise<IAxiosClient_Out> {
+     async GetUsername(puuid:string):Promise<IAxiosClient> {
         return await this.AxiosClient.put(this.Region.url.playerData + `/name-service/v2/players`, [
             `${puuid}`
         ]);
@@ -40,9 +40,9 @@ class Player {
     //Riot Auth
 
     /**
-     * @returns {Promise<IAxiosClient_Out>}
+     * @returns {Promise<IAxiosClient>}
     */
-    async GetUserInfo():Promise<IAxiosClient_Out> {
+    async GetUserInfo():Promise<IAxiosClient> {
         return await this.AxiosClient.post(`https://auth.riotgames.com/userinfo`);
     }
 
@@ -50,9 +50,9 @@ class Player {
 
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
-     async FetchPlayer(puuid:string):Promise<IAxiosClient_Out> {
+     async FetchPlayer(puuid:string):Promise<IAxiosClient> {
         return await this.AxiosClient.get(this.Region.url.playerData + `/mmr/v1/players/${puuid}`);
     }
 
@@ -61,9 +61,9 @@ class Player {
     * @param {String} queue Queue
     * @param {Number} startIndex startIndex
     * @param {Number} endIndex endIndex
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
-    async FetchCompetitiveUpdates(puuid:string, queue?:keyof typeof QueueId.data, startIndex:number = 0, endIndex:number = 10):Promise<IAxiosClient_Out> {
+    async FetchCompetitiveUpdates(puuid:string, queue?:keyof typeof QueueId.data, startIndex:number = 0, endIndex:number = 10):Promise<IAxiosClient> {
         let _url = this.Region.url.playerData + `/mmr/v1/players/${puuid}/competitiveupdates?startIndex=${String(startIndex)}&endIndex=${String(endIndex)}`;
         if (queue) {
             _url += `&queue=${QueueId.data[queue]}`;
@@ -74,24 +74,24 @@ class Player {
 
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
-    async Loadout(puuid:string):Promise<IAxiosClient_Out> {
+    async Loadout(puuid:string):Promise<IAxiosClient> {
         return await this.AxiosClient.get(this.Region.url.playerData + `/personalization/v2/players/${puuid}/playerloadout`);
     }
 
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
-    async AccountXP(puuid:string):Promise<IAxiosClient_Out> {
+    async AccountXP(puuid:string):Promise<IAxiosClient> {
         return await this.AxiosClient.get(this.Region.url.playerData + `/account-xp/v1/players/${puuid}`);
     }
 
     /**
-     * @returns {Promise<IAxiosClient_Out>}
+     * @returns {Promise<IAxiosClient>}
     */
-     async FetchPlayerRestrictions():Promise<IAxiosClient_Out> {
+     async FetchPlayerRestrictions():Promise<IAxiosClient> {
         return await this.AxiosClient.get(this.Region.url.playerData + `/restrictions/v3/penalties`);
     }
 }

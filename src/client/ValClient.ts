@@ -3,7 +3,7 @@ import * as IngCore from "@ing3kth/core";
 import { Config as _config } from "@ing3kth/core";
 
 import { toBase64 } from "../utils/Uft8";
-import { CookieJar as toughCookie } from "tough-cookie";
+import { CookieJar } from "tough-cookie";
 
 import { ValRegion } from "../resources/ValRegion";
 import _Region from "../resources/data/Region";
@@ -31,10 +31,10 @@ import { Multifactor as Auth_Multifactor } from "../auth/ValClient/Multifactor";
  */
 class ValClient {
     public classId:string;
-    private cookie:toughCookie.Serialized;
-    private accessToken:string;
-    private tokenType:string;
-    private entitlements:string;
+    private cookie:CookieJar;
+    private access_token:string;
+    private token_type:string;
+    private entitlements_token:string;
     private client:{
         version: string,
         platfrom: string,
@@ -42,45 +42,33 @@ class ValClient {
     private region:keyof typeof _Region;
 
     //reload
-    private RegionServices:IValRegion | undefined;
-    private services:ValClient_Service | undefined;
+    private RegionServices:IValRegion;
+    private services:ValClient_Service;
 
     //service
-    public Client:Client | undefined;
-    public Contract:Contract | undefined;
-    public CurrentGame:CurrentGame | undefined;
-    public Match:Match | undefined;
-    public Party:Party | undefined;
-    public Player:Player | undefined;
-    public Pregame:PreGame | undefined;
-    public Store:Store | undefined;
+    public Client:Client;
+    public Contract:Contract;
+    public CurrentGame:CurrentGame;
+    public Match:Match;
+    public Party:Party;
+    public Player:Player;
+    public Pregame:PreGame;
+    public Store:Store;
 
     /**
     * @param {IValClient_Auth} Account Account toJSON data
     */
-    constructor(Account:IValClient_Auth = {
-        cookie: new toughCookie().toJSON(),
-        accessToken: '',
-        id_token: '',
-        expires_in: 3600,
-        token_type: '',
-        entitlements: '',
-        region: {
-            pbe: '',
-            live: '',
-        },
-        multifactor: false,
-    }) {
+    constructor(Account:IValClient_Auth) {
         if(Account.multifactor){
-            IngCore.Logs.log('This Account is have a Multifactor', 'error', true);
+            IngCore.Logs.log('This Account is have a Multifactor', 'warning', true);
         }
 
         //data
         this.classId = '@ing3kth/val-api/ValClient';
-        this.cookie = Account.cookie;
-        this.accessToken = Account.accessToken;
-        this.tokenType = Account.token_type;
-        this.entitlements = Account.entitlements;
+        this.cookie = CookieJar.fromJSON(JSON.stringify(Account.cookie));
+        this.access_token = Account.access_token;
+        this.token_type = Account.token_type;
+        this.entitlements_token = Account.entitlements_token;
         this.client = {
             version: IngCore.Config["val-api"].ValClient.client.version,
             platfrom: toBase64(JSON.stringify(IngCore.Config["val-api"].ValClient.client.version)),
@@ -92,7 +80,27 @@ class ValClient {
             this.region = 'na';
         }
 
-        this.reload();
+        //first reload
+        this.RegionServices = new ValRegion(this.region).toJSON();
+        this.services = {
+            AxiosData: {
+                headers: {
+                    'Authorization': `${this.token_type} ${this.access_token}`,
+                    'X-Riot-Entitlements-JWT': this.entitlements_token,
+                    'X-Riot-ClientVersion': this.client.version,
+                    'X-Riot-ClientPlatform': this.client.platfrom,
+                },
+            },
+            Region: this.RegionServices,
+        };
+        this.Client = new Client(this.services);
+        this.Contract = new Contract(this.services);
+        this.CurrentGame = new CurrentGame(this.services);
+        this.Match = new Match(this.services);
+        this.Party = new Party(this.services);
+        this.Player = new Player(this.services);
+        this.Pregame = new PreGame(this.services);
+        this.Store = new Store(this.services);
     }
 
     /***
@@ -104,11 +112,9 @@ class ValClient {
         //services
         this.services = {
             AxiosData: {
-                cookie: true,
-                jar: this.cookie,
                 headers: {
-                    'Authorization': `${this.tokenType} ${this.accessToken}`,
-                    'X-Riot-Entitlements-JWT': this.entitlements,
+                    'Authorization': `${this.token_type} ${this.access_token}`,
+                    'X-Riot-Entitlements-JWT': this.entitlements_token,
                     'X-Riot-ClientVersion': this.client.version,
                     'X-Riot-ClientPlatform': this.client.platfrom,
                 },
@@ -137,10 +143,10 @@ class ValClient {
     public toJSON():IValClient {
         IngCore.Logs.log("Export " + this.classId);
         return {
-            cookie: this.cookie,
-            accessToken: this.accessToken,
-            tokenType: this.tokenType,
-            entitlements: this.entitlements,
+            cookie: this.cookie.toJSON(),
+            access_token: this.access_token,
+            token_type: this.token_type,
+            entitlements_token: this.entitlements_token,
             region: this.region,
         };
     }
@@ -151,10 +157,10 @@ class ValClient {
      * @returns {void}
      */
     public fromJSON(data:IValClient):void {
-        this.cookie = data.cookie;
-        this.accessToken = data.accessToken;
-        this.tokenType = data.tokenType;
-        this.entitlements = data.entitlements;
+        this.cookie = CookieJar.fromJSON(JSON.stringify(data.cookie));
+        this.access_token = data.access_token;
+        this.token_type = data.token_type;
+        this.entitlements_token = data.entitlements_token;
         this.region = data.region;
 
         IngCore.Logs.log("Import " + this.classId);
@@ -197,11 +203,11 @@ class ValClient {
     }
 
     /**
-    * @param {toughCookie.Serialized} cookie Cookie
+    * @param {CookieJar.Serialized} cookie Cookie
     * @returns {void}
     */
-    public setCookie(cookie = new toughCookie().toJSON()):void {
-        this.cookie = cookie;
+    public setCookie(cookie:CookieJar.Serialized):void {
+        this.cookie = CookieJar.fromJSON(JSON.stringify(cookie));
         
         IngCore.Logs.log(this.classId +  " SetCookie '" + this.cookie + "'");
         this.reload();
@@ -212,7 +218,19 @@ class ValClient {
     * @returns {void}
     */
     static fromJSON(data:IValClient):ValClient {
-        const ValApiClient:ValClient = new ValClient();
+        const ValApiClient:ValClient = new ValClient({
+            cookie: new CookieJar().toJSON(),
+            access_token: '',
+            id_token:'',
+            expires_in: 3600,
+            token_type: '',
+            entitlements_token: '',
+            region: {
+                pbe: '',
+                live: '',
+            },
+            multifactor: false,
+        });
         ValApiClient.fromJSON(data);
 
         return ValApiClient;

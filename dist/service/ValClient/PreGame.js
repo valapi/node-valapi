@@ -11,7 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PreGame = void 0;
 //import
-const AxiosClient_1 = require("@ing3kth/core/dist/core/AxiosClient");
+const AxiosClient_1 = require("../../client/AxiosClient");
 //service
 /**
  * * Class ID: @ing3kth/val-api/ValClient/Pregame
@@ -27,7 +27,7 @@ class PreGame {
     }
     /**
     * @param {String} matchId MatchID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
     GetMatch(matchId) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -36,7 +36,7 @@ class PreGame {
     }
     /**
     * @param {String} matchId MatchID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
     GetMatchLoadouts(matchId) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -45,7 +45,7 @@ class PreGame {
     }
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
     GetPlayer(puuid) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -55,7 +55,7 @@ class PreGame {
     /**
     * @param {String} matchId MatchID
     * @param {String} agentId CharacterID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
     LockCharacter(matchId, agentId) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -65,7 +65,7 @@ class PreGame {
     /**
      * * Careful to use, Riot will immediately shut down your Project.
     * @param {String} matchId MatchID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
     QuitMatch(matchId) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -75,7 +75,7 @@ class PreGame {
     /**
     * @param {String} matchId MatchID
     * @param {String} agentId CharacterID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
     SelectCharacter(matchId, agentId) {
         return __awaiter(this, void 0, void 0, function* () {

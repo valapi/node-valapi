@@ -1,0 +1,1 @@
+{"version":3,"file":"IAxiosClient.d.ts","sourceRoot":"","sources":["../../../src/resources/interface/IAxiosClient.ts"],"names":[],"mappings":"AAAA,UAAU,YAAY;IAClB,OAAO,EAAE,OAAO,CAAC;IACjB,IAAI,EAAE,MAAM,GAAG,GAAG,CAAC;CACtB;AAED,YAAY,EAAE,YAAY,EAAE,CAAC"}

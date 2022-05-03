@@ -11,7 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountV1 = void 0;
 //import
-const AxiosClient_1 = require("@ing3kth/core/dist/core/AxiosClient");
+const AxiosClient_1 = require("../../client/AxiosClient");
 /**
  * * Class ID: @ing3kth/val-api/RiotApi/AccountV1
  */
@@ -29,7 +29,7 @@ class AccountV1 {
      *
      * @param {String} gameName In-Game Name
      * @param {String} tagLine In-Game Tag
-     * @returns {Promise<IAxiosClient_Out>}
+     * @returns {Promise<IAxiosClient>}
      */
     ByRiotId(gameName, tagLine) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -39,7 +39,7 @@ class AccountV1 {
     /**
      *
      * @param {String} puuid Player UUID
-     * @returns {Promise<IAxiosClient_Out>}
+     * @returns {Promise<IAxiosClient>}
      */
     ByPuuid(puuid) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -50,7 +50,7 @@ class AccountV1 {
      *
      * @param {String} puuid Player UUID
      * @param {String} game Game
-     * @returns {Promise<IAxiosClient_Out>}
+     * @returns {Promise<IAxiosClient>}
      */
     ByGame(puuid, game = 'val') {
         return __awaiter(this, void 0, void 0, function* () {

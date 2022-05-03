@@ -1,25 +1,25 @@
-import { CookieJar } from "tough-cookie";
 import _Region from "../../resources/data/Region";
+import { CookieJar } from "tough-cookie";
 interface IValClient {
     cookie: CookieJar.Serialized;
-    accessToken: string;
-    tokenType: string;
-    entitlements: string;
+    access_token: string;
+    token_type: string;
+    entitlements_token: string;
     region: keyof typeof _Region;
 }
 import { IValRegion } from "./IValRegion";
-import { Interface_AxiosClient } from "@ing3kth/core";
+import { AxiosRequestConfig } from "axios";
 interface ValClient_Service {
-    AxiosData: Interface_AxiosClient.IAxiosClient;
+    AxiosData: AxiosRequestConfig;
     Region: IValRegion;
 }
 interface IValClient_Auth {
     cookie: CookieJar.Serialized;
-    accessToken: string;
+    access_token: string;
     id_token: string;
     expires_in: number;
     token_type: string;
-    entitlements: string;
+    entitlements_token: string;
     region: {
         pbe: string;
         live: string;

@@ -16,9 +16,9 @@ declare class RiotApi {
     private region;
     private RegionServices;
     private services;
-    AccountV1: AccountV1 | undefined;
-    StatusV1: StatusV1 | undefined;
-    ContentV1: ContentV1 | undefined;
+    AccountV1: AccountV1;
+    StatusV1: StatusV1;
+    ContentV1: ContentV1;
     /**
     * @param {IRiotApi} data RiotApi toJSON Data
     */

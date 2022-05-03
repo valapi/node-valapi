@@ -1,9 +1,9 @@
 //import
-import { AxiosClient } from "@ing3kth/core/dist/core/AxiosClient";
+import { AxiosClient } from "../../client/AxiosClient";
 
 import type { ValClient_Service } from "../../client/ValClient";
 import type { IValRegion } from "../../resources/interface/IValRegion";
-import type { IAxiosClient_Out } from "@ing3kth/core/dist/interface/IAxiosClient";
+import type { IAxiosClient } from "../../resources/interface/IAxiosClient";
 
 //service
 
@@ -26,25 +26,25 @@ class CurrentGame {
 
     /**
     * @param {String} matchId MatchID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
-    async FetchMatch(matchId:string):Promise<IAxiosClient_Out> {
+    async FetchMatch(matchId:string):Promise<IAxiosClient> {
         return await this.AxiosClient.get(this.Region.url.partyService + `/core-game/v1/matches/${matchId}`);
     }
 
     /**
     * @param {String} matchId MatchID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
-     async FetchMatchLoadouts(matchId:string):Promise<IAxiosClient_Out> {
+     async FetchMatchLoadouts(matchId:string):Promise<IAxiosClient> {
         return await this.AxiosClient.get(this.Region.url.partyService + `/core-game/v1/matches/${matchId}/loadouts`);
     }
 
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
-     async FetchPlayer(puuid:string):Promise<IAxiosClient_Out> {
+     async FetchPlayer(puuid:string):Promise<IAxiosClient> {
         return await this.AxiosClient.get(this.Region.url.partyService + `/core-game/v1/players/${puuid}`);
     }
 
@@ -52,9 +52,9 @@ class CurrentGame {
     * * Careful to use, Riot will immediately shut down your Project.
     * @param {String} puuid PlayerUUID
     * @param {String} matchId MatchID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
-     async DisassociatePlayer(puuid:string, matchId:string):Promise<IAxiosClient_Out> {
+     async DisassociatePlayer(puuid:string, matchId:string):Promise<IAxiosClient> {
         return await this.AxiosClient.post(this.Region.url.partyService + `/core-game/v1/players/${puuid}/disassociate/${matchId}`);
     }
 }

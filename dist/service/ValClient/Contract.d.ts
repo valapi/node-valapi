@@ -1,7 +1,7 @@
-import { AxiosClient } from "@ing3kth/core/dist/core/AxiosClient";
+import { AxiosClient } from "../../client/AxiosClient";
 import type { ValClient_Service } from "../../client/ValClient";
 import type { IValRegion } from "../../resources/interface/IValRegion";
-import type { IAxiosClient_Out } from "@ing3kth/core/dist/interface/IAxiosClient";
+import type { IAxiosClient } from "../../resources/interface/IAxiosClient";
 /**
  * * Class ID: @ing3kth/val-api/ValClient/Contract
  */
@@ -14,20 +14,20 @@ declare class Contract {
     */
     constructor(data: ValClient_Service);
     /**
-     * @returns {Promise<IAxiosClient_Out>}
+     * @returns {Promise<IAxiosClient>}
     */
-    DefinitionsFetch(): Promise<IAxiosClient_Out>;
+    DefinitionsFetch(): Promise<IAxiosClient>;
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
-    Fetch(puuid: string): Promise<IAxiosClient_Out>;
+    Fetch(puuid: string): Promise<IAxiosClient>;
     /**
     * @param {String} puuid PlayerUUID
     * @param {String} contractId ContractID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
-    Activate(puuid: string, contractId: string): Promise<IAxiosClient_Out>;
+    Activate(puuid: string, contractId: string): Promise<IAxiosClient>;
 }
 export { Contract };
 //# sourceMappingURL=Contract.d.ts.map

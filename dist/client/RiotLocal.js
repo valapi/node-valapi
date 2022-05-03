@@ -41,7 +41,9 @@ const IngCore = __importStar(require("@ing3kth/core"));
 const core_1 = require("@ing3kth/core");
 const Uft8_1 = require("../utils/Uft8");
 const Resource_1 = __importDefault(require("../auth/RiotLocal/Resource"));
+const AxiosClient_1 = require("./AxiosClient");
 const Lockfile_1 = __importDefault(require("../auth/RiotLocal/Lockfile"));
+const https_1 = require("https");
 //class
 /**
  * All Api Base On https://github.com/techchrism/valorant-api-docs
@@ -66,21 +68,23 @@ class RiotLocal {
             password: lockfile.password,
             protocol: lockfile.protocol,
         };
-        this.AxiosClient = new IngCore.AxiosClient({
-            cookie: false,
-            jar: null,
-            headers: {},
+        //first reload
+        const _base64 = (0, Uft8_1.toBase64)(`${core_1.Config['val-api'].RiotLocal.username}:${this.lockfile.password}`);
+        this.AxiosClient = new AxiosClient_1.AxiosClient({
+            httpsAgent: new https_1.Agent({ rejectUnauthorized: false }),
+            headers: {
+                'Authorization': `Basic ${_base64}`,
+            },
         });
-        this.reload();
+        this.baseUrl = `${this.lockfile.protocol}://${this.ip}:${this.lockfile.port}`;
     }
     /**
      * @returns {void}
      */
     reload() {
         const _base64 = (0, Uft8_1.toBase64)(`${core_1.Config['val-api'].RiotLocal.username}:${this.lockfile.password}`);
-        this.AxiosClient = new IngCore.AxiosClient({
-            cookie: false,
-            jar: null,
+        this.AxiosClient = new AxiosClient_1.AxiosClient({
+            httpsAgent: new https_1.Agent({ rejectUnauthorized: false }),
             headers: {
                 'Authorization': `Basic ${_base64}`,
             },
@@ -92,7 +96,7 @@ class RiotLocal {
      *
      * @param {IRiotLocal_JSON} data Data from LocalResourse
      * @param {any} args.. Replace With Arguments
-     * @returns {Promise<IAxiosClient_Out>}
+     * @returns {Promise<IAxiosClient>}
      */
     requestFromJSON(data = {
         method: 'get',
@@ -149,7 +153,7 @@ class RiotLocal {
      * @param {String} method Method to request
      * @param {String} endpoint Url Endpoint
      * @param {Object} body Request Body
-     * @returns {Promise<IAxiosClient_Out>}
+     * @returns {Promise<IAxiosClient>}
      */
     request(method = 'get', endpoint = '/help', body = {}) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -256,7 +260,7 @@ class RiotLocal {
      * @param {String} method Method to request
      * @param {String} endpoint Url Endpoint
      * @param {Object} body Request Body
-     * @returns {Promise<IAxiosClient_Out>}
+     * @returns {Promise<IAxiosClient>}
      */
     static request(method = 'get', endpoint = '/help', body = {}) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -269,7 +273,7 @@ class RiotLocal {
      *
      * @param {IRiotLocal_JSON} data Data from LocalResourse
      * @param {any} args.. Replace Data With Arguments
-     * @returns {Promise<IAxiosClient_Out>}
+     * @returns {Promise<IAxiosClient>}
      */
     static requestFromJSON(data = {
         method: 'get',

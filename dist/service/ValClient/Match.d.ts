@@ -1,7 +1,7 @@
-import { AxiosClient } from "@ing3kth/core/dist/core/AxiosClient";
+import { AxiosClient } from "../../client/AxiosClient";
 import type { ValClient_Service } from "../../client/ValClient";
 import type { IValRegion } from "../../resources/interface/IValRegion";
-import type { IAxiosClient_Out } from "@ing3kth/core/dist/interface/IAxiosClient";
+import type { IAxiosClient } from "../../resources/interface/IAxiosClient";
 import QueueId from "../../resources/data/QueueId";
 /**
  * * Class ID: @ing3kth/val-api/ValClient/Match
@@ -17,17 +17,17 @@ declare class Match {
     /**
     * @description Get contract definitions
     * @param {String} matchId MatchID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
-    FetchMatchDetails(matchId: string): Promise<IAxiosClient_Out>;
+    FetchMatchDetails(matchId: string): Promise<IAxiosClient>;
     /**
     * @param {String} puuid PlayerUUID
     * @param {String} queue Queue
     * @param {Number} startIndex startIndex
     * @param {Number} endIndex endIndex
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
-    FetchMatchHistory(puuid: string, queue?: keyof typeof QueueId.data, startIndex?: number, endIndex?: number): Promise<IAxiosClient_Out>;
+    FetchMatchHistory(puuid: string, queue?: keyof typeof QueueId.data, startIndex?: number, endIndex?: number): Promise<IAxiosClient>;
 }
 export { Match };
 //# sourceMappingURL=Match.d.ts.map

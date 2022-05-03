@@ -1,21 +1,21 @@
 import type { IValClient_Auth } from "../../resources/interface/IValClient";
 /**
- * * Class ID: @ing3kth/val-api/Multifactor
+ * * Class ID: @ing3kth/val-api/ValClient/Multifactor
  */
 declare class Multifactor {
     classId: string;
     private cookie;
-    private accessToken;
+    private access_token;
     private id_token;
     private expires_in;
     private token_type;
-    private entitlements;
+    private entitlements_token;
     private region;
     multifactor: boolean;
     /**
     * @param {IValClient_Auth} data Account toJSON data
     */
-    constructor(data?: IValClient_Auth);
+    constructor(data: IValClient_Auth);
     /**
     * @param {Number} verificationCode Verification Code
     * @returns {Promise<IValClient_Auth>}

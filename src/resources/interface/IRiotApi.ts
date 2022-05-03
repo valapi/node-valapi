@@ -1,4 +1,4 @@
-import { Interface_AxiosClient } from "@ing3kth/core";
+import type { AxiosRequestConfig } from "axios";
 import _Region from "../data/Region";
 import type { IValRegion } from "./IValRegion";
 
@@ -10,7 +10,7 @@ interface IRiotApi {
 interface IRiotApi_Service {
     key: string,
     region: IValRegion,
-    AxiosData: Interface_AxiosClient.IAxiosClient,
+    AxiosData: AxiosRequestConfig,
 }
 
 export type { IRiotApi, IRiotApi_Service };

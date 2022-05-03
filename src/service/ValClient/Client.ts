@@ -1,9 +1,9 @@
 //import
-import { AxiosClient } from "@ing3kth/core/dist/core/AxiosClient";
+import { AxiosClient } from "../../client/AxiosClient";
 
 import type { ValClient_Service } from "../../client/ValClient";
 import type { IValRegion } from "../../resources/interface/IValRegion";
-import type { IAxiosClient_Out } from "@ing3kth/core/dist/interface/IAxiosClient";
+import type { IAxiosClient } from "../../resources/interface/IAxiosClient";
 
 //service
 
@@ -27,25 +27,25 @@ class Client {
     //SESSION
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
-     async GetSession(puuid:string):Promise<IAxiosClient_Out> {
+     async GetSession(puuid:string):Promise<IAxiosClient> {
         return await this.AxiosClient.get(this.Region.url.partyService + `/session/v1/sessions/${puuid}`);
     }
 
     //PVP Endpoints
     
     /**
-     * @returns {Promise<IAxiosClient_Out>}
+     * @returns {Promise<IAxiosClient>}
     */
-     async FetchContent():Promise<IAxiosClient_Out> {
+     async FetchContent():Promise<IAxiosClient> {
         return await this.AxiosClient.get(this.Region.url.sharedData + `/content-service/v3/content`);
     }
 
     /**
-     * @returns {Promise<IAxiosClient_Out>}
+     * @returns {Promise<IAxiosClient>}
     */
-     async FetchConfig():Promise<IAxiosClient_Out> {
+     async FetchConfig():Promise<IAxiosClient> {
         return await this.AxiosClient.get(this.Region.url.sharedData + `/v1/config/${this.Region.data.api}`);
     }
 }

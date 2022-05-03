@@ -1,25 +1,26 @@
 //import
-import { CookieJar as toughCookie } from "tough-cookie";
+import { CookieJar } from 'tough-cookie';
 
 import * as IngCore from "@ing3kth/core";
+import { AxiosClient } from '../../client/AxiosClient';
 import { AuthFlow } from "./AuthFlow";
 
 import type { IValClient_Auth } from "../../resources/interface/IValClient";
-import type { IAxiosClient_Out } from "@ing3kth/core/dist/interface/IAxiosClient";
+import type { IAxiosClient } from '../../resources/interface/IAxiosClient';
 
 //class
 
 /**
- * * Class ID: @ing3kth/val-api/Account
+ * * Class ID: @ing3kth/val-api/ValClient/Account
  */
 class Account {
     public classId:string;
-    private cookie:toughCookie;
-    private accessToken:string;
+    private cookie:CookieJar;
+    private access_token:string;
     private id_token:string;
     private expires_in:number;
     private token_type:string;
-    private entitlements:string;
+    private entitlements_token:string;
     private region: {
         pbe: string,
         live: string,
@@ -27,13 +28,13 @@ class Account {
     public multifactor:boolean;
 
     constructor() {
-        this.classId = '@ing3kth/val-api/Account';
-        this.cookie = new toughCookie();
-        this.accessToken = '';
+        this.classId = '@ing3kth/val-api/ValClient/Account';
+        this.cookie = new CookieJar();
+        this.access_token = '';
         this.id_token = '';
         this.expires_in = 3600;
         this.token_type = '';
-        this.entitlements = '';
+        this.entitlements_token = '';
         this.region = {
             pbe: '',
             live: '',
@@ -47,10 +48,12 @@ class Account {
      * @returns {Promise<IValClient_Auth>}
      */
     public async execute(username:string, password:string):Promise<IValClient_Auth> {
-        const axiosClient:IngCore.AxiosClient = new IngCore.AxiosClient({
-            cookie: true,
-            jar: this.cookie.toJSON(),
-            headers: {}
+        const axiosClient:AxiosClient = new AxiosClient({
+            jar: this.cookie,
+            withCredentials: true,
+            headers: {
+                'User-Agent': IngCore.Config["val-api"].ValClient.auth["User-Agent"],
+            }
         });
 
         await axiosClient.post('https://auth.riotgames.com/api/v1/authorization', {
@@ -62,23 +65,18 @@ class Account {
         }, {
             headers: {
                 'Content-Type': 'application/json',
-                'User-Agent': 'RiotClient/43.0.1.4195386.4190634 rso-auth (Windows; 10;;Professional, x64)'
+                'User-Agent': IngCore.Config["val-api"].ValClient.auth["User-Agent"],
             },
         });
 
         //ACCESS TOKEN
-        const auth_response:IAxiosClient_Out = await axiosClient.put('https://auth.riotgames.com/api/v1/authorization', {
+        const auth_response:IAxiosClient = await axiosClient.put('https://auth.riotgames.com/api/v1/authorization', {
             'type': 'auth',
             'username': username,
             'password': password,
             'remember': true,
-        }, {
-            headers: {
-                'User-Agent': 'RiotClient/43.0.1.4195386.4190634 rso-auth (Windows; 10;;Professional, x64)'
-            }
         });
 
-        this.cookie = toughCookie.fromJSON(JSON.stringify(axiosClient.jar));
         return AuthFlow.execute(this.toJSON(), auth_response);
     }
 
@@ -91,11 +89,11 @@ class Account {
 
         return {
             cookie: this.cookie.toJSON(),
-            accessToken: this.accessToken,
+            access_token: this.access_token,
             id_token: this.id_token,
             expires_in: this.expires_in,
             token_type: this.token_type,
-            entitlements: this.entitlements,
+            entitlements_token: this.entitlements_token,
             region: this.region,
             multifactor: this.multifactor,
         };

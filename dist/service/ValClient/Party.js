@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Party = void 0;
 //import
-const AxiosClient_1 = require("@ing3kth/core/dist/core/AxiosClient");
+const AxiosClient_1 = require("../../client/AxiosClient");
 const QueueId_1 = __importDefault(require("../../resources/data/QueueId"));
 /**
  * * Class ID: @ing3kth/val-api/ValClient/Party
@@ -37,7 +37,7 @@ class Party {
     }
     /**
     * @param {String} partyId PartyID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
     FetchParty(partyId) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -46,7 +46,7 @@ class Party {
     }
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
     FetchPlayer(puuid) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -56,7 +56,7 @@ class Party {
     /**
     * @param {String} partyId PartyID
     * @param {String} queue Queue
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
     ChangeQueue(partyId, queue) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -67,7 +67,7 @@ class Party {
     }
     /**
     * @param {String} partyId PartyID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
     EnterMatchmakingQueue(partyId) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -78,7 +78,7 @@ class Party {
     * @param {String} partyId PartyID
     * @param {String} gameName In-Game Name
     * @param {String} tagLine In-Game Tag
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
     InviteToPartyByDisplayName(partyId, gameName, tagLine) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -87,7 +87,7 @@ class Party {
     }
     /**
     * @param {String} partyId PartyID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
     LeaveMatchmakingQueue(partyId) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -97,7 +97,7 @@ class Party {
     /**
     * @param {String} partyId PartyID
     * @param {String} accessibility Accessibility
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
     SetAccessibility(partyId, accessibility) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -108,7 +108,7 @@ class Party {
     }
     /**
     * @param {String} partyId PartyID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
     StartCustomGame(partyId) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -118,7 +118,7 @@ class Party {
     /**
      *
      * @param {String} puuid PlayerUUID
-     * @returns {Promise<IAxiosClient_Out>}
+     * @returns {Promise<IAxiosClient>}
      */
     RemovePlayer(puuid) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -128,7 +128,7 @@ class Party {
     /**
      * @param {String} partyId PartyID
      * @param {String} requestId RequestID
-     * @returns {Promise<IAxiosClient_Out>}
+     * @returns {Promise<IAxiosClient>}
      */
     DeclineRequest(partyId, requestId) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -138,7 +138,7 @@ class Party {
     /**
     * @param {String} puuid PlayerUUID
     * @param {String} partyId PartyID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
     LeaveParty(puuid, partyId) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -147,7 +147,7 @@ class Party {
     }
     /**
     * @param {String} partyId PartyID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
     LeaveQueue(partyId) {
         return __awaiter(this, void 0, void 0, function* () {

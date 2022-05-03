@@ -2,14 +2,15 @@
 import * as IngCore from "@ing3kth/core";
 import { Config as _config } from "@ing3kth/core";
 
-import type { IAxiosClient_Out } from '@ing3kth/core/dist/interface/IAxiosClient';
+import type { IAxiosClient } from "../resources/interface/IAxiosClient";
 import type { IRiotLocal, IRiotLocal_JSON, IRiotLocal_Resources, IRiotLocal_Lockfile, IRiotLocal_Lockfile_Protocol, IRiotLocal_JSON_Method } from "../resources/interface/IRiotLocal";
 
 import { toBase64 } from '../utils/Uft8';
 import Auth_Resource from '../auth/RiotLocal/Resource';
-import { AxiosClient } from '@ing3kth/core/dist/core/AxiosClient';
+import { AxiosClient } from "./AxiosClient";
 
 import getLockfile from '../auth/RiotLocal/Lockfile';
+import { Agent } from "https";
 
 //class
 
@@ -28,7 +29,7 @@ class RiotLocal {
 
     //reload
     private AxiosClient: AxiosClient;
-    private baseUrl: string | undefined;
+    private baseUrl: string;
 
     /**
      * @param {IRiotLocal_Lockfile} lockfile lockfile data
@@ -46,12 +47,15 @@ class RiotLocal {
             protocol: lockfile.protocol,
         };
 
-        this.AxiosClient = new IngCore.AxiosClient({
-            cookie: false,
-            jar: null,
-            headers: {},
+        //first reload
+        const _base64 = toBase64(`${_config['val-api'].RiotLocal.username}:${this.lockfile.password}`);
+        this.AxiosClient = new AxiosClient({
+            httpsAgent: new Agent({ rejectUnauthorized: false }),
+            headers: {
+                'Authorization': `Basic ${_base64}`,
+            },
         });
-        this.reload();
+        this.baseUrl = `${this.lockfile.protocol}://${this.ip}:${this.lockfile.port}`;
     }
 
     /**
@@ -59,9 +63,8 @@ class RiotLocal {
      */
     private reload():void {
         const _base64 = toBase64(`${_config['val-api'].RiotLocal.username}:${this.lockfile.password}`);
-        this.AxiosClient = new IngCore.AxiosClient({
-            cookie: false,
-            jar: null,
+        this.AxiosClient = new AxiosClient({
+            httpsAgent: new Agent({ rejectUnauthorized: false }),
             headers: {
                 'Authorization': `Basic ${_base64}`,
             },
@@ -75,14 +78,14 @@ class RiotLocal {
      * 
      * @param {IRiotLocal_JSON} data Data from LocalResourse
      * @param {any} args.. Replace With Arguments
-     * @returns {Promise<IAxiosClient_Out>}
+     * @returns {Promise<IAxiosClient>}
      */
     public async requestFromJSON(data:IRiotLocal_JSON = {
         method: 'get',
         endpoint: '/help',
         body: {},
         replace: [],
-    }):Promise<IAxiosClient_Out> {
+    }):Promise<IAxiosClient> {
         if (!data.method || !data.endpoint) {
             await IngCore.Logs.log(this.classId + ` Missing Data`, 'error', true);
         } else if (!data.body) {
@@ -130,9 +133,9 @@ class RiotLocal {
      * @param {String} method Method to request
      * @param {String} endpoint Url Endpoint
      * @param {Object} body Request Body
-     * @returns {Promise<IAxiosClient_Out>}
+     * @returns {Promise<IAxiosClient>}
      */
-    public async request(method:IRiotLocal_JSON_Method = 'get', endpoint = '/help', body = {}):Promise<IAxiosClient_Out> {
+    public async request(method:IRiotLocal_JSON_Method = 'get', endpoint = '/help', body = {}):Promise<IAxiosClient> {
         switch (method.toLowerCase()) {
             case 'get':
                 return await this.AxiosClient.get(this.baseUrl + endpoint);
@@ -256,9 +259,9 @@ class RiotLocal {
      * @param {String} method Method to request
      * @param {String} endpoint Url Endpoint
      * @param {Object} body Request Body
-     * @returns {Promise<IAxiosClient_Out>}
+     * @returns {Promise<IAxiosClient>}
      */
-    static async request(method:IRiotLocal_JSON_Method = 'get', endpoint:string = '/help', body:object = {}):Promise<IAxiosClient_Out> {
+    static async request(method:IRiotLocal_JSON_Method = 'get', endpoint:string = '/help', body:object = {}):Promise<IAxiosClient> {
         const AuthLockfile:IRiotLocal_Lockfile = RiotLocal.Auth.lockfile();
         const newRiotLocal:RiotLocal = await new RiotLocal(AuthLockfile);
 
@@ -269,14 +272,14 @@ class RiotLocal {
      * 
      * @param {IRiotLocal_JSON} data Data from LocalResourse
      * @param {any} args.. Replace Data With Arguments
-     * @returns {Promise<IAxiosClient_Out>}
+     * @returns {Promise<IAxiosClient>}
      */
     static async requestFromJSON(data:IRiotLocal_JSON = {
         method: 'get',
         endpoint: '/help',
         body: {},
         replace: [],
-    }):Promise<IAxiosClient_Out> {
+    }):Promise<IAxiosClient> {
         const AuthLockfile:IRiotLocal_Lockfile = RiotLocal.Auth.lockfile()
         const newRiotLocal:RiotLocal = await new RiotLocal(AuthLockfile);
 

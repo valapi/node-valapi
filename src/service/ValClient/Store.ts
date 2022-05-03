@@ -1,9 +1,9 @@
 //import
-import { AxiosClient } from "@ing3kth/core/dist/core/AxiosClient";
+import { AxiosClient } from "../../client/AxiosClient";
 
 import type { ValClient_Service } from "../../client/ValClient";
 import type { IValRegion } from "../../resources/interface/IValRegion";
-import type { IAxiosClient_Out } from "@ing3kth/core/dist/interface/IAxiosClient";
+import type { IAxiosClient } from "../../resources/interface/IAxiosClient";
 
 import ItemTypeId from "../../resources/data/ItemTypeId";
 
@@ -29,32 +29,32 @@ class Store {
     /**
     * @param {String} puuid PlayerUUID
     * @param {String} itemType ItemType
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
-     async GetEntitlements(puuid:string, itemType:keyof typeof ItemTypeId.data):Promise<IAxiosClient_Out> {
+     async GetEntitlements(puuid:string, itemType:keyof typeof ItemTypeId.data):Promise<IAxiosClient> {
         return await this.AxiosClient.get(this.Region.url.playerData + `/store/v1/entitlements/${puuid}/${ItemTypeId.data[itemType]}`);
     }
 
     /**
-     * @returns {Promise<IAxiosClient_Out>}
+     * @returns {Promise<IAxiosClient>}
     */
-     async GetOffers():Promise<IAxiosClient_Out> {
+     async GetOffers():Promise<IAxiosClient> {
         return await this.AxiosClient.get(this.Region.url.playerData + `/store/v1/offers/`);
     }
 
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
-     async GetStorefront(puuid:string):Promise<IAxiosClient_Out> {
+     async GetStorefront(puuid:string):Promise<IAxiosClient> {
         return await this.AxiosClient.get(this.Region.url.playerData + `/store/v2/storefront/${puuid}`);
     }
 
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
-     async GetWallet(puuid:string):Promise<IAxiosClient_Out> {
+     async GetWallet(puuid:string):Promise<IAxiosClient> {
         return await this.AxiosClient.get(this.Region.url.playerData + `/store/v1/wallet/${puuid}`);
     }
 }

@@ -1,7 +1,7 @@
-import { AxiosClient } from "@ing3kth/core/dist/core/AxiosClient";
+import { AxiosClient } from "../../client/AxiosClient";
 import type { IRiotApi_Service } from "../../resources/interface/IRiotApi";
 import type { IValRegion } from "../../resources/interface/IValRegion";
-import type { IAxiosClient_Out } from "@ing3kth/core/dist/interface/IAxiosClient";
+import type { IAxiosClient } from "../../resources/interface/IAxiosClient";
 import _Locale from "../../resources/data/Locale";
 /**
  * * Class ID: @ing3kth/val-api/RiotApi/ContentV1
@@ -18,9 +18,9 @@ declare class ContentV1 {
     /**
      *
      * @param {String} locale Locale
-     * @returns {Promise<IAxiosClient_Out>}
+     * @returns {Promise<IAxiosClient>}
      */
-    Contents(locale?: keyof typeof _Locale.data): Promise<IAxiosClient_Out>;
+    Contents(locale?: keyof typeof _Locale.data): Promise<IAxiosClient>;
 }
 export { ContentV1 };
 //# sourceMappingURL=ContentV1.d.ts.map

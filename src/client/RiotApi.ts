@@ -28,13 +28,13 @@ class RiotApi {
     private region:string | any;
 
     //reload
-    private RegionServices:IValRegion | undefined;
-    private services:IRiotApi_Service | undefined;
+    private RegionServices:IValRegion;
+    private services:IRiotApi_Service;
 
     //service
-    public AccountV1:AccountV1 | undefined;
-    public StatusV1:StatusV1 | undefined;
-    public ContentV1:ContentV1 | undefined;
+    public AccountV1:AccountV1;
+    public StatusV1:StatusV1;
+    public ContentV1:ContentV1;
 
     /**
     * @param {IRiotApi} data RiotApi toJSON Data
@@ -47,12 +47,22 @@ class RiotApi {
         this.apiKey = data.apiKey;
         this.region = data.region;
 
+        //first reload
+        this.RegionServices = new ValRegion(this.region).toJSON();
+        this.services = {
+            key: this.apiKey,
+            region: this.RegionServices,
+            AxiosData: {},
+        };
+        this.AccountV1 = new AccountV1(this.services);
+        this.StatusV1 = new StatusV1(this.services);
+        this.ContentV1 = new ContentV1(this.services);
+
+        //check
         if(!this.apiKey){
             IngCore.Logs.log(this.classId + " Missing API Key", 'error', true);
             return;
         }
-
-        this.reload();
     }
 
     /**
@@ -65,11 +75,7 @@ class RiotApi {
         this.services = {
             key: this.apiKey,
             region: this.RegionServices,
-            AxiosData: {
-                cookie: false,
-                jar: null,
-                headers: {}
-            }
+            AxiosData: {},
         };
 
         this.AccountV1 = new AccountV1(this.services);

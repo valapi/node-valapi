@@ -1,4 +1,4 @@
-import type { IAxiosClient_Out } from '@ing3kth/core/dist/interface/IAxiosClient';
+import type { IAxiosClient } from "../resources/interface/IAxiosClient";
 import type { IRiotLocal, IRiotLocal_JSON, IRiotLocal_Resources, IRiotLocal_Lockfile, IRiotLocal_Lockfile_Protocol, IRiotLocal_JSON_Method } from "../resources/interface/IRiotLocal";
 import getLockfile from '../auth/RiotLocal/Lockfile';
 /**
@@ -28,17 +28,17 @@ declare class RiotLocal {
      *
      * @param {IRiotLocal_JSON} data Data from LocalResourse
      * @param {any} args.. Replace With Arguments
-     * @returns {Promise<IAxiosClient_Out>}
+     * @returns {Promise<IAxiosClient>}
      */
-    requestFromJSON(data?: IRiotLocal_JSON): Promise<IAxiosClient_Out>;
+    requestFromJSON(data?: IRiotLocal_JSON): Promise<IAxiosClient>;
     /**
      *
      * @param {String} method Method to request
      * @param {String} endpoint Url Endpoint
      * @param {Object} body Request Body
-     * @returns {Promise<IAxiosClient_Out>}
+     * @returns {Promise<IAxiosClient>}
      */
-    request(method?: IRiotLocal_JSON_Method, endpoint?: string, body?: {}): Promise<IAxiosClient_Out>;
+    request(method?: IRiotLocal_JSON_Method, endpoint?: string, body?: {}): Promise<IAxiosClient>;
     /**
      *
      * @returns {IRiotLocal}
@@ -86,16 +86,16 @@ declare class RiotLocal {
      * @param {String} method Method to request
      * @param {String} endpoint Url Endpoint
      * @param {Object} body Request Body
-     * @returns {Promise<IAxiosClient_Out>}
+     * @returns {Promise<IAxiosClient>}
      */
-    static request(method?: IRiotLocal_JSON_Method, endpoint?: string, body?: object): Promise<IAxiosClient_Out>;
+    static request(method?: IRiotLocal_JSON_Method, endpoint?: string, body?: object): Promise<IAxiosClient>;
     /**
      *
      * @param {IRiotLocal_JSON} data Data from LocalResourse
      * @param {any} args.. Replace Data With Arguments
-     * @returns {Promise<IAxiosClient_Out>}
+     * @returns {Promise<IAxiosClient>}
      */
-    static requestFromJSON(data?: IRiotLocal_JSON): Promise<IAxiosClient_Out>;
+    static requestFromJSON(data?: IRiotLocal_JSON): Promise<IAxiosClient>;
     /**
      *
      * @param {IRiotLocal} data RiotLocal toJSON Data

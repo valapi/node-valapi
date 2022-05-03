@@ -1,9 +1,9 @@
 //import
-import { AxiosClient } from "@ing3kth/core/dist/core/AxiosClient";
+import { AxiosClient } from "../../client/AxiosClient";
 
 import type { IRiotApi_Service } from "../../resources/interface/IRiotApi";
 import type { IValRegion } from "../../resources/interface/IValRegion";
-import type { IAxiosClient_Out } from "@ing3kth/core/dist/interface/IAxiosClient";
+import type { IAxiosClient } from "../../resources/interface/IAxiosClient";
 
 import _Locale from "../../resources/data/Locale";
 
@@ -32,9 +32,9 @@ class ContentV1 {
     /**
      * 
      * @param {String} locale Locale
-     * @returns {Promise<IAxiosClient_Out>}
+     * @returns {Promise<IAxiosClient>}
      */
-    async Contents(locale:keyof typeof _Locale.data = 'English_United_States'):Promise<IAxiosClient_Out> {
+    async Contents(locale:keyof typeof _Locale.data = 'English_United_States'):Promise<IAxiosClient> {
         return await this.AxiosClient.get(this.region.riot.server + `/val/content/v1/contents?locale=${_Locale.data[locale]}` + `&api_key=${this.apiKey}`);
     }
 }

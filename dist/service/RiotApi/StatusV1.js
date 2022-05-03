@@ -11,7 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.StatusV1 = void 0;
 //import
-const AxiosClient_1 = require("@ing3kth/core/dist/core/AxiosClient");
+const AxiosClient_1 = require("../../client/AxiosClient");
 //class
 /**
  * * Class ID: @ing3kth/val-api/RiotApi/StatusV1
@@ -27,7 +27,7 @@ class StatusV1 {
         this.AxiosClient = new AxiosClient_1.AxiosClient(data.AxiosData);
     }
     /**
-     * @returns {Promise<IAxiosClient_Out>}
+     * @returns {Promise<IAxiosClient>}
      */
     PlatformData() {
         return __awaiter(this, void 0, void 0, function* () {

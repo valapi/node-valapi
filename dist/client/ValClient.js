@@ -49,28 +49,16 @@ class ValClient {
     /**
     * @param {IValClient_Auth} Account Account toJSON data
     */
-    constructor(Account = {
-        cookie: new tough_cookie_1.CookieJar().toJSON(),
-        accessToken: '',
-        id_token: '',
-        expires_in: 3600,
-        token_type: '',
-        entitlements: '',
-        region: {
-            pbe: '',
-            live: '',
-        },
-        multifactor: false,
-    }) {
+    constructor(Account) {
         if (Account.multifactor) {
-            IngCore.Logs.log('This Account is have a Multifactor', 'error', true);
+            IngCore.Logs.log('This Account is have a Multifactor', 'warning', true);
         }
         //data
         this.classId = '@ing3kth/val-api/ValClient';
-        this.cookie = Account.cookie;
-        this.accessToken = Account.accessToken;
-        this.tokenType = Account.token_type;
-        this.entitlements = Account.entitlements;
+        this.cookie = tough_cookie_1.CookieJar.fromJSON(JSON.stringify(Account.cookie));
+        this.access_token = Account.access_token;
+        this.token_type = Account.token_type;
+        this.entitlements_token = Account.entitlements_token;
         this.client = {
             version: IngCore.Config["val-api"].ValClient.client.version,
             platfrom: (0, Uft8_1.toBase64)(JSON.stringify(IngCore.Config["val-api"].ValClient.client.version)),
@@ -81,7 +69,27 @@ class ValClient {
         else {
             this.region = 'na';
         }
-        this.reload();
+        //first reload
+        this.RegionServices = new ValRegion_1.ValRegion(this.region).toJSON();
+        this.services = {
+            AxiosData: {
+                headers: {
+                    'Authorization': `${this.token_type} ${this.access_token}`,
+                    'X-Riot-Entitlements-JWT': this.entitlements_token,
+                    'X-Riot-ClientVersion': this.client.version,
+                    'X-Riot-ClientPlatform': this.client.platfrom,
+                },
+            },
+            Region: this.RegionServices,
+        };
+        this.Client = new Client_1.Client(this.services);
+        this.Contract = new Contract_1.Contract(this.services);
+        this.CurrentGame = new CurrentGame_1.CurrentGame(this.services);
+        this.Match = new Match_1.Match(this.services);
+        this.Party = new Party_1.Party(this.services);
+        this.Player = new Player_1.Player(this.services);
+        this.Pregame = new PreGame_1.PreGame(this.services);
+        this.Store = new Store_1.Store(this.services);
     }
     /***
      * @returns {void}
@@ -91,11 +99,9 @@ class ValClient {
         //services
         this.services = {
             AxiosData: {
-                cookie: true,
-                jar: this.cookie,
                 headers: {
-                    'Authorization': `${this.tokenType} ${this.accessToken}`,
-                    'X-Riot-Entitlements-JWT': this.entitlements,
+                    'Authorization': `${this.token_type} ${this.access_token}`,
+                    'X-Riot-Entitlements-JWT': this.entitlements_token,
                     'X-Riot-ClientVersion': this.client.version,
                     'X-Riot-ClientPlatform': this.client.platfrom,
                 },
@@ -120,10 +126,10 @@ class ValClient {
     toJSON() {
         IngCore.Logs.log("Export " + this.classId);
         return {
-            cookie: this.cookie,
-            accessToken: this.accessToken,
-            tokenType: this.tokenType,
-            entitlements: this.entitlements,
+            cookie: this.cookie.toJSON(),
+            access_token: this.access_token,
+            token_type: this.token_type,
+            entitlements_token: this.entitlements_token,
             region: this.region,
         };
     }
@@ -133,10 +139,10 @@ class ValClient {
      * @returns {void}
      */
     fromJSON(data) {
-        this.cookie = data.cookie;
-        this.accessToken = data.accessToken;
-        this.tokenType = data.tokenType;
-        this.entitlements = data.entitlements;
+        this.cookie = tough_cookie_1.CookieJar.fromJSON(JSON.stringify(data.cookie));
+        this.access_token = data.access_token;
+        this.token_type = data.token_type;
+        this.entitlements_token = data.entitlements_token;
         this.region = data.region;
         IngCore.Logs.log("Import " + this.classId);
         this.reload();
@@ -170,11 +176,11 @@ class ValClient {
         this.reload();
     }
     /**
-    * @param {toughCookie.Serialized} cookie Cookie
+    * @param {CookieJar.Serialized} cookie Cookie
     * @returns {void}
     */
-    setCookie(cookie = new tough_cookie_1.CookieJar().toJSON()) {
-        this.cookie = cookie;
+    setCookie(cookie) {
+        this.cookie = tough_cookie_1.CookieJar.fromJSON(JSON.stringify(cookie));
         IngCore.Logs.log(this.classId + " SetCookie '" + this.cookie + "'");
         this.reload();
     }
@@ -183,7 +189,19 @@ class ValClient {
     * @returns {void}
     */
     static fromJSON(data) {
-        const ValApiClient = new ValClient();
+        const ValApiClient = new ValClient({
+            cookie: new tough_cookie_1.CookieJar().toJSON(),
+            access_token: '',
+            id_token: '',
+            expires_in: 3600,
+            token_type: '',
+            entitlements_token: '',
+            region: {
+                pbe: '',
+                live: '',
+            },
+            multifactor: false,
+        });
         ValApiClient.fromJSON(data);
         return ValApiClient;
     }

@@ -36,38 +36,27 @@ exports.Multifactor = void 0;
 //import
 const tough_cookie_1 = require("tough-cookie");
 const IngCore = __importStar(require("@ing3kth/core"));
+const AxiosClient_1 = require("../../client/AxiosClient");
 const AuthFlow_1 = require("./AuthFlow");
 //class
 /**
- * * Class ID: @ing3kth/val-api/Multifactor
+ * * Class ID: @ing3kth/val-api/ValClient/Multifactor
  */
 class Multifactor {
     /**
     * @param {IValClient_Auth} data Account toJSON data
     */
-    constructor(data = {
-        cookie: new tough_cookie_1.CookieJar().toJSON(),
-        accessToken: '',
-        id_token: '',
-        expires_in: 3600,
-        token_type: '',
-        region: {
-            pbe: '',
-            live: '',
-        },
-        entitlements: '',
-        multifactor: true,
-    }) {
+    constructor(data) {
         if (!data.multifactor) {
             IngCore.Logs.log('This Account is not have a Multifactor', 'error', true);
         }
-        this.classId = '@ing3kth/val-api/Multifactor';
+        this.classId = '@ing3kth/val-api/ValClient/Multifactor';
         this.cookie = tough_cookie_1.CookieJar.fromJSON(JSON.stringify(data.cookie));
-        this.accessToken = data.accessToken;
+        this.access_token = data.access_token;
         this.id_token = data.id_token;
         this.expires_in = data.expires_in;
         this.token_type = data.token_type;
-        this.entitlements = data.entitlements;
+        this.entitlements_token = data.entitlements_token;
         this.region = data.region;
         this.multifactor = data.multifactor;
     }
@@ -77,22 +66,22 @@ class Multifactor {
     */
     execute(verificationCode) {
         return __awaiter(this, void 0, void 0, function* () {
-            const axiosClient = new IngCore.AxiosClient({
-                cookie: true,
-                jar: this.cookie.toJSON(),
-                headers: {}
+            const axiosClient = new AxiosClient_1.AxiosClient({
+                jar: this.cookie,
+                withCredentials: true,
+                headers: {
+                    'User-Agent': IngCore.Config["val-api"].ValClient.auth["User-Agent"],
+                }
             });
             //ACCESS TOKEN
             const auth_response = yield axiosClient.put('https://auth.riotgames.com/api/v1/authorization', {
                 "type": "multifactor",
                 "code": verificationCode.toString(),
                 "rememberDevice": true
-            }, {
-                headers: {
-                    'User-Agent': 'RiotClient/43.0.1.4195386.4190634 rso-auth (Windows; 10;;Professional, x64)'
-                }
             });
-            this.cookie = tough_cookie_1.CookieJar.fromJSON(JSON.stringify(axiosClient.jar));
+            if (!auth_response.isError) {
+                this.multifactor = false;
+            }
             return AuthFlow_1.AuthFlow.execute(this.toJSON(), auth_response);
         });
     }
@@ -104,11 +93,11 @@ class Multifactor {
         IngCore.Logs.log("Export " + this.classId);
         return {
             cookie: this.cookie.toJSON(),
-            accessToken: this.accessToken,
+            access_token: this.access_token,
             id_token: this.id_token,
             expires_in: this.expires_in,
             token_type: this.token_type,
-            entitlements: this.entitlements,
+            entitlements_token: this.entitlements_token,
             region: this.region,
             multifactor: this.multifactor,
         };

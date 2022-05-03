@@ -1,7 +1,7 @@
-import { AxiosClient } from "@ing3kth/core/dist/core/AxiosClient";
+import { AxiosClient } from "../../client/AxiosClient";
 import type { ValClient_Service } from "../../client/ValClient";
 import type { IValRegion } from "../../resources/interface/IValRegion";
-import type { IAxiosClient_Out } from "@ing3kth/core/dist/interface/IAxiosClient";
+import type { IAxiosClient } from "../../resources/interface/IAxiosClient";
 /**
  * * Class ID: @ing3kth/val-api/ValClient/Coregame
  */
@@ -15,26 +15,26 @@ declare class CurrentGame {
     constructor(data: ValClient_Service);
     /**
     * @param {String} matchId MatchID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
-    FetchMatch(matchId: string): Promise<IAxiosClient_Out>;
+    FetchMatch(matchId: string): Promise<IAxiosClient>;
     /**
     * @param {String} matchId MatchID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
-    FetchMatchLoadouts(matchId: string): Promise<IAxiosClient_Out>;
+    FetchMatchLoadouts(matchId: string): Promise<IAxiosClient>;
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
-    FetchPlayer(puuid: string): Promise<IAxiosClient_Out>;
+    FetchPlayer(puuid: string): Promise<IAxiosClient>;
     /**
     * * Careful to use, Riot will immediately shut down your Project.
     * @param {String} puuid PlayerUUID
     * @param {String} matchId MatchID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
-    DisassociatePlayer(puuid: string, matchId: string): Promise<IAxiosClient_Out>;
+    DisassociatePlayer(puuid: string, matchId: string): Promise<IAxiosClient>;
 }
 export { CurrentGame };
 //# sourceMappingURL=CurrentGame.d.ts.map

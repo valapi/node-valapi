@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Store = void 0;
 //import
-const AxiosClient_1 = require("@ing3kth/core/dist/core/AxiosClient");
+const AxiosClient_1 = require("../../client/AxiosClient");
 const ItemTypeId_1 = __importDefault(require("../../resources/data/ItemTypeId"));
 //service
 /**
@@ -32,7 +32,7 @@ class Store {
     /**
     * @param {String} puuid PlayerUUID
     * @param {String} itemType ItemType
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
     GetEntitlements(puuid, itemType) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -40,7 +40,7 @@ class Store {
         });
     }
     /**
-     * @returns {Promise<IAxiosClient_Out>}
+     * @returns {Promise<IAxiosClient>}
     */
     GetOffers() {
         return __awaiter(this, void 0, void 0, function* () {
@@ -49,7 +49,7 @@ class Store {
     }
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
     GetStorefront(puuid) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -58,7 +58,7 @@ class Store {
     }
     /**
     * @param {String} puuid PlayerUUID
-    * @returns {Promise<IAxiosClient_Out>}
+    * @returns {Promise<IAxiosClient>}
     */
     GetWallet(puuid) {
         return __awaiter(this, void 0, void 0, function* () {

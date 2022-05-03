@@ -1,4 +1,4 @@
-import { CookieJar as toughCookie } from "tough-cookie";
+import { CookieJar } from "tough-cookie";
 import _Region from "../resources/data/Region";
 import type { IValClient, ValClient_Service, IValClient_Auth, IValClient_ClientPlatfrom } from "../resources/interface/IValClient";
 import { Client } from "../service/ValClient/Client";
@@ -18,25 +18,25 @@ import { Multifactor as Auth_Multifactor } from "../auth/ValClient/Multifactor";
 declare class ValClient {
     classId: string;
     private cookie;
-    private accessToken;
-    private tokenType;
-    private entitlements;
+    private access_token;
+    private token_type;
+    private entitlements_token;
     private client;
     private region;
     private RegionServices;
     private services;
-    Client: Client | undefined;
-    Contract: Contract | undefined;
-    CurrentGame: CurrentGame | undefined;
-    Match: Match | undefined;
-    Party: Party | undefined;
-    Player: Player | undefined;
-    Pregame: PreGame | undefined;
-    Store: Store | undefined;
+    Client: Client;
+    Contract: Contract;
+    CurrentGame: CurrentGame;
+    Match: Match;
+    Party: Party;
+    Player: Player;
+    Pregame: PreGame;
+    Store: Store;
     /**
     * @param {IValClient_Auth} Account Account toJSON data
     */
-    constructor(Account?: IValClient_Auth);
+    constructor(Account: IValClient_Auth);
     /***
      * @returns {void}
      */
@@ -68,10 +68,10 @@ declare class ValClient {
     */
     setClientPlatfrom_fromJSON(clientPlatfrom?: IValClient_ClientPlatfrom): void;
     /**
-    * @param {toughCookie.Serialized} cookie Cookie
+    * @param {CookieJar.Serialized} cookie Cookie
     * @returns {void}
     */
-    setCookie(cookie?: toughCookie.Serialized): void;
+    setCookie(cookie: CookieJar.Serialized): void;
     /**
     * @param {IValClient} data toJSON data
     * @returns {void}

@@ -1,15 +1,15 @@
 import type { IValClient_Auth } from "../../resources/interface/IValClient";
 /**
- * * Class ID: @ing3kth/val-api/Account
+ * * Class ID: @ing3kth/val-api/ValClient/Account
  */
 declare class Account {
     classId: string;
     private cookie;
-    private accessToken;
+    private access_token;
     private id_token;
     private expires_in;
     private token_type;
-    private entitlements;
+    private entitlements_token;
     private region;
     multifactor: boolean;
     constructor();

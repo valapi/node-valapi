@@ -1,25 +1,26 @@
 //import
-import { CookieJar as toughCookie } from "tough-cookie";
+import { CookieJar } from 'tough-cookie';
 
 import * as IngCore from "@ing3kth/core";
+import { AxiosClient } from '../../client/AxiosClient';
 import { AuthFlow } from "./AuthFlow";
 
 import type { IValClient_Auth } from "../../resources/interface/IValClient";
-import type { IAxiosClient_Out } from "@ing3kth/core/dist/interface/IAxiosClient";
+import type { IAxiosClient } from '../../resources/interface/IAxiosClient';
 
 //class
 
 /**
- * * Class ID: @ing3kth/val-api/Multifactor
+ * * Class ID: @ing3kth/val-api/ValClient/Multifactor
  */
 class Multifactor {
     public classId:string;
-    private cookie:toughCookie;
-    private accessToken:string;
+    private cookie:CookieJar;
+    private access_token:string;
     private id_token:string;
     private expires_in:number;
     private token_type:string;
-    private entitlements:string;
+    private entitlements_token:string;
     private region: {
         pbe: string,
         live: string,
@@ -29,31 +30,18 @@ class Multifactor {
     /**
     * @param {IValClient_Auth} data Account toJSON data
     */
-    constructor(data: IValClient_Auth = {
-        cookie: new toughCookie().toJSON(),
-        accessToken: '',
-        id_token: '',
-        expires_in: 3600,
-        token_type: '',
-        region: {
-            pbe: '',
-            live: '',
-        },
-        entitlements: '',
-        
-        multifactor: true,
-    }) {
+    constructor(data: IValClient_Auth) {
         if(!data.multifactor){
             IngCore.Logs.log('This Account is not have a Multifactor', 'error', true);
         }
 
-        this.classId = '@ing3kth/val-api/Multifactor';
-        this.cookie = toughCookie.fromJSON(JSON.stringify(data.cookie));
-        this.accessToken = data.accessToken;
+        this.classId = '@ing3kth/val-api/ValClient/Multifactor';
+        this.cookie = CookieJar.fromJSON(JSON.stringify(data.cookie));
+        this.access_token = data.access_token;
         this.id_token = data.id_token;
         this.expires_in = data.expires_in;
         this.token_type = data.token_type;
-        this.entitlements = data.entitlements;
+        this.entitlements_token = data.entitlements_token;
         this.region = data.region;
         this.multifactor = data.multifactor;
     }
@@ -63,24 +51,25 @@ class Multifactor {
     * @returns {Promise<IValClient_Auth>}
     */
     public async execute(verificationCode:number):Promise<IValClient_Auth> {
-        const axiosClient:IngCore.AxiosClient = new IngCore.AxiosClient({
-            cookie: true,
-            jar: this.cookie.toJSON(),
-            headers: {}
-        });
-
-        //ACCESS TOKEN
-        const auth_response:IAxiosClient_Out = await axiosClient.put('https://auth.riotgames.com/api/v1/authorization', {
-            "type": "multifactor",
-            "code": verificationCode.toString(),
-            "rememberDevice": true
-        }, {
+        const axiosClient:AxiosClient = new AxiosClient({
+            jar: this.cookie,
+            withCredentials: true,
             headers: {
-                'User-Agent': 'RiotClient/43.0.1.4195386.4190634 rso-auth (Windows; 10;;Professional, x64)'
+                'User-Agent': IngCore.Config["val-api"].ValClient.auth["User-Agent"],
             }
         });
 
-        this.cookie = toughCookie.fromJSON(JSON.stringify(axiosClient.jar))
+        //ACCESS TOKEN
+        const auth_response:IAxiosClient = await axiosClient.put('https://auth.riotgames.com/api/v1/authorization', {
+            "type": "multifactor",
+            "code": verificationCode.toString(),
+            "rememberDevice": true
+        });
+
+        if(!auth_response.isError){
+            this.multifactor = false;
+        }
+
         return AuthFlow.execute(this.toJSON(), auth_response);
     }
 
@@ -93,11 +82,11 @@ class Multifactor {
 
         return {
             cookie: this.cookie.toJSON(),
-            accessToken: this.accessToken,
+            access_token: this.access_token,
             id_token: this.id_token,
             expires_in: this.expires_in,
             token_type: this.token_type,
-            entitlements: this.entitlements,
+            entitlements_token: this.entitlements_token,
             region: this.region,
             multifactor: this.multifactor,
         };
