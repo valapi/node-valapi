@@ -30,8 +30,8 @@ class Store {
         this.Region = data.Region;
     }
     /**
-    * @param {String} puuid PlayerUUID
-    * @param {String} itemType ItemType
+    * @param {String} puuid Player UUID
+    * @param {String} itemType Item Type
     * @returns {Promise<IAxiosClient>}
     */
     GetEntitlements(puuid, itemType) {
@@ -48,7 +48,7 @@ class Store {
         });
     }
     /**
-    * @param {String} puuid PlayerUUID
+    * @param {String} puuid Player UUID
     * @returns {Promise<IAxiosClient>}
     */
     GetStorefront(puuid) {
@@ -57,7 +57,7 @@ class Store {
         });
     }
     /**
-    * @param {String} puuid PlayerUUID
+    * @param {String} puuid Player UUID
     * @returns {Promise<IAxiosClient>}
     */
     GetWallet(puuid) {

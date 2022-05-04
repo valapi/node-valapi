@@ -26,7 +26,7 @@ class PreGame {
         this.Region = data.Region;
     }
     /**
-    * @param {String} matchId MatchID
+    * @param {String} matchId Match ID
     * @returns {Promise<IAxiosClient>}
     */
     GetMatch(matchId) {
@@ -35,7 +35,7 @@ class PreGame {
         });
     }
     /**
-    * @param {String} matchId MatchID
+    * @param {String} matchId Match ID
     * @returns {Promise<IAxiosClient>}
     */
     GetMatchLoadouts(matchId) {
@@ -44,7 +44,7 @@ class PreGame {
         });
     }
     /**
-    * @param {String} puuid PlayerUUID
+    * @param {String} puuid Player UUID
     * @returns {Promise<IAxiosClient>}
     */
     GetPlayer(puuid) {
@@ -53,8 +53,8 @@ class PreGame {
         });
     }
     /**
-    * @param {String} matchId MatchID
-    * @param {String} agentId CharacterID
+    * @param {String} matchId Match ID
+    * @param {String} agentId Character ID
     * @returns {Promise<IAxiosClient>}
     */
     LockCharacter(matchId, agentId) {
@@ -64,7 +64,7 @@ class PreGame {
     }
     /**
      * * Careful to use, Riot will immediately shut down your Project.
-    * @param {String} matchId MatchID
+    * @param {String} matchId Match ID
     * @returns {Promise<IAxiosClient>}
     */
     QuitMatch(matchId) {
@@ -73,8 +73,8 @@ class PreGame {
         });
     }
     /**
-    * @param {String} matchId MatchID
-    * @param {String} agentId CharacterID
+    * @param {String} matchId Match ID
+    * @param {String} agentId Character ID
     * @returns {Promise<IAxiosClient>}
     */
     SelectCharacter(matchId, agentId) {

@@ -14,35 +14,35 @@ declare class PreGame {
     */
     constructor(data: ValClient_Service);
     /**
-    * @param {String} matchId MatchID
+    * @param {String} matchId Match ID
     * @returns {Promise<IAxiosClient>}
     */
     GetMatch(matchId: string): Promise<IAxiosClient>;
     /**
-    * @param {String} matchId MatchID
+    * @param {String} matchId Match ID
     * @returns {Promise<IAxiosClient>}
     */
     GetMatchLoadouts(matchId: string): Promise<IAxiosClient>;
     /**
-    * @param {String} puuid PlayerUUID
+    * @param {String} puuid Player UUID
     * @returns {Promise<IAxiosClient>}
     */
     GetPlayer(puuid: string): Promise<IAxiosClient>;
     /**
-    * @param {String} matchId MatchID
-    * @param {String} agentId CharacterID
+    * @param {String} matchId Match ID
+    * @param {String} agentId Character ID
     * @returns {Promise<IAxiosClient>}
     */
     LockCharacter(matchId: string, agentId: string): Promise<IAxiosClient>;
     /**
      * * Careful to use, Riot will immediately shut down your Project.
-    * @param {String} matchId MatchID
+    * @param {String} matchId Match ID
     * @returns {Promise<IAxiosClient>}
     */
     QuitMatch(matchId: string): Promise<IAxiosClient>;
     /**
-    * @param {String} matchId MatchID
-    * @param {String} agentId CharacterID
+    * @param {String} matchId Match ID
+    * @param {String} agentId Character ID
     * @returns {Promise<IAxiosClient>}
     */
     SelectCharacter(matchId: string, agentId: string): Promise<IAxiosClient>;

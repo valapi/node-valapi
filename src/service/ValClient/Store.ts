@@ -27,8 +27,8 @@ class Store {
     }
 
     /**
-    * @param {String} puuid PlayerUUID
-    * @param {String} itemType ItemType
+    * @param {String} puuid Player UUID
+    * @param {String} itemType Item Type
     * @returns {Promise<IAxiosClient>}
     */
      async GetEntitlements(puuid:string, itemType:keyof typeof ItemTypeId.data):Promise<IAxiosClient> {
@@ -43,7 +43,7 @@ class Store {
     }
 
     /**
-    * @param {String} puuid PlayerUUID
+    * @param {String} puuid Player UUID
     * @returns {Promise<IAxiosClient>}
     */
      async GetStorefront(puuid:string):Promise<IAxiosClient> {
@@ -51,7 +51,7 @@ class Store {
     }
 
     /**
-    * @param {String} puuid PlayerUUID
+    * @param {String} puuid Player UUID
     * @returns {Promise<IAxiosClient>}
     */
      async GetWallet(puuid:string):Promise<IAxiosClient> {

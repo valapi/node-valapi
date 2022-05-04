@@ -31,7 +31,7 @@ class Player {
     }
     //Mike - Username From ID
     /**
-    * @param {String} puuid PlayerUUID
+    * @param {String} puuid Player UUID
     * @returns {Promise<IAxiosClient>}
     */
     GetUsername(puuid) {
@@ -52,7 +52,7 @@ class Player {
     }
     //PVP Endpoints
     /**
-    * @param {String} puuid PlayerUUID
+    * @param {String} puuid Player UUID
     * @returns {Promise<IAxiosClient>}
     */
     FetchPlayer(puuid) {
@@ -61,10 +61,10 @@ class Player {
         });
     }
     /**
-    * @param {String} puuid PlayerUUID
+    * @param {String} puuid Player UUID
     * @param {String} queue Queue
-    * @param {Number} startIndex startIndex
-    * @param {Number} endIndex endIndex
+    * @param {Number} startIndex Start Index
+    * @param {Number} endIndex End Index
     * @returns {Promise<IAxiosClient>}
     */
     FetchCompetitiveUpdates(puuid, queue, startIndex = 0, endIndex = 10) {

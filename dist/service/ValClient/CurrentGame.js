@@ -26,7 +26,7 @@ class CurrentGame {
         this.Region = data.Region;
     }
     /**
-    * @param {String} matchId MatchID
+    * @param {String} matchId Match ID
     * @returns {Promise<IAxiosClient>}
     */
     FetchMatch(matchId) {
@@ -35,7 +35,7 @@ class CurrentGame {
         });
     }
     /**
-    * @param {String} matchId MatchID
+    * @param {String} matchId Match ID
     * @returns {Promise<IAxiosClient>}
     */
     FetchMatchLoadouts(matchId) {
@@ -54,8 +54,8 @@ class CurrentGame {
     }
     /**
     * * Careful to use, Riot will immediately shut down your Project.
-    * @param {String} puuid PlayerUUID
-    * @param {String} matchId MatchID
+    * @param {String} puuid Player UUID
+    * @param {String} matchId Match ID
     * @returns {Promise<IAxiosClient>}
     */
     DisassociatePlayer(puuid, matchId) {

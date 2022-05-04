@@ -36,7 +36,7 @@ class Party {
         });
     }
     /**
-    * @param {String} partyId PartyID
+    * @param {String} partyId Party ID
     * @returns {Promise<IAxiosClient>}
     */
     FetchParty(partyId) {
@@ -45,7 +45,7 @@ class Party {
         });
     }
     /**
-    * @param {String} puuid PlayerUUID
+    * @param {String} puuid Player UUID
     * @returns {Promise<IAxiosClient>}
     */
     FetchPlayer(puuid) {
@@ -54,7 +54,7 @@ class Party {
         });
     }
     /**
-    * @param {String} partyId PartyID
+    * @param {String} partyId Party ID
     * @param {String} queue Queue
     * @returns {Promise<IAxiosClient>}
     */
@@ -66,7 +66,7 @@ class Party {
         });
     }
     /**
-    * @param {String} partyId PartyID
+    * @param {String} partyId Party ID
     * @returns {Promise<IAxiosClient>}
     */
     EnterMatchmakingQueue(partyId) {
@@ -75,7 +75,7 @@ class Party {
         });
     }
     /**
-    * @param {String} partyId PartyID
+    * @param {String} partyId Party ID
     * @param {String} gameName In-Game Name
     * @param {String} tagLine In-Game Tag
     * @returns {Promise<IAxiosClient>}
@@ -86,7 +86,7 @@ class Party {
         });
     }
     /**
-    * @param {String} partyId PartyID
+    * @param {String} partyId Party ID
     * @returns {Promise<IAxiosClient>}
     */
     LeaveMatchmakingQueue(partyId) {
@@ -95,7 +95,7 @@ class Party {
         });
     }
     /**
-    * @param {String} partyId PartyID
+    * @param {String} partyId Party ID
     * @param {String} accessibility Accessibility
     * @returns {Promise<IAxiosClient>}
     */
@@ -107,7 +107,7 @@ class Party {
         });
     }
     /**
-    * @param {String} partyId PartyID
+    * @param {String} partyId Party ID
     * @returns {Promise<IAxiosClient>}
     */
     StartCustomGame(partyId) {
@@ -117,7 +117,7 @@ class Party {
     }
     /**
      *
-     * @param {String} puuid PlayerUUID
+     * @param {String} puuid Player UUID
      * @returns {Promise<IAxiosClient>}
      */
     RemovePlayer(puuid) {
@@ -126,8 +126,8 @@ class Party {
         });
     }
     /**
-     * @param {String} partyId PartyID
-     * @param {String} requestId RequestID
+     * @param {String} partyId Party ID
+     * @param {String} requestId Request ID
      * @returns {Promise<IAxiosClient>}
      */
     DeclineRequest(partyId, requestId) {
@@ -136,8 +136,8 @@ class Party {
         });
     }
     /**
-    * @param {String} puuid PlayerUUID
-    * @param {String} partyId PartyID
+    * @param {String} puuid Player UUID
+    * @param {String} partyId Party ID
     * @returns {Promise<IAxiosClient>}
     */
     LeaveParty(puuid, partyId) {
@@ -146,7 +146,7 @@ class Party {
         });
     }
     /**
-    * @param {String} partyId PartyID
+    * @param {String} partyId Party ID
     * @returns {Promise<IAxiosClient>}
     */
     LeaveQueue(partyId) {

@@ -25,7 +25,7 @@ class PreGame {
     }
 
     /**
-    * @param {String} matchId MatchID
+    * @param {String} matchId Match ID
     * @returns {Promise<IAxiosClient>}
     */
      async GetMatch(matchId:string):Promise<IAxiosClient> {
@@ -33,7 +33,7 @@ class PreGame {
     }
 
     /**
-    * @param {String} matchId MatchID
+    * @param {String} matchId Match ID
     * @returns {Promise<IAxiosClient>}
     */
      async GetMatchLoadouts(matchId:string):Promise<IAxiosClient> {
@@ -41,7 +41,7 @@ class PreGame {
     }
 
     /**
-    * @param {String} puuid PlayerUUID
+    * @param {String} puuid Player UUID
     * @returns {Promise<IAxiosClient>}
     */
      async GetPlayer(puuid:string):Promise<IAxiosClient> {
@@ -49,8 +49,8 @@ class PreGame {
     }
 
     /**
-    * @param {String} matchId MatchID
-    * @param {String} agentId CharacterID
+    * @param {String} matchId Match ID
+    * @param {String} agentId Character ID
     * @returns {Promise<IAxiosClient>}
     */
      async LockCharacter(matchId:string, agentId:string):Promise<IAxiosClient> {
@@ -59,7 +59,7 @@ class PreGame {
 
     /**
      * * Careful to use, Riot will immediately shut down your Project.
-    * @param {String} matchId MatchID
+    * @param {String} matchId Match ID
     * @returns {Promise<IAxiosClient>}
     */
      async QuitMatch(matchId:string):Promise<IAxiosClient> {
@@ -67,8 +67,8 @@ class PreGame {
     }
 
     /**
-    * @param {String} matchId MatchID
-    * @param {String} agentId CharacterID
+    * @param {String} matchId Match ID
+    * @param {String} agentId Character ID
     * @returns {Promise<IAxiosClient>}
     */
      async SelectCharacter(matchId:string, agentId:string):Promise<IAxiosClient> {

@@ -18,13 +18,13 @@ declare class Contract {
     */
     DefinitionsFetch(): Promise<IAxiosClient>;
     /**
-    * @param {String} puuid PlayerUUID
+    * @param {String} puuid Player UUID
     * @returns {Promise<IAxiosClient>}
     */
     Fetch(puuid: string): Promise<IAxiosClient>;
     /**
-    * @param {String} puuid PlayerUUID
-    * @param {String} contractId ContractID
+    * @param {String} puuid Player UUID
+    * @param {String} contractId Contract ID
     * @returns {Promise<IAxiosClient>}
     */
     Activate(puuid: string, contractId: string): Promise<IAxiosClient>;

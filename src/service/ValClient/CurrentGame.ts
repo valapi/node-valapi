@@ -25,7 +25,7 @@ class CurrentGame {
     }
 
     /**
-    * @param {String} matchId MatchID
+    * @param {String} matchId Match ID
     * @returns {Promise<IAxiosClient>}
     */
     async FetchMatch(matchId:string):Promise<IAxiosClient> {
@@ -33,7 +33,7 @@ class CurrentGame {
     }
 
     /**
-    * @param {String} matchId MatchID
+    * @param {String} matchId Match ID
     * @returns {Promise<IAxiosClient>}
     */
      async FetchMatchLoadouts(matchId:string):Promise<IAxiosClient> {
@@ -50,8 +50,8 @@ class CurrentGame {
 
     /**
     * * Careful to use, Riot will immediately shut down your Project.
-    * @param {String} puuid PlayerUUID
-    * @param {String} matchId MatchID
+    * @param {String} puuid Player UUID
+    * @param {String} matchId Match ID
     * @returns {Promise<IAxiosClient>}
     */
      async DisassociatePlayer(puuid:string, matchId:string):Promise<IAxiosClient> {

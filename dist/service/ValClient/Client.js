@@ -27,7 +27,7 @@ class Client {
     }
     //SESSION
     /**
-    * @param {String} puuid PlayerUUID
+    * @param {String} puuid Player UUID
     * @returns {Promise<IAxiosClient>}
     */
     GetSession(puuid) {

@@ -30,7 +30,7 @@ class Match {
 
     /**
     * @description Get contract definitions
-    * @param {String} matchId MatchID
+    * @param {String} matchId Match ID
     * @returns {Promise<IAxiosClient>}
     */
      async FetchMatchDetails(matchId:string):Promise<IAxiosClient> {
@@ -38,10 +38,10 @@ class Match {
     }
 
     /**
-    * @param {String} puuid PlayerUUID
+    * @param {String} puuid Player UUID
     * @param {String} queue Queue
-    * @param {Number} startIndex startIndex
-    * @param {Number} endIndex endIndex
+    * @param {Number} startIndex Start Index
+    * @param {Number} endIndex End Index
     * @returns {Promise<IAxiosClient>}
     */
      async FetchMatchHistory(puuid:string, queue?:keyof typeof QueueId.data, startIndex:number = 0, endIndex:number = 10):Promise<IAxiosClient> {

@@ -26,7 +26,7 @@ class Client {
 
     //SESSION
     /**
-    * @param {String} puuid PlayerUUID
+    * @param {String} puuid Player UUID
     * @returns {Promise<IAxiosClient>}
     */
      async GetSession(puuid:string):Promise<IAxiosClient> {

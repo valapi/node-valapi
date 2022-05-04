@@ -15,7 +15,7 @@ declare class Player {
     */
     constructor(data: ValClient_Service);
     /**
-    * @param {String} puuid PlayerUUID
+    * @param {String} puuid Player UUID
     * @returns {Promise<IAxiosClient>}
     */
     GetUsername(puuid: string): Promise<IAxiosClient>;
@@ -24,15 +24,15 @@ declare class Player {
     */
     GetUserInfo(): Promise<IAxiosClient>;
     /**
-    * @param {String} puuid PlayerUUID
+    * @param {String} puuid Player UUID
     * @returns {Promise<IAxiosClient>}
     */
     FetchPlayer(puuid: string): Promise<IAxiosClient>;
     /**
-    * @param {String} puuid PlayerUUID
+    * @param {String} puuid Player UUID
     * @param {String} queue Queue
-    * @param {Number} startIndex startIndex
-    * @param {Number} endIndex endIndex
+    * @param {Number} startIndex Start Index
+    * @param {Number} endIndex End Index
     * @returns {Promise<IAxiosClient>}
     */
     FetchCompetitiveUpdates(puuid: string, queue?: keyof typeof QueueId.data, startIndex?: number, endIndex?: number): Promise<IAxiosClient>;

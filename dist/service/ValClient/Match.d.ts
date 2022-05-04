@@ -16,15 +16,15 @@ declare class Match {
     constructor(data: ValClient_Service);
     /**
     * @description Get contract definitions
-    * @param {String} matchId MatchID
+    * @param {String} matchId Match ID
     * @returns {Promise<IAxiosClient>}
     */
     FetchMatchDetails(matchId: string): Promise<IAxiosClient>;
     /**
-    * @param {String} puuid PlayerUUID
+    * @param {String} puuid Player UUID
     * @param {String} queue Queue
-    * @param {Number} startIndex startIndex
-    * @param {Number} endIndex endIndex
+    * @param {Number} startIndex Start Index
+    * @param {Number} endIndex End Index
     * @returns {Promise<IAxiosClient>}
     */
     FetchMatchHistory(puuid: string, queue?: keyof typeof QueueId.data, startIndex?: number, endIndex?: number): Promise<IAxiosClient>;

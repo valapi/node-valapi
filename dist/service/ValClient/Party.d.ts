@@ -19,69 +19,69 @@ declare class Party {
     */
     FetchCustomGameConfigs(): Promise<IAxiosClient>;
     /**
-    * @param {String} partyId PartyID
+    * @param {String} partyId Party ID
     * @returns {Promise<IAxiosClient>}
     */
     FetchParty(partyId: string): Promise<IAxiosClient>;
     /**
-    * @param {String} puuid PlayerUUID
+    * @param {String} puuid Player UUID
     * @returns {Promise<IAxiosClient>}
     */
     FetchPlayer(puuid: string): Promise<IAxiosClient>;
     /**
-    * @param {String} partyId PartyID
+    * @param {String} partyId Party ID
     * @param {String} queue Queue
     * @returns {Promise<IAxiosClient>}
     */
     ChangeQueue(partyId: string, queue: keyof typeof QueueId.data): Promise<IAxiosClient>;
     /**
-    * @param {String} partyId PartyID
+    * @param {String} partyId Party ID
     * @returns {Promise<IAxiosClient>}
     */
     EnterMatchmakingQueue(partyId: string): Promise<IAxiosClient>;
     /**
-    * @param {String} partyId PartyID
+    * @param {String} partyId Party ID
     * @param {String} gameName In-Game Name
     * @param {String} tagLine In-Game Tag
     * @returns {Promise<IAxiosClient>}
     */
     InviteToPartyByDisplayName(partyId: string, gameName: string, tagLine: string): Promise<IAxiosClient>;
     /**
-    * @param {String} partyId PartyID
+    * @param {String} partyId Party ID
     * @returns {Promise<IAxiosClient>}
     */
     LeaveMatchmakingQueue(partyId: string): Promise<IAxiosClient>;
     /**
-    * @param {String} partyId PartyID
+    * @param {String} partyId Party ID
     * @param {String} accessibility Accessibility
     * @returns {Promise<IAxiosClient>}
     */
     SetAccessibility(partyId: string, accessibility: Party_SetAccessibility_accessibility): Promise<IAxiosClient>;
     /**
-    * @param {String} partyId PartyID
+    * @param {String} partyId Party ID
     * @returns {Promise<IAxiosClient>}
     */
     StartCustomGame(partyId: string): Promise<IAxiosClient>;
     /**
      *
-     * @param {String} puuid PlayerUUID
+     * @param {String} puuid Player UUID
      * @returns {Promise<IAxiosClient>}
      */
     RemovePlayer(puuid: string): Promise<IAxiosClient>;
     /**
-     * @param {String} partyId PartyID
-     * @param {String} requestId RequestID
+     * @param {String} partyId Party ID
+     * @param {String} requestId Request ID
      * @returns {Promise<IAxiosClient>}
      */
     DeclineRequest(partyId: string, requestId: string): Promise<IAxiosClient>;
     /**
-    * @param {String} puuid PlayerUUID
-    * @param {String} partyId PartyID
+    * @param {String} puuid Player UUID
+    * @param {String} partyId Party ID
     * @returns {Promise<IAxiosClient>}
     */
     LeaveParty(puuid: string, partyId: string): Promise<IAxiosClient>;
     /**
-    * @param {String} partyId PartyID
+    * @param {String} partyId Party ID
     * @returns {Promise<IAxiosClient>}
     */
     LeaveQueue(partyId: string): Promise<IAxiosClient>;

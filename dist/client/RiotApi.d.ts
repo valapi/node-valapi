@@ -1,3 +1,4 @@
+import _Region from "../resources/data/Region";
 import type { IRiotApi } from "../resources/interface/IRiotApi";
 import { AccountV1 } from "../service/RiotApi/AccountV1";
 import { StatusV1 } from "../service/RiotApi/StatusV1";
@@ -40,7 +41,7 @@ declare class RiotApi {
     /**
     * @param {String} region Region
     */
-    setRegion(region: string): void;
+    setRegion(region: keyof typeof _Region): void;
     /**
     * @param {String} key API Key
     */
