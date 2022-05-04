@@ -9,10 +9,10 @@
 
    [![Downloads](https://badgen.net/npm/dt/@ing3kth/val-api?icon=npm)](https://www.npmjs.com/package/@ing3kth/val-api)
    [![install size](https://packagephobia.com/badge?p=@ing3kth/val-api)](https://packagephobia.com/result?p=@ing3kth/val-api)
-   [![LICENSE](https://badgen.net/badge/license/MIT/blue)](https://github.com/KTNG-3/val-api/blob/main/LICENSE)
+   [![LICENSE](https://badgen.net/badge/license/MIT/blue)](https://github.com/KTNG-3/valorant-api/blob/main/LICENSE)
    [![Known Vulnerabilities](https://snyk.io/test/npm/@ing3kth/val-api/badge.svg)](https://snyk.io/test/npm/@ing3kth/val-api)
 
-   [![Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/KTNG-3/val-api)
+   [![Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/KTNG-3/valorant-api)
    [![Discord](https://badgen.net/badge/icon/discord?icon=discord&label)](https://discord.gg/pbyWbUYjyt)
 
 </div>
@@ -22,7 +22,7 @@
 - [1.6.1](https://www.npmjs.com/package/@ing3kth/val-api/v/1.6.1) (Recommended)
 - [1.4.6-1](https://www.npmjs.com/package/@ing3kth/val-api/v/1.4.6-1)
 
-When You Find A Bug Please Report It [here](https://github.com/KTNG-3/val-api/issues), And You Can Pull Requests [here](https://github.com/KTNG-3/val-api/pulls), Thanks!
+When You Find A Bug Please Report It [here](https://github.com/KTNG-3/valorant-api/issues), And You Can Pull Requests [here](https://github.com/KTNG-3/valorant-api/pulls), Thanks!
 
 If I didn't read just wait.
 
@@ -65,13 +65,13 @@ Documentation Website: [Click Here](https://ktng-3.github.io/val-api/docs.html)
 Thanks For Use My Package,
 On [GitHub](https://github.com/KTNG-3/val-api) Will Update Before This Package Update.
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/b3bd20059ade46e78a605bf6a0b1f1e1)](https://www.codacy.com/gh/KTNG-3/val-api/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=KTNG-3/val-api&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/b3bd20059ade46e78a605bf6a0b1f1e1)](https://www.codacy.com/gh/KTNG-3/valorant-api/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=KTNG-3/valorant-api&amp;utm_campaign=Badge_Grade)
 
 ***
 
 - [Website](https://ingkth.wordpress.com/)
 - *Report Bug*
-  - [Github](https://github.com/KTNG-3/val-api/issues)
+  - [Github](https://github.com/KTNG-3/valorant-api/issues)
   - [Discord](https://discord.gg/pbyWbUYjyt)
     - INg3_#9509
 - *Special Thanks*
@@ -83,4 +83,4 @@ On [GitHub](https://github.com/KTNG-3/val-api) Will Update Before This Package U
 - *Legal*
   - >**@ing3kth/val-api** isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games, and all associated properties are trademarks or registered trademarks of Riot Games, Inc.
   - **@ing3kth/val-api** was created under [Riot Games' "Legal Jibber Jabber"](https://www.riotgames.com/en/legal)
-  - [MIT License](https://github.com/KTNG-3/val-api/blob/main/LICENSE)
+  - [MIT License](https://github.com/KTNG-3/valorant-api/blob/main/LICENSE)

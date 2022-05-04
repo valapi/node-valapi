@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/KTNG-3/val-api.git"
+    "url": "git+ssh://git@github.com/KTNG-3/valorant-api.git"
   },
   "keywords": [
     "valorant",
@@ -42,9 +42,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/KTNG-3/val-api/issues"
+    "url": "https://github.com/KTNG-3/valorant-api/issues"
   },
-  "homepage": "https://github.com/KTNG-3/val-api#readme",
+  "homepage": "https://github.com/KTNG-3/valorant-api#readme",
   "dependencies": {
     "@ing3kth/core": "^1.8.3-beta.3",
     "axios": "^0.27.2",
