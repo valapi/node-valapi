@@ -25,7 +25,7 @@ import { ContentV1 } from "../service/RiotApi/ContentV1";
 class RiotApi {
     public classId:string;
     private apiKey:string;
-    private region:string | any;
+    private region:keyof typeof _Region;
 
     //reload
     private RegionServices:IValRegion;
@@ -114,7 +114,7 @@ class RiotApi {
     /**
     * @param {String} region Region
     */
-    public setRegion(region:string):void {
+    public setRegion(region:keyof typeof _Region):void {
         this.region = region;
 
         IngCore.Logs.log(this.classId + " SetRegion '" + this.region + "'");
