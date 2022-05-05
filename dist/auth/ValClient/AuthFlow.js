@@ -69,12 +69,16 @@ class AuthFlow {
             const axiosClient = new AxiosClient_1.AxiosClient({
                 jar: this.cookie,
                 withCredentials: true,
+                timeout: this.expires_in * 1000,
             });
             //multifactor
             if (auth_response.data.type && auth_response.data.type == 'multifactor') {
                 this.multifactor = true;
                 yield IngCore.Logs.log(this.classId + " Export Multi-Factor");
                 return this.toJSON();
+            }
+            else {
+                this.multifactor = false;
             }
             // get asscess token
             const Search_URL = new URL(auth_response.data.response.parameters.uri);
@@ -98,6 +102,14 @@ class AuthFlow {
                     'Authorization': `${this.token_type} ${this.access_token}`,
                 }
             });
+            if (region_response.isError === true) {
+                this.region = {
+                    pbe: 'na',
+                    live: 'na',
+                };
+                yield IngCore.Logs.log(this.classId + " Please use 'ValClient.setRegion()' after auth", 'warning', true);
+                return this.toJSON();
+            }
             this.region.pbe = region_response.data.affinities.pbe;
             this.region.live = region_response.data.affinities.live;
             return this.toJSON();
@@ -128,6 +140,29 @@ class AuthFlow {
     static execute(data, auth_response) {
         return __awaiter(this, void 0, void 0, function* () {
             const _newAuthFlow = new AuthFlow(data);
+            return yield _newAuthFlow.execute(auth_response);
+        });
+    }
+    /**
+     * @param {IValClient_Auth} data Account toJSON data
+     * @param {string} url Url of First Auth Response
+     * @param {string} auth_type Auth Type
+     * @returns {Promise<IValClient_Auth>}
+     */
+    static fromUrl(data, url, auth_type = 'auth') {
+        return __awaiter(this, void 0, void 0, function* () {
+            const _newAuthFlow = new AuthFlow(data);
+            const auth_response = {
+                isError: false,
+                data: {
+                    type: auth_type,
+                    response: {
+                        parameters: {
+                            uri: url,
+                        },
+                    },
+                },
+            };
             return yield _newAuthFlow.execute(auth_response);
         });
     }

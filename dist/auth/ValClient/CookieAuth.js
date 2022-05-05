@@ -32,7 +32,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Multifactor = void 0;
+exports.CookieAuth = void 0;
 //import
 const tough_cookie_1 = require("tough-cookie");
 const IngCore = __importStar(require("@ing3kth/core"));
@@ -40,17 +40,19 @@ const AxiosClient_1 = require("../../client/AxiosClient");
 const AuthFlow_1 = require("./AuthFlow");
 //class
 /**
- * * Class ID: @ing3kth/val-api/ValClient/Multifactor
+ * *Not Recommend*
+ *
+ * * Class ID: @ing3kth/val-api/ValClient/CookieAuth
  */
-class Multifactor {
+class CookieAuth {
     /**
     * @param {IValClient_Auth} data Account toJSON data
     */
     constructor(data) {
-        if (!data.multifactor) {
-            IngCore.Logs.log('This Account is not have a Multifactor', 'error', true);
+        if (data.multifactor) {
+            IngCore.Logs.log('This Account is have a Multifactor', 'error', true);
         }
-        this.classId = '@ing3kth/val-api/ValClient/Multifactor';
+        this.classId = '@ing3kth/val-api/ValClient/CookieAuth';
         this.cookie = tough_cookie_1.CookieJar.fromJSON(JSON.stringify(data.cookie));
         this.access_token = data.access_token;
         this.id_token = data.id_token;
@@ -61,10 +63,9 @@ class Multifactor {
         this.multifactor = data.multifactor;
     }
     /**
-    * @param {Number} verificationCode Verification Code
-    * @returns {Promise<IValClient_Auth>}
+    * @returns {Promise<any>}
     */
-    execute(verificationCode) {
+    execute() {
         return __awaiter(this, void 0, void 0, function* () {
             const axiosClient = new AxiosClient_1.AxiosClient({
                 jar: this.cookie,
@@ -72,18 +73,18 @@ class Multifactor {
                 headers: {
                     'User-Agent': IngCore.Config["val-api"].ValClient.auth["User-Agent"],
                 },
-                timeout: this.expires_in * 1000,
-            });
-            //ACCESS TOKEN
-            const auth_response = yield axiosClient.put('https://auth.riotgames.com/api/v1/authorization', {
-                "type": "multifactor",
-                "code": verificationCode.toString(),
-                "rememberDevice": true
-            });
-            if (!auth_response.isError) {
-                this.multifactor = false;
+                maxRedirects: 1,
+            }).axiosClient;
+            //Cookie Reauth
+            var reauth_response;
+            try {
+                reauth_response = yield axiosClient.get('https://auth.riotgames.com/authorize?redirect_uri=https%3A%2F%2Fplayvalorant.com%2Fopt_in&client_id=play-valorant-web-prod&response_type=token%20id_token&nonce=1');
             }
-            return yield AuthFlow_1.AuthFlow.execute(this.toJSON(), auth_response);
+            catch (err) {
+                return yield AuthFlow_1.AuthFlow.fromUrl(this.toJSON(), err.request._currentUrl);
+            }
+            IngCore.Logs.log(this.classId + ' URL not find', 'error', true);
+            return this.toJSON();
         });
     }
     /**
@@ -105,15 +106,14 @@ class Multifactor {
     }
     /**
     * @param {IValClient_Auth} data ValAuth_Account toJSON data
-    * @param {Number} verificationCode Verification Code
     * @returns {Promise<IValClient_Auth>}
     */
-    static verify(data, verificationCode) {
+    static reauth(data) {
         return __awaiter(this, void 0, void 0, function* () {
-            const MultifactorAccount = new Multifactor(data);
-            return yield MultifactorAccount.execute(verificationCode);
+            const CookieAccount = new CookieAuth(data);
+            return yield CookieAccount.execute();
         });
     }
 }
-exports.Multifactor = Multifactor;
-//# sourceMappingURL=Multifactor.js.map
+exports.CookieAuth = CookieAuth;
+//# sourceMappingURL=CookieAuth.js.map

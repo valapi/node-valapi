@@ -54,6 +54,7 @@ class AuthFlow {
         const axiosClient:AxiosClient = new AxiosClient({
             jar: this.cookie,
             withCredentials: true,
+            timeout: this.expires_in * 1000,
         });
 
         //multifactor
@@ -62,6 +63,8 @@ class AuthFlow {
 
             await IngCore.Logs.log(this.classId + " Export Multi-Factor");
             return this.toJSON();
+        } else {
+            this.multifactor = false;
         }
 
         // get asscess token
@@ -91,9 +94,18 @@ class AuthFlow {
             }
         });
 
+        if(region_response.isError === true){
+            this.region = {
+                pbe: 'na',
+                live: 'na',
+            }
+
+            await IngCore.Logs.log(this.classId + " Please use 'ValClient.setRegion()' after auth", 'warning', true);
+            return this.toJSON();
+        }
+
         this.region.pbe = region_response.data.affinities.pbe;
         this.region.live = region_response.data.affinities.live;
-
         return this.toJSON();
     }
 
@@ -123,6 +135,30 @@ class AuthFlow {
      */
     static async execute(data:IValClient_Auth, auth_response:IAxiosClient):Promise<IValClient_Auth> {
         const _newAuthFlow:AuthFlow = new AuthFlow(data);
+        return await _newAuthFlow.execute(auth_response);
+    }
+
+    /**
+     * @param {IValClient_Auth} data Account toJSON data
+     * @param {string} url Url of First Auth Response
+     * @param {string} auth_type Auth Type
+     * @returns {Promise<IValClient_Auth>}
+     */
+    static async fromUrl(data:IValClient_Auth, url:string, auth_type:string = 'auth'):Promise<IValClient_Auth> {
+        const _newAuthFlow:AuthFlow = new AuthFlow(data);
+
+        const auth_response:IAxiosClient = {
+            isError: false,
+            data: {
+                type: auth_type,
+                response: {
+                    parameters: {
+                        uri: url,
+                    },
+                },
+            },
+        };
+
         return await _newAuthFlow.execute(auth_response);
     }
 }

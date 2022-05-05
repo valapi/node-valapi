@@ -33,6 +33,13 @@ declare class AuthFlow {
      * @returns {Promise<IValClient_Auth>}
      */
     static execute(data: IValClient_Auth, auth_response: IAxiosClient): Promise<IValClient_Auth>;
+    /**
+     * @param {IValClient_Auth} data Account toJSON data
+     * @param {string} url Url of First Auth Response
+     * @param {string} auth_type Auth Type
+     * @returns {Promise<IValClient_Auth>}
+     */
+    static fromUrl(data: IValClient_Auth, url: string, auth_type?: string): Promise<IValClient_Auth>;
 }
 export { AuthFlow };
 //# sourceMappingURL=AuthFlow.d.ts.map

@@ -90,7 +90,7 @@ class Account {
                 'password': password,
                 'remember': true,
             });
-            return AuthFlow_1.AuthFlow.execute(this.toJSON(), auth_response);
+            return yield AuthFlow_1.AuthFlow.execute(this.toJSON(), auth_response);
         });
     }
     /**

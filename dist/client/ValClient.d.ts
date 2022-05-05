@@ -11,6 +11,7 @@ import { PreGame } from "../service/ValClient/PreGame";
 import { Store } from "../service/ValClient/Store";
 import { Account as Auth_Account } from "../auth/ValClient/Account";
 import { Multifactor as Auth_Multifactor } from "../auth/ValClient/Multifactor";
+import { CookieAuth as Auth_Cookie } from "../auth/ValClient/CookieAuth";
 /**
  * * Class ID: @ing3kth/val-api/ValClient
  * * Use Anywhere: true
@@ -80,6 +81,7 @@ declare class ValClient {
     static Auth: {
         login: typeof Auth_Account.login;
         verify: typeof Auth_Multifactor.verify;
+        cookie: typeof Auth_Cookie.reauth;
     };
 }
 export { ValClient, type ValClient_Service };

@@ -11,10 +11,10 @@ import type { IAxiosClient } from "../../resources/interface/IAxiosClient";
  * * Class ID: @ing3kth/val-api/RiotApi/StatusV1
  */
 class StatusV1 {
-    classId:string;
-    apiKey:string;
-    region:IValRegion;
-    AxiosClient:AxiosClient;
+    public classId:string;
+    private apiKey:string;
+    private region:IValRegion;
+    private AxiosClient:AxiosClient;
 
     /**
     * @param {JSON} data Services Data
@@ -30,7 +30,7 @@ class StatusV1 {
     /**
      * @returns {Promise<IAxiosClient>}
      */
-    async PlatformData():Promise<IAxiosClient> {
+     public async PlatformData():Promise<IAxiosClient> {
         return await this.AxiosClient.get(this.region.riot.server + `/val/status/v1/platform-data` + `?api_key=${this.apiKey}`);
     }
 }

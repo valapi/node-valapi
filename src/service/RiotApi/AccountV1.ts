@@ -13,10 +13,10 @@ type AccountV1_ByGame_Game = 'val' | 'lor';
  * * Class ID: @ing3kth/val-api/RiotApi/AccountV1
  */
 class AccountV1 {
-    classId:string;
-    apiKey:string;
-    region:IValRegion;
-    AxiosClient:AxiosClient;
+    public classId:string;
+    private apiKey:string;
+    private region:IValRegion;
+    private AxiosClient:AxiosClient;
 
     /**
     * @param {JSON} data Services Data
@@ -35,7 +35,7 @@ class AccountV1 {
      * @param {String} tagLine In-Game Tag
      * @returns {Promise<IAxiosClient>}
      */
-    async ByRiotId(gameName:string, tagLine:string):Promise<IAxiosClient> {
+     public async ByRiotId(gameName:string, tagLine:string):Promise<IAxiosClient> {
         return await this.AxiosClient.get(this.region.riot.api + `/riot/account/v1/accounts/by-riot-id/${gameName}/${tagLine}` + `?api_key=${this.apiKey}`);
     }
 
@@ -44,7 +44,7 @@ class AccountV1 {
      * @param {String} puuid Player UUID
      * @returns {Promise<IAxiosClient>}
      */
-     async ByPuuid(puuid:string):Promise<IAxiosClient> {
+     public async ByPuuid(puuid:string):Promise<IAxiosClient> {
         return await this.AxiosClient.get(this.region.riot.api + `/riot/account/v1/accounts/by-puuid/${puuid}` + `?api_key=${this.apiKey}`);
     }
 
@@ -54,7 +54,7 @@ class AccountV1 {
      * @param {String} game Game
      * @returns {Promise<IAxiosClient>}
      */
-    async ByGame(puuid:string, game:AccountV1_ByGame_Game = 'val'):Promise<IAxiosClient> {
+     public async ByGame(puuid:string, game:AccountV1_ByGame_Game = 'val'):Promise<IAxiosClient> {
         return await this.AxiosClient.get(this.region.riot.api + `/riot/account/v1/active-shards/by-game/${game}/by-puuid/${puuid}` + `?api_key=${this.apiKey}`);
     }
 }

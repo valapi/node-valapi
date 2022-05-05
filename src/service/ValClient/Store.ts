@@ -13,9 +13,9 @@ import ItemTypeId from "../../resources/data/ItemTypeId";
  * * Class ID: @ing3kth/val-api/ValClient/Store
  */
 class Store {
-    classId:string
-    AxiosClient:AxiosClient;
-    Region:IValRegion;
+    public classId:string
+    private AxiosClient:AxiosClient;
+    private Region:IValRegion;
     
     /**
     * @param {ValClient_Service} data Services Data
@@ -31,14 +31,14 @@ class Store {
     * @param {String} itemType Item Type
     * @returns {Promise<IAxiosClient>}
     */
-     async GetEntitlements(puuid:string, itemType:keyof typeof ItemTypeId.data):Promise<IAxiosClient> {
+     public async GetEntitlements(puuid:string, itemType:keyof typeof ItemTypeId.data):Promise<IAxiosClient> {
         return await this.AxiosClient.get(this.Region.url.playerData + `/store/v1/entitlements/${puuid}/${ItemTypeId.data[itemType]}`);
     }
 
     /**
      * @returns {Promise<IAxiosClient>}
     */
-     async GetOffers():Promise<IAxiosClient> {
+     public async GetOffers():Promise<IAxiosClient> {
         return await this.AxiosClient.get(this.Region.url.playerData + `/store/v1/offers/`);
     }
 
@@ -46,7 +46,7 @@ class Store {
     * @param {String} puuid Player UUID
     * @returns {Promise<IAxiosClient>}
     */
-     async GetStorefront(puuid:string):Promise<IAxiosClient> {
+     public async GetStorefront(puuid:string):Promise<IAxiosClient> {
         return await this.AxiosClient.get(this.Region.url.playerData + `/store/v2/storefront/${puuid}`);
     }
 
@@ -54,7 +54,7 @@ class Store {
     * @param {String} puuid Player UUID
     * @returns {Promise<IAxiosClient>}
     */
-     async GetWallet(puuid:string):Promise<IAxiosClient> {
+     public async GetWallet(puuid:string):Promise<IAxiosClient> {
         return await this.AxiosClient.get(this.Region.url.playerData + `/store/v1/wallet/${puuid}`);
     }
 }

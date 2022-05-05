@@ -1,6 +1,4 @@
-import { AxiosClient } from "../../client/AxiosClient";
 import type { IRiotApi_Service } from "../../resources/interface/IRiotApi";
-import type { IValRegion } from "../../resources/interface/IValRegion";
 import type { IAxiosClient } from "../../resources/interface/IAxiosClient";
 import _Locale from "../../resources/data/Locale";
 /**
@@ -8,9 +6,9 @@ import _Locale from "../../resources/data/Locale";
  */
 declare class ContentV1 {
     classId: string;
-    apiKey: string;
-    region: IValRegion;
-    AxiosClient: AxiosClient;
+    private apiKey;
+    private region;
+    private AxiosClient;
     /**
     * @param {JSON} data Services Data
     */

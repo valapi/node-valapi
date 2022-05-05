@@ -40,6 +40,7 @@ const PreGame_1 = require("../service/ValClient/PreGame");
 const Store_1 = require("../service/ValClient/Store");
 const Account_1 = require("../auth/ValClient/Account");
 const Multifactor_1 = require("../auth/ValClient/Multifactor");
+const CookieAuth_1 = require("../auth/ValClient/CookieAuth");
 //class
 /**
  * * Class ID: @ing3kth/val-api/ValClient
@@ -211,5 +212,6 @@ exports.ValClient = ValClient;
 ValClient.Auth = {
     login: Account_1.Account.login,
     verify: Multifactor_1.Multifactor.verify,
+    cookie: CookieAuth_1.CookieAuth.reauth,
 };
 //# sourceMappingURL=ValClient.js.map

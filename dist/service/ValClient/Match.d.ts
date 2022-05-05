@@ -1,6 +1,4 @@
-import { AxiosClient } from "../../client/AxiosClient";
 import type { ValClient_Service } from "../../client/ValClient";
-import type { IValRegion } from "../../resources/interface/IValRegion";
 import type { IAxiosClient } from "../../resources/interface/IAxiosClient";
 import QueueId from "../../resources/data/QueueId";
 /**
@@ -8,8 +6,8 @@ import QueueId from "../../resources/data/QueueId";
  */
 declare class Match {
     classId: string;
-    AxiosClient: AxiosClient;
-    Region: IValRegion;
+    private AxiosClient;
+    private Region;
     /**
     * @param {ValClient_Service} data Services Data
     */

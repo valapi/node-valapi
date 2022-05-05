@@ -11,9 +11,9 @@ import type { IAxiosClient } from "../../resources/interface/IAxiosClient";
  * * Class ID: @ing3kth/val-api/ValClient/Coregame
  */
 class CurrentGame {
-    classId:string
-    AxiosClient:AxiosClient;
-    Region:IValRegion;
+    public classId:string
+    private AxiosClient:AxiosClient;
+    private Region:IValRegion;
     
     /**
     * @param {ValClient_Service} data Services Data
@@ -28,7 +28,7 @@ class CurrentGame {
     * @param {String} matchId Match ID
     * @returns {Promise<IAxiosClient>}
     */
-    async FetchMatch(matchId:string):Promise<IAxiosClient> {
+     public async FetchMatch(matchId:string):Promise<IAxiosClient> {
         return await this.AxiosClient.get(this.Region.url.partyService + `/core-game/v1/matches/${matchId}`);
     }
 
@@ -36,7 +36,7 @@ class CurrentGame {
     * @param {String} matchId Match ID
     * @returns {Promise<IAxiosClient>}
     */
-     async FetchMatchLoadouts(matchId:string):Promise<IAxiosClient> {
+     public async FetchMatchLoadouts(matchId:string):Promise<IAxiosClient> {
         return await this.AxiosClient.get(this.Region.url.partyService + `/core-game/v1/matches/${matchId}/loadouts`);
     }
 
@@ -44,7 +44,7 @@ class CurrentGame {
     * @param {String} puuid PlayerUUID
     * @returns {Promise<IAxiosClient>}
     */
-     async FetchPlayer(puuid:string):Promise<IAxiosClient> {
+     public async FetchPlayer(puuid:string):Promise<IAxiosClient> {
         return await this.AxiosClient.get(this.Region.url.partyService + `/core-game/v1/players/${puuid}`);
     }
 
@@ -54,7 +54,7 @@ class CurrentGame {
     * @param {String} matchId Match ID
     * @returns {Promise<IAxiosClient>}
     */
-     async DisassociatePlayer(puuid:string, matchId:string):Promise<IAxiosClient> {
+     public async DisassociatePlayer(puuid:string, matchId:string):Promise<IAxiosClient> {
         return await this.AxiosClient.post(this.Region.url.partyService + `/core-game/v1/players/${puuid}/disassociate/${matchId}`);
     }
 }

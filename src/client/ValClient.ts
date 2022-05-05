@@ -22,6 +22,7 @@ import { Store } from "../service/ValClient/Store";
 
 import { Account as Auth_Account } from "../auth/ValClient/Account";
 import { Multifactor as Auth_Multifactor } from "../auth/ValClient/Multifactor";
+import { CookieAuth as Auth_Cookie } from "../auth/ValClient/CookieAuth";
 
 //class
 
@@ -241,6 +242,7 @@ class ValClient {
     static Auth = {
         login: Auth_Account.login,
         verify: Auth_Multifactor.verify,
+        cookie: Auth_Cookie.reauth,
     }
 }
 

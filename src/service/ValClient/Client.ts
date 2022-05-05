@@ -11,9 +11,9 @@ import type { IAxiosClient } from "../../resources/interface/IAxiosClient";
  * * Class ID: @ing3kth/val-api/ValClient/Client
  */
 class Client {
-    classId:string
-    AxiosClient:AxiosClient;
-    Region:IValRegion;
+    public classId:string
+    private AxiosClient:AxiosClient;
+    private Region:IValRegion;
 
     /**
     * @param {ValClient_Service} data Services Data
@@ -29,7 +29,7 @@ class Client {
     * @param {String} puuid Player UUID
     * @returns {Promise<IAxiosClient>}
     */
-     async GetSession(puuid:string):Promise<IAxiosClient> {
+     public async GetSession(puuid:string):Promise<IAxiosClient> {
         return await this.AxiosClient.get(this.Region.url.partyService + `/session/v1/sessions/${puuid}`);
     }
 
@@ -38,14 +38,14 @@ class Client {
     /**
      * @returns {Promise<IAxiosClient>}
     */
-     async FetchContent():Promise<IAxiosClient> {
+     public async FetchContent():Promise<IAxiosClient> {
         return await this.AxiosClient.get(this.Region.url.sharedData + `/content-service/v3/content`);
     }
 
     /**
      * @returns {Promise<IAxiosClient>}
     */
-     async FetchConfig():Promise<IAxiosClient> {
+     public async FetchConfig():Promise<IAxiosClient> {
         return await this.AxiosClient.get(this.Region.url.sharedData + `/v1/config/${this.Region.data.api}`);
     }
 }

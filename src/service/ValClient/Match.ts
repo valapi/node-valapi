@@ -13,9 +13,9 @@ import QueueId from "../../resources/data/QueueId";
  * * Class ID: @ing3kth/val-api/ValClient/Match
  */
 class Match {
-    classId:string
-    AxiosClient:AxiosClient;
-    Region:IValRegion;
+    public classId:string
+    private AxiosClient:AxiosClient;
+    private Region:IValRegion;
     
     /**
     * @param {ValClient_Service} data Services Data
@@ -33,7 +33,7 @@ class Match {
     * @param {String} matchId Match ID
     * @returns {Promise<IAxiosClient>}
     */
-     async FetchMatchDetails(matchId:string):Promise<IAxiosClient> {
+     public async FetchMatchDetails(matchId:string):Promise<IAxiosClient> {
         return await this.AxiosClient.get(this.Region.url.playerData + `/match-details/v1/matches/${matchId}`);
     }
 
@@ -44,7 +44,7 @@ class Match {
     * @param {Number} endIndex End Index
     * @returns {Promise<IAxiosClient>}
     */
-     async FetchMatchHistory(puuid:string, queue?:keyof typeof QueueId.data, startIndex:number = 0, endIndex:number = 10):Promise<IAxiosClient> {
+     public async FetchMatchHistory(puuid:string, queue?:keyof typeof QueueId.data, startIndex:number = 0, endIndex:number = 10):Promise<IAxiosClient> {
         let _url = this.Region.url.playerData + `/match-history/v1/history/${puuid}?startIndex=${String(startIndex)}&endIndex=${String(endIndex)}` ;
         if(queue) {
             _url += `&queue=${QueueId.data[queue]}`;

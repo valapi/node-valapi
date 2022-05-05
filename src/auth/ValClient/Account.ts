@@ -77,7 +77,7 @@ class Account {
             'remember': true,
         });
 
-        return AuthFlow.execute(this.toJSON(), auth_response);
+        return await AuthFlow.execute(this.toJSON(), auth_response);
     }
 
     /**

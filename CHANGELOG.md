@@ -1,3 +1,11 @@
+# 1.6.2 (Date Here | In Development)
+
+### ValClient
+- Cookie ReAuth - *beta*
+- - ValClient.Auth.Cookie(ValClient_Auth)
+### Typescript
+- A little bit changes
+
 # 1.6.1 (3 May, 2022 | In Development)
 
 ### ValRegion

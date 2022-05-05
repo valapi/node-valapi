@@ -11,9 +11,9 @@ import type { IAxiosClient } from "../../resources/interface/IAxiosClient";
  * * Class ID: @ing3kth/val-api/ValClient/Pregame
  */
 class PreGame {
-    classId:string
-    AxiosClient:AxiosClient;
-    Region:IValRegion;
+    public classId:string
+    private AxiosClient:AxiosClient;
+    private Region:IValRegion;
     
     /**
     * @param {ValClient_Service} data Services Data
@@ -28,7 +28,7 @@ class PreGame {
     * @param {String} matchId Match ID
     * @returns {Promise<IAxiosClient>}
     */
-     async GetMatch(matchId:string):Promise<IAxiosClient> {
+     public async GetMatch(matchId:string):Promise<IAxiosClient> {
         return await this.AxiosClient.get(this.Region.url.partyService + `/pregame/v1/matches/${matchId}`);
     }
 
@@ -36,7 +36,7 @@ class PreGame {
     * @param {String} matchId Match ID
     * @returns {Promise<IAxiosClient>}
     */
-     async GetMatchLoadouts(matchId:string):Promise<IAxiosClient> {
+     public async GetMatchLoadouts(matchId:string):Promise<IAxiosClient> {
         return await this.AxiosClient.get(this.Region.url.partyService + `/pregame/v1/matches/${matchId}/loadouts`);
     }
 
@@ -44,7 +44,7 @@ class PreGame {
     * @param {String} puuid Player UUID
     * @returns {Promise<IAxiosClient>}
     */
-     async GetPlayer(puuid:string):Promise<IAxiosClient> {
+     public async GetPlayer(puuid:string):Promise<IAxiosClient> {
         return await this.AxiosClient.get(this.Region.url.partyService + `/pregame/v1/players/${puuid}`);
     }
 
@@ -53,7 +53,7 @@ class PreGame {
     * @param {String} agentId Character ID
     * @returns {Promise<IAxiosClient>}
     */
-     async LockCharacter(matchId:string, agentId:string):Promise<IAxiosClient> {
+     public async LockCharacter(matchId:string, agentId:string):Promise<IAxiosClient> {
         return await this.AxiosClient.post(this.Region.url.partyService + `/pregame/v1/matches/${matchId}/lock/${agentId}`);
     }
 
@@ -62,7 +62,7 @@ class PreGame {
     * @param {String} matchId Match ID
     * @returns {Promise<IAxiosClient>}
     */
-     async QuitMatch(matchId:string):Promise<IAxiosClient> {
+     public async QuitMatch(matchId:string):Promise<IAxiosClient> {
         return await this.AxiosClient.post(this.Region.url.partyService + `/pregame/v1/matches/${matchId}/quit`);
     }
 
@@ -71,7 +71,7 @@ class PreGame {
     * @param {String} agentId Character ID
     * @returns {Promise<IAxiosClient>}
     */
-     async SelectCharacter(matchId:string, agentId:string):Promise<IAxiosClient> {
+     public async SelectCharacter(matchId:string, agentId:string):Promise<IAxiosClient> {
         return await this.AxiosClient.post(this.Region.url.partyService + `/pregame/v1/matches/${matchId}/select/${agentId}`);
     }
 }

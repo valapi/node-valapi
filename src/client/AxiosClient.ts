@@ -53,7 +53,6 @@ class AxiosClient {
         try{
             response = await this.axiosClient.get(url, config);
             await Logs.log(this.classId + " GET " + url, 'info');
-
         }catch(err:AxiosError | any){
             response = err.response;
             ERRoR = true;

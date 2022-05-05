@@ -11,9 +11,9 @@ import type { IAxiosClient } from "../../resources/interface/IAxiosClient";
  * * Class ID: @ing3kth/val-api/ValClient/Contract
  */
 class Contract {
-    classId:string
-    AxiosClient:AxiosClient;
-    Region:IValRegion;
+    public classId:string
+    private AxiosClient:AxiosClient;
+    private Region:IValRegion;
 
     /**
     * @param {ValClient_Service} data Services Data
@@ -27,7 +27,7 @@ class Contract {
     /**
      * @returns {Promise<IAxiosClient>}
     */
-    async DefinitionsFetch():Promise<IAxiosClient> {
+     public async DefinitionsFetch():Promise<IAxiosClient> {
         return await this.AxiosClient.get(this.Region.url.playerData + `/contract-definitions/v3/item-upgrades`);
     }
 
@@ -35,7 +35,7 @@ class Contract {
     * @param {String} puuid Player UUID
     * @returns {Promise<IAxiosClient>}
     */
-    async Fetch(puuid:string):Promise<IAxiosClient> {
+     public async Fetch(puuid:string):Promise<IAxiosClient> {
         return await this.AxiosClient.get(this.Region.url.playerData + `/contracts/v1/contracts/${puuid}`);
     }
 
@@ -44,7 +44,7 @@ class Contract {
     * @param {String} contractId Contract ID
     * @returns {Promise<IAxiosClient>}
     */
-    async Activate(puuid:string, contractId:string):Promise<IAxiosClient> {
+     public async Activate(puuid:string, contractId:string):Promise<IAxiosClient> {
         return await this.AxiosClient.post(this.Region.url.playerData + `/contracts/v1/contracts/${puuid}/special/${contractId}`);
     }
 }
