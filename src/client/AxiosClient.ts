@@ -32,8 +32,8 @@ class AxiosClient {
                 'TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256'
             ];
 
-            config.httpAgent = new HttpCookieAgent({ jar: config.jar });
-            config.httpsAgent = new HttpsCookieAgent({ jar: config.jar, ciphers: ciphers.join(':'), honorCipherOrder: true, minVersion: 'TLSv1.2' });
+            config.httpAgent = new HttpCookieAgent({ jar: config.jar, keepAlive: true });
+            config.httpsAgent = new HttpsCookieAgent({ jar: config.jar, keepAlive: true, ciphers: ciphers.join(':'), honorCipherOrder: true, minVersion: 'TLSv1.2' });
 
             delete config.jar;
         }

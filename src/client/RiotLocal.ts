@@ -10,7 +10,7 @@ import Auth_Resource from '../auth/RiotLocal/Resource';
 import { AxiosClient } from "./AxiosClient";
 
 import getLockfile from '../auth/RiotLocal/Lockfile';
-import { Agent } from "https";
+import { Agent as HttpsAgent } from "https";
 
 //class
 
@@ -29,7 +29,6 @@ class RiotLocal {
 
     //reload
     private AxiosClient: AxiosClient;
-    private baseUrl: string;
 
     /**
      * @param {IRiotLocal_Lockfile} lockfile lockfile data
@@ -50,12 +49,17 @@ class RiotLocal {
         //first reload
         const _base64 = toBase64(`${_config['val-api'].RiotLocal.username}:${this.lockfile.password}`);
         this.AxiosClient = new AxiosClient({
-            httpsAgent: new Agent({ rejectUnauthorized: false }),
+            httpsAgent: new HttpsAgent({ rejectUnauthorized: false }),
             headers: {
                 'Authorization': `Basic ${_base64}`,
             },
+            proxy: {
+                protocol: this.lockfile.protocol,
+                host: this.ip,
+                port: this.lockfile.port,
+            },
+            baseURL: `${this.lockfile.protocol}://${this.ip}:${this.lockfile.port}`,
         });
-        this.baseUrl = `${this.lockfile.protocol}://${this.ip}:${this.lockfile.port}`;
     }
 
     /**
@@ -64,12 +68,17 @@ class RiotLocal {
     private reload():void {
         const _base64 = toBase64(`${_config['val-api'].RiotLocal.username}:${this.lockfile.password}`);
         this.AxiosClient = new AxiosClient({
-            httpsAgent: new Agent({ rejectUnauthorized: false }),
+            httpsAgent: new HttpsAgent({ rejectUnauthorized: false }),
             headers: {
                 'Authorization': `Basic ${_base64}`,
             },
+            proxy: {
+                protocol: this.lockfile.protocol,
+                host: this.ip,
+                port: this.lockfile.port,
+            },
+            baseURL: `${this.lockfile.protocol}://${this.ip}:${this.lockfile.port}`,
         });
-        this.baseUrl = `${this.lockfile.protocol}://${this.ip}:${this.lockfile.port}`;
         
         IngCore.Logs.log(this.classId + " Reload");
     }
@@ -138,15 +147,15 @@ class RiotLocal {
     public async request(method:IRiotLocal_JSON_Method = 'get', endpoint = '/help', body = {}):Promise<IAxiosClient> {
         switch (method.toLowerCase()) {
             case 'get':
-                return await this.AxiosClient.get(this.baseUrl + endpoint);
+                return await this.AxiosClient.get(endpoint);
             case 'post':
-                return await this.AxiosClient.post(this.baseUrl + endpoint, body);
+                return await this.AxiosClient.post(endpoint, body);
             case 'put':
-                return await this.AxiosClient.put(this.baseUrl + endpoint, body);
+                return await this.AxiosClient.put(endpoint, body);
             case 'patch':
-                return await this.AxiosClient.patch(this.baseUrl + endpoint, body);
+                return await this.AxiosClient.patch(endpoint, body);
             case 'delete':
-                return await this.AxiosClient.delete(this.baseUrl + endpoint);
+                return await this.AxiosClient.delete(endpoint);
         }
 
         return {

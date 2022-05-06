@@ -31,8 +31,8 @@ class AxiosClient {
                 'TLS_AES_256_GCM_SHA384',
                 'TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256'
             ];
-            config.httpAgent = new http_cookie_agent_1.HttpCookieAgent({ jar: config.jar });
-            config.httpsAgent = new http_cookie_agent_1.HttpsCookieAgent({ jar: config.jar, ciphers: ciphers.join(':'), honorCipherOrder: true, minVersion: 'TLSv1.2' });
+            config.httpAgent = new http_cookie_agent_1.HttpCookieAgent({ jar: config.jar, keepAlive: true });
+            config.httpsAgent = new http_cookie_agent_1.HttpsCookieAgent({ jar: config.jar, keepAlive: true, ciphers: ciphers.join(':'), honorCipherOrder: true, minVersion: 'TLSv1.2' });
             delete config.jar;
         }
         this.axiosClient = axios_1.default.create(config);

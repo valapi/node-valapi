@@ -14,7 +14,6 @@ declare class RiotLocal {
     private lockfile;
     private ip;
     private AxiosClient;
-    private baseUrl;
     /**
      * @param {IRiotLocal_Lockfile} lockfile lockfile data
      * @param {String} ip IP of local api

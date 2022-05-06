@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@ing3kth/core@^1.8.3-beta.3":
-  "integrity" "sha512-8C8cACpDXN6yWcgEQpBk8irqHBKveGWqPYuLX2j31hvEZt2YMWDKzg+v2X6i0PkO3P8H5BY34Jnec9QQecwcKA=="
-  "resolved" "https://registry.npmjs.org/@ing3kth/core/-/core-1.8.3-beta.3.tgz"
-  "version" "1.8.3-beta.3"
+"@ing3kth/core@^1.8.4":
+  "integrity" "sha512-s8k5D6Fazw/oMetx+FAk+nRSMtss74z9hkrP9811ScyusTQUT1/L69FKWKTslvR2zJ0VxXkCuvJatVpj6x231A=="
+  "resolved" "https://registry.npmjs.org/@ing3kth/core/-/core-1.8.4.tgz"
+  "version" "1.8.4"
   dependencies:
     "axios" "^0.27.2"
     "commander" "^9.2.0"
@@ -75,9 +75,9 @@
   "version" "1.0.0"
 
 "follow-redirects@^1.14.9":
-  "integrity" "sha512-MQDfihBQYMcyy5dhRDJUHcw7lb2Pv/TuE6xP1vyraLukNDHKbDxDNaOE3NbCAdKQApno+GPRyo1YAp89yCjK4w=="
-  "resolved" "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.14.9.tgz"
-  "version" "1.14.9"
+  "integrity" "sha512-aExlJShTV4qOUOL7yF1U5tvLCB0xQuudbf6toyYA0E/acBNw71mvjFTnLaRp50aQaYocMR0a/RMMBIHeZnGyjQ=="
+  "resolved" "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.0.tgz"
+  "version" "1.15.0"
 
 "form-data@^4.0.0":
   "integrity" "sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww=="
@@ -88,10 +88,10 @@
     "combined-stream" "^1.0.8"
     "mime-types" "^2.1.12"
 
-"http-cookie-agent@^2.0.0":
-  "integrity" "sha512-FHz6qr/U5UB55y+gSJd3qUkqsmMxz/dqjfNZ3DXi8l5atCiD0C+uRwFSbijSibYKFYnSvzp2t1HXx3ZJ5GZ2zA=="
-  "resolved" "https://registry.npmjs.org/http-cookie-agent/-/http-cookie-agent-2.0.0.tgz"
-  "version" "2.0.0"
+"http-cookie-agent@^2.1.0":
+  "integrity" "sha512-v1/X3XX7yNsFYqlMLmD4VUioZE7E+NMuX8FeE4MobkAsYu0if7rxvbNB9sWgmV+F1TeaCwHKEisnucb52MAVbw=="
+  "resolved" "https://registry.npmjs.org/http-cookie-agent/-/http-cookie-agent-2.1.0.tgz"
+  "version" "2.1.0"
   dependencies:
     "agent-base" "^6.0.2"
 

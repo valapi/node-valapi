@@ -75,8 +75,13 @@ class RiotLocal {
             headers: {
                 'Authorization': `Basic ${_base64}`,
             },
+            proxy: {
+                protocol: this.lockfile.protocol,
+                host: this.ip,
+                port: this.lockfile.port,
+            },
+            baseURL: `${this.lockfile.protocol}://${this.ip}:${this.lockfile.port}`,
         });
-        this.baseUrl = `${this.lockfile.protocol}://${this.ip}:${this.lockfile.port}`;
     }
     /**
      * @returns {void}
@@ -88,8 +93,13 @@ class RiotLocal {
             headers: {
                 'Authorization': `Basic ${_base64}`,
             },
+            proxy: {
+                protocol: this.lockfile.protocol,
+                host: this.ip,
+                port: this.lockfile.port,
+            },
+            baseURL: `${this.lockfile.protocol}://${this.ip}:${this.lockfile.port}`,
         });
-        this.baseUrl = `${this.lockfile.protocol}://${this.ip}:${this.lockfile.port}`;
         IngCore.Logs.log(this.classId + " Reload");
     }
     /**
@@ -159,15 +169,15 @@ class RiotLocal {
         return __awaiter(this, void 0, void 0, function* () {
             switch (method.toLowerCase()) {
                 case 'get':
-                    return yield this.AxiosClient.get(this.baseUrl + endpoint);
+                    return yield this.AxiosClient.get(endpoint);
                 case 'post':
-                    return yield this.AxiosClient.post(this.baseUrl + endpoint, body);
+                    return yield this.AxiosClient.post(endpoint, body);
                 case 'put':
-                    return yield this.AxiosClient.put(this.baseUrl + endpoint, body);
+                    return yield this.AxiosClient.put(endpoint, body);
                 case 'patch':
-                    return yield this.AxiosClient.patch(this.baseUrl + endpoint, body);
+                    return yield this.AxiosClient.patch(endpoint, body);
                 case 'delete':
-                    return yield this.AxiosClient.delete(this.baseUrl + endpoint);
+                    return yield this.AxiosClient.delete(endpoint);
             }
             return {
                 isError: true,
