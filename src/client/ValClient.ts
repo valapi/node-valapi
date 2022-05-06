@@ -91,6 +91,7 @@ class ValClient {
                     'X-Riot-ClientVersion': this.client.version,
                     'X-Riot-ClientPlatform': this.client.platfrom,
                 },
+                timeout: 60000, // 1 minute (60 * 1000)
             },
             Region: this.RegionServices,
         };
