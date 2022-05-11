@@ -1,7 +1,5 @@
 # Valorant API - Support MFA
 
-***This module changes very often. If you use any version then don't change it.***
-
 <!-- Main -->
 <div align="center">
 
@@ -17,25 +15,7 @@
 
 </div>
 
-## Introduced
-
-- [1.6.1](https://www.npmjs.com/package/@ing3kth/val-api/v/1.6.1) (Recommended)
-- [1.4.6-1](https://www.npmjs.com/package/@ing3kth/val-api/v/1.4.6-1)
-
-When You Find A Bug Please Report It [here](https://github.com/KTNG-3/valorant-api/issues), And You Can Pull Requests [here](https://github.com/KTNG-3/valorant-api/pulls), Thanks!
-
-If I didn't read just wait.
-
-### Table of Contents
-
-- [Valorant API - Support MFA](#valorant-api---support-mfa)
-  - [Introduced](#introduced)
-    - [Table of Contents](#table-of-contents)
-    - [Installation](#installation)
-- [Documentation](#documentation)
-- [Epilogue](#epilogue)
-
-### Installation
+# Installation
 
 NPM:
 
