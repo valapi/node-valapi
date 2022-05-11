@@ -23,25 +23,10 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Interface_ValRegion = exports.Interface_ValClient = exports.Interface_RiotLocal = exports.Interface_RiotApi = exports.Region = exports.QueueId = exports.Locale = exports.ItemTypeId = exports.Currency = exports.ValRegion = exports.RiotLocal = exports.RiotApi = exports.ValClient = void 0;
-//client
-var ValClient_1 = require("./client/ValClient");
-Object.defineProperty(exports, "ValClient", { enumerable: true, get: function () { return ValClient_1.ValClient; } });
-var RiotApi_1 = require("./client/RiotApi");
-Object.defineProperty(exports, "RiotApi", { enumerable: true, get: function () { return RiotApi_1.RiotApi; } });
-var RiotLocal_1 = require("./client/RiotLocal");
-Object.defineProperty(exports, "RiotLocal", { enumerable: true, get: function () { return RiotLocal_1.RiotLocal; } });
-//resource
-var ValRegion_1 = require("./resources/ValRegion");
-Object.defineProperty(exports, "ValRegion", { enumerable: true, get: function () { return ValRegion_1.ValRegion; } });
-exports.Currency = __importStar(require("./resources/data/Currency"));
-exports.ItemTypeId = __importStar(require("./resources/data/ItemTypeId"));
-exports.Locale = __importStar(require("./resources/data/Locale"));
-exports.QueueId = __importStar(require("./resources/data/QueueId"));
-exports.Region = __importStar(require("./resources/data/Region"));
-//interface
-exports.Interface_RiotApi = __importStar(require("./resources/interface/IRiotApi"));
-exports.Interface_RiotLocal = __importStar(require("./resources/interface/IRiotLocal"));
-exports.Interface_ValClient = __importStar(require("./resources/interface/IValClient"));
-exports.Interface_ValRegion = __importStar(require("./resources/interface/IValRegion"));
+exports.ValLib = exports.ValorantApiCom = exports.RiotClient = exports.RiotAPI = exports.ApiWrapper = void 0;
+exports.ApiWrapper = __importStar(require("@valapi/api-wrapper"));
+exports.RiotAPI = __importStar(require("@valapi/riot-api"));
+exports.RiotClient = __importStar(require("@valapi/riot-client"));
+exports.ValorantApiCom = __importStar(require("@valapi/valorant-api.com"));
+exports.ValLib = __importStar(require("@valapi/lib"));
 //# sourceMappingURL=index.js.map

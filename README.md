@@ -32,7 +32,6 @@ If I didn't read just wait.
   - [Introduced](#introduced)
     - [Table of Contents](#table-of-contents)
     - [Installation](#installation)
-    - [Usage](#usage)
 - [Documentation](#documentation)
 - [Epilogue](#epilogue)
 
@@ -50,20 +49,14 @@ Yarn:
   yarn add @ing3kth/val-api
 ```
 
-### Usage
-
-```javascript
-  const ValApi = require('@ing3kth/val-api')
-```
-
 # Documentation
 
-Documentation Website: [Click Here](https://ktng-3.github.io/val-api/docs.html)
+Documentation Website: [Click Here](https://valapi.github.io/docs/)
 
 # Epilogue
 
 Thanks For Use My Package,
-On [GitHub](https://github.com/KTNG-3/valorant-api) Will Update Before This Package Update.
+On [GitHub](https://github.com/valapi) Will Update Before This Package Update.
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/b3bd20059ade46e78a605bf6a0b1f1e1)](https://www.codacy.com/gh/KTNG-3/valorant-api/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=KTNG-3/valorant-api&amp;utm_campaign=Badge_Grade)
 

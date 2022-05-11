@@ -1,1 +1,0 @@
-{"version":3,"file":"Currency.js","sourceRoot":"","sources":["../../../src/resources/data/Currency.ts"],"names":[],"mappings":";;AAAA,kBAAe;IACX,UAAU;IACV,sCAAsC,EAAE,iBAAiB;IACzD,sCAAsC,EAAE,kBAAkB;IAC1D,sCAAsC,EAAE,aAAa;IAErD,IAAI,EAAE;QACF,UAAU;QACV,eAAe,EAAE,sCAAsC;QACvD,gBAAgB,EAAE,sCAAsC;QACxD,WAAW,EAAE,sCAAsC;KACtD;CACJ,CAAC"}

@@ -1,3 +1,0 @@
-// PARTY //
-let Party_RequestToJoinParty = `POST https://glz-ap-1.ap.a.pvp.net/parties/v1/parties/${partyId}/request`
-let Party_PlayerJoin = `POST https://glz-ap-1.ap.a.pvp.net/parties/v1/players/${puuid}/joinparty/${partyId}`

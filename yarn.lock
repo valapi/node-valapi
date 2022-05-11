@@ -2,28 +2,49 @@
 # yarn lockfile v1
 
 
-"@ing3kth/core@^1.8.4":
-  "integrity" "sha512-s8k5D6Fazw/oMetx+FAk+nRSMtss74z9hkrP9811ScyusTQUT1/L69FKWKTslvR2zJ0VxXkCuvJatVpj6x231A=="
-  "resolved" "https://registry.npmjs.org/@ing3kth/core/-/core-1.8.4.tgz"
-  "version" "1.8.4"
-  dependencies:
-    "axios" "^0.27.2"
-    "commander" "^9.2.0"
-
-"@types/crypto-js@^4.1.1":
-  "integrity" "sha512-BG7fQKZ689HIoc5h+6D2Dgq1fABRa0RbBWKBd9SP/MVRVXROflpm5fhwyATX5duFmbStzyzyycPB8qUYKDH3NA=="
-  "resolved" "https://registry.npmjs.org/@types/crypto-js/-/crypto-js-4.1.1.tgz"
-  "version" "4.1.1"
-
 "@types/node@^17.0.25":
-  "integrity" "sha512-AR0x5HbXGqkEx9CadRH3EBYx/VkiUgZIhP4wvPn/+5KIsgpNoyFaRlVe0Zlx9gRtg8fA06a9tskE2MSN7TcG4Q=="
-  "resolved" "https://registry.npmjs.org/@types/node/-/node-17.0.31.tgz"
-  "version" "17.0.31"
+  "integrity" "sha512-eAIcfAvhf/BkHcf4pkLJ7ECpBAhh9kcxRBpip9cTiO+hf+aJrsxYxBeS6OXvOd9WqNAJmavXVpZvY1rBjNsXmw=="
+  "resolved" "https://registry.npmjs.org/@types/node/-/node-17.0.32.tgz"
+  "version" "17.0.32"
 
-"@types/tough-cookie@^4.0.2":
-  "integrity" "sha512-Q5vtl1W5ue16D+nIaW8JWebSSraJVlK+EthKn7e7UcD4KWsaSJ8BqGPXNaPghgtcn/fhvrN17Tv8ksUsQpiplw=="
-  "resolved" "https://registry.npmjs.org/@types/tough-cookie/-/tough-cookie-4.0.2.tgz"
-  "version" "4.0.2"
+"@valapi/api-wrapper@latest":
+  "integrity" "sha512-25q1z53C9XqoDNThFHiXl+2/IBl0lDWiUB9QDT3ZZGtWoitCGCv8OEBFsTIBAOxhnhR/4LXrXGJz5QzNE01nnw=="
+  "resolved" "https://npm.pkg.github.com/download/@valapi/api-wrapper/1.0.0/5854825e334439c3b6421f881248ac102c6d89621d2ec15f81fb7f3921ae59df"
+  "version" "1.0.0"
+  dependencies:
+    "@valapi/lib" "^1.0.1"
+    "axios" "^0.27.2"
+    "http-cookie-agent" "^2.1.2"
+    "tough-cookie" "^4.0.0"
+
+"@valapi/lib@^1.0.1", "@valapi/lib@latest":
+  "integrity" "sha512-Zp0xVRPYnD4eOFITKGlOPlcWh4OqiZIvn6xuUg4ZGxy8iMCbVY+OLJTSXHq8JXYIVRndeOiuEp0SlUru3ItcUA=="
+  "resolved" "https://npm.pkg.github.com/download/@valapi/lib/1.0.1/b3e46d0e8e4517ea9259ec483a73082ebaba2ee50f7992a85e8ce6e3bac80636"
+  "version" "1.0.1"
+
+"@valapi/riot-api@latest":
+  "integrity" "sha512-urxwPsAjaZFPeUCewDrRT4mEn/gqfn6xw+oOKHjd1XQMuEecrTruuLT7HiJRqrR2+Iso7a0+2GyBdntUY7cf9A=="
+  "resolved" "https://npm.pkg.github.com/download/@valapi/riot-api/1.0.0/82374708ae683abe05e9f05c55f4491940b635d5b59563ac82764bf5e8ac25dd"
+  "version" "1.0.0"
+  dependencies:
+    "@valapi/lib" "^1.0.1"
+    "axios" "^0.27.2"
+
+"@valapi/riot-client@latest":
+  "integrity" "sha512-CoNI9Zhld04Nh23GU4k3RmAd86H0qsnreKPSO1Q7eagE4IJhG1bp2sF5W67VAthyN3kI3LqI1mu0cnKuezxfUA=="
+  "resolved" "https://npm.pkg.github.com/download/@valapi/riot-client/1.0.0/a916421da6ba53cc8198f1ca16171d3374951432460499664480f232a916be72"
+  "version" "1.0.0"
+  dependencies:
+    "@valapi/lib" "^1.0.1"
+    "axios" "^0.27.2"
+
+"@valapi/valorant-api.com@latest":
+  "integrity" "sha512-gr6y2VHJoB5zalLm3aJSRl+/5c2bTZ2g/MdwVNRaacgPUVDzj2PW/DZ+uofCYZ6nbBKb1rfjYNLUTJdpCSTHVw=="
+  "resolved" "https://npm.pkg.github.com/download/@valapi/valorant-api.com/1.0.0/a45d6dd05122aef94ca0f9472856df7b2756d3b27f971deb28ebb1f1380ac3d3"
+  "version" "1.0.0"
+  dependencies:
+    "@valapi/lib" "^1.0.1"
+    "axios" "^0.27.2"
 
 "agent-base@^6.0.2":
   "integrity" "sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ=="
@@ -52,16 +73,6 @@
   dependencies:
     "delayed-stream" "~1.0.0"
 
-"commander@^9.2.0":
-  "integrity" "sha512-e2i4wANQiSXgnrBlIatyHtP1odfUp0BbV5Y5nEGbxtIrStkEOAAzCUirvLBNXHLr7kwLvJl6V+4V3XV9x7Wd9w=="
-  "resolved" "https://registry.npmjs.org/commander/-/commander-9.2.0.tgz"
-  "version" "9.2.0"
-
-"crypto-js@^4.1.1":
-  "integrity" "sha512-o2JlM7ydqd3Qk9CA0L4NL6mTzU2sdx96a+oOfPu8Mkl/PK51vSyoi8/rQ8NknZtk44vq15lmhAj9CIAGwgeWKw=="
-  "resolved" "https://registry.npmjs.org/crypto-js/-/crypto-js-4.1.1.tgz"
-  "version" "4.1.1"
-
 "debug@4":
   "integrity" "sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ=="
   "resolved" "https://registry.npmjs.org/debug/-/debug-4.3.4.tgz"
@@ -88,10 +99,10 @@
     "combined-stream" "^1.0.8"
     "mime-types" "^2.1.12"
 
-"http-cookie-agent@^2.1.0":
-  "integrity" "sha512-v1/X3XX7yNsFYqlMLmD4VUioZE7E+NMuX8FeE4MobkAsYu0if7rxvbNB9sWgmV+F1TeaCwHKEisnucb52MAVbw=="
-  "resolved" "https://registry.npmjs.org/http-cookie-agent/-/http-cookie-agent-2.1.0.tgz"
-  "version" "2.1.0"
+"http-cookie-agent@^2.1.2":
+  "integrity" "sha512-JW4vAM0mx8fG49Kz0Lg5rj+k9uGH0/qXLguo+axyBUZ5bOpKrSkIpb2UaV3i4agqkD2zC5vLZMYEjSGSlErhwA=="
+  "resolved" "https://registry.npmjs.org/http-cookie-agent/-/http-cookie-agent-2.1.2.tgz"
+  "version" "2.1.2"
   dependencies:
     "agent-base" "^6.0.2"
 

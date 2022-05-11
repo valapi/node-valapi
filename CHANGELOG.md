@@ -1,4 +1,8 @@
-# 1.6.2 (Date Here | In Development)
+# 2.0.0 (11 May, 2022)
+
+- Move Package to [@valapi](https://github.com/valapi)
+
+# 1.6.2 (11 May, 2022 | In Development)
 
 ### ValClient
 - Cookie ReAuth - *beta*
