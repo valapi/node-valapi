@@ -23,10 +23,10 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ValLib = exports.ValorantApiCom = exports.RiotClient = exports.RiotAPI = exports.ApiWrapper = void 0;
+exports.ValApiLib = exports.ValorantApiCom = exports.RiotClient = exports.RiotAPI = exports.ApiWrapper = void 0;
 exports.ApiWrapper = __importStar(require("@valapi/api-wrapper"));
 exports.RiotAPI = __importStar(require("@valapi/riot-api"));
 exports.RiotClient = __importStar(require("@valapi/riot-client"));
 exports.ValorantApiCom = __importStar(require("@valapi/valorant-api.com"));
-exports.ValLib = __importStar(require("@valapi/lib"));
+exports.ValApiLib = __importStar(require("@valapi/lib"));
 //# sourceMappingURL=index.js.map

@@ -3,29 +3,19 @@
 <!-- Main -->
 <div align="center">
 
-  [![NPM](https://nodei.co/npm/@ing3kth/val-api.png)](https://nodei.co/npm/@ing3kth/val-api)
+  [![NPM](https://nodei.co/npm/@ing3kth/val-api.png)](https://nodei.co/npm/@ing3kth%2Fval-api)
 
-   [![Downloads](https://badgen.net/npm/dt/@ing3kth/val-api?icon=npm)](https://www.npmjs.com/package/@ing3kth/val-api)
-   [![install size](https://packagephobia.com/badge?p=@ing3kth/val-api)](https://packagephobia.com/result?p=@ing3kth/val-api)
+   [![Downloads](https://badgen.net/npm/dt/@ing3kth/val-api?icon=npm)](https://www.npmjs.com/package/@ing3kth%2Fval-api)
+   [![install size](https://packagephobia.com/badge?p=@ing3kth/val-api)](https://packagephobia.com/result?p=@ing3kth%2Fval-api)
    [![LICENSE](https://badgen.net/badge/license/MIT/blue)](https://github.com/KTNG-3/valorant-api/blob/main/LICENSE)
-   [![Known Vulnerabilities](https://snyk.io/test/npm/@ing3kth/val-api/badge.svg)](https://snyk.io/test/npm/@ing3kth/val-api)
+   [![Known Vulnerabilities](https://snyk.io/test/npm/@ing3kth/val-api/badge.svg)](https://snyk.io/test/npm/@ing3kth%2Fval-api)
 
-   [![Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/KTNG-3/valorant-api)
+   [![Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/valapi)
    [![Discord](https://badgen.net/badge/icon/discord?icon=discord&label)](https://discord.gg/pbyWbUYjyt)
 
 </div>
 
 # Installation
-
-**_Configuration:_** (required)
-
-you need to run the following command in your terminal:
-
-```bash
-npm config set @valapi:registry="https://npm.pkg.github.com/"
-```
-
------------
 
 **NPM:**
 
@@ -47,8 +37,6 @@ Documentation Website: [Click Here](https://valapi.github.io/docs/)
 
 Thanks For Use My Package,
 On [GitHub](https://github.com/valapi) Will Update Before This Package Update.
-
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/b3bd20059ade46e78a605bf6a0b1f1e1)](https://www.codacy.com/gh/KTNG-3/valorant-api/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=KTNG-3/valorant-api&amp;utm_campaign=Badge_Grade)
 
 ***
 
