@@ -17,13 +17,23 @@
 
 # Installation
 
-NPM:
+**_Configuration:_** (required)
+
+you need to run the following command in your terminal:
+
+```bash
+npm config set @valapi:registry="https://npm.pkg.github.com/"
+```
+
+------
+
+**NPM:**
 
 ```bash
   npm install @ing3kth/val-api
 ```
 
-Yarn:
+**Yarn:**
 
 ```bash
   yarn add @ing3kth/val-api
