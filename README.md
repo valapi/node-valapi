@@ -25,7 +25,7 @@ you need to run the following command in your terminal:
 npm config set @valapi:registry="https://npm.pkg.github.com/"
 ```
 
-------
+-----------
 
 **NPM:**
 
