@@ -1,5 +1,5 @@
 {
-  "name": "valorant.ts",
+  "name": "valorant.js",
   "version": "1.0.0",
   "description": "Valorant Api - Support MFA",
   "main": "dist/index.js",
