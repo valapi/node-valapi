@@ -2,152 +2,150 @@
 # yarn lockfile v1
 
 
-"@types/node@^17.0.33":
-  "integrity" "sha512-miWq2m2FiQZmaHfdZNcbpp9PuXg34W5JZ5CrJ/BaS70VuhoJENBEQybeiYSaPBRNq6KQGnjfEnc/F3PN++D+XQ=="
-  "resolved" "https://registry.npmjs.org/@types/node/-/node-17.0.33.tgz"
-  "version" "17.0.33"
+"@types/node@^17.0.40":
+  version "17.0.40"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.40.tgz#76ee88ae03650de8064a6cf75b8d95f9f4a16090"
+  integrity sha512-UXdBxNGqTMtm7hCwh9HtncFVLrXoqA3oJW30j6XWp5BH/wu3mVeaxo7cq5benFdBw34HB3XDT2TRPI7rXZ+mDg==
 
 "@valapi/api-wrapper@latest":
-  "integrity" "sha512-SRxjF3vWziy100Jl3l+8Rg9dqbeVF5EmlP7wzQyqYwYmouLOO4JPcjYEJ1yHDKf5ur9KnlfBf8+9R+IV7r8hcQ=="
-  "resolved" "https://npm.pkg.github.com/download/@valapi/api-wrapper/1.1.2/51d394a8e85af4be86f900137733e82118b95076afdfbcedf3e2127d0f1598d5"
-  "version" "1.1.2"
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/@valapi/api-wrapper/-/api-wrapper-1.2.3.tgz#7f8e54828ed84f9b11d5ccf2a7c19e8893a6e23b"
+  integrity sha512-bXi+HQFZDkD6J12Yg8OUFLcjLsvqfHv6awYSiNvgJ7HAvOwIHAXACDhu9M2tqmjYc+lPgaZ9hFAFghXFJVTaBQ==
   dependencies:
-    "@valapi/lib" "latest"
-    "axios" "^0.27.2"
-    "http-cookie-agent" "^2.1.2"
-    "tough-cookie" "^4.0.0"
+    "@valapi/lib" latest
+    http-cookie-agent "^2.1.2"
+    tough-cookie "^4.0.0"
 
 "@valapi/lib@latest":
-  "integrity" "sha512-qONQqMrMkzLZvm8Y7/fx/UzR+paLzB6kvL+RE0GE7iR2lmXs557HRCCIOR4Fy045fkOfJocURkFT1Rg1Qzvn8g=="
-  "resolved" "https://npm.pkg.github.com/download/@valapi/lib/1.1.0/bf3796cb7a0be0d50eebb732f709b14bcf85736836ba9ad1eef52accdc6ef5a1"
-  "version" "1.1.0"
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@valapi/lib/-/lib-1.2.0.tgz#3c7eda711dbf9cb57e572585ed9507c04895ef90"
+  integrity sha512-NOtlcfJOJZbtvpeM9V9sTohW05Wq0aAc6v7L5Mf9g0U/eKenc393+QLGHafu5RLSrftyuQ+qTZicwHb6iX2w3g==
+  dependencies:
+    axios "^0.27.2"
 
 "@valapi/riot-api@latest":
-  "integrity" "sha512-cVy5qwYh0P+ZnroT9naKNM7Qfn463dxdA93XJXRmmtIU3ayVAmEqHMBJmbZoLBY5q7rJ3A4YlXmglHzU3cYVow=="
-  "resolved" "https://npm.pkg.github.com/download/@valapi/riot-api/1.1.0/8d62b55b531540eb3d9706b370bfc63e4d2f3a3d9bf57d6a452314a1e1d83105"
-  "version" "1.1.0"
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@valapi/riot-api/-/riot-api-1.2.1.tgz#4ac62c2ac938061077955ec0b56410bbdc313486"
+  integrity sha512-tFZhLAs7JYwty6CfksSke/n1itOwkwYqW7kl5P7sSUNSrXzXO21CT3laoD9PUQL4fQm3Hd80P2jSUwmN0w/2GQ==
   dependencies:
-    "@valapi/lib" "latest"
-    "axios" "^0.27.2"
+    "@valapi/lib" latest
 
 "@valapi/riot-client@latest":
-  "integrity" "sha512-GTkJOFGSp+MWNvIEOcq1tCVwx4eywno/ayHle+DSX3zWerU7cFHXWoX9KqKX0Al2ysivNciU+6WdYxqGWHFaKw=="
-  "resolved" "https://npm.pkg.github.com/download/@valapi/riot-client/1.1.0/10e4a15c0d49e60251b1b8499c3a0f08ab8de910263b181d1f320aae6d66140d"
-  "version" "1.1.0"
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@valapi/riot-client/-/riot-client-1.2.0.tgz#587da0bc7ca8d9fab88d1ce5fba6c37cc8b4d986"
+  integrity sha512-nGpk1dlDJADpnIaP9J6j2MExYKUO326Cre/3UQ6nPHJqv27s5RbcrePMQofxwsVuj5vwsOLTtBCiDyDfOYAYIw==
   dependencies:
-    "@valapi/lib" "latest"
-    "axios" "^0.27.2"
+    "@valapi/lib" latest
 
 "@valapi/valorant-api.com@latest":
-  "integrity" "sha512-wPpP1L1ntZGWjjx7H8zKwAzj5By5zwFqQLVCeJkBK77nmSRvy4s85NCyk9EHXab9A22oLd2WiaLwX0HNjEy+JQ=="
-  "resolved" "https://npm.pkg.github.com/download/@valapi/valorant-api.com/1.1.2/9fa9216045dd439e99f7277fad6b88ef5930bbee33233a34ff550a66a2b91f05"
-  "version" "1.1.2"
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@valapi/valorant-api.com/-/valorant-api.com-1.2.0.tgz#64efed139e0787d808be1d4957d57cfc7e908579"
+  integrity sha512-d0m6lo5DbNl6nsqR8A62KivnBgUVPrO+vNxA4FRSQJaPUEF1HSnTel6MlFTASZ6elN4A9EuJ3U9ttLiqWZst0w==
   dependencies:
-    "@valapi/lib" "latest"
-    "axios" "^0.27.2"
+    "@valapi/lib" latest
 
-"agent-base@^6.0.2":
-  "integrity" "sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ=="
-  "resolved" "https://registry.npmjs.org/agent-base/-/agent-base-6.0.2.tgz"
-  "version" "6.0.2"
+agent-base@^6.0.2:
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/agent-base/-/agent-base-6.0.2.tgz#49fff58577cfee3f37176feab4c22e00f86d7f77"
+  integrity sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==
   dependencies:
-    "debug" "4"
+    debug "4"
 
-"asynckit@^0.4.0":
-  "integrity" "sha1-x57Zf380y48robyXkLzDZkdLS3k="
-  "resolved" "https://registry.npmjs.org/asynckit/-/asynckit-0.4.0.tgz"
-  "version" "0.4.0"
+asynckit@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
+  integrity sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==
 
-"axios@^0.27.2":
-  "integrity" "sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ=="
-  "resolved" "https://registry.npmjs.org/axios/-/axios-0.27.2.tgz"
-  "version" "0.27.2"
+axios@^0.27.2:
+  version "0.27.2"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.27.2.tgz#207658cc8621606e586c85db4b41a750e756d972"
+  integrity sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==
   dependencies:
-    "follow-redirects" "^1.14.9"
-    "form-data" "^4.0.0"
+    follow-redirects "^1.14.9"
+    form-data "^4.0.0"
 
-"combined-stream@^1.0.8":
-  "integrity" "sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg=="
-  "resolved" "https://registry.npmjs.org/combined-stream/-/combined-stream-1.0.8.tgz"
-  "version" "1.0.8"
+combined-stream@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/combined-stream/-/combined-stream-1.0.8.tgz#c3d45a8b34fd730631a110a8a2520682b31d5a7f"
+  integrity sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==
   dependencies:
-    "delayed-stream" "~1.0.0"
+    delayed-stream "~1.0.0"
 
-"debug@4":
-  "integrity" "sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ=="
-  "resolved" "https://registry.npmjs.org/debug/-/debug-4.3.4.tgz"
-  "version" "4.3.4"
+debug@4:
+  version "4.3.4"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.4.tgz#1319f6579357f2338d3337d2cdd4914bb5dcc865"
+  integrity sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==
   dependencies:
-    "ms" "2.1.2"
+    ms "2.1.2"
 
-"delayed-stream@~1.0.0":
-  "integrity" "sha1-3zrhmayt+31ECqrgsp4icrJOxhk="
-  "resolved" "https://registry.npmjs.org/delayed-stream/-/delayed-stream-1.0.0.tgz"
-  "version" "1.0.0"
+delayed-stream@~1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/delayed-stream/-/delayed-stream-1.0.0.tgz#df3ae199acadfb7d440aaae0b29e2272b24ec619"
+  integrity sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==
 
-"follow-redirects@^1.14.9":
-  "integrity" "sha512-aExlJShTV4qOUOL7yF1U5tvLCB0xQuudbf6toyYA0E/acBNw71mvjFTnLaRp50aQaYocMR0a/RMMBIHeZnGyjQ=="
-  "resolved" "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.0.tgz"
-  "version" "1.15.0"
+follow-redirects@^1.14.9:
+  version "1.15.1"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.1.tgz#0ca6a452306c9b276e4d3127483e29575e207ad5"
+  integrity sha512-yLAMQs+k0b2m7cVxpS1VKJVvoz7SS9Td1zss3XRwXj+ZDH00RJgnuLx7E44wx02kQLrdM3aOOy+FpzS7+8OizA==
 
-"form-data@^4.0.0":
-  "integrity" "sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww=="
-  "resolved" "https://registry.npmjs.org/form-data/-/form-data-4.0.0.tgz"
-  "version" "4.0.0"
+form-data@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/form-data/-/form-data-4.0.0.tgz#93919daeaf361ee529584b9b31664dc12c9fa452"
+  integrity sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww==
   dependencies:
-    "asynckit" "^0.4.0"
-    "combined-stream" "^1.0.8"
-    "mime-types" "^2.1.12"
+    asynckit "^0.4.0"
+    combined-stream "^1.0.8"
+    mime-types "^2.1.12"
 
-"http-cookie-agent@^2.1.2":
-  "integrity" "sha512-JW4vAM0mx8fG49Kz0Lg5rj+k9uGH0/qXLguo+axyBUZ5bOpKrSkIpb2UaV3i4agqkD2zC5vLZMYEjSGSlErhwA=="
-  "resolved" "https://registry.npmjs.org/http-cookie-agent/-/http-cookie-agent-2.1.2.tgz"
-  "version" "2.1.2"
+http-cookie-agent@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/http-cookie-agent/-/http-cookie-agent-2.1.2.tgz#b39aab0f79dd1cb9b68f6017b03ea12b8dc09478"
+  integrity sha512-JW4vAM0mx8fG49Kz0Lg5rj+k9uGH0/qXLguo+axyBUZ5bOpKrSkIpb2UaV3i4agqkD2zC5vLZMYEjSGSlErhwA==
   dependencies:
-    "agent-base" "^6.0.2"
+    agent-base "^6.0.2"
 
-"mime-db@1.52.0":
-  "integrity" "sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg=="
-  "resolved" "https://registry.npmjs.org/mime-db/-/mime-db-1.52.0.tgz"
-  "version" "1.52.0"
+mime-db@1.52.0:
+  version "1.52.0"
+  resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.52.0.tgz#bbabcdc02859f4987301c856e3387ce5ec43bf70"
+  integrity sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg==
 
-"mime-types@^2.1.12":
-  "integrity" "sha512-ZDY+bPm5zTTF+YpCrAU9nK0UgICYPT0QtT1NZWFv4s++TNkcgVaT0g6+4R2uI4MjQjzysHB1zxuWL50hzaeXiw=="
-  "resolved" "https://registry.npmjs.org/mime-types/-/mime-types-2.1.35.tgz"
-  "version" "2.1.35"
+mime-types@^2.1.12:
+  version "2.1.35"
+  resolved "https://registry.yarnpkg.com/mime-types/-/mime-types-2.1.35.tgz#381a871b62a734450660ae3deee44813f70d959a"
+  integrity sha512-ZDY+bPm5zTTF+YpCrAU9nK0UgICYPT0QtT1NZWFv4s++TNkcgVaT0g6+4R2uI4MjQjzysHB1zxuWL50hzaeXiw==
   dependencies:
-    "mime-db" "1.52.0"
+    mime-db "1.52.0"
 
-"ms@2.1.2":
-  "integrity" "sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w=="
-  "resolved" "https://registry.npmjs.org/ms/-/ms-2.1.2.tgz"
-  "version" "2.1.2"
+ms@2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.2.tgz#d09d1f357b443f493382a8eb3ccd183872ae6009"
+  integrity sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==
 
-"psl@^1.1.33":
-  "integrity" "sha512-RIdOzyoavK+hA18OGGWDqUTsCLhtA7IcZ/6NCs4fFJaHBDab+pDDmDIByWFRQJq2Cd7r1OoQxBGKOaztq+hjIQ=="
-  "resolved" "https://registry.npmjs.org/psl/-/psl-1.8.0.tgz"
-  "version" "1.8.0"
+psl@^1.1.33:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/psl/-/psl-1.8.0.tgz#9326f8bcfb013adcc005fdff056acce020e51c24"
+  integrity sha512-RIdOzyoavK+hA18OGGWDqUTsCLhtA7IcZ/6NCs4fFJaHBDab+pDDmDIByWFRQJq2Cd7r1OoQxBGKOaztq+hjIQ==
 
-"punycode@^2.1.1":
-  "integrity" "sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A=="
-  "resolved" "https://registry.npmjs.org/punycode/-/punycode-2.1.1.tgz"
-  "version" "2.1.1"
+punycode@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
+  integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
 
-"tough-cookie@^4.0.0":
-  "integrity" "sha512-tHdtEpQCMrc1YLrMaqXXcj6AxhYi/xgit6mZu1+EDWUn+qhUf8wMQoFIy9NXuq23zAwtcB0t/MjACGR18pcRbg=="
-  "resolved" "https://registry.npmjs.org/tough-cookie/-/tough-cookie-4.0.0.tgz"
-  "version" "4.0.0"
+tough-cookie@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/tough-cookie/-/tough-cookie-4.0.0.tgz#d822234eeca882f991f0f908824ad2622ddbece4"
+  integrity sha512-tHdtEpQCMrc1YLrMaqXXcj6AxhYi/xgit6mZu1+EDWUn+qhUf8wMQoFIy9NXuq23zAwtcB0t/MjACGR18pcRbg==
   dependencies:
-    "psl" "^1.1.33"
-    "punycode" "^2.1.1"
-    "universalify" "^0.1.2"
+    psl "^1.1.33"
+    punycode "^2.1.1"
+    universalify "^0.1.2"
 
-"typescript@^4.6.3":
-  "integrity" "sha512-9ia/jWHIEbo49HfjrLGfKbZSuWo9iTMwXO+Ca3pRsSpbsMbc7/IU8NKdCZVRRBafVPGnoJeFL76ZOAA84I9fEg=="
-  "resolved" "https://registry.npmjs.org/typescript/-/typescript-4.6.4.tgz"
-  "version" "4.6.4"
+typescript@^4.7.3:
+  version "4.7.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.7.3.tgz#8364b502d5257b540f9de4c40be84c98e23a129d"
+  integrity sha512-WOkT3XYvrpXx4vMMqlD+8R8R37fZkjyLGlxavMc4iB8lrl8L0DeTcHbYgw/v0N/z9wAFsgBhcsF0ruoySS22mA==
 
-"universalify@^0.1.2":
-  "integrity" "sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg=="
-  "resolved" "https://registry.npmjs.org/universalify/-/universalify-0.1.2.tgz"
-  "version" "0.1.2"
+universalify@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/universalify/-/universalify-0.1.2.tgz#b646f69be3942dabcecc9d6639c80dc105efaa66"
+  integrity sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg==

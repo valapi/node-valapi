@@ -3,12 +3,12 @@
 <!-- Main -->
 <div align="center">
 
-  [![NPM](https://nodei.co/npm/@ing3kth/val-api.png)](https://nodei.co/npm/@ing3kth%2Fval-api)
+  [![NPM](https://nodei.co/npm/@ing3kth/val-api.png)](https://nodei.co/npm/valorant.ts)
 
-   [![Downloads](https://badgen.net/npm/dt/@ing3kth/val-api?icon=npm)](https://www.npmjs.com/package/@ing3kth%2Fval-api)
-   [![install size](https://packagephobia.com/badge?p=@ing3kth/val-api)](https://packagephobia.com/result?p=@ing3kth%2Fval-api)
+   [![Downloads](https://badgen.net/npm/dt/@ing3kth/val-api?icon=npm)](https://www.npmjs.com/package/valorant.ts)
+   [![install size](https://packagephobia.com/badge?p=@ing3kth/val-api)](https://packagephobia.com/result?p=valorant.ts)
    [![LICENSE](https://badgen.net/badge/license/MIT/blue)](https://github.com/KTNG-3/valorant-api/blob/main/LICENSE)
-   [![Known Vulnerabilities](https://snyk.io/test/npm/@ing3kth/val-api/badge.svg)](https://snyk.io/test/npm/@ing3kth%2Fval-api)
+   [![Known Vulnerabilities](https://snyk.io/test/npm/@ing3kth/val-api/badge.svg)](https://snyk.io/test/npm/valorant.ts)
 
    [![Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/valapi)
    [![Discord](https://badgen.net/badge/icon/discord?icon=discord&label)](https://discord.gg/pbyWbUYjyt)
@@ -20,13 +20,13 @@
 **NPM:**
 
 ```bash
-  npm install @ing3kth/val-api
+  npm install valorant.ts
 ```
 
 **Yarn:**
 
 ```bash
-  yarn add @ing3kth/val-api
+  yarn add valorant.ts
 ```
 
 # Documentation
