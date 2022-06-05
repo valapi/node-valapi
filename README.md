@@ -3,12 +3,12 @@
 <!-- Main -->
 <div align="center">
 
-  [![NPM](https://nodei.co/npm/@ing3kth/val-api.png)](https://nodei.co/npm/valorant.js)
+  [![NPM](https://nodei.co/npm/valorant.ts.png)](https://nodei.co/npm/valorant.ts)
 
-   [![Downloads](https://badgen.net/npm/dt/@ing3kth/val-api?icon=npm)](https://www.npmjs.com/package/valorant.js)
-   [![install size](https://packagephobia.com/badge?p=@ing3kth/val-api)](https://packagephobia.com/result?p=valorant.js)
+   [![Downloads](https://badgen.net/npm/dt/valorant.ts?icon=npm)](https://www.npmjs.com/package/valorant.ts)
+   [![install size](https://packagephobia.com/badge?p=valorant.ts)](https://packagephobia.com/result?p=valorant.ts)
    [![LICENSE](https://badgen.net/badge/license/MIT/blue)](https://github.com/KTNG-3/valorant-api/blob/main/LICENSE)
-   [![Known Vulnerabilities](https://snyk.io/test/npm/@ing3kth/val-api/badge.svg)](https://snyk.io/test/npm/valorant.js)
+   [![Known Vulnerabilities](https://snyk.io/test/npm/valorant.ts/badge.svg)](https://snyk.io/test/npm/valorant.ts)
 
    [![Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/valapi)
    [![Discord](https://badgen.net/badge/icon/discord?icon=discord&label)](https://discord.gg/pbyWbUYjyt)
@@ -20,13 +20,13 @@
 **NPM:**
 
 ```bash
-  npm install valorant.js
+  npm install valorant.ts
 ```
 
 **Yarn:**
 
 ```bash
-  yarn add valorant.js
+  yarn add valorant.ts
 ```
 
 # Documentation
@@ -52,6 +52,6 @@ On [GitHub](https://github.com/valapi) Will Update Before This Package Update.
   - [Play Valorant](https://playvalorant.com/) (VALORANT)
   - [developer.riotgames.com](https://developer.riotgames.com/) (Official Api From Riot Games)
 - *Legal*
-  - >**@ing3kth/val-api** isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games, and all associated properties are trademarks or registered trademarks of Riot Games, Inc.
-  - **@ing3kth/val-api** was created under [Riot Games' "Legal Jibber Jabber"](https://www.riotgames.com/en/legal)
+  - >**valorant.ts** isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games, and all associated properties are trademarks or registered trademarks of Riot Games, Inc.
+  - **valorant.ts** was created under [Riot Games' "Legal Jibber Jabber"](https://www.riotgames.com/en/legal)
   - [MIT License](https://github.com/KTNG-3/valorant-api/blob/main/LICENSE)
