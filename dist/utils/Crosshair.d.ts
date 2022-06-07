@@ -1,3 +1,16 @@
+interface ValoarntCrosshairLinesError {
+    isEnable: Boolean;
+    Multiplier: number;
+}
+interface ValoarntCrosshairLines {
+    isEnable: Boolean;
+    Opacity: number;
+    Length: number;
+    Thickness: number;
+    Offset: number;
+    MovementError: ValoarntCrosshairLinesError;
+    FiringError: ValoarntCrosshairLinesError;
+}
 interface ValoarntCrosshair {
     Primary: {
         Crosshair: {
@@ -13,11 +26,20 @@ interface ValoarntCrosshair {
                 Thickness: number;
             };
             OverrideFiringErrorOffsetWithCrosshairOffset: Boolean;
+            OverrideAll_BRABRABRA?: undefined;
         };
+        InnerLines: ValoarntCrosshairLines;
+        OuterLines: ValoarntCrosshairLines;
     };
     General: {
-        ShowSpectatedPlayerCrosshair: Boolean;
-        FadeCrosshairWithFiringError: Boolean;
+        Crosshair: {
+            UseAdvancedOptions?: Boolean;
+        };
+        Other: {
+            ShowSpectatedPlayerCrosshair: Boolean;
+            FadeCrosshairWithFiringError: Boolean;
+            DisableCrosshair?: Boolean;
+        };
     };
 }
 declare class CrosshairClass {
