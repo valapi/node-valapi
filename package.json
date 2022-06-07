@@ -10,6 +10,7 @@
   },
   "scripts": {
     "typescript": "npx tsc --project tsconfig.json",
+    "dev": "npm run typescript && node ./dist/utils/Crosshair.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
