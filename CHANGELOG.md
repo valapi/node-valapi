@@ -1,4 +1,4 @@
-# 1.0.3 (12 June 2022)
+# 1.1.0 (12 June 2022)
 
 - Crosshair Compiler
 
