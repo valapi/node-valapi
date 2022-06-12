@@ -1,3 +1,11 @@
+# 1.0.2 (12 June 2022)
+
+- Crosshair Compiler
+
+# [valorant.ts](https://www.npmjs.com/package/valorant.ts)
+
+-----------
+
 # 2.0.0 (11 May, 2022)
 
 - Move Package to [@valapi](https://github.com/valapi)

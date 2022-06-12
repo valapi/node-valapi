@@ -48,10 +48,12 @@ On [GitHub](https://github.com/valapi) Will Update Before This Package Update.
 - *Special Thanks*
   - [Techchrism](https://github.com/techchrism/valorant-api-docs) (API Docs)
   - [RumbleMike](https://github.com/RumbleMike/ValorantClientAPI) (API Docs)
+  - [Officer](https://valorant-api.com) (Third Party API)
   - [Valorant Community Developer Discord](https://discord.gg/sCgvpXJfEE)
   - [Play Valorant](https://playvalorant.com/) (VALORANT)
   - [developer.riotgames.com](https://developer.riotgames.com/) (Official Api From Riot Games)
 - *Legal*
   - >**valorant.ts** isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games, and all associated properties are trademarks or registered trademarks of Riot Games, Inc.
   - **valorant.ts** was created under [Riot Games' "Legal Jibber Jabber"](https://www.riotgames.com/en/legal)
+  - **valorant.ts** is not created for economic or commercial reasons.
   - [MIT License](https://github.com/KTNG-3/valorant-api/blob/main/LICENSE)

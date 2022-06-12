@@ -11,21 +11,6 @@ const ValorantCrosshairColor = {
 
 // interface
 
-interface ValoarntCrosshairLinesError {
-    isEnable: Boolean; // not in valorant settings
-    Multiplier: number;
-}
-
-interface ValoarntCrosshairLines {
-    isEnable: Boolean, // not in valorant settings
-    Opacity: number;
-    Length: number;
-    Thickness: number;
-    Offset: number;
-    MovementError: ValoarntCrosshairLinesError;
-    FiringError: ValoarntCrosshairLinesError;
-}
-
 interface ValoarntCrosshairParsePrimary {
     // Color
     "c"?: number;
@@ -81,6 +66,21 @@ interface ValoarntCrosshairParse {
         "s"?: number,
         "o"?: number,
     };
+}
+
+interface ValoarntCrosshairLinesError {
+    isEnable: Boolean; // not in valorant settings
+    Multiplier: number;
+}
+
+interface ValoarntCrosshairLines {
+    isEnable: Boolean, // not in valorant settings
+    Opacity: number;
+    Length: number;
+    Thickness: number;
+    Offset: number;
+    MovementError: ValoarntCrosshairLinesError;
+    FiringError: ValoarntCrosshairLinesError;
 }
 
 interface ValoarntCrosshair {
@@ -1080,4 +1080,4 @@ class Crosshair {
 
 export { Crosshair };
 export { ValorantCrosshairColor as ValorantCrosshairColor, _defaultCrosshair as ValorantDefaultCrosshair };
-export type { ValoarntCrosshairLinesError, ValoarntCrosshairLines, ValoarntCrosshairParsePrimary, ValoarntCrosshairParse, ValoarntCrosshair };
+export type { ValoarntCrosshairParsePrimary, ValoarntCrosshairParse, ValoarntCrosshairLinesError, ValoarntCrosshairLines, ValoarntCrosshair };

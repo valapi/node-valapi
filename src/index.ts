@@ -4,4 +4,7 @@ export * as RiotClient from "@valapi/riot-client";
 export * as ValorantApiCom from "@valapi/valorant-api.com";
 export * as ValApiLib from "@valapi/lib";
 
-export { Crosshair } from "./utils/Crosshair";
+export { 
+    Crosshair, 
+    type ValoarntCrosshairParsePrimary, type ValoarntCrosshairParse, type ValoarntCrosshairLinesError, type ValoarntCrosshairLines, type ValoarntCrosshair
+} from "./utils/Crosshair";

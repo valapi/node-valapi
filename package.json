@@ -1,7 +1,7 @@
 {
   "name": "valorant.ts",
-  "version": "1.0.1",
-  "description": "Valorant Api - Support MFA",
+  "version": "1.0.2",
+  "description": "Valorant Api - Support Multifactor",
   "main": "dist/index.js",
   "types": "./dist/index.d.ts",
   "publishConfig": {
@@ -10,7 +10,7 @@
   },
   "scripts": {
     "typescript": "npx tsc --project tsconfig.json",
-    "dev": "npm run typescript && node ./dist/utils/Crosshair.js",
+    "dev": "npm run typescript && node ./dist/utils/o2Auth.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,15 +20,15 @@
   "keywords": [
     "valorant",
     "riot",
-    "node",
-    "api",
-    "val-api",
     "val",
+    "api",
     "mfa",
     "2fa",
     "multifactor",
     "twofactor",
-    "ing3kth"
+    "js",
+    "ts",
+    "crosshair"
   ],
   "author": {
     "name": "ing3kth",
@@ -46,13 +46,13 @@
   },
   "homepage": "https://github.com/KTNG-3/valorant-api#readme",
   "devDependencies": {
-    "@types/node": "^17.0.40",
+    "@types/node": "^17.0.42",
     "typescript": "^4.7.3"
   },
   "dependencies": {
-    "@valapi/api-wrapper": "latest",
-    "@valapi/riot-api": "latest",
-    "@valapi/riot-client": "latest",
-    "@valapi/valorant-api.com": "latest"
+    "@valapi/api-wrapper": "^1.2.3",
+    "@valapi/riot-api": "^1.2.1",
+    "@valapi/riot-client": "^1.2.0",
+    "@valapi/valorant-api.com": "^1.2.0"
   }
 }
