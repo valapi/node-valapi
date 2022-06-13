@@ -10,7 +10,7 @@
   },
   "scripts": {
     "typescript": "npx tsc --project tsconfig.json",
-    "dev": "npm run typescript && node ./dist/utils/o2Auth.js",
+    "dev": "npm run typescript && node ./dist/utils/PatchNote.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

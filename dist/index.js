@@ -23,12 +23,14 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Crosshair = exports.ValApiLib = exports.ValorantApiCom = exports.RiotClient = exports.RiotAPI = exports.ApiWrapper = void 0;
+exports.PatchNote = exports.Crosshair = exports.Lib = exports.ValorantApiCom = exports.RiotClient = exports.RiotAPI = exports.ApiWrapper = void 0;
 exports.ApiWrapper = __importStar(require("@valapi/api-wrapper"));
 exports.RiotAPI = __importStar(require("@valapi/riot-api"));
 exports.RiotClient = __importStar(require("@valapi/riot-client"));
 exports.ValorantApiCom = __importStar(require("@valapi/valorant-api.com"));
-exports.ValApiLib = __importStar(require("@valapi/lib"));
+exports.Lib = __importStar(require("@valapi/lib"));
 var Crosshair_1 = require("./utils/Crosshair");
 Object.defineProperty(exports, "Crosshair", { enumerable: true, get: function () { return Crosshair_1.Crosshair; } });
+var PatchNote_1 = require("./utils/PatchNote");
+Object.defineProperty(exports, "PatchNote", { enumerable: true, get: function () { return PatchNote_1.PatchNote; } });
 //# sourceMappingURL=index.js.map
