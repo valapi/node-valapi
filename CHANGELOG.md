@@ -1,6 +1,14 @@
 # x.y.z (00 ABCD 1111)
 
-- PatchNotes Url
+- [Legal notice](https://valapi.github.io/docs/resources/Legal.html)
+- PatchNotes
+- valorant.ts
+  - change import of *@valapi/lib*
+    - ~~ValApiLib~~ **--->** `Lib`
+  - more easier to use *Region*
+    - > `import { Region } from 'valorant.ts'`
+    - example
+      - new Client({ region: **Region.Europe** });
 
 # 1.1.0 (12 June 2022)
 

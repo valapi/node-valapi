@@ -1,8 +1,16 @@
+// modules
+
 export * as ApiWrapper from "@valapi/api-wrapper";
 export * as RiotAPI from "@valapi/riot-api";
 export * as RiotClient from "@valapi/riot-client";
 export * as ValorantApiCom from "@valapi/valorant-api.com";
 export * as Lib from "@valapi/lib";
+
+// resources
+
+export { Region } from "./resources/Region";
+
+// utils
 
 export { 
     Crosshair, 

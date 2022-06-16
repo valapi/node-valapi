@@ -1,4 +1,5 @@
 "use strict";
+// modules
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -23,12 +24,16 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PatchNote = exports.Crosshair = exports.Lib = exports.ValorantApiCom = exports.RiotClient = exports.RiotAPI = exports.ApiWrapper = void 0;
+exports.PatchNote = exports.Crosshair = exports.Region = exports.Lib = exports.ValorantApiCom = exports.RiotClient = exports.RiotAPI = exports.ApiWrapper = void 0;
 exports.ApiWrapper = __importStar(require("@valapi/api-wrapper"));
 exports.RiotAPI = __importStar(require("@valapi/riot-api"));
 exports.RiotClient = __importStar(require("@valapi/riot-client"));
 exports.ValorantApiCom = __importStar(require("@valapi/valorant-api.com"));
 exports.Lib = __importStar(require("@valapi/lib"));
+// resources
+var Region_1 = require("./resources/Region");
+Object.defineProperty(exports, "Region", { enumerable: true, get: function () { return Region_1.Region; } });
+// utils
 var Crosshair_1 = require("./utils/Crosshair");
 Object.defineProperty(exports, "Crosshair", { enumerable: true, get: function () { return Crosshair_1.Crosshair; } });
 var PatchNote_1 = require("./utils/PatchNote");

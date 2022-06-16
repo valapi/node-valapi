@@ -3,6 +3,7 @@ export * as RiotAPI from "@valapi/riot-api";
 export * as RiotClient from "@valapi/riot-client";
 export * as ValorantApiCom from "@valapi/valorant-api.com";
 export * as Lib from "@valapi/lib";
+export { Region } from "./resources/Region";
 export { Crosshair, type ValoarntCrosshairParsePrimary, type ValoarntCrosshairParse, type ValoarntCrosshairLinesError, type ValoarntCrosshairLines, type ValoarntCrosshair } from "./utils/Crosshair";
 export { PatchNote, type ValorantVersion, } from "./utils/PatchNote";
 //# sourceMappingURL=index.d.ts.map
