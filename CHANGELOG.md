@@ -1,7 +1,8 @@
-# x.y.z (00 ABCD 1111)
+# 1.1.1 (23 June 2022)
 
-- [Legal notice](https://valapi.github.io/docs/resources/Legal.html)
-- PatchNotes
+- [Legal notice](https://valapi.github.io/docs/resources/Legal.html) *(Work In Progress)*
+- PatchNotes URL *(beta)*
+- Crosshair Compiler *(beta)*
 - valorant.ts
   - change import of *@valapi/lib*
     - ~~ValApiLib~~ **--->** `Lib`
@@ -9,6 +10,10 @@
     - > `import { Region } from 'valorant.ts'`
     - example
       - new Client({ region: **Region.Europe** });
+- [api-wrapper](https://www.npmjs.com/package/@valapi/api-wrapper)
+  - add 1 [Endpoint](https://valapi.github.io/docs/api-wrapper/API.html) **-->** `Party.TransferOwner()`
+- [valorant-api.com](https://www.npmjs.com/package/@valapi/valorant-api.com)
+  - add 1 [Language](https://valapi.github.io/docs/valorant-api.com/Language.html) **-->** `all`
 
 # 1.1.0 (12 June 2022)
 
