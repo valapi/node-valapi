@@ -24,10 +24,10 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PatchNote = exports.Crosshair = exports.Region = exports.Lib = exports.ValorantApiCom = exports.RiotClient = exports.RiotAPI = exports.ApiWrapper = void 0;
-exports.ApiWrapper = __importStar(require("@valapi/api-wrapper"));
+exports.PatchNote = exports.Crosshair = exports.Region = exports.Lib = exports.ValorantApiCom = exports.RiotAPI = void 0;
+// export * as ApiWrapper from "@valapi/api-wrapper"; // BANNED
 exports.RiotAPI = __importStar(require("@valapi/riot-api"));
-exports.RiotClient = __importStar(require("@valapi/riot-client"));
+// export * as RiotClient from "@valapi/riot-client"; // BANNED
 exports.ValorantApiCom = __importStar(require("@valapi/valorant-api.com"));
 exports.Lib = __importStar(require("@valapi/lib"));
 // resources

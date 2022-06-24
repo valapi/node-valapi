@@ -7,19 +7,10 @@
   "resolved" "https://registry.npmjs.org/@types/node/-/node-17.0.45.tgz"
   "version" "17.0.45"
 
-"@valapi/api-wrapper@^1.2.6":
-  "integrity" "sha512-9WP6ruHWD6KACiTihmvRSd0mSLjwzc6dooFHIvFUyTcKo5h97Uc409rOWLzSoATD3XW14FLatWpsOX6kYSPZMA=="
-  "resolved" "https://registry.npmjs.org/@valapi/api-wrapper/-/api-wrapper-1.2.6.tgz"
-  "version" "1.2.6"
-  dependencies:
-    "@valapi/lib" "^1.2.0"
-    "http-cookie-agent" "^2.1.2"
-    "tough-cookie" "^4.0.0"
-
-"@valapi/lib@^1.2.0", "@valapi/lib@latest":
-  "integrity" "sha512-NOtlcfJOJZbtvpeM9V9sTohW05Wq0aAc6v7L5Mf9g0U/eKenc393+QLGHafu5RLSrftyuQ+qTZicwHb6iX2w3g=="
-  "resolved" "https://registry.npmjs.org/@valapi/lib/-/lib-1.2.0.tgz"
-  "version" "1.2.0"
+"@valapi/lib@^1.2.0", "@valapi/lib@^1.3.0", "@valapi/lib@latest":
+  "integrity" "sha512-XpfDW6n43rbDg4cYUl8fYhkUgBZfXgWHh0ZBCE4UeA+1zxRYQKbiff8tuLryev2fq2xPwBM4dtnmbZ129s90Tw=="
+  "resolved" "https://registry.npmjs.org/@valapi/lib/-/lib-1.3.0.tgz"
+  "version" "1.3.0"
   dependencies:
     "axios" "^0.27.2"
 
@@ -30,26 +21,12 @@
   dependencies:
     "@valapi/lib" "latest"
 
-"@valapi/riot-client@^1.2.0":
-  "integrity" "sha512-nGpk1dlDJADpnIaP9J6j2MExYKUO326Cre/3UQ6nPHJqv27s5RbcrePMQofxwsVuj5vwsOLTtBCiDyDfOYAYIw=="
-  "resolved" "https://registry.npmjs.org/@valapi/riot-client/-/riot-client-1.2.0.tgz"
-  "version" "1.2.0"
-  dependencies:
-    "@valapi/lib" "latest"
-
 "@valapi/valorant-api.com@^1.2.1":
   "integrity" "sha512-UynZiUjVyzgZyaZomFHyX+j8nyTzl7a9sEE5+BxfsjuA/eKo9n02liSN8TWyavfyfzWP94KIDY0F4NhmIH15Eg=="
   "resolved" "https://registry.npmjs.org/@valapi/valorant-api.com/-/valorant-api.com-1.2.1.tgz"
   "version" "1.2.1"
   dependencies:
     "@valapi/lib" "^1.2.0"
-
-"agent-base@^6.0.2":
-  "integrity" "sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ=="
-  "resolved" "https://registry.npmjs.org/agent-base/-/agent-base-6.0.2.tgz"
-  "version" "6.0.2"
-  dependencies:
-    "debug" "4"
 
 "asynckit@^0.4.0":
   "integrity" "sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q=="
@@ -71,13 +48,6 @@
   dependencies:
     "delayed-stream" "~1.0.0"
 
-"debug@4":
-  "integrity" "sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ=="
-  "resolved" "https://registry.npmjs.org/debug/-/debug-4.3.4.tgz"
-  "version" "4.3.4"
-  dependencies:
-    "ms" "2.1.2"
-
 "delayed-stream@~1.0.0":
   "integrity" "sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ=="
   "resolved" "https://registry.npmjs.org/delayed-stream/-/delayed-stream-1.0.0.tgz"
@@ -97,13 +67,6 @@
     "combined-stream" "^1.0.8"
     "mime-types" "^2.1.12"
 
-"http-cookie-agent@^2.1.2":
-  "integrity" "sha512-JW4vAM0mx8fG49Kz0Lg5rj+k9uGH0/qXLguo+axyBUZ5bOpKrSkIpb2UaV3i4agqkD2zC5vLZMYEjSGSlErhwA=="
-  "resolved" "https://registry.npmjs.org/http-cookie-agent/-/http-cookie-agent-2.1.2.tgz"
-  "version" "2.1.2"
-  dependencies:
-    "agent-base" "^6.0.2"
-
 "mime-db@1.52.0":
   "integrity" "sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg=="
   "resolved" "https://registry.npmjs.org/mime-db/-/mime-db-1.52.0.tgz"
@@ -116,36 +79,7 @@
   dependencies:
     "mime-db" "1.52.0"
 
-"ms@2.1.2":
-  "integrity" "sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w=="
-  "resolved" "https://registry.npmjs.org/ms/-/ms-2.1.2.tgz"
-  "version" "2.1.2"
-
-"psl@^1.1.33":
-  "integrity" "sha512-RIdOzyoavK+hA18OGGWDqUTsCLhtA7IcZ/6NCs4fFJaHBDab+pDDmDIByWFRQJq2Cd7r1OoQxBGKOaztq+hjIQ=="
-  "resolved" "https://registry.npmjs.org/psl/-/psl-1.8.0.tgz"
-  "version" "1.8.0"
-
-"punycode@^2.1.1":
-  "integrity" "sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A=="
-  "resolved" "https://registry.npmjs.org/punycode/-/punycode-2.1.1.tgz"
-  "version" "2.1.1"
-
-"tough-cookie@^4.0.0":
-  "integrity" "sha512-tHdtEpQCMrc1YLrMaqXXcj6AxhYi/xgit6mZu1+EDWUn+qhUf8wMQoFIy9NXuq23zAwtcB0t/MjACGR18pcRbg=="
-  "resolved" "https://registry.npmjs.org/tough-cookie/-/tough-cookie-4.0.0.tgz"
-  "version" "4.0.0"
-  dependencies:
-    "psl" "^1.1.33"
-    "punycode" "^2.1.1"
-    "universalify" "^0.1.2"
-
 "typescript@^4.7.4":
   "integrity" "sha512-C0WQT0gezHuw6AdY1M2jxUO83Rjf0HP7Sk1DtXj6j1EwkQNZrHAg2XPWlq62oqEhYvONq5pkC2Y9oPljWToLmQ=="
   "resolved" "https://registry.npmjs.org/typescript/-/typescript-4.7.4.tgz"
   "version" "4.7.4"
-
-"universalify@^0.1.2":
-  "integrity" "sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg=="
-  "resolved" "https://registry.npmjs.org/universalify/-/universalify-0.1.2.tgz"
-  "version" "0.1.2"

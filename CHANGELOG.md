@@ -1,3 +1,5 @@
+# 1.2.0 (24 June 2022)
+
 # 1.1.1 (23 June 2022)
 
 - [Legal notice](https://valapi.github.io/docs/resources/Legal.html) *(Work In Progress)*
