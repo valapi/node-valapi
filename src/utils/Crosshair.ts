@@ -1,15 +1,4 @@
-const ValorantCrosshairColor = {
-    0: 'White',
-    1: 'Green',
-    2: 'Yellow Green',
-    3: 'Green Yellow',
-    4: 'Yellow',
-    5: 'Cyan',
-    6: 'Pink',
-    7: 'Red',
-}
-
-// interface
+//interface
 
 interface ValoarntCrosshairParsePrimary {
     // Color
@@ -142,6 +131,19 @@ interface ValoarntCrosshair {
     };
 }
 
+//class
+
+const ValorantCrosshairColor = {
+    0: 'White',
+    1: 'Green',
+    2: 'Yellow Green',
+    3: 'Green Yellow',
+    4: 'Yellow',
+    5: 'Cyan',
+    6: 'Pink',
+    7: 'Red',
+};
+
 const _defaultCrosshair: ValoarntCrosshair = {
     Primary: {
         Crosshair: {
@@ -255,7 +257,7 @@ const _defaultCrosshair: ValoarntCrosshair = {
             Thickness: 1,
         }
     }
-}
+};
 
 function generateNewJSON<ReturnType = Object | JSON>(myJSON: ReturnType): ReturnType {
     return JSON.parse(JSON.stringify(myJSON))
@@ -337,6 +339,10 @@ class Crosshair {
         this.SniperScope = crosshair.SniperScope;
     }
 
+    /**
+     * 
+     * @returns {ValoarntCrosshair}
+     */
     public toJson(): ValoarntCrosshair {
         let myCode: ValoarntCrosshairParse = this.toJsonParse();
 
@@ -685,6 +691,10 @@ class Crosshair {
         return this.generateJsonCode();
     }
 
+    /**
+     * 
+     * @returns {string} Crosshair Code
+     */
     public toString(): string {
         let myCode = {
             "0": ``,
@@ -1078,6 +1088,10 @@ class Crosshair {
     }
 }
 
-export { Crosshair };
-export { ValorantCrosshairColor as ValorantCrosshairColor, _defaultCrosshair as ValorantDefaultCrosshair };
+//export
+
+export {
+    Crosshair,
+    ValorantCrosshairColor as ValorantCrosshairColor, _defaultCrosshair as ValorantDefaultCrosshair
+};
 export type { ValoarntCrosshairParsePrimary, ValoarntCrosshairParse, ValoarntCrosshairLinesError, ValoarntCrosshairLines, ValoarntCrosshair };

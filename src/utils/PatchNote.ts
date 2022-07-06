@@ -1,6 +1,12 @@
+//import
+
 import { Locale } from "@valapi/lib";
 
+//interface
+
 type ValorantVersion = `${number}.${number}`;
+
+//class
 
 /**
  * Valorant Patch Note URL
@@ -59,6 +65,8 @@ class PatchNote {
         return `${_myPatchNote.patch_note}/valorant-patch-notes-${patch.replace('.', '-')}`;
     }
 }
+
+//export
 
 export { PatchNote };
 export type { ValorantVersion };

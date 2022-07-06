@@ -1,3 +1,12 @@
+# 1.3.0 (6 July 2022)
+
+- [Banned](https://twitter.com/PlayVALORANT/status/1539728676815642624)
+  - Disable [api-wrapper](https://www.npmjs.com/package/@valapi/api-wrapper)
+  - Disable [riot-client](https://www.npmjs.com/package/@valapi/riot-client)
+- Add [@valapi/auth](https://www.npmjs.com/package/@valapi/auth)
+- Using [tslib](https://www.npmjs.com/package/tslib)
+- A little bit changes
+
 # 1.2.0 (24 June 2022)
 
 # 1.1.1 (23 June 2022)

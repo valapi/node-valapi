@@ -1,6 +1,8 @@
 "use strict";
+//import
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PatchNote = void 0;
+//class
 /**
  * Valorant Patch Note URL
  */

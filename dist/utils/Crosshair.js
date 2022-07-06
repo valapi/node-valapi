@@ -1,6 +1,8 @@
 "use strict";
+//interface
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ValorantDefaultCrosshair = exports.ValorantCrosshairColor = exports.Crosshair = void 0;
+//class
 const ValorantCrosshairColor = {
     0: 'White',
     1: 'Green',
@@ -190,6 +192,10 @@ class Crosshair {
         this.AimDownSights = crosshair.AimDownSights;
         this.SniperScope = crosshair.SniperScope;
     }
+    /**
+     *
+     * @returns {ValoarntCrosshair}
+     */
     toJson() {
         let myCode = this.toJsonParse();
         // Basic
@@ -445,6 +451,10 @@ class Crosshair {
         this.isCrosshairParse = true;
         return this.generateJsonCode();
     }
+    /**
+     *
+     * @returns {string} Crosshair Code
+     */
     toString() {
         let myCode = {
             "0": ``,

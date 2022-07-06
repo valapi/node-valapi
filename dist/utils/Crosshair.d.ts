@@ -1,13 +1,3 @@
-declare const ValorantCrosshairColor: {
-    0: string;
-    1: string;
-    2: string;
-    3: string;
-    4: string;
-    5: string;
-    6: string;
-    7: string;
-};
 interface ValoarntCrosshairParsePrimary {
     "c"?: number;
     "h"?: number;
@@ -124,6 +114,16 @@ interface ValoarntCrosshair {
         };
     };
 }
+declare const ValorantCrosshairColor: {
+    0: string;
+    1: string;
+    2: string;
+    3: string;
+    4: string;
+    5: string;
+    6: string;
+    7: string;
+};
 declare const _defaultCrosshair: ValoarntCrosshair;
 /**
  * Valorant Crosshair Compiler
@@ -192,14 +192,21 @@ declare class Crosshair {
     private generateJsonCode;
     private toJsonParse;
     private fromJson;
+    /**
+     *
+     * @returns {ValoarntCrosshair}
+     */
     toJson(): ValoarntCrosshair;
+    /**
+     *
+     * @returns {string} Crosshair Code
+     */
     toString(): string;
     static fromJson(crosshair: ValoarntCrosshair): Crosshair;
     static fromJsonToString(crosshair: ValoarntCrosshair): string;
     static fromString(code: string): Crosshair;
     static fromStringToJson(code: string): ValoarntCrosshair;
 }
-export { Crosshair };
-export { ValorantCrosshairColor as ValorantCrosshairColor, _defaultCrosshair as ValorantDefaultCrosshair };
+export { Crosshair, ValorantCrosshairColor as ValorantCrosshairColor, _defaultCrosshair as ValorantDefaultCrosshair };
 export type { ValoarntCrosshairParsePrimary, ValoarntCrosshairParse, ValoarntCrosshairLinesError, ValoarntCrosshairLines, ValoarntCrosshair };
 //# sourceMappingURL=Crosshair.d.ts.map
