@@ -1,3 +1,8 @@
+# 1.3.1 (14 July 2022)
+
+- Remove `declarationMap` and `sourceMap`
+- Change A lot of Typescript' Type definition
+
 # 1.3.0 (6 July 2022)
 
 - [Banned](https://twitter.com/PlayVALORANT/status/1539728676815642624)

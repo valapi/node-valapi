@@ -1,8 +1,14 @@
-export * as Auth from "@valapi/auth";
-export * as RiotAPI from "@valapi/riot-api";
-export * as ValorantApiCom from "@valapi/valorant-api.com";
-export * as Lib from "@valapi/lib";
+import * as Auth from "@valapi/auth";
+import * as RiotAPI from "@valapi/riot-api";
+import * as ValorantApiCom from "@valapi/valorant-api.com";
+import * as Lib from "@valapi/lib";
+export { Auth, RiotAPI, ValorantApiCom, Lib, };
+declare const _default: {
+    Auth: typeof Auth.Client;
+    RiotAPI: typeof RiotAPI.Client;
+    ValorantApiCom: typeof ValorantApiCom.Client;
+};
+export default _default;
 export { Region } from "./resources/Region";
-export { Crosshair, ValorantCrosshairColor, ValorantDefaultCrosshair, type ValoarntCrosshairParsePrimary, type ValoarntCrosshairParse, type ValoarntCrosshairLinesError, type ValoarntCrosshairLines, type ValoarntCrosshair } from "./utils/Crosshair";
-export { PatchNote, type ValorantVersion, } from "./utils/PatchNote";
-//# sourceMappingURL=index.d.ts.map
+export { Crosshair, ValorantCrosshairColor, ValorantDefaultCrosshair, type ValoarntCrosshair } from "./utils/Crosshair";
+export { PatchNote, } from "./utils/PatchNote";

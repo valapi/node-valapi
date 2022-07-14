@@ -137,6 +137,10 @@ function generateNewJSON(myJSON) {
  * * Don't Code Like This Class (Make for understanding Valorant crosshair)
  */
 class Crosshair {
+    /**
+     * Class Constructor
+     * @param code Crosshair Code
+     */
     constructor(code = '0') {
         this.isCrosshairParse = false;
         this.General = generateNewJSON(_defaultCrosshair.General);
@@ -194,7 +198,7 @@ class Crosshair {
     }
     /**
      *
-     * @returns {ValoarntCrosshair}
+     * @returns {ValoarntCrosshair} Json Valorant Crosshair
      */
     toJson() {
         let myCode = this.toJsonParse();
@@ -727,23 +731,42 @@ class Crosshair {
         }
         return stringCode;
     }
+    /**
+     *
+     * @param {ValoarntCrosshair} crosshair Json Valorant Crosshair
+     * @returns {Crosshair}
+     */
     static fromJson(crosshair) {
         const _newCrosshair = new Crosshair();
         _newCrosshair.fromJson(crosshair);
         return _newCrosshair;
     }
+    /**
+     *
+     * @param {ValoarntCrosshair} crosshair Json Valorant Crosshair
+     * @returns {string} Crosshair Code
+     */
     static fromJsonToString(crosshair) {
         const _newCrosshair = Crosshair.fromJson(crosshair);
         return _newCrosshair.toString();
     }
+    /**
+     *
+     * @param {string} code Crosshair Code
+     * @returns {Crosshair}
+     */
     static fromString(code) {
         const _newCrosshair = new Crosshair(code);
         return _newCrosshair;
     }
+    /**
+     *
+     * @param {string} code Crosshair Code
+     * @returns {ValoarntCrosshair} Json Valorant Crosshair
+     */
     static fromStringToJson(code) {
         const _newCrosshair = Crosshair.fromString(code);
         return _newCrosshair.toJson();
     }
 }
 exports.Crosshair = Crosshair;
-//# sourceMappingURL=Crosshair.js.map

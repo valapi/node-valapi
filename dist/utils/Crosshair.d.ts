@@ -1,60 +1,62 @@
-interface ValoarntCrosshairParsePrimary {
-    "c"?: number;
-    "h"?: number;
-    "t"?: number;
-    "o"?: number;
-    "d"?: number;
-    "z"?: number;
-    "a"?: number;
-    "f"?: number;
-    "s"?: number;
-    "m"?: number;
-    "0b"?: number;
-    "0t"?: number;
-    "0l"?: number;
-    "0o"?: number;
-    "0a"?: number;
-    "0m"?: number;
-    "0f"?: number;
-    "0s"?: number;
-    "0e"?: number;
-    "1b"?: number;
-    "1t"?: number;
-    "1l"?: number;
-    "1o"?: number;
-    "1a"?: number;
-    "1m"?: number;
-    "1f"?: number;
-    "1s"?: number;
-    "1e"?: number;
-}
-interface ValoarntCrosshairParse {
-    "0": {
-        "p"?: number;
+declare namespace Crosshair {
+    interface ParsePrimary {
         "c"?: number;
-        "s"?: number;
-    };
-    "P"?: ValoarntCrosshairParsePrimary;
-    "A"?: ValoarntCrosshairParsePrimary;
-    "S"?: {
-        "d"?: number;
-        "c"?: number;
-        "s"?: number;
+        "h"?: number;
+        "t"?: number;
         "o"?: number;
-    };
-}
-interface ValoarntCrosshairLinesError {
-    isEnable: Boolean;
-    Multiplier: number;
-}
-interface ValoarntCrosshairLines {
-    isEnable: Boolean;
-    Opacity: number;
-    Length: number;
-    Thickness: number;
-    Offset: number;
-    MovementError: ValoarntCrosshairLinesError;
-    FiringError: ValoarntCrosshairLinesError;
+        "d"?: number;
+        "z"?: number;
+        "a"?: number;
+        "f"?: number;
+        "s"?: number;
+        "m"?: number;
+        "0b"?: number;
+        "0t"?: number;
+        "0l"?: number;
+        "0o"?: number;
+        "0a"?: number;
+        "0m"?: number;
+        "0f"?: number;
+        "0s"?: number;
+        "0e"?: number;
+        "1b"?: number;
+        "1t"?: number;
+        "1l"?: number;
+        "1o"?: number;
+        "1a"?: number;
+        "1m"?: number;
+        "1f"?: number;
+        "1s"?: number;
+        "1e"?: number;
+    }
+    interface Parse {
+        "0": {
+            "p"?: number;
+            "c"?: number;
+            "s"?: number;
+        };
+        "P"?: Crosshair.ParsePrimary;
+        "A"?: Crosshair.ParsePrimary;
+        "S"?: {
+            "d"?: number;
+            "c"?: number;
+            "s"?: number;
+            "o"?: number;
+        };
+    }
+    interface LinesError {
+        isEnable: Boolean;
+        Multiplier: number;
+    }
+    interface Lines {
+        isEnable: Boolean;
+        Opacity: number;
+        Length: number;
+        Thickness: number;
+        Offset: number;
+        MovementError: Crosshair.LinesError;
+        FiringError: Crosshair.LinesError;
+    }
 }
 interface ValoarntCrosshair {
     Primary: {
@@ -73,8 +75,8 @@ interface ValoarntCrosshair {
             OverrideFiringErrorOffsetWithCrosshairOffset: Boolean;
             OverrideAllPrimaryCrosshairWithMyPrimaryCrosshair: Boolean;
         };
-        InnerLines: ValoarntCrosshairLines;
-        OuterLines: ValoarntCrosshairLines;
+        InnerLines: Crosshair.Lines;
+        OuterLines: Crosshair.Lines;
     };
     AimDownSights: {
         CopyPrimaryCrosshair: Boolean;
@@ -92,8 +94,8 @@ interface ValoarntCrosshair {
             };
             OverrideFiringErrorOffsetWithCrosshairOffset: Boolean;
         };
-        InnerLines: ValoarntCrosshairLines;
-        OuterLines: ValoarntCrosshairLines;
+        InnerLines: Crosshair.Lines;
+        OuterLines: Crosshair.Lines;
     };
     General: {
         Crosshair: {
@@ -158,8 +160,8 @@ declare class Crosshair {
             OverrideFiringErrorOffsetWithCrosshairOffset: Boolean;
             OverrideAllPrimaryCrosshairWithMyPrimaryCrosshair: Boolean;
         };
-        InnerLines: ValoarntCrosshairLines;
-        OuterLines: ValoarntCrosshairLines;
+        InnerLines: Crosshair.Lines;
+        OuterLines: Crosshair.Lines;
     };
     AimDownSights: {
         CopyPrimaryCrosshair: Boolean;
@@ -177,8 +179,8 @@ declare class Crosshair {
             };
             OverrideFiringErrorOffsetWithCrosshairOffset: Boolean;
         };
-        InnerLines: ValoarntCrosshairLines;
-        OuterLines: ValoarntCrosshairLines;
+        InnerLines: Crosshair.Lines;
+        OuterLines: Crosshair.Lines;
     };
     SniperScope: {
         CenterDot: {
@@ -188,13 +190,17 @@ declare class Crosshair {
             Thickness: number;
         };
     };
+    /**
+     * Class Constructor
+     * @param code Crosshair Code
+     */
     constructor(code?: string);
     private generateJsonCode;
     private toJsonParse;
     private fromJson;
     /**
      *
-     * @returns {ValoarntCrosshair}
+     * @returns {ValoarntCrosshair} Json Valorant Crosshair
      */
     toJson(): ValoarntCrosshair;
     /**
@@ -202,11 +208,30 @@ declare class Crosshair {
      * @returns {string} Crosshair Code
      */
     toString(): string;
+    /**
+     *
+     * @param {ValoarntCrosshair} crosshair Json Valorant Crosshair
+     * @returns {Crosshair}
+     */
     static fromJson(crosshair: ValoarntCrosshair): Crosshair;
+    /**
+     *
+     * @param {ValoarntCrosshair} crosshair Json Valorant Crosshair
+     * @returns {string} Crosshair Code
+     */
     static fromJsonToString(crosshair: ValoarntCrosshair): string;
+    /**
+     *
+     * @param {string} code Crosshair Code
+     * @returns {Crosshair}
+     */
     static fromString(code: string): Crosshair;
+    /**
+     *
+     * @param {string} code Crosshair Code
+     * @returns {ValoarntCrosshair} Json Valorant Crosshair
+     */
     static fromStringToJson(code: string): ValoarntCrosshair;
 }
 export { Crosshair, ValorantCrosshairColor as ValorantCrosshairColor, _defaultCrosshair as ValorantDefaultCrosshair };
-export type { ValoarntCrosshairParsePrimary, ValoarntCrosshairParse, ValoarntCrosshairLinesError, ValoarntCrosshairLines, ValoarntCrosshair };
-//# sourceMappingURL=Crosshair.d.ts.map
+export type { ValoarntCrosshair };

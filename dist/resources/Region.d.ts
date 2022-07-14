@@ -10,4 +10,3 @@ declare class Region {
     static Public_Beta_Environment: keyof typeof RegionCore.from;
 }
 export { Region };
-//# sourceMappingURL=Region.d.ts.map

@@ -17,4 +17,3 @@ Region.Korea = "kr";
 Region.Latin_America = "latam";
 Region.North_America = "na";
 Region.Public_Beta_Environment = "pbe";
-//# sourceMappingURL=Region.js.map

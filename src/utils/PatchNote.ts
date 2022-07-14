@@ -4,7 +4,9 @@ import { Locale } from "@valapi/lib";
 
 //interface
 
-type ValorantVersion = `${number}.${number}`;
+namespace PatchNote {
+    export type Version = `${number}.${number}`;
+}
 
 //class
 
@@ -17,7 +19,7 @@ class PatchNote {
     private patch_note: string;
 
     /**
-     * 
+     * Class Constructor
      * @param {string} language Language of the patch note
      */
     public constructor(language: keyof typeof Locale.from = 'en-US') {
@@ -32,7 +34,7 @@ class PatchNote {
     /**
      * 
      * @param {string} language Language
-     * @returns {string}
+     * @returns {string} Url of Json data
      */
     public static getJsonUrl(language?: keyof typeof Locale.from): string {
         const _myPatchNote = new PatchNote(language);
@@ -44,9 +46,9 @@ class PatchNote {
      * 
      * @param {string} patch Version
      * @param {string} language Language
-     * @returns {string}
+     * @returns {string} Url of Patch note
      */
-    public static getUrl(patch?: ValorantVersion, language?: keyof typeof Locale.from): string {
+    public static getUrl(patch?: PatchNote.Version, language?: keyof typeof Locale.from): string {
         const _myPatchNote = new PatchNote(language);
 
         if (!patch) {
@@ -59,7 +61,7 @@ class PatchNote {
         } else if (split_patch.at(1) !== '0' && String(split_patch.at(1)).length === 1) {
             split_patch[1] = `0${split_patch[1]}`;
 
-            patch = `${Number(split_patch.at(0))}.${String(split_patch.at(1))}` as ValorantVersion;
+            patch = `${Number(split_patch.at(0))}.${String(split_patch.at(1))}` as PatchNote.Version;
         }
 
         return `${_myPatchNote.patch_note}/valorant-patch-notes-${patch.replace('.', '-')}`;
@@ -69,4 +71,3 @@ class PatchNote {
 //export
 
 export { PatchNote };
-export type { ValorantVersion };

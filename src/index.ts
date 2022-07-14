@@ -1,25 +1,35 @@
-// modules
+import * as Auth from "@valapi/auth";
+import * as RiotAPI from "@valapi/riot-api";
+import * as ValorantApiCom from "@valapi/valorant-api.com";
+import * as Lib from "@valapi/lib";
 
-export * as Auth from "@valapi/auth";
-//export * as ApiWrapper from "@valapi/api-wrapper"; // BANNED
-export * as RiotAPI from "@valapi/riot-api";
-//export * as RiotClient from "@valapi/riot-client"; // BANNED
-export * as ValorantApiCom from "@valapi/valorant-api.com";
-export * as Lib from "@valapi/lib";
+//modules
 
-// resources
+export {
+    Auth,
+    RiotAPI,
+    ValorantApiCom,
+    Lib,
+};
+
+export default {
+    Auth: Auth.Client,
+    RiotAPI: RiotAPI.Client,
+    ValorantApiCom: ValorantApiCom.Client,
+};
+
+//resources
 
 export { Region } from "./resources/Region";
 
-// utils
+//utils
 
 export {
     Crosshair,
     ValorantCrosshairColor, ValorantDefaultCrosshair,
-    type ValoarntCrosshairParsePrimary, type ValoarntCrosshairParse, type ValoarntCrosshairLinesError, type ValoarntCrosshairLines, type ValoarntCrosshair
+    type ValoarntCrosshair
 } from "./utils/Crosshair";
 
 export {
     PatchNote,
-    type ValorantVersion,
 } from "./utils/PatchNote";

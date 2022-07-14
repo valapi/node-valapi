@@ -8,7 +8,7 @@ exports.PatchNote = void 0;
  */
 class PatchNote {
     /**
-     *
+     * Class Constructor
      * @param {string} language Language of the patch note
      */
     constructor(language = 'en-US') {
@@ -20,7 +20,7 @@ class PatchNote {
     /**
      *
      * @param {string} language Language
-     * @returns {string}
+     * @returns {string} Url of Json data
      */
     static getJsonUrl(language) {
         const _myPatchNote = new PatchNote(language);
@@ -30,7 +30,7 @@ class PatchNote {
      *
      * @param {string} patch Version
      * @param {string} language Language
-     * @returns {string}
+     * @returns {string} Url of Patch note
      */
     static getUrl(patch, language) {
         const _myPatchNote = new PatchNote(language);
@@ -49,4 +49,3 @@ class PatchNote {
     }
 }
 exports.PatchNote = PatchNote;
-//# sourceMappingURL=PatchNote.js.map

@@ -1,75 +1,77 @@
 //interface
 
-interface ValoarntCrosshairParsePrimary {
-    // Color
-    "c"?: number;
-    // Out Line
-    "h"?: number;
-    "t"?: number;
-    "o"?: number;
-    // Center Dot
-    "d"?: number;
-    "z"?: number;
-    "a"?: number;
-    // Mores
-    "f"?: number;
-    "s"?: number;
-    "m"?: number;
-    // Inner Lines
-    "0b"?: number;
-    "0t"?: number;
-    "0l"?: number;
-    "0o"?: number;
-    "0a"?: number;
-    "0m"?: number;
-    "0f"?: number;
-    "0s"?: number;
-    "0e"?: number;
-    // Outer Lines
-    "1b"?: number;
-    "1t"?: number;
-    "1l"?: number;
-    "1o"?: number;
-    "1a"?: number;
-    "1m"?: number;
-    "1f"?: number;
-    "1s"?: number;
-    "1e"?: number;
-}
+namespace Crosshair {
+    export interface ParsePrimary {
+        // Color
+        "c"?: number;
+        // Out Line
+        "h"?: number;
+        "t"?: number;
+        "o"?: number;
+        // Center Dot
+        "d"?: number;
+        "z"?: number;
+        "a"?: number;
+        // Mores
+        "f"?: number;
+        "s"?: number;
+        "m"?: number;
+        // Inner Lines
+        "0b"?: number;
+        "0t"?: number;
+        "0l"?: number;
+        "0o"?: number;
+        "0a"?: number;
+        "0m"?: number;
+        "0f"?: number;
+        "0s"?: number;
+        "0e"?: number;
+        // Outer Lines
+        "1b"?: number;
+        "1t"?: number;
+        "1l"?: number;
+        "1o"?: number;
+        "1a"?: number;
+        "1m"?: number;
+        "1f"?: number;
+        "1s"?: number;
+        "1e"?: number;
+    }
+    
+    export interface Parse {
+        // Others
+        "0": {
+            "p"?: number,
+            "c"?: number,
+            "s"?: number,
+        };
+        // Primary
+        "P"?: Crosshair.ParsePrimary;
+        // Aim Down Sights
+        "A"?: Crosshair.ParsePrimary;
+        // Sniper Scope
+        "S"?: {
+            "d"?: number,
+            "c"?: number,
+            "s"?: number,
+            "o"?: number,
+        };
+    }
 
-interface ValoarntCrosshairParse {
-    // Others
-    "0": {
-        "p"?: number,
-        "c"?: number,
-        "s"?: number,
-    };
-    // Primary
-    "P"?: ValoarntCrosshairParsePrimary;
-    // Aim Down Sights
-    "A"?: ValoarntCrosshairParsePrimary;
-    // Sniper Scope
-    "S"?: {
-        "d"?: number,
-        "c"?: number,
-        "s"?: number,
-        "o"?: number,
-    };
-}
+    export interface LinesError {
+        isEnable: Boolean; // not in valorant settings
+        Multiplier: number;
+    }
 
-interface ValoarntCrosshairLinesError {
-    isEnable: Boolean; // not in valorant settings
-    Multiplier: number;
-}
-
-interface ValoarntCrosshairLines {
-    isEnable: Boolean, // not in valorant settings
-    Opacity: number;
-    Length: number;
-    Thickness: number;
-    Offset: number;
-    MovementError: ValoarntCrosshairLinesError;
-    FiringError: ValoarntCrosshairLinesError;
+    export interface Lines {
+        isEnable: Boolean, // not in valorant settings
+        Opacity: number;
+        Length: number;
+        Thickness: number;
+        Offset: number;
+        MovementError: Crosshair.LinesError;
+        FiringError: Crosshair.LinesError;
+    }
 }
 
 interface ValoarntCrosshair {
@@ -89,8 +91,8 @@ interface ValoarntCrosshair {
             OverrideFiringErrorOffsetWithCrosshairOffset: Boolean,
             OverrideAllPrimaryCrosshairWithMyPrimaryCrosshair: Boolean,
         }
-        InnerLines: ValoarntCrosshairLines,
-        OuterLines: ValoarntCrosshairLines,
+        InnerLines: Crosshair.Lines,
+        OuterLines: Crosshair.Lines,
     };
     AimDownSights: {
         CopyPrimaryCrosshair: Boolean,
@@ -108,8 +110,8 @@ interface ValoarntCrosshair {
             },
             OverrideFiringErrorOffsetWithCrosshairOffset: Boolean,
         }
-        InnerLines: ValoarntCrosshairLines,
-        OuterLines: ValoarntCrosshairLines,
+        InnerLines: Crosshair.Lines,
+        OuterLines: Crosshair.Lines,
     };
     General: {
         Crosshair: {
@@ -277,6 +279,10 @@ class Crosshair {
     public AimDownSights = generateNewJSON(_defaultCrosshair.AimDownSights);
     public SniperScope = generateNewJSON(_defaultCrosshair.SniperScope);
 
+    /**
+     * Class Constructor
+     * @param code Crosshair Code
+     */
     public constructor(code: string = '0') {
         this.code = code;
     }
@@ -290,7 +296,7 @@ class Crosshair {
         }
     }
 
-    private toJsonParse(): ValoarntCrosshairParse {
+    private toJsonParse(): Crosshair.Parse {
         const codeArray = String(this.code).split(';');
         let myJSON = `{`;
 
@@ -329,7 +335,7 @@ class Crosshair {
         }
 
         myJSON += `}}`
-        return JSON.parse(myJSON) as ValoarntCrosshairParse;
+        return JSON.parse(myJSON) as Crosshair.Parse;
     }
 
     private fromJson(crosshair: ValoarntCrosshair): void {
@@ -341,10 +347,10 @@ class Crosshair {
 
     /**
      * 
-     * @returns {ValoarntCrosshair}
+     * @returns {ValoarntCrosshair} Json Valorant Crosshair
      */
     public toJson(): ValoarntCrosshair {
-        let myCode: ValoarntCrosshairParse = this.toJsonParse();
+        let myCode: Crosshair.Parse = this.toJsonParse();
 
         // Basic
 
@@ -1062,6 +1068,11 @@ class Crosshair {
         return stringCode;
     }
 
+    /**
+     * 
+     * @param {ValoarntCrosshair} crosshair Json Valorant Crosshair
+     * @returns {Crosshair}
+     */
     public static fromJson(crosshair: ValoarntCrosshair): Crosshair {
         const _newCrosshair = new Crosshair();
         _newCrosshair.fromJson(crosshair);
@@ -1069,18 +1080,33 @@ class Crosshair {
         return _newCrosshair;
     }
 
+    /**
+     * 
+     * @param {ValoarntCrosshair} crosshair Json Valorant Crosshair
+     * @returns {string} Crosshair Code
+     */
     public static fromJsonToString(crosshair: ValoarntCrosshair): string {
         const _newCrosshair = Crosshair.fromJson(crosshair);
 
         return _newCrosshair.toString();
     }
 
+    /**
+     * 
+     * @param {string} code Crosshair Code
+     * @returns {Crosshair}
+     */
     public static fromString(code: string): Crosshair {
         const _newCrosshair = new Crosshair(code);
 
         return _newCrosshair;
     }
 
+    /**
+     * 
+     * @param {string} code Crosshair Code
+     * @returns {ValoarntCrosshair} Json Valorant Crosshair
+     */
     public static fromStringToJson(code: string): ValoarntCrosshair {
         const _newCrosshair = Crosshair.fromString(code);
 
@@ -1094,4 +1120,5 @@ export {
     Crosshair,
     ValorantCrosshairColor as ValorantCrosshairColor, _defaultCrosshair as ValorantDefaultCrosshair
 };
-export type { ValoarntCrosshairParsePrimary, ValoarntCrosshairParse, ValoarntCrosshairLinesError, ValoarntCrosshairLines, ValoarntCrosshair };
+
+export type { ValoarntCrosshair };

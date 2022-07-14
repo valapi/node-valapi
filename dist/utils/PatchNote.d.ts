@@ -1,5 +1,7 @@
 import { Locale } from "@valapi/lib";
-declare type ValorantVersion = `${number}.${number}`;
+declare namespace PatchNote {
+    type Version = `${number}.${number}`;
+}
 /**
  * Valorant Patch Note URL
  */
@@ -8,24 +10,22 @@ declare class PatchNote {
     private patch_list;
     private patch_note;
     /**
-     *
+     * Class Constructor
      * @param {string} language Language of the patch note
      */
     constructor(language?: keyof typeof Locale.from);
     /**
      *
      * @param {string} language Language
-     * @returns {string}
+     * @returns {string} Url of Json data
      */
     static getJsonUrl(language?: keyof typeof Locale.from): string;
     /**
      *
      * @param {string} patch Version
      * @param {string} language Language
-     * @returns {string}
+     * @returns {string} Url of Patch note
      */
-    static getUrl(patch?: ValorantVersion, language?: keyof typeof Locale.from): string;
+    static getUrl(patch?: PatchNote.Version, language?: keyof typeof Locale.from): string;
 }
 export { PatchNote };
-export type { ValorantVersion };
-//# sourceMappingURL=PatchNote.d.ts.map
