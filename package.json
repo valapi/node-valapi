@@ -43,7 +43,7 @@
   "bugs": {
     "url": "https://github.com/KTNG-3/valorant-api/issues"
   },
-  "homepage": "https://github.com/KTNG-3/valorant-api#readme",
+  "homepage": "https://valapi.github.io/docs/",
   "devDependencies": {
     "@types/node": "^18.0.4",
     "tslib": "^2.4.0",

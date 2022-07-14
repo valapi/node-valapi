@@ -18,6 +18,18 @@ NodeJS package that make more easier to use Valorant API
 > - **@valapi** was created under [Riot Games' "Legal Jibber Jabber"](https://www.riotgames.com/en/legal)
 > - [MIT License](https://github.com/valapi/.github/blob/main/LICENSE)
 
+## Installation
+
+**NPM:**
+```bash
+npm install valorant.ts
+```
+
+**Yarn:**
+```bash
+yarn add valorant.ts
+```
+
 ## Guide
 
 Full Guide: **[Click Here](https://valapi.github.io/docs/)**
