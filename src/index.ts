@@ -1,4 +1,5 @@
 import * as Auth from "@valapi/auth";
+import * as WebClient from "@valapi/web-client";
 import * as RiotAPI from "@valapi/riot-api";
 import * as ValorantApiCom from "@valapi/valorant-api.com";
 import * as Lib from "@valapi/lib";
@@ -14,6 +15,7 @@ export {
 
 export default {
     Auth: Auth.Client,
+    WebClient: WebClient.Client,
     RiotAPI: RiotAPI.Client,
     ValorantApiCom: ValorantApiCom.Client,
 };

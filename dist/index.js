@@ -4,6 +4,7 @@ exports.PatchNote = exports.ValorantDefaultCrosshair = exports.ValorantCrosshair
 const tslib_1 = require("tslib");
 const Auth = tslib_1.__importStar(require("@valapi/auth"));
 exports.Auth = Auth;
+const WebClient = tslib_1.__importStar(require("@valapi/web-client"));
 const RiotAPI = tslib_1.__importStar(require("@valapi/riot-api"));
 exports.RiotAPI = RiotAPI;
 const ValorantApiCom = tslib_1.__importStar(require("@valapi/valorant-api.com"));
@@ -12,6 +13,7 @@ const Lib = tslib_1.__importStar(require("@valapi/lib"));
 exports.Lib = Lib;
 exports.default = {
     Auth: Auth.Client,
+    WebClient: WebClient.Client,
     RiotAPI: RiotAPI.Client,
     ValorantApiCom: ValorantApiCom.Client,
 };

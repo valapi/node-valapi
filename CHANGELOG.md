@@ -1,3 +1,7 @@
+# 1.4.0 (15 July 2022)
+
+- Add [@valapi/web-client](https://www.npmjs.com/package/@valapi/web-client)
+
 # 1.3.1 (14 July 2022)
 
 - Remove `declarationMap` and `sourceMap`
