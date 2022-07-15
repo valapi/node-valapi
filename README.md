@@ -1,15 +1,15 @@
 <div align="center">
-  
+
 # Valorant API - Support MFA
-  
+
 [![Profile](https://github.com/valapi/.github/blob/main/128_valapi.png?raw=true)](https://github.com/valapi)
-  
+
 NodeJS package that make more easier to use Valorant API
-  
+
 [![LICENSE](https://badgen.net/badge/license/MIT/blue)](https://github.com/valapi/.github/blob/main/LICENSE)
 [![Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/valapi)
 [![Discord](https://badgen.net/badge/icon/discord?icon=discord&label)](https://discord.gg/pbyWbUYjyt)
-  
+
 </div>
 
 -----------
