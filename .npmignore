@@ -1,6 +1,10 @@
 .env
 .env.test
 .DS_Store
+.npmrc
+.gitignore
+.eslintignore
+.eslintrc.json
 .vscode
 .vscode/
 .dynamodb
