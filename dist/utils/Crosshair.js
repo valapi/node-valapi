@@ -139,7 +139,7 @@ function generateNewJSON(myJSON) {
 class Crosshair {
     /**
      * Class Constructor
-     * @param code Crosshair Code
+     * @param {string} code Crosshair Code
      */
     constructor(code = '0') {
         this.isCrosshairParse = false;
@@ -169,7 +169,7 @@ class Crosshair {
             codeArray.shift();
         }
         // parse
-        for (let ofCode in codeArray) {
+        for (const ofCode in codeArray) {
             const code = codeArray[ofCode];
             if (String(Number(code)) === code) {
                 myJSON += `${code}`;
@@ -201,7 +201,7 @@ class Crosshair {
      * @returns {ValoarntCrosshair} Json Valorant Crosshair
      */
     toJson() {
-        let myCode = this.toJsonParse();
+        const myCode = this.toJsonParse();
         // Basic
         if (!myCode[0]) {
             throw new Error('Invalid crosshair code');
@@ -460,7 +460,7 @@ class Crosshair {
      * @returns {string} Crosshair Code
      */
     toString() {
-        let myCode = {
+        const myCode = {
             "0": ``,
             "P": ``,
             "A": ``,
@@ -714,8 +714,8 @@ class Crosshair {
          * toString (End)
          */
         let stringCode = ``;
-        for (let key in myCode) {
-            let _key = key;
+        for (const key in myCode) {
+            const _key = key;
             if (myCode[_key] !== ``) {
                 stringCode += `${key};${myCode[_key]}`;
                 if (!String(myCode[_key]).endsWith(';')) {

@@ -45,11 +45,11 @@ declare namespace Crosshair {
         };
     }
     interface LinesError {
-        isEnable: Boolean;
+        isEnable: boolean;
         Multiplier: number;
     }
     interface Lines {
-        isEnable: Boolean;
+        isEnable: boolean;
         Opacity: number;
         Length: number;
         Thickness: number;
@@ -63,54 +63,54 @@ interface ValoarntCrosshair {
         Crosshair: {
             CrosshairColor: number;
             OutLine: {
-                isEnable: Boolean;
+                isEnable: boolean;
                 Opacity: number;
                 Thickness: number;
             };
             CenterDot: {
-                isEnable: Boolean;
+                isEnable: boolean;
                 Opacity: number;
                 Thickness: number;
             };
-            OverrideFiringErrorOffsetWithCrosshairOffset: Boolean;
-            OverrideAllPrimaryCrosshairWithMyPrimaryCrosshair: Boolean;
+            OverrideFiringErrorOffsetWithCrosshairOffset: boolean;
+            OverrideAllPrimaryCrosshairWithMyPrimaryCrosshair: boolean;
         };
         InnerLines: Crosshair.Lines;
         OuterLines: Crosshair.Lines;
     };
     AimDownSights: {
-        CopyPrimaryCrosshair: Boolean;
+        CopyPrimaryCrosshair: boolean;
         Crosshair: {
             CrosshairColor: number;
             OutLine: {
-                isEnable: Boolean;
+                isEnable: boolean;
                 Opacity: number;
                 Thickness: number;
             };
             CenterDot: {
-                isEnable: Boolean;
+                isEnable: boolean;
                 Opacity: number;
                 Thickness: number;
             };
-            OverrideFiringErrorOffsetWithCrosshairOffset: Boolean;
+            OverrideFiringErrorOffsetWithCrosshairOffset: boolean;
         };
         InnerLines: Crosshair.Lines;
         OuterLines: Crosshair.Lines;
     };
     General: {
         Crosshair: {
-            UseAdvancedOptions: Boolean;
+            UseAdvancedOptions: boolean;
         };
         Other: {
-            ShowSpectatedPlayerCrosshair: Boolean;
-            FadeCrosshairWithFiringError: Boolean;
-            DisableCrosshair?: Boolean;
+            ShowSpectatedPlayerCrosshair: boolean;
+            FadeCrosshairWithFiringError: boolean;
+            DisableCrosshair?: boolean;
         };
     };
     SniperScope: {
         CenterDot: {
             Color: number;
-            isEnable: Boolean;
+            isEnable: boolean;
             Opacity: number;
             Thickness: number;
         };
@@ -136,48 +136,48 @@ declare class Crosshair {
     private isCrosshairParse;
     General: {
         Crosshair: {
-            UseAdvancedOptions: Boolean;
+            UseAdvancedOptions: boolean;
         };
         Other: {
-            ShowSpectatedPlayerCrosshair: Boolean;
-            FadeCrosshairWithFiringError: Boolean;
-            DisableCrosshair?: Boolean | undefined;
+            ShowSpectatedPlayerCrosshair: boolean;
+            FadeCrosshairWithFiringError: boolean;
+            DisableCrosshair?: boolean | undefined;
         };
     };
     Primary: {
         Crosshair: {
             CrosshairColor: number;
             OutLine: {
-                isEnable: Boolean;
+                isEnable: boolean;
                 Opacity: number;
                 Thickness: number;
             };
             CenterDot: {
-                isEnable: Boolean;
+                isEnable: boolean;
                 Opacity: number;
                 Thickness: number;
             };
-            OverrideFiringErrorOffsetWithCrosshairOffset: Boolean;
-            OverrideAllPrimaryCrosshairWithMyPrimaryCrosshair: Boolean;
+            OverrideFiringErrorOffsetWithCrosshairOffset: boolean;
+            OverrideAllPrimaryCrosshairWithMyPrimaryCrosshair: boolean;
         };
         InnerLines: Crosshair.Lines;
         OuterLines: Crosshair.Lines;
     };
     AimDownSights: {
-        CopyPrimaryCrosshair: Boolean;
+        CopyPrimaryCrosshair: boolean;
         Crosshair: {
             CrosshairColor: number;
             OutLine: {
-                isEnable: Boolean;
+                isEnable: boolean;
                 Opacity: number;
                 Thickness: number;
             };
             CenterDot: {
-                isEnable: Boolean;
+                isEnable: boolean;
                 Opacity: number;
                 Thickness: number;
             };
-            OverrideFiringErrorOffsetWithCrosshairOffset: Boolean;
+            OverrideFiringErrorOffsetWithCrosshairOffset: boolean;
         };
         InnerLines: Crosshair.Lines;
         OuterLines: Crosshair.Lines;
@@ -185,14 +185,14 @@ declare class Crosshair {
     SniperScope: {
         CenterDot: {
             Color: number;
-            isEnable: Boolean;
+            isEnable: boolean;
             Opacity: number;
             Thickness: number;
         };
     };
     /**
      * Class Constructor
-     * @param code Crosshair Code
+     * @param {string} code Crosshair Code
      */
     constructor(code?: string);
     private generateJsonCode;

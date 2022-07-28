@@ -23,7 +23,7 @@ class PatchNote {
      * @param {string} language Language of the patch note
      */
     public constructor(language: keyof typeof Locale.from = 'en-US') {
-        let lowerCase_language = language.toLowerCase();
+        const lowerCase_language = language.toLowerCase();
 
         this.json = `https://playvalorant.com/page-data/${lowerCase_language}/news/tags/patch-notes/page-data.json`;
 
@@ -55,7 +55,7 @@ class PatchNote {
             return `${_myPatchNote.patch_list}`;
         }
 
-        let split_patch: Array<string> = patch.split('.');
+        const split_patch: Array<string> = patch.split('.');
         if (split_patch.length !== 2) {
             throw new Error('Invalid patch number');
         } else if (split_patch.at(1) !== '0' && String(split_patch.at(1)).length === 1) {

@@ -12,7 +12,7 @@ class PatchNote {
      * @param {string} language Language of the patch note
      */
     constructor(language = 'en-US') {
-        let lowerCase_language = language.toLowerCase();
+        const lowerCase_language = language.toLowerCase();
         this.json = `https://playvalorant.com/page-data/${lowerCase_language}/news/tags/patch-notes/page-data.json`;
         this.patch_list = `https://playvalorant.com/${lowerCase_language}/news/tags/patch-notes/`;
         this.patch_note = `https://playvalorant.com/${lowerCase_language}/news/game-updates`;
@@ -37,7 +37,7 @@ class PatchNote {
         if (!patch) {
             return `${_myPatchNote.patch_list}`;
         }
-        let split_patch = patch.split('.');
+        const split_patch = patch.split('.');
         if (split_patch.length !== 2) {
             throw new Error('Invalid patch number');
         }

@@ -59,12 +59,12 @@ namespace Crosshair {
     }
 
     export interface LinesError {
-        isEnable: Boolean; // not in valorant settings
+        isEnable: boolean; // not in valorant settings
         Multiplier: number;
     }
 
     export interface Lines {
-        isEnable: Boolean, // not in valorant settings
+        isEnable: boolean, // not in valorant settings
         Opacity: number;
         Length: number;
         Thickness: number;
@@ -79,54 +79,54 @@ interface ValoarntCrosshair {
         Crosshair: {
             CrosshairColor: number,
             OutLine: {
-                isEnable: Boolean, // not in valorant settings
+                isEnable: boolean, // not in valorant settings
                 Opacity: number,
                 Thickness: number,
             },
             CenterDot: {
-                isEnable: Boolean, // not in valorant settings
+                isEnable: boolean, // not in valorant settings
                 Opacity: number,
                 Thickness: number,
             },
-            OverrideFiringErrorOffsetWithCrosshairOffset: Boolean,
-            OverrideAllPrimaryCrosshairWithMyPrimaryCrosshair: Boolean,
+            OverrideFiringErrorOffsetWithCrosshairOffset: boolean,
+            OverrideAllPrimaryCrosshairWithMyPrimaryCrosshair: boolean,
         }
         InnerLines: Crosshair.Lines,
         OuterLines: Crosshair.Lines,
     };
     AimDownSights: {
-        CopyPrimaryCrosshair: Boolean,
+        CopyPrimaryCrosshair: boolean,
         Crosshair: {
             CrosshairColor: number,
             OutLine: {
-                isEnable: Boolean, // not in valorant settings
+                isEnable: boolean, // not in valorant settings
                 Opacity: number,
                 Thickness: number,
             },
             CenterDot: {
-                isEnable: Boolean, // not in valorant settings
+                isEnable: boolean, // not in valorant settings
                 Opacity: number,
                 Thickness: number,
             },
-            OverrideFiringErrorOffsetWithCrosshairOffset: Boolean,
+            OverrideFiringErrorOffsetWithCrosshairOffset: boolean,
         }
         InnerLines: Crosshair.Lines,
         OuterLines: Crosshair.Lines,
     };
     General: {
         Crosshair: {
-            UseAdvancedOptions: Boolean,
+            UseAdvancedOptions: boolean,
         },
         Other: {
-            ShowSpectatedPlayerCrosshair: Boolean,
-            FadeCrosshairWithFiringError: Boolean,
-            DisableCrosshair?: Boolean, //not useable
+            ShowSpectatedPlayerCrosshair: boolean,
+            FadeCrosshairWithFiringError: boolean,
+            DisableCrosshair?: boolean, //not useable
         },
     };
     SniperScope: {
         CenterDot: {
             Color: number,
-            isEnable: Boolean, // not in valorant settings
+            isEnable: boolean, // not in valorant settings
             Opacity: number,
             Thickness: number,
         },
@@ -261,8 +261,8 @@ const _defaultCrosshair: ValoarntCrosshair = {
     }
 };
 
-function generateNewJSON<ReturnType = Object | JSON>(myJSON: ReturnType): ReturnType {
-    return JSON.parse(JSON.stringify(myJSON))
+function generateNewJSON<ReturnType = JSON>(myJSON: ReturnType): ReturnType {
+    return JSON.parse(JSON.stringify(myJSON));
 }
 
 /**
@@ -272,7 +272,7 @@ function generateNewJSON<ReturnType = Object | JSON>(myJSON: ReturnType): Return
 class Crosshair {
     private code: string;
 
-    private isCrosshairParse: boolean = false;
+    private isCrosshairParse = false;
 
     public General = generateNewJSON(_defaultCrosshair.General);
     public Primary = generateNewJSON(_defaultCrosshair.Primary);
@@ -281,9 +281,9 @@ class Crosshair {
 
     /**
      * Class Constructor
-     * @param code Crosshair Code
+     * @param {string} code Crosshair Code
      */
-    public constructor(code: string = '0') {
+    public constructor(code = '0') {
         this.code = code;
     }
 
@@ -293,7 +293,7 @@ class Crosshair {
             Primary: this.Primary,
             AimDownSights: this.AimDownSights,
             SniperScope: this.SniperScope,
-        }
+        };
     }
 
     private toJsonParse(): Crosshair.Parse {
@@ -311,7 +311,7 @@ class Crosshair {
 
         // parse
 
-        for (let ofCode in codeArray) {
+        for (const ofCode in codeArray) {
             const code = codeArray[ofCode];
 
             if (String(Number(code)) === code) {
@@ -327,14 +327,14 @@ class Crosshair {
                 // lower case
 
                 if (!myJSON.endsWith('{')) {
-                    myJSON += `,`
+                    myJSON += `,`;
                 }
 
-                myJSON += `"${code}":`
+                myJSON += `"${code}":`;
             }
         }
 
-        myJSON += `}}`
+        myJSON += `}}`;
         return JSON.parse(myJSON) as Crosshair.Parse;
     }
 
@@ -350,7 +350,7 @@ class Crosshair {
      * @returns {ValoarntCrosshair} Json Valorant Crosshair
      */
     public toJson(): ValoarntCrosshair {
-        let myCode: Crosshair.Parse = this.toJsonParse();
+        const myCode: Crosshair.Parse = this.toJsonParse();
 
         // Basic
 
@@ -693,7 +693,7 @@ class Crosshair {
 
         // End
 
-        this.isCrosshairParse = true
+        this.isCrosshairParse = true;
         return this.generateJsonCode();
     }
 
@@ -702,7 +702,7 @@ class Crosshair {
      * @returns {string} Crosshair Code
      */
     public toString(): string {
-        let myCode = {
+        const myCode = {
             "0": ``,
             "P": ``,
             "A": ``,
@@ -721,7 +721,7 @@ class Crosshair {
         // General //
 
         if (this.AimDownSights.CopyPrimaryCrosshair !== _defaultCrosshair.AimDownSights.CopyPrimaryCrosshair) {
-            myCode["0"] += `p;${Number(this.AimDownSights.CopyPrimaryCrosshair)};`
+            myCode["0"] += `p;${Number(this.AimDownSights.CopyPrimaryCrosshair)};`;
         }
 
         if (this.Primary.Crosshair.OverrideAllPrimaryCrosshairWithMyPrimaryCrosshair !== _defaultCrosshair.Primary.Crosshair.OverrideAllPrimaryCrosshairWithMyPrimaryCrosshair) {
@@ -1045,8 +1045,8 @@ class Crosshair {
 
         let stringCode = ``;
 
-        for (let key in myCode) {
-            let _key = key as keyof typeof myCode;
+        for (const key in myCode) {
+            const _key = key as keyof typeof myCode;
 
             if (myCode[_key] !== ``) {
                 stringCode += `${key};${myCode[_key]}`;
