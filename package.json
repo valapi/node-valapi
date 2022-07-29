@@ -1,6 +1,6 @@
 {
   "name": "valorant.ts",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Valorant Api - Support Multifactor",
   "main": "dist/index.js",
   "types": "./dist/index.d.ts",
@@ -53,9 +53,9 @@
     "typescript": "^4.7.4"
   },
   "dependencies": {
-    "@valapi/auth": "^1.2.0",
-    "@valapi/riot-api": "^1.4.0",
-    "@valapi/valorant-api.com": "^1.4.0",
-    "@valapi/web-client": "^1.1.0"
+    "@valapi/auth": "^1.2.1",
+    "@valapi/riot-api": "^1.4.1",
+    "@valapi/valorant-api.com": "^1.4.1",
+    "@valapi/web-client": "^1.1.1"
   }
 }

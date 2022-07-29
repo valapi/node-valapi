@@ -1,6 +1,6 @@
 <div align="center">
 
-# Valorant API - Support MFA
+# Valorant API - Support Multifactor
 
 [![Profile](https://github.com/valapi/.github/blob/main/128_valapi.png?raw=true)](https://github.com/valapi)
 
@@ -36,4 +36,27 @@ yarn add valorant.ts
 
 ## Guide
 
-Full Guide: **[Click Here](https://valapi.github.io/docs/)**
+Full Guide: **<https://valapi.github.io/docs>**
+
+## Why Valorant.ts ?
+
+- Support **Two-Factor Authentication**
+- All-In-One
+  - Authentication
+  - API
+    - [Riot API](https://developer.riotgames.com)
+    - <https://valorant-api.com>
+    - Web Client
+  - Utils
+    - Region
+    - Crosshair Compiler
+  - Resources
+- Event Emitter
+- Open-source
+- [Typescript Support](https://www.typescriptlang.org)
+
+### Contact
+
+- Discord: INg3_#9509
+- Discord Server: https://discord.com/invite/pbyWbUYjyt
+- Github: https://github.com/KTNG-3

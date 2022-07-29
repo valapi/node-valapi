@@ -1,3 +1,13 @@
+# 1.4.2 (29 July 2022)
+
+- fixed `@valapi/lib`#resources
+
+# 1.4.1 (29 July 2022)
+
+- A little bit changes
+  - fixed some bugs
+- Change A lot of Typescript' Type definition
+
 # 1.4.0 (15 July 2022)
 
 - Add [@valapi/web-client](https://www.npmjs.com/package/@valapi/web-client)
