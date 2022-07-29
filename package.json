@@ -1,6 +1,6 @@
 {
   "name": "valorant.ts",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Valorant Api - Support Multifactor",
   "main": "dist/index.js",
   "types": "./dist/index.d.ts",
@@ -10,7 +10,7 @@
   },
   "scripts": {
     "typescript": "npx tsc --project tsconfig.json",
-    "dev": "npm run typescript && node ./dist/utils/PatchNote.js",
+    "lint": "npx eslint src/**",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -53,9 +53,9 @@
     "typescript": "^4.7.4"
   },
   "dependencies": {
-    "@valapi/auth": "^1.1.2",
-    "@valapi/riot-api": "^1.3.1",
-    "@valapi/valorant-api.com": "^1.3.2",
-    "@valapi/web-client": "^1.0.1"
+    "@valapi/auth": "^1.2.0",
+    "@valapi/riot-api": "^1.4.0",
+    "@valapi/valorant-api.com": "^1.4.0",
+    "@valapi/web-client": "^1.1.0"
   }
 }

@@ -10,22 +10,22 @@ declare class PatchNote {
     private patch_list;
     private patch_note;
     /**
-     * Class Constructor
+     *
      * @param {string} language Language of the patch note
      */
-    constructor(language?: keyof typeof Locale.from);
+    constructor(language?: Locale.String);
     /**
      *
      * @param {string} language Language
      * @returns {string} Url of Json data
      */
-    static getJsonUrl(language?: keyof typeof Locale.from): string;
+    static getJsonUrl(language?: Locale.String): string;
     /**
      *
      * @param {string} patch Version
      * @param {string} language Language
      * @returns {string} Url of Patch note
      */
-    static getUrl(patch?: PatchNote.Version, language?: keyof typeof Locale.from): string;
+    static getUrl(patch?: PatchNote.Version, language?: Locale.String): string;
 }
 export { PatchNote };

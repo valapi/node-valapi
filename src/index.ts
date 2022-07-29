@@ -8,6 +8,7 @@ import * as Lib from "@valapi/lib";
 
 export {
     Auth,
+    WebClient,
     RiotAPI,
     ValorantApiCom,
     Lib,
@@ -26,12 +27,6 @@ export { Region } from "./resources/Region";
 
 //utils
 
-export {
-    Crosshair,
-    ValorantCrosshairColor, ValorantDefaultCrosshair,
-    type ValoarntCrosshair
-} from "./utils/Crosshair";
+export { Crosshair } from "./utils/Crosshair";
 
-export {
-    PatchNote,
-} from "./utils/PatchNote";
+export { PatchNote } from "./utils/PatchNote";

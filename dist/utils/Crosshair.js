@@ -1,19 +1,8 @@
 "use strict";
 //interface
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ValorantDefaultCrosshair = exports.ValorantCrosshairColor = exports.Crosshair = void 0;
+exports.Crosshair = void 0;
 //class
-const ValorantCrosshairColor = {
-    0: 'White',
-    1: 'Green',
-    2: 'Yellow Green',
-    3: 'Green Yellow',
-    4: 'Yellow',
-    5: 'Cyan',
-    6: 'Pink',
-    7: 'Red',
-};
-exports.ValorantCrosshairColor = ValorantCrosshairColor;
 const _defaultCrosshair = {
     Primary: {
         Crosshair: {
@@ -128,7 +117,6 @@ const _defaultCrosshair = {
         }
     }
 };
-exports.ValorantDefaultCrosshair = _defaultCrosshair;
 function generateNewJSON(myJSON) {
     return JSON.parse(JSON.stringify(myJSON));
 }
@@ -138,7 +126,7 @@ function generateNewJSON(myJSON) {
  */
 class Crosshair {
     /**
-     * Class Constructor
+     *
      * @param {string} code Crosshair Code
      */
     constructor(code = '0') {
@@ -733,7 +721,7 @@ class Crosshair {
     }
     /**
      *
-     * @param {ValoarntCrosshair} crosshair Json Valorant Crosshair
+     * @param {Crosshair.Crosshair} crosshair Json Valorant Crosshair
      * @returns {Crosshair}
      */
     static fromJson(crosshair) {
@@ -743,7 +731,7 @@ class Crosshair {
     }
     /**
      *
-     * @param {ValoarntCrosshair} crosshair Json Valorant Crosshair
+     * @param {Crosshair.Crosshair} crosshair Json Valorant Crosshair
      * @returns {string} Crosshair Code
      */
     static fromJsonToString(crosshair) {
@@ -762,7 +750,7 @@ class Crosshair {
     /**
      *
      * @param {string} code Crosshair Code
-     * @returns {ValoarntCrosshair} Json Valorant Crosshair
+     * @returns {Crosshair.Crosshair} Json Valorant Crosshair
      */
     static fromStringToJson(code) {
         const _newCrosshair = Crosshair.fromString(code);
@@ -770,3 +758,15 @@ class Crosshair {
     }
 }
 exports.Crosshair = Crosshair;
+//static
+Crosshair.Default = _defaultCrosshair;
+Crosshair.Color = {
+    0: 'White',
+    1: 'Green',
+    2: 'Yellow Green',
+    3: 'Green Yellow',
+    4: 'Yellow',
+    5: 'Cyan',
+    6: 'Pink',
+    7: 'Red',
+};

@@ -57,76 +57,65 @@ declare namespace Crosshair {
         MovementError: Crosshair.LinesError;
         FiringError: Crosshair.LinesError;
     }
-}
-interface ValoarntCrosshair {
-    Primary: {
-        Crosshair: {
-            CrosshairColor: number;
-            OutLine: {
-                isEnable: boolean;
-                Opacity: number;
-                Thickness: number;
+    interface Crosshair {
+        Primary: {
+            Crosshair: {
+                CrosshairColor: number;
+                OutLine: {
+                    isEnable: boolean;
+                    Opacity: number;
+                    Thickness: number;
+                };
+                CenterDot: {
+                    isEnable: boolean;
+                    Opacity: number;
+                    Thickness: number;
+                };
+                OverrideFiringErrorOffsetWithCrosshairOffset: boolean;
+                OverrideAllPrimaryCrosshairWithMyPrimaryCrosshair: boolean;
             };
+            InnerLines: Crosshair.Lines;
+            OuterLines: Crosshair.Lines;
+        };
+        AimDownSights: {
+            CopyPrimaryCrosshair: boolean;
+            Crosshair: {
+                CrosshairColor: number;
+                OutLine: {
+                    isEnable: boolean;
+                    Opacity: number;
+                    Thickness: number;
+                };
+                CenterDot: {
+                    isEnable: boolean;
+                    Opacity: number;
+                    Thickness: number;
+                };
+                OverrideFiringErrorOffsetWithCrosshairOffset: boolean;
+            };
+            InnerLines: Crosshair.Lines;
+            OuterLines: Crosshair.Lines;
+        };
+        General: {
+            Crosshair: {
+                UseAdvancedOptions: boolean;
+            };
+            Other: {
+                ShowSpectatedPlayerCrosshair: boolean;
+                FadeCrosshairWithFiringError: boolean;
+                DisableCrosshair?: boolean;
+            };
+        };
+        SniperScope: {
             CenterDot: {
+                Color: number;
                 isEnable: boolean;
                 Opacity: number;
                 Thickness: number;
             };
-            OverrideFiringErrorOffsetWithCrosshairOffset: boolean;
-            OverrideAllPrimaryCrosshairWithMyPrimaryCrosshair: boolean;
         };
-        InnerLines: Crosshair.Lines;
-        OuterLines: Crosshair.Lines;
-    };
-    AimDownSights: {
-        CopyPrimaryCrosshair: boolean;
-        Crosshair: {
-            CrosshairColor: number;
-            OutLine: {
-                isEnable: boolean;
-                Opacity: number;
-                Thickness: number;
-            };
-            CenterDot: {
-                isEnable: boolean;
-                Opacity: number;
-                Thickness: number;
-            };
-            OverrideFiringErrorOffsetWithCrosshairOffset: boolean;
-        };
-        InnerLines: Crosshair.Lines;
-        OuterLines: Crosshair.Lines;
-    };
-    General: {
-        Crosshair: {
-            UseAdvancedOptions: boolean;
-        };
-        Other: {
-            ShowSpectatedPlayerCrosshair: boolean;
-            FadeCrosshairWithFiringError: boolean;
-            DisableCrosshair?: boolean;
-        };
-    };
-    SniperScope: {
-        CenterDot: {
-            Color: number;
-            isEnable: boolean;
-            Opacity: number;
-            Thickness: number;
-        };
-    };
+    }
 }
-declare const ValorantCrosshairColor: {
-    0: string;
-    1: string;
-    2: string;
-    3: string;
-    4: string;
-    5: string;
-    6: string;
-    7: string;
-};
-declare const _defaultCrosshair: ValoarntCrosshair;
 /**
  * Valorant Crosshair Compiler
  * * Don't Code Like This Class (Make for understanding Valorant crosshair)
@@ -191,7 +180,7 @@ declare class Crosshair {
         };
     };
     /**
-     * Class Constructor
+     *
      * @param {string} code Crosshair Code
      */
     constructor(code?: string);
@@ -202,24 +191,35 @@ declare class Crosshair {
      *
      * @returns {ValoarntCrosshair} Json Valorant Crosshair
      */
-    toJson(): ValoarntCrosshair;
+    toJson(): Crosshair.Crosshair;
     /**
      *
      * @returns {string} Crosshair Code
      */
     toString(): string;
+    static readonly Default: Crosshair.Crosshair;
+    static readonly Color: {
+        0: string;
+        1: string;
+        2: string;
+        3: string;
+        4: string;
+        5: string;
+        6: string;
+        7: string;
+    };
     /**
      *
-     * @param {ValoarntCrosshair} crosshair Json Valorant Crosshair
+     * @param {Crosshair.Crosshair} crosshair Json Valorant Crosshair
      * @returns {Crosshair}
      */
-    static fromJson(crosshair: ValoarntCrosshair): Crosshair;
+    static fromJson(crosshair: Crosshair.Crosshair): Crosshair;
     /**
      *
-     * @param {ValoarntCrosshair} crosshair Json Valorant Crosshair
+     * @param {Crosshair.Crosshair} crosshair Json Valorant Crosshair
      * @returns {string} Crosshair Code
      */
-    static fromJsonToString(crosshair: ValoarntCrosshair): string;
+    static fromJsonToString(crosshair: Crosshair.Crosshair): string;
     /**
      *
      * @param {string} code Crosshair Code
@@ -229,9 +229,8 @@ declare class Crosshair {
     /**
      *
      * @param {string} code Crosshair Code
-     * @returns {ValoarntCrosshair} Json Valorant Crosshair
+     * @returns {Crosshair.Crosshair} Json Valorant Crosshair
      */
-    static fromStringToJson(code: string): ValoarntCrosshair;
+    static fromStringToJson(code: string): Crosshair.Crosshair;
 }
-export { Crosshair, ValorantCrosshairColor as ValorantCrosshairColor, _defaultCrosshair as ValorantDefaultCrosshair };
-export type { ValoarntCrosshair };
+export { Crosshair };

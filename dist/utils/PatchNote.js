@@ -8,7 +8,7 @@ exports.PatchNote = void 0;
  */
 class PatchNote {
     /**
-     * Class Constructor
+     *
      * @param {string} language Language of the patch note
      */
     constructor(language = 'en-US') {
