@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Discord Server
+    url: https://valapi.github.io/url/discord.html
+    about: Q & A
+  - name: Documentation
+    url: https://valapi.github.io/docs/index.html
+    about: Guide
