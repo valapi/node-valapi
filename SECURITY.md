@@ -5,4 +5,4 @@
 ## Contact
 
 - Discord: INg3_#9509
-- Twitter: [@GgKawinth](https://twitter.com/GgKawinth)
+- Mail: <kawinth.ingproject@gmail.com>
