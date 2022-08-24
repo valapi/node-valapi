@@ -1,6 +1,7 @@
 declare namespace Crosshair {
     interface ParsePrimary {
         "c"?: number;
+        "u"?: string;
         "h"?: number;
         "t"?: number;
         "o"?: number;
@@ -40,6 +41,7 @@ declare namespace Crosshair {
         "S"?: {
             "d"?: number;
             "c"?: number;
+            "t"?: string;
             "s"?: number;
             "o"?: number;
         };
@@ -60,7 +62,7 @@ declare namespace Crosshair {
     interface Crosshair {
         Primary: {
             Crosshair: {
-                CrosshairColor: number;
+                CrosshairColor: string;
                 OutLine: {
                     isEnable: boolean;
                     Opacity: number;
@@ -80,7 +82,7 @@ declare namespace Crosshair {
         AimDownSights: {
             CopyPrimaryCrosshair: boolean;
             Crosshair: {
-                CrosshairColor: number;
+                CrosshairColor: string;
                 OutLine: {
                     isEnable: boolean;
                     Opacity: number;
@@ -108,7 +110,7 @@ declare namespace Crosshair {
         };
         SniperScope: {
             CenterDot: {
-                Color: number;
+                Color: string;
                 isEnable: boolean;
                 Opacity: number;
                 Thickness: number;
@@ -122,7 +124,6 @@ declare namespace Crosshair {
  */
 declare class Crosshair {
     private code;
-    private isCrosshairParse;
     General: {
         Crosshair: {
             UseAdvancedOptions: boolean;
@@ -135,7 +136,7 @@ declare class Crosshair {
     };
     Primary: {
         Crosshair: {
-            CrosshairColor: number;
+            CrosshairColor: string;
             OutLine: {
                 isEnable: boolean;
                 Opacity: number;
@@ -155,7 +156,7 @@ declare class Crosshair {
     AimDownSights: {
         CopyPrimaryCrosshair: boolean;
         Crosshair: {
-            CrosshairColor: number;
+            CrosshairColor: string;
             OutLine: {
                 isEnable: boolean;
                 Opacity: number;
@@ -173,7 +174,7 @@ declare class Crosshair {
     };
     SniperScope: {
         CenterDot: {
-            Color: number;
+            Color: string;
             isEnable: boolean;
             Opacity: number;
             Thickness: number;
@@ -199,14 +200,15 @@ declare class Crosshair {
     toString(): string;
     static readonly Default: Crosshair.Crosshair;
     static readonly Color: {
-        0: string;
-        1: string;
-        2: string;
-        3: string;
-        4: string;
-        5: string;
-        6: string;
-        7: string;
+        "0": string;
+        "1": string;
+        "2": string;
+        "3": string;
+        "4": string;
+        "5": string;
+        "6": string;
+        "7": string;
+        "8": string;
     };
     /**
      *

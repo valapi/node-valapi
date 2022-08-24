@@ -6,7 +6,7 @@ exports.Crosshair = void 0;
 const _defaultCrosshair = {
     Primary: {
         Crosshair: {
-            CrosshairColor: 0,
+            CrosshairColor: "0",
             OutLine: {
                 isEnable: true,
                 Opacity: 0.5,
@@ -54,7 +54,7 @@ const _defaultCrosshair = {
     AimDownSights: {
         CopyPrimaryCrosshair: true,
         Crosshair: {
-            CrosshairColor: 0,
+            CrosshairColor: "0",
             OutLine: {
                 isEnable: true,
                 Opacity: 0.5,
@@ -110,7 +110,7 @@ const _defaultCrosshair = {
     },
     SniperScope: {
         CenterDot: {
-            Color: 7,
+            Color: "7",
             isEnable: true,
             Opacity: 0.75,
             Thickness: 1,
@@ -129,13 +129,13 @@ class Crosshair {
      *
      * @param {string} code Crosshair Code
      */
-    constructor(code = '0') {
-        this.isCrosshairParse = false;
+    constructor(code = "0") {
         this.General = generateNewJSON(_defaultCrosshair.General);
         this.Primary = generateNewJSON(_defaultCrosshair.Primary);
         this.AimDownSights = generateNewJSON(_defaultCrosshair.AimDownSights);
         this.SniperScope = generateNewJSON(_defaultCrosshair.SniperScope);
         this.code = code;
+        this.toJson();
     }
     generateJsonCode() {
         return {
@@ -165,6 +165,13 @@ class Crosshair {
             }
             if (code.toUpperCase() === code) {
                 // upper case
+                if (String(code).endsWith("FF")) {
+                    if (myJSON.endsWith(`"c":8,"u":`) || myJSON.endsWith(`"c":8,"t":`)) {
+                        // hex color
+                        myJSON += `"${code}"`;
+                        continue;
+                    }
+                }
                 myJSON += `},"${code}":{`;
             }
             else {
@@ -211,7 +218,12 @@ class Crosshair {
             // General //
             // Color
             if (myCode.P.c) { // color
-                this.Primary.Crosshair.CrosshairColor = myCode.P.c;
+                if (myCode.P.c == 8 && myCode.P.u) { //custom
+                    this.Primary.Crosshair.CrosshairColor = myCode.P.u;
+                }
+                else {
+                    this.Primary.Crosshair.CrosshairColor = String(myCode.P.c);
+                }
             }
             // Out Line
             if (myCode.P.h === 0) { // h:0 = disable
@@ -323,7 +335,12 @@ class Crosshair {
             // General //
             // Color
             if (myCode.A.c) { // color
-                this.AimDownSights.Crosshair.CrosshairColor = myCode.A.c;
+                if (myCode.A.c == 8 && myCode.A.u) { //custom
+                    this.AimDownSights.Crosshair.CrosshairColor = myCode.A.u;
+                }
+                else {
+                    this.AimDownSights.Crosshair.CrosshairColor = String(myCode.A.c);
+                }
             }
             // Out Line
             if (myCode.A.h === 0) { // h:0 = disable
@@ -429,7 +446,12 @@ class Crosshair {
             }
             else {
                 if (myCode.S["c"]) { // color
-                    this.SniperScope.CenterDot.Color = myCode.S["c"];
+                    if (myCode.S["c"] == 8 && myCode.S["t"]) { //custom
+                        this.SniperScope.CenterDot.Color = myCode.S["t"];
+                    }
+                    else {
+                        this.SniperScope.CenterDot.Color = String(myCode.S["c"]);
+                    }
                 }
                 if (myCode.S["s"]) { // thickness
                     this.SniperScope.CenterDot.Thickness = myCode.S["s"];
@@ -440,7 +462,6 @@ class Crosshair {
             }
         }
         // End
-        this.isCrosshairParse = true;
         return this.generateJsonCode();
     }
     /**
@@ -454,9 +475,6 @@ class Crosshair {
             "A": ``,
             "S": ``
         };
-        if (this.isCrosshairParse === false) {
-            this.toJson();
-        }
         /**
          * toString (Start)
          */
@@ -761,12 +779,13 @@ exports.Crosshair = Crosshair;
 //static
 Crosshair.Default = _defaultCrosshair;
 Crosshair.Color = {
-    0: 'White',
-    1: 'Green',
-    2: 'Yellow Green',
-    3: 'Green Yellow',
-    4: 'Yellow',
-    5: 'Cyan',
-    6: 'Pink',
-    7: 'Red',
+    "0": 'White',
+    "1": 'Green',
+    "2": 'Yellow Green',
+    "3": 'Green Yellow',
+    "4": 'Yellow',
+    "5": 'Cyan',
+    "6": 'Pink',
+    "7": 'Red',
+    "8": 'Custom'
 };
