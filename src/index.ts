@@ -28,5 +28,4 @@ export { Region } from "./resources/Region";
 //utils
 
 export { Crosshair } from "./utils/Crosshair";
-
 export { PatchNote } from "./utils/PatchNote";

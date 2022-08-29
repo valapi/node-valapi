@@ -1,3 +1,16 @@
+# 1.4.3 (2022-8-29)
+
+**[ Episode 5 Act II ]**
+
+- @valorant.ts
+- - Crosshair
+- - - Add `*.isHexColor`
+- - - Change `*.Lines.Length`
+- @/lib
+- - Add `CrosshairColor` to resources
+- @/web-client
+- - Change name of `Client` to `App`
+
 # 1.4.2 (29 July 2022)
 
 - fixed `@valapi/lib`#resources

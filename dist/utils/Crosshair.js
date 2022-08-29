@@ -1,11 +1,13 @@
 "use strict";
-//interface
+//import
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Crosshair = void 0;
+const lib_1 = require("@valapi/lib");
 //class
 const _defaultCrosshair = {
     Primary: {
         Crosshair: {
+            isHexCrosshairColor: false,
             CrosshairColor: "0",
             OutLine: {
                 isEnable: true,
@@ -23,7 +25,11 @@ const _defaultCrosshair = {
         InnerLines: {
             isEnable: true,
             Opacity: 0.8,
-            Length: 6,
+            Length: {
+                Value: 6,
+                isChain: false,
+                SecondValue: 6,
+            },
             Thickness: 2,
             Offset: 3,
             MovementError: {
@@ -38,7 +44,11 @@ const _defaultCrosshair = {
         OuterLines: {
             isEnable: true,
             Opacity: 0.35,
-            Length: 2,
+            Length: {
+                Value: 2,
+                isChain: false,
+                SecondValue: 2,
+            },
             Thickness: 2,
             Offset: 10,
             MovementError: {
@@ -54,6 +64,7 @@ const _defaultCrosshair = {
     AimDownSights: {
         CopyPrimaryCrosshair: true,
         Crosshair: {
+            isHexCrosshairColor: false,
             CrosshairColor: "0",
             OutLine: {
                 isEnable: true,
@@ -70,7 +81,11 @@ const _defaultCrosshair = {
         InnerLines: {
             isEnable: true,
             Opacity: 0.8,
-            Length: 6,
+            Length: {
+                Value: 6,
+                isChain: false,
+                SecondValue: 6,
+            },
             Thickness: 2,
             Offset: 3,
             MovementError: {
@@ -85,7 +100,11 @@ const _defaultCrosshair = {
         OuterLines: {
             isEnable: true,
             Opacity: 0.35,
-            Length: 2,
+            Length: {
+                Value: 2,
+                isChain: false,
+                SecondValue: 2,
+            },
             Thickness: 2,
             Offset: 10,
             MovementError: {
@@ -110,6 +129,7 @@ const _defaultCrosshair = {
     },
     SniperScope: {
         CenterDot: {
+            isHexColor: false,
             Color: "7",
             isEnable: true,
             Opacity: 0.75,
@@ -166,7 +186,7 @@ class Crosshair {
             if (code.toUpperCase() === code) {
                 // upper case
                 if (String(code).endsWith("FF")) {
-                    if (myJSON.endsWith(`"c":8,"u":`) || myJSON.endsWith(`"c":8,"t":`)) {
+                    if (myJSON.endsWith(`"c":${lib_1.CrosshairColor.to["Custom"]},"u":`) || myJSON.endsWith(`"c":${lib_1.CrosshairColor.to["Custom"]},"t":`)) {
                         // hex color
                         myJSON += `"${code}"`;
                         continue;
@@ -218,7 +238,7 @@ class Crosshair {
             // General //
             // Color
             if (myCode.P.c) { // color
-                if (myCode.P.c == 8 && myCode.P.u) { //custom
+                if (myCode.P.c == lib_1.CrosshairColor.to["Custom"] && myCode.P.u) { //custom
                     this.Primary.Crosshair.CrosshairColor = myCode.P.u;
                 }
                 else {
@@ -268,7 +288,11 @@ class Crosshair {
                     this.Primary.InnerLines.Thickness = myCode.P["0t"];
                 }
                 if (myCode.P["0l"]) { // length
-                    this.Primary.InnerLines.Length = myCode.P["0l"];
+                    this.Primary.InnerLines.Length.Value = myCode.P["0l"];
+                }
+                if (myCode.P["0g"] === 1 && myCode.P["0v"]) { //0g:1 = enable
+                    this.Primary.InnerLines.Length.isChain = true;
+                    this.Primary.InnerLines.Length.SecondValue = myCode.P["0v"];
                 }
                 if (myCode.P["0o"]) { // offset
                     this.Primary.InnerLines.Offset = myCode.P["0o"];
@@ -303,7 +327,11 @@ class Crosshair {
                     this.Primary.OuterLines.Thickness = myCode.P["1t"];
                 }
                 if (myCode.P["1l"]) { // length
-                    this.Primary.OuterLines.Length = myCode.P["1l"];
+                    this.Primary.OuterLines.Length.Value = myCode.P["1l"];
+                }
+                if (myCode.P["1g"] === 1 && myCode.P["1v"]) { //1g:1 = enable
+                    this.Primary.OuterLines.Length.isChain = true;
+                    this.Primary.OuterLines.Length.SecondValue = myCode.P["1v"];
                 }
                 if (myCode.P["1o"]) { // offset
                     this.Primary.OuterLines.Offset = myCode.P["1o"];
@@ -335,7 +363,7 @@ class Crosshair {
             // General //
             // Color
             if (myCode.A.c) { // color
-                if (myCode.A.c == 8 && myCode.A.u) { //custom
+                if (myCode.A.c == lib_1.CrosshairColor.to["Custom"] && myCode.A.u) { //custom
                     this.AimDownSights.Crosshair.CrosshairColor = myCode.A.u;
                 }
                 else {
@@ -379,7 +407,11 @@ class Crosshair {
                     this.AimDownSights.InnerLines.Thickness = myCode.A["0t"];
                 }
                 if (myCode.A["0l"]) { // length
-                    this.AimDownSights.InnerLines.Length = myCode.A["0l"];
+                    this.AimDownSights.InnerLines.Length.Value = myCode.A["0l"];
+                }
+                if (myCode.A["0g"] === 1 && myCode.A["0v"]) { //0g:1 = enable
+                    this.AimDownSights.InnerLines.Length.isChain = true;
+                    this.AimDownSights.InnerLines.Length.SecondValue = myCode.A["0v"];
                 }
                 if (myCode.A["0o"]) { // offset
                     this.AimDownSights.InnerLines.Offset = myCode.A["0o"];
@@ -414,7 +446,11 @@ class Crosshair {
                     this.AimDownSights.OuterLines.Thickness = myCode.A["1t"];
                 }
                 if (myCode.A["1l"]) { // length
-                    this.AimDownSights.OuterLines.Length = myCode.A["1l"];
+                    this.AimDownSights.OuterLines.Length.Value = myCode.A["1l"];
+                }
+                if (myCode.A["1g"] === 1 && myCode.A["1v"]) { //1g:1 = enable
+                    this.AimDownSights.OuterLines.Length.isChain = true;
+                    this.AimDownSights.OuterLines.Length.SecondValue = myCode.A["1v"];
                 }
                 if (myCode.A["1o"]) { // offset
                     this.AimDownSights.OuterLines.Offset = myCode.A["1o"];
@@ -446,7 +482,7 @@ class Crosshair {
             }
             else {
                 if (myCode.S["c"]) { // color
-                    if (myCode.S["c"] == 8 && myCode.S["t"]) { //custom
+                    if (myCode.S["c"] == lib_1.CrosshairColor.to["Custom"] && myCode.S["t"]) { //custom
                         this.SniperScope.CenterDot.Color = myCode.S["t"];
                     }
                     else {
@@ -492,7 +528,10 @@ class Crosshair {
         // Primary //
         // Primary //
         // Color
-        if (this.Primary.Crosshair.CrosshairColor !== _defaultCrosshair.Primary.Crosshair.CrosshairColor) {
+        if (this.Primary.Crosshair.isHexCrosshairColor !== _defaultCrosshair.Primary.Crosshair.isHexCrosshairColor) {
+            myCode["P"] += `c;${lib_1.CrosshairColor.to["Custom"]};u;${Number(this.Primary.Crosshair.isHexCrosshairColor)}`;
+        }
+        else if (this.Primary.Crosshair.CrosshairColor !== _defaultCrosshair.Primary.Crosshair.CrosshairColor) {
             myCode["P"] += `c;${this.Primary.Crosshair.CrosshairColor};`;
         }
         // Out Line
@@ -536,8 +575,14 @@ class Crosshair {
             if (this.Primary.InnerLines.Thickness !== _defaultCrosshair.Primary.InnerLines.Thickness) {
                 myCode["P"] += `0t;${this.Primary.InnerLines.Thickness};`;
             }
-            if (this.Primary.InnerLines.Length !== _defaultCrosshair.Primary.InnerLines.Length) {
-                myCode["P"] += `0l;${this.Primary.InnerLines.Length};`;
+            if (this.Primary.InnerLines.Length.Value !== _defaultCrosshair.Primary.InnerLines.Length.Value) {
+                myCode["P"] += `0l;${this.Primary.InnerLines.Length.Value};`;
+            }
+            if (this.Primary.InnerLines.Length.isChain !== _defaultCrosshair.Primary.InnerLines.Length.isChain) {
+                if (this.Primary.InnerLines.Length.SecondValue !== _defaultCrosshair.Primary.InnerLines.Length.SecondValue) {
+                    myCode["P"] += `0v;${this.Primary.InnerLines.Length.SecondValue};`;
+                }
+                myCode["P"] += `0g;${Number(this.Primary.InnerLines.Length.isChain)};`;
             }
             if (this.Primary.InnerLines.Offset !== _defaultCrosshair.Primary.InnerLines.Offset) {
                 myCode["P"] += `0o;${this.Primary.InnerLines.Offset};`;
@@ -570,8 +615,14 @@ class Crosshair {
             if (this.Primary.OuterLines.Thickness !== _defaultCrosshair.Primary.OuterLines.Thickness) {
                 myCode["P"] += `1t;${this.Primary.OuterLines.Thickness};`;
             }
-            if (this.Primary.OuterLines.Length !== _defaultCrosshair.Primary.OuterLines.Length) {
-                myCode["P"] += `1l;${this.Primary.OuterLines.Length};`;
+            if (this.Primary.OuterLines.Length.Value !== _defaultCrosshair.Primary.OuterLines.Length.Value) {
+                myCode["P"] += `1l;${this.Primary.OuterLines.Length.Value};`;
+            }
+            if (this.Primary.OuterLines.Length.isChain !== _defaultCrosshair.Primary.OuterLines.Length.isChain) {
+                if (this.Primary.OuterLines.Length.SecondValue !== _defaultCrosshair.Primary.OuterLines.Length.SecondValue) {
+                    myCode["P"] += `1v;${this.Primary.OuterLines.Length.SecondValue};`;
+                }
+                myCode["P"] += `1g;${Number(this.Primary.OuterLines.Length.isChain)};`;
             }
             if (this.Primary.OuterLines.Offset !== _defaultCrosshair.Primary.OuterLines.Offset) {
                 myCode["P"] += `1o;${this.Primary.OuterLines.Offset};`;
@@ -599,7 +650,10 @@ class Crosshair {
         // Aim Down Sights //
         if (this.AimDownSights.CopyPrimaryCrosshair === false) {
             // Color
-            if (this.AimDownSights.Crosshair.CrosshairColor !== _defaultCrosshair.AimDownSights.Crosshair.CrosshairColor) {
+            if (this.AimDownSights.Crosshair.isHexCrosshairColor !== _defaultCrosshair.AimDownSights.Crosshair.isHexCrosshairColor) {
+                myCode["A"] += `c;${lib_1.CrosshairColor.to["Custom"]};u;${Number(this.AimDownSights.Crosshair.isHexCrosshairColor)}`;
+            }
+            else if (this.AimDownSights.Crosshair.CrosshairColor !== _defaultCrosshair.AimDownSights.Crosshair.CrosshairColor) {
                 myCode["A"] += `c;${this.AimDownSights.Crosshair.CrosshairColor};`;
             }
             // Out Line
@@ -640,8 +694,14 @@ class Crosshair {
                 if (this.AimDownSights.InnerLines.Thickness !== _defaultCrosshair.AimDownSights.InnerLines.Thickness) {
                     myCode["A"] += `0t;${this.AimDownSights.InnerLines.Thickness};`;
                 }
-                if (this.AimDownSights.InnerLines.Length !== _defaultCrosshair.AimDownSights.InnerLines.Length) {
-                    myCode["A"] += `0l;${this.AimDownSights.InnerLines.Length};`;
+                if (this.AimDownSights.InnerLines.Length.Value !== _defaultCrosshair.AimDownSights.InnerLines.Length.Value) {
+                    myCode["A"] += `0l;${this.AimDownSights.InnerLines.Length.Value};`;
+                }
+                if (this.AimDownSights.InnerLines.Length.isChain !== _defaultCrosshair.AimDownSights.InnerLines.Length.isChain) {
+                    if (this.AimDownSights.InnerLines.Length.SecondValue !== _defaultCrosshair.AimDownSights.InnerLines.Length.SecondValue) {
+                        myCode["A"] += `0v;${this.AimDownSights.InnerLines.Length.SecondValue};`;
+                    }
+                    myCode["A"] += `0g;${Number(this.AimDownSights.InnerLines.Length.isChain)};`;
                 }
                 if (this.AimDownSights.InnerLines.Offset !== _defaultCrosshair.AimDownSights.InnerLines.Offset) {
                     myCode["A"] += `0o;${this.AimDownSights.InnerLines.Offset};`;
@@ -674,8 +734,14 @@ class Crosshair {
                 if (this.AimDownSights.OuterLines.Thickness !== _defaultCrosshair.AimDownSights.OuterLines.Thickness) {
                     myCode["A"] += `1t;${this.AimDownSights.OuterLines.Thickness};`;
                 }
-                if (this.AimDownSights.OuterLines.Length !== _defaultCrosshair.AimDownSights.OuterLines.Length) {
-                    myCode["A"] += `1l;${this.AimDownSights.OuterLines.Length};`;
+                if (this.AimDownSights.OuterLines.Length.Value !== _defaultCrosshair.AimDownSights.OuterLines.Length.Value) {
+                    myCode["A"] += `1l;${this.AimDownSights.OuterLines.Length.Value};`;
+                }
+                if (this.AimDownSights.OuterLines.Length.isChain !== _defaultCrosshair.AimDownSights.OuterLines.Length.isChain) {
+                    if (this.AimDownSights.OuterLines.Length.SecondValue !== _defaultCrosshair.AimDownSights.OuterLines.Length.SecondValue) {
+                        myCode["A"] += `1v;${this.AimDownSights.OuterLines.Length.SecondValue};`;
+                    }
+                    myCode["A"] += `1g;${Number(this.AimDownSights.OuterLines.Length.isChain)};`;
                 }
                 if (this.AimDownSights.OuterLines.Offset !== _defaultCrosshair.AimDownSights.OuterLines.Offset) {
                     myCode["A"] += `1o;${this.AimDownSights.OuterLines.Offset};`;
@@ -706,7 +772,10 @@ class Crosshair {
             myCode["S"] += `d;${Number(this.SniperScope.CenterDot.isEnable)};`;
         }
         else {
-            if (this.SniperScope.CenterDot.Color !== _defaultCrosshair.SniperScope.CenterDot.Color) {
+            if (this.SniperScope.CenterDot.isHexColor !== _defaultCrosshair.SniperScope.CenterDot.isHexColor) {
+                myCode["S"] += `c;${lib_1.CrosshairColor.to["Custom"]};t;${Number(this.SniperScope.CenterDot.isHexColor)}`;
+            }
+            else if (this.SniperScope.CenterDot.Color !== _defaultCrosshair.SniperScope.CenterDot.Color) {
                 myCode["S"] += `c;${this.SniperScope.CenterDot.Color};`;
             }
             if (this.SniperScope.CenterDot.Thickness !== _defaultCrosshair.SniperScope.CenterDot.Thickness) {
@@ -778,14 +847,3 @@ class Crosshair {
 exports.Crosshair = Crosshair;
 //static
 Crosshair.Default = _defaultCrosshair;
-Crosshair.Color = {
-    "0": 'White',
-    "1": 'Green',
-    "2": 'Yellow Green',
-    "3": 'Green Yellow',
-    "4": 'Yellow',
-    "5": 'Cyan',
-    "6": 'Pink',
-    "7": 'Red',
-    "8": 'Custom'
-};

@@ -14,6 +14,8 @@ declare namespace Crosshair {
         "0b"?: number;
         "0t"?: number;
         "0l"?: number;
+        "0v"?: number;
+        "0g"?: number;
         "0o"?: number;
         "0a"?: number;
         "0m"?: number;
@@ -23,6 +25,8 @@ declare namespace Crosshair {
         "1b"?: number;
         "1t"?: number;
         "1l"?: number;
+        "1v"?: number;
+        "1g"?: number;
         "1o"?: number;
         "1a"?: number;
         "1m"?: number;
@@ -53,7 +57,11 @@ declare namespace Crosshair {
     interface Lines {
         isEnable: boolean;
         Opacity: number;
-        Length: number;
+        Length: {
+            Value: number;
+            isChain: boolean;
+            SecondValue: number;
+        };
         Thickness: number;
         Offset: number;
         MovementError: Crosshair.LinesError;
@@ -62,6 +70,7 @@ declare namespace Crosshair {
     interface Crosshair {
         Primary: {
             Crosshair: {
+                isHexCrosshairColor: boolean;
                 CrosshairColor: string;
                 OutLine: {
                     isEnable: boolean;
@@ -82,6 +91,7 @@ declare namespace Crosshair {
         AimDownSights: {
             CopyPrimaryCrosshair: boolean;
             Crosshair: {
+                isHexCrosshairColor: boolean;
                 CrosshairColor: string;
                 OutLine: {
                     isEnable: boolean;
@@ -110,6 +120,7 @@ declare namespace Crosshair {
         };
         SniperScope: {
             CenterDot: {
+                isHexColor: boolean;
                 Color: string;
                 isEnable: boolean;
                 Opacity: number;
@@ -136,6 +147,7 @@ declare class Crosshair {
     };
     Primary: {
         Crosshair: {
+            isHexCrosshairColor: boolean;
             CrosshairColor: string;
             OutLine: {
                 isEnable: boolean;
@@ -156,6 +168,7 @@ declare class Crosshair {
     AimDownSights: {
         CopyPrimaryCrosshair: boolean;
         Crosshair: {
+            isHexCrosshairColor: boolean;
             CrosshairColor: string;
             OutLine: {
                 isEnable: boolean;
@@ -174,6 +187,7 @@ declare class Crosshair {
     };
     SniperScope: {
         CenterDot: {
+            isHexColor: boolean;
             Color: string;
             isEnable: boolean;
             Opacity: number;
@@ -199,17 +213,6 @@ declare class Crosshair {
      */
     toString(): string;
     static readonly Default: Crosshair.Crosshair;
-    static readonly Color: {
-        "0": string;
-        "1": string;
-        "2": string;
-        "3": string;
-        "4": string;
-        "5": string;
-        "6": string;
-        "7": string;
-        "8": string;
-    };
     /**
      *
      * @param {Crosshair.Crosshair} crosshair Json Valorant Crosshair
