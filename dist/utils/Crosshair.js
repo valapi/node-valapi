@@ -168,6 +168,8 @@ class Crosshair {
     toJsonParse() {
         const codeArray = String(this.code).split(';');
         let myJSON = `{`;
+        let _CurrentState = "0";
+        let _isHexColor = false;
         // start
         if (codeArray.at(0) !== '0') {
             throw new Error('Invalid code');
@@ -180,19 +182,36 @@ class Crosshair {
         for (const ofCode in codeArray) {
             const code = codeArray[ofCode];
             if (String(Number(code)) === code) {
+                //hex color
+                if (myJSON.endsWith(`"c":`) && code === String(lib_1.CrosshairColor.to["Custom"])) {
+                    _isHexColor = true;
+                }
+                //normal
                 myJSON += `${code}`;
                 continue;
             }
             if (code.toUpperCase() === code) {
-                // upper case
-                if (String(code).endsWith("FF")) {
-                    if (myJSON.endsWith(`"c":${lib_1.CrosshairColor.to["Custom"]},"u":`) || myJSON.endsWith(`"c":${lib_1.CrosshairColor.to["Custom"]},"t":`)) {
-                        // hex color
+                // hex color
+                if (_isHexColor === true) {
+                    let _isHexColorComplate = false;
+                    if (myJSON.endsWith(`"u":`)) {
+                        if (_CurrentState === "P" || _CurrentState === "A") {
+                            _isHexColorComplate = true;
+                        }
+                    }
+                    else if (myJSON.endsWith(`"t":`) && _CurrentState === "S") {
+                        _isHexColorComplate = true;
+                    }
+                    if (_isHexColorComplate === true) {
                         myJSON += `"${code}"`;
+                        _isHexColor = false;
                         continue;
                     }
                 }
+                // upper case
                 myJSON += `},"${code}":{`;
+                _CurrentState = code;
+                _isHexColor = false;
             }
             else {
                 // lower case
@@ -240,6 +259,7 @@ class Crosshair {
             if (myCode.P.c) { // color
                 if (myCode.P.c == lib_1.CrosshairColor.to["Custom"] && myCode.P.u) { //custom
                     this.Primary.Crosshair.CrosshairColor = myCode.P.u;
+                    this.Primary.Crosshair.isHexCrosshairColor = true;
                 }
                 else {
                     this.Primary.Crosshair.CrosshairColor = String(myCode.P.c);
@@ -365,6 +385,7 @@ class Crosshair {
             if (myCode.A.c) { // color
                 if (myCode.A.c == lib_1.CrosshairColor.to["Custom"] && myCode.A.u) { //custom
                     this.AimDownSights.Crosshair.CrosshairColor = myCode.A.u;
+                    this.AimDownSights.Crosshair.isHexCrosshairColor = true;
                 }
                 else {
                     this.AimDownSights.Crosshair.CrosshairColor = String(myCode.A.c);
@@ -484,6 +505,7 @@ class Crosshair {
                 if (myCode.S["c"]) { // color
                     if (myCode.S["c"] == lib_1.CrosshairColor.to["Custom"] && myCode.S["t"]) { //custom
                         this.SniperScope.CenterDot.Color = myCode.S["t"];
+                        this.SniperScope.CenterDot.isHexColor = true;
                     }
                     else {
                         this.SniperScope.CenterDot.Color = String(myCode.S["c"]);
