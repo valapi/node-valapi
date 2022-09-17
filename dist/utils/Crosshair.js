@@ -1,9 +1,9 @@
 "use strict";
-//import
+// import
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Crosshair = void 0;
 const lib_1 = require("@valapi/lib");
-//class
+// class
 const _defaultCrosshair = {
     Primary: {
         Crosshair: {
@@ -12,15 +12,15 @@ const _defaultCrosshair = {
             OutLine: {
                 isEnable: true,
                 Opacity: 0.5,
-                Thickness: 1,
+                Thickness: 1
             },
             CenterDot: {
                 isEnable: false,
                 Opacity: 1,
-                Thickness: 2,
+                Thickness: 2
             },
             OverrideFiringErrorOffsetWithCrosshairOffset: false,
-            OverrideAllPrimaryCrosshairWithMyPrimaryCrosshair: false,
+            OverrideAllPrimaryCrosshairWithMyPrimaryCrosshair: false
         },
         InnerLines: {
             isEnable: true,
@@ -28,17 +28,17 @@ const _defaultCrosshair = {
             Length: {
                 Value: 6,
                 isChain: false,
-                SecondValue: 6,
+                SecondValue: 6
             },
             Thickness: 2,
             Offset: 3,
             MovementError: {
                 isEnable: false,
-                Multiplier: 1,
+                Multiplier: 1
             },
             FiringError: {
                 isEnable: true,
-                Multiplier: 1,
+                Multiplier: 1
             }
         },
         OuterLines: {
@@ -47,19 +47,19 @@ const _defaultCrosshair = {
             Length: {
                 Value: 2,
                 isChain: false,
-                SecondValue: 2,
+                SecondValue: 2
             },
             Thickness: 2,
             Offset: 10,
             MovementError: {
                 isEnable: true,
-                Multiplier: 1,
+                Multiplier: 1
             },
             FiringError: {
                 isEnable: true,
-                Multiplier: 1,
+                Multiplier: 1
             }
-        },
+        }
     },
     AimDownSights: {
         CopyPrimaryCrosshair: true,
@@ -69,14 +69,14 @@ const _defaultCrosshair = {
             OutLine: {
                 isEnable: true,
                 Opacity: 0.5,
-                Thickness: 1,
+                Thickness: 1
             },
             CenterDot: {
                 isEnable: false,
                 Opacity: 1,
-                Thickness: 2,
+                Thickness: 2
             },
-            OverrideFiringErrorOffsetWithCrosshairOffset: false,
+            OverrideFiringErrorOffsetWithCrosshairOffset: false
         },
         InnerLines: {
             isEnable: true,
@@ -84,17 +84,17 @@ const _defaultCrosshair = {
             Length: {
                 Value: 6,
                 isChain: false,
-                SecondValue: 6,
+                SecondValue: 6
             },
             Thickness: 2,
             Offset: 3,
             MovementError: {
                 isEnable: false,
-                Multiplier: 1,
+                Multiplier: 1
             },
             FiringError: {
                 isEnable: true,
-                Multiplier: 1,
+                Multiplier: 1
             }
         },
         OuterLines: {
@@ -103,28 +103,28 @@ const _defaultCrosshair = {
             Length: {
                 Value: 2,
                 isChain: false,
-                SecondValue: 2,
+                SecondValue: 2
             },
             Thickness: 2,
             Offset: 10,
             MovementError: {
                 isEnable: true,
-                Multiplier: 1,
+                Multiplier: 1
             },
             FiringError: {
                 isEnable: true,
-                Multiplier: 1,
+                Multiplier: 1
             }
-        },
+        }
     },
     General: {
         Crosshair: {
-            UseAdvancedOptions: false,
+            UseAdvancedOptions: false
         },
         Other: {
             ShowSpectatedPlayerCrosshair: true,
             FadeCrosshairWithFiringError: true,
-            DisableCrosshair: false,
+            DisableCrosshair: false
         }
     },
     SniperScope: {
@@ -133,10 +133,15 @@ const _defaultCrosshair = {
             Color: "7",
             isEnable: true,
             Opacity: 0.75,
-            Thickness: 1,
+            Thickness: 1
         }
     }
 };
+/**
+ *
+ * @param {object} myJSON
+ * @returns {object}
+ */
 function generateNewJSON(myJSON) {
     return JSON.parse(JSON.stringify(myJSON));
 }
@@ -162,17 +167,21 @@ class Crosshair {
             General: this.General,
             Primary: this.Primary,
             AimDownSights: this.AimDownSights,
-            SniperScope: this.SniperScope,
+            SniperScope: this.SniperScope
         };
     }
     toJsonParse() {
-        const codeArray = String(this.code).split(';');
+        const codeArray = String(this.code).split(";");
         let myJSON = `{`;
         let _CurrentState = "0";
         let _isHexColor = false;
         // start
-        if (codeArray.at(0) !== '0') {
-            throw new Error('Invalid code');
+        if (codeArray.at(0) !== "0") {
+            throw new lib_1.ValError({
+                name: "Crosshair_Error",
+                message: "Invalid code",
+                data: this.code
+            });
         }
         else {
             myJSON += '"0":{';
@@ -182,11 +191,11 @@ class Crosshair {
         for (const ofCode in codeArray) {
             const code = codeArray[ofCode];
             if (String(Number(code)) === code) {
-                //hex color
+                // hex color
                 if (myJSON.endsWith(`"c":`) && code === String(lib_1.CrosshairColor.to["Custom"])) {
                     _isHexColor = true;
                 }
-                //normal
+                // normal
                 myJSON += `${code}`;
                 continue;
             }
@@ -215,7 +224,7 @@ class Crosshair {
             }
             else {
                 // lower case
-                if (!myJSON.endsWith('{')) {
+                if (!myJSON.endsWith("{")) {
                     myJSON += `,`;
                 }
                 myJSON += `"${code}":`;
@@ -238,16 +247,23 @@ class Crosshair {
         const myCode = this.toJsonParse();
         // Basic
         if (!myCode[0]) {
-            throw new Error('Invalid crosshair code');
+            throw new lib_1.ValError({
+                name: "Crosshair_Error",
+                message: "Invalid crosshair code",
+                data: myCode
+            });
         }
         else {
-            if (myCode[0].p === 0) { //p:0 = disable
+            if (myCode[0].p === 0) {
+                // p:0 = disable
                 this.AimDownSights.CopyPrimaryCrosshair = false;
             }
-            if (myCode[0].c === 1) { //c:1 = enable
+            if (myCode[0].c === 1) {
+                // c:1 = enable
                 this.Primary.Crosshair.OverrideAllPrimaryCrosshairWithMyPrimaryCrosshair = true;
             }
-            if (myCode[0].s === 1) { //s:1 = enable
+            if (myCode[0].s === 1) {
+                // s:1 = enable
                 this.General.Crosshair.UseAdvancedOptions = true;
             }
         }
@@ -256,8 +272,10 @@ class Crosshair {
             // General //
             // General //
             // Color
-            if (myCode.P.c) { // color
-                if (myCode.P.c == lib_1.CrosshairColor.to["Custom"] && myCode.P.u) { //custom
+            if (myCode.P.c) {
+                // color
+                if (String(myCode.P.c) == lib_1.CrosshairColor.to["Custom"] && myCode.P.u) {
+                    // custom
                     this.Primary.Crosshair.CrosshairColor = myCode.P.u;
                     this.Primary.Crosshair.isHexCrosshairColor = true;
                 }
@@ -266,112 +284,141 @@ class Crosshair {
                 }
             }
             // Out Line
-            if (myCode.P.h === 0) { // h:0 = disable
+            if (myCode.P.h === 0) {
+                // h:0 = disable
                 this.Primary.Crosshair.OutLine.isEnable = false;
             }
             else {
-                if (myCode.P.t) { // thickness
+                if (myCode.P.t) {
+                    // thickness
                     this.Primary.Crosshair.OutLine.Thickness = myCode.P.t;
                 }
-                if (myCode.P.o) { // opacity
+                if (myCode.P.o) {
+                    // opacity
                     this.Primary.Crosshair.OutLine.Opacity = myCode.P.o;
                 }
             }
             // Center Dot
-            if (myCode.P.d === 1) { // d:1 = enable
+            if (myCode.P.d === 1) {
+                // d:1 = enable
                 this.Primary.Crosshair.CenterDot.isEnable = true;
-                if (myCode.P.z) { // thickness
+                if (myCode.P.z) {
+                    // thickness
                     this.Primary.Crosshair.CenterDot.Thickness = myCode.P.z;
                 }
-                if (myCode.P.a) { // opacity
+                if (myCode.P.a) {
+                    // opacity
                     this.Primary.Crosshair.CenterDot.Opacity = myCode.P.a;
                 }
             }
             // Mores
-            if (myCode.P.f === 0) { //FadeCrosshairWithFiringError (f:0)
+            if (myCode.P.f === 0) {
+                // FadeCrosshairWithFiringError (f:0)
                 this.General.Other.FadeCrosshairWithFiringError = false;
             }
-            if (myCode.P.s === 0) { //ShowSpectatedPlayerCrosshair (s:0)
+            if (myCode.P.s === 0) {
+                // ShowSpectatedPlayerCrosshair (s:0)
                 this.General.Other.ShowSpectatedPlayerCrosshair = false;
             }
-            if (myCode.P.m === 1) { //OverrideFiringErrorOffsetWithCrosshairOffset (m:1)
+            if (myCode.P.m === 1) {
+                // OverrideFiringErrorOffsetWithCrosshairOffset (m:1)
                 this.Primary.Crosshair.OverrideFiringErrorOffsetWithCrosshairOffset = true;
             }
             // Inner Lines //
             // Inner Lines //
-            if (myCode.P["0b"] === 0) { //0b:0 = disable
+            if (myCode.P["0b"] === 0) {
+                // 0b:0 = disable
                 this.Primary.InnerLines.isEnable = false;
             }
             else {
                 // General
-                if (myCode.P["0t"]) { // thickness
+                if (myCode.P["0t"]) {
+                    // thickness
                     this.Primary.InnerLines.Thickness = myCode.P["0t"];
                 }
-                if (myCode.P["0l"]) { // length
+                if (myCode.P["0l"]) {
+                    // length
                     this.Primary.InnerLines.Length.Value = myCode.P["0l"];
                 }
-                if (myCode.P["0g"] === 1 && myCode.P["0v"]) { //0g:1 = enable
+                if (myCode.P["0g"] === 1 && myCode.P["0v"]) {
+                    // 0g:1 = enable
                     this.Primary.InnerLines.Length.isChain = true;
                     this.Primary.InnerLines.Length.SecondValue = myCode.P["0v"];
                 }
-                if (myCode.P["0o"]) { // offset
+                if (myCode.P["0o"]) {
+                    // offset
                     this.Primary.InnerLines.Offset = myCode.P["0o"];
                 }
-                if (myCode.P["0a"]) { // opacity
+                if (myCode.P["0a"]) {
+                    // opacity
                     this.Primary.InnerLines.Opacity = myCode.P["0a"];
                 }
                 // Error
                 // isEnale
-                if (myCode.P["0m"] === 1) { // m:1 = enable
+                if (myCode.P["0m"] === 1) {
+                    // m:1 = enable
                     this.Primary.InnerLines.MovementError.isEnable = true;
                 }
-                if (myCode.P["0f"] === 0) { // f:0 = enable
+                if (myCode.P["0f"] === 0) {
+                    // f:0 = enable
                     this.Primary.InnerLines.FiringError.isEnable = false;
                 }
                 // Multiplier
-                if (myCode.P["0s"]) { // m - multiplier
+                if (myCode.P["0s"]) {
+                    // m - multiplier
                     this.Primary.InnerLines.MovementError.Multiplier = myCode.P["0s"];
                 }
-                if (myCode.P["0e"]) { // f - multiplier
+                if (myCode.P["0e"]) {
+                    // f - multiplier
                     this.Primary.InnerLines.FiringError.Multiplier = myCode.P["0e"];
                 }
             }
             // Outer Lines //
             // Outer Lines //
-            if (myCode.P["1b"] === 0) { //1b:0 = disable
+            if (myCode.P["1b"] === 0) {
+                // 1b:0 = disable
                 this.Primary.OuterLines.isEnable = false;
             }
             else {
                 // General
-                if (myCode.P["1t"]) { // thickness
+                if (myCode.P["1t"]) {
+                    // thickness
                     this.Primary.OuterLines.Thickness = myCode.P["1t"];
                 }
-                if (myCode.P["1l"]) { // length
+                if (myCode.P["1l"]) {
+                    // length
                     this.Primary.OuterLines.Length.Value = myCode.P["1l"];
                 }
-                if (myCode.P["1g"] === 1 && myCode.P["1v"]) { //1g:1 = enable
+                if (myCode.P["1g"] === 1 && myCode.P["1v"]) {
+                    // 1g:1 = enable
                     this.Primary.OuterLines.Length.isChain = true;
                     this.Primary.OuterLines.Length.SecondValue = myCode.P["1v"];
                 }
-                if (myCode.P["1o"]) { // offset
+                if (myCode.P["1o"]) {
+                    // offset
                     this.Primary.OuterLines.Offset = myCode.P["1o"];
                 }
-                if (myCode.P["1a"]) { // opacity
+                if (myCode.P["1a"]) {
+                    // opacity
                     this.Primary.OuterLines.Opacity = myCode.P["1a"];
                 }
                 // Error
                 // isEnale
-                if (myCode.P["1m"] === 1) { // m:1 = enable
-                    this.Primary.OuterLines.MovementError.isEnable = true;
+                if (myCode.P["1m"] === 0) {
+                    // m:0 = disable
+                    this.Primary.OuterLines.MovementError.isEnable = false;
                 }
-                if (myCode.P["1f"] === 0) { // f:0 = enable
+                if (myCode.P["1f"] === 0) {
+                    // f:0 = disable
                     this.Primary.OuterLines.FiringError.isEnable = false;
                 }
                 // Multiplier
-                if (myCode.P["1s"]) { // m - multiplier
+                if (myCode.P["1s"]) {
+                    // m - multiplier
                     this.Primary.OuterLines.MovementError.Multiplier = myCode.P["1s"];
                 }
-                if (myCode.P["1e"]) { // f - multiplier
+                if (myCode.P["1e"]) {
+                    // f - multiplier
                     this.Primary.OuterLines.FiringError.Multiplier = myCode.P["1e"];
                 }
             }
@@ -382,8 +429,10 @@ class Crosshair {
             // General //
             // General //
             // Color
-            if (myCode.A.c) { // color
-                if (myCode.A.c == lib_1.CrosshairColor.to["Custom"] && myCode.A.u) { //custom
+            if (myCode.A.c) {
+                // color
+                if (String(myCode.A.c) == lib_1.CrosshairColor.to["Custom"] && myCode.A.u) {
+                    // custom
                     this.AimDownSights.Crosshair.CrosshairColor = myCode.A.u;
                     this.AimDownSights.Crosshair.isHexCrosshairColor = true;
                 }
@@ -392,118 +441,148 @@ class Crosshair {
                 }
             }
             // Out Line
-            if (myCode.A.h === 0) { // h:0 = disable
+            if (myCode.A.h === 0) {
+                // h:0 = disable
                 this.AimDownSights.Crosshair.OutLine.isEnable = false;
             }
             else {
-                if (myCode.A.t) { // thickness
+                if (myCode.A.t) {
+                    // thickness
                     this.AimDownSights.Crosshair.OutLine.Thickness = myCode.A.t;
                 }
-                if (myCode.A.o) { // opacity
+                if (myCode.A.o) {
+                    // opacity
                     this.AimDownSights.Crosshair.OutLine.Opacity = myCode.A.o;
                 }
             }
             // Center Dot
-            if (myCode.A.d === 1) { // d:1 = enable
+            if (myCode.A.d === 1) {
+                // d:1 = enable
                 this.AimDownSights.Crosshair.CenterDot.isEnable = true;
-                if (myCode.A.z) { // thickness
+                if (myCode.A.z) {
+                    // thickness
                     this.AimDownSights.Crosshair.CenterDot.Thickness = myCode.A.z;
                 }
-                if (myCode.A.a) { // opacity
+                if (myCode.A.a) {
+                    // opacity
                     this.AimDownSights.Crosshair.CenterDot.Opacity = myCode.A.a;
                 }
             }
             // Mores
-            if (myCode.A.m === 1) { //m:1 = enable
+            if (myCode.A.m === 1) {
+                // m:1 = enable
                 this.AimDownSights.Crosshair.OverrideFiringErrorOffsetWithCrosshairOffset = true;
             }
             // Inner Lines //
             // Inner Lines //
-            if (myCode.A["0b"]) { //0b:0 = disable
+            if (myCode.A["0b"]) {
+                // 0b:0 = disable
                 this.AimDownSights.InnerLines.isEnable = false;
             }
             else {
                 // General
-                if (myCode.A["0t"]) { // thickness
+                if (myCode.A["0t"]) {
+                    // thickness
                     this.AimDownSights.InnerLines.Thickness = myCode.A["0t"];
                 }
-                if (myCode.A["0l"]) { // length
+                if (myCode.A["0l"]) {
+                    // length
                     this.AimDownSights.InnerLines.Length.Value = myCode.A["0l"];
                 }
-                if (myCode.A["0g"] === 1 && myCode.A["0v"]) { //0g:1 = enable
+                if (myCode.A["0g"] === 1 && myCode.A["0v"]) {
+                    // 0g:1 = enable
                     this.AimDownSights.InnerLines.Length.isChain = true;
                     this.AimDownSights.InnerLines.Length.SecondValue = myCode.A["0v"];
                 }
-                if (myCode.A["0o"]) { // offset
+                if (myCode.A["0o"]) {
+                    // offset
                     this.AimDownSights.InnerLines.Offset = myCode.A["0o"];
                 }
-                if (myCode.A["0a"]) { // opacity
+                if (myCode.A["0a"]) {
+                    // opacity
                     this.AimDownSights.InnerLines.Opacity = myCode.A["0a"];
                 }
                 // Error
                 // isEnale
-                if (myCode.A["0m"] === 1) { // m:1 = enable
+                if (myCode.A["0m"] === 1) {
+                    // m:1 = enable
                     this.AimDownSights.InnerLines.MovementError.isEnable = true;
                 }
-                if (myCode.A["0f"] === 0) { // f:0 = enable
+                if (myCode.A["0f"] === 0) {
+                    // f:0 = enable
                     this.AimDownSights.InnerLines.FiringError.isEnable = false;
                 }
                 // Multiplier
-                if (myCode.A["0s"]) { // m - multiplier
+                if (myCode.A["0s"]) {
+                    // m - multiplier
                     this.AimDownSights.InnerLines.MovementError.Multiplier = myCode.A["0s"];
                 }
-                if (myCode.A["0e"]) { // f - multiplier
+                if (myCode.A["0e"]) {
+                    // f - multiplier
                     this.AimDownSights.InnerLines.FiringError.Multiplier = myCode.A["0e"];
                 }
             }
             // Outer Lines //
             // Outer Lines //
-            if (myCode.A["1b"]) { //0b:0 = disable
+            if (myCode.A["1b"] === 0) {
+                // 0b:0 = disable
                 this.AimDownSights.OuterLines.isEnable = false;
             }
             else {
                 // General
-                if (myCode.A["1t"]) { // thickness
+                if (myCode.A["1t"]) {
+                    // thickness
                     this.AimDownSights.OuterLines.Thickness = myCode.A["1t"];
                 }
-                if (myCode.A["1l"]) { // length
+                if (myCode.A["1l"]) {
+                    // length
                     this.AimDownSights.OuterLines.Length.Value = myCode.A["1l"];
                 }
-                if (myCode.A["1g"] === 1 && myCode.A["1v"]) { //1g:1 = enable
+                if (myCode.A["1g"] === 1 && myCode.A["1v"]) {
+                    // 1g:1 = enable
                     this.AimDownSights.OuterLines.Length.isChain = true;
                     this.AimDownSights.OuterLines.Length.SecondValue = myCode.A["1v"];
                 }
-                if (myCode.A["1o"]) { // offset
+                if (myCode.A["1o"]) {
+                    // offset
                     this.AimDownSights.OuterLines.Offset = myCode.A["1o"];
                 }
-                if (myCode.A["1a"]) { // opacity
+                if (myCode.A["1a"]) {
+                    // opacity
                     this.AimDownSights.OuterLines.Opacity = myCode.A["1a"];
                 }
                 // Error
                 // isEnale
-                if (myCode.A["1m"] === 1) { // m:1 = enable
+                if (myCode.A["1m"] === 1) {
+                    // m:1 = enable
                     this.AimDownSights.OuterLines.MovementError.isEnable = true;
                 }
-                if (myCode.A["1f"] === 0) { // f:0 = enable
+                if (myCode.A["1f"] === 0) {
+                    // f:0 = enable
                     this.AimDownSights.OuterLines.FiringError.isEnable = false;
                 }
                 // Multiplier
-                if (myCode.A["1s"]) { // m - multiplier
+                if (myCode.A["1s"]) {
+                    // m - multiplier
                     this.AimDownSights.OuterLines.MovementError.Multiplier = myCode.A["1s"];
                 }
-                if (myCode.A["1e"]) { // f - multiplier
+                if (myCode.A["1e"]) {
+                    // f - multiplier
                     this.AimDownSights.OuterLines.FiringError.Multiplier = myCode.A["1e"];
                 }
             }
         }
         // Snipers Scope
         if (myCode.S) {
-            if (myCode.S["d"] === 0) { //d:0 = disable
+            if (myCode.S["d"] === 0) {
+                // d:0 = disable
                 this.SniperScope.CenterDot.isEnable = false;
             }
             else {
-                if (myCode.S["c"]) { // color
-                    if (myCode.S["c"] == lib_1.CrosshairColor.to["Custom"] && myCode.S["t"]) { //custom
+                if (myCode.S["c"]) {
+                    // color
+                    if (String(myCode.S["c"]) == lib_1.CrosshairColor.to["Custom"] && myCode.S["t"]) {
+                        // custom
                         this.SniperScope.CenterDot.Color = myCode.S["t"];
                         this.SniperScope.CenterDot.isHexColor = true;
                     }
@@ -511,10 +590,12 @@ class Crosshair {
                         this.SniperScope.CenterDot.Color = String(myCode.S["c"]);
                     }
                 }
-                if (myCode.S["s"]) { // thickness
+                if (myCode.S["s"]) {
+                    // thickness
                     this.SniperScope.CenterDot.Thickness = myCode.S["s"];
                 }
-                if (myCode.S["o"]) { // opacity
+                if (myCode.S["o"]) {
+                    // opacity
                     this.SniperScope.CenterDot.Opacity = myCode.S["o"];
                 }
             }
@@ -529,9 +610,9 @@ class Crosshair {
     toString() {
         const myCode = {
             "0": ``,
-            "P": ``,
-            "A": ``,
-            "S": ``
+            P: ``,
+            A: ``,
+            S: ``
         };
         /**
          * toString (Start)
@@ -551,7 +632,7 @@ class Crosshair {
         // Primary //
         // Color
         if (this.Primary.Crosshair.isHexCrosshairColor !== _defaultCrosshair.Primary.Crosshair.isHexCrosshairColor) {
-            myCode["P"] += `c;${lib_1.CrosshairColor.to["Custom"]};u;${Number(this.Primary.Crosshair.isHexCrosshairColor)}`;
+            myCode["P"] += `c;${lib_1.CrosshairColor.to["Custom"]};u;${this.Primary.Crosshair.CrosshairColor};`;
         }
         else if (this.Primary.Crosshair.CrosshairColor !== _defaultCrosshair.Primary.Crosshair.CrosshairColor) {
             myCode["P"] += `c;${this.Primary.Crosshair.CrosshairColor};`;
@@ -673,7 +754,7 @@ class Crosshair {
         if (this.AimDownSights.CopyPrimaryCrosshair === false) {
             // Color
             if (this.AimDownSights.Crosshair.isHexCrosshairColor !== _defaultCrosshair.AimDownSights.Crosshair.isHexCrosshairColor) {
-                myCode["A"] += `c;${lib_1.CrosshairColor.to["Custom"]};u;${Number(this.AimDownSights.Crosshair.isHexCrosshairColor)}`;
+                myCode["A"] += `c;${lib_1.CrosshairColor.to["Custom"]};u;${this.AimDownSights.Crosshair.CrosshairColor};`;
             }
             else if (this.AimDownSights.Crosshair.CrosshairColor !== _defaultCrosshair.AimDownSights.Crosshair.CrosshairColor) {
                 myCode["A"] += `c;${this.AimDownSights.Crosshair.CrosshairColor};`;
@@ -703,7 +784,7 @@ class Crosshair {
                 }
             }
             // Mores
-            myCode["A"] += `f;0;s;0;`; // I don't know why, but this is needed.
+            myCode["A"] += `s;0;`; // * I don't know why, but this is needed.
             if (this.AimDownSights.Crosshair.OverrideFiringErrorOffsetWithCrosshairOffset) {
                 myCode["A"] += `m;${Number(this.AimDownSights.Crosshair.OverrideFiringErrorOffsetWithCrosshairOffset)};`;
             }
@@ -795,7 +876,7 @@ class Crosshair {
         }
         else {
             if (this.SniperScope.CenterDot.isHexColor !== _defaultCrosshair.SniperScope.CenterDot.isHexColor) {
-                myCode["S"] += `c;${lib_1.CrosshairColor.to["Custom"]};t;${Number(this.SniperScope.CenterDot.isHexColor)}`;
+                myCode["S"] += `c;${lib_1.CrosshairColor.to["Custom"]};t;${this.SniperScope.CenterDot.Color};`;
             }
             else if (this.SniperScope.CenterDot.Color !== _defaultCrosshair.SniperScope.CenterDot.Color) {
                 myCode["S"] += `c;${this.SniperScope.CenterDot.Color};`;
@@ -815,15 +896,15 @@ class Crosshair {
             const _key = key;
             if (myCode[_key] !== ``) {
                 stringCode += `${key};${myCode[_key]}`;
-                if (!String(myCode[_key]).endsWith(';')) {
+                if (!String(myCode[_key]).endsWith(";")) {
                     stringCode += `;`;
                 }
             }
         }
-        if (!stringCode.startsWith('0')) {
+        if (!stringCode.startsWith("0")) {
             stringCode = `0;${stringCode}`;
         }
-        if (stringCode.endsWith(';')) {
+        if (stringCode.endsWith(";")) {
             stringCode = stringCode.slice(0, -1);
         }
         return stringCode;
@@ -867,5 +948,5 @@ class Crosshair {
     }
 }
 exports.Crosshair = Crosshair;
-//static
+// static
 Crosshair.Default = _defaultCrosshair;

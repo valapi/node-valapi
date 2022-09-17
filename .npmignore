@@ -3,6 +3,8 @@
 .DS_Store
 .npmrc
 .gitignore
+.prettierignore
+.prettierrc.json
 .eslintignore
 .eslintrc.json
 .vscode

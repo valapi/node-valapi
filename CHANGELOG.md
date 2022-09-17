@@ -1,3 +1,10 @@
+# 1.4.4
+
+- Error handling
+- - Add `throwOnError` option
+- - Fixed `ValEvent`
+- Rename the function to start with a lowercase character
+
 # 1.4.3 (2022-8-29)
 
 **[ Episode 5 Act II ]**

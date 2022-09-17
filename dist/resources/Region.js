@@ -1,9 +1,9 @@
 "use strict";
-//import
+// import
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Region = void 0;
 const lib_1 = require("@valapi/lib");
-//class
+// class
 class Region {
     constructor(x) {
         return lib_1.Region.to[x];

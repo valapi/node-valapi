@@ -1,8 +1,8 @@
-//import
+// import
 
 import { Region as RegionCore } from "@valapi/lib";
 
-//class
+// class
 
 class Region {
     private constructor(x: RegionCore.Name) {
@@ -18,6 +18,6 @@ class Region {
     public static Public_Beta_Environment: RegionCore.String = "pbe";
 }
 
-//region
+// region
 
 export { Region };

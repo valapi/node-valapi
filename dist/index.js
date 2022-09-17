@@ -16,12 +16,12 @@ exports.default = {
     Auth: Auth.Client,
     WebClient: WebClient.Client,
     RiotAPI: RiotAPI.Client,
-    ValorantApiCom: ValorantApiCom.Client,
+    ValorantApiCom: ValorantApiCom.Client
 };
-//resources
+// resources
 var Region_1 = require("./resources/Region");
 Object.defineProperty(exports, "Region", { enumerable: true, get: function () { return Region_1.Region; } });
-//utils
+// utils
 var Crosshair_1 = require("./utils/Crosshair");
 Object.defineProperty(exports, "Crosshair", { enumerable: true, get: function () { return Crosshair_1.Crosshair; } });
 var PatchNote_1 = require("./utils/PatchNote");

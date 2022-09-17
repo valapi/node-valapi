@@ -1,14 +1,14 @@
-//import
+// import
 
-import { Locale } from "@valapi/lib";
+import { Locale, ValError } from "@valapi/lib";
 
-//interface
+// interface
 
 namespace PatchNote {
     export type Version = `${number}.${number}`;
 }
 
-//class
+// class
 
 /**
  * Valorant Patch Note URL
@@ -19,10 +19,10 @@ class PatchNote {
     private patch_note: string;
 
     /**
-     * 
+     *
      * @param {string} language Language of the patch note
      */
-    public constructor(language: Locale.String = 'en-US') {
+    public constructor(language: Locale.String = "en-US") {
         const lowerCase_language = language.toLowerCase();
 
         this.json = `https://playvalorant.com/page-data/${lowerCase_language}/news/tags/patch-notes/page-data.json`;
@@ -32,7 +32,7 @@ class PatchNote {
     }
 
     /**
-     * 
+     *
      * @param {string} language Language
      * @returns {string} Url of Json data
      */
@@ -43,7 +43,7 @@ class PatchNote {
     }
 
     /**
-     * 
+     *
      * @param {string} patch Version
      * @param {string} language Language
      * @returns {string} Url of Patch note
@@ -55,21 +55,23 @@ class PatchNote {
             return `${_myPatchNote.patch_list}`;
         }
 
-        const split_patch: Array<string> = patch.split('.');
+        const split_patch: Array<string> = patch.split(".");
         if (split_patch.length !== 2) {
-            throw new Error(
-                'Invalid patch number'
-            );
-        } else if (split_patch.at(1) !== '0' && String(split_patch.at(1)).length === 1) {
+            throw new ValError({
+                name: "PatchNote_Error",
+                message: "Invalid patch number",
+                data: patch
+            });
+        } else if (split_patch.at(1) !== "0" && String(split_patch.at(1)).length === 1) {
             split_patch[1] = `0${split_patch[1]}`;
 
             patch = `${Number(split_patch.at(0))}.${String(split_patch.at(1))}` as PatchNote.Version;
         }
 
-        return `${_myPatchNote.patch_note}/valorant-patch-notes-${patch.replace('.', '-')}`;
+        return `${_myPatchNote.patch_note}/valorant-patch-notes-${patch.replace(".", "-")}`;
     }
 }
 
-//export
+// export
 
 export { PatchNote };

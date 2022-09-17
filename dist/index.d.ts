@@ -3,7 +3,7 @@ import * as WebClient from "@valapi/web-client";
 import * as RiotAPI from "@valapi/riot-api";
 import * as ValorantApiCom from "@valapi/valorant-api.com";
 import * as Lib from "@valapi/lib";
-export { Auth, WebClient, RiotAPI, ValorantApiCom, Lib, };
+export { Auth, WebClient, RiotAPI, ValorantApiCom, Lib };
 declare const _default: {
     Auth: typeof Auth.Client;
     WebClient: typeof WebClient.Client;
