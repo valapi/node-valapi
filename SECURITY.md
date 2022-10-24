@@ -4,5 +4,5 @@
 
 ## Contact
 
-- Discord: INg3_#9509
-- Twitter: [@GgKawinth](https://twitter.com/GgKawinth)
+-   Discord: INg3\_#9509
+-   Twitter: [@GgKawinth](https://twitter.com/GgKawinth)

@@ -10,6 +10,7 @@
   },
   "scripts": {
     "typescript": "npx tsc --project tsconfig.json",
+    "format": "prettier --print-width 10000 --tab-width 4 --trailing-comma none --write .",
     "lint": "npx eslint src/**",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -45,12 +46,12 @@
   },
   "homepage": "https://valapi.github.io/docs/",
   "devDependencies": {
-    "@types/node": "^18.7.18",
-    "@typescript-eslint/eslint-plugin": "5.37.0",
-    "@typescript-eslint/parser": "5.37.0",
-    "eslint": "8.23.1",
+    "@types/node": "^18.11.4",
+    "@typescript-eslint/eslint-plugin": "5.40.1",
+    "@typescript-eslint/parser": "5.40.1",
+    "eslint": "8.26.0",
     "tslib": "^2.4.0",
-    "typescript": "^4.8.3"
+    "typescript": "^4.8.4"
   },
   "dependencies": {
     "@valapi/auth": "^1.2.3",

@@ -1,2 +1,8 @@
+.github/
+node_modules/
 dist/
 test/
+.eslintrc.json
+package-lock.json
+package.json
+tsconfig.json
