@@ -9,10 +9,10 @@
     "access": "public"
   },
   "scripts": {
-    "typescript": "npx tsc --project tsconfig.json",
-    "format": "prettier --print-width 10000 --tab-width 4 --trailing-comma none --write .",
+    "types": "npx tsc --project tsconfig.json",
+    "format": "prettier --config ./.prettierrc --ignore-path ./.prettierignore --write .",
     "lint": "npx eslint src/**",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepublishOnly": "npm run format && npm run types"
   },
   "repository": {
     "type": "git",
