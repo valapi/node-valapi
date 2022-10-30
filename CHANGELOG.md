@@ -1,3 +1,26 @@
+# 2.0.0
+
+### <u>@/lib</u>
+
+**CrosshairColor** _(static)_
+
+- `.Default.*`
+- `.DefaultColor.*`
+- ~~.Name~~ **-->** `.Color`
+- ~~.String~~ **-->** `.Identify`
+- ~~.toString()~~ **-->** `.fromColor()`
+- ~~.toStringHex()~~ **-->** `.fromColorHex()`
+
+**ItemTypeId**, **Locale**, **QueueId**, **Region** _(static)_
+
+- `.Default.*`
+- ~~.String~~ **-->** `.Identify`
+- ~~.toString()~~ **-->** `.fromName()`
+
+**ValError** _(static)_
+
+- `.fromError(error)`
+
 # 1.4.4
 
 -   Error handling
