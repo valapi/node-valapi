@@ -4,6 +4,12 @@
 
 ---
 
+### <u>valorant.ts</u>
+
+- ~~.Region~~
+
+---
+
 ### <u>@/lib</u>
 
 - ~~ValHttpResponse~~

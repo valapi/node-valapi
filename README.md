@@ -38,7 +38,7 @@ yarn add valorant.ts
 
 ## Guide
 
-Full Guide: **<https://valapi.github.io/docs>**
+Full Guide: **https://valapi.github.io/docs**
 
 ## Why Valorant.ts ?
 

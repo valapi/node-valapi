@@ -15,10 +15,6 @@ export default {
     ValorantApiCom: ValorantApiCom.Client
 };
 
-// resources
-
-export { Region } from "./resources/Region";
-
 // utils
 
 export { Crosshair } from "./utils/Crosshair";
