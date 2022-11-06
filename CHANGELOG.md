@@ -3,6 +3,8 @@
 - All `namespaces.*` have been removed
 - All **`expired`** event is removed
 
+---
+
 ### <u>@/lib</u>
 
 - ~~ValHttpResponse~~
@@ -42,6 +44,8 @@
 
 - ~~.Method~~
 
+---
+
 ### <u>@/valorant-api.com</u>
 
 **Client**
@@ -49,6 +53,8 @@
 - `.Default.*`
 - ~~.Service<>~~ **-->** `.Response.Languages<>`
 - ~~.Response<>~~ **-->** `.Response.Data<>`
+
+---
 
 ### <u>@/auth</u>
 
@@ -64,6 +70,8 @@
 - ~~.parseToken()~~ **-->** `.getSubject()`
 - ~~.isError~~ **-->** `.isAuthenticationError`
 - ~~.isMultifactor~~ **-->** `.isMultifactorAccount`
+
+---
 
 ### <u>@/web-client</u>
 
