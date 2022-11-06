@@ -1,6 +1,16 @@
 # 2.0.0
 
+- All `namespaces.*` have been removed
+- All **`expired`** event is removed
+
 ### <u>@/lib</u>
+
+- ~~ValHttpResponse~~
+
+**Types**
+
+- `.UndefinedOptional`
+- `.UndefinedRecord`
 
 **CrosshairColor** _(static)_
 
@@ -20,6 +30,67 @@
 **ValError** _(static)_
 
 - `.fromError(error)`
+
+**ValEvent** _(static)_
+
+- ~~.Function~~ **-->** `.ListenerFunction`
+- `.Structure`
+- `.KeyOf<>`
+- `.Type<>`
+
+~~ValRequestClient~~ **-->** **`ValAxios`** _(static)_
+
+- ~~.Method~~
+
+### <u>@/valorant-api.com</u>
+
+**Client**
+
+- `.Default.*`
+- ~~.Service<>~~ **-->** `.Response.Languages<>`
+- ~~.Response<>~~ **-->** `.Response.Data<>`
+
+### <u>@/auth</u>
+
+- `Auth`
+- ~~ValAuthUser~~ **-->** `User`
+- ~~ValAuthMultifactor~~ **-->** `Multifactor`
+- ~~ValAuthCookie~~ **-->** `Cookie`
+- ~~Client~~ **-->** `AuthClient`
+
+~~ValAuthEngine~~ **-->** **`AuthCore`**
+
+- `.Default.*`
+- ~~.parseToken()~~ **-->** `.getSubject()`
+- ~~.isError~~ **-->** `.isAuthenticationError`
+- ~~.isMultifactor~~ **-->** `.isMultifactorAccount`
+
+### <u>@/web-client</u>
+
+**Client**
+
+- ~~.Options~~ _(static)_
+
+**Service** (*Reformat*, Sort by API service)
+
+- `AccountXP`
+- `Config`
+- `Content`
+- `ContractDefinitions`
+- `Contracts`
+- `CoreGame`
+- `DisplayNameService`
+- `Favorites`
+- `Latency`
+- `MassRewards`
+- `Match`
+- `MMR`
+- `Party`
+- `Personalization`
+- `PreGame`
+- `Restrictions`
+- `Session`
+- `Store`
 
 # 1.4.4
 

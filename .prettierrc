@@ -1,7 +1,7 @@
 {
   "embeddedLanguageFormatting": "auto",
   "printWidth": 10000,
-  "requirePragma": true,
+  "requirePragma": false,
   "semi": true,
   "singleQuote": false,
   "tabWidth": 4,
