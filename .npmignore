@@ -5,6 +5,7 @@
 .gitignore
 .prettierignore
 .prettierrc.json
+.prettierrc
 .eslintignore
 .eslintrc.json
 .vscode

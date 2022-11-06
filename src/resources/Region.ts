@@ -4,7 +4,7 @@ import { Region as RegionCore } from "@valapi/lib";
 
 // class
 
-class Region {
+export class Region {
     private constructor(x: RegionCore.Name) {
         return RegionCore.to[x];
     }
@@ -17,7 +17,3 @@ class Region {
     public static North_America: RegionCore.String = "na";
     public static Public_Beta_Environment: RegionCore.String = "pbe";
 }
-
-// region
-
-export { Region };

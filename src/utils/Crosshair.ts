@@ -4,7 +4,7 @@ import { CrosshairColor, ValError } from "@valapi/lib";
 
 // interface
 
-namespace Crosshair {
+export namespace Crosshair {
     export interface ParsePrimary {
         // Color
         "c"?: number;
@@ -300,7 +300,7 @@ function generateNewJSON<ReturnType = object>(myJSON: ReturnType): ReturnType {
  * Valorant Crosshair Compiler
  * * Don't Code Like This Class (Make for understanding Valorant crosshair)
  */
-class Crosshair {
+export class Crosshair {
     private code: string;
 
     public General = generateNewJSON(_defaultCrosshair.General);
@@ -1319,7 +1319,3 @@ class Crosshair {
         return _newCrosshair.toJson();
     }
 }
-
-// export
-
-export { Crosshair };

@@ -1,6 +1,5 @@
 # 2.0.0
 
-- All `namespaces.*` have been removed
 - All **`expired`** event is removed
 
 ---
@@ -44,15 +43,30 @@
 
 - ~~.Method~~
 
+**ValRegion**
+
+- ~~.region~~ **-->** `.id`
+- ~~.server~~ **-->** `.shard`
+
 ---
 
 ### <u>@/valorant-api.com</u>
 
 **Client**
 
+
 - `.Default.*`
+- ~~.Config~~ **-->** `.Options` _(static)_
 - ~~.Service<>~~ **-->** `.Response.Languages<>`
 - ~~.Response<>~~ **-->** `.Response.Data<>`
+
+---
+
+### <u>@/riot-api</u>
+
+**Client** _(static)_
+
+- ~~.Config~~ **-->** `.Options`
 
 ---
 
@@ -75,9 +89,9 @@
 
 ### <u>@/web-client</u>
 
-**Client**
+**Client** _(static)_
 
-- ~~.Options~~ _(static)_
+- ~~.Options~~
 
 **Service** (*Reformat*, Sort by API service)
 

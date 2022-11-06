@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/KTNG-3/valorant-api.git"
+    "url": "git://github.com/KTNG-3/valorant-api.git"
   },
   "keywords": [
     "valorant",
@@ -30,15 +30,9 @@
     "ts",
     "crosshair"
   ],
-  "author": {
-    "name": "ing3kth",
-    "url": "https://github.com/KTNG-3/"
-  },
+  "author": "ing3kth (https://github.com/KTNG-3)",
   "contributors": [
-    {
-      "name": "ING3_",
-      "url": "https://github.com/KTNG-3/"
-    }
+    "ING3_ (https://github.com/KTNG-3)"
   ],
   "license": "MIT",
   "bugs": {

@@ -4,7 +4,7 @@ import { Locale, ValError } from "@valapi/lib";
 
 // interface
 
-namespace PatchNote {
+export namespace PatchNote {
     export type Version = `${number}.${number}`;
 }
 
@@ -13,7 +13,7 @@ namespace PatchNote {
 /**
  * Valorant Patch Note URL
  */
-class PatchNote {
+export class PatchNote {
     private json: string;
     private patch_list: string;
     private patch_note: string;
@@ -71,7 +71,3 @@ class PatchNote {
         return `${_myPatchNote.patch_note}/valorant-patch-notes-${patch.replace(".", "-")}`;
     }
 }
-
-// export
-
-export { PatchNote };
