@@ -50,9 +50,10 @@ Full Guide: **https://valapi.github.io/docs**
         -   <https://valorant-api.com>
         -   Web Client
     -   Utils
-        -   Region
+        -   Patch Notes
         -   Crosshair Compiler
     -   Resources
+    -   -   Region
 -   Event Emitter
 -   Open-source
 -   [Typescript Support](https://www.typescriptlang.org)
