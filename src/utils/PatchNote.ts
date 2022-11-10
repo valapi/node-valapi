@@ -22,7 +22,7 @@ export class PatchNote {
      *
      * @param {string} language Language of the patch note
      */
-    public constructor(language: Locale.String = "en-US") {
+    private constructor(language: Locale.Identify = "en-US") {
         const lowerCase_language = language.toLowerCase();
 
         this.json = `https://playvalorant.com/page-data/${lowerCase_language}/news/tags/patch-notes/page-data.json`;
@@ -36,7 +36,7 @@ export class PatchNote {
      * @param {string} language Language
      * @returns {string} Url of Json data
      */
-    public static getJsonUrl(language?: Locale.String): string {
+    public static getJsonUrl(language?: Locale.Identify): string {
         const _myPatchNote = new PatchNote(language);
 
         return `${_myPatchNote.json}`;
@@ -48,7 +48,7 @@ export class PatchNote {
      * @param {string} language Language
      * @returns {string} Url of Patch note
      */
-    public static getUrl(patch?: PatchNote.Version, language?: Locale.String): string {
+    public static getUrl(patch?: PatchNote.Version, language?: Locale.Identify): string {
         const _myPatchNote = new PatchNote(language);
 
         if (!patch) {

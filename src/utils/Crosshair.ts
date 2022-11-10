@@ -355,7 +355,7 @@ export class Crosshair {
             if (String(Number(code)) === code) {
                 // hex color
 
-                if (myJSON.endsWith(`"c":`) && code === String(CrosshairColor.to["Custom"])) {
+                if (myJSON.endsWith(`"c":`) && code === String(CrosshairColor.fromColor("Custom"))) {
                     _isHexColor = true;
                 }
 
@@ -457,7 +457,7 @@ export class Crosshair {
 
             if (myCode.P.c) {
                 // color
-                if (String(myCode.P.c) == CrosshairColor.to["Custom"] && myCode.P.u) {
+                if (String(myCode.P.c) == CrosshairColor.fromColor("Custom") && myCode.P.u) {
                     // custom
                     this.Primary.Crosshair.CrosshairColor = myCode.P.u;
 
@@ -657,7 +657,7 @@ export class Crosshair {
 
             if (myCode.A.c) {
                 // color
-                if (String(myCode.A.c) == CrosshairColor.to["Custom"] && myCode.A.u) {
+                if (String(myCode.A.c) == CrosshairColor.fromColor("Custom") && myCode.A.u) {
                     // custom
                     this.AimDownSights.Crosshair.CrosshairColor = myCode.A.u;
 
@@ -844,7 +844,7 @@ export class Crosshair {
             } else {
                 if (myCode.S["c"]) {
                     // color
-                    if (String(myCode.S["c"]) == CrosshairColor.to["Custom"] && myCode.S["t"]) {
+                    if (String(myCode.S["c"]) == CrosshairColor.fromColor("Custom") && myCode.S["t"]) {
                         // custom
                         this.SniperScope.CenterDot.Color = myCode.S["t"];
 
@@ -908,7 +908,7 @@ export class Crosshair {
         // Color
 
         if (this.Primary.Crosshair.isHexCrosshairColor !== _defaultCrosshair.Primary.Crosshair.isHexCrosshairColor) {
-            myCode["P"] += `c;${CrosshairColor.to["Custom"]};u;${this.Primary.Crosshair.CrosshairColor};`;
+            myCode["P"] += `c;${CrosshairColor.fromColor("Custom")};u;${this.Primary.Crosshair.CrosshairColor};`;
         } else if (this.Primary.Crosshair.CrosshairColor !== _defaultCrosshair.Primary.Crosshair.CrosshairColor) {
             myCode["P"] += `c;${this.Primary.Crosshair.CrosshairColor};`;
         }
@@ -1070,7 +1070,7 @@ export class Crosshair {
             // Color
 
             if (this.AimDownSights.Crosshair.isHexCrosshairColor !== _defaultCrosshair.AimDownSights.Crosshair.isHexCrosshairColor) {
-                myCode["A"] += `c;${CrosshairColor.to["Custom"]};u;${this.AimDownSights.Crosshair.CrosshairColor};`;
+                myCode["A"] += `c;${CrosshairColor.fromColor("Custom")};u;${this.AimDownSights.Crosshair.CrosshairColor};`;
             } else if (this.AimDownSights.Crosshair.CrosshairColor !== _defaultCrosshair.AimDownSights.Crosshair.CrosshairColor) {
                 myCode["A"] += `c;${this.AimDownSights.Crosshair.CrosshairColor};`;
             }
@@ -1227,7 +1227,7 @@ export class Crosshair {
             myCode["S"] += `d;${Number(this.SniperScope.CenterDot.isEnable)};`;
         } else {
             if (this.SniperScope.CenterDot.isHexColor !== _defaultCrosshair.SniperScope.CenterDot.isHexColor) {
-                myCode["S"] += `c;${CrosshairColor.to["Custom"]};t;${this.SniperScope.CenterDot.Color};`;
+                myCode["S"] += `c;${CrosshairColor.fromColor("Custom")};t;${this.SniperScope.CenterDot.Color};`;
             } else if (this.SniperScope.CenterDot.Color !== _defaultCrosshair.SniperScope.CenterDot.Color) {
                 myCode["S"] += `c;${this.SniperScope.CenterDot.Color};`;
             }

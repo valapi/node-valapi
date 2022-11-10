@@ -9,7 +9,7 @@ import * as Lib from "@valapi/lib";
 export { Auth, WebClient, RiotAPI, ValorantApiCom, Lib };
 
 export default {
-    Auth: Auth.Client,
+    Auth: Auth.AuthClient,
     WebClient: WebClient.Client,
     RiotAPI: RiotAPI.Client,
     ValorantApiCom: ValorantApiCom.Client

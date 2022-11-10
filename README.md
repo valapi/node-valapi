@@ -54,6 +54,7 @@ Full Guide: **https://valapi.github.io/docs**
         -   Crosshair Compiler
     -   Resources
     -   -   Region
+    -   -   Locale
 -   Event Emitter
 -   Open-source
 -   [Typescript Support](https://www.typescriptlang.org)
