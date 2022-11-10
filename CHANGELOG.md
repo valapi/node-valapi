@@ -1,4 +1,4 @@
-# 2.0.0
+# 2.0.0 (November 10, 2022)
 
 - All **`expired`** event is removed
 
@@ -120,7 +120,7 @@
 - `Session`
 - `Store`
 
-# 1.4.4
+# 1.4.4 (2022-9-17)
 
 -   Error handling
 -   -   Add `throwOnError` option
