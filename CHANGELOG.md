@@ -1,58 +1,58 @@
 # 2.0.0 (November 10, 2022)
 
-- All **`expired`** event is removed
+-   All **`expired`** event is removed
 
 ---
 
 ### <u>valorant.ts</u>
 
-- ~~.Region~~
+-   ~~.Region~~
 
 ---
 
 ### <u>@/lib</u>
 
-- ~~ValHttpResponse~~
+-   ~~ValHttpResponse~~
 
 **Types**
 
-- `.UndefinedOptional`
-- `.UndefinedRecord`
+-   `.UndefinedOptional`
+-   `.UndefinedRecord`
 
 **CrosshairColor** _(static)_
 
-- `.Default.*`
-- `.DefaultColor.*`
-- ~~.Name~~ **-->** `.Color`
-- ~~.String~~ **-->** `.Identify`
-- ~~.toString()~~ **-->** `.fromColor()`
-- ~~.toStringHex()~~ **-->** `.fromColorHex()`
+-   `.Default.*`
+-   `.DefaultColor.*`
+-   ~~.Name~~ **-->** `.Color`
+-   ~~.String~~ **-->** `.Identify`
+-   ~~.toString()~~ **-->** `.fromColor()`
+-   ~~.toStringHex()~~ **-->** `.fromColorHex()`
 
 **ItemTypeId**, **Locale**, **QueueId**, **Region** _(static)_
 
-- `.Default.*`
-- ~~.String~~ **-->** `.Identify`
-- ~~.toString()~~ **-->** `.fromName()`
+-   `.Default.*`
+-   ~~.String~~ **-->** `.Identify`
+-   ~~.toString()~~ **-->** `.fromName()`
 
 **ValError** _(static)_
 
-- `.fromError(error)`
+-   `.fromError(error)`
 
 **ValEvent** _(static)_
 
-- ~~.Function~~ **-->** `.ListenerFunction`
-- `.Structure`
-- `.KeyOf<>`
-- `.Type<>`
+-   ~~.Function~~ **-->** `.ListenerFunction`
+-   `.Structure`
+-   `.KeyOf<>`
+-   `.Type<>`
 
 ~~ValRequestClient~~ **-->** **`ValAxios`** _(static)_
 
-- ~~.Method~~
+-   ~~.Method~~
 
 **ValRegion**
 
-- ~~.region~~ **-->** `.id`
-- ~~.server~~ **-->** `.shard`
+-   ~~.region~~ **-->** `.id`
+-   ~~.server~~ **-->** `.shard`
 
 ---
 
@@ -60,11 +60,10 @@
 
 **Client**
 
-
-- `.Default.*`
-- ~~.Config~~ **-->** `.Options` _(static)_
-- ~~.Service<>~~ **-->** `.Response.Languages<>`
-- ~~.Response<>~~ **-->** `.Response.Data<>`
+-   `.Default.*`
+-   ~~.Config~~ **-->** `.Options` _(static)_
+-   ~~.Service<>~~ **-->** `.Response.Languages<>`
+-   ~~.Response<>~~ **-->** `.Response.Data<>`
 
 ---
 
@@ -72,24 +71,24 @@
 
 **Client** _(static)_
 
-- ~~.Config~~ **-->** `.Options`
+-   ~~.Config~~ **-->** `.Options`
 
 ---
 
 ### <u>@/auth</u>
 
-- `Auth`
-- ~~ValAuthUser~~ **-->** `User`
-- ~~ValAuthMultifactor~~ **-->** `Multifactor`
-- ~~ValAuthCookie~~ **-->** `Cookie`
-- ~~Client~~ **-->** `AuthClient`
+-   `Auth`
+-   ~~ValAuthUser~~ **-->** `User`
+-   ~~ValAuthMultifactor~~ **-->** `Multifactor`
+-   ~~ValAuthCookie~~ **-->** `Cookie`
+-   ~~Client~~ **-->** `AuthClient`
 
 ~~ValAuthEngine~~ **-->** **`AuthCore`**
 
-- `.Default.*`
-- ~~.parseToken()~~ **-->** `.getSubject()`
-- ~~.isError~~ **-->** `.isAuthenticationError`
-- ~~.isMultifactor~~ **-->** `.isMultifactorAccount`
+-   `.Default.*`
+-   ~~.parseToken()~~ **-->** `.getSubject()`
+-   ~~.isError~~ **-->** `.isAuthenticationError`
+-   ~~.isMultifactor~~ **-->** `.isMultifactorAccount`
 
 ---
 
@@ -97,28 +96,28 @@
 
 **Client** _(static)_
 
-- ~~.Options~~
+-   ~~.Options~~
 
-**Service** (*Reformat*, Sort by API service)
+**Service** (_Reformat_, Sort by API service)
 
-- `AccountXP`
-- `Config`
-- `Content`
-- `ContractDefinitions`
-- `Contracts`
-- `CoreGame`
-- `DisplayNameService`
-- `Favorites`
-- `Latency`
-- `MassRewards`
-- `Match`
-- `MMR`
-- `Party`
-- `Personalization`
-- `PreGame`
-- `Restrictions`
-- `Session`
-- `Store`
+-   `AccountXP`
+-   `Config`
+-   `Content`
+-   `ContractDefinitions`
+-   `Contracts`
+-   `CoreGame`
+-   `DisplayNameService`
+-   `Favorites`
+-   `Latency`
+-   `MassRewards`
+-   `Match`
+-   `MMR`
+-   `Party`
+-   `Personalization`
+-   `PreGame`
+-   `Restrictions`
+-   `Session`
+-   `Store`
 
 # 1.4.4 (2022-9-17)
 

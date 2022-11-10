@@ -7,20 +7,20 @@ import { CrosshairColor, ValError } from "@valapi/lib";
 export namespace Crosshair {
     export interface ParsePrimary {
         // Color
-        "c"?: number;
-        "u"?: string; // <--- Custom Color
+        c?: number;
+        u?: string; // <--- Custom Color
         // Out Line
-        "h"?: number;
-        "t"?: number;
-        "o"?: number;
+        h?: number;
+        t?: number;
+        o?: number;
         // Center Dot
-        "d"?: number;
-        "z"?: number;
-        "a"?: number;
+        d?: number;
+        z?: number;
+        a?: number;
         // Mores
-        "f"?: number;
-        "s"?: number;
-        "m"?: number;
+        f?: number;
+        s?: number;
+        m?: number;
         // Inner Lines
         "0b"?: number;
         "0t"?: number;
@@ -50,21 +50,21 @@ export namespace Crosshair {
     export interface Parse {
         // Others
         "0": {
-            "p"?: number;
-            "c"?: number;
-            "s"?: number;
+            p?: number;
+            c?: number;
+            s?: number;
         };
         // Primary
-        "P"?: Crosshair.ParsePrimary;
+        P?: Crosshair.ParsePrimary;
         // Aim Down Sights
-        "A"?: Crosshair.ParsePrimary;
+        A?: Crosshair.ParsePrimary;
         // Sniper Scope
-        "S"?: {
-            "d"?: number;
-            "c"?: number;
-            "t"?: string; // <--- Custom Color
-            "s"?: number;
-            "o"?: number;
+        S?: {
+            d?: number;
+            c?: number;
+            t?: string; // <--- Custom Color
+            s?: number;
+            o?: number;
         };
     }
 
