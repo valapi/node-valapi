@@ -16,8 +16,8 @@
 
 **Types**
 
--   `.UndefinedOptional`
--   `.UndefinedRecord`
+-   `UndefinedOptional`
+-   `UndefinedRecord`
 
 **CrosshairColor** _(static)_
 
@@ -58,10 +58,10 @@
 
 ### <u>@/valorant-api.com</u>
 
-**Client**
+**Client** _(static)_
 
 -   `.Default.*`
--   ~~.Config~~ **-->** `.Options` _(static)_
+-   ~~.Config~~ **-->** `.Options`
 -   ~~.Service<>~~ **-->** `.Response.Languages<>`
 -   ~~.Response<>~~ **-->** `.Response.Data<>`
 
@@ -81,6 +81,7 @@
 -   ~~ValAuthUser~~ **-->** `User`
 -   ~~ValAuthMultifactor~~ **-->** `Multifactor`
 -   ~~ValAuthCookie~~ **-->** `Cookie`
+-   ~~ValAuthEngine~~ **-->** `AuthCore`
 -   ~~Client~~ **-->** `AuthClient`
 
 ~~ValAuthEngine~~ **-->** **`AuthCore`**
