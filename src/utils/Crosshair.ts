@@ -1,10 +1,19 @@
 // import
 
 import { CrosshairColor, ValError } from "@valapi/lib";
+import { JsonRiversPath } from "@valapi/lib/dist/utils/Types";
 
 // interface
 
 export namespace Crosshair {
+    // parse
+
+    export interface ParseOthers {
+        p?: number;
+        c?: number;
+        s?: number;
+    }
+
     export interface ParsePrimary {
         // Color
         c?: number;
@@ -47,48 +56,28 @@ export namespace Crosshair {
         "1e"?: number;
     }
 
+    export interface ParseSniperScope {
+        d?: number;
+        c?: number;
+        t?: string; // <--- Custom Color
+        s?: number;
+        o?: number;
+    }
+
     export interface Parse {
         // Others
-        "0": {
-            p?: number;
-            c?: number;
-            s?: number;
-        };
+        "0": Crosshair.ParseOthers;
         // Primary
         P?: Crosshair.ParsePrimary;
         // Aim Down Sights
         A?: Crosshair.ParsePrimary;
         // Sniper Scope
-        S?: {
-            d?: number;
-            c?: number;
-            t?: string; // <--- Custom Color
-            s?: number;
-            o?: number;
-        };
+        S?: ParseSniperScope;
     }
 
-    export interface LinesError {
-        isEnable: boolean; // not in valorant settings
-        Multiplier: number;
-    }
+    // data
 
-    export interface Lines {
-        isEnable: boolean; // not in valorant settings
-        Opacity: number;
-        Length: {
-            // base on valorant settings
-            Value: number;
-            isChain: boolean;
-            SecondValue: number;
-        };
-        Thickness: number;
-        Offset: number;
-        MovementError: Crosshair.LinesError;
-        FiringError: Crosshair.LinesError;
-    }
-
-    export interface Crosshair {
+    export interface Json {
         Primary: {
             Crosshair: {
                 isHexCrosshairColor: boolean; // not in valorant settings
@@ -106,8 +95,46 @@ export namespace Crosshair {
                 OverrideFiringErrorOffsetWithCrosshairOffset: boolean;
                 OverrideAllPrimaryCrosshairWithMyPrimaryCrosshair: boolean;
             };
-            InnerLines: Crosshair.Lines;
-            OuterLines: Crosshair.Lines;
+            InnerLines: {
+                isEnable: boolean; // not in valorant settings
+                Opacity: number;
+                Length: {
+                    // base on valorant settings
+                    Value: number;
+                    isChain: boolean;
+                    SecondValue: number;
+                };
+                Thickness: number;
+                Offset: number;
+                MovementError: {
+                    isEnable: boolean; // not in valorant settings
+                    Multiplier: number;
+                };
+                FiringError: {
+                    isEnable: boolean; // not in valorant settings
+                    Multiplier: number;
+                };
+            };
+            OuterLines: {
+                isEnable: boolean; // not in valorant settings
+                Opacity: number;
+                Length: {
+                    // base on valorant settings
+                    Value: number;
+                    isChain: boolean;
+                    SecondValue: number;
+                };
+                Thickness: number;
+                Offset: number;
+                MovementError: {
+                    isEnable: boolean; // not in valorant settings
+                    Multiplier: number;
+                };
+                FiringError: {
+                    isEnable: boolean; // not in valorant settings
+                    Multiplier: number;
+                };
+            };
         };
         AimDownSights: {
             CopyPrimaryCrosshair: boolean;
@@ -126,8 +153,46 @@ export namespace Crosshair {
                 };
                 OverrideFiringErrorOffsetWithCrosshairOffset: boolean;
             };
-            InnerLines: Crosshair.Lines;
-            OuterLines: Crosshair.Lines;
+            InnerLines: {
+                isEnable: boolean; // not in valorant settings
+                Opacity: number;
+                Length: {
+                    // base on valorant settings
+                    Value: number;
+                    isChain: boolean;
+                    SecondValue: number;
+                };
+                Thickness: number;
+                Offset: number;
+                MovementError: {
+                    isEnable: boolean; // not in valorant settings
+                    Multiplier: number;
+                };
+                FiringError: {
+                    isEnable: boolean; // not in valorant settings
+                    Multiplier: number;
+                };
+            };
+            OuterLines: {
+                isEnable: boolean; // not in valorant settings
+                Opacity: number;
+                Length: {
+                    // base on valorant settings
+                    Value: number;
+                    isChain: boolean;
+                    SecondValue: number;
+                };
+                Thickness: number;
+                Offset: number;
+                MovementError: {
+                    isEnable: boolean; // not in valorant settings
+                    Multiplier: number;
+                };
+                FiringError: {
+                    isEnable: boolean; // not in valorant settings
+                    Multiplier: number;
+                };
+            };
         };
         General: {
             Crosshair: {
@@ -149,11 +214,71 @@ export namespace Crosshair {
             };
         };
     }
+
+    export type ParseRiversPath = keyof Crosshair.Parse | `0.${keyof Crosshair.ParseOthers}` | `A.${keyof Crosshair.ParsePrimary}` | `P.${keyof Crosshair.ParsePrimary}` | `S.${keyof Crosshair.ParseSniperScope}`;
+
+    export type CrosshairRiversPath = JsonRiversPath<Crosshair.Json>;
+
+    export type LinesDataStructure = {
+        type: "LengthChain";
+        path: CrosshairRiversPath;
+        key: {
+            isChain: {
+                key: ParseRiversPath;
+                default: 0 | 1;
+            };
+            valueOne: {
+                key: ParseRiversPath;
+                default: number;
+            };
+            valueTwo: {
+                key: ParseRiversPath;
+                default: number;
+            };
+        };
+    };
+
+    export type DataStructure =
+        | {
+              type: "Boolean";
+              path: CrosshairRiversPath;
+              key: ParseRiversPath;
+              default: 0 | 1;
+              components?: Array<Crosshair.DataStructure | LinesDataStructure>;
+          }
+        | {
+              type: "Number";
+              path: CrosshairRiversPath;
+              key: ParseRiversPath;
+              default: number;
+              components?: Array<Crosshair.DataStructure>;
+          }
+        | {
+              type: "Color";
+              key: {
+                  isHex: {
+                      path: CrosshairRiversPath;
+                      default: 0 | 1;
+                  };
+                  normal: {
+                      key: ParseRiversPath;
+                      path: CrosshairRiversPath;
+                      default: CrosshairColor.Identify;
+                  };
+                  hex: {
+                      key: ParseRiversPath;
+                      path: CrosshairRiversPath;
+                      default: CrosshairColor.ColorHex;
+                  };
+              };
+          };
+
+    export type Data = Array<Crosshair.DataStructure>;
 }
 
 // class
 
-const _defaultCrosshair: Crosshair.Crosshair = {
+const _defaultCrosshair: Required<Crosshair.Json> = {
     Primary: {
         Crosshair: {
             isHexCrosshairColor: false,
@@ -287,6 +412,520 @@ const _defaultCrosshair: Crosshair.Crosshair = {
     }
 };
 
+const _parseData: Crosshair.Data = [
+    // * 0 (Others)
+
+    {
+        type: "Boolean",
+        path: "AimDownSights.CopyPrimaryCrosshair",
+        key: "0.p",
+        default: 1
+    },
+    {
+        type: "Boolean",
+        path: "Primary.Crosshair.OverrideAllPrimaryCrosshairWithMyPrimaryCrosshair",
+        key: "0.c",
+        default: 0
+    },
+    {
+        type: "Boolean",
+        path: "General.Crosshair.UseAdvancedOptions",
+        key: "0.c",
+        default: 0
+    },
+
+    // * P (Primary)
+
+    {
+        type: "Color",
+        key: {
+            isHex: {
+                path: "Primary.Crosshair.isHexCrosshairColor",
+                default: 0
+            },
+            normal: {
+                key: "P.c",
+                path: "Primary.Crosshair.CrosshairColor",
+                default: "0"
+            },
+            hex: {
+                key: "P.u",
+                path: "Primary.Crosshair.CrosshairColor",
+                default: "FFFFFF"
+            }
+        }
+    },
+    {
+        type: "Boolean",
+        path: "Primary.Crosshair.OutLine.isEnable",
+        key: "P.h",
+        default: 1,
+        components: [
+            {
+                type: "Number",
+                path: "Primary.Crosshair.OutLine.Thickness",
+                key: "P.t",
+                default: 1
+            },
+            {
+                type: "Number",
+                path: "Primary.Crosshair.OutLine.Opacity",
+                key: "P.o",
+                default: 1
+            }
+        ]
+    },
+    {
+        type: "Boolean",
+        path: "Primary.Crosshair.CenterDot.isEnable",
+        key: "P.d",
+        default: 0,
+        components: [
+            {
+                type: "Number",
+                path: "Primary.Crosshair.CenterDot.Thickness",
+                key: "P.z",
+                default: 1
+            },
+            {
+                type: "Number",
+                path: "Primary.Crosshair.CenterDot.Opacity",
+                key: "P.a",
+                default: 1
+            }
+        ]
+    },
+    {
+        type: "Boolean",
+        path: "General.Other.FadeCrosshairWithFiringError",
+        key: "P.f",
+        default: 1
+    },
+    {
+        type: "Boolean",
+        path: "General.Other.ShowSpectatedPlayerCrosshair",
+        key: "P.s",
+        default: 1
+    },
+    {
+        type: "Boolean",
+        path: "Primary.Crosshair.OverrideFiringErrorOffsetWithCrosshairOffset",
+        key: "P.m",
+        default: 0
+    },
+    {
+        type: "Boolean",
+        path: "Primary.InnerLines.isEnable",
+        key: "P.0b",
+        default: 1,
+        components: [
+            {
+                type: "Number",
+                path: "Primary.InnerLines.Thickness",
+                key: "P.0t",
+                default: 1
+            },
+            {
+                type: "LengthChain",
+                path: "Primary.InnerLines.Length",
+                key: {
+                    isChain: {
+                        key: "P.0g",
+                        default: 0
+                    },
+                    valueOne: {
+                        key: "P.0l",
+                        default: 0
+                    },
+                    valueTwo: {
+                        key: "P.0v",
+                        default: 0
+                    }
+                }
+            },
+            {
+                type: "Number",
+                path: "Primary.InnerLines.Offset",
+                key: "P.0o",
+                default: 1
+            },
+            {
+                type: "Number",
+                path: "Primary.InnerLines.Opacity",
+                key: "P.0a",
+                default: 1
+            },
+            {
+                type: "Boolean",
+                path: "Primary.InnerLines.MovementError.isEnable",
+                key: "P.0m",
+                default: 0,
+                components: [
+                    {
+                        type: "Number",
+                        path: "Primary.InnerLines.MovementError.Multiplier",
+                        key: "P.0s",
+                        default: 0
+                    }
+                ]
+            },
+            {
+                type: "Boolean",
+                path: "Primary.InnerLines.FiringError.isEnable",
+                key: "P.0f",
+                default: 0,
+                components: [
+                    {
+                        type: "Number",
+                        path: "Primary.InnerLines.FiringError.Multiplier",
+                        key: "P.0e",
+                        default: 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        type: "Boolean",
+        path: "Primary.OuterLines.isEnable",
+        key: "P.1b",
+        default: 1,
+        components: [
+            {
+                type: "Number",
+                path: "Primary.OuterLines.Thickness",
+                key: "P.1t",
+                default: 1
+            },
+            {
+                type: "LengthChain",
+                path: "Primary.OuterLines.Length",
+                key: {
+                    isChain: {
+                        key: "P.1g",
+                        default: 0
+                    },
+                    valueOne: {
+                        key: "P.1l",
+                        default: 0
+                    },
+                    valueTwo: {
+                        key: "P.1v",
+                        default: 0
+                    }
+                }
+            },
+            {
+                type: "Number",
+                path: "Primary.OuterLines.Offset",
+                key: "P.1o",
+                default: 1
+            },
+            {
+                type: "Number",
+                path: "Primary.OuterLines.Opacity",
+                key: "P.1a",
+                default: 1
+            },
+            {
+                type: "Boolean",
+                path: "Primary.OuterLines.MovementError.isEnable",
+                key: "P.1m",
+                default: 0,
+                components: [
+                    {
+                        type: "Number",
+                        path: "Primary.OuterLines.MovementError.Multiplier",
+                        key: "P.1s",
+                        default: 0
+                    }
+                ]
+            },
+            {
+                type: "Boolean",
+                path: "Primary.OuterLines.FiringError.isEnable",
+                key: "P.1f",
+                default: 0,
+                components: [
+                    {
+                        type: "Number",
+                        path: "Primary.OuterLines.FiringError.Multiplier",
+                        key: "P.1e",
+                        default: 0
+                    }
+                ]
+            }
+        ]
+    },
+
+    // * A (AimDownSights)
+
+    {
+        type: "Color",
+        key: {
+            isHex: {
+                path: "AimDownSights.Crosshair.isHexCrosshairColor",
+                default: 0
+            },
+            normal: {
+                key: "A.c",
+                path: "AimDownSights.Crosshair.CrosshairColor",
+                default: "0"
+            },
+            hex: {
+                key: "A.u",
+                path: "AimDownSights.Crosshair.CrosshairColor",
+                default: "FFFFFF"
+            }
+        }
+    },
+    {
+        type: "Boolean",
+        path: "AimDownSights.Crosshair.OutLine.isEnable",
+        key: "A.h",
+        default: 1,
+        components: [
+            {
+                type: "Number",
+                path: "AimDownSights.Crosshair.OutLine.Thickness",
+                key: "A.t",
+                default: 1
+            },
+            {
+                type: "Number",
+                path: "AimDownSights.Crosshair.OutLine.Opacity",
+                key: "A.o",
+                default: 1
+            }
+        ]
+    },
+    {
+        type: "Boolean",
+        path: "AimDownSights.Crosshair.CenterDot.isEnable",
+        key: "A.d",
+        default: 0,
+        components: [
+            {
+                type: "Number",
+                path: "AimDownSights.Crosshair.CenterDot.Thickness",
+                key: "A.z",
+                default: 1
+            },
+            {
+                type: "Number",
+                path: "AimDownSights.Crosshair.CenterDot.Opacity",
+                key: "A.a",
+                default: 1
+            }
+        ]
+    },
+    {
+        type: "Boolean",
+        path: "General.Other.FadeCrosshairWithFiringError",
+        key: "A.f",
+        default: 1
+    },
+    {
+        type: "Boolean",
+        path: "General.Other.ShowSpectatedPlayerCrosshair",
+        key: "A.s",
+        default: 1
+    },
+    {
+        type: "Boolean",
+        path: "AimDownSights.Crosshair.OverrideFiringErrorOffsetWithCrosshairOffset",
+        key: "A.m",
+        default: 0
+    },
+    {
+        type: "Boolean",
+        path: "AimDownSights.InnerLines.isEnable",
+        key: "A.0b",
+        default: 1,
+        components: [
+            {
+                type: "Number",
+                path: "AimDownSights.InnerLines.Thickness",
+                key: "A.0t",
+                default: 1
+            },
+            {
+                type: "LengthChain",
+                path: "AimDownSights.InnerLines.Length",
+                key: {
+                    isChain: {
+                        key: "A.0g",
+                        default: 0
+                    },
+                    valueOne: {
+                        key: "A.0l",
+                        default: 0
+                    },
+                    valueTwo: {
+                        key: "A.0v",
+                        default: 0
+                    }
+                }
+            },
+            {
+                type: "Number",
+                path: "AimDownSights.InnerLines.Offset",
+                key: "A.0o",
+                default: 1
+            },
+            {
+                type: "Number",
+                path: "AimDownSights.InnerLines.Opacity",
+                key: "A.0a",
+                default: 1
+            },
+            {
+                type: "Boolean",
+                path: "AimDownSights.InnerLines.MovementError.isEnable",
+                key: "A.0m",
+                default: 0,
+                components: [
+                    {
+                        type: "Number",
+                        path: "AimDownSights.InnerLines.MovementError.Multiplier",
+                        key: "A.0s",
+                        default: 0
+                    }
+                ]
+            },
+            {
+                type: "Boolean",
+                path: "AimDownSights.InnerLines.FiringError.isEnable",
+                key: "A.0f",
+                default: 0,
+                components: [
+                    {
+                        type: "Number",
+                        path: "AimDownSights.InnerLines.FiringError.Multiplier",
+                        key: "A.0e",
+                        default: 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        type: "Boolean",
+        path: "AimDownSights.OuterLines.isEnable",
+        key: "A.1b",
+        default: 1,
+        components: [
+            {
+                type: "Number",
+                path: "AimDownSights.OuterLines.Thickness",
+                key: "A.1t",
+                default: 1
+            },
+            {
+                type: "LengthChain",
+                path: "AimDownSights.OuterLines.Length",
+                key: {
+                    isChain: {
+                        key: "A.1g",
+                        default: 0
+                    },
+                    valueOne: {
+                        key: "A.1l",
+                        default: 0
+                    },
+                    valueTwo: {
+                        key: "A.1v",
+                        default: 0
+                    }
+                }
+            },
+            {
+                type: "Number",
+                path: "AimDownSights.OuterLines.Offset",
+                key: "A.1o",
+                default: 1
+            },
+            {
+                type: "Number",
+                path: "AimDownSights.OuterLines.Opacity",
+                key: "A.1a",
+                default: 1
+            },
+            {
+                type: "Boolean",
+                path: "AimDownSights.OuterLines.MovementError.isEnable",
+                key: "A.1m",
+                default: 0,
+                components: [
+                    {
+                        type: "Number",
+                        path: "AimDownSights.OuterLines.MovementError.Multiplier",
+                        key: "A.1s",
+                        default: 0
+                    }
+                ]
+            },
+            {
+                type: "Boolean",
+                path: "AimDownSights.OuterLines.FiringError.isEnable",
+                key: "A.1f",
+                default: 0,
+                components: [
+                    {
+                        type: "Number",
+                        path: "AimDownSights.OuterLines.FiringError.Multiplier",
+                        key: "A.1e",
+                        default: 0
+                    }
+                ]
+            }
+        ]
+    },
+
+    // * S (SniperScope)
+
+    {
+        type: "Boolean",
+        path: "SniperScope.CenterDot.isEnable",
+        key: "S.d",
+        default: 1,
+        components: [
+            {
+                type: "Color",
+                key: {
+                    isHex: {
+                        path: "SniperScope.CenterDot.isHexColor",
+                        default: 0
+                    },
+                    normal: {
+                        key: "S.c",
+                        path: "SniperScope.CenterDot.Color",
+                        default: "0"
+                    },
+                    hex: {
+                        key: "S.t",
+                        path: "SniperScope.CenterDot.Color",
+                        default: "FFFFFF"
+                    }
+                }
+            },
+            {
+                type: "Number",
+                path: "SniperScope.CenterDot.Thickness",
+                key: "S.s",
+                default: 1
+            },
+            {
+                type: "Number",
+                path: "SniperScope.CenterDot.Opacity",
+                key: "S.o",
+                default: 1
+            }
+        ]
+    }
+];
+_parseData;
+
 /**
  *
  * @param {object} myJSON
@@ -318,7 +957,7 @@ export class Crosshair {
         this.toJson();
     }
 
-    private generateJsonCode(): Crosshair.Crosshair {
+    private generateJsonCode(): Crosshair.Json {
         return {
             General: this.General,
             Primary: this.Primary,
@@ -408,7 +1047,7 @@ export class Crosshair {
         return JSON.parse(myJSON) as Crosshair.Parse;
     }
 
-    private fromJson(crosshair: Crosshair.Crosshair): void {
+    private fromJson(crosshair: Crosshair.Json): void {
         this.General = crosshair.General;
         this.Primary = crosshair.Primary;
         this.AimDownSights = crosshair.AimDownSights;
@@ -419,7 +1058,7 @@ export class Crosshair {
      *
      * @returns {ValoarntCrosshair} Json Valorant Crosshair
      */
-    public toJson(): Crosshair.Crosshair {
+    public toJson(): Crosshair.Json {
         const myCode: Crosshair.Parse = this.toJsonParse();
 
         // Basic
@@ -1272,14 +1911,14 @@ export class Crosshair {
 
     // static
 
-    public static readonly Default: Crosshair.Crosshair = _defaultCrosshair;
+    public static readonly Default: Crosshair.Json = _defaultCrosshair;
 
     /**
      *
      * @param {Crosshair.Crosshair} crosshair Json Valorant Crosshair
      * @returns {Crosshair}
      */
-    public static fromJson(crosshair: Crosshair.Crosshair): Crosshair {
+    public static fromJson(crosshair: Crosshair.Json): Crosshair {
         const _newCrosshair = new Crosshair();
         _newCrosshair.fromJson(crosshair);
 
@@ -1291,7 +1930,7 @@ export class Crosshair {
      * @param {Crosshair.Crosshair} crosshair Json Valorant Crosshair
      * @returns {string} Crosshair Code
      */
-    public static fromJsonToString(crosshair: Crosshair.Crosshair): string {
+    public static fromJsonToString(crosshair: Crosshair.Json): string {
         const _newCrosshair = Crosshair.fromJson(crosshair);
 
         return _newCrosshair.toString();
@@ -1313,7 +1952,7 @@ export class Crosshair {
      * @param {string} code Crosshair Code
      * @returns {Crosshair.Crosshair} Json Valorant Crosshair
      */
-    public static fromStringToJson(code: string): Crosshair.Crosshair {
+    public static fromStringToJson(code: string): Crosshair.Json {
         const _newCrosshair = Crosshair.fromString(code);
 
         return _newCrosshair.toJson();

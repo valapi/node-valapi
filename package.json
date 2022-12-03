@@ -41,15 +41,15 @@
   "homepage": "https://valapi.github.io/docs/",
   "dependencies": {
     "@valapi/auth": "^2.0.3",
-    "@valapi/lib": "^2.0.2",
+    "@valapi/lib": "^2.0.3",
     "@valapi/riot-api": "^2.0.1",
     "@valapi/valorant-api.com": "^2.0.1",
     "@valapi/web-client": "^2.0.3"
   },
   "devDependencies": {
-    "@types/node": "^18.11.9",
-    "@typescript-eslint/eslint-plugin": "^5.43.0",
-    "@typescript-eslint/parser": "^5.43.0",
+    "@types/node": "^18.11.10",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
     "eslint": "^8.28.0",
     "tslib": "^2.4.1",
     "typescript": "^4.9.3"
