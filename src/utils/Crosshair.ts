@@ -430,7 +430,7 @@ const _parseData: Crosshair.Data = [
     {
         type: "Boolean",
         path: "General.Crosshair.UseAdvancedOptions",
-        key: "0.c",
+        key: "0.s",
         default: 0
     },
 
@@ -451,7 +451,7 @@ const _parseData: Crosshair.Data = [
             hex: {
                 key: "P.u",
                 path: "Primary.Crosshair.CrosshairColor",
-                default: "FFFFFF"
+                default: CrosshairColor.fromStringHex("0")
             }
         }
     },
@@ -471,7 +471,7 @@ const _parseData: Crosshair.Data = [
                 type: "Number",
                 path: "Primary.Crosshair.OutLine.Opacity",
                 key: "P.o",
-                default: 1
+                default: 0.5
             }
         ]
     },
@@ -485,7 +485,7 @@ const _parseData: Crosshair.Data = [
                 type: "Number",
                 path: "Primary.Crosshair.CenterDot.Thickness",
                 key: "P.z",
-                default: 1
+                default: 2
             },
             {
                 type: "Number",
@@ -523,7 +523,7 @@ const _parseData: Crosshair.Data = [
                 type: "Number",
                 path: "Primary.InnerLines.Thickness",
                 key: "P.0t",
-                default: 1
+                default: 2
             },
             {
                 type: "LengthChain",
@@ -535,11 +535,11 @@ const _parseData: Crosshair.Data = [
                     },
                     valueOne: {
                         key: "P.0l",
-                        default: 0
+                        default: 6
                     },
                     valueTwo: {
                         key: "P.0v",
-                        default: 0
+                        default: 6
                     }
                 }
             },
@@ -547,13 +547,13 @@ const _parseData: Crosshair.Data = [
                 type: "Number",
                 path: "Primary.InnerLines.Offset",
                 key: "P.0o",
-                default: 1
+                default: 3
             },
             {
                 type: "Number",
                 path: "Primary.InnerLines.Opacity",
                 key: "P.0a",
-                default: 1
+                default: 0.8
             },
             {
                 type: "Boolean",
@@ -565,7 +565,7 @@ const _parseData: Crosshair.Data = [
                         type: "Number",
                         path: "Primary.InnerLines.MovementError.Multiplier",
                         key: "P.0s",
-                        default: 0
+                        default: 1
                     }
                 ]
             },
@@ -573,13 +573,13 @@ const _parseData: Crosshair.Data = [
                 type: "Boolean",
                 path: "Primary.InnerLines.FiringError.isEnable",
                 key: "P.0f",
-                default: 0,
+                default: 1,
                 components: [
                     {
                         type: "Number",
                         path: "Primary.InnerLines.FiringError.Multiplier",
                         key: "P.0e",
-                        default: 0
+                        default: 1
                     }
                 ]
             }
@@ -595,7 +595,7 @@ const _parseData: Crosshair.Data = [
                 type: "Number",
                 path: "Primary.OuterLines.Thickness",
                 key: "P.1t",
-                default: 1
+                default: 2
             },
             {
                 type: "LengthChain",
@@ -607,11 +607,11 @@ const _parseData: Crosshair.Data = [
                     },
                     valueOne: {
                         key: "P.1l",
-                        default: 0
+                        default: 2
                     },
                     valueTwo: {
                         key: "P.1v",
-                        default: 0
+                        default: 2
                     }
                 }
             },
@@ -619,25 +619,25 @@ const _parseData: Crosshair.Data = [
                 type: "Number",
                 path: "Primary.OuterLines.Offset",
                 key: "P.1o",
-                default: 1
+                default: 10
             },
             {
                 type: "Number",
                 path: "Primary.OuterLines.Opacity",
                 key: "P.1a",
-                default: 1
+                default: 0.35
             },
             {
                 type: "Boolean",
                 path: "Primary.OuterLines.MovementError.isEnable",
                 key: "P.1m",
-                default: 0,
+                default: 1,
                 components: [
                     {
                         type: "Number",
                         path: "Primary.OuterLines.MovementError.Multiplier",
                         key: "P.1s",
-                        default: 0
+                        default: 1
                     }
                 ]
             },
@@ -645,13 +645,13 @@ const _parseData: Crosshair.Data = [
                 type: "Boolean",
                 path: "Primary.OuterLines.FiringError.isEnable",
                 key: "P.1f",
-                default: 0,
+                default: 1,
                 components: [
                     {
                         type: "Number",
                         path: "Primary.OuterLines.FiringError.Multiplier",
                         key: "P.1e",
-                        default: 0
+                        default: 1
                     }
                 ]
             }
@@ -675,7 +675,7 @@ const _parseData: Crosshair.Data = [
             hex: {
                 key: "A.u",
                 path: "AimDownSights.Crosshair.CrosshairColor",
-                default: "FFFFFF"
+                default: CrosshairColor.fromStringHex("0")
             }
         }
     },
@@ -695,7 +695,7 @@ const _parseData: Crosshair.Data = [
                 type: "Number",
                 path: "AimDownSights.Crosshair.OutLine.Opacity",
                 key: "A.o",
-                default: 1
+                default: 0.5
             }
         ]
     },
@@ -709,7 +709,7 @@ const _parseData: Crosshair.Data = [
                 type: "Number",
                 path: "AimDownSights.Crosshair.CenterDot.Thickness",
                 key: "A.z",
-                default: 1
+                default: 2
             },
             {
                 type: "Number",
@@ -718,18 +718,6 @@ const _parseData: Crosshair.Data = [
                 default: 1
             }
         ]
-    },
-    {
-        type: "Boolean",
-        path: "General.Other.FadeCrosshairWithFiringError",
-        key: "A.f",
-        default: 1
-    },
-    {
-        type: "Boolean",
-        path: "General.Other.ShowSpectatedPlayerCrosshair",
-        key: "A.s",
-        default: 1
     },
     {
         type: "Boolean",
@@ -747,7 +735,7 @@ const _parseData: Crosshair.Data = [
                 type: "Number",
                 path: "AimDownSights.InnerLines.Thickness",
                 key: "A.0t",
-                default: 1
+                default: 2
             },
             {
                 type: "LengthChain",
@@ -759,11 +747,11 @@ const _parseData: Crosshair.Data = [
                     },
                     valueOne: {
                         key: "A.0l",
-                        default: 0
+                        default: 6
                     },
                     valueTwo: {
                         key: "A.0v",
-                        default: 0
+                        default: 6
                     }
                 }
             },
@@ -771,13 +759,13 @@ const _parseData: Crosshair.Data = [
                 type: "Number",
                 path: "AimDownSights.InnerLines.Offset",
                 key: "A.0o",
-                default: 1
+                default: 3
             },
             {
                 type: "Number",
                 path: "AimDownSights.InnerLines.Opacity",
                 key: "A.0a",
-                default: 1
+                default: 0.8
             },
             {
                 type: "Boolean",
@@ -789,7 +777,7 @@ const _parseData: Crosshair.Data = [
                         type: "Number",
                         path: "AimDownSights.InnerLines.MovementError.Multiplier",
                         key: "A.0s",
-                        default: 0
+                        default: 1
                     }
                 ]
             },
@@ -797,13 +785,13 @@ const _parseData: Crosshair.Data = [
                 type: "Boolean",
                 path: "AimDownSights.InnerLines.FiringError.isEnable",
                 key: "A.0f",
-                default: 0,
+                default: 1,
                 components: [
                     {
                         type: "Number",
                         path: "AimDownSights.InnerLines.FiringError.Multiplier",
                         key: "A.0e",
-                        default: 0
+                        default: 1
                     }
                 ]
             }
@@ -819,7 +807,7 @@ const _parseData: Crosshair.Data = [
                 type: "Number",
                 path: "AimDownSights.OuterLines.Thickness",
                 key: "A.1t",
-                default: 1
+                default: 2
             },
             {
                 type: "LengthChain",
@@ -831,11 +819,11 @@ const _parseData: Crosshair.Data = [
                     },
                     valueOne: {
                         key: "A.1l",
-                        default: 0
+                        default: 2
                     },
                     valueTwo: {
                         key: "A.1v",
-                        default: 0
+                        default: 2
                     }
                 }
             },
@@ -843,25 +831,25 @@ const _parseData: Crosshair.Data = [
                 type: "Number",
                 path: "AimDownSights.OuterLines.Offset",
                 key: "A.1o",
-                default: 1
+                default: 10
             },
             {
                 type: "Number",
                 path: "AimDownSights.OuterLines.Opacity",
                 key: "A.1a",
-                default: 1
+                default: 0.35
             },
             {
                 type: "Boolean",
                 path: "AimDownSights.OuterLines.MovementError.isEnable",
                 key: "A.1m",
-                default: 0,
+                default: 1,
                 components: [
                     {
                         type: "Number",
                         path: "AimDownSights.OuterLines.MovementError.Multiplier",
                         key: "A.1s",
-                        default: 0
+                        default: 1
                     }
                 ]
             },
@@ -869,13 +857,13 @@ const _parseData: Crosshair.Data = [
                 type: "Boolean",
                 path: "AimDownSights.OuterLines.FiringError.isEnable",
                 key: "A.1f",
-                default: 0,
+                default: 1,
                 components: [
                     {
                         type: "Number",
                         path: "AimDownSights.OuterLines.FiringError.Multiplier",
                         key: "A.1e",
-                        default: 0
+                        default: 1
                     }
                 ]
             }
@@ -900,12 +888,12 @@ const _parseData: Crosshair.Data = [
                     normal: {
                         key: "S.c",
                         path: "SniperScope.CenterDot.Color",
-                        default: "0"
+                        default: "7"
                     },
                     hex: {
                         key: "S.t",
                         path: "SniperScope.CenterDot.Color",
-                        default: "FFFFFF"
+                        default: CrosshairColor.fromStringHex("7")
                     }
                 }
             },
@@ -919,7 +907,7 @@ const _parseData: Crosshair.Data = [
                 type: "Number",
                 path: "SniperScope.CenterDot.Opacity",
                 key: "S.o",
-                default: 1
+                default: 0.75
             }
         ]
     }
