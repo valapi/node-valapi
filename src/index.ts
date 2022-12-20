@@ -17,5 +17,5 @@ export default {
 
 // utils
 
-export { Crosshair } from "./utils/Crosshair";
-export { PatchNote } from "./utils/PatchNote";
+export { ValCrosshair } from "./utils/Crosshair";
+export { ValPatchNote } from "./utils/PatchNote";

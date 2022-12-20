@@ -1,3 +1,42 @@
+# 2.0.1
+
+### <u>valorant.ts</u>
+
+~~Crosshair~~ **-->** **`ValCrosshair`**
+
+- .Default
+
+**ValPatchNote** _(static)_
+
+- getUrl(patch?, language?)
+- getContentUrl(language?)
+
+---
+
+### <u>@/valorant-api.com</u>
+
+Config *(beta)*
+
+-    `responseOptions`
+-    -    `ignore_null`
+
+---
+
+### <u>@/lib</u>
+
+**ValAxios**
+
+Config
+
+-    `transformURL`
+
+**Types**
+
+https://behind.flatspot.pictures/advanced-typescript-cheatsheet-pt-1/#validpaths-validpathtuples
+
+-    JsonRiversPath
+-    ArrayRiversPath
+
 # 2.0.0 (November 10, 2022)
 
 -   All **`expired`** event is removed

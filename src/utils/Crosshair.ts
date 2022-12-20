@@ -5,7 +5,7 @@ import { JsonRiversPath } from "@valapi/lib/dist/utils/Types";
 
 // interface
 
-export namespace Crosshair {
+export namespace ValCrosshair {
     // parse
 
     export interface ParseOthers {
@@ -66,11 +66,11 @@ export namespace Crosshair {
 
     export interface Parse {
         // Others
-        "0": Crosshair.ParseOthers;
+        "0": ValCrosshair.ParseOthers;
         // Primary
-        P?: Crosshair.ParsePrimary;
+        P?: ValCrosshair.ParsePrimary;
         // Aim Down Sights
-        A?: Crosshair.ParsePrimary;
+        A?: ValCrosshair.ParsePrimary;
         // Sniper Scope
         S?: ParseSniperScope;
     }
@@ -215,9 +215,9 @@ export namespace Crosshair {
         };
     }
 
-    export type ParseRiversPath = keyof Crosshair.Parse | `0.${keyof Crosshair.ParseOthers}` | `A.${keyof Crosshair.ParsePrimary}` | `P.${keyof Crosshair.ParsePrimary}` | `S.${keyof Crosshair.ParseSniperScope}`;
+    export type ParseRiversPath = keyof ValCrosshair.Parse | `0.${keyof ValCrosshair.ParseOthers}` | `A.${keyof ValCrosshair.ParsePrimary}` | `P.${keyof ValCrosshair.ParsePrimary}` | `S.${keyof ValCrosshair.ParseSniperScope}`;
 
-    export type CrosshairRiversPath = JsonRiversPath<Crosshair.Json>;
+    export type CrosshairRiversPath = JsonRiversPath<ValCrosshair.Json>;
 
     export type LinesDataStructure = {
         type: "LengthChain";
@@ -244,14 +244,14 @@ export namespace Crosshair {
               path: CrosshairRiversPath;
               key: ParseRiversPath;
               default: 0 | 1;
-              components?: Array<Crosshair.DataStructure | LinesDataStructure>;
+              components?: Array<ValCrosshair.DataStructure | LinesDataStructure>;
           }
         | {
               type: "Number";
               path: CrosshairRiversPath;
               key: ParseRiversPath;
               default: number;
-              components?: Array<Crosshair.DataStructure>;
+              components?: Array<ValCrosshair.DataStructure>;
           }
         | {
               type: "Color";
@@ -273,12 +273,12 @@ export namespace Crosshair {
               };
           };
 
-    export type Data = Array<Crosshair.DataStructure>;
+    export type Data = Array<ValCrosshair.DataStructure>;
 }
 
 // class
 
-const _defaultCrosshair: Required<Crosshair.Json> = {
+const _defaultCrosshair: Required<ValCrosshair.Json> = {
     Primary: {
         Crosshair: {
             isHexCrosshairColor: false,
@@ -412,7 +412,8 @@ const _defaultCrosshair: Required<Crosshair.Json> = {
     }
 };
 
-const _parseData: Crosshair.Data = [
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const _parseData: ValCrosshair.Data = [
     // * 0 (Others)
 
     {
@@ -912,7 +913,6 @@ const _parseData: Crosshair.Data = [
         ]
     }
 ];
-_parseData;
 
 /**
  *
@@ -927,7 +927,7 @@ function generateNewJSON<ReturnType = object>(myJSON: ReturnType): ReturnType {
  * Valorant Crosshair Compiler
  * * Don't Code Like This Class (Make for understanding Valorant crosshair)
  */
-export class Crosshair {
+export class ValCrosshair {
     private code: string;
 
     public General = generateNewJSON(_defaultCrosshair.General);
@@ -945,7 +945,7 @@ export class Crosshair {
         this.toJson();
     }
 
-    private generateJsonCode(): Crosshair.Json {
+    private generateJsonCode(): ValCrosshair.Json {
         return {
             General: this.General,
             Primary: this.Primary,
@@ -954,11 +954,11 @@ export class Crosshair {
         };
     }
 
-    private toJsonParse(): Crosshair.Parse {
+    private toJsonParse(): ValCrosshair.Parse {
         const codeArray = String(this.code).split(";");
         let myJSON = `{`;
 
-        let _CurrentState: keyof Crosshair.Parse = "0";
+        let _CurrentState: keyof ValCrosshair.Parse = "0";
         let _isHexColor = false;
 
         // start
@@ -1018,7 +1018,7 @@ export class Crosshair {
 
                 myJSON += `},"${code}":{`;
 
-                _CurrentState = code as keyof Crosshair.Parse;
+                _CurrentState = code as keyof ValCrosshair.Parse;
                 _isHexColor = false;
             } else {
                 // lower case
@@ -1032,10 +1032,10 @@ export class Crosshair {
         }
 
         myJSON += `}}`;
-        return JSON.parse(myJSON) as Crosshair.Parse;
+        return JSON.parse(myJSON) as ValCrosshair.Parse;
     }
 
-    private fromJson(crosshair: Crosshair.Json): void {
+    private fromJson(crosshair: ValCrosshair.Json): void {
         this.General = crosshair.General;
         this.Primary = crosshair.Primary;
         this.AimDownSights = crosshair.AimDownSights;
@@ -1046,8 +1046,8 @@ export class Crosshair {
      *
      * @returns {ValoarntCrosshair} Json Valorant Crosshair
      */
-    public toJson(): Crosshair.Json {
-        const myCode: Crosshair.Parse = this.toJsonParse();
+    public toJson(): ValCrosshair.Json {
+        const myCode: ValCrosshair.Parse = this.toJsonParse();
 
         // Basic
 
@@ -1899,15 +1899,15 @@ export class Crosshair {
 
     // static
 
-    public static readonly Default: Crosshair.Json = _defaultCrosshair;
+    public static readonly Default: ValCrosshair.Json = _defaultCrosshair;
 
     /**
      *
-     * @param {Crosshair.Crosshair} crosshair Json Valorant Crosshair
-     * @returns {Crosshair}
+     * @param {ValCrosshair.Crosshair} crosshair Json Valorant Crosshair
+     * @returns {ValCrosshair}
      */
-    public static fromJson(crosshair: Crosshair.Json): Crosshair {
-        const _newCrosshair = new Crosshair();
+    public static fromJson(crosshair: ValCrosshair.Json): ValCrosshair {
+        const _newCrosshair = new ValCrosshair();
         _newCrosshair.fromJson(crosshair);
 
         return _newCrosshair;
@@ -1915,11 +1915,11 @@ export class Crosshair {
 
     /**
      *
-     * @param {Crosshair.Crosshair} crosshair Json Valorant Crosshair
+     * @param {ValCrosshair.Crosshair} crosshair Json Valorant Crosshair
      * @returns {string} Crosshair Code
      */
-    public static fromJsonToString(crosshair: Crosshair.Json): string {
-        const _newCrosshair = Crosshair.fromJson(crosshair);
+    public static fromJsonToString(crosshair: ValCrosshair.Json): string {
+        const _newCrosshair = ValCrosshair.fromJson(crosshair);
 
         return _newCrosshair.toString();
     }
@@ -1927,10 +1927,10 @@ export class Crosshair {
     /**
      *
      * @param {string} code Crosshair Code
-     * @returns {Crosshair}
+     * @returns {ValCrosshair}
      */
-    public static fromString(code: string): Crosshair {
-        const _newCrosshair = new Crosshair(code);
+    public static fromString(code: string): ValCrosshair {
+        const _newCrosshair = new ValCrosshair(code);
 
         return _newCrosshair;
     }
@@ -1938,10 +1938,10 @@ export class Crosshair {
     /**
      *
      * @param {string} code Crosshair Code
-     * @returns {Crosshair.Crosshair} Json Valorant Crosshair
+     * @returns {ValCrosshair.Crosshair} Json Valorant Crosshair
      */
-    public static fromStringToJson(code: string): Crosshair.Json {
-        const _newCrosshair = Crosshair.fromString(code);
+    public static fromStringToJson(code: string): ValCrosshair.Json {
+        const _newCrosshair = ValCrosshair.fromString(code);
 
         return _newCrosshair.toJson();
     }
