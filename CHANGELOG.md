@@ -26,16 +26,21 @@ Config *(beta)*
 
 **ValAxios**
 
+-    `.Default.*`
+-    -    `timeout`
+
+Method *(event)*
+
+-    ~~get, post, put, patch, delete~~ **-->** `GET, POST, PUT, PATCH, DELETE`
+
 Config
 
--    `transformURL`
+-    `transformRequestData`
 
-**Types**
+**ValError**
 
-https://behind.flatspot.pictures/advanced-typescript-cheatsheet-pt-1/#validpaths-validpathtuples
-
--    JsonRiversPath
--    ArrayRiversPath
+-   stack
+-   ~~Json~~ *(types)*
 
 # 2.0.0 (November 10, 2022)
 
