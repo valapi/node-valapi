@@ -1,10 +1,14 @@
-# 2.0.1
+# 2.1.0
+
+- All **`ready`** event is removed
+
+---
 
 ### <u>valorant.ts</u>
 
 ~~Crosshair~~ **-->** **`ValCrosshair`**
 
-- .Default
+- `.Default.*`
 
 **ValPatchNote** _(static)_
 
@@ -13,12 +17,9 @@
 
 ---
 
-### <u>@/valorant-api.com</u>
+### <u>@/auth</u>
 
-Config *(beta)*
-
--    `responseOptions`
--    -    `ignore_null`
+-   `AuthService`
 
 ---
 
@@ -27,7 +28,6 @@ Config *(beta)*
 **ValAxios**
 
 -    `.Default.*`
--    -    `timeout`
 
 Method *(event)*
 
@@ -39,8 +39,34 @@ Config
 
 **ValError**
 
--   stack
+-   `stack`
 -   ~~Json~~ *(types)*
+
+---
+
+### <u>@/riot-api</u>
+
+-   `RiotApiService`
+-   ~~Client~~ **-->** `RiotApi`
+
+---
+
+### <u>@/valorant-api.com</u>
+
+-   `ValorantApiComService`
+-   ~~Client~~ **-->** `ValorantApiCom`
+
+Config *(beta)*
+
+-    `responseOptions`
+-    -    `ignore_null`
+
+---
+
+### <u>@/web-client</u>
+
+-   `WebClientService`
+-   ~~Client~~ **-->** `WebClient`
 
 # 2.0.0 (November 10, 2022)
 
