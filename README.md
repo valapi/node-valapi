@@ -22,6 +22,25 @@ NodeJS package that make more easier to use Valorant API
 > -   **@valapi** was created under [Riot Games' "Legal Jibber Jabber"](https://www.riotgames.com/en/legal)
 > -   [MIT License](https://github.com/valapi/.github/blob/main/LICENSE)
 
+## Why Valorant.ts ?
+
+-   Support **Two-Factor Authentication**
+-   All-In-One
+    -   Authentication
+    -   API
+        -   [Riot API](https://developer.riotgames.com)
+        -   <https://valorant-api.com>
+        -   Web Client
+    -   Utils
+        -   Patch Notes
+        -   Crosshair Compiler (wip)
+    -   Resources
+    -   -   Region
+    -   -   Locale
+-   Event Emitter
+-   Open-source
+-   [Typescript Support](https://www.typescriptlang.org)
+
 ## Installation
 
 **NPM:**
@@ -40,26 +59,61 @@ yarn add valorant.ts
 
 Full Guide: **https://valapi.github.io/docs**
 
-## Why Valorant.ts ?
+### Example
 
--   Support **Two-Factor Authentication**
--   All-In-One
-    -   Authentication
-    -   API
-        -   [Riot API](https://developer.riotgames.com)
-        -   <https://valorant-api.com>
-        -   Web Client
-    -   Utils
-        -   Patch Notes
-        -   Crosshair Compiler
-    -   Resources
-    -   -   Region
-    -   -   Locale
--   Event Emitter
--   Open-source
--   [Typescript Support](https://www.typescriptlang.org)
+**Authentication**
 
-### Contact
+```javascript
+await AuthClient.login("BestUsername", "SuperSecretPassword");
+```
+
+Two-Factor Authentication
+
+```javascript
+await AuthClient.verify(428793 /* <--- Verification Code */)
+```
+
+**API**
+
+Daily Offers
+
+```javascript
+aawait ValorantApiCom.Weapons.getSkinLevels();
+```
+
+```javascript
+async function getOffersOf(ItemsId: string) {
+    let DisplayName = "";
+    let DisplayIcon = "";
+
+    const GetWeaponSkinLevel = await ValorantApiCom.Weapons.getSkinLevels();
+    if (GetWeaponSkinLevel.data.data) {
+        for (const _SkinLevel of GetWeaponSkinLevel.data.data) {
+            if (_SkinLevel.uuid === ItemsId) {
+                DisplayName = _SkinLevel.displayName;
+                DisplayIcon = _SkinLevel.displayIcon;
+
+                break;
+            }
+        }
+    }
+
+    return {
+        Name: DisplayName,
+        Icon: DisplayIcon
+    };
+}
+
+const data = await AuthClient.Store.getStorefront(AuthClient.getSubject());
+
+for (const ItemID of data.data.SkinsPanelLayout.SingleItemOffers) {
+    console.log(
+        await getOffersOf(ItemID)
+    );
+}
+```
+
+## Contact
 
 -   Discord: INg3\_#9509
 -   Discord Server: https://discord.com/invite/pbyWbUYjyt
