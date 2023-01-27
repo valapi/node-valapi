@@ -1,19 +1,19 @@
 # 2.1.0
 
-- All **`ready`** event is removed
+-   All **`ready`** event is removed
 
 ---
 
 ### <u>valorant.ts</u>
 
-~~Crosshair~~ **-->** **`ValCrosshair`**
+if you know how to deal with "Crosshair" contact me on discord: https://discord.gg/pbyWbUYjyt
 
-- `.Default.*`
+-   ~~Crosshair~~
 
 **ValPatchNote** _(static)_
 
-- getUrl(patch?, language?)
-- getContentUrl(language?)
+-   getUrl(patch?, language?)
+-   getContentUrl(language?)
 
 ---
 
@@ -27,20 +27,20 @@
 
 **ValAxios**
 
--    `.Default.*`
+-   `.Default.*`
 
-Method *(event)*
+Method _(event)_
 
--    ~~get, post, put, patch, delete~~ **-->** `GET, POST, PUT, PATCH, DELETE`
+-   ~~get, post, put, patch, delete~~ **-->** `GET, POST, PUT, PATCH, DELETE`
 
 Config
 
--    `transformRequestData`
+-   `transformRequestData`
 
 **ValError**
 
 -   `stack`
--   ~~Json~~ *(types)*
+-   ~~Json~~ _(types)_
 
 ---
 
@@ -56,10 +56,10 @@ Config
 -   `ValorantApiComService`
 -   ~~Client~~ **-->** `ValorantApiCom`
 
-Config *(beta)*
+Config _(beta)_
 
--    `responseOptions`
--    -    `ignore_null`
+-   `responseOptions`
+-   -   `ignore_null`
 
 ---
 

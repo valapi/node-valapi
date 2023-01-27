@@ -10,12 +10,11 @@ export { Auth, WebClient, RiotAPI, ValorantApiCom, Lib };
 
 export default {
     Auth: Auth.AuthClient,
-    WebClient: WebClient.Client,
-    RiotAPI: RiotAPI.Client,
-    ValorantApiCom: ValorantApiCom.Client
+    WebClient: WebClient.WebClient,
+    RiotAPI: RiotAPI.RiotApi,
+    ValorantApiCom: ValorantApiCom.ValorantApiCom
 };
 
 // utils
 
-export { ValCrosshair } from "./utils/Crosshair";
 export { ValPatchNote } from "./utils/PatchNote";

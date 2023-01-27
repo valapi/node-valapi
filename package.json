@@ -1,6 +1,6 @@
 {
   "name": "valorant.ts",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "Valorant Api - Support Multifactor",
   "main": "dist/index.js",
   "types": "./dist/index.d.ts",
@@ -40,17 +40,17 @@
   },
   "homepage": "https://valapi.github.io/docs/",
   "dependencies": {
-    "@valapi/auth": "^2.0.3",
-    "@valapi/lib": "^2.1.0",
-    "@valapi/riot-api": "^2.0.1",
-    "@valapi/valorant-api.com": "^2.1.0",
-    "@valapi/web-client": "^2.0.3"
+    "@valapi/auth": "^2.1.0",
+    "@valapi/lib": "^2.1.1",
+    "@valapi/riot-api": "^2.1.0",
+    "@valapi/valorant-api.com": "^2.1.1",
+    "@valapi/web-client": "^2.1.0"
   },
   "devDependencies": {
-    "@types/node": "^18.11.11",
-    "@typescript-eslint/eslint-plugin": "^5.46.0",
-    "@typescript-eslint/parser": "^5.46.0",
-    "eslint": "^8.29.0",
+    "@types/node": "^18.11.18",
+    "@typescript-eslint/eslint-plugin": "^5.48.1",
+    "@typescript-eslint/parser": "^5.48.1",
+    "eslint": "^8.32.0",
     "tslib": "^2.4.1",
     "typescript": "^4.9.4"
   },
