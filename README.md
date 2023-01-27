@@ -19,7 +19,7 @@ NodeJS package that make more easier to use Valorant API
 ---
 
 > -   **@valapi** isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games, and all associated properties are trademarks or registered trademarks of Riot Games, Inc.
-> -   **@valapi** was created under [Riot Games' "Legal Jibber Jabber"](https://www.riotgames.com/en/legal)
+> -   **@valapi** was created under [Riot Games' "Legal Jibber Jabber"](https://www.riotgames.com/en/legal) policy using assets owned by Riot Games. Riot Games does not endorse or sponsor this project.
 > -   [MIT License](https://github.com/valapi/.github/blob/main/LICENSE)
 
 ## Why Valorant.ts ?
@@ -33,7 +33,7 @@ NodeJS package that make more easier to use Valorant API
         -   Web Client
     -   Utils
         -   Patch Notes
-        -   Crosshair Compiler (wip)
+        -   Crosshair Compiler *(wip)*
     -   Resources
     -   -   Region
     -   -   Locale
@@ -61,7 +61,7 @@ Full Guide: **https://valapi.github.io/docs**
 
 ### Example
 
-**Authentication**
+Authentication
 
 ```javascript
 await AuthClient.login("BestUsername", "SuperSecretPassword");
@@ -72,8 +72,6 @@ Two-Factor Authentication
 ```javascript
 await AuthClient.verify(428793 /* <--- Verification Code */)
 ```
-
-**API**
 
 Daily Offers
 
