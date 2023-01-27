@@ -33,7 +33,7 @@ NodeJS package that make more easier to use Valorant API
         -   Web Client
     -   Utils
         -   Patch Notes
-        -   Crosshair Compiler *(wip)*
+        -   Crosshair Compiler _(wip)_
     -   Resources
     -   -   Region
     -   -   Locale
@@ -57,7 +57,7 @@ yarn add valorant.ts
 
 ## Guide
 
-Full Guide: **https://valapi.github.io/docs**
+Full Guide: **https://valapi.github.io/guide**
 
 ### Example
 
@@ -70,14 +70,10 @@ await AuthClient.login("BestUsername", "SuperSecretPassword");
 Two-Factor Authentication
 
 ```javascript
-await AuthClient.verify(428793 /* <--- Verification Code */)
+await AuthClient.verify(428793 /* <--- Verification Code */);
 ```
 
 Daily Offers
-
-```javascript
-aawait ValorantApiCom.Weapons.getSkinLevels();
-```
 
 ```javascript
 async function getOffersOf(ItemsId: string) {
@@ -105,9 +101,7 @@ async function getOffersOf(ItemsId: string) {
 const data = await AuthClient.Store.getStorefront(AuthClient.getSubject());
 
 for (const ItemID of data.data.SkinsPanelLayout.SingleItemOffers) {
-    console.log(
-        await getOffersOf(ItemID)
-    );
+    console.log(await getOffersOf(ItemID));
 }
 ```
 
