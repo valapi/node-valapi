@@ -1,0 +1,44 @@
+{
+  "name": "@valapi/valorant-api.com",
+  "version": "3.0.0",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
+  "description": "Valorant API - valorant-api.com",
+  "keywords": [
+    "riot",
+    "api",
+    "val",
+    "valorant",
+    "valorant-api.com"
+  ],
+  "main": "build/index.js",
+  "types": "./build/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/valapi/node-valapi.git",
+    "directory": "packages/@valapi/valorant-api.com"
+  },
+  "author": "ing3kth (https://github.com/KTNG-3)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/valapi/node-valapi/issues"
+  },
+  "homepage": "https://github.com/valapi/node-valapi/tree/master/packages/@valapi/valorant-api.com#readme",
+  "dependencies": {
+    "@valapi/lib": "^3.0.0"
+  },
+  "directories": {
+    "lib": "build",
+    "test": "src/__tests__"
+  },
+  "files": [
+    "build",
+    "CHANGELOG.md",
+    "LICENSE",
+    "package.json",
+    "README.md",
+    "SECURITY.md"
+  ]
+}

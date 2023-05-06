@@ -1,12 +1,12 @@
 .git/
 
-#nodejs
+# nodejs
 npm-debug.log*
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 package-lock.json
 node_modules/
 
-#env
+# env
 .env
 .env.test
 .env.local
@@ -14,7 +14,7 @@ node_modules/
 .env.production.local
 .env.development.local
 
-#vscode
+# vscode
 .vscode/
 
 # log
@@ -31,10 +31,12 @@ npm-debug.log*
 *.cache
 cache/
 
+*.tmp
 *.temp
 temp/
 
-dist/
+# project
+build/
 
 # test
 test/

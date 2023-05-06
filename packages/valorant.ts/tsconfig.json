@@ -1,0 +1,32 @@
+{
+    "extends": "../../tsconfig.base.json",
+    "compilerOptions": {
+        "rootDir": "./src",
+        "outDir": "./build",
+        "paths": {
+            "@valapi/auth": ["../@valapi/auth/src"],
+            "@valapi/lib": ["../@valapi/lib/src"],
+            "@valapi/riot-api": ["../@valapi/riot-api/src"],
+            "@valapi/valorant-api.com": ["../@valapi/valorant-api.com/src"],
+            "@valapi/web-client": ["../@valapi/web-client/src"]
+        }
+    },
+    "references": [
+        {
+            "path": "../@valapi/auth"
+        },
+        {
+            "path": "../@valapi/lib"
+        },
+        {
+            "path": "../@valapi/riot-api"
+        },
+        {
+            "path": "../@valapi/valorant-api.com"
+        },
+        {
+            "path": "../@valapi/web-client"
+        }
+    ],
+    "exclude": ["node_modules", "build", "src/__tests__"]
+}

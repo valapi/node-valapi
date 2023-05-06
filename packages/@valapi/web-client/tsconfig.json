@@ -1,0 +1,20 @@
+{
+    "extends": "../../../tsconfig.base.json",
+    "compilerOptions": {
+        "rootDir": "./src",
+        "outDir": "./build",
+        "paths": {
+            "@valapi/auth": ["../auth/src"],
+            "@valapi/lib": ["../lib/src"]
+        }
+    },
+    "references": [
+        {
+            "path": "../auth"
+        },
+        {
+            "path": "../lib"
+        }
+    ],
+    "exclude": ["node_modules", "build", "src/__tests__"]
+}

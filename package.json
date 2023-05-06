@@ -1,60 +1,40 @@
 {
-  "name": "valorant.ts",
-  "version": "2.1.0",
-  "description": "Valorant Api - Support Multifactor",
-  "main": "dist/index.js",
-  "types": "./dist/index.d.ts",
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org",
-    "access": "public"
-  },
-  "scripts": {
-    "types": "npx tsc --project tsconfig.json",
-    "format": "prettier --config ./.prettierrc --ignore-path ./.prettierignore --write .",
-    "lint": "npx eslint src/**",
-    "prepublishOnly": "npm run format && npm run types"
-  },
+  "workspaces": [
+    "packages/@valapi/auth",
+    "packages/@valapi/lib",
+    "packages/@valapi/riot-api",
+    "packages/@valapi/valorant-api.com",
+    "packages/@valapi/web-client",
+    "packages/valorant.ts"
+  ],
+  "private": true,
+  "name": "node-valapi",
   "repository": {
     "type": "git",
-    "url": "git://github.com/KTNG-3/valorant-api.git"
+    "url": "https://github.com/valapi/node-valapi.git"
   },
-  "keywords": [
-    "valorant",
-    "riot",
-    "api",
-    "mfa",
-    "2fa",
-    "multifactor",
-    "twofactor",
-    "js",
-    "ts",
-    "crosshair"
-  ],
   "author": "ing3kth (https://github.com/KTNG-3)",
-  "contributors": [
-    "ING3_ (https://github.com/KTNG-3)"
-  ],
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/KTNG-3/valorant-api/issues"
-  },
-  "homepage": "https://valapi.github.io/docs/",
-  "dependencies": {
-    "@valapi/auth": "^2.1.0",
-    "@valapi/lib": "^2.1.1",
-    "@valapi/riot-api": "^2.1.0",
-    "@valapi/valorant-api.com": "^2.1.1",
-    "@valapi/web-client": "^2.1.0"
-  },
   "devDependencies": {
-    "@types/node": "^18.11.18",
-    "@typescript-eslint/eslint-plugin": "^5.48.1",
-    "@typescript-eslint/parser": "^5.48.1",
-    "eslint": "^8.32.0",
-    "tslib": "^2.4.1",
-    "typescript": "^4.9.4"
+    "@types/jest": "^29.5.1",
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.59.2",
+    "@typescript-eslint/parser": "^5.59.2",
+    "dotenv": "^16.0.3",
+    "eslint": "^8.39.0",
+    "jest": "29.5.0",
+    "rimraf": "^5.0.0",
+    "ts-jest": "^29.1.0",
+    "typescript": "^5.0.4"
   },
-  "directories": {
-    "test": "test"
+  "scripts": {
+    "clean": "npm exec --workspaces -- npx rimraf \"build\" \"tsconfig.tsbuildinfo\"",
+    "compile": "npx tsc --build tsconfig.json",
+    "compile:clean": "npm run clean && npm run compile",
+    "format": "prettier --config ./.prettierrc --ignore-path ./.prettierignore --write \"packages/**/*\"",
+    "format:check": "prettier --config ./.prettierrc --ignore-path ./.prettierignore --check \"packages/**/*\"",
+    "lint": "npx eslint packages",
+    "test": "jest",
+    "build": "npm run format && npm run lint && npm run compile:clean"
   }
 }

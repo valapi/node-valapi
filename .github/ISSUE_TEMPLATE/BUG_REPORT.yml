@@ -1,0 +1,51 @@
+name: 'Bug Report'
+description: What is wrong or needs fixing?
+labels: ['bug']
+assignees: [ 'KTNG-3' ]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        - Do not share your personal information (token, username, password)
+        - Make sure it's an issue
+        - You are using the latest version
+  - type: textarea
+    id: description
+    attributes:
+      label: 'Description'
+      description: 'Explain your problem'
+      render: Markdown
+    validations:
+      required: true
+  - type: textarea
+    id: code
+    attributes:
+      label: 'Code'
+      description: 'Example of your code'
+      render: TypeScript
+    validations:
+      required: true
+  - type: textarea
+    id: error
+    attributes:
+      label: 'Error'
+      description: 'The error that you get'
+    validations:
+      required: false
+  - type: input
+    id: platform
+    attributes:
+      label: 'Platform'
+      placeholder: 'e.g. Windows 10, repl.it'
+  - type: input
+    id: nodejs
+    attributes:
+      label: 'Node.js Version'
+      description: 'node --version'
+      placeholder: 'e.g. 18.14.0'
+  - type: input
+    id: valapi
+    attributes:
+      label: '@valapi Version'
+      description: 'npm --version valorant.ts'
+      placeholder: 'e.g. 1.4.2'

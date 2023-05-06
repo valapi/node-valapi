@@ -15,33 +15,44 @@
         "sourceType": "module"
     },
     "ignorePatterns": [
-        "/dist/**/*" // Ignore built files.
+        "build" // Ignore built files
     ],
     "plugins": [
         "@typescript-eslint"
     ],
     "rules": {
-        "no-extra-semi": "warn",
-        "semi": "warn",
-        "no-empty-pattern": "warn",
-        "no-console": "error",
-
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/no-namespace": "off",
-        "@typescript-eslint/no-unused-vars": "warn", // <--- change to "warn" for checking
+        "@typescript-eslint/no-unused-vars": "warn",
 
+        "no-console": "error",
         "no-debugger": "error",
         "no-var": "error",
+        "no-eval": "error",
+        "no-implied-eval": "error",
+        "no-new-func": "error",
+        "no-caller": "error",
+        "no-delete-var": "error",
+        "no-invalid-this": "error",
         "prefer-arrow-callback": "error",
         "prefer-const": "error",
         "prefer-template": "error",
 
-        // better code
-        "new-cap": "warn", // <-- Start With Upper Case function
-        "spaced-comment": "warn", // <-- Need Space before comment
-        "comma-dangle": "warn",
+        "semi": "warn",
+        "new-cap": "warn",
+        "spaced-comment": "warn",
         "require-jsdoc": "warn",
-        "brace-style": "warn"
+        "brace-style": "warn",
+        "curly": "warn",
+        "guard-for-in": "warn",
+        "no-empty-pattern": "warn",
+        "no-new-wrappers": "warn",
+        "valid-jsdoc": ["warn", {
+            "requireParamDescription": true,
+            "requireReturnDescription": false,
+            "requireReturn": true
+        }],
+        "valid-typeof": "warn"
     },
     "settings": {
         "allowDefinitionFiles": true

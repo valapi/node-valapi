@@ -1,0 +1,25 @@
+name: 'Feature Request'
+description: I need something new
+labels: [ enhancement, question ]
+assignees: [ 'KTNG-3' ]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        - Do not share your personal information (token, username, password)
+  - type: textarea
+    id: description
+    attributes:
+      label: 'What do you need?'
+      description: 'Explain what is your need, is that problem?'
+      render: Markdown
+    validations:
+      required: true
+  - type: textarea
+    id: code
+    attributes:
+      label: 'Code'
+      description: 'Example of your code'
+      render: TypeScript
+    validations:
+      required: false

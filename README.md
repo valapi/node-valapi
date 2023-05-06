@@ -1,112 +1,78 @@
+[githubrepo_image]: https://github.com/valapi/.github/blob/main/128_valapi.png?raw=true
+[githubrepo_url]: https://github.com/valapi
+[license_image]: https://badgen.net/badge/license/MIT/blue
+[license_url]: https://github.com/valapi/.github/blob/main/LICENSE
+[github_image]: https://badgen.net/badge/icon/github?icon=github&label
+[github_url]: https://github.com/valapi/node-valapi
+[discord_image]: https://badgen.net/badge/icon/discord?icon=discord&label
+[discord_url]: https://discord.gg/pbyWbUYjyt
+
 <div align="center">
 
-# Valorant API - Support Multifactor
+# node-valapi
 
-[![Profile](https://github.com/valapi/.github/blob/main/128_valapi.png?raw=true)](https://github.com/valapi)
+[![Profile][githubrepo_image]][github_url]
 
-NodeJS package that make more easier to use Valorant API
+NodeJS packages that make more easier to use Valorant API
 
-[![Downloads](https://badgen.net/npm/dt/valorant.ts?icon=npm)](https://www.npmjs.com/package/valorant.ts)
-[![install size](https://packagephobia.com/badge?p=valorant.ts)](https://packagephobia.com/result?p=valorant.ts)
-[![Known Vulnerabilities](https://snyk.io/test/npm/valorant.ts/badge.svg)](https://snyk.io/test/npm/valorant.ts)
-
-[![LICENSE](https://badgen.net/badge/license/MIT/blue)](https://github.com/valapi/.github/blob/main/LICENSE)
-[![Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/valapi)
-[![Discord](https://badgen.net/badge/icon/discord?icon=discord&label)](https://discord.gg/pbyWbUYjyt)
+[![LICENSE][license_image]][license_url]
+[![Github][github_image]][github_url]
+[![Discord][discord_image]][discord_url]
 
 </div>
 
 ---
 
-> -   **@valapi** isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games, and all associated properties are trademarks or registered trademarks of Riot Games, Inc.
-> -   **@valapi** was created under [Riot Games' "Legal Jibber Jabber"](https://www.riotgames.com/en/legal) policy using assets owned by Riot Games. Riot Games does not endorse or sponsor this project.
-> -   [MIT License](https://github.com/valapi/.github/blob/main/LICENSE)
+> -   **node-valapi** isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games, and all associated properties are trademarks or registered trademarks of Riot Games, Inc.
+> -   **node-valapi** was created under [Riot Games' "Legal Jibber Jabber"](https://www.riotgames.com/en/legal) policy using assets owned by Riot Games. Riot Games does not endorse or sponsor this project.
+> -   [MIT License][license_url]
 
-## Why Valorant.ts ?
+## Projects
 
--   Support **Two-Factor Authentication**
--   All-In-One
-    -   Authentication
-    -   API
-        -   [Riot API](https://developer.riotgames.com)
-        -   <https://valorant-api.com>
-        -   Web Client
-    -   Utils
-        -   Patch Notes
-        -   Crosshair Compiler _(wip)_
-    -   Resources
-    -   -   Region
-    -   -   Locale
--   Event Emitter
--   Open-source
--   [Typescript Support](https://www.typescriptlang.org)
+- [valorant.ts](./packages/valorant.ts)
+- [@valapi/auth](./packages/@valapi/auth)
+- [@valapi/lib](./packages/@valapi/lib)
+- [@valapi/riot-api](./packages/@valapi/riot-api)
+- [@valapi/valorant-api.com](./packages/@valapi/valorant-api.com)
+- [@valapi/web-client](./packages/@valapi/web-client)
 
-## Installation
-
-**NPM:**
+## Release
 
 ```bash
-npm install valorant.ts
+npm run build
 ```
-
-**Yarn:**
 
 ```bash
-yarn add valorant.ts
+npm publish --workspaces
 ```
 
-## Guide
+Delete compiled files *(after build)*
 
-Full Guide: **https://valapi.github.io/guide**
-
-### Example
-
-Authentication
-
-```javascript
-await AuthClient.login("BestUsername", "SuperSecretPassword");
+```bash
+npm run clean
 ```
 
-Two-Factor Authentication
+## Testing
 
-```javascript
-await AuthClient.verify(428793 /* <--- Verification Code */);
+```bash
+npm run test
 ```
 
-Daily Offers
+**dotenv**
 
-```javascript
-async function getOffersOf(ItemsId: string) {
-    let DisplayName = "";
-    let DisplayIcon = "";
+Regions: [guide/build-in/Region](https://valapi.github.io/guide/PACKAGE/build-in/Region.html#usage-1)
 
-    const GetWeaponSkinLevel = await ValorantApiCom.Weapons.getSkinLevels();
-    if (GetWeaponSkinLevel.data.data) {
-        for (const _SkinLevel of GetWeaponSkinLevel.data.data) {
-            if (_SkinLevel.uuid === ItemsId) {
-                DisplayName = _SkinLevel.displayName;
-                DisplayIcon = _SkinLevel.displayIcon;
+```dosini
+# multi-factor must be "disable"
+VAL_REGION="na"
+VAL_USER="RiotUsername"
+VAL_PASS="Passowrd"
 
-                break;
-            }
-        }
-    }
+# multi-factor must be "enable"
+VAL_MFA_REGION="ap"
+VAL_MFA_USER="RiotUsername"
+VAL_MFA_PASS="Password"
 
-    return {
-        Name: DisplayName,
-        Icon: DisplayIcon
-    };
-}
-
-const data = await AuthClient.Store.getStorefront(AuthClient.getSubject());
-
-for (const ItemID of data.data.SkinsPanelLayout.SingleItemOffers) {
-    console.log(await getOffersOf(ItemID));
-}
+# https://developer.riotgames.com
+VAL_RIOT_API="API_KEY_123"
 ```
-
-## Contact
-
--   Discord: INg3\_#9509
--   Discord Server: https://discord.com/invite/pbyWbUYjyt
--   Github: https://github.com/KTNG-3
