@@ -1,6 +1,6 @@
 {
   "name": "@valapi/web-client",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
     "access": "public"
@@ -28,8 +28,8 @@
   },
   "homepage": "https://github.com/valapi/node-valapi/tree/master/packages/@valapi/web-client#readme",
   "dependencies": {
-    "@valapi/auth": "^3.0.0",
-    "@valapi/lib": "^3.0.0"
+    "@valapi/auth": "^3.0.1",
+    "@valapi/lib": "^3.0.1"
   },
   "directories": {
     "lib": "build",

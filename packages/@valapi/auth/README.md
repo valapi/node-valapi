@@ -94,7 +94,7 @@ const authClient = await AuthClient.fromCookie(cookie);
 ```typescript
 const authClient = AuthClient.fromJSON(oldAuthClient.toJSON());
 
-if (authClient.createAt + 60 * 60 * 1000 <= Date.now()) {
+if (Date.now() >= client.getExpirationDate()) {
     await authClient.refresh();
 }
 ```
