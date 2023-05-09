@@ -23,6 +23,7 @@ export { MMR } from "./service/MMR";
 export { Party } from "./service/Party";
 export { Personalization } from "./service/Personalization";
 export { PreGame } from "./service/PreGame";
+export { Premier } from "./service/Premier";
 export { Restrictions } from "./service/Restrictions";
 export { Session } from "./service/Session";
 export { Store } from "./service/Store";

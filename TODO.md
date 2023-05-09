@@ -37,6 +37,7 @@
 | Service | Party               | Missing     |
 | Service | Personalization     | Not Done    |
 | Service | PreGame             | Not Done    |
+| Service | Premier             | Missing     |
 | Service | Restrictions        | Not Done    |
 | Service | Session             | Done        |
 | Service | Store               | Done        |

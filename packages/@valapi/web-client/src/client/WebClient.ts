@@ -21,6 +21,7 @@ import { MMR } from "../service/MMR";
 import { Party } from "../service/Party";
 import { Personalization } from "../service/Personalization";
 import { PreGame } from "../service/PreGame";
+import { Premier } from "../service/Premier";
 import { Restrictions } from "../service/Restrictions";
 import { Session } from "../service/Session";
 import { Store } from "../service/Store";
@@ -209,6 +210,10 @@ export class WebClient extends AuthClient {
 
     public get PreGame(): PreGame {
         return new PreGame(this.axios, new WebClientRegion(this.region.live));
+    }
+
+    public get Premier(): Premier {
+        return new Premier(this.axios, new WebClientRegion(this.region.live));
     }
 
     public get Restrictions(): Restrictions {
