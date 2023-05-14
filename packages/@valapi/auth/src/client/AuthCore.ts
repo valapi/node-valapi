@@ -1,4 +1,4 @@
-import { Region, fromUft8, toUft8 } from "@valapi/lib";
+import { Region, ValBase64 } from "@valapi/lib";
 import type { CreateAxiosDefaults } from "axios";
 
 import { CookieJar } from "tough-cookie";
@@ -176,7 +176,7 @@ export class AuthCore {
                             ...value.axiosConfig?.headers,
                             ...{
                                 "X-Riot-ClientVersion": this._config.client?.version || value.client?.version || AuthCore.Default.config.client.version,
-                                "X-Riot-ClientPlatform": toUft8(JSON.stringify(this._config.client?.platform || value.client?.platform || AuthCore.Default.config.client.platform))
+                                "X-Riot-ClientPlatform": ValBase64.encrypt(JSON.stringify(this._config.client?.platform || value.client?.platform || AuthCore.Default.config.client.platform))
                             }
                         }
                     }
@@ -351,7 +351,7 @@ export class AuthCore {
      * @returns {string} Subject
      */
     public getSubject(token: string = this.access_token): string {
-        const _token: { sub: string } = JSON.parse(fromUft8(token.split(".")[1]));
+        const _token: { sub: string } = JSON.parse(ValBase64.decrypt(token.split(".")[1]));
 
         return _token.sub;
     }
@@ -362,7 +362,7 @@ export class AuthCore {
      * @returns {number} Expiration date
      */
     public getExpirationDate(token: string = this.access_token): number {
-        const _token: { exp: number } = JSON.parse(fromUft8(token.split(".")[1]));
+        const _token: { exp: number } = JSON.parse(ValBase64.decrypt(token.split(".")[1]));
 
         return _token.exp * 1000;
     }

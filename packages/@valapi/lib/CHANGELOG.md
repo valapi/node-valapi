@@ -1,3 +1,10 @@
+# 3.0.2
+
+**Change**
+
+-   ~~`toUft8(text, technique)`~~ **-->** `ValBase64.encrypt(text)`
+-   ~~`fromUft8(text, technique)`~~ **-->** `ValBase64.decrypt(text)`
+
 # 3.0.0
 
 **Remove**

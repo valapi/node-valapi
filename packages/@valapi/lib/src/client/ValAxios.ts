@@ -76,8 +76,8 @@ export class ValAxios {
     private async errorHandler(error: AxiosError): Promise<void> {
         throw new ValError({
             name: "ValAxios_Error",
-            message: error.message ? error.message : error.name,
-            data: error.toJSON ? error.toJSON() : error,
+            message: error.message || error.name,
+            data: error.toJSON ? error.toJSON() : error.toString ? error.toString() : error,
             stack: error.stack
         });
     }

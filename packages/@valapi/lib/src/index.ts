@@ -14,4 +14,4 @@ export * as Region from "./resources/Region";
 
 // utils
 
-export { toUft8, fromUft8 } from "./utils/Uft8";
+export { ValBase64 } from "./utils/Base64";
