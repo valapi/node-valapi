@@ -4,5 +4,5 @@
         "rootDir": "./src",
         "outDir": "./build"
     },
-    "exclude": ["node_modules", "build", "src/__tests__", "legal.js"]
+    "exclude": ["node_modules", "build", "src/__tests__"]
 }

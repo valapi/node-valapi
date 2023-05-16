@@ -40,8 +40,5 @@
     "package.json",
     "README.md",
     "SECURITY.md"
-  ],
-  "scripts": {
-    "install": "node legal.js"
-  }
+  ]
 }

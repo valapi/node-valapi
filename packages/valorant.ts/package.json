@@ -29,9 +29,9 @@
   "dependencies": {
     "@valapi/auth": "^3.0.2",
     "@valapi/lib": "^3.0.2",
-    "@valapi/riot-api": "^3.0.1",
-    "@valapi/valorant-api.com": "^3.0.1",
-    "@valapi/web-client": "^3.0.1"
+    "@valapi/riot-api": "^3.0.2",
+    "@valapi/valorant-api.com": "^3.0.2",
+    "@valapi/web-client": "^3.0.2"
   },
   "directories": {
     "lib": "build",
