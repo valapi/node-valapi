@@ -1,4 +1,4 @@
-import type { ValAxios } from "@valapi/lib";
+import type { AxiosResponse } from "axios";
 
 import { WebClientService } from "../client/WebClientService";
 
@@ -43,17 +43,17 @@ export class Restrictions extends WebClientService {
     /**
      * @param {string} matchId Match ID
      * @param {string} offenderSubject PlayerUUID (offender)
-     * @returns {Promise<ValAxios.Response<Restrictions.ReportToken>>}
+     * @returns {Promise<AxiosResponse<Restrictions.ReportToken>>}
      */
-    public async fetchPlayerReportToken(matchId: string, offenderSubject: string): Promise<ValAxios.Response<Restrictions.ReportToken>> {
+    public async fetchPlayerReportToken(matchId: string, offenderSubject: string): Promise<AxiosResponse<Restrictions.ReportToken>> {
         return await this.axios.get(`${this.apiRegion.url.playerData}/restrictions/v1/playerReportToken/${matchId}/${offenderSubject}`);
     }
 
     /**
      *
-     * @returns {Promise<ValAxios.Response<Restrictions.Player>>}
+     * @returns {Promise<AxiosResponse<Restrictions.Player>>}
      */
-    public async fetchPlayerRestrictions(): Promise<ValAxios.Response<Restrictions.Player>> {
+    public async fetchPlayerRestrictions(): Promise<AxiosResponse<Restrictions.Player>> {
         return await this.axios.get(`${this.apiRegion.url.playerData}/restrictions/v3/penalties`);
     }
 }

@@ -1,5 +1,5 @@
-import type { ValorantApiCom } from "../client/ValorantApiCom";
 import { ValorantApiComService } from "../client/ValorantApiComService";
+import type { ValorantApiCom } from "../client/ValorantApiCom";
 
 export namespace Bundles {
     export interface Bundles {

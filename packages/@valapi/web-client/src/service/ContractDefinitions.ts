@@ -1,4 +1,4 @@
-import type { ValAxios } from "@valapi/lib";
+import type { AxiosResponse } from "axios";
 
 import { WebClientService } from "../client/WebClientService";
 
@@ -57,26 +57,26 @@ export namespace ContractDefinitions {
 export class ContractDefinitions extends WebClientService {
     /**
      * @deprecated Please, Contact us if you find out how its works
-     * @returns {Promise<ValAxios.Response<any>>}
+     * @returns {Promise<AxiosResponse<any>>}
      */
-    public async fetchActiveStory(): Promise<ValAxios.Response<any>> {
+    public async fetchActiveStory(): Promise<AxiosResponse<any>> {
         return await this.axios.get(`${this.apiRegion.url.playerData}/contract-definitions/v2/definitions/story`);
     }
 
     /**
      * @deprecated Please, Contact us if you find out how its works
-     * @returns {Promise<ValAxios.Response<any>>}
+     * @returns {Promise<AxiosResponse<any>>}
      */
-    public async fetch(): Promise<ValAxios.Response<any>> {
+    public async fetch(): Promise<AxiosResponse<any>> {
         return await this.axios.get(`${this.apiRegion.url.playerData}/contract-definitions/v2/definitions`);
     }
 
     // ItemProgressionDefinitionsV2
 
     /**
-     * @returns {Promise<ValAxios.Response<ContractDefinitions.ItemProgression>>}
+     * @returns {Promise<AxiosResponse<ContractDefinitions.ItemProgression>>}
      */
-    public async fetchItemProgression(): Promise<ValAxios.Response<ContractDefinitions.ItemProgression>> {
+    public async fetchItemProgression(): Promise<AxiosResponse<ContractDefinitions.ItemProgression>> {
         return await this.axios.get(`${this.apiRegion.url.playerData}/contract-definitions/v3/item-upgrades`);
     }
 }

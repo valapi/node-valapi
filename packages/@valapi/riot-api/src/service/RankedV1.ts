@@ -1,4 +1,4 @@
-import type { ValAxios } from "@valapi/lib";
+import type { AxiosResponse } from "axios";
 
 import { RiotApiService } from "../client/RiotApiService";
 
@@ -48,9 +48,9 @@ export class RankedV1 extends RiotApiService {
      * @param {string} actId Act ID
      * @param {number} size Size (default: 200)
      * @param {number} startIndex Start Index (default: 0)
-     * @returns {Promise<ValAxios.Response<RankedV1.LeaderboardDto>>}
+     * @returns {Promise<AxiosResponse<RankedV1.LeaderboardDto>>}
      */
-    public async leaderboardsByAct(actId: string, size = 200, startIndex = 0): Promise<ValAxios.Response<RankedV1.LeaderboardDto>> {
+    public async leaderboardsByAct(actId: string, size = 200, startIndex = 0): Promise<AxiosResponse<RankedV1.LeaderboardDto>> {
         return await this.axios.get(`${this.apiRegion.url.server}/val/ranked/v1/leaderboards/by-act/${actId}?size=${size}&startIndex=${startIndex}`);
     }
 }

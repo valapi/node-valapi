@@ -1,13 +1,16 @@
-import type { AuthService } from "../client/AuthService";
-import { Cookie as CookieAuthenticator } from "../service/Cookie";
+import type { AxiosResponse } from "axios";
 
-import { ValError, ValAxios } from "@valapi/lib";
+import { ValError } from "@valapi/lib";
+
+import type { AuthService } from "../client/AuthService";
+
+import { Cookie as CookieAuthenticator } from "../service/Cookie";
 
 export class User extends CookieAuthenticator {
     public async loginform(username: string, password: string) {
         // cookie
 
-        const CookieResponse: ValAxios.Response<AuthService.TokenResponse> = await this.authorize();
+        const CookieResponse: AxiosResponse<AuthService.TokenResponse> = await this.authorize();
 
         if (!CookieResponse.headers["set-cookie"] || !CookieResponse.headers["set-cookie"].find((element: string) => new RegExp(`^asid`).test(element))) {
             throw new ValError({
@@ -19,7 +22,7 @@ export class User extends CookieAuthenticator {
 
         // token
 
-        const TokenResponse: ValAxios.Response<AuthService.TokenResponse> = await this.axios.put(
+        const TokenResponse: AxiosResponse<AuthService.TokenResponse> = await this.axios.put(
             "https://auth.riotgames.com/api/v1/authorization",
             {
                 type: "auth",

@@ -1,4 +1,6 @@
-import type { ValAxios, ItemTypeId } from "@valapi/lib";
+import type { AxiosResponse } from "axios";
+
+import type { ItemTypeId } from "@valapi/lib";
 
 import { WebClientService } from "../client/WebClientService";
 
@@ -109,49 +111,49 @@ export namespace Store {
 export class Store extends WebClientService {
     /**
      * @param {string} subject Player UUID
-     * @returns {Promise<ValAxios.Response<Store.Wallet>>}
+     * @returns {Promise<AxiosResponse<Store.Wallet>>}
      */
-    public async getWallet(subject: string): Promise<ValAxios.Response<Store.Wallet>> {
+    public async getWallet(subject: string): Promise<AxiosResponse<Store.Wallet>> {
         return await this.axios.get(`${this.apiRegion.url.playerData}/store/v1/wallet/${subject}`);
     }
 
     /**
      * @param {string} subject Player UUID
-     * @returns {Promise<ValAxios.Response<Store.Storefront>>}
+     * @returns {Promise<AxiosResponse<Store.Storefront>>}
      */
-    public async getStorefront(subject: string): Promise<ValAxios.Response<Store.Storefront>> {
+    public async getStorefront(subject: string): Promise<AxiosResponse<Store.Storefront>> {
         return await this.axios.get(`${this.apiRegion.url.playerData}/store/v2/storefront/${subject}`);
     }
 
     /**
-     * @returns {Promise<ValAxios.Response<Store.Offers>>}
+     * @returns {Promise<AxiosResponse<Store.Offers>>}
      */
-    public async getOffers(): Promise<ValAxios.Response<Store.Offers>> {
+    public async getOffers(): Promise<AxiosResponse<Store.Offers>> {
         return await this.axios.get(`${this.apiRegion.url.playerData}/store/v1/offers/`);
     }
 
     /**
      * @param {string} subject Player UUID
      * @param {ItemTypeId.Identify} itemTypeId Item Type
-     * @returns {Promise<ValAxios.Response<Store.EntitlementsWithInstance>>}
+     * @returns {Promise<AxiosResponse<Store.EntitlementsWithInstance>>}
      */
-    public async getEntitlements(subject: string, itemTypeId: "dd3bf334-87f3-40bd-b043-682a57a8dc3a"): Promise<ValAxios.Response<Store.EntitlementsWithInstance>>;
+    public async getEntitlements(subject: string, itemTypeId: "dd3bf334-87f3-40bd-b043-682a57a8dc3a"): Promise<AxiosResponse<Store.EntitlementsWithInstance>>;
     /**
      * @param {string} subject Player UUID
      * @param {ItemTypeId.Identify} itemTypeId Item Type
-     * @returns {Promise<ValAxios.Response<Store.Entitlements>>}
+     * @returns {Promise<AxiosResponse<Store.Entitlements>>}
      */
-    public async getEntitlements(subject: string, itemTypeId: ItemTypeId.Identify): Promise<ValAxios.Response<Store.Entitlements>>;
-    public async getEntitlements(subject: string, itemTypeId: string): Promise<ValAxios.Response<any>> {
+    public async getEntitlements(subject: string, itemTypeId: ItemTypeId.Identify): Promise<AxiosResponse<Store.Entitlements>>;
+    public async getEntitlements(subject: string, itemTypeId: string): Promise<AxiosResponse<any>> {
         return await this.axios.get(`${this.apiRegion.url.playerData}/store/v1/entitlements/${subject}/${itemTypeId}`);
     }
 
     /**
      * @deprecated Please, Contact us if you find out how its works
      * @param {string} subject Player UUID
-     * @returns {Promise<ValAxios.Response<any>>}
+     * @returns {Promise<AxiosResponse<any>>}
      */
-    public async revealNightMarketOffers(subject: string): Promise<ValAxios.Response<any>> {
+    public async revealNightMarketOffers(subject: string): Promise<AxiosResponse<any>> {
         return await this.axios.post(`${this.apiRegion.url.playerData}/store/v2/storefront/${subject}/nightmarket/offers`);
     }
 }

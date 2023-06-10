@@ -1,4 +1,4 @@
-import type { ValAxios } from "@valapi/lib";
+import type { AxiosResponse } from "axios";
 
 import { WebClientService } from "../client/WebClientService";
 
@@ -22,9 +22,9 @@ export namespace Content {
 
 export class Content extends WebClientService {
     /**
-     * @returns {Promise<ValAxios.Response<Content.Content>>}
+     * @returns {Promise<AxiosResponse<Content.Content>>}
      */
-    public async fetchContent(): Promise<ValAxios.Response<Content.Content>> {
+    public async fetchContent(): Promise<AxiosResponse<Content.Content>> {
         return await this.axios.get(`${this.apiRegion.url.sharedData}/content-service/v3/content`);
     }
 }

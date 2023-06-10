@@ -1,5 +1,7 @@
-import { Region, ValAxios } from "@valapi/lib";
-import type { CreateAxiosDefaults } from "axios";
+import axios from "axios";
+import type { AxiosInstance, CreateAxiosDefaults } from "axios";
+
+import { Region } from "@valapi/lib";
 
 import { RiotApiRegion } from "./RiotApiRegion";
 import type { RiotApiService } from "./RiotApiService";
@@ -35,7 +37,7 @@ export namespace RiotApi {
  */
 export class RiotApi {
     public readonly config: Required<RiotApi.Config>;
-    protected readonly axios: ValAxios;
+    protected readonly axios: AxiosInstance;
 
     public readonly createAt: number = Date.now();
 
@@ -75,7 +77,7 @@ export class RiotApi {
             }
         };
 
-        this.axios = new ValAxios(this.config.axiosConfig);
+        this.axios = axios.create(this.config.axiosConfig);
     }
 
     // service
@@ -85,7 +87,7 @@ export class RiotApi {
      * @param {T} Service Custom Service
      * @returns {T}
      */
-    public getService<T extends RiotApiService>(Service: new (axios: ValAxios, apiRegion: RiotApiRegion) => T): T {
+    public getService<T extends RiotApiService>(Service: new (axios: AxiosInstance, apiRegion: RiotApiRegion) => T): T {
         return new Service(this.axios, new RiotApiRegion(this.config.region));
     }
 

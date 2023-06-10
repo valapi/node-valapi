@@ -1,7 +1,10 @@
-import { ValAxios, type Region } from "@valapi/lib";
-
-import { AuthClient, type AuthCore } from "@valapi/auth";
+import axios from "axios";
+import type { AxiosResponse, AxiosInstance } from "axios";
 import { CookieJar } from "tough-cookie";
+
+import type { Region } from "@valapi/lib";
+import { AuthClient } from "@valapi/auth";
+import type { AuthCore } from "@valapi/auth";
 
 import { WebClientRegion } from "./WebClientRegion";
 import type { WebClientService } from "./WebClientService";
@@ -36,8 +39,8 @@ export namespace WebClient {
  * API from Web Client
  */
 export class WebClient extends AuthClient {
-    protected get axios(): ValAxios {
-        return new ValAxios(this.config.axiosConfig);
+    protected get axios(): AxiosInstance {
+        return axios.create(this.config.axiosConfig);
     }
 
     // data
@@ -115,26 +118,26 @@ export class WebClient extends AuthClient {
     }
 
     /**
-     * @returns {Promise<ValAxios.Response<any>>}
+     * @returns {Promise<AxiosResponse<any>>}
      */
-    public async getUserInfo(): Promise<ValAxios.Response<any>> {
+    public async getUserInfo(): Promise<AxiosResponse<any>> {
         return await this.axios.post(`https://auth.riotgames.com/userinfo`);
     }
 
     /**
      * @deprecated Please, Contact us if you find out how its works
-     * @returns {Promise<ValAxios.Response<any>>}
+     * @returns {Promise<AxiosResponse<any>>}
      */
-    public async getUserSettings(): Promise<ValAxios.Response<any>> {
+    public async getUserSettings(): Promise<AxiosResponse<any>> {
         return await this.axios.get(`https://playerpreferences.riotgames.com/playerPref/v3/getPreference/Ares.PlayerSettings`);
     }
 
     /**
      * @deprecated Please, Contact us if you find out how its works
      * @param {any} data Settings Data to update
-     * @returns {Promise<ValAxios.Response<any>>}
+     * @returns {Promise<AxiosResponse<any>>}
      */
-    public async updateUserSettings(data: any): Promise<ValAxios.Response<any>> {
+    public async updateUserSettings(data: any): Promise<AxiosResponse<any>> {
         return await this.axios.put(`https://playerpreferences.riotgames.com/playerPref/v3/getPreference`, {
             type: "Ares.PlayerSettings",
             data: data
@@ -148,7 +151,7 @@ export class WebClient extends AuthClient {
      * @param {T} Service Custom Service
      * @returns {T}
      */
-    public getService<T extends WebClientService>(Service: new (axios: ValAxios, apiRegion: WebClientRegion) => T): T {
+    public getService<T extends WebClientService>(Service: new (axios: AxiosInstance, apiRegion: WebClientRegion) => T): T {
         return new Service(this.axios, new WebClientRegion(this.region.live));
     }
 

@@ -1,4 +1,4 @@
-import type { ValAxios } from "@valapi/lib";
+import type { AxiosResponse } from "axios";
 
 import { WebClientService } from "../client/WebClientService";
 
@@ -43,31 +43,31 @@ export namespace Premier {
 export class Premier extends WebClientService {
     /**
      * @deprecated Please, Contact us if you find out how its works
-     * @returns {Promise<ValAxios.Response<any>>}
+     * @returns {Promise<AxiosResponse<any>>}
      */
-    public async getEligibility(): Promise<ValAxios.Response<any>> {
+    public async getEligibility(): Promise<AxiosResponse<any>> {
         return await this.axios.get(`${this.apiRegion.url.playerData}/premier/v1/player/eligibility`);
     }
 
     /**
-     * @returns {Promise<ValAxios.Response<Premier.Conferences>>}
+     * @returns {Promise<AxiosResponse<Premier.Conferences>>}
      */
-    public async getPremierConferences(): Promise<ValAxios.Response<Premier.Conferences>> {
+    public async getPremierConferences(): Promise<AxiosResponse<Premier.Conferences>> {
         return await this.axios.get(`${this.apiRegion.url.playerData}/premier/v1/affinities/${this.apiRegion.id}/conferences`);
     }
 
     /**
-     * @returns {Promise<ValAxios.Response<Premier.Seasons>>}
+     * @returns {Promise<AxiosResponse<Premier.Seasons>>}
      */
-    public async fetchPremierSeasons(): Promise<ValAxios.Response<Premier.Seasons>> {
+    public async fetchPremierSeasons(): Promise<AxiosResponse<Premier.Seasons>> {
         return await this.axios.get(`${this.apiRegion.url.playerData}/premier/v1/affinities/${this.apiRegion.id}/premier-seasons`);
     }
 
     /**
      * @deprecated Please, Contact us if you find out how its works
-     * @returns {Promise<ValAxios.Response<any>>}
+     * @returns {Promise<AxiosResponse<any>>}
      */
-    public async getActivePremierSeason(): Promise<ValAxios.Response<any>> {
+    public async getActivePremierSeason(): Promise<AxiosResponse<any>> {
         return await this.axios.get(`${this.apiRegion.url.playerData}/premier/v1/affinities/${this.apiRegion.id}/premier-seasons/active`);
     }
 
@@ -75,35 +75,35 @@ export class Premier extends WebClientService {
      * @deprecated Please, Contact us if you find out how its works
      * @param {string} realm Realm
      * @param {string} rosterId Roster ID
-     * @returns {Promise<ValAxios.Response<any>>}
+     * @returns {Promise<AxiosResponse<any>>}
      */
-    public async getMUCToken(realm: string, rosterId: string): Promise<ValAxios.Response<any>> {
+    public async getMUCToken(realm: string, rosterId: string): Promise<AxiosResponse<any>> {
         return await this.axios.get(`${this.apiRegion.url.playerData}/premier/v1/rsp/rosters/v1/${realm}/roster/${rosterId}/muctoken`);
     }
 
     /**
      * @param {string} subject Player UUID
-     * @returns {Promise<ValAxios.Response<Premier.Player>>}
+     * @returns {Promise<AxiosResponse<Premier.Player>>}
      */
-    public async getPlayer(subject: string): Promise<ValAxios.Response<Premier.Player>> {
+    public async getPlayer(subject: string): Promise<AxiosResponse<Premier.Player>> {
         return await this.axios.get(`${this.apiRegion.url.playerData}/premier/v2/players/${subject}`);
     }
 
     /**
      * @deprecated Please, Contact us if you find out how its works
      * @param {string} rosterId Roster ID
-     * @returns {Promise<ValAxios.Response<any>>}
+     * @returns {Promise<AxiosResponse<any>>}
      */
-    public async GetRosterV1(rosterId: string): Promise<ValAxios.Response<any>> {
+    public async GetRosterV1(rosterId: string): Promise<AxiosResponse<any>> {
         return await this.axios.get(`${this.apiRegion.url.playerData}/premier/v1/rosters/${rosterId}`);
     }
 
     /**
      * @deprecated Please, Contact us if you find out how its works
      * @param {string} rosterId Roster ID
-     * @returns {Promise<ValAxios.Response<any>>}
+     * @returns {Promise<AxiosResponse<any>>}
      */
-    public async GetRosterV2(rosterId: string): Promise<ValAxios.Response<any>> {
+    public async GetRosterV2(rosterId: string): Promise<AxiosResponse<any>> {
         return await this.axios.get(`${this.apiRegion.url.playerData}/premier/v2/rosters/${rosterId}`);
     }
 
@@ -111,9 +111,9 @@ export class Premier extends WebClientService {
      * @deprecated Please, Contact us if you find out how its works
      * @param {string} realm Realm
      * @param {string} rosterId Roster ID
-     * @returns {Promise<ValAxios.Response<any>>}
+     * @returns {Promise<AxiosResponse<any>>}
      */
-    public async getRosterByProxy(realm: string, rosterId: string): Promise<ValAxios.Response<any>> {
+    public async getRosterByProxy(realm: string, rosterId: string): Promise<AxiosResponse<any>> {
         return await this.axios.get(`${this.apiRegion.url.playerData}/premier/v1/rsp/rosters/v1/${realm}/roster/${rosterId}`);
     }
 
@@ -121,9 +121,9 @@ export class Premier extends WebClientService {
      * @deprecated Please, Contact us if you find out how its works
      * @param {string} rosterId Roster ID
      * @param {Premier.RosterCustomization} rosterCustomization Roster Customization
-     * @returns {Promise<ValAxios.Response<any>>}
+     * @returns {Promise<AxiosResponse<any>>}
      */
-    public async setPremierRosterCustomization(rosterId: string, rosterCustomization: Premier.RosterCustomization): Promise<ValAxios.Response<any>> {
+    public async setPremierRosterCustomization(rosterId: string, rosterCustomization: Premier.RosterCustomization): Promise<AxiosResponse<any>> {
         return await this.axios.put(`${this.apiRegion.url.playerData}/premier/v1/rosters/${rosterId}/customization`, rosterCustomization);
     }
 
@@ -131,9 +131,9 @@ export class Premier extends WebClientService {
      * @deprecated Please, Contact us if you find out how its works
      * @param {string} realm Realm
      * @param {string} rosterId Roster ID
-     * @returns {Promise<ValAxios.Response<any>>}
+     * @returns {Promise<AxiosResponse<any>>}
      */
-    public async deleteRosterByProxy(realm: string, rosterId: string): Promise<ValAxios.Response<any>> {
+    public async deleteRosterByProxy(realm: string, rosterId: string): Promise<AxiosResponse<any>> {
         return await this.axios.delete(`${this.apiRegion.url.playerData}/premier/v1/rsp/rosters/v1/${realm}/roster/${rosterId}`);
     }
 
@@ -141,9 +141,9 @@ export class Premier extends WebClientService {
      * @deprecated Please, Contact us if you find out how its works
      * @param {string} rosterId Roster ID
      * @param {string} conferenceId Conference ID
-     * @returns {Promise<ValAxios.Response<any>>}
+     * @returns {Promise<AxiosResponse<any>>}
      */
-    public async rosterEnroll(rosterId: string, conferenceId: string): Promise<ValAxios.Response<any>> {
+    public async rosterEnroll(rosterId: string, conferenceId: string): Promise<AxiosResponse<any>> {
         return await this.axios.put(`${this.apiRegion.url.playerData}/premier/v1/rosters/${rosterId}/enroll`, {
             id: conferenceId
         });
@@ -153,9 +153,9 @@ export class Premier extends WebClientService {
      * @deprecated Please, Contact us if you find out how its works
      * @param {string} rosterId Roster ID
      * @param {string} subject Player UUID
-     * @returns {Promise<ValAxios.Response<any>>}
+     * @returns {Promise<AxiosResponse<any>>}
      */
-    public async createInvite(rosterId: string, subject: string): Promise<ValAxios.Response<any>> {
+    public async createInvite(rosterId: string, subject: string): Promise<AxiosResponse<any>> {
         return await this.axios.post(`${this.apiRegion.url.playerData}/premier/v2/rosters/${rosterId}/invites/${subject}`);
     }
 }

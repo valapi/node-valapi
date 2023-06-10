@@ -1,7 +1,7 @@
-import { Region, ValBase64 } from "@valapi/lib";
 import type { CreateAxiosDefaults } from "axios";
-
 import { CookieJar } from "tough-cookie";
+
+import { Region, ValBase64 } from "@valapi/lib";
 
 export namespace AuthCore {
     /**

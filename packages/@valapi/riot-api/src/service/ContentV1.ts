@@ -1,4 +1,6 @@
-import type { ValAxios, Locale } from "@valapi/lib";
+import type { AxiosResponse } from "axios";
+
+import type { Locale } from "@valapi/lib";
 
 import { RiotApiService } from "../client/RiotApiService";
 
@@ -56,9 +58,9 @@ export class ContentV1 extends RiotApiService {
     /**
      * Get content optionally filtered by locale
      * @param {Locale.Identify} locale Locale (default: en-US)
-     * @returns {Promise<ValAxios.Response<ContentV1.ContentDto>>}
+     * @returns {Promise<AxiosResponse<ContentV1.ContentDto>>}
      */
-    public async contents(locale: Locale.Identify = "en-US"): Promise<ValAxios.Response<ContentV1.ContentDto>> {
+    public async contents(locale: Locale.Identify = "en-US"): Promise<AxiosResponse<ContentV1.ContentDto>> {
         return await this.axios.get(`${this.apiRegion.url.server}/val/content/v1/contents?locale=${locale}`);
     }
 }

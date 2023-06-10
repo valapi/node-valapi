@@ -1,5 +1,7 @@
-import { ValAxios, Locale } from "@valapi/lib";
-import type { CreateAxiosDefaults } from "axios";
+import axios from "axios";
+import type { AxiosInstance, AxiosResponse, CreateAxiosDefaults } from "axios";
+
+import { Locale } from "@valapi/lib";
 
 import type { ValorantApiComService } from "./ValorantApiComService";
 
@@ -41,7 +43,7 @@ export namespace ValorantApiCom {
         /**
          * Request Response
          */
-        export type Data<T> = ValAxios.Response<{
+        export type Data<T> = AxiosResponse<{
             status: number;
             error?: string;
             data?: T;
@@ -79,7 +81,7 @@ export namespace ValorantApiCom {
  */
 export class ValorantApiCom {
     public readonly config: Required<ValorantApiCom.Config>;
-    protected readonly axios: ValAxios;
+    protected readonly axios: AxiosInstance;
 
     // default
 
@@ -125,7 +127,7 @@ export class ValorantApiCom {
             }
         };
 
-        this.axios = new ValAxios(this.config.axiosConfig);
+        this.axios = axios.create(this.config.axiosConfig);
     }
 
     // service
@@ -135,7 +137,7 @@ export class ValorantApiCom {
      * @param {T} Service Custom Service
      * @returns {T}
      */
-    public getService<T extends ValorantApiComService>(Service: new (axios: ValAxios) => T): T {
+    public getService<T extends ValorantApiComService>(Service: new (axios: AxiosInstance) => T): T {
         return new Service(this.axios);
     }
 

@@ -1,4 +1,5 @@
-import { ValRegion, type Region } from "@valapi/lib";
+import { ValRegion } from "@valapi/lib";
+import type { Region } from "@valapi/lib";
 
 export class WebClientRegion extends ValRegion {
     public readonly shard: Region.Identify;

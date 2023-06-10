@@ -1,4 +1,6 @@
-import type { ValAxios, QueueId } from "@valapi/lib";
+import type { AxiosResponse } from "axios";
+
+import type { QueueId } from "@valapi/lib";
 import type { AuthCore } from "@valapi/auth";
 
 import { WebClientService } from "../client/WebClientService";
@@ -227,9 +229,9 @@ export class Match extends WebClientService {
     /**
      *
      * @param {string} matchId Match ID
-     * @returns {Promise<ValAxios.Response<Match.Detail>>}
+     * @returns {Promise<AxiosResponse<Match.Detail>>}
      */
-    public async fetchMatchDetails(matchId: string): Promise<ValAxios.Response<Match.Detail>> {
+    public async fetchMatchDetails(matchId: string): Promise<AxiosResponse<Match.Detail>> {
         return await this.axios.get(`${this.apiRegion.url.playerData}/match-details/v1/matches/${matchId}`);
     }
 
@@ -240,9 +242,9 @@ export class Match extends WebClientService {
      * @param {QueueId.Identify} queueId Queue
      * @param {number} startIndex Start Index (default: 0)
      * @param {number} endIndex End Index (default: 10)
-     * @returns {Promise<ValAxios.Response<Match.History>>}
+     * @returns {Promise<AxiosResponse<Match.History>>}
      */
-    public async fetchMatchHistory(subject: string, queueId?: QueueId.Identify, startIndex = 0, endIndex = 10): Promise<ValAxios.Response<Match.History>> {
+    public async fetchMatchHistory(subject: string, queueId?: QueueId.Identify, startIndex = 0, endIndex = 10): Promise<AxiosResponse<Match.History>> {
         let _url = `${this.apiRegion.url.playerData}/match-history/v1/history/${subject}?startIndex=${startIndex}&endIndex=${endIndex}`;
 
         if (queueId) {
@@ -256,9 +258,9 @@ export class Match extends WebClientService {
 
     /**
      * @deprecated Please, Contact us if you find out how its works
-     * @returns {Promise<ValAxios.Response<any>>}
+     * @returns {Promise<AxiosResponse<any>>}
      */
-    public async fetchQueueData(): Promise<ValAxios.Response<any>> {
+    public async fetchQueueData(): Promise<AxiosResponse<any>> {
         return await this.axios.get(`${this.apiRegion.url.partyService}/matchmaking/v1/queues/configs`);
     }
 }

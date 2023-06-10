@@ -1,16 +1,17 @@
-import type { ValAxios } from "@valapi/lib";
+import type { AxiosInstance } from "axios";
+
 import type { RiotApiRegion } from "./RiotApiRegion";
 
 export class RiotApiService {
-    protected readonly axios: ValAxios;
+    protected readonly axios: AxiosInstance;
     protected readonly apiRegion: RiotApiRegion;
 
     /**
      *
-     * @param {ValAxios} axios Request Client
+     * @param {AxiosInstance} axios Request Client
      * @param {RiotApiRegion} apiRegion Region Service
      */
-    public constructor(axios: ValAxios, apiRegion: RiotApiRegion) {
+    public constructor(axios: AxiosInstance, apiRegion: RiotApiRegion) {
         this.axios = axios;
         this.apiRegion = apiRegion;
     }

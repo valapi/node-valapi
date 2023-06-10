@@ -1,13 +1,13 @@
-import type { ValAxios } from "@valapi/lib";
+import type { AxiosInstance } from "axios";
 
 export class ValorantApiComService {
-    protected readonly axios: ValAxios;
+    protected readonly axios: AxiosInstance;
 
     /**
      *
-     * @param {ValAxios} axios Request Client
+     * @param {AxiosInstance} axios Request Client
      */
-    public constructor(axios: ValAxios) {
+    public constructor(axios: AxiosInstance) {
         this.axios = axios;
     }
 }

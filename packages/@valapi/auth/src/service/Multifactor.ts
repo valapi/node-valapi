@@ -1,12 +1,12 @@
-import { AuthService } from "../client/AuthService";
+import type { AxiosResponse } from "axios";
 
-import type { ValAxios } from "@valapi/lib";
+import { AuthService } from "../client/AuthService";
 
 export class Multifactor extends AuthService {
     public async twofactor(verificationCode: number) {
         // token
 
-        const TokenResponse: ValAxios.Response<AuthService.TokenResponse> = await this.axios.put("https://auth.riotgames.com/api/v1/authorization", {
+        const TokenResponse: AxiosResponse<AuthService.TokenResponse> = await this.axios.put("https://auth.riotgames.com/api/v1/authorization", {
             type: "multifactor",
             code: `${verificationCode}`,
             rememberDevice: true

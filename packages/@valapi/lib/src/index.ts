@@ -1,6 +1,5 @@
 // client
 
-export { ValAxios } from "./client/ValAxios";
 export { ValRegion } from "./client/ValRegion";
 export { ValError } from "./client/ValError";
 

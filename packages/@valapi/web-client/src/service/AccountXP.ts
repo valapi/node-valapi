@@ -1,4 +1,4 @@
-import type { ValAxios } from "@valapi/lib";
+import type { AxiosResponse } from "axios";
 
 import { WebClientService } from "../client/WebClientService";
 
@@ -37,9 +37,9 @@ export namespace AccountXP {
 export class AccountXP extends WebClientService {
     /**
      * @param {string} subject PlayerUUID
-     * @returns {Promise<ValAxios.Response<AccountXP.Player>>}
+     * @returns {Promise<AxiosResponse<AccountXP.Player>>}
      */
-    public async getPlayer(subject: string): Promise<ValAxios.Response<AccountXP.Player>> {
+    public async getPlayer(subject: string): Promise<AxiosResponse<AccountXP.Player>> {
         return await this.axios.get(`${this.apiRegion.url.playerData}/account-xp/v1/players/${subject}`);
     }
 }

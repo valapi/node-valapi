@@ -1,7 +1,9 @@
-import { Locale, ValAxios } from "@valapi/lib";
-import { ValVersion } from "./ValVersion";
+import axios from "axios";
+import type { AxiosRequestConfig, AxiosResponse } from "axios";
 
-import type { AxiosRequestConfig } from "axios";
+import { Locale } from "@valapi/lib";
+
+import { ValVersion } from "./ValVersion";
 
 /**
  * Valorant Patch Note
@@ -45,12 +47,11 @@ export class ValPatchNote {
      *
      * @param {Locale.Identify} language Language
      * @param {AxiosRequestConfig} axiosConfig Config
-     * @returns {Promise<ValAxios.Response<any>>} Patch Note Content
+     * @returns {Promise<AxiosResponse<any>>} Patch Note Content
      */
-    public static async getContent(language?: Locale.Identify, axiosConfig?: AxiosRequestConfig): Promise<ValAxios.Response<any>> {
+    public static async getContent(language?: Locale.Identify, axiosConfig?: AxiosRequestConfig): Promise<AxiosResponse<any>> {
         const patchNoteInstance = new ValPatchNote(language);
-        const axiosClient = new ValAxios(axiosConfig);
 
-        return await axiosClient.get(`${patchNoteInstance.url.pageData}/news/tags/patch-notes/page-data.json`);
+        return await axios.get(`${patchNoteInstance.url.pageData}/news/tags/patch-notes/page-data.json`, axiosConfig);
     }
 }

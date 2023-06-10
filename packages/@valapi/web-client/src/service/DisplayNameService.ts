@@ -1,4 +1,4 @@
-import type { ValAxios } from "@valapi/lib";
+import type { AxiosResponse } from "axios";
 
 import { WebClientService } from "../client/WebClientService";
 
@@ -16,9 +16,9 @@ export namespace DisplayNameService {
 export class DisplayNameService extends WebClientService {
     /**
      * @param {string} subject Player UUID
-     * @returns {Promise<ValAxios.Response<DisplayNameService.Player>>}
+     * @returns {Promise<AxiosResponse<DisplayNameService.Player>>}
      */
-    public async fetchPlayers(subject: string): Promise<ValAxios.Response<DisplayNameService.Player>> {
+    public async fetchPlayers(subject: string): Promise<AxiosResponse<DisplayNameService.Player>> {
         return await this.axios.put(`${this.apiRegion.url.playerData}/name-service/v2/players`, [`${subject}`]);
     }
 }

@@ -1,4 +1,4 @@
-import type { ValAxios } from "@valapi/lib";
+import type { AxiosResponse } from "axios";
 
 import { WebClientService } from "../client/WebClientService";
 
@@ -42,18 +42,18 @@ export namespace Personalization {
 export class Personalization extends WebClientService {
     /**
      * @param {string} subject Player UUID
-     * @returns {Promise<ValAxios.Response<Required<Personalization.Loadout>>>}
+     * @returns {Promise<AxiosResponse<Required<Personalization.Loadout>>>}
      */
-    public async getPlayerLoadout(subject: string): Promise<ValAxios.Response<Required<Personalization.Loadout>>> {
+    public async getPlayerLoadout(subject: string): Promise<AxiosResponse<Required<Personalization.Loadout>>> {
         return await this.axios.get(`${this.apiRegion.url.playerData}/personalization/v2/players/${subject}/playerloadout`);
     }
 
     /**
      * @param {string} subject Player UUID
      * @param {Omit<Personalization.Loadout, "Subject" | "Version">} loadout Loadout
-     * @returns {Promise<ValAxios.Response<Personalization.Loadout>>}
+     * @returns {Promise<AxiosResponse<Personalization.Loadout>>}
      */
-    public async playerLoadoutUpdate(subject: string, loadout: Omit<Personalization.Loadout, "Subject" | "Version">): Promise<ValAxios.Response<Personalization.Loadout>> {
+    public async playerLoadoutUpdate(subject: string, loadout: Omit<Personalization.Loadout, "Subject" | "Version">): Promise<AxiosResponse<Personalization.Loadout>> {
         return await this.axios.put(`${this.apiRegion.url.playerData}/personalization/v2/players/${subject}/playerloadout`, loadout);
     }
 }

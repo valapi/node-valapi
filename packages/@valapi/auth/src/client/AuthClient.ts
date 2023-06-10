@@ -1,6 +1,6 @@
-import { ValError } from "@valapi/lib";
-
 import { CookieJar } from "tough-cookie";
+
+import { ValError } from "@valapi/lib";
 
 import { AuthCore } from "./AuthCore";
 

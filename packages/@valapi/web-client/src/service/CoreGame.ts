@@ -1,4 +1,4 @@
-import type { ValAxios } from "@valapi/lib";
+import type { AxiosResponse } from "axios";
 
 import { WebClientService } from "../client/WebClientService";
 
@@ -105,25 +105,25 @@ export namespace CoreGame {
 export class CoreGame extends WebClientService {
     /**
      * @param {string} subject Player UUID
-     * @returns {Promise<ValAxios.Response<CoreGame.Player>>}
+     * @returns {Promise<AxiosResponse<CoreGame.Player>>}
      */
-    public async fetchPlayer(subject: string): Promise<ValAxios.Response<CoreGame.Player>> {
+    public async fetchPlayer(subject: string): Promise<AxiosResponse<CoreGame.Player>> {
         return await this.axios.get(`${this.apiRegion.url.partyService}/core-game/v1/players/${subject}`);
     }
 
     /**
      * @param {string} matchId Match ID
-     * @returns {Promise<ValAxios.Response<CoreGame.Match>>}
+     * @returns {Promise<AxiosResponse<CoreGame.Match>>}
      */
-    public async fetchMatch(matchId: string): Promise<ValAxios.Response<CoreGame.Match>> {
+    public async fetchMatch(matchId: string): Promise<AxiosResponse<CoreGame.Match>> {
         return await this.axios.get(`${this.apiRegion.url.partyService}/core-game/v1/matches/${matchId}`);
     }
 
     /**
      * @param {string} matchId Match ID
-     * @returns {Promise<ValAxios.Response<CoreGame.Loadout>>}
+     * @returns {Promise<AxiosResponse<CoreGame.Loadout>>}
      */
-    public async fetchMatchLoadouts(matchId: string): Promise<ValAxios.Response<CoreGame.Loadout>> {
+    public async fetchMatchLoadouts(matchId: string): Promise<AxiosResponse<CoreGame.Loadout>> {
         return await this.axios.get(`${this.apiRegion.url.partyService}/core-game/v1/matches/${matchId}/loadouts`);
     }
 
@@ -131,36 +131,36 @@ export class CoreGame extends WebClientService {
      * ! Careful to use, Riot will immediately shut down your Project.
      * @param {string} subject Player UUID
      * @param {string} matchId Match ID
-     * @returns {Promise<ValAxios.Response<any>>}
+     * @returns {Promise<AxiosResponse<any>>}
      */
-    public async disassociatePlayer(subject: string, matchId: string): Promise<ValAxios.Response<any>> {
+    public async disassociatePlayer(subject: string, matchId: string): Promise<AxiosResponse<any>> {
         return await this.axios.post(`${this.apiRegion.url.partyService}/core-game/v1/players/${subject}/disassociate/${matchId}`);
     }
 
     /**
      * @deprecated Please, Contact us if you find out how its works
      * @param {string} matchId Match ID
-     * @returns {Promise<ValAxios.Response<any>>}
+     * @returns {Promise<AxiosResponse<any>>}
      */
-    public async fetchAllChatMUCToken(matchId: string): Promise<ValAxios.Response<any>> {
+    public async fetchAllChatMUCToken(matchId: string): Promise<AxiosResponse<any>> {
         return await this.axios.get(`${this.apiRegion.url.partyService}/core-game/v1/matches/${matchId}/allchatmuctoken`);
     }
 
     /**
      * @deprecated Please, Contact us if you find out how its works
      * @param {string} matchId Match ID
-     * @returns {Promise<ValAxios.Response<any>>}
+     * @returns {Promise<AxiosResponse<any>>}
      */
-    public async fetchTeamChatMUCToken(matchId: string): Promise<ValAxios.Response<any>> {
+    public async fetchTeamChatMUCToken(matchId: string): Promise<AxiosResponse<any>> {
         return await this.axios.get(`${this.apiRegion.url.partyService}/core-game/v1/matches/${matchId}/teamchatmuctoken`);
     }
 
     /**
      * @deprecated Please, Contact us if you find out how its works
      * @param {string} matchId Match ID
-     * @returns {Promise<ValAxios.Response<any>>}
+     * @returns {Promise<AxiosResponse<any>>}
      */
-    public async fetchVoiceToken(matchId: string): Promise<ValAxios.Response<any>> {
+    public async fetchVoiceToken(matchId: string): Promise<AxiosResponse<any>> {
         return await this.axios.get(`${this.apiRegion.url.partyService}/core-game/v1/matches/${matchId}/teamvoicetoken`);
     }
 }

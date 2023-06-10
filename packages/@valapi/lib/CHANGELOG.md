@@ -1,3 +1,9 @@
+# 3.1.0
+
+**Remove**
+
+-   `ValAxios`
+
 # 3.0.2
 
 **Change**

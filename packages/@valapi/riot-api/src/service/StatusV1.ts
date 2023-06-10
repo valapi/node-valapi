@@ -1,4 +1,4 @@
-import type { ValAxios } from "@valapi/lib";
+import type { AxiosResponse } from "axios";
 
 import { RiotApiService } from "../client/RiotApiService";
 
@@ -62,9 +62,9 @@ export namespace StatusV1 {
 export class StatusV1 extends RiotApiService {
     /**
      * Get VALORANT status for the given platform.
-     * @returns {Promise<ValAxios.Response<StatusV1.PlatformDataDto>>}
+     * @returns {Promise<AxiosResponse<StatusV1.PlatformDataDto>>}
      */
-    public async platformData(): Promise<ValAxios.Response<StatusV1.PlatformDataDto>> {
+    public async platformData(): Promise<AxiosResponse<StatusV1.PlatformDataDto>> {
         return await this.axios.get(`${this.apiRegion.url.server}/val/status/v1/platform-data`);
     }
 }

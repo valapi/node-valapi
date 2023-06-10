@@ -1,4 +1,6 @@
-import type { ValAxios, QueueId } from "@valapi/lib";
+import type { AxiosResponse } from "axios";
+
+import type { QueueId } from "@valapi/lib";
 
 import { WebClientService } from "../client/WebClientService";
 
@@ -109,17 +111,17 @@ export namespace MMR {
 export class MMR extends WebClientService {
     /**
      * @param {string} subject Player UUID
-     * @returns {Promise<ValAxios.Response<MMR.Player>>}
+     * @returns {Promise<AxiosResponse<MMR.Player>>}
      */
-    public async fetchPlayer(subject: string): Promise<ValAxios.Response<MMR.Player>> {
+    public async fetchPlayer(subject: string): Promise<AxiosResponse<MMR.Player>> {
         return await this.axios.get(`${this.apiRegion.url.playerData}/mmr/v1/players/${subject}`);
     }
 
     /**
      * @param {string} subject Player UUID
-     * @returns {Promise<ValAxios.Response<any>>}
+     * @returns {Promise<AxiosResponse<any>>}
      */
-    public async hideActRankBadge(subject: string): Promise<ValAxios.Response<any>> {
+    public async hideActRankBadge(subject: string): Promise<AxiosResponse<any>> {
         return await this.axios.post(`${this.apiRegion.url.playerData}/mmr/v1/players/${subject}/hideactrankbadge`);
     }
 
@@ -128,9 +130,9 @@ export class MMR extends WebClientService {
      * @param {number} startIndex Start Index (default: 0)
      * @param {number} size Size (default: 510)
      * @param {string} serachUsername Search Username
-     * @returns {Promise<ValAxios.Response<MMR.Leaderboard>>}
+     * @returns {Promise<AxiosResponse<MMR.Leaderboard>>}
      */
-    public async fetchLeaderboard(seasonId: string, startIndex = 0, size = 510, serachUsername?: string): Promise<ValAxios.Response<MMR.Leaderboard>> {
+    public async fetchLeaderboard(seasonId: string, startIndex = 0, size = 510, serachUsername?: string): Promise<AxiosResponse<MMR.Leaderboard>> {
         let _url = `${this.apiRegion.url.playerData}/mmr/v1/leaderboards/affinity/${this.apiRegion.id}/queue/competitive/season/${seasonId}?startIndex=${startIndex}&size=${size}`;
 
         if (serachUsername) {
@@ -145,9 +147,9 @@ export class MMR extends WebClientService {
      * @param {QueueId.Identify} queueId Queue
      * @param {number} startIndex Start Index (default: 0)
      * @param {number} endIndex End Index (default: 10)
-     * @returns {Promise<ValAxios.Response<MMR.CompetitiveUpdates>>}
+     * @returns {Promise<AxiosResponse<MMR.CompetitiveUpdates>>}
      */
-    public async fetchCompetitiveUpdates(subject: string, queueId?: QueueId.Identify, startIndex = 0, endIndex = 10): Promise<ValAxios.Response<MMR.CompetitiveUpdates>> {
+    public async fetchCompetitiveUpdates(subject: string, queueId?: QueueId.Identify, startIndex = 0, endIndex = 10): Promise<AxiosResponse<MMR.CompetitiveUpdates>> {
         let _url = `${this.apiRegion.url.playerData}/mmr/v1/players/${subject}/competitiveupdates?startIndex=${startIndex}&endIndex=${endIndex}`;
 
         if (queueId) {

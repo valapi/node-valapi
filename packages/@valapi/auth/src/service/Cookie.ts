@@ -1,9 +1,9 @@
+import type { AxiosResponse } from "axios";
+
 import { AuthService } from "../client/AuthService";
 
-import { ValAxios } from "@valapi/lib";
-
 export class Cookie extends AuthService {
-    public async authorize(): Promise<ValAxios.Response<AuthService.TokenResponse>> {
+    public async authorize(): Promise<AxiosResponse<AuthService.TokenResponse>> {
         return await this.axios.post("https://auth.riotgames.com/api/v1/authorization", {
             client_id: "play-valorant-web-prod",
             nonce: "1",
@@ -19,7 +19,7 @@ export class Cookie extends AuthService {
 
         // token
 
-        const TokenResponse: ValAxios.Response<AuthService.TokenResponse> = await this.authorize();
+        const TokenResponse: AxiosResponse<AuthService.TokenResponse> = await this.authorize();
 
         // authentication
 

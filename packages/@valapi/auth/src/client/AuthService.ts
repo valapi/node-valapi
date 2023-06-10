@@ -1,9 +1,13 @@
-import { AuthCore } from "../client/AuthCore";
-
-import { ValError, ValAxios, type Region } from "@valapi/lib";
-
 import { URLSearchParams } from "node:url";
+
+import axios from "axios";
+import type { AxiosInstance, AxiosResponse } from "axios";
 import { HttpsCookieAgent, HttpCookieAgent } from "http-cookie-agent/http";
+
+import { ValError } from "@valapi/lib";
+import type { Region } from "@valapi/lib";
+
+import { AuthCore } from "../client/AuthCore";
 
 export namespace AuthService {
     export type TokenResponse =
@@ -42,7 +46,7 @@ export namespace AuthService {
 }
 
 export class AuthService extends AuthCore {
-    protected readonly axios: ValAxios;
+    protected readonly axios: AxiosInstance;
 
     /**
      *
@@ -113,7 +117,7 @@ export class AuthService extends AuthCore {
             }
         };
 
-        this.axios = new ValAxios(this.config.axiosConfig);
+        this.axios = axios.create(this.config.axiosConfig);
     }
 
     // authentication
@@ -128,7 +132,7 @@ export class AuthService extends AuthCore {
 
         // ENTITLEMENTS
 
-        const EntitlementsResponse: ValAxios.Response<{
+        const EntitlementsResponse: AxiosResponse<{
             entitlements_token?: string;
         }> = await this.axios.post(
             "https://entitlements.auth.riotgames.com/api/token/v1",
@@ -181,7 +185,7 @@ export class AuthService extends AuthCore {
         // REGION
 
         if (this.id_token && this.isAuthenticationError === false) {
-            const RegionResponse: ValAxios.Response<{
+            const RegionResponse: AxiosResponse<{
                 token: string;
                 affinities: {
                     pbe: Region.Identify;
@@ -211,10 +215,10 @@ export class AuthService extends AuthCore {
 
     /**
      *
-     * @param {ValAxios.Response<AuthService.TokenResponse>} TokenResponse Token Response
+     * @param {AxiosResponse<AuthService.TokenResponse>} TokenResponse Token Response
      * @returns {Promise<AuthCore.Json>} Account Data
      */
-    public async fromResponse(TokenResponse: ValAxios.Response<AuthService.TokenResponse>): Promise<AuthCore.Json> {
+    public async fromResponse(TokenResponse: AxiosResponse<AuthService.TokenResponse>): Promise<AuthCore.Json> {
         if (!TokenResponse.data || !TokenResponse.data.type || TokenResponse.data.type === "error") {
             this.isAuthenticationError = true;
 
