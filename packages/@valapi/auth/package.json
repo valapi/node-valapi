@@ -1,6 +1,6 @@
 {
   "name": "@valapi/auth",
-  "version": "3.0.2",
+  "version": "3.1.0",
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
     "access": "public"
@@ -29,9 +29,9 @@
   },
   "homepage": "https://github.com/valapi/node-valapi/tree/master/packages/@valapi/auth#readme",
   "dependencies": {
-    "@valapi/lib": "^3.0.2",
+    "@valapi/lib": "^3.1.0",
     "http-cookie-agent": "^5.0.2",
-    "tough-cookie": "^4.1.2"
+    "tough-cookie": "^4.1.3"
   },
   "devDependencies": {
     "@types/tough-cookie": "^4.0.2"

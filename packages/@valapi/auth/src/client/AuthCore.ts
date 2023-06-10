@@ -90,11 +90,7 @@ export class AuthCore {
         pbe: "na",
         live: "na"
     };
-    private static readonly DEFAULT_UserAgent: Array<string> = [
-        `RiotClient/63.0.9.4909983.4789131 rso-authenticator (Windows;10;;Professional, x64)`,
-        `RiotClient/60.0.6.4770705.4749685 rso-auth (Windows;10;;Professional, x64)`,
-        `RiotClient/53.0.0.4494832.4470164 %s (Windows;10;;Professional, x64)`
-    ];
+    private static readonly DEFAULT_UserAgent: string = `RiotClient/63.0.9.4909983.4789131 rso-authenticator (Windows;10;;Professional, x64)`;
     private static readonly DEFAULT_Ciphers: Array<string> = [
         "TLS_CHACHA20_POLY1305_SHA256",
         "TLS_AES_128_GCM_SHA256",
@@ -117,14 +113,14 @@ export class AuthCore {
         },
         axiosConfig: {
             headers: {
-                "User-Agent": AuthCore.DEFAULT_UserAgent[0]
+                "User-Agent": AuthCore.DEFAULT_UserAgent
             }
         },
         region: AuthCore.DEFAULT_Region.live
     };
     public static readonly Default = {
         region: AuthCore.DEFAULT_Region,
-        userAgent: AuthCore.DEFAULT_UserAgent[0],
+        userAgent: AuthCore.DEFAULT_UserAgent,
         ciphers: AuthCore.DEFAULT_Ciphers.join(":"),
         config: AuthCore.DEFAULT_config
     };
