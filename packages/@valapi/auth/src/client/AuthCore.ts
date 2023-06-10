@@ -90,16 +90,24 @@ export class AuthCore {
         pbe: "na",
         live: "na"
     };
-    private static readonly DEFAULT_UserAgent: string = `RiotClient/63.0.9.4909983.4789131 rso-authenticator (Windows;10;;Professional, x64)`;
+    private static readonly DEFAULT_UserAgent: string = `RiotClient/65.0.10.5130441.0 %s (Windows;10;;Professional, x64)`;
     private static readonly DEFAULT_Ciphers: Array<string> = [
-        "TLS_CHACHA20_POLY1305_SHA256",
+        "ECDHE_ECDSA_AES128_GCM_SHA256",
+        "ECDHE_ECDSA_CHACHA20_POLY1305",
+        "ECDHE_RSA_AES128_GCM_SHA256",
+        "ECDHE_RSA_CHACHA20_POLY1305",
+        "ECDHE_ECDSA_AES256_GCM_SHA384",
+        "ECDHE_RSA_AES256_GCM_SHA384",
+        "AEAD_AES128_GCM_SHA256",
+        "AEAD_AES256_GCM_SHA384",
+        "AEAD_CHACHA20_POLY1305_SHA256",
         "TLS_AES_128_GCM_SHA256",
+        "TLS_CHACHA20_POLY1305_SHA256",
         "TLS_AES_256_GCM_SHA384",
-        "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256",
-        "TLS_AES_128_CCM_8_SHA256",
-        "TLS_AES_128_CCM_SHA256"
+        "TLS_AES_128_CCM_SHA256",
+        "TLS_AES_128_CCM_8_SHA256"
     ];
-    private static readonly DEFAULT_ClientVersion: string = `release-06.08-shipping-14-872043`;
+    private static readonly DEFAULT_ClientVersion: string = `release-06.11-shipping-10-893942`;
     private static readonly DEFAULT_ClientPlatform: Required<AuthCore.ClientPlatfrom> = {
         platformType: `PC`,
         platformOS: `Windows`,
