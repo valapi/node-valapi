@@ -1,6 +1,6 @@
 {
   "name": "valorant.ts",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
     "access": "public"
@@ -27,11 +27,11 @@
   },
   "homepage": "https://github.com/valapi/node-valapi/tree/master/packages/valorant.ts#readme",
   "dependencies": {
-    "@valapi/auth": "^3.1.0",
-    "@valapi/lib": "^3.1.0",
-    "@valapi/riot-api": "^3.1.0",
-    "@valapi/valorant-api.com": "^3.1.0",
-    "@valapi/web-client": "^3.1.0"
+    "@valapi/auth": "^3.1.1",
+    "@valapi/lib": "^3.1.1",
+    "@valapi/riot-api": "^3.1.1",
+    "@valapi/valorant-api.com": "^3.1.1",
+    "@valapi/web-client": "^3.1.1"
   },
   "directories": {
     "lib": "build",

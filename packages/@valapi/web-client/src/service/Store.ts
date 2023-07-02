@@ -29,6 +29,7 @@ export namespace Store {
         OfferID: string;
         StorefrontItemID: string;
         Offer: Store.Offer;
+        DiscountedPercent: number;
     }>;
 
     export interface Bundle {
@@ -84,11 +85,19 @@ export namespace Store {
             }>;
             BonusStoreRemainingDurationInSeconds: number;
         };
+        AccessoryStore: {
+            AccessoryStoreOffers: Array<{
+                Offer: Store.Offer;
+                ContractID: string;
+            }>;
+            AccessoryStoreRemainingDurationInSeconds: number;
+            StorefrontID: string;
+        };
     }
 
     export interface Offers {
         Offers: Array<Store.Offer>;
-        UpgradeCurrencyOffers: Store.UpgradeCurrencyOffers;
+        UpgradeCurrencyOffers: Store.UpgradeCurrencyOffers; // DiscountedPercent
     }
 
     export interface Entitlements {
@@ -105,6 +114,16 @@ export namespace Store {
             ItemID: string;
             InstanceID: string;
         }>;
+    }
+
+    export interface Agent {
+        AgentStore: {
+            AgentStoreOffers: Array<{
+                AgentID: string;
+                StoreOffers: Array<Store.Offer>;
+            }>;
+            FeaturedAgent: string;
+        }
     }
 }
 
@@ -155,5 +174,12 @@ export class Store extends WebClientService {
      */
     public async revealNightMarketOffers(subject: string): Promise<AxiosResponse<any>> {
         return await this.axios.post(`${this.apiRegion.url.playerData}/store/v2/storefront/${subject}/nightmarket/offers`);
+    }
+
+    /**
+     * @returns {Promise<AxiosResponse<Store.Agent>>}
+     */
+    public async getAgent(): Promise<AxiosResponse<Store.Agent>> {
+        return await this.axios.get(`${this.apiRegion.url.playerData}/store/v1/storefronts/agent`);
     }
 }

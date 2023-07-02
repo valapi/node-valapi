@@ -11,8 +11,9 @@ export class User extends CookieAuthenticator {
         // cookie
 
         const CookieResponse: AxiosResponse<AuthService.TokenResponse> = await this.authorize();
+        const CookieSetStrings = this.cookie.getSetCookieStringsSync("https://auth.riotgames.com");
 
-        if (!CookieResponse.headers["set-cookie"] || !CookieResponse.headers["set-cookie"].find((element: string) => new RegExp(`^asid`).test(element))) {
+        if (!CookieSetStrings.find((element: string) => new RegExp(`^asid`).test(element))) {
             throw new ValError({
                 name: "UserAuthenticator_Error",
                 message: CookieResponse.data.type === "error" ? CookieResponse.data.error : "Cookie is undefined",
@@ -32,7 +33,7 @@ export class User extends CookieAuthenticator {
             },
             {
                 headers: {
-                    Cookie: CookieResponse.headers["set-cookie"].find((element: string) => new RegExp(`^asid`).test(element))
+                    Cookie: CookieSetStrings.find((element: string) => new RegExp(`^asid`).test(element))
                 }
             }
         );

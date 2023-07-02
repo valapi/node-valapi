@@ -66,7 +66,7 @@ export namespace AuthCore {
  * Authentication Core
  */
 export class AuthCore {
-    private _config: Required<AuthCore.Config> = AuthCore.Default.config;
+    private _config: Required<AuthCore.Config>;
 
     private _isMultifactorAccount = false;
     private _isAuthenticationError = false;
@@ -92,7 +92,7 @@ export class AuthCore {
     };
     private static readonly DEFAULT_UserAgent: string = `RiotClient/65.0.10.5130441.0 %s (Windows;10;;Professional, x64)`;
     private static readonly DEFAULT_Ciphers: Array<string> = ["TLS_AES_128_GCM_SHA256", "TLS_CHACHA20_POLY1305_SHA256", "TLS_AES_256_GCM_SHA384", "TLS_AES_128_CCM_SHA256", "TLS_AES_128_CCM_8_SHA256"];
-    private static readonly DEFAULT_ClientVersion: string = `release-06.11-shipping-10-893942`;
+    private static readonly DEFAULT_ClientVersion: string = `release-07.00-shipping-29-913116`;
     private static readonly DEFAULT_ClientPlatform: Required<AuthCore.ClientPlatfrom> = {
         platformType: `PC`,
         platformOS: `Windows`,
@@ -106,6 +106,7 @@ export class AuthCore {
         },
         axiosConfig: {
             headers: {
+                "Content-Type": "application/json",
                 "User-Agent": AuthCore.DEFAULT_UserAgent
             }
         },
@@ -123,7 +124,21 @@ export class AuthCore {
      * @param {AuthCore.Config} config Config
      */
     public constructor(config: AuthCore.Config = {}) {
-        this.config = config;
+        this._config = {
+            ...AuthCore.Default.config,
+            ...config,
+            ...{
+                client: {
+                    ...AuthCore.Default.config.client,
+                    ...config.client
+                },
+                axiosConfig: {
+                    ...AuthCore.Default.config.axiosConfig,
+                    ...config.axiosConfig
+                }
+            }
+        };
+        this.config = this._config;
 
         if (config.region) {
             this._isRegionConfig = true;

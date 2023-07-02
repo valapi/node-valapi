@@ -11,6 +11,7 @@ export default class Data {
         onefa: "Replication",
         snowball: "Snowball_Fight",
         swiftplay: "Swiftplay",
+        hurm: "Team_Deathmatch",
         "": "Custom",
         tournamentmode: "Custom_Tournament",
 
@@ -26,6 +27,7 @@ export default class Data {
         Replication: "onefa",
         Snowball_Fight: "snowball",
         Swiftplay: "swiftplay",
+        Team_Deathmatch: "hurm",
         Custom: "",
         Custom_Tournament: "tournamentmode"
     };

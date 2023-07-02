@@ -10,18 +10,20 @@ describe("webclient.api", () => {
 
         const subject = myClient.getSubject();
 
-        [
-            await myClient.getUserInfo(),
-            await myClient.AccountXP.getPlayer(subject),
-            await myClient.ContractDefinitions.fetchItemProgression(),
-            await myClient.DisplayNameService.fetchPlayers(subject),
-            await myClient.Favorites.get(subject),
-            await myClient.MassRewards.reconcilePlayer(subject),
-            await myClient.Match.fetchMatchHistory(subject),
-            await myClient.Personalization.getPlayerLoadout(subject),
-            await myClient.Store.getOffers()
-        ].forEach((element) => {
-            expect(element.isRequestError).toBe(false);
+        Promise.all([
+            myClient.getUserInfo(),
+            myClient.AccountXP.getPlayer(subject),
+            myClient.ContractDefinitions.fetchItemProgression(),
+            myClient.DisplayNameService.fetchPlayers(subject),
+            myClient.Favorites.get(subject),
+            myClient.MassRewards.reconcilePlayer(subject),
+            myClient.Match.fetchMatchHistory(subject),
+            myClient.Personalization.getPlayerLoadout(subject),
+            myClient.Store.getOffers()
+        ]).then((values) => {
+            values.forEach((element) => {
+                expect(element.status === 200).toBe(true);
+            });
         });
     });
 });

@@ -11,6 +11,6 @@ describe("valorant_ts.patchnote", () => {
     test("page content", async () => {
         const pageData = await ValPatchNote.getContent(Locale.Default.Spanish_Mexico);
 
-        expect(pageData.isRequestError).toBe(false);
+        expect(pageData.status === 200).toBe(true);
     });
 });

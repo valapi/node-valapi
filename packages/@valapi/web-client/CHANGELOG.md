@@ -1,3 +1,11 @@
+# 3.1.1
+
+**Add**
+
+_endpoints_
+
+-   `Store.getAgent()`
+
 # 3.0.0
 
 **Add**
