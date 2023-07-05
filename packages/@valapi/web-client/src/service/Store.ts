@@ -123,7 +123,7 @@ export namespace Store {
                 StoreOffers: Array<Store.Offer>;
             }>;
             FeaturedAgent: string;
-        }
+        };
     }
 }
 

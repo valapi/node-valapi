@@ -1,6 +1,7 @@
 import type { AxiosResponse } from "axios";
 
 import { AuthService } from "../client/AuthService";
+import type { AuthCore } from "../client/AuthCore";
 
 export class Cookie extends AuthService {
     public async authorize(): Promise<AxiosResponse<AuthService.TokenResponse>> {
@@ -14,7 +15,10 @@ export class Cookie extends AuthService {
         });
     }
 
-    public async reauthorize() {
+    /**
+     * @returns {Promise<AuthCore.Json>}
+     */
+    public async reauthorize(): Promise<AuthCore.Json> {
         this.cookie.removeAllCookiesSync();
 
         // token

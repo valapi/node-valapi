@@ -4,7 +4,6 @@ import type { AxiosInstance, CreateAxiosDefaults } from "axios";
 import { Region } from "@valapi/lib";
 
 import { RiotApiRegion } from "./RiotApiRegion";
-import type { RiotApiService } from "./RiotApiService";
 
 import { AccountV1 } from "../service/AccountV1";
 import { ContentV1 } from "../service/ContentV1";
@@ -82,13 +81,8 @@ export class RiotApi {
 
     // service
 
-    /**
-     *
-     * @param {T} Service Custom Service
-     * @returns {T}
-     */
-    public getService<T extends RiotApiService>(Service: new (axios: AxiosInstance, apiRegion: RiotApiRegion) => T): T {
-        return new Service(this.axios, new RiotApiRegion(this.config.region));
+    public get request() {
+        return this.axios.request;
     }
 
     public get AccountV1(): AccountV1 {

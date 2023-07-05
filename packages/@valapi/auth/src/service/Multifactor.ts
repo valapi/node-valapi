@@ -8,7 +8,7 @@ export class Multifactor extends AuthService {
 
         const TokenResponse: AxiosResponse<AuthService.TokenResponse> = await this.axios.put("https://auth.riotgames.com/api/v1/authorization", {
             type: "multifactor",
-            code: `${verificationCode}`,
+            code: verificationCode.toString(),
             rememberDevice: true
         });
 

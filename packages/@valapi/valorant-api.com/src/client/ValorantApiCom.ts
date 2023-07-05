@@ -3,8 +3,6 @@ import type { AxiosInstance, AxiosResponse, CreateAxiosDefaults } from "axios";
 
 import { Locale } from "@valapi/lib";
 
-import type { ValorantApiComService } from "./ValorantApiComService";
-
 import { Agents } from "../service/Agents";
 import { Buddies } from "../service/Buddies";
 import { Bundles } from "../service/Bundles";
@@ -132,13 +130,8 @@ export class ValorantApiCom {
 
     // service
 
-    /**
-     *
-     * @param {T} Service Custom Service
-     * @returns {T}
-     */
-    public getService<T extends ValorantApiComService>(Service: new (axios: AxiosInstance) => T): T {
-        return new Service(this.axios);
+    public get request() {
+        return this.axios.request;
     }
 
     public get Agents(): Agents {

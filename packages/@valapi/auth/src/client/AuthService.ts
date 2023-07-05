@@ -2,7 +2,6 @@ import { URLSearchParams } from "node:url";
 
 import axios from "axios";
 import type { AxiosInstance, AxiosResponse } from "axios";
-import { HttpsCookieAgent, HttpCookieAgent } from "http-cookie-agent/http";
 
 import { ValError } from "@valapi/lib";
 import type { Region } from "@valapi/lib";
@@ -57,66 +56,6 @@ export class AuthService extends AuthCore {
         super(config);
         this.fromJSON(account);
 
-        this.config = {
-            ...config,
-            ...{
-                axiosConfig: {
-                    ...config.axiosConfig,
-                    ...{
-                        headers: {
-                            ...config.axiosConfig?.headers,
-                            ...{
-                                Cookie: this.cookie.getSetCookieStringsSync("https://auth.riotgames.com").find((element) => new RegExp(`^ssid`).test(element)),
-                                Authorization: `${this.token_type} ${this.access_token}`,
-                                "X-Riot-Entitlements-JWT": account.entitlements_token
-                            }
-                        },
-                        httpAgent: new HttpCookieAgent({
-                            ...{
-                                cookies: {
-                                    jar: this.cookie
-                                },
-                                keepAlive: true,
-                                host: config.axiosConfig?.proxy ? config.axiosConfig?.proxy.host : undefined,
-                                port: config.axiosConfig?.proxy ? config.axiosConfig?.proxy.port : undefined,
-                                timeout: config.axiosConfig?.timeout
-                            },
-                            ...(config.axiosConfig && config.axiosConfig.proxy
-                                ? {
-                                      host: config.axiosConfig?.proxy.host,
-                                      port: config.axiosConfig?.proxy.port
-                                  }
-                                : {})
-                        }),
-                        httpsAgent: new HttpsCookieAgent({
-                            ...{
-                                cookies: {
-                                    jar: this.cookie
-                                },
-                                keepAlive: true,
-                                ciphers: AuthCore.Default.ciphers,
-                                honorCipherOrder: true,
-                                minVersion: "TLSv1.3",
-                                maxVersion: "TLSv1.3",
-                                rejectUnauthorized: false,
-                                timeout: config.axiosConfig?.timeout
-                            },
-                            ...(config.axiosConfig?.socketPath
-                                ? {
-                                      path: config.axiosConfig?.socketPath
-                                  }
-                                : config.axiosConfig?.proxy
-                                ? {
-                                      host: config.axiosConfig?.proxy.host,
-                                      port: config.axiosConfig?.proxy.port
-                                  }
-                                : {})
-                        })
-                    }
-                }
-            }
-        };
-
         this.axios = axios.create(this.config.axiosConfig);
     }
 
@@ -147,7 +86,10 @@ export class AuthService extends AuthCore {
         if (EntitlementsResponse.data.entitlements_token) {
             this.entitlements_token = EntitlementsResponse.data.entitlements_token;
         } else {
-            this.isAuthenticationError = true;
+            this.authenticationInfo = {
+                isError: true,
+                message: "entitlements token not found"
+            };
         }
     }
 
@@ -164,7 +106,10 @@ export class AuthService extends AuthCore {
         let Search_Token = "access_token";
         if (!Search_Path) {
             if (!Search_URL.hash) {
-                this.isAuthenticationError = true;
+                this.authenticationInfo = {
+                    isError: true,
+                    message: "access token not found"
+                };
 
                 return this.toJSON();
             } else {
@@ -184,7 +129,7 @@ export class AuthService extends AuthCore {
 
         // REGION
 
-        if (this.id_token && this.isAuthenticationError === false) {
+        if (this.id_token && this.authenticationInfo.isError === false) {
             const RegionResponse: AxiosResponse<{
                 token: string;
                 affinities: {
@@ -220,7 +165,10 @@ export class AuthService extends AuthCore {
      */
     public async fromResponse(TokenResponse: AxiosResponse<AuthService.TokenResponse>): Promise<AuthCore.Json> {
         if (!TokenResponse.data || !TokenResponse.data.type || TokenResponse.data.type === "error") {
-            this.isAuthenticationError = true;
+            this.authenticationInfo = {
+                isError: true,
+                message: "response error"
+            };
 
             return this.toJSON();
         }
@@ -228,14 +176,19 @@ export class AuthService extends AuthCore {
         // MFA
 
         if (TokenResponse.data.type && TokenResponse.data.type === "multifactor") {
-            this.isMultifactorAccount = true;
+            this.authenticationInfo = {
+                isMultifactor: true,
+                message: "multifactor account"
+            };
 
             return this.toJSON();
         }
 
         // COOKIE
 
-        if (!TokenResponse.headers["set-cookie"] || !TokenResponse.headers["set-cookie"].find((element: string) => new RegExp(`^ssid`).test(element))) {
+        const CookieSetStrings = this.cookie.getSetCookieStringsSync("https://auth.riotgames.com");
+
+        if (!CookieSetStrings.find((element: string) => new RegExp(`^ssid`).test(element))) {
             throw new ValError({
                 name: "AuthService_Error",
                 message: TokenResponse.data.type === "auth" && TokenResponse.data.error ? TokenResponse.data.error : "Cookie is undefined",
@@ -246,7 +199,10 @@ export class AuthService extends AuthCore {
         // URL
 
         if (TokenResponse.data.type !== "response" || !TokenResponse.data.response) {
-            this.isAuthenticationError = true;
+            this.authenticationInfo = {
+                isError: true,
+                message: "no response"
+            };
 
             return this.toJSON();
         }

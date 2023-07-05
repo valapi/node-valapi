@@ -33,7 +33,7 @@ export class User extends CookieAuthenticator {
             },
             {
                 headers: {
-                    Cookie: CookieSetStrings.find((element: string) => new RegExp(`^asid`).test(element))
+                    Cookie: CookieSetStrings
                 }
             }
         );

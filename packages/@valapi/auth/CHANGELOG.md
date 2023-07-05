@@ -1,3 +1,21 @@
+# 3.2.0
+
+**Add**
+
+-   `AuthCore.authenticationInfo`
+
+**Remove**
+
+-   `AuthCore.isMultifactorAccount`
+-   `AuthCore.isAuthenticationError`
+
+### Typescript
+
+**Add**
+
+-   `AuthCore.JsonRegion`
+-   `AuthCore.JsonAuthenticationInfo`
+
 # 3.0.0
 
 **Add**

@@ -1,3 +1,13 @@
+# 3.2.0
+
+**Add**
+
+-   `RiotApi.request()`
+
+**Remove**
+
+-   `RiotApi.getService()`
+
 # 3.0.0
 
 **Add**

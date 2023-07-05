@@ -1,10 +1,16 @@
-# 3.1.1
+# 3.2.0
 
 **Add**
+
+-   `WebClient.request()`
 
 _endpoints_
 
 -   `Store.getAgent()`
+
+**Remove**
+
+-   `WebClient.getService()`
 
 # 3.0.0
 

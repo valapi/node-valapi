@@ -7,7 +7,6 @@ import { AuthClient } from "@valapi/auth";
 import type { AuthCore } from "@valapi/auth";
 
 import { WebClientRegion } from "./WebClientRegion";
-import type { WebClientService } from "./WebClientService";
 
 import { AccountXP } from "../service/AccountXP";
 import { Config } from "../service/Config";
@@ -30,7 +29,7 @@ import { Session } from "../service/Session";
 import { Store } from "../service/Store";
 
 export namespace WebClient {
-    export interface UserJson extends Omit<AuthCore.Json, "id_token" | "expires_in" | "token_type" | "session_state" | "createAt" | "isAuthenticationError" | "region"> {
+    export interface UserJson extends Omit<AuthCore.Json, "id_token" | "expires_in" | "token_type" | "session_state" | "createAt" | "authenticationInfo" | "region"> {
         region: Region.Identify;
     }
 }
@@ -54,7 +53,6 @@ export class WebClient extends AuthClient {
             cookie: this.cookie.serializeSync(),
             access_token: this.access_token,
             entitlements_token: this.entitlements_token,
-            isMultifactorAccount: this.isMultifactorAccount,
             region: this.region.live
         };
     }
@@ -68,7 +66,6 @@ export class WebClient extends AuthClient {
         this.cookie = CookieJar.deserializeSync(JSON.stringify(account.cookie));
         this.access_token = account.access_token;
         this.entitlements_token = account.entitlements_token;
-        this.isMultifactorAccount = account.isMultifactorAccount;
         this.region =
             this._isRegionConfig === true
                 ? this.region
@@ -146,13 +143,8 @@ export class WebClient extends AuthClient {
 
     // service
 
-    /**
-     *
-     * @param {T} Service Custom Service
-     * @returns {T}
-     */
-    public getService<T extends WebClientService>(Service: new (axios: AxiosInstance, apiRegion: WebClientRegion) => T): T {
-        return new Service(this.axios, new WebClientRegion(this.region.live));
+    public get request() {
+        return this.axios.request;
     }
 
     public get AccountXP(): AccountXP {

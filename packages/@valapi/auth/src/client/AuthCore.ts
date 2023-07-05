@@ -1,9 +1,24 @@
 import type { CreateAxiosDefaults } from "axios";
 import { CookieJar } from "tough-cookie";
+import { HttpCookieAgent, HttpsCookieAgent } from "http-cookie-agent/http";
+import type { CookieAgent } from "http-cookie-agent/http";
+import type { Agent as HttpAgent } from "http";
+import type { Agent as HttpsAgent } from "https";
 
 import { Region, ValBase64 } from "@valapi/lib";
 
 export namespace AuthCore {
+    export interface JsonRegion {
+        pbe: Region.Identify;
+        live: Region.Identify;
+    }
+
+    export interface JsonAuthenticationInfo {
+        isError: boolean;
+        isMultifactor: boolean;
+        message: string;
+    }
+
     /**
      * Account Data
      */
@@ -16,12 +31,8 @@ export namespace AuthCore {
         session_state: string;
         entitlements_token: string;
         createAt: number;
-        isMultifactorAccount: boolean;
-        isAuthenticationError: boolean;
-        region: {
-            pbe: Region.Identify;
-            live: Region.Identify;
-        };
+        authenticationInfo: AuthCore.JsonAuthenticationInfo;
+        region: AuthCore.JsonRegion;
     }
 
     /**
@@ -66,10 +77,13 @@ export namespace AuthCore {
  * Authentication Core
  */
 export class AuthCore {
-    private _config: Required<AuthCore.Config>;
+    private _config: Required<AuthCore.Config> = AuthCore.Default.config;
 
-    private _isMultifactorAccount = false;
-    private _isAuthenticationError = false;
+    private _authenticationInfo: AuthCore.JsonAuthenticationInfo = {
+        isError: false,
+        isMultifactor: false,
+        message: ""
+    };
 
     private _createAt: number = Date.now();
 
@@ -80,13 +94,13 @@ export class AuthCore {
     private _token_type = AuthCore.token_type;
     private _session_state = "";
     private _entitlements_token = "";
-    private _region: Required<AuthCore.Json["region"]>;
+    private _region: Required<AuthCore.JsonRegion>;
 
     protected readonly _isRegionConfig: boolean = false;
 
     // default
 
-    private static readonly DEFAULT_Region: Required<AuthCore.Json["region"]> = {
+    private static readonly DEFAULT_Region: Required<AuthCore.JsonRegion> = {
         pbe: "na",
         live: "na"
     };
@@ -124,25 +138,11 @@ export class AuthCore {
      * @param {AuthCore.Config} config Config
      */
     public constructor(config: AuthCore.Config = {}) {
-        this._config = {
-            ...AuthCore.Default.config,
-            ...config,
-            ...{
-                client: {
-                    ...AuthCore.Default.config.client,
-                    ...config.client
-                },
-                axiosConfig: {
-                    ...AuthCore.Default.config.axiosConfig,
-                    ...config.axiosConfig
-                }
-            }
-        };
-        this.config = this._config;
-
         if (config.region) {
             this._isRegionConfig = true;
         }
+
+        this.config = config;
 
         this._region = {
             ...AuthCore.Default.region,
@@ -194,24 +194,17 @@ export class AuthCore {
         return this._config;
     }
 
-    // isMultifactorAccount
+    // authenticationInfo
 
-    protected set isMultifactorAccount(value: boolean) {
-        this._isMultifactorAccount = value;
+    protected set authenticationInfo(value: Partial<AuthCore.JsonAuthenticationInfo>) {
+        this._authenticationInfo = {
+            ...this._authenticationInfo,
+            ...value
+        };
     }
 
-    public get isMultifactorAccount(): boolean {
-        return this._isMultifactorAccount;
-    }
-
-    // isAuthenticationError
-
-    protected set isAuthenticationError(value: boolean) {
-        this._isAuthenticationError = value;
-    }
-
-    public get isAuthenticationError(): boolean {
-        return this._isAuthenticationError;
+    public get authenticationInfo(): AuthCore.JsonAuthenticationInfo {
+        return this._authenticationInfo;
     }
 
     // createAt
@@ -226,14 +219,63 @@ export class AuthCore {
 
     // cookie
 
+    protected generateHttpCookieAgent(cookie: CookieJar): CookieAgent<HttpAgent> {
+        return new HttpCookieAgent({
+            ...{
+                cookies: {
+                    jar: cookie
+                },
+                keepAlive: true,
+                host: this.config.axiosConfig?.proxy ? this.config.axiosConfig?.proxy.host : undefined,
+                port: this.config.axiosConfig?.proxy ? this.config.axiosConfig?.proxy.port : undefined,
+                timeout: this.config.axiosConfig?.timeout
+            },
+            ...(this.config.axiosConfig && this.config.axiosConfig.proxy
+                ? {
+                      host: this.config.axiosConfig?.proxy.host,
+                      port: this.config.axiosConfig?.proxy.port
+                  }
+                : {})
+        });
+    }
+
+    protected generateHttpsCookieAgent(cookie: CookieJar): CookieAgent<HttpsAgent> {
+        return new HttpsCookieAgent({
+            ...{
+                cookies: {
+                    jar: cookie
+                },
+                keepAlive: true,
+                ciphers: AuthCore.Default.ciphers,
+                honorCipherOrder: true,
+                minVersion: "TLSv1.3",
+                maxVersion: "TLSv1.3",
+                rejectUnauthorized: false,
+                timeout: this.config.axiosConfig?.timeout
+            },
+            ...(this.config.axiosConfig?.socketPath
+                ? {
+                      path: this.config.axiosConfig?.socketPath
+                  }
+                : this.config.axiosConfig?.proxy
+                ? {
+                      host: this.config.axiosConfig?.proxy.host,
+                      port: this.config.axiosConfig?.proxy.port
+                  }
+                : {})
+        });
+    }
+
     protected set cookie(value: CookieJar) {
         this._cookie = value;
 
         this.config = {
             axiosConfig: {
                 headers: {
-                    Cookie: this.cookie.getSetCookieStringsSync("https://auth.riotgames.com").find((element) => new RegExp(`^ssid`).test(element))
-                }
+                    Cookie: value.getCookieStringSync("https://auth.riotgames.com")
+                },
+                httpAgent: this.generateHttpCookieAgent(value),
+                httpsAgent: this.generateHttpsCookieAgent(value)
             }
         };
     }
@@ -336,14 +378,14 @@ export class AuthCore {
 
     // region
 
-    protected set region(value: Partial<AuthCore.Json["region"]>) {
+    protected set region(value: Partial<AuthCore.JsonRegion>) {
         this._region = {
             pbe: value.pbe ? value.pbe : this._region && this._region.pbe ? this._region.pbe : AuthCore.Default.region.pbe,
             live: this._isRegionConfig === true ? this.config.region : value.live ? value.live : this._region && this._region.live ? this._region.live : AuthCore.Default.region.live
         };
     }
 
-    public get region(): Required<AuthCore.Json["region"]> {
+    public get region(): Required<AuthCore.JsonRegion> {
         return this._region;
     }
 
@@ -385,8 +427,7 @@ export class AuthCore {
             session_state: this.session_state,
             entitlements_token: this.entitlements_token,
             createAt: this.createAt,
-            isMultifactorAccount: this.isMultifactorAccount,
-            isAuthenticationError: this.isAuthenticationError,
+            authenticationInfo: this.authenticationInfo,
             region: this.region
         };
     }
@@ -405,8 +446,7 @@ export class AuthCore {
         this.session_state = account.session_state || "";
         this.entitlements_token = account.entitlements_token;
         this.createAt = account.createAt;
-        this.isMultifactorAccount = account.isMultifactorAccount;
-        this.isAuthenticationError = account.isAuthenticationError;
+        this.authenticationInfo = account.authenticationInfo;
         this.region =
             this._isRegionConfig === true
                 ? {

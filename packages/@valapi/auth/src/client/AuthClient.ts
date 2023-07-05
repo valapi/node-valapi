@@ -24,7 +24,7 @@ export class AuthClient extends AuthCore {
         const ValUser = new UserAuthenticator(this.config, this.toJSON());
 
         const ValUserAuth = await ValUser.loginform(username, password);
-        if (ValUserAuth.isAuthenticationError === true) {
+        if (ValUserAuth.authenticationInfo.isError === true) {
             throw new ValError({
                 name: "AuthClient_Error",
                 message: "Login Error",
@@ -33,6 +33,9 @@ export class AuthClient extends AuthCore {
         }
 
         this.fromJSON(ValUserAuth);
+        this.authenticationInfo = {
+            message: "login success"
+        };
     }
 
     /**
@@ -44,7 +47,7 @@ export class AuthClient extends AuthCore {
         const ValMultifactor = new MultifactorAuthenticator(this.config, this.toJSON());
 
         const ValMultifactorAuth = await ValMultifactor.twofactor(verificationCode);
-        if (ValMultifactorAuth.isAuthenticationError === true) {
+        if (ValMultifactorAuth.authenticationInfo.isError === true) {
             throw new ValError({
                 name: "AuthClient_Error",
                 message: "Multifactor Error",
@@ -53,11 +56,14 @@ export class AuthClient extends AuthCore {
         }
 
         this.fromJSON(ValMultifactorAuth);
+        this.authenticationInfo = {
+            message: "verify success"
+        };
     }
 
     /**
      *
-     * @param {CookieJar} cookie ssid Cookie
+     * @param {CookieJar} cookie cookie
      * @returns {Promise<void>}
      */
     public async fromCookie(cookie: CookieJar): Promise<void> {
@@ -74,7 +80,7 @@ export class AuthClient extends AuthCore {
         const ValCookie = new CookieAuthenticator(this.config, this.toJSON());
 
         const ValReAuth = await ValCookie.reauthorize();
-        if (ValReAuth.isAuthenticationError === true) {
+        if (ValReAuth.authenticationInfo.isError === true) {
             throw new ValError({
                 name: "AuthClient_Error",
                 message: "Cookie Reauth Error",
@@ -83,6 +89,9 @@ export class AuthClient extends AuthCore {
         }
 
         this.fromJSON(ValReAuth);
+        this.authenticationInfo = {
+            message: "cookie refresh success"
+        };
     }
 
     // data
