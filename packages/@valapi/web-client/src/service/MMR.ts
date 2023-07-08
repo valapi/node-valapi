@@ -113,16 +113,16 @@ export class MMR extends WebClientService {
      * @param {string} subject Player UUID
      * @returns {Promise<AxiosResponse<MMR.Player>>}
      */
-    public async fetchPlayer(subject: string): Promise<AxiosResponse<MMR.Player>> {
-        return await this.axios.get(`${this.apiRegion.url.playerData}/mmr/v1/players/${subject}`);
+    public fetchPlayer(subject: string): Promise<AxiosResponse<MMR.Player>> {
+        return this.axios.get(`${this.apiRegion.url.playerData}/mmr/v1/players/${subject}`);
     }
 
     /**
      * @param {string} subject Player UUID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async hideActRankBadge(subject: string): Promise<AxiosResponse<any>> {
-        return await this.axios.post(`${this.apiRegion.url.playerData}/mmr/v1/players/${subject}/hideactrankbadge`);
+    public hideActRankBadge(subject: string): Promise<AxiosResponse<any>> {
+        return this.axios.post(`${this.apiRegion.url.playerData}/mmr/v1/players/${subject}/hideactrankbadge`);
     }
 
     /**
@@ -132,14 +132,14 @@ export class MMR extends WebClientService {
      * @param {string} serachUsername Search Username
      * @returns {Promise<AxiosResponse<MMR.Leaderboard>>}
      */
-    public async fetchLeaderboard(seasonId: string, startIndex = 0, size = 510, serachUsername?: string): Promise<AxiosResponse<MMR.Leaderboard>> {
+    public fetchLeaderboard(seasonId: string, startIndex = 0, size = 510, serachUsername?: string): Promise<AxiosResponse<MMR.Leaderboard>> {
         let _url = `${this.apiRegion.url.playerData}/mmr/v1/leaderboards/affinity/${this.apiRegion.id}/queue/competitive/season/${seasonId}?startIndex=${startIndex}&size=${size}`;
 
         if (serachUsername) {
             _url += `&query=${serachUsername}`;
         }
 
-        return await this.axios.get(_url);
+        return this.axios.get(_url);
     }
 
     /**
@@ -149,13 +149,13 @@ export class MMR extends WebClientService {
      * @param {number} endIndex End Index (default: 10)
      * @returns {Promise<AxiosResponse<MMR.CompetitiveUpdates>>}
      */
-    public async fetchCompetitiveUpdates(subject: string, queueId?: QueueId.Identify, startIndex = 0, endIndex = 10): Promise<AxiosResponse<MMR.CompetitiveUpdates>> {
+    public fetchCompetitiveUpdates(subject: string, queueId?: QueueId.Identify, startIndex = 0, endIndex = 10): Promise<AxiosResponse<MMR.CompetitiveUpdates>> {
         let _url = `${this.apiRegion.url.playerData}/mmr/v1/players/${subject}/competitiveupdates?startIndex=${startIndex}&endIndex=${endIndex}`;
 
         if (queueId) {
             _url += `&queue=${queueId}`;
         }
 
-        return await this.axios.get(_url);
+        return this.axios.get(_url);
     }
 }

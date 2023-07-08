@@ -22,19 +22,19 @@ export namespace Buddies {
 }
 
 export class Buddies extends ValorantApiComService {
-    public async get(): Promise<ValorantApiCom.Response.Data<Buddies.Buddies[]>> {
-        return await this.axios.get("/buddies");
+    public get(): Promise<ValorantApiCom.Response.Data<Buddies.Buddies[]>> {
+        return this.axios.get("/buddies");
     }
 
-    public async getLevels(): Promise<ValorantApiCom.Response.Data<Buddies.BuddyLevels[]>> {
-        return await this.axios.get(`/buddies/levels`);
+    public getLevels(): Promise<ValorantApiCom.Response.Data<Buddies.BuddyLevels[]>> {
+        return this.axios.get(`/buddies/levels`);
     }
 
-    public async getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Buddies.Buddies>> {
-        return await this.axios.get(`/buddies/${uuid}`);
+    public getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Buddies.Buddies>> {
+        return this.axios.get(`/buddies/${uuid}`);
     }
 
-    public async getLevelByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Buddies.BuddyLevels>> {
-        return await this.axios.get(`/buddies/levels/${uuid}`);
+    public getLevelByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Buddies.BuddyLevels>> {
+        return this.axios.get(`/buddies/levels/${uuid}`);
     }
 }

@@ -64,7 +64,7 @@ export class StatusV1 extends RiotApiService {
      * Get VALORANT status for the given platform.
      * @returns {Promise<AxiosResponse<StatusV1.PlatformDataDto>>}
      */
-    public async platformData(): Promise<AxiosResponse<StatusV1.PlatformDataDto>> {
-        return await this.axios.get(`${this.apiRegion.url.server}/val/status/v1/platform-data`);
+    public platformData(): Promise<AxiosResponse<StatusV1.PlatformDataDto>> {
+        return this.axios.get(`${this.apiRegion.url.server}/val/status/v1/platform-data`);
     }
 }

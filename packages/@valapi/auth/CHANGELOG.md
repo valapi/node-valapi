@@ -15,6 +15,7 @@
 
 -   `AuthCore.JsonRegion`
 -   `AuthCore.JsonAuthenticationInfo`
+-   `AuthCore.JsonAuthenticationInfoMessage`
 
 # 3.0.0
 

@@ -30,8 +30,8 @@ export class AccountV1 extends RiotApiService {
      * @param {string} puuid Player UUID
      * @returns {Promise<AxiosResponse<AccountV1.AccountDto>>}
      */
-    public async byPuuid(puuid: string): Promise<AxiosResponse<AccountV1.AccountDto>> {
-        return await this.axios.get(`${this.apiRegion.url.api}/riot/account/v1/accounts/by-puuid/${puuid}`);
+    public byPuuid(puuid: string): Promise<AxiosResponse<AccountV1.AccountDto>> {
+        return this.axios.get(`${this.apiRegion.url.api}/riot/account/v1/accounts/by-puuid/${puuid}`);
     }
 
     /**
@@ -40,8 +40,8 @@ export class AccountV1 extends RiotApiService {
      * @param {string} tagLine In-Game Tag
      * @returns {Promise<AxiosResponse<AccountV1.AccountDto>>}
      */
-    public async byRiotId(gameName: string, tagLine: string): Promise<AxiosResponse<AccountV1.AccountDto>> {
-        return await this.axios.get(`${this.apiRegion.url.api}/riot/account/v1/accounts/by-riot-id/${gameName}/${tagLine}`);
+    public byRiotId(gameName: string, tagLine: string): Promise<AxiosResponse<AccountV1.AccountDto>> {
+        return this.axios.get(`${this.apiRegion.url.api}/riot/account/v1/accounts/by-riot-id/${gameName}/${tagLine}`);
     }
 
     /**
@@ -50,8 +50,8 @@ export class AccountV1 extends RiotApiService {
      * @param {string} game Game (default: val)
      * @returns {Promise<AxiosResponse<AccountV1.ActiveShardDto>>}
      */
-    public async activeShardsByGameAndPuuid(puuid: string, game: "val" | "lor" = "val"): Promise<AxiosResponse<AccountV1.ActiveShardDto>> {
-        return await this.axios.get(`${this.apiRegion.url.api}/riot/account/v1/active-shards/by-game/${game}/by-puuid/${puuid}`);
+    public activeShardsByGameAndPuuid(puuid: string, game: "val" | "lor" = "val"): Promise<AxiosResponse<AccountV1.ActiveShardDto>> {
+        return this.axios.get(`${this.apiRegion.url.api}/riot/account/v1/active-shards/by-game/${game}/by-puuid/${puuid}`);
     }
 
     /**
@@ -61,8 +61,8 @@ export class AccountV1 extends RiotApiService {
      * @param {string} authorization (Header Parameters)
      * @returns {Promise<AxiosResponse<AccountV1.AccountDto>>}
      */
-    public async byAccessToken(authorization: string): Promise<AxiosResponse<AccountV1.AccountDto>> {
-        return await this.axios.get(`${this.apiRegion.url.api}/riot/account/v1/accounts/me`, {
+    public byAccessToken(authorization: string): Promise<AxiosResponse<AccountV1.AccountDto>> {
+        return this.axios.get(`${this.apiRegion.url.api}/riot/account/v1/accounts/me`, {
             headers: {
                 Authorization: authorization
             }

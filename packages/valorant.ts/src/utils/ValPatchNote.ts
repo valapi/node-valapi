@@ -52,6 +52,6 @@ export class ValPatchNote {
     public static async getContent(language?: Locale.Identify, axiosConfig?: AxiosRequestConfig): Promise<AxiosResponse<any>> {
         const patchNoteInstance = new ValPatchNote(language);
 
-        return await axios.get(`${patchNoteInstance.url.pageData}/news/tags/patch-notes/page-data.json`, axiosConfig);
+        return axios.get(`${patchNoteInstance.url.pageData}/news/tags/patch-notes/page-data.json`, axiosConfig);
     }
 }

@@ -104,8 +104,8 @@ export class Contracts extends WebClientService {
      * @param {string} subject Player UUID
      * @returns {Promise<AxiosResponse<Contracts.Contracts>>}
      */
-    public async fetch(subject: string): Promise<AxiosResponse<Contracts.Contracts>> {
-        return await this.axios.get(`${this.apiRegion.url.playerData}/contracts/v1/contracts/${subject}`);
+    public fetch(subject: string): Promise<AxiosResponse<Contracts.Contracts>> {
+        return this.axios.get(`${this.apiRegion.url.playerData}/contracts/v1/contracts/${subject}`);
     }
 
     /**
@@ -113,8 +113,8 @@ export class Contracts extends WebClientService {
      * @param {string} contractId Contract ID
      * @returns {Promise<AxiosResponse<Contracts.Contracts>>}
      */
-    public async activate(subject: string, contractId: string): Promise<AxiosResponse<Contracts.Contracts>> {
-        return await this.axios.post(`${this.apiRegion.url.playerData}/contracts/v1/contracts/${subject}/special/${contractId}`);
+    public activate(subject: string, contractId: string): Promise<AxiosResponse<Contracts.Contracts>> {
+        return this.axios.post(`${this.apiRegion.url.playerData}/contracts/v1/contracts/${subject}/special/${contractId}`);
     }
 
     /**
@@ -123,8 +123,8 @@ export class Contracts extends WebClientService {
      * @param {string} definitionId Definition ID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async unlockItemProgress(subject: string, definitionId: string): Promise<AxiosResponse<any>> {
-        return await this.axios.post(`${this.apiRegion.url.playerData}/contracts/v2/item-upgrades/${definitionId}/${subject}`);
+    public unlockItemProgress(subject: string, definitionId: string): Promise<AxiosResponse<any>> {
+        return this.axios.post(`${this.apiRegion.url.playerData}/contracts/v2/item-upgrades/${definitionId}/${subject}`);
     }
 
     /**
@@ -133,8 +133,8 @@ export class Contracts extends WebClientService {
      * @param {string} contractId Contract ID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async unlockContractProgression(subject: string, contractId: string): Promise<AxiosResponse<any>> {
-        return await this.axios.post(`${this.apiRegion.url.playerData}/contracts/v1/contracts/${subject}/contracts/${contractId}/unlock`);
+    public unlockContractProgression(subject: string, contractId: string): Promise<AxiosResponse<any>> {
+        return this.axios.post(`${this.apiRegion.url.playerData}/contracts/v1/contracts/${subject}/contracts/${contractId}/unlock`);
     }
 
     /**
@@ -145,8 +145,8 @@ export class Contracts extends WebClientService {
      * @param {string} optionId Option ID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async unlockItemSidegrade(subject: string, definitionId: string, sidegradeId: string, optionId: string): Promise<AxiosResponse<any>> {
-        return await this.axios.post(`${this.apiRegion.url.playerData}/contracts/v1/item-upgrades/${definitionId}/sidegrades/${sidegradeId}/options/${optionId}/${subject}`);
+    public unlockItemSidegrade(subject: string, definitionId: string, sidegradeId: string, optionId: string): Promise<AxiosResponse<any>> {
+        return this.axios.post(`${this.apiRegion.url.playerData}/contracts/v1/item-upgrades/${definitionId}/sidegrades/${sidegradeId}/options/${optionId}/${subject}`);
     }
 
     /**
@@ -155,7 +155,7 @@ export class Contracts extends WebClientService {
      * @param {string} contractId Contract ID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async upgrade(subject: string, contractId: string): Promise<AxiosResponse<any>> {
-        return await this.axios.post(`${this.apiRegion.url.playerData}/contracts/v1/contracts/${subject}/special/${contractId}/upgrade`);
+    public upgrade(subject: string, contractId: string): Promise<AxiosResponse<any>> {
+        return this.axios.post(`${this.apiRegion.url.playerData}/contracts/v1/contracts/${subject}/special/${contractId}/upgrade`);
     }
 }

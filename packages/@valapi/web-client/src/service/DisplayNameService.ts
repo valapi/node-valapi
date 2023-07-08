@@ -18,7 +18,7 @@ export class DisplayNameService extends WebClientService {
      * @param {string} subject Player UUID
      * @returns {Promise<AxiosResponse<DisplayNameService.Player>>}
      */
-    public async fetchPlayers(subject: string): Promise<AxiosResponse<DisplayNameService.Player>> {
-        return await this.axios.put(`${this.apiRegion.url.playerData}/name-service/v2/players`, [`${subject}`]);
+    public fetchPlayers(subject: string): Promise<AxiosResponse<DisplayNameService.Player>> {
+        return this.axios.put(`${this.apiRegion.url.playerData}/name-service/v2/players`, [`${subject}`]);
     }
 }

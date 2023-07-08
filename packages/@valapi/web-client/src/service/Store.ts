@@ -132,23 +132,23 @@ export class Store extends WebClientService {
      * @param {string} subject Player UUID
      * @returns {Promise<AxiosResponse<Store.Wallet>>}
      */
-    public async getWallet(subject: string): Promise<AxiosResponse<Store.Wallet>> {
-        return await this.axios.get(`${this.apiRegion.url.playerData}/store/v1/wallet/${subject}`);
+    public getWallet(subject: string): Promise<AxiosResponse<Store.Wallet>> {
+        return this.axios.get(`${this.apiRegion.url.playerData}/store/v1/wallet/${subject}`);
     }
 
     /**
      * @param {string} subject Player UUID
      * @returns {Promise<AxiosResponse<Store.Storefront>>}
      */
-    public async getStorefront(subject: string): Promise<AxiosResponse<Store.Storefront>> {
-        return await this.axios.get(`${this.apiRegion.url.playerData}/store/v2/storefront/${subject}`);
+    public getStorefront(subject: string): Promise<AxiosResponse<Store.Storefront>> {
+        return this.axios.get(`${this.apiRegion.url.playerData}/store/v2/storefront/${subject}`);
     }
 
     /**
      * @returns {Promise<AxiosResponse<Store.Offers>>}
      */
-    public async getOffers(): Promise<AxiosResponse<Store.Offers>> {
-        return await this.axios.get(`${this.apiRegion.url.playerData}/store/v1/offers/`);
+    public getOffers(): Promise<AxiosResponse<Store.Offers>> {
+        return this.axios.get(`${this.apiRegion.url.playerData}/store/v1/offers/`);
     }
 
     /**
@@ -156,15 +156,15 @@ export class Store extends WebClientService {
      * @param {ItemTypeId.Identify} itemTypeId Item Type
      * @returns {Promise<AxiosResponse<Store.EntitlementsWithInstance>>}
      */
-    public async getEntitlements(subject: string, itemTypeId: "dd3bf334-87f3-40bd-b043-682a57a8dc3a"): Promise<AxiosResponse<Store.EntitlementsWithInstance>>;
+    public getEntitlements(subject: string, itemTypeId: "dd3bf334-87f3-40bd-b043-682a57a8dc3a"): Promise<AxiosResponse<Store.EntitlementsWithInstance>>;
     /**
      * @param {string} subject Player UUID
      * @param {ItemTypeId.Identify} itemTypeId Item Type
      * @returns {Promise<AxiosResponse<Store.Entitlements>>}
      */
-    public async getEntitlements(subject: string, itemTypeId: ItemTypeId.Identify): Promise<AxiosResponse<Store.Entitlements>>;
-    public async getEntitlements(subject: string, itemTypeId: string): Promise<AxiosResponse<any>> {
-        return await this.axios.get(`${this.apiRegion.url.playerData}/store/v1/entitlements/${subject}/${itemTypeId}`);
+    public getEntitlements(subject: string, itemTypeId: ItemTypeId.Identify): Promise<AxiosResponse<Store.Entitlements>>;
+    public getEntitlements(subject: string, itemTypeId: string): Promise<AxiosResponse<any>> {
+        return this.axios.get(`${this.apiRegion.url.playerData}/store/v1/entitlements/${subject}/${itemTypeId}`);
     }
 
     /**
@@ -172,14 +172,14 @@ export class Store extends WebClientService {
      * @param {string} subject Player UUID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async revealNightMarketOffers(subject: string): Promise<AxiosResponse<any>> {
-        return await this.axios.post(`${this.apiRegion.url.playerData}/store/v2/storefront/${subject}/nightmarket/offers`);
+    public revealNightMarketOffers(subject: string): Promise<AxiosResponse<any>> {
+        return this.axios.post(`${this.apiRegion.url.playerData}/store/v2/storefront/${subject}/nightmarket/offers`);
     }
 
     /**
      * @returns {Promise<AxiosResponse<Store.Agent>>}
      */
-    public async getAgent(): Promise<AxiosResponse<Store.Agent>> {
-        return await this.axios.get(`${this.apiRegion.url.playerData}/store/v1/storefronts/agent`);
+    public getAgent(): Promise<AxiosResponse<Store.Agent>> {
+        return this.axios.get(`${this.apiRegion.url.playerData}/store/v1/storefronts/agent`);
     }
 }

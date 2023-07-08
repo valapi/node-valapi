@@ -60,7 +60,7 @@ export class ContentV1 extends RiotApiService {
      * @param {Locale.Identify} locale Locale (default: en-US)
      * @returns {Promise<AxiosResponse<ContentV1.ContentDto>>}
      */
-    public async contents(locale: Locale.Identify = "en-US"): Promise<AxiosResponse<ContentV1.ContentDto>> {
-        return await this.axios.get(`${this.apiRegion.url.server}/val/content/v1/contents?locale=${locale}`);
+    public contents(locale: Locale.Identify = "en-US"): Promise<AxiosResponse<ContentV1.ContentDto>> {
+        return this.axios.get(`${this.apiRegion.url.server}/val/content/v1/contents?locale=${locale}`);
     }
 }

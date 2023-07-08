@@ -78,11 +78,6 @@ export namespace ValorantApiCom {
  * https://valorant-api.com
  */
 export class ValorantApiCom {
-    public readonly config: Required<ValorantApiCom.Config>;
-    protected readonly axios: AxiosInstance;
-
-    // default
-
     private static readonly DEFAULT_config: Required<ValorantApiCom.Config> = {
         language: Locale.Default.English_United_States,
         axiosConfig: {},
@@ -93,6 +88,9 @@ export class ValorantApiCom {
     public static readonly Default = {
         config: ValorantApiCom.DEFAULT_config
     };
+
+    public readonly config: Required<ValorantApiCom.Config>;
+    protected readonly axios: AxiosInstance;
 
     /**
      *
@@ -127,8 +125,6 @@ export class ValorantApiCom {
 
         this.axios = axios.create(this.config.axiosConfig);
     }
-
-    // service
 
     public get request() {
         return this.axios.request;

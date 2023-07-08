@@ -34,7 +34,7 @@ export class AuthClient extends AuthCore {
 
         this.fromJSON(ValUserAuth);
         this.authenticationInfo = {
-            message: "login success"
+            message: "success,login"
         };
     }
 
@@ -57,7 +57,7 @@ export class AuthClient extends AuthCore {
 
         this.fromJSON(ValMultifactorAuth);
         this.authenticationInfo = {
-            message: "verify success"
+            message: "success,verify"
         };
     }
 
@@ -90,7 +90,7 @@ export class AuthClient extends AuthCore {
 
         this.fromJSON(ValReAuth);
         this.authenticationInfo = {
-            message: "cookie refresh success"
+            message: "success,cookie"
         };
     }
 

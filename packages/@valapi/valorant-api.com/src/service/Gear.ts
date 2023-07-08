@@ -26,11 +26,11 @@ export namespace Gear {
 }
 
 export class Gear extends ValorantApiComService {
-    public async get(): Promise<ValorantApiCom.Response.Data<Gear.Gear[]>> {
-        return await this.axios.get("/gear");
+    public get(): Promise<ValorantApiCom.Response.Data<Gear.Gear[]>> {
+        return this.axios.get("/gear");
     }
 
-    public async getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Gear.Gear>> {
-        return await this.axios.get(`/gear/${uuid}`);
+    public getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Gear.Gear>> {
+        return this.axios.get(`/gear/${uuid}`);
     }
 }

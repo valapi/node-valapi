@@ -30,7 +30,7 @@ export class MassRewards extends WebClientService {
      * @param {string} subject Player UUID
      * @returns {Promise<AxiosResponse<MassRewards.PlayerReconcile>>}
      */
-    public async reconcilePlayer(subject: string): Promise<AxiosResponse<MassRewards.PlayerReconcile>> {
-        return await this.axios.post(`${this.apiRegion.url.playerData}/mass-rewards/v1/players/${subject}/reconcile`);
+    public reconcilePlayer(subject: string): Promise<AxiosResponse<MassRewards.PlayerReconcile>> {
+        return this.axios.post(`${this.apiRegion.url.playerData}/mass-rewards/v1/players/${subject}/reconcile`);
     }
 }

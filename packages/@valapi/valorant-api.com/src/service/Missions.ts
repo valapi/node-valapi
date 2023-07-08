@@ -24,11 +24,11 @@ export namespace Missions {
 }
 
 export class Missions extends ValorantApiComService {
-    public async get(): Promise<ValorantApiCom.Response.Data<Missions.Missions[]>> {
-        return await this.axios.get("/missions");
+    public get(): Promise<ValorantApiCom.Response.Data<Missions.Missions[]>> {
+        return this.axios.get("/missions");
     }
 
-    public async getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Missions.Missions>> {
-        return await this.axios.get(`/missions/${uuid}`);
+    public getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Missions.Missions>> {
+        return this.axios.get(`/missions/${uuid}`);
     }
 }

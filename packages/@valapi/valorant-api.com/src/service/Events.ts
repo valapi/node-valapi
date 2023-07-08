@@ -13,11 +13,11 @@ export namespace Events {
 }
 
 export class Events extends ValorantApiComService {
-    public async get(): Promise<ValorantApiCom.Response.Data<Events.Events[]>> {
-        return await this.axios.get("/events");
+    public get(): Promise<ValorantApiCom.Response.Data<Events.Events[]>> {
+        return this.axios.get("/events");
     }
 
-    public async getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Events.Events>> {
-        return await this.axios.get(`/events/${uuid}`);
+    public getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Events.Events>> {
+        return this.axios.get(`/events/${uuid}`);
     }
 }

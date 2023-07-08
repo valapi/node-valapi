@@ -26,19 +26,19 @@ export namespace Sprays {
 }
 
 export class Sprays extends ValorantApiComService {
-    public async get(): Promise<ValorantApiCom.Response.Data<Sprays.Sprays[]>> {
-        return await this.axios.get("/sprays");
+    public get(): Promise<ValorantApiCom.Response.Data<Sprays.Sprays[]>> {
+        return this.axios.get("/sprays");
     }
 
-    public async getLevels(): Promise<ValorantApiCom.Response.Data<Sprays.SprayLevels[]>> {
-        return await this.axios.get(`/sprays/levels`);
+    public getLevels(): Promise<ValorantApiCom.Response.Data<Sprays.SprayLevels[]>> {
+        return this.axios.get(`/sprays/levels`);
     }
 
-    public async getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Sprays.Sprays>> {
-        return await this.axios.get(`/sprays/${uuid}`);
+    public getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Sprays.Sprays>> {
+        return this.axios.get(`/sprays/${uuid}`);
     }
 
-    public async getLevelByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Sprays.SprayLevels>> {
-        return await this.axios.get(`/sprays/levels/${uuid}`);
+    public getLevelByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Sprays.SprayLevels>> {
+        return this.axios.get(`/sprays/levels/${uuid}`);
     }
 }

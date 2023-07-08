@@ -59,16 +59,16 @@ export class ContractDefinitions extends WebClientService {
      * @deprecated Please, Contact us if you find out how its works
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async fetchActiveStory(): Promise<AxiosResponse<any>> {
-        return await this.axios.get(`${this.apiRegion.url.playerData}/contract-definitions/v2/definitions/story`);
+    public fetchActiveStory(): Promise<AxiosResponse<any>> {
+        return this.axios.get(`${this.apiRegion.url.playerData}/contract-definitions/v2/definitions/story`);
     }
 
     /**
      * @deprecated Please, Contact us if you find out how its works
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async fetch(): Promise<AxiosResponse<any>> {
-        return await this.axios.get(`${this.apiRegion.url.playerData}/contract-definitions/v2/definitions`);
+    public fetch(): Promise<AxiosResponse<any>> {
+        return this.axios.get(`${this.apiRegion.url.playerData}/contract-definitions/v2/definitions`);
     }
 
     // ItemProgressionDefinitionsV2
@@ -76,7 +76,7 @@ export class ContractDefinitions extends WebClientService {
     /**
      * @returns {Promise<AxiosResponse<ContractDefinitions.ItemProgression>>}
      */
-    public async fetchItemProgression(): Promise<AxiosResponse<ContractDefinitions.ItemProgression>> {
-        return await this.axios.get(`${this.apiRegion.url.playerData}/contract-definitions/v3/item-upgrades`);
+    public fetchItemProgression(): Promise<AxiosResponse<ContractDefinitions.ItemProgression>> {
+        return this.axios.get(`${this.apiRegion.url.playerData}/contract-definitions/v3/item-upgrades`);
     }
 }

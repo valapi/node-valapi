@@ -2,14 +2,18 @@ import type { AxiosResponse } from "axios";
 
 import { ValError } from "@valapi/lib";
 
+import type { AuthCore } from "../client/AuthCore";
 import type { AuthService } from "../client/AuthService";
 
 import { Cookie as CookieAuthenticator } from "../service/Cookie";
 
 export class User extends CookieAuthenticator {
-    public async loginform(username: string, password: string) {
-        // cookie
-
+    /**
+     * @param {string} username Riot Username
+     * @param {string} password Password
+     * @returns {Promise<AuthCore.Json>}
+     */
+    public async loginform(username: string, password: string): Promise<AuthCore.Json> {
         const CookieResponse: AxiosResponse<AuthService.TokenResponse> = await this.authorize();
         const CookieSetStrings = this.cookie.getSetCookieStringsSync("https://auth.riotgames.com");
 
@@ -20,8 +24,6 @@ export class User extends CookieAuthenticator {
                 data: CookieResponse.headers
             });
         }
-
-        // token
 
         const TokenResponse: AxiosResponse<AuthService.TokenResponse> = await this.axios.put(
             "https://auth.riotgames.com/api/v1/authorization",
@@ -38,8 +40,6 @@ export class User extends CookieAuthenticator {
             }
         );
 
-        // authentication
-
-        return await this.fromResponse(TokenResponse);
+        return this.fromResponse(TokenResponse);
     }
 }

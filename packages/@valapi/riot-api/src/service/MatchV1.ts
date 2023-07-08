@@ -16,8 +16,8 @@ export class MatchV1 extends RiotApiService {
      * @param {string} matchId Match ID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async byMatchId(matchId: string): Promise<AxiosResponse<any>> {
-        return await this.axios.get(`${this.apiRegion.url.server}/val/match/v1/matches/${matchId}`);
+    public byMatchId(matchId: string): Promise<AxiosResponse<any>> {
+        return this.axios.get(`${this.apiRegion.url.server}/val/match/v1/matches/${matchId}`);
     }
 
     /**
@@ -25,8 +25,8 @@ export class MatchV1 extends RiotApiService {
      * @param {string} puuid Player UUID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async listByPuuid(puuid: string): Promise<AxiosResponse<any>> {
-        return await this.axios.get(`${this.apiRegion.url.server}/val/match/v1/matchlists/by-puuid/${puuid}`);
+    public listByPuuid(puuid: string): Promise<AxiosResponse<any>> {
+        return this.axios.get(`${this.apiRegion.url.server}/val/match/v1/matchlists/by-puuid/${puuid}`);
     }
 
     /**
@@ -34,7 +34,7 @@ export class MatchV1 extends RiotApiService {
      * @param {QueueId.Identify} queueId Queue ID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async recentByQueue(queueId: QueueId.Identify): Promise<AxiosResponse<any>> {
-        return await this.axios.get(`${this.apiRegion.url.server}/val/match/v1/recent-matches/by-queue/${queueId}`);
+    public recentByQueue(queueId: QueueId.Identify): Promise<AxiosResponse<any>> {
+        return this.axios.get(`${this.apiRegion.url.server}/val/match/v1/recent-matches/by-queue/${queueId}`);
     }
 }

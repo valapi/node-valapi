@@ -12,11 +12,11 @@ export namespace Themes {
 }
 
 export class Themes extends ValorantApiComService {
-    public async get(): Promise<ValorantApiCom.Response.Data<Themes.Themes[]>> {
-        return await this.axios.get("/themes");
+    public get(): Promise<ValorantApiCom.Response.Data<Themes.Themes[]>> {
+        return this.axios.get("/themes");
     }
 
-    public async getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Themes.Themes>> {
-        return await this.axios.get(`/themes/${uuid}`);
+    public getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Themes.Themes>> {
+        return this.axios.get(`/themes/${uuid}`);
     }
 }

@@ -59,6 +59,19 @@ export class AuthService extends AuthCore {
         this.axios = axios.create(this.config.axiosConfig);
     }
 
+    /**
+     *
+     * @param {AuthCore.Json} account {@link AuthCore.Json JSON} Account Data
+     * @param {AuthCore.Config} config Config
+     * @returns {AuthService}
+     */
+    public static fromJSON(account: AuthCore.Json, config: AuthCore.Config = {}): AuthService {
+        const authService = new AuthService(config, account);
+        authService.fromJSON(account);
+
+        return authService;
+    }
+
     // authentication
 
     /**
@@ -88,7 +101,7 @@ export class AuthService extends AuthCore {
         } else {
             this.authenticationInfo = {
                 isError: true,
-                message: "entitlements token not found"
+                message: "fail,entitlements_token"
             };
         }
     }
@@ -108,7 +121,7 @@ export class AuthService extends AuthCore {
             if (!Search_URL.hash) {
                 this.authenticationInfo = {
                     isError: true,
-                    message: "access token not found"
+                    message: "fail,access_token"
                 };
 
                 return this.toJSON();
@@ -167,7 +180,7 @@ export class AuthService extends AuthCore {
         if (!TokenResponse.data || !TokenResponse.data.type || TokenResponse.data.type === "error") {
             this.authenticationInfo = {
                 isError: true,
-                message: "response error"
+                message: "fail,data"
             };
 
             return this.toJSON();
@@ -178,7 +191,7 @@ export class AuthService extends AuthCore {
         if (TokenResponse.data.type && TokenResponse.data.type === "multifactor") {
             this.authenticationInfo = {
                 isMultifactor: true,
-                message: "multifactor account"
+                message: "load,verify"
             };
 
             return this.toJSON();
@@ -201,7 +214,7 @@ export class AuthService extends AuthCore {
         if (TokenResponse.data.type !== "response" || !TokenResponse.data.response) {
             this.authenticationInfo = {
                 isError: true,
-                message: "no response"
+                message: "fail,response"
             };
 
             return this.toJSON();
@@ -209,6 +222,6 @@ export class AuthService extends AuthCore {
 
         // return
 
-        return await this.fromUrl(TokenResponse.data.response.parameters.uri);
+        return this.fromUrl(TokenResponse.data.response.parameters.uri);
     }
 }

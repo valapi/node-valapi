@@ -107,24 +107,24 @@ export class CoreGame extends WebClientService {
      * @param {string} subject Player UUID
      * @returns {Promise<AxiosResponse<CoreGame.Player>>}
      */
-    public async fetchPlayer(subject: string): Promise<AxiosResponse<CoreGame.Player>> {
-        return await this.axios.get(`${this.apiRegion.url.partyService}/core-game/v1/players/${subject}`);
+    public fetchPlayer(subject: string): Promise<AxiosResponse<CoreGame.Player>> {
+        return this.axios.get(`${this.apiRegion.url.partyService}/core-game/v1/players/${subject}`);
     }
 
     /**
      * @param {string} matchId Match ID
      * @returns {Promise<AxiosResponse<CoreGame.Match>>}
      */
-    public async fetchMatch(matchId: string): Promise<AxiosResponse<CoreGame.Match>> {
-        return await this.axios.get(`${this.apiRegion.url.partyService}/core-game/v1/matches/${matchId}`);
+    public fetchMatch(matchId: string): Promise<AxiosResponse<CoreGame.Match>> {
+        return this.axios.get(`${this.apiRegion.url.partyService}/core-game/v1/matches/${matchId}`);
     }
 
     /**
      * @param {string} matchId Match ID
      * @returns {Promise<AxiosResponse<CoreGame.Loadout>>}
      */
-    public async fetchMatchLoadouts(matchId: string): Promise<AxiosResponse<CoreGame.Loadout>> {
-        return await this.axios.get(`${this.apiRegion.url.partyService}/core-game/v1/matches/${matchId}/loadouts`);
+    public fetchMatchLoadouts(matchId: string): Promise<AxiosResponse<CoreGame.Loadout>> {
+        return this.axios.get(`${this.apiRegion.url.partyService}/core-game/v1/matches/${matchId}/loadouts`);
     }
 
     /**
@@ -133,8 +133,8 @@ export class CoreGame extends WebClientService {
      * @param {string} matchId Match ID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async disassociatePlayer(subject: string, matchId: string): Promise<AxiosResponse<any>> {
-        return await this.axios.post(`${this.apiRegion.url.partyService}/core-game/v1/players/${subject}/disassociate/${matchId}`);
+    public disassociatePlayer(subject: string, matchId: string): Promise<AxiosResponse<any>> {
+        return this.axios.post(`${this.apiRegion.url.partyService}/core-game/v1/players/${subject}/disassociate/${matchId}`);
     }
 
     /**
@@ -142,8 +142,8 @@ export class CoreGame extends WebClientService {
      * @param {string} matchId Match ID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async fetchAllChatMUCToken(matchId: string): Promise<AxiosResponse<any>> {
-        return await this.axios.get(`${this.apiRegion.url.partyService}/core-game/v1/matches/${matchId}/allchatmuctoken`);
+    public fetchAllChatMUCToken(matchId: string): Promise<AxiosResponse<any>> {
+        return this.axios.get(`${this.apiRegion.url.partyService}/core-game/v1/matches/${matchId}/allchatmuctoken`);
     }
 
     /**
@@ -151,8 +151,8 @@ export class CoreGame extends WebClientService {
      * @param {string} matchId Match ID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async fetchTeamChatMUCToken(matchId: string): Promise<AxiosResponse<any>> {
-        return await this.axios.get(`${this.apiRegion.url.partyService}/core-game/v1/matches/${matchId}/teamchatmuctoken`);
+    public fetchTeamChatMUCToken(matchId: string): Promise<AxiosResponse<any>> {
+        return this.axios.get(`${this.apiRegion.url.partyService}/core-game/v1/matches/${matchId}/teamchatmuctoken`);
     }
 
     /**
@@ -160,7 +160,7 @@ export class CoreGame extends WebClientService {
      * @param {string} matchId Match ID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async fetchVoiceToken(matchId: string): Promise<AxiosResponse<any>> {
-        return await this.axios.get(`${this.apiRegion.url.partyService}/core-game/v1/matches/${matchId}/teamvoicetoken`);
+    public fetchVoiceToken(matchId: string): Promise<AxiosResponse<any>> {
+        return this.axios.get(`${this.apiRegion.url.partyService}/core-game/v1/matches/${matchId}/teamvoicetoken`);
     }
 }

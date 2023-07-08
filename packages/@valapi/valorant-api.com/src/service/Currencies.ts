@@ -13,11 +13,11 @@ export namespace Currencies {
 }
 
 export class Currencies extends ValorantApiComService {
-    public async get(): Promise<ValorantApiCom.Response.Data<Currencies.Currencies[]>> {
-        return await this.axios.get("/currencies");
+    public get(): Promise<ValorantApiCom.Response.Data<Currencies.Currencies[]>> {
+        return this.axios.get("/currencies");
     }
 
-    public async getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Currencies.Currencies>> {
-        return await this.axios.get(`/currencies/${uuid}`);
+    public getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Currencies.Currencies>> {
+        return this.axios.get(`/currencies/${uuid}`);
     }
 }

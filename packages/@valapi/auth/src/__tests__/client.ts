@@ -1,4 +1,4 @@
-import { AuthCore, AuthClient } from "@valapi/auth";
+import { AuthCore } from "@valapi/auth";
 import { Region } from "@valapi/lib";
 
 describe("auth.client", () => {
@@ -7,7 +7,7 @@ describe("auth.client", () => {
     });
 
     test("save class", () => {
-        const constClient = new AuthClient();
+        const constClient = new AuthCore();
         constClient.fromJSON(myClient.toJSON());
 
         expect(myClient.toJSON()).toStrictEqual(constClient.toJSON());
@@ -16,7 +16,7 @@ describe("auth.client", () => {
     });
 
     test("save static", () => {
-        const staticClient = AuthClient.fromJSON(myClient.toJSON(), {
+        const staticClient = AuthCore.fromJSON(myClient.toJSON(), {
             region: Region.Default.Korea
         });
 

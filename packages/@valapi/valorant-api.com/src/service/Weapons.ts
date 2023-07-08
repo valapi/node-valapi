@@ -95,35 +95,35 @@ export namespace Weapons {
 }
 
 export class Weapons extends ValorantApiComService {
-    public async get(): Promise<ValorantApiCom.Response.Data<Weapons.Weapons[]>> {
-        return await this.axios.get("/weapons");
+    public get(): Promise<ValorantApiCom.Response.Data<Weapons.Weapons[]>> {
+        return this.axios.get("/weapons");
     }
 
-    public async getSkins(): Promise<ValorantApiCom.Response.Data<Weapons.WeaponSkins[]>> {
-        return await this.axios.get("/weapons/skins");
+    public getSkins(): Promise<ValorantApiCom.Response.Data<Weapons.WeaponSkins[]>> {
+        return this.axios.get("/weapons/skins");
     }
 
-    public async getSkinChromas(): Promise<ValorantApiCom.Response.Data<Weapons.WeaponSkinChromas[]>> {
-        return await this.axios.get("/weapons/skinchromas");
+    public getSkinChromas(): Promise<ValorantApiCom.Response.Data<Weapons.WeaponSkinChromas[]>> {
+        return this.axios.get("/weapons/skinchromas");
     }
 
-    public async getSkinLevels(): Promise<ValorantApiCom.Response.Data<Weapons.WeaponSkinLevels[]>> {
-        return await this.axios.get("/weapons/skinlevels");
+    public getSkinLevels(): Promise<ValorantApiCom.Response.Data<Weapons.WeaponSkinLevels[]>> {
+        return this.axios.get("/weapons/skinlevels");
     }
 
-    public async getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Weapons.Weapons>> {
-        return await this.axios.get(`/weapons/${uuid}`);
+    public getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Weapons.Weapons>> {
+        return this.axios.get(`/weapons/${uuid}`);
     }
 
-    public async getSkinByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Weapons.WeaponSkins>> {
-        return await this.axios.get(`/weapons/skins/${uuid}`);
+    public getSkinByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Weapons.WeaponSkins>> {
+        return this.axios.get(`/weapons/skins/${uuid}`);
     }
 
-    public async getSkinChromaByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Weapons.WeaponSkinChromas>> {
-        return await this.axios.get(`/weapons/skinchromas/${uuid}`);
+    public getSkinChromaByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Weapons.WeaponSkinChromas>> {
+        return this.axios.get(`/weapons/skinchromas/${uuid}`);
     }
 
-    public async getSkinLevelByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Weapons.WeaponSkinLevels>> {
-        return await this.axios.get(`/weapons/skinlevels/${uuid}`);
+    public getSkinLevelByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Weapons.WeaponSkinLevels>> {
+        return this.axios.get(`/weapons/skinlevels/${uuid}`);
     }
 }

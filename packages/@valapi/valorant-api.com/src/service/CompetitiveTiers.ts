@@ -22,11 +22,11 @@ export namespace CompetitiveTiers {
 }
 
 export class CompetitiveTiers extends ValorantApiComService {
-    public async get(): Promise<ValorantApiCom.Response.Data<CompetitiveTiers.CompetitiveTiers[]>> {
-        return await this.axios.get("/competitivetiers");
+    public get(): Promise<ValorantApiCom.Response.Data<CompetitiveTiers.CompetitiveTiers[]>> {
+        return this.axios.get("/competitivetiers");
     }
 
-    public async getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<CompetitiveTiers.CompetitiveTiers>> {
-        return await this.axios.get(`/competitivetiers/${uuid}`);
+    public getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<CompetitiveTiers.CompetitiveTiers>> {
+        return this.axios.get(`/competitivetiers/${uuid}`);
     }
 }

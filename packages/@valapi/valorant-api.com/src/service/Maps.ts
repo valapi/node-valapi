@@ -27,11 +27,11 @@ export namespace Maps {
 }
 
 export class Maps extends ValorantApiComService {
-    public async get(): Promise<ValorantApiCom.Response.Data<Maps.Maps[]>> {
-        return await this.axios.get("/maps");
+    public get(): Promise<ValorantApiCom.Response.Data<Maps.Maps[]>> {
+        return this.axios.get("/maps");
     }
 
-    public async getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Maps.Maps>> {
-        return await this.axios.get(`/maps/${uuid}`);
+    public getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Maps.Maps>> {
+        return this.axios.get(`/maps/${uuid}`);
     }
 }

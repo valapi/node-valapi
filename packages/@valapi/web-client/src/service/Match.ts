@@ -224,18 +224,14 @@ export namespace Match {
 }
 
 export class Match extends WebClientService {
-    // MatchDetails
-
     /**
      *
      * @param {string} matchId Match ID
      * @returns {Promise<AxiosResponse<Match.Detail>>}
      */
-    public async fetchMatchDetails(matchId: string): Promise<AxiosResponse<Match.Detail>> {
-        return await this.axios.get(`${this.apiRegion.url.playerData}/match-details/v1/matches/${matchId}`);
+    public fetchMatchDetails(matchId: string): Promise<AxiosResponse<Match.Detail>> {
+        return this.axios.get(`${this.apiRegion.url.playerData}/match-details/v1/matches/${matchId}`);
     }
-
-    // MatchHistory
 
     /**
      * @param {string} subject Player UUID
@@ -244,23 +240,21 @@ export class Match extends WebClientService {
      * @param {number} endIndex End Index (default: 10)
      * @returns {Promise<AxiosResponse<Match.History>>}
      */
-    public async fetchMatchHistory(subject: string, queueId?: QueueId.Identify, startIndex = 0, endIndex = 10): Promise<AxiosResponse<Match.History>> {
+    public fetchMatchHistory(subject: string, queueId?: QueueId.Identify, startIndex = 0, endIndex = 10): Promise<AxiosResponse<Match.History>> {
         let _url = `${this.apiRegion.url.playerData}/match-history/v1/history/${subject}?startIndex=${startIndex}&endIndex=${endIndex}`;
 
         if (queueId) {
             _url += `&queue=${queueId}`;
         }
 
-        return await this.axios.get(_url);
+        return this.axios.get(_url);
     }
-
-    // Matchmaking
 
     /**
      * @deprecated Please, Contact us if you find out how its works
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async fetchQueueData(): Promise<AxiosResponse<any>> {
-        return await this.axios.get(`${this.apiRegion.url.partyService}/matchmaking/v1/queues/configs`);
+    public fetchQueueData(): Promise<AxiosResponse<any>> {
+        return this.axios.get(`${this.apiRegion.url.partyService}/matchmaking/v1/queues/configs`);
     }
 }

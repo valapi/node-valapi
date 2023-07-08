@@ -18,11 +18,11 @@ export namespace Bundles {
 }
 
 export class Bundles extends ValorantApiComService {
-    public async get(): Promise<ValorantApiCom.Response.Data<Bundles.Bundles[]>> {
-        return await this.axios.get("/bundles");
+    public get(): Promise<ValorantApiCom.Response.Data<Bundles.Bundles[]>> {
+        return this.axios.get("/bundles");
     }
 
-    public async getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Bundles.Bundles>> {
-        return await this.axios.get(`/bundles/${uuid}`);
+    public getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Bundles.Bundles>> {
+        return this.axios.get(`/bundles/${uuid}`);
     }
 }

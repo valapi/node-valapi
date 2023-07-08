@@ -13,11 +13,11 @@ export namespace Objectives {
 }
 
 export class Objectives extends ValorantApiComService {
-    public async get(): Promise<ValorantApiCom.Response.Data<Objectives.Objectives[]>> {
-        return await this.axios.get("/objectives");
+    public get(): Promise<ValorantApiCom.Response.Data<Objectives.Objectives[]>> {
+        return this.axios.get("/objectives");
     }
 
-    public async getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Objectives.Objectives>> {
-        return await this.axios.get(`/objectives/${uuid}`);
+    public getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Objectives.Objectives>> {
+        return this.axios.get(`/objectives/${uuid}`);
     }
 }

@@ -39,11 +39,11 @@ export namespace Contracts {
 }
 
 export class Contracts extends ValorantApiComService {
-    public async get(): Promise<ValorantApiCom.Response.Data<Contracts.Contracts[]>> {
-        return await this.axios.get("/contracts");
+    public get(): Promise<ValorantApiCom.Response.Data<Contracts.Contracts[]>> {
+        return this.axios.get("/contracts");
     }
 
-    public async getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Contracts.Contracts>> {
-        return await this.axios.get(`/contracts/${uuid}`);
+    public getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Contracts.Contracts>> {
+        return this.axios.get(`/contracts/${uuid}`);
     }
 }

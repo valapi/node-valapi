@@ -16,11 +16,11 @@ export namespace ContentTiers {
 }
 
 export class ContentTiers extends ValorantApiComService {
-    public async get(): Promise<ValorantApiCom.Response.Data<ContentTiers.ContentTiers[]>> {
-        return await this.axios.get("/contenttiers");
+    public get(): Promise<ValorantApiCom.Response.Data<ContentTiers.ContentTiers[]>> {
+        return this.axios.get("/contenttiers");
     }
 
-    public async getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<ContentTiers.ContentTiers>> {
-        return await this.axios.get(`/contenttiers/${uuid}`);
+    public getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<ContentTiers.ContentTiers>> {
+        return this.axios.get(`/contenttiers/${uuid}`);
     }
 }

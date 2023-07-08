@@ -67,13 +67,9 @@ export class WebClient extends AuthClient {
         this.cookie = CookieJar.deserializeSync(JSON.stringify(account.cookie));
         this.access_token = account.access_token;
         this.entitlements_token = account.entitlements_token;
-        this.region =
-            this._isRegionConfig === true
-                ? this.region
-                : {
-                      pbe: this.region.pbe,
-                      live: account.region
-                  };
+        this.region = {
+            live: account.region
+        };
     }
 
     /**
@@ -118,16 +114,16 @@ export class WebClient extends AuthClient {
     /**
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async getUserInfo(): Promise<AxiosResponse<any>> {
-        return await this.axios.post(`https://auth.riotgames.com/userinfo`);
+    public getUserInfo(): Promise<AxiosResponse<any>> {
+        return this.axios.post(`https://auth.riotgames.com/userinfo`);
     }
 
     /**
      * @deprecated Please, Contact us if you find out how its works
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async getUserSettings(): Promise<AxiosResponse<any>> {
-        return await this.axios.get(`https://playerpreferences.riotgames.com/playerPref/v3/getPreference/Ares.PlayerSettings`);
+    public getUserSettings(): Promise<AxiosResponse<any>> {
+        return this.axios.get(`https://playerpreferences.riotgames.com/playerPref/v3/getPreference/Ares.PlayerSettings`);
     }
 
     /**
@@ -135,14 +131,12 @@ export class WebClient extends AuthClient {
      * @param {any} data Settings Data to update
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async updateUserSettings(data: any): Promise<AxiosResponse<any>> {
-        return await this.axios.put(`https://playerpreferences.riotgames.com/playerPref/v3/getPreference`, {
+    public updateUserSettings(data: any): Promise<AxiosResponse<any>> {
+        return this.axios.put(`https://playerpreferences.riotgames.com/playerPref/v3/getPreference`, {
             type: "Ares.PlayerSettings",
             data: data
         });
     }
-
-    // service
 
     public get request() {
         return this.axios.request;

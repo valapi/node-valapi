@@ -37,8 +37,8 @@ export class Session extends WebClientService {
      * @param {string} subject Player UUID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async connect(subject: string): Promise<AxiosResponse<any>> {
-        return await this.axios.post(`${this.apiRegion.url.partyService}/session/v2/sessions/${subject}/connect`);
+    public connect(subject: string): Promise<AxiosResponse<any>> {
+        return this.axios.post(`${this.apiRegion.url.partyService}/session/v2/sessions/${subject}/connect`);
     }
 
     /**
@@ -46,8 +46,8 @@ export class Session extends WebClientService {
      * @param {string} subject Player UUID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async heartbeat(subject: string): Promise<AxiosResponse<any>> {
-        return await this.axios.post(`${this.apiRegion.url.partyService}/session/v1/sessions/${subject}/heartbeat`);
+    public heartbeat(subject: string): Promise<AxiosResponse<any>> {
+        return this.axios.post(`${this.apiRegion.url.partyService}/session/v1/sessions/${subject}/heartbeat`);
     }
 
     /**
@@ -55,16 +55,16 @@ export class Session extends WebClientService {
      * @param {string} subject Player UUID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async disconnect(subject: string): Promise<AxiosResponse<any>> {
-        return await this.axios.post(`${this.apiRegion.url.partyService}/session/v1/sessions/${subject}/disconnect`);
+    public disconnect(subject: string): Promise<AxiosResponse<any>> {
+        return this.axios.post(`${this.apiRegion.url.partyService}/session/v1/sessions/${subject}/disconnect`);
     }
 
     /**
      * @param {string} subject Player UUID
      * @returns {Promise<AxiosResponse<Session.Session>>}
      */
-    public async get(subject: string): Promise<AxiosResponse<Session.Session>> {
-        return await this.axios.get(`${this.apiRegion.url.partyService}/session/v1/sessions/${subject}`);
+    public get(subject: string): Promise<AxiosResponse<Session.Session>> {
+        return this.axios.get(`${this.apiRegion.url.partyService}/session/v1/sessions/${subject}`);
     }
 
     /**
@@ -72,7 +72,7 @@ export class Session extends WebClientService {
      * @param {string} subject Player UUID
      * @returns {Promise<AxiosResponse<Session.Reconnect>>}
      */
-    public async reconnect(subject: string): Promise<AxiosResponse<Session.Reconnect>> {
-        return await this.axios.get(`${this.apiRegion.url.partyService}/session/v1/sessions/${subject}/reconnect`);
+    public reconnect(subject: string): Promise<AxiosResponse<Session.Reconnect>> {
+        return this.axios.get(`${this.apiRegion.url.partyService}/session/v1/sessions/${subject}/reconnect`);
     }
 }

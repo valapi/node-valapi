@@ -24,7 +24,7 @@ export class Content extends WebClientService {
     /**
      * @returns {Promise<AxiosResponse<Content.Content>>}
      */
-    public async fetchContent(): Promise<AxiosResponse<Content.Content>> {
-        return await this.axios.get(`${this.apiRegion.url.sharedData}/content-service/v3/content`);
+    public fetchContent(): Promise<AxiosResponse<Content.Content>> {
+        return this.axios.get(`${this.apiRegion.url.sharedData}/content-service/v3/content`);
     }
 }

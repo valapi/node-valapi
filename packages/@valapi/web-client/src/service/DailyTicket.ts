@@ -34,15 +34,15 @@ export class DailyTicket extends WebClientService {
      * @param {string} subject Player UUID
      * @returns {Promise<AxiosResponse<DailyTicket.DailyTicket>>}
      */
-    public async get(subject: string): Promise<AxiosResponse<DailyTicket.DailyTicket>> {
-        return await this.axios.get(`${this.apiRegion.url.playerData}/daily-ticket/v1/${subject}`);
+    public get(subject: string): Promise<AxiosResponse<DailyTicket.DailyTicket>> {
+        return this.axios.get(`${this.apiRegion.url.playerData}/daily-ticket/v1/${subject}`);
     }
 
     /**
      * @param {string} subject Player UUID
      * @returns {Promise<AxiosResponse<DailyTicket.DailyTicket>>}
      */
-    public async renew(subject: string): Promise<AxiosResponse<DailyTicket.DailyTicket>> {
-        return await this.axios.post(`${this.apiRegion.url.playerData}/daily-ticket/v1/${subject}/renew`);
+    public renew(subject: string): Promise<AxiosResponse<DailyTicket.DailyTicket>> {
+        return this.axios.post(`${this.apiRegion.url.playerData}/daily-ticket/v1/${subject}/renew`);
     }
 }

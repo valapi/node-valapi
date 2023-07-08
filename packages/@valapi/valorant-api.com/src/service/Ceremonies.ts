@@ -10,11 +10,11 @@ export namespace Ceremonies {
 }
 
 export class Ceremonies extends ValorantApiComService {
-    public async get(): Promise<ValorantApiCom.Response.Data<Ceremonies.Ceremonies[]>> {
-        return await this.axios.get("/ceremonies");
+    public get(): Promise<ValorantApiCom.Response.Data<Ceremonies.Ceremonies[]>> {
+        return this.axios.get("/ceremonies");
     }
 
-    public async getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Ceremonies.Ceremonies>> {
-        return await this.axios.get(`/ceremonies/${uuid}`);
+    public getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Ceremonies.Ceremonies>> {
+        return this.axios.get(`/ceremonies/${uuid}`);
     }
 }

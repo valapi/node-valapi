@@ -47,15 +47,15 @@ export namespace Agents {
 }
 
 export class Agents extends ValorantApiComService {
-    public async get(isPlayableCharacter?: boolean): Promise<ValorantApiCom.Response.Data<Agents.Agents[]>> {
-        return await this.axios.get(`/agents`, {
+    public get(isPlayableCharacter?: boolean): Promise<ValorantApiCom.Response.Data<Agents.Agents[]>> {
+        return this.axios.get(`/agents`, {
             params: {
                 isPlayableCharacter: isPlayableCharacter
             }
         });
     }
 
-    public async getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Agents.Agents>> {
-        return await this.axios.get(`/agents/${uuid}`);
+    public getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Agents.Agents>> {
+        return this.axios.get(`/agents/${uuid}`);
     }
 }

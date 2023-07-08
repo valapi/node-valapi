@@ -19,11 +19,11 @@ export namespace PlayerCards {
 }
 
 export class PlayerCards extends ValorantApiComService {
-    public async get(): Promise<ValorantApiCom.Response.Data<PlayerCards.PlayerCards[]>> {
-        return await this.axios.get("/playercards");
+    public get(): Promise<ValorantApiCom.Response.Data<PlayerCards.PlayerCards[]>> {
+        return this.axios.get("/playercards");
     }
 
-    public async getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<PlayerCards.PlayerCards>> {
-        return await this.axios.get(`/playercards/${uuid}`);
+    public getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<PlayerCards.PlayerCards>> {
+        return this.axios.get(`/playercards/${uuid}`);
     }
 }

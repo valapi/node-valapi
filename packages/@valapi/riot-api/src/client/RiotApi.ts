@@ -35,13 +35,6 @@ export namespace RiotApi {
  * Official Api From Riot Games
  */
 export class RiotApi {
-    public readonly config: Required<RiotApi.Config>;
-    protected readonly axios: AxiosInstance;
-
-    public readonly createAt: number = Date.now();
-
-    // default
-
     private static readonly DEFAULT_config: Required<RiotApi.Config> = {
         apiKey: "",
         region: Region.Default.North_America,
@@ -50,6 +43,11 @@ export class RiotApi {
     public static readonly Default = {
         config: RiotApi.DEFAULT_config
     };
+
+    public readonly config: Required<RiotApi.Config>;
+    protected readonly axios: AxiosInstance;
+
+    public readonly createAt: number = Date.now();
 
     /**
      *
@@ -78,8 +76,6 @@ export class RiotApi {
 
         this.axios = axios.create(this.config.axiosConfig);
     }
-
-    // service
 
     public get request() {
         return this.axios.request;

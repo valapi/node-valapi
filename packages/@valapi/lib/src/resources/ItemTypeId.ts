@@ -22,8 +22,6 @@ export default class Data {
     };
 }
 
-// default
-
 export enum Default {
     Agents = "01bb38e1-da47-4e6a-9b3d-945fe4655707",
     Contracts = "f85cb6f7-33e5-4dc8-b609-ec7212301948",

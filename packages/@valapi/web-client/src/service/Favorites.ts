@@ -22,8 +22,8 @@ export class Favorites extends WebClientService {
      * @param {string} subject Player UUID
      * @returns {Promise<AxiosResponse<Favorites.Favorite>>}
      */
-    public async get(subject: string): Promise<AxiosResponse<Favorites.Favorite>> {
-        return await this.axios.get(`${this.apiRegion.url.playerData}/favorites/v1/players/${subject}/favorites`);
+    public get(subject: string): Promise<AxiosResponse<Favorites.Favorite>> {
+        return this.axios.get(`${this.apiRegion.url.playerData}/favorites/v1/players/${subject}/favorites`);
     }
 
     /**
@@ -31,8 +31,8 @@ export class Favorites extends WebClientService {
      * @param {string} itemId Item ID
      * @returns {Promise<AxiosResponse<Favorites.Favorite>>}
      */
-    public async add(subject: string, itemId: string): Promise<AxiosResponse<Favorites.Favorite>> {
-        return await this.axios.post(`${this.apiRegion.url.playerData}/favorites/v1/players/${subject}/favorites`, {
+    public add(subject: string, itemId: string): Promise<AxiosResponse<Favorites.Favorite>> {
+        return this.axios.post(`${this.apiRegion.url.playerData}/favorites/v1/players/${subject}/favorites`, {
             ItemID: itemId
         });
     }
@@ -42,7 +42,7 @@ export class Favorites extends WebClientService {
      * @param {string} itemId Item ID
      * @returns {Promise<AxiosResponse<Favorites.Favorite>>}
      */
-    public async remove(subject: string, itemId: string): Promise<AxiosResponse<Favorites.Favorite>> {
-        return await this.axios.delete(`${this.apiRegion.url.playerData}/favorites/v1/players/${subject}/favorites/${itemId}`);
+    public remove(subject: string, itemId: string): Promise<AxiosResponse<Favorites.Favorite>> {
+        return this.axios.delete(`${this.apiRegion.url.playerData}/favorites/v1/players/${subject}/favorites/${itemId}`);
     }
 }

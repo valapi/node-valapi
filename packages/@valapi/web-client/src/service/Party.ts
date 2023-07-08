@@ -114,8 +114,8 @@ export class Party extends WebClientService {
      * @param {string} subject Player UUID
      * @returns {Promise<AxiosResponse<Party.GetPlayer>>}
      */
-    public async fetchPlayer(subject: string): Promise<AxiosResponse<Party.GetPlayer>> {
-        return await this.axios.get(`${this.apiRegion.url.partyService}/parties/v1/players/${subject}`);
+    public fetchPlayer(subject: string): Promise<AxiosResponse<Party.GetPlayer>> {
+        return this.axios.get(`${this.apiRegion.url.partyService}/parties/v1/players/${subject}`);
     }
 
     /**
@@ -123,8 +123,8 @@ export class Party extends WebClientService {
      * @param {string} subject Player UUID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async removePlayer(subject: string): Promise<AxiosResponse<any>> {
-        return await this.axios.delete(`${this.apiRegion.url.partyService}/parties/v1/players/${subject}`);
+    public removePlayer(subject: string): Promise<AxiosResponse<any>> {
+        return this.axios.delete(`${this.apiRegion.url.partyService}/parties/v1/players/${subject}`);
     }
 
     /**
@@ -132,8 +132,8 @@ export class Party extends WebClientService {
      * @param {string} partyId Party ID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async joinParty(subject: string, partyId: string): Promise<AxiosResponse<any>> {
-        return await this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/players/${subject}/joinparty/${partyId}`);
+    public joinParty(subject: string, partyId: string): Promise<AxiosResponse<any>> {
+        return this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/players/${subject}/joinparty/${partyId}`);
     }
 
     /**
@@ -141,8 +141,8 @@ export class Party extends WebClientService {
      * @param {string} partyId Party ID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async leaveParty(subject: string, partyId: string): Promise<AxiosResponse<any>> {
-        return await this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/players/${subject}/leaveparty/${partyId}`);
+    public leaveParty(subject: string, partyId: string): Promise<AxiosResponse<any>> {
+        return this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/players/${subject}/leaveparty/${partyId}`);
     }
 
     /**
@@ -151,8 +151,8 @@ export class Party extends WebClientService {
      * @param {boolean} isReady Ready or not?
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async setMemberReady(subject: string, partyId: string, isReady: boolean): Promise<AxiosResponse<any>> {
-        return await this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/members/${subject}/setReady`, {
+    public setMemberReady(subject: string, partyId: string, isReady: boolean): Promise<AxiosResponse<any>> {
+        return this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/members/${subject}/setReady`, {
             ready: isReady
         });
     }
@@ -162,8 +162,8 @@ export class Party extends WebClientService {
      * @param {string} partyId Party ID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async refreshCompetitiveTier(subject: string, partyId: string): Promise<AxiosResponse<any>> {
-        return await this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/members/${subject}/refreshCompetitiveTier`);
+    public refreshCompetitiveTier(subject: string, partyId: string): Promise<AxiosResponse<any>> {
+        return this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/members/${subject}/refreshCompetitiveTier`);
     }
 
     /**
@@ -171,8 +171,8 @@ export class Party extends WebClientService {
      * @param {string} partyId Party ID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async refreshPlayerIdentity(subject: string, partyId: string): Promise<AxiosResponse<any>> {
-        return await this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/members/${subject}/refreshPlayerIdentity`);
+    public refreshPlayerIdentity(subject: string, partyId: string): Promise<AxiosResponse<any>> {
+        return this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/members/${subject}/refreshPlayerIdentity`);
     }
 
     /**
@@ -180,16 +180,16 @@ export class Party extends WebClientService {
      * @param {string} partyId Party ID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async refreshPings(subject: string, partyId: string): Promise<AxiosResponse<any>> {
-        return await this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/members/${subject}/refreshPings`);
+    public refreshPings(subject: string, partyId: string): Promise<AxiosResponse<any>> {
+        return this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/members/${subject}/refreshPings`);
     }
 
     /**
      * @param {string} partyId Party ID
      * @returns {Promise<AxiosResponse<Party.Party>>}
      */
-    public async fetchParty(partyId: string): Promise<AxiosResponse<Party.Party>> {
-        return await this.axios.get(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}`);
+    public fetchParty(partyId: string): Promise<AxiosResponse<Party.Party>> {
+        return this.axios.get(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}`);
     }
 
     /**
@@ -197,32 +197,32 @@ export class Party extends WebClientService {
      * @param {string} partyId Party ID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async leaveFromParty(subject: string, partyId: string): Promise<AxiosResponse<any>> {
-        return await this.axios.delete(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/members/${subject}`);
+    public leaveFromParty(subject: string, partyId: string): Promise<AxiosResponse<any>> {
+        return this.axios.delete(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/members/${subject}`);
     }
 
     /**
      * @param {string} partyId Party ID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async fetchMUCToken(partyId: string): Promise<AxiosResponse<any>> {
-        return await this.axios.get(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/muctoken`);
+    public fetchMUCToken(partyId: string): Promise<AxiosResponse<any>> {
+        return this.axios.get(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/muctoken`);
     }
 
     /**
      * @param {string} partyId Party ID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async fetchVoiceToken(partyId: string): Promise<AxiosResponse<any>> {
-        return await this.axios.get(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/voicetoken`);
+    public fetchVoiceToken(partyId: string): Promise<AxiosResponse<any>> {
+        return this.axios.get(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/voicetoken`);
     }
 
     /**
      * @param {string} partyId Party ID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async makeIntoCustomGame(partyId: string): Promise<AxiosResponse<any>> {
-        return await this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/makecustomgame`);
+    public makeIntoCustomGame(partyId: string): Promise<AxiosResponse<any>> {
+        return this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/makecustomgame`);
     }
 
     /**
@@ -230,8 +230,8 @@ export class Party extends WebClientService {
      * @param {QueueId.Identify} queueId Queue (EligibleQueues)
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async changeQueue(partyId: string, queueId: QueueId.Identify): Promise<AxiosResponse<any>> {
-        return await this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/queue`, {
+    public changeQueue(partyId: string, queueId: QueueId.Identify): Promise<AxiosResponse<any>> {
+        return this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/queue`, {
             queueID: queueId
         });
     }
@@ -241,16 +241,16 @@ export class Party extends WebClientService {
      * @param {QueueId.Identify} queueId Queue
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async makeDefault(partyId: string, queueId: QueueId.Identify): Promise<AxiosResponse<any>> {
-        return await this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/makedefault?queueID=${queueId}`);
+    public makeDefault(partyId: string, queueId: QueueId.Identify): Promise<AxiosResponse<any>> {
+        return this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/makedefault?queueID=${queueId}`);
     }
 
     /**
      * @param {string} partyId Party ID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async startCustomGame(partyId: string): Promise<AxiosResponse<any>> {
-        return await this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/startcustomgame`);
+    public startCustomGame(partyId: string): Promise<AxiosResponse<any>> {
+        return this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/startcustomgame`);
     }
 
     /**
@@ -258,8 +258,8 @@ export class Party extends WebClientService {
      * @param {string} subject Player UUID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async startSoloExperience(subject: string): Promise<AxiosResponse<any>> {
-        return await this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/players/${subject}/startsoloexperience`);
+    public startSoloExperience(subject: string): Promise<AxiosResponse<any>> {
+        return this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/players/${subject}/startsoloexperience`);
     }
 
     /**
@@ -267,8 +267,8 @@ export class Party extends WebClientService {
      * @param {Party.CustomGameSettings} settings Custom Game Settings
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async setCustomGameSettings(partyId: string, settings: Party.CustomGameSettings): Promise<AxiosResponse<any>> {
-        return await this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/customgamesettings`, settings);
+    public setCustomGameSettings(partyId: string, settings: Party.CustomGameSettings): Promise<AxiosResponse<any>> {
+        return this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/customgamesettings`, settings);
     }
 
     /**
@@ -277,8 +277,8 @@ export class Party extends WebClientService {
      * @param {string} subject Player UUID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async changeTeamInCustomGame(partyId: string, team: Party.CustomGameTeam, subject: string): Promise<AxiosResponse<any>> {
-        return await this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/customgamemembership/${team}`, {
+    public changeTeamInCustomGame(partyId: string, team: Party.CustomGameTeam, subject: string): Promise<AxiosResponse<any>> {
+        return this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/customgamemembership/${team}`, {
             playerToPutOnTeam: subject
         });
     }
@@ -287,8 +287,8 @@ export class Party extends WebClientService {
      * @param {string} partyId Party ID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async enterMatchmakingQueue(partyId: string): Promise<AxiosResponse<any>> {
-        return await this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/matchmaking/join`);
+    public enterMatchmakingQueue(partyId: string): Promise<AxiosResponse<any>> {
+        return this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/matchmaking/join`);
     }
 
     /**
@@ -296,8 +296,8 @@ export class Party extends WebClientService {
      * @param {string} partyId Party ID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async leaveMatchmakingQueue(partyId: string): Promise<AxiosResponse<any>> {
-        return await this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/matchmaking/leave`);
+    public leaveMatchmakingQueue(partyId: string): Promise<AxiosResponse<any>> {
+        return this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/matchmaking/leave`);
     }
 
     /**
@@ -305,8 +305,8 @@ export class Party extends WebClientService {
      * @param {Party.Accessibility} accessibility Accessibility
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async setAccessibility(partyId: string, accessibility: Party.Accessibility): Promise<AxiosResponse<any>> {
-        return await this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/accessibility`, {
+    public setAccessibility(partyId: string, accessibility: Party.Accessibility): Promise<AxiosResponse<any>> {
+        return this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/accessibility`, {
             accessibility: accessibility
         });
     }
@@ -317,8 +317,8 @@ export class Party extends WebClientService {
      * @param {string} tagLine In-Game Tag
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async inviteToPartyByDisplayName(partyId: string, gameName: string, tagLine: string): Promise<AxiosResponse<any>> {
-        return await this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/invites/name/${gameName}/tag/${tagLine}`);
+    public inviteToPartyByDisplayName(partyId: string, gameName: string, tagLine: string): Promise<AxiosResponse<any>> {
+        return this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/invites/name/${gameName}/tag/${tagLine}`);
     }
 
     /**
@@ -326,23 +326,23 @@ export class Party extends WebClientService {
      * @param {string} requestId Request ID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async declineRequest(partyId: string, requestId: string): Promise<AxiosResponse<any>> {
-        return await this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/request/${requestId}/decline`);
+    public declineRequest(partyId: string, requestId: string): Promise<AxiosResponse<any>> {
+        return this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/request/${requestId}/decline`);
     }
 
     /**
      * @param {string} partyId Party ID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async setBalance(partyId: string): Promise<AxiosResponse<any>> {
-        return await this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/balance`);
+    public setBalance(partyId: string): Promise<AxiosResponse<any>> {
+        return this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/balance`);
     }
 
     /**
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async fetchCustomGameConfigs(): Promise<AxiosResponse<any>> {
-        return await this.axios.get(`${this.apiRegion.url.partyService}/parties/v1/parties/customgameconfigs`);
+    public fetchCustomGameConfigs(): Promise<AxiosResponse<any>> {
+        return this.axios.get(`${this.apiRegion.url.partyService}/parties/v1/parties/customgameconfigs`);
     }
 
     /**
@@ -350,7 +350,7 @@ export class Party extends WebClientService {
      * @param {string} partyId Party ID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async transferOwner(subject: string, partyId: string): Promise<AxiosResponse<any>> {
-        return await this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/members/${subject}/owner`);
+    public transferOwner(subject: string, partyId: string): Promise<AxiosResponse<any>> {
+        return this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/members/${subject}/owner`);
     }
 }

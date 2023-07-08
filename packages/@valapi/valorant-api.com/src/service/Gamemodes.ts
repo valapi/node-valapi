@@ -38,19 +38,19 @@ export namespace Gamemodes {
 }
 
 export class Gamemodes extends ValorantApiComService {
-    public async get(): Promise<ValorantApiCom.Response.Data<Gamemodes.Gamemodes[]>> {
-        return await this.axios.get("/gamemodes");
+    public get(): Promise<ValorantApiCom.Response.Data<Gamemodes.Gamemodes[]>> {
+        return this.axios.get("/gamemodes");
     }
 
-    public async getEquippables(): Promise<ValorantApiCom.Response.Data<Gamemodes.GamemodeEquippables[]>> {
-        return await this.axios.get(`/gamemodes/equippables`);
+    public getEquippables(): Promise<ValorantApiCom.Response.Data<Gamemodes.GamemodeEquippables[]>> {
+        return this.axios.get(`/gamemodes/equippables`);
     }
 
-    public async getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Gamemodes.Gamemodes>> {
-        return await this.axios.get(`/gamemodes/${uuid}`);
+    public getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Gamemodes.Gamemodes>> {
+        return this.axios.get(`/gamemodes/${uuid}`);
     }
 
-    public async getEquippableByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Gamemodes.GamemodeEquippables>> {
-        return await this.axios.get(`/gamemodes/equippables/${uuid}`);
+    public getEquippableByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Gamemodes.GamemodeEquippables>> {
+        return this.axios.get(`/gamemodes/equippables/${uuid}`);
     }
 }

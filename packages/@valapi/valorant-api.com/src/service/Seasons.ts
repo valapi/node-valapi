@@ -31,19 +31,19 @@ export namespace Seasons {
 }
 
 export class Seasons extends ValorantApiComService {
-    public async get(): Promise<ValorantApiCom.Response.Data<Seasons.Seasons[]>> {
-        return await this.axios.get("/seasons");
+    public get(): Promise<ValorantApiCom.Response.Data<Seasons.Seasons[]>> {
+        return this.axios.get("/seasons");
     }
 
-    public async getCompetitiveSeasons(): Promise<ValorantApiCom.Response.Data<Seasons.CompetitiveSeasons[]>> {
-        return await this.axios.get("/seasons/competitive");
+    public getCompetitiveSeasons(): Promise<ValorantApiCom.Response.Data<Seasons.CompetitiveSeasons[]>> {
+        return this.axios.get("/seasons/competitive");
     }
 
-    public async getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Seasons.Seasons>> {
-        return await this.axios.get(`/seasons/${uuid}`);
+    public getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Seasons.Seasons>> {
+        return this.axios.get(`/seasons/${uuid}`);
     }
 
-    public async getCompetitiveSeasonByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Seasons.CompetitiveSeasons>> {
-        return await this.axios.get(`/seasons/competitive/${uuid}`);
+    public getCompetitiveSeasonByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Seasons.CompetitiveSeasons>> {
+        return this.axios.get(`/seasons/competitive/${uuid}`);
     }
 }

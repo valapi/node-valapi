@@ -44,8 +44,8 @@ export class Personalization extends WebClientService {
      * @param {string} subject Player UUID
      * @returns {Promise<AxiosResponse<Required<Personalization.Loadout>>>}
      */
-    public async getPlayerLoadout(subject: string): Promise<AxiosResponse<Required<Personalization.Loadout>>> {
-        return await this.axios.get(`${this.apiRegion.url.playerData}/personalization/v2/players/${subject}/playerloadout`);
+    public getPlayerLoadout(subject: string): Promise<AxiosResponse<Required<Personalization.Loadout>>> {
+        return this.axios.get(`${this.apiRegion.url.playerData}/personalization/v2/players/${subject}/playerloadout`);
     }
 
     /**
@@ -53,7 +53,7 @@ export class Personalization extends WebClientService {
      * @param {Omit<Personalization.Loadout, "Subject" | "Version">} loadout Loadout
      * @returns {Promise<AxiosResponse<Personalization.Loadout>>}
      */
-    public async playerLoadoutUpdate(subject: string, loadout: Omit<Personalization.Loadout, "Subject" | "Version">): Promise<AxiosResponse<Personalization.Loadout>> {
-        return await this.axios.put(`${this.apiRegion.url.playerData}/personalization/v2/players/${subject}/playerloadout`, loadout);
+    public playerLoadoutUpdate(subject: string, loadout: Omit<Personalization.Loadout, "Subject" | "Version">): Promise<AxiosResponse<Personalization.Loadout>> {
+        return this.axios.put(`${this.apiRegion.url.playerData}/personalization/v2/players/${subject}/playerloadout`, loadout);
     }
 }

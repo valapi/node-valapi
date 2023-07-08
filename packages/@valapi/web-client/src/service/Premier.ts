@@ -45,30 +45,30 @@ export class Premier extends WebClientService {
      * @deprecated Please, Contact us if you find out how its works
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async getEligibility(): Promise<AxiosResponse<any>> {
-        return await this.axios.get(`${this.apiRegion.url.playerData}/premier/v1/player/eligibility`);
+    public getEligibility(): Promise<AxiosResponse<any>> {
+        return this.axios.get(`${this.apiRegion.url.playerData}/premier/v1/player/eligibility`);
     }
 
     /**
      * @returns {Promise<AxiosResponse<Premier.Conferences>>}
      */
-    public async getPremierConferences(): Promise<AxiosResponse<Premier.Conferences>> {
-        return await this.axios.get(`${this.apiRegion.url.playerData}/premier/v1/affinities/${this.apiRegion.id}/conferences`);
+    public getPremierConferences(): Promise<AxiosResponse<Premier.Conferences>> {
+        return this.axios.get(`${this.apiRegion.url.playerData}/premier/v1/affinities/${this.apiRegion.id}/conferences`);
     }
 
     /**
      * @returns {Promise<AxiosResponse<Premier.Seasons>>}
      */
-    public async fetchPremierSeasons(): Promise<AxiosResponse<Premier.Seasons>> {
-        return await this.axios.get(`${this.apiRegion.url.playerData}/premier/v1/affinities/${this.apiRegion.id}/premier-seasons`);
+    public fetchPremierSeasons(): Promise<AxiosResponse<Premier.Seasons>> {
+        return this.axios.get(`${this.apiRegion.url.playerData}/premier/v1/affinities/${this.apiRegion.id}/premier-seasons`);
     }
 
     /**
      * @deprecated Please, Contact us if you find out how its works
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async getActivePremierSeason(): Promise<AxiosResponse<any>> {
-        return await this.axios.get(`${this.apiRegion.url.playerData}/premier/v1/affinities/${this.apiRegion.id}/premier-seasons/active`);
+    public getActivePremierSeason(): Promise<AxiosResponse<any>> {
+        return this.axios.get(`${this.apiRegion.url.playerData}/premier/v1/affinities/${this.apiRegion.id}/premier-seasons/active`);
     }
 
     /**
@@ -77,16 +77,16 @@ export class Premier extends WebClientService {
      * @param {string} rosterId Roster ID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async getMUCToken(realm: string, rosterId: string): Promise<AxiosResponse<any>> {
-        return await this.axios.get(`${this.apiRegion.url.playerData}/premier/v1/rsp/rosters/v1/${realm}/roster/${rosterId}/muctoken`);
+    public getMUCToken(realm: string, rosterId: string): Promise<AxiosResponse<any>> {
+        return this.axios.get(`${this.apiRegion.url.playerData}/premier/v1/rsp/rosters/v1/${realm}/roster/${rosterId}/muctoken`);
     }
 
     /**
      * @param {string} subject Player UUID
      * @returns {Promise<AxiosResponse<Premier.Player>>}
      */
-    public async getPlayer(subject: string): Promise<AxiosResponse<Premier.Player>> {
-        return await this.axios.get(`${this.apiRegion.url.playerData}/premier/v2/players/${subject}`);
+    public getPlayer(subject: string): Promise<AxiosResponse<Premier.Player>> {
+        return this.axios.get(`${this.apiRegion.url.playerData}/premier/v2/players/${subject}`);
     }
 
     /**
@@ -94,8 +94,8 @@ export class Premier extends WebClientService {
      * @param {string} rosterId Roster ID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async GetRosterV1(rosterId: string): Promise<AxiosResponse<any>> {
-        return await this.axios.get(`${this.apiRegion.url.playerData}/premier/v1/rosters/${rosterId}`);
+    public GetRosterV1(rosterId: string): Promise<AxiosResponse<any>> {
+        return this.axios.get(`${this.apiRegion.url.playerData}/premier/v1/rosters/${rosterId}`);
     }
 
     /**
@@ -103,8 +103,8 @@ export class Premier extends WebClientService {
      * @param {string} rosterId Roster ID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async GetRosterV2(rosterId: string): Promise<AxiosResponse<any>> {
-        return await this.axios.get(`${this.apiRegion.url.playerData}/premier/v2/rosters/${rosterId}`);
+    public GetRosterV2(rosterId: string): Promise<AxiosResponse<any>> {
+        return this.axios.get(`${this.apiRegion.url.playerData}/premier/v2/rosters/${rosterId}`);
     }
 
     /**
@@ -113,8 +113,8 @@ export class Premier extends WebClientService {
      * @param {string} rosterId Roster ID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async getRosterByProxy(realm: string, rosterId: string): Promise<AxiosResponse<any>> {
-        return await this.axios.get(`${this.apiRegion.url.playerData}/premier/v1/rsp/rosters/v1/${realm}/roster/${rosterId}`);
+    public getRosterByProxy(realm: string, rosterId: string): Promise<AxiosResponse<any>> {
+        return this.axios.get(`${this.apiRegion.url.playerData}/premier/v1/rsp/rosters/v1/${realm}/roster/${rosterId}`);
     }
 
     /**
@@ -123,8 +123,8 @@ export class Premier extends WebClientService {
      * @param {Premier.RosterCustomization} rosterCustomization Roster Customization
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async setPremierRosterCustomization(rosterId: string, rosterCustomization: Premier.RosterCustomization): Promise<AxiosResponse<any>> {
-        return await this.axios.put(`${this.apiRegion.url.playerData}/premier/v1/rosters/${rosterId}/customization`, rosterCustomization);
+    public setPremierRosterCustomization(rosterId: string, rosterCustomization: Premier.RosterCustomization): Promise<AxiosResponse<any>> {
+        return this.axios.put(`${this.apiRegion.url.playerData}/premier/v1/rosters/${rosterId}/customization`, rosterCustomization);
     }
 
     /**
@@ -133,8 +133,8 @@ export class Premier extends WebClientService {
      * @param {string} rosterId Roster ID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async deleteRosterByProxy(realm: string, rosterId: string): Promise<AxiosResponse<any>> {
-        return await this.axios.delete(`${this.apiRegion.url.playerData}/premier/v1/rsp/rosters/v1/${realm}/roster/${rosterId}`);
+    public deleteRosterByProxy(realm: string, rosterId: string): Promise<AxiosResponse<any>> {
+        return this.axios.delete(`${this.apiRegion.url.playerData}/premier/v1/rsp/rosters/v1/${realm}/roster/${rosterId}`);
     }
 
     /**
@@ -143,8 +143,8 @@ export class Premier extends WebClientService {
      * @param {string} conferenceId Conference ID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async rosterEnroll(rosterId: string, conferenceId: string): Promise<AxiosResponse<any>> {
-        return await this.axios.put(`${this.apiRegion.url.playerData}/premier/v1/rosters/${rosterId}/enroll`, {
+    public rosterEnroll(rosterId: string, conferenceId: string): Promise<AxiosResponse<any>> {
+        return this.axios.put(`${this.apiRegion.url.playerData}/premier/v1/rosters/${rosterId}/enroll`, {
             id: conferenceId
         });
     }
@@ -155,8 +155,8 @@ export class Premier extends WebClientService {
      * @param {string} subject Player UUID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async createInvite(rosterId: string, subject: string): Promise<AxiosResponse<any>> {
-        return await this.axios.post(`${this.apiRegion.url.playerData}/premier/v2/rosters/${rosterId}/invites/${subject}`);
+    public createInvite(rosterId: string, subject: string): Promise<AxiosResponse<any>> {
+        return this.axios.post(`${this.apiRegion.url.playerData}/premier/v2/rosters/${rosterId}/invites/${subject}`);
     }
 
     /**
@@ -164,8 +164,8 @@ export class Premier extends WebClientService {
      * @param {string} rosterId Roster ID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async getPremierRosterMatchHistory(rosterId: string): Promise<AxiosResponse<any>> {
-        return await this.axios.get(`${this.apiRegion.url.playerData}/premier/v1/rosters/${rosterId}/matchhistory`);
+    public getPremierRosterMatchHistory(rosterId: string): Promise<AxiosResponse<any>> {
+        return this.axios.get(`${this.apiRegion.url.playerData}/premier/v1/rosters/${rosterId}/matchhistory`);
     }
 
     /**
@@ -174,8 +174,8 @@ export class Premier extends WebClientService {
      * @param {string} subject Player UUID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async acceptInvite(rosterId: string, subject: string): Promise<AxiosResponse<any>> {
-        return await this.axios.post(`${this.apiRegion.url.playerData}/premier/v2/rosters/${rosterId}/invites/${subject}/accept`);
+    public acceptInvite(rosterId: string, subject: string): Promise<AxiosResponse<any>> {
+        return this.axios.post(`${this.apiRegion.url.playerData}/premier/v2/rosters/${rosterId}/invites/${subject}/accept`);
     }
 
     /**
@@ -183,7 +183,7 @@ export class Premier extends WebClientService {
      * @param {string} partyId Party ID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async makePremierGame(partyId: string): Promise<AxiosResponse<any>> {
-        return await this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/makePremierGame`, {});
+    public makePremierGame(partyId: string): Promise<AxiosResponse<any>> {
+        return this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/makePremierGame`, {});
     }
 }

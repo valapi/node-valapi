@@ -13,8 +13,11 @@ describe("auth.login", () => {
 
     test("new client", () => {
         expect(myClient.toJSON()).toMatchObject<Partial<AuthCore.Json>>({
-            isMultifactorAccount: false,
-            isAuthenticationError: false,
+            authenticationInfo: {
+                isMultifactor: false,
+                isError: false,
+                message: "load,client"
+            },
             cookie: new CookieJar().serializeSync(),
             access_token: "",
             id_token: "",
@@ -35,21 +38,17 @@ describe("auth.login", () => {
 
     test("empty refresh", async () => {
         await expect(async () => {
-            return await myClient.refresh();
+            return myClient.refresh();
         }).rejects.toThrow();
     });
 
     test("user auth", async () => {
         await myClient.login(<string>env.VAL_USER, <string>env.VAL_PASS);
 
-        expect(myClient.toJSON()).not.toMatchObject<Partial<AuthCore.Json>>({
-            isMultifactorAccount: true,
-            isAuthenticationError: true,
-            cookie: new CookieJar().serializeSync(),
-            access_token: "",
-            id_token: "",
-            session_state: "",
-            entitlements_token: ""
+        expect(myClient.toJSON().authenticationInfo).toMatchObject<Partial<AuthCore.JsonAuthenticationInfo>>({
+            isMultifactor: false,
+            isError: false,
+            message: "success,login"
         });
     });
 
@@ -67,7 +66,7 @@ describe("auth.login", () => {
         });
 
         await expect(async () => {
-            return await errorClient.login(randomBytes(10).toString("hex"), randomBytes(15).toString("hex"));
+            return errorClient.login(randomBytes(10).toString("hex"), randomBytes(15).toString("hex"));
         }).rejects.toThrow();
     });
 
@@ -76,9 +75,10 @@ describe("auth.login", () => {
             region: <Region.Identify>env.VAL_REGION
         });
 
-        expect(cookieClient.toJSON()).toMatchObject({
-            isMultifactorAccount: false,
-            isAuthenticationError: false
+        expect(cookieClient.toJSON().authenticationInfo).toMatchObject<Partial<AuthCore.JsonAuthenticationInfo>>({
+            isError: false,
+            isMultifactor: false,
+            message: "success,cookie"
         });
 
         expect(cookieClient.getSubject()).toBe(myClient.getSubject());

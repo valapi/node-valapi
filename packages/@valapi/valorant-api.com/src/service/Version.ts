@@ -14,7 +14,7 @@ export namespace Version {
 }
 
 export class Version extends ValorantApiComService {
-    public async get(): Promise<ValorantApiCom.Response.Data<Version.Version>> {
-        return await this.axios.get("/version");
+    public get(): Promise<ValorantApiCom.Response.Data<Version.Version>> {
+        return this.axios.get("/version");
     }
 }

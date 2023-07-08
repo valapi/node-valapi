@@ -92,24 +92,24 @@ export class PreGame extends WebClientService {
      * @param {string} subject Player UUID
      * @returns {Promise<AxiosResponse<PreGame.Player>>}
      */
-    public async getPlayer(subject: string): Promise<AxiosResponse<PreGame.Player>> {
-        return await this.axios.get(`${this.apiRegion.url.partyService}/pregame/v1/players/${subject}`);
+    public getPlayer(subject: string): Promise<AxiosResponse<PreGame.Player>> {
+        return this.axios.get(`${this.apiRegion.url.partyService}/pregame/v1/players/${subject}`);
     }
 
     /**
      * @param {string} matchId Match ID
      * @returns {Promise<AxiosResponse<PreGame.Match>>}
      */
-    public async getMatch(matchId: string): Promise<AxiosResponse<PreGame.Match>> {
-        return await this.axios.get(`${this.apiRegion.url.partyService}/pregame/v1/matches/${matchId}`);
+    public getMatch(matchId: string): Promise<AxiosResponse<PreGame.Match>> {
+        return this.axios.get(`${this.apiRegion.url.partyService}/pregame/v1/matches/${matchId}`);
     }
 
     /**
      * @param {string} matchId Match ID
      * @returns {Promise<AxiosResponse<PreGame.Loadout>>}
      */
-    public async getMatchLoadouts(matchId: string): Promise<AxiosResponse<PreGame.Loadout>> {
-        return await this.axios.get(`${this.apiRegion.url.partyService}/pregame/v1/matches/${matchId}/loadouts`);
+    public getMatchLoadouts(matchId: string): Promise<AxiosResponse<PreGame.Loadout>> {
+        return this.axios.get(`${this.apiRegion.url.partyService}/pregame/v1/matches/${matchId}/loadouts`);
     }
 
     /**
@@ -118,8 +118,8 @@ export class PreGame extends WebClientService {
      * @param {string} agentId Character ID
      * @returns {Promise<AxiosResponse<PreGame.Match>>}
      */
-    public async selectCharacter(matchId: string, agentId: string): Promise<AxiosResponse<PreGame.Match>> {
-        return await this.axios.post(`${this.apiRegion.url.partyService}/pregame/v1/matches/${matchId}/select/${agentId}`);
+    public selectCharacter(matchId: string, agentId: string): Promise<AxiosResponse<PreGame.Match>> {
+        return this.axios.post(`${this.apiRegion.url.partyService}/pregame/v1/matches/${matchId}/select/${agentId}`);
     }
 
     /**
@@ -128,8 +128,8 @@ export class PreGame extends WebClientService {
      * @param {string} agentId Character ID
      * @returns {Promise<AxiosResponse<PreGame.Match>>}
      */
-    public async lockCharacter(matchId: string, agentId: string): Promise<AxiosResponse<PreGame.Match>> {
-        return await this.axios.post(`${this.apiRegion.url.partyService}/pregame/v1/matches/${matchId}/lock/${agentId}`);
+    public lockCharacter(matchId: string, agentId: string): Promise<AxiosResponse<PreGame.Match>> {
+        return this.axios.post(`${this.apiRegion.url.partyService}/pregame/v1/matches/${matchId}/lock/${agentId}`);
     }
 
     /**
@@ -137,8 +137,8 @@ export class PreGame extends WebClientService {
      * @param {string} matchId Match ID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async fetchVoiceToken(matchId: string): Promise<AxiosResponse<any>> {
-        return await this.axios.get(`${this.apiRegion.url.partyService}/pregame/v1/matches/${matchId}/voicetoken`);
+    public fetchVoiceToken(matchId: string): Promise<AxiosResponse<any>> {
+        return this.axios.get(`${this.apiRegion.url.partyService}/pregame/v1/matches/${matchId}/voicetoken`);
     }
 
     /**
@@ -146,8 +146,8 @@ export class PreGame extends WebClientService {
      * @param {string} matchId Match ID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async fetchChatToken(matchId: string): Promise<AxiosResponse<any>> {
-        return await this.axios.get(`${this.apiRegion.url.partyService}/pregame/v1/matches/${matchId}/chattoken`);
+    public fetchChatToken(matchId: string): Promise<AxiosResponse<any>> {
+        return this.axios.get(`${this.apiRegion.url.partyService}/pregame/v1/matches/${matchId}/chattoken`);
     }
 
     /**
@@ -155,7 +155,7 @@ export class PreGame extends WebClientService {
      * @param {string} matchId Match ID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public async quitMatch(matchId: string): Promise<AxiosResponse<any>> {
-        return await this.axios.post(`${this.apiRegion.url.partyService}/pregame/v1/matches/${matchId}/quit`);
+    public quitMatch(matchId: string): Promise<AxiosResponse<any>> {
+        return this.axios.post(`${this.apiRegion.url.partyService}/pregame/v1/matches/${matchId}/quit`);
     }
 }

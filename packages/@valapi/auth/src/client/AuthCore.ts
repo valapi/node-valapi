@@ -13,10 +13,12 @@ export namespace AuthCore {
         live: Region.Identify;
     }
 
+    export type JsonAuthenticationInfoMessage = `${"load" | "fail" | "success"},${string}`;
+
     export interface JsonAuthenticationInfo {
         isError: boolean;
         isMultifactor: boolean;
-        message: string;
+        message: AuthCore.JsonAuthenticationInfoMessage;
     }
 
     /**
@@ -77,29 +79,6 @@ export namespace AuthCore {
  * Authentication Core
  */
 export class AuthCore {
-    private _config: Required<AuthCore.Config> = AuthCore.Default.config;
-
-    private _authenticationInfo: AuthCore.JsonAuthenticationInfo = {
-        isError: false,
-        isMultifactor: false,
-        message: ""
-    };
-
-    private _createAt: number = Date.now();
-
-    private _cookie: CookieJar = new CookieJar();
-    private _access_token = "";
-    private _id_token = "";
-    private _expires_in = AuthCore.expires_in;
-    private _token_type = AuthCore.token_type;
-    private _session_state = "";
-    private _entitlements_token = "";
-    private _region: Required<AuthCore.JsonRegion>;
-
-    protected readonly _isRegionConfig: boolean = false;
-
-    // default
-
     private static readonly DEFAULT_Region: Required<AuthCore.JsonRegion> = {
         pbe: "na",
         live: "na"
@@ -133,23 +112,37 @@ export class AuthCore {
         config: AuthCore.DEFAULT_config
     };
 
+    private _config: Required<AuthCore.Config> = AuthCore.Default.config;
+
+    private _authenticationInfo: AuthCore.JsonAuthenticationInfo = {
+        isError: false,
+        isMultifactor: false,
+        message: "load,client"
+    };
+
+    private _createAt: number = Date.now();
+
+    private _cookie: CookieJar = new CookieJar();
+    private _access_token = "";
+    private _id_token = "";
+    private _expires_in = AuthCore.expires_in;
+    private _token_type = AuthCore.token_type;
+    private _session_state = "";
+    private _entitlements_token = "";
+    private _region: Required<AuthCore.JsonRegion> = AuthCore.Default.region;
+
+    protected readonly _isRegionConfig: boolean = false;
+
     /**
      *
      * @param {AuthCore.Config} config Config
      */
     public constructor(config: AuthCore.Config = {}) {
+        this.config = config;
+
         if (config.region) {
             this._isRegionConfig = true;
         }
-
-        this.config = config;
-
-        this._region = {
-            ...AuthCore.Default.region,
-            ...{
-                live: this.config.region ? this.config.region : AuthCore.Default.region.live
-            }
-        };
     }
 
     // * settings
@@ -185,7 +178,7 @@ export class AuthCore {
                         }
                     }
                 },
-                region: this._isRegionConfig === true ? this._config.region : value.region ? value.region : this._config.region
+                region: this.region.live
             }
         };
     }
@@ -379,10 +372,12 @@ export class AuthCore {
     // region
 
     protected set region(value: Partial<AuthCore.JsonRegion>) {
-        this._region = {
-            pbe: value.pbe ? value.pbe : this._region && this._region.pbe ? this._region.pbe : AuthCore.Default.region.pbe,
-            live: this._isRegionConfig === true ? this.config.region : value.live ? value.live : this._region && this._region.live ? this._region.live : AuthCore.Default.region.live
-        };
+        if (this._isRegionConfig == false) {
+            this._region = {
+                pbe: value.pbe ? value.pbe : this._region.pbe,
+                live: value.live ? value.live : this._region.live
+            };
+        }
     }
 
     public get region(): Required<AuthCore.JsonRegion> {
@@ -447,13 +442,7 @@ export class AuthCore {
         this.entitlements_token = account.entitlements_token;
         this.createAt = account.createAt;
         this.authenticationInfo = account.authenticationInfo;
-        this.region =
-            this._isRegionConfig === true
-                ? {
-                      pbe: account.region.pbe,
-                      live: this.config.region
-                  }
-                : account.region;
+        this.region = account.region;
     }
 
     /**
