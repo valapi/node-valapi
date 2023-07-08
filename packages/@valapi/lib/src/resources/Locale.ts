@@ -1,8 +1,8 @@
 export default class Data {
     public static readonly from = {
-        "ar-AE": "Arabic_UAE",
+        "ar-AE": "Arabic_United_Arab_Emirates",
         "de-DE": "German_Germany",
-        "en-GB": "English_United_Kingdom", // * not support valorant-api.com
+        "en-GB": "English_United_Kingdom",
         "en-US": "English_United_States",
         "es-ES": "Spanish_Spain",
         "es-MX": "Spanish_Mexico",
@@ -10,7 +10,7 @@ export default class Data {
         "id-ID": "Indonesian_Indonesia",
         "it-IT": "Italian_Italy",
         "ja-JP": "Japanese_Japan",
-        "ko-KR": "Korean_Korea",
+        "ko-KR": "Korean_South_Korea",
         "pl-PL": "Polish_Poland",
         "pt-BR": "Portuguese_Brazil",
         "ru-RU": "Russian_Russia",
@@ -22,7 +22,7 @@ export default class Data {
     };
 
     public static readonly to = {
-        Arabic_UAE: "ar-AE",
+        Arabic_United_Arab_Emirates: "ar-AE",
         German_Germany: "de-DE",
         English_United_Kingdom: "en-GB",
         English_United_States: "en-US",
@@ -32,7 +32,7 @@ export default class Data {
         Indonesian_Indonesia: "id-ID",
         Italian_Italy: "it-IT",
         Japanese_Japan: "ja-JP",
-        Korean_Korea: "ko-KR",
+        Korean_South_Korea: "ko-KR",
         Polish_Poland: "pl-PL",
         Portuguese_Brazil: "pt-BR",
         Russian_Russia: "ru-RU",
@@ -45,7 +45,7 @@ export default class Data {
 }
 
 export enum Default {
-    Arabic_UAE = "ar-AE",
+    Arabic_United_Arab_Emirates = "ar-AE",
     German_Germany = "de-DE",
     English_United_Kingdom = "en-GB",
     English_United_States = "en-US",
@@ -55,7 +55,7 @@ export enum Default {
     Indonesian_Indonesia = "id-ID",
     Italian_Italy = "it-IT",
     Japanese_Japan = "ja-JP",
-    Korean_Korea = "ko-KR",
+    Korean_South_Korea = "ko-KR",
     Polish_Poland = "pl-PL",
     Portuguese_Brazil = "pt-BR",
     Russian_Russia = "ru-RU",

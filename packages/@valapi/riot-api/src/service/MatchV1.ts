@@ -8,7 +8,7 @@ import { RiotApiService } from "../client/RiotApiService";
 // * We are waiting for the hero: https://github.com/valapi/node-valapi/pulls
 
 /**
- * ! Not For Public Use
+ * ! This API service is required your project to be registered by Riot Games.
  */
 export class MatchV1 extends RiotApiService {
     /**

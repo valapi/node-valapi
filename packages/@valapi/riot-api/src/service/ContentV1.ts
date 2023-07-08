@@ -10,7 +10,7 @@ export namespace ContentV1 {
         /**
          * This field is excluded from the response when a locale is set
          */
-        localizedNames?: string;
+        localizedNames?: Record<Locale.Identify, string>;
         id: string;
         isActive: boolean;
 
@@ -22,7 +22,7 @@ export namespace ContentV1 {
         /**
          * This field is excluded from the response when a locale is set
          */
-        localizedNames?: string;
+        localizedNames?: Record<Locale.Identify, string>;
         id: string;
         assetName: string;
         /**
