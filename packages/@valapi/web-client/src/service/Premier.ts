@@ -158,4 +158,32 @@ export class Premier extends WebClientService {
     public async createInvite(rosterId: string, subject: string): Promise<AxiosResponse<any>> {
         return await this.axios.post(`${this.apiRegion.url.playerData}/premier/v2/rosters/${rosterId}/invites/${subject}`);
     }
+
+    /**
+     * @deprecated Please, Contact us if you find out how its works
+     * @param {string} rosterId Roster ID
+     * @returns {Promise<AxiosResponse<any>>}
+     */
+    public async getPremierRosterMatchHistory(rosterId: string): Promise<AxiosResponse<any>> {
+        return await this.axios.get(`${this.apiRegion.url.playerData}/premier/v1/rosters/${rosterId}/matchhistory`);
+    }
+
+    /**
+     * @deprecated Please, Contact us if you find out how its works
+     * @param {string} rosterId Roster ID
+     * @param {string} subject Player UUID
+     * @returns {Promise<AxiosResponse<any>>}
+     */
+    public async acceptInvite(rosterId: string, subject: string): Promise<AxiosResponse<any>> {
+        return await this.axios.post(`${this.apiRegion.url.playerData}/premier/v2/rosters/${rosterId}/invites/${subject}/accept`);
+    }
+
+    /**
+     * @deprecated Please, Contact us if you find out how its works
+     * @param {string} partyId Party ID
+     * @returns {Promise<AxiosResponse<any>>}
+     */
+    public async makePremierGame(partyId: string): Promise<AxiosResponse<any>> {
+        return await this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/makePremierGame`, {});
+    }
 }

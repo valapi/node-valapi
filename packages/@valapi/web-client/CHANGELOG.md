@@ -7,6 +7,8 @@
 _endpoints_
 
 -   `Store.getAgent()`
+-   `DailyTicket.get(subject)`
+-   `DailyTicket.renew(subject)`
 
 **Remove**
 

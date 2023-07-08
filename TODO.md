@@ -28,6 +28,7 @@
 | Service | ContractDefinitions | Not Done    |
 | Service | Contracts           | Not Done    |
 | Service | CoreGame            | Not Done    |
+| Service | DailyTicket            | Not Done    |
 | Service | DisplayNameService  | Done        |
 | Service | Favorites           | Done        |
 | Service | Latency             | Done        |

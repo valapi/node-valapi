@@ -14,6 +14,7 @@ export { Content } from "./service/Content";
 export { ContractDefinitions } from "./service/ContractDefinitions";
 export { Contracts } from "./service/Contracts";
 export { CoreGame } from "./service/CoreGame";
+export { DailyTicket } from "./service/DailyTicket";
 export { DisplayNameService } from "./service/DisplayNameService";
 export { Favorites } from "./service/Favorites";
 export { Latency } from "./service/Latency";

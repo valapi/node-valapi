@@ -14,6 +14,7 @@ import { Content } from "../service/Content";
 import { ContractDefinitions } from "../service/ContractDefinitions";
 import { Contracts } from "../service/Contracts";
 import { CoreGame } from "../service/CoreGame";
+import { DailyTicket } from "../service/DailyTicket";
 import { DisplayNameService } from "../service/DisplayNameService";
 import { Favorites } from "../service/Favorites";
 import { Latency } from "../service/Latency";
@@ -169,6 +170,10 @@ export class WebClient extends AuthClient {
 
     public get CoreGame(): CoreGame {
         return new CoreGame(this.axios, new WebClientRegion(this.region.live));
+    }
+
+    public get DailyTicket(): DailyTicket {
+        return new DailyTicket(this.axios, new WebClientRegion(this.region.live));
     }
 
     public get DisplayNameService(): DisplayNameService {
