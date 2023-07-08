@@ -97,7 +97,7 @@ export namespace Store {
 
     export interface Offers {
         Offers: Array<Store.Offer>;
-        UpgradeCurrencyOffers: Store.UpgradeCurrencyOffers; // DiscountedPercent
+        UpgradeCurrencyOffers: Store.UpgradeCurrencyOffers;
     }
 
     export interface Entitlements {
