@@ -72,8 +72,10 @@ await authClient.login("BestUsername", "SuperSecretPassword");
 ```
 
 ```typescript
-if (client.isMultifactorAccount === true) {
-    await authClient.verify(428793 /* <--- Verification Code */);
+if (client.authenticationInfo.isMultifactor === true) {
+    const verificationCode = 428793;
+
+    await authClient.verify(verificationCode);
 }
 ```
 
