@@ -1,5 +1,4 @@
 import { ValorantApiComService } from "../client/ValorantApiComService";
-import type { ValorantApiCom } from "../client/ValorantApiCom";
 
 export namespace Version {
     export interface Version {
@@ -14,7 +13,7 @@ export namespace Version {
 }
 
 export class Version extends ValorantApiComService {
-    public get(): Promise<ValorantApiCom.Response.Data<Version.Version>> {
+    public get(): Promise<ValorantApiComService.Response<Version.Version>> {
         return this.axios.get("/version");
     }
 }

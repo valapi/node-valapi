@@ -2,10 +2,10 @@ import { ValorantApiComService } from "../client/ValorantApiComService";
 import type { ValorantApiCom } from "../client/ValorantApiCom";
 
 export namespace Maps {
-    export interface Maps {
+    export interface Maps<L extends ValorantApiCom.Language> {
         uuid: string;
-        displayName: ValorantApiCom.Response.Languages<string>; // localized
-        coordinates: ValorantApiCom.Response.Languages<string>; // localized
+        displayName: ValorantApiComService.Languages<string, L>;
+        coordinates: ValorantApiComService.Languages<string, L>;
         displayIcon: string;
         listViewIcon: string;
         splash: string;
@@ -16,8 +16,8 @@ export namespace Maps {
         xScalarToAdd: number;
         yScalarToAdd: number;
         callouts: Array<{
-            regionName: ValorantApiCom.Response.Languages<string>; // localized
-            superRegionName: ValorantApiCom.Response.Languages<string>; // localized
+            regionName: ValorantApiComService.Languages<string, L>;
+            superRegionName: ValorantApiComService.Languages<string, L>;
             location: {
                 x: number;
                 y: number;
@@ -26,12 +26,12 @@ export namespace Maps {
     }
 }
 
-export class Maps extends ValorantApiComService {
-    public get(): Promise<ValorantApiCom.Response.Data<Maps.Maps[]>> {
+export class Maps<L extends ValorantApiCom.Language = any> extends ValorantApiComService {
+    public get(): Promise<ValorantApiComService.Response<Maps.Maps<L>[]>> {
         return this.axios.get("/maps");
     }
 
-    public getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Maps.Maps>> {
+    public getByUuid(uuid: string): Promise<ValorantApiComService.Response<Maps.Maps<L>>> {
         return this.axios.get(`/maps/${uuid}`);
     }
 }

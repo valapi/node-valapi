@@ -2,10 +2,10 @@ import { ValorantApiComService } from "../client/ValorantApiComService";
 import type { ValorantApiCom } from "../client/ValorantApiCom";
 
 export namespace Gamemodes {
-    export interface Gamemodes {
+    export interface Gamemodes<L extends ValorantApiCom.Language> {
         uuid: string;
-        displayName: ValorantApiCom.Response.Languages<string>; // localized
-        duration: ValorantApiCom.Response.Languages<string>; // localized
+        displayName: ValorantApiComService.Languages<string, L>;
+        duration: ValorantApiComService.Languages<string, L>;
         allowsMatchTimeouts: boolean;
         isTeamVoiceAllowed: boolean;
         isMinimapHidden: boolean;
@@ -27,9 +27,9 @@ export namespace Gamemodes {
         assetPath: string;
     }
 
-    export interface GamemodeEquippables {
+    export interface GamemodeEquippables<L extends ValorantApiCom.Language> {
         uuid: string;
-        displayName: ValorantApiCom.Response.Languages<string>; // localized
+        displayName: ValorantApiComService.Languages<string, L>;
         category: string;
         displayIcon: string;
         killStreamIcon: string;
@@ -37,20 +37,20 @@ export namespace Gamemodes {
     }
 }
 
-export class Gamemodes extends ValorantApiComService {
-    public get(): Promise<ValorantApiCom.Response.Data<Gamemodes.Gamemodes[]>> {
+export class Gamemodes<L extends ValorantApiCom.Language = any> extends ValorantApiComService {
+    public get(): Promise<ValorantApiComService.Response<Gamemodes.Gamemodes<L>[]>> {
         return this.axios.get("/gamemodes");
     }
 
-    public getEquippables(): Promise<ValorantApiCom.Response.Data<Gamemodes.GamemodeEquippables[]>> {
+    public getEquippables(): Promise<ValorantApiComService.Response<Gamemodes.GamemodeEquippables<L>[]>> {
         return this.axios.get(`/gamemodes/equippables`);
     }
 
-    public getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Gamemodes.Gamemodes>> {
+    public getByUuid(uuid: string): Promise<ValorantApiComService.Response<Gamemodes.Gamemodes<L>>> {
         return this.axios.get(`/gamemodes/${uuid}`);
     }
 
-    public getEquippableByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Gamemodes.GamemodeEquippables>> {
+    public getEquippableByUuid(uuid: string): Promise<ValorantApiComService.Response<Gamemodes.GamemodeEquippables<L>>> {
         return this.axios.get(`/gamemodes/equippables/${uuid}`);
     }
 }

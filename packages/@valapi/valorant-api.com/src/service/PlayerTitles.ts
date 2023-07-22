@@ -5,21 +5,21 @@ export namespace PlayerTitles {
     /**
      * ! unknown from website
      */
-    export interface PlayerTitles {
+    export interface PlayerTitles<L extends ValorantApiCom.Language> {
         uuid: string;
-        displayName: ValorantApiCom.Response.Languages<string>; // localized
-        titleText: ValorantApiCom.Response.Languages<string>; // localized
+        displayName: ValorantApiComService.Languages<string, L>;
+        titleText: ValorantApiComService.Languages<string, L>;
         isHiddenIfNotOwned: boolean;
         assetPath: string;
     }
 }
 
-export class PlayerTitles extends ValorantApiComService {
-    public get(): Promise<ValorantApiCom.Response.Data<PlayerTitles.PlayerTitles[]>> {
+export class PlayerTitles<L extends ValorantApiCom.Language = any> extends ValorantApiComService {
+    public get(): Promise<ValorantApiComService.Response<PlayerTitles.PlayerTitles<L>[]>> {
         return this.axios.get("/playertitles");
     }
 
-    public getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<PlayerTitles.PlayerTitles>> {
+    public getByUuid(uuid: string): Promise<ValorantApiComService.Response<PlayerTitles.PlayerTitles<L>>> {
         return this.axios.get(`/playertitles/${uuid}`);
     }
 }

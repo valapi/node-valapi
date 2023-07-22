@@ -1,5 +1,5 @@
 import axios from "axios";
-import type { AxiosInstance, AxiosResponse, CreateAxiosDefaults } from "axios";
+import type { AxiosInstance, CreateAxiosDefaults } from "axios";
 
 import { Locale } from "@valapi/lib";
 
@@ -32,30 +32,14 @@ export namespace ValorantApiCom {
      */
     export type Language = Exclude<Locale.Identify, "en-GB"> | "all";
 
-    export namespace Response {
-        /**
-         * Localized Data
-         */
-        export type Languages<T> = T | Record<Exclude<ValorantApiCom.Language, "all">, T>;
-
-        /**
-         * Request Response
-         */
-        export type Data<T> = AxiosResponse<{
-            status: number;
-            error?: string;
-            data?: T;
-        }>;
-    }
-
     /**
      * {@link Client} Config
      */
-    export interface Config {
+    export interface Config<L extends ValorantApiCom.Language> {
         /**
          * Language
          */
-        language?: ValorantApiCom.Language;
+        language?: L;
         /**
          * Request Config
          */
@@ -77,8 +61,8 @@ export namespace ValorantApiCom {
  *
  * https://valorant-api.com
  */
-export class ValorantApiCom {
-    private static readonly DEFAULT_config: Required<ValorantApiCom.Config> = {
+export class ValorantApiCom<L extends ValorantApiCom.Language> {
+    private static readonly DEFAULT_config: Required<ValorantApiCom.Config<any>> = {
         language: Locale.Default.English_United_States,
         axiosConfig: {},
         responseOptions: {
@@ -89,14 +73,14 @@ export class ValorantApiCom {
         config: ValorantApiCom.DEFAULT_config
     };
 
-    public readonly config: Required<ValorantApiCom.Config>;
+    public readonly config: Required<ValorantApiCom.Config<L>>;
     protected readonly axios: AxiosInstance;
 
     /**
      *
-     * @param {ValorantApiCom.Config} config Config
+     * @param {ValorantApiCom.Config<L>} config Config
      */
-    public constructor(config: ValorantApiCom.Config = {}) {
+    public constructor(config: ValorantApiCom.Config<L> = {}) {
         this.config = {
             ...ValorantApiCom.Default.config,
             ...config,
@@ -130,56 +114,56 @@ export class ValorantApiCom {
         return this.axios.request;
     }
 
-    public get Agents(): Agents {
-        return new Agents(this.axios);
+    public get Agents(): Agents<L> {
+        return new Agents<L>(this.axios);
     }
 
-    public get Buddies(): Buddies {
-        return new Buddies(this.axios);
+    public get Buddies(): Buddies<L> {
+        return new Buddies<L>(this.axios);
     }
 
-    public get Bundles(): Bundles {
-        return new Bundles(this.axios);
+    public get Bundles(): Bundles<L> {
+        return new Bundles<L>(this.axios);
     }
 
-    public get Ceremonies(): Ceremonies {
-        return new Ceremonies(this.axios);
+    public get Ceremonies(): Ceremonies<L> {
+        return new Ceremonies<L>(this.axios);
     }
 
-    public get CompetitiveTiers(): CompetitiveTiers {
-        return new CompetitiveTiers(this.axios);
+    public get CompetitiveTiers(): CompetitiveTiers<L> {
+        return new CompetitiveTiers<L>(this.axios);
     }
 
-    public get ContentTiers(): ContentTiers {
-        return new ContentTiers(this.axios);
+    public get ContentTiers(): ContentTiers<L> {
+        return new ContentTiers<L>(this.axios);
     }
 
-    public get Contracts(): Contracts {
-        return new Contracts(this.axios);
+    public get Contracts(): Contracts<L> {
+        return new Contracts<L>(this.axios);
     }
 
-    public get Currencies(): Currencies {
-        return new Currencies(this.axios);
+    public get Currencies(): Currencies<L> {
+        return new Currencies<L>(this.axios);
     }
 
-    public get Events(): Events {
-        return new Events(this.axios);
+    public get Events(): Events<L> {
+        return new Events<L>(this.axios);
     }
 
-    public get Gamemodes(): Gamemodes {
-        return new Gamemodes(this.axios);
+    public get Gamemodes(): Gamemodes<L> {
+        return new Gamemodes<L>(this.axios);
     }
 
-    public get Gear(): Gear {
-        return new Gear(this.axios);
+    public get Gear(): Gear<L> {
+        return new Gear<L>(this.axios);
     }
 
     public get LevelBorders(): LevelBorders {
         return new LevelBorders(this.axios);
     }
 
-    public get Maps(): Maps {
-        return new Maps(this.axios);
+    public get Maps(): Maps<L> {
+        return new Maps<L>(this.axios);
     }
 
     public get Missions(): Missions {
@@ -190,31 +174,31 @@ export class ValorantApiCom {
         return new Objectives(this.axios);
     }
 
-    public get PlayerCards(): PlayerCards {
-        return new PlayerCards(this.axios);
+    public get PlayerCards(): PlayerCards<L> {
+        return new PlayerCards<L>(this.axios);
     }
 
-    public get PlayerTitles(): PlayerTitles {
-        return new PlayerTitles(this.axios);
+    public get PlayerTitles(): PlayerTitles<L> {
+        return new PlayerTitles<L>(this.axios);
     }
 
-    public get Seasons(): Seasons {
-        return new Seasons(this.axios);
+    public get Seasons(): Seasons<L> {
+        return new Seasons<L>(this.axios);
     }
 
-    public get Sprays(): Sprays {
-        return new Sprays(this.axios);
+    public get Sprays(): Sprays<L> {
+        return new Sprays<L>(this.axios);
     }
 
-    public get Themes(): Themes {
-        return new Themes(this.axios);
+    public get Themes(): Themes<L> {
+        return new Themes<L>(this.axios);
     }
 
     public get Version(): Version {
         return new Version(this.axios);
     }
 
-    public get Weapons(): Weapons {
-        return new Weapons(this.axios);
+    public get Weapons(): Weapons<L> {
+        return new Weapons<L>(this.axios);
     }
 }

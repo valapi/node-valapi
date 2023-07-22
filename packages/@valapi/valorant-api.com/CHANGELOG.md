@@ -1,3 +1,17 @@
+# 3.2.1
+
+this update may change in nearly future
+
+### Typescript
+
+**Add**
+
+-   `ValorantApiComService`
+
+**Remove**
+
+-   `ValorantApiCom.Response`
+
 # 3.2.0
 
 **Add**

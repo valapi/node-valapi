@@ -1,5 +1,4 @@
 import { ValorantApiComService } from "../client/ValorantApiComService";
-import type { ValorantApiCom } from "../client/ValorantApiCom";
 
 export namespace LevelBorders {
     export interface LevelBorders {
@@ -12,11 +11,11 @@ export namespace LevelBorders {
 }
 
 export class LevelBorders extends ValorantApiComService {
-    public get(): Promise<ValorantApiCom.Response.Data<LevelBorders.LevelBorders[]>> {
+    public get(): Promise<ValorantApiComService.Response<LevelBorders.LevelBorders[]>> {
         return this.axios.get("/levelborders");
     }
 
-    public getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<LevelBorders.LevelBorders>> {
+    public getByUuid(uuid: string): Promise<ValorantApiComService.Response<LevelBorders.LevelBorders>> {
         return this.axios.get(`/levelborders/${uuid}`);
     }
 }

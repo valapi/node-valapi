@@ -30,7 +30,7 @@
     "@valapi/auth": "^3.2.0",
     "@valapi/lib": "^3.2.0",
     "@valapi/riot-api": "^3.2.0",
-    "@valapi/valorant-api.com": "^3.2.0",
+    "@valapi/valorant-api.com": "^3.2.1",
     "@valapi/web-client": "^3.2.0"
   },
   "directories": {

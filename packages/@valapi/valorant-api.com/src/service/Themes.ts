@@ -2,21 +2,21 @@ import { ValorantApiComService } from "../client/ValorantApiComService";
 import type { ValorantApiCom } from "../client/ValorantApiCom";
 
 export namespace Themes {
-    export interface Themes {
+    export interface Themes<L extends ValorantApiCom.Language> {
         uuid: string;
-        displayName: ValorantApiCom.Response.Languages<string>; // localized
+        displayName: ValorantApiComService.Languages<string, L>;
         displayIcon: string;
         storeFeaturedImage: string;
         assetPath: string;
     }
 }
 
-export class Themes extends ValorantApiComService {
-    public get(): Promise<ValorantApiCom.Response.Data<Themes.Themes[]>> {
+export class Themes<L extends ValorantApiCom.Language = any> extends ValorantApiComService {
+    public get(): Promise<ValorantApiComService.Response<Themes.Themes<L>[]>> {
         return this.axios.get("/themes");
     }
 
-    public getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Themes.Themes>> {
+    public getByUuid(uuid: string): Promise<ValorantApiComService.Response<Themes.Themes<L>>> {
         return this.axios.get(`/themes/${uuid}`);
     }
 }

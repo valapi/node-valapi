@@ -2,14 +2,14 @@ import { ValorantApiComService } from "../client/ValorantApiComService";
 import type { ValorantApiCom } from "../client/ValorantApiCom";
 
 export namespace CompetitiveTiers {
-    export interface CompetitiveTiers {
+    export interface CompetitiveTiers<L extends ValorantApiCom.Language> {
         uuid: string;
         assetObjectName: string;
         tiers: Array<{
             tier: number;
-            tierName: ValorantApiCom.Response.Languages<string>; // localized
+            tierName: ValorantApiComService.Languages<string, L>;
             division: string;
-            divisionName: ValorantApiCom.Response.Languages<string>; // localized
+            divisionName: ValorantApiComService.Languages<string, L>;
             color: string;
             backgroundColor: string;
             smallIcon: string;
@@ -21,12 +21,12 @@ export namespace CompetitiveTiers {
     }
 }
 
-export class CompetitiveTiers extends ValorantApiComService {
-    public get(): Promise<ValorantApiCom.Response.Data<CompetitiveTiers.CompetitiveTiers[]>> {
+export class CompetitiveTiers<L extends ValorantApiCom.Language = any> extends ValorantApiComService {
+    public get(): Promise<ValorantApiComService.Response<CompetitiveTiers.CompetitiveTiers<L>[]>> {
         return this.axios.get("/competitivetiers");
     }
 
-    public getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<CompetitiveTiers.CompetitiveTiers>> {
+    public getByUuid(uuid: string): Promise<ValorantApiComService.Response<CompetitiveTiers.CompetitiveTiers<L>>> {
         return this.axios.get(`/competitivetiers/${uuid}`);
     }
 }

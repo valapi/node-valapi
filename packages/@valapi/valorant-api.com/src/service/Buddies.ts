@@ -2,39 +2,39 @@ import { ValorantApiComService } from "../client/ValorantApiComService";
 import type { ValorantApiCom } from "../client/ValorantApiCom";
 
 export namespace Buddies {
-    export interface BuddyLevels {
+    export interface BuddyLevels<L extends ValorantApiCom.Language> {
         uuid: string;
         charmLevel: number;
-        displayName: ValorantApiCom.Response.Languages<string>; // localized
+        displayName: ValorantApiComService.Languages<string, L>;
         displayIcon: string;
         assetPath: string;
     }
 
-    export interface Buddies {
+    export interface Buddies<L extends ValorantApiCom.Language> {
         uuid: string;
-        displayName: ValorantApiCom.Response.Languages<string>; // localized
+        displayName: ValorantApiComService.Languages<string, L>;
         isHiddenIfNotOwned: boolean;
         themeUuid: string;
         displayIcon: string;
         assetPath: string;
-        levels: Array<Buddies.BuddyLevels>;
+        levels: Array<Buddies.BuddyLevels<L>>;
     }
 }
 
-export class Buddies extends ValorantApiComService {
-    public get(): Promise<ValorantApiCom.Response.Data<Buddies.Buddies[]>> {
+export class Buddies<L extends ValorantApiCom.Language = any> extends ValorantApiComService {
+    public get(): Promise<ValorantApiComService.Response<Buddies.Buddies<L>[]>> {
         return this.axios.get("/buddies");
     }
 
-    public getLevels(): Promise<ValorantApiCom.Response.Data<Buddies.BuddyLevels[]>> {
+    public getLevels(): Promise<ValorantApiComService.Response<Buddies.BuddyLevels<L>[]>> {
         return this.axios.get(`/buddies/levels`);
     }
 
-    public getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Buddies.Buddies>> {
+    public getByUuid(uuid: string): Promise<ValorantApiComService.Response<Buddies.Buddies<L>>> {
         return this.axios.get(`/buddies/${uuid}`);
     }
 
-    public getLevelByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Buddies.BuddyLevels>> {
+    public getLevelByUuid(uuid: string): Promise<ValorantApiComService.Response<Buddies.BuddyLevels<L>>> {
         return this.axios.get(`/buddies/levels/${uuid}`);
     }
 }

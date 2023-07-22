@@ -2,22 +2,22 @@ import { ValorantApiComService } from "../client/ValorantApiComService";
 import type { ValorantApiCom } from "../client/ValorantApiCom";
 
 export namespace Currencies {
-    export interface Currencies {
+    export interface Currencies<L extends ValorantApiCom.Language> {
         uuid: string;
-        displayName: ValorantApiCom.Response.Languages<string>; // localized
-        displayNameSingular: ValorantApiCom.Response.Languages<string>; // localized
+        displayName: ValorantApiComService.Languages<string, L>;
+        displayNameSingular: ValorantApiComService.Languages<string, L>;
         displayIcon: string;
         largeIcon: string;
         assetPath: string;
     }
 }
 
-export class Currencies extends ValorantApiComService {
-    public get(): Promise<ValorantApiCom.Response.Data<Currencies.Currencies[]>> {
+export class Currencies<L extends ValorantApiCom.Language = any> extends ValorantApiComService {
+    public get(): Promise<ValorantApiComService.Response<Currencies.Currencies<L>[]>> {
         return this.axios.get("/currencies");
     }
 
-    public getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Currencies.Currencies>> {
+    public getByUuid(uuid: string): Promise<ValorantApiComService.Response<Currencies.Currencies<L>>> {
         return this.axios.get(`/currencies/${uuid}`);
     }
 }

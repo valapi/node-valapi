@@ -2,16 +2,16 @@ import { ValorantApiComService } from "../client/ValorantApiComService";
 import type { ValorantApiCom } from "../client/ValorantApiCom";
 
 export namespace Gear {
-    export interface Gear {
+    export interface Gear<L extends ValorantApiCom.Language> {
         uuid: string;
-        displayName: ValorantApiCom.Response.Languages<string>; // localized
-        description: ValorantApiCom.Response.Languages<string>; // localized
+        displayName: ValorantApiComService.Languages<string, L>;
+        description: ValorantApiComService.Languages<string, L>;
         displayIcon: string;
         assetPath: string;
         shopData: {
             cost: number;
             category: string;
-            categoryText: ValorantApiCom.Response.Languages<string>; // localized
+            categoryText: ValorantApiComService.Languages<string, L>;
             gridPosition: {
                 row: number;
                 column: number;
@@ -25,12 +25,12 @@ export namespace Gear {
     }
 }
 
-export class Gear extends ValorantApiComService {
-    public get(): Promise<ValorantApiCom.Response.Data<Gear.Gear[]>> {
+export class Gear<L extends ValorantApiCom.Language = any> extends ValorantApiComService {
+    public get(): Promise<ValorantApiComService.Response<Gear.Gear<L>[]>> {
         return this.axios.get("/gear");
     }
 
-    public getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Gear.Gear>> {
+    public getByUuid(uuid: string): Promise<ValorantApiComService.Response<Gear.Gear<L>>> {
         return this.axios.get(`/gear/${uuid}`);
     }
 }

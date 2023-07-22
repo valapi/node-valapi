@@ -5,9 +5,9 @@ export namespace PlayerCards {
     /**
      * ! unknown from website
      */
-    export interface PlayerCards {
+    export interface PlayerCards<L extends ValorantApiCom.Language> {
         uuid: string;
-        displayName: ValorantApiCom.Response.Languages<string>; // localized
+        displayName: ValorantApiComService.Languages<string, L>;
         isHiddenIfNotOwned: boolean;
         themeUuid: string;
         displayIcon: string;
@@ -18,12 +18,12 @@ export namespace PlayerCards {
     }
 }
 
-export class PlayerCards extends ValorantApiComService {
-    public get(): Promise<ValorantApiCom.Response.Data<PlayerCards.PlayerCards[]>> {
+export class PlayerCards<L extends ValorantApiCom.Language = any> extends ValorantApiComService {
+    public get(): Promise<ValorantApiComService.Response<PlayerCards.PlayerCards<L>[]>> {
         return this.axios.get("/playercards");
     }
 
-    public getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<PlayerCards.PlayerCards>> {
+    public getByUuid(uuid: string): Promise<ValorantApiComService.Response<PlayerCards.PlayerCards<L>>> {
         return this.axios.get(`/playercards/${uuid}`);
     }
 }

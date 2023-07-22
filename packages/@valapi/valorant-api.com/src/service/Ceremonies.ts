@@ -2,19 +2,19 @@ import { ValorantApiComService } from "../client/ValorantApiComService";
 import type { ValorantApiCom } from "../client/ValorantApiCom";
 
 export namespace Ceremonies {
-    export interface Ceremonies {
+    export interface Ceremonies<L extends ValorantApiCom.Language> {
         uuid: string;
-        displayName: ValorantApiCom.Response.Languages<string>; // localized
+        displayName: ValorantApiComService.Languages<string, L>;
         assetPath: string;
     }
 }
 
-export class Ceremonies extends ValorantApiComService {
-    public get(): Promise<ValorantApiCom.Response.Data<Ceremonies.Ceremonies[]>> {
+export class Ceremonies<L extends ValorantApiCom.Language = any> extends ValorantApiComService {
+    public get(): Promise<ValorantApiComService.Response<Ceremonies.Ceremonies<L>[]>> {
         return this.axios.get("/ceremonies");
     }
 
-    public getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Ceremonies.Ceremonies>> {
+    public getByUuid(uuid: string): Promise<ValorantApiComService.Response<Ceremonies.Ceremonies<L>>> {
         return this.axios.get(`/ceremonies/${uuid}`);
     }
 }

@@ -2,9 +2,9 @@ import { ValorantApiComService } from "../client/ValorantApiComService";
 import type { ValorantApiCom } from "../client/ValorantApiCom";
 
 export namespace Weapons {
-    export interface WeaponSkinChromas {
+    export interface WeaponSkinChromas<L extends ValorantApiCom.Language> {
         uuid: string;
-        displayName: ValorantApiCom.Response.Languages<string>; // localized
+        displayName: ValorantApiComService.Languages<string, L>;
         displayIcon: string;
         fullRender: string;
         swatch: string;
@@ -12,30 +12,30 @@ export namespace Weapons {
         assetPath: string;
     }
 
-    export interface WeaponSkinLevels {
+    export interface WeaponSkinLevels<L extends ValorantApiCom.Language> {
         uuid: string;
-        displayName: ValorantApiCom.Response.Languages<string>; // localized
+        displayName: ValorantApiComService.Languages<string, L>;
         levelItem: string;
         displayIcon: string;
         streamedVideo: string;
         assetPath: string;
     }
 
-    export interface WeaponSkins {
+    export interface WeaponSkins<L extends ValorantApiCom.Language> {
         uuid: string;
-        displayName: ValorantApiCom.Response.Languages<string>; // localized
+        displayName: ValorantApiComService.Languages<string, L>;
         themeUuid: string;
         contentTierUuid: string;
         displayIcon: string;
         wallpaper: string;
         assetPath: string;
-        chromas: Array<Weapons.WeaponSkinChromas>;
-        levels: Array<Weapons.WeaponSkinLevels>;
+        chromas: Array<Weapons.WeaponSkinChromas<L>>;
+        levels: Array<Weapons.WeaponSkinLevels<L>>;
     }
 
-    export interface Weapons {
+    export interface Weapons<L extends ValorantApiCom.Language> {
         uuid: string;
-        displayName: ValorantApiCom.Response.Languages<string>; // localized
+        displayName: ValorantApiComService.Languages<string, L>;
         category: string;
         defaultSkinUuid: string;
         displayIcon: string;
@@ -79,7 +79,7 @@ export namespace Weapons {
         shopData: {
             cost: number;
             category: string;
-            categoryText: ValorantApiCom.Response.Languages<string>; // localized
+            categoryText: ValorantApiComService.Languages<string, L>;
             gridPosition: {
                 row: number;
                 column: number;
@@ -90,40 +90,40 @@ export namespace Weapons {
             newImage2: string;
             assetPath: string;
         };
-        skins: Array<Weapons.WeaponSkins>;
+        skins: Array<Weapons.WeaponSkins<L>>;
     }
 }
 
-export class Weapons extends ValorantApiComService {
-    public get(): Promise<ValorantApiCom.Response.Data<Weapons.Weapons[]>> {
+export class Weapons<L extends ValorantApiCom.Language = any> extends ValorantApiComService {
+    public get(): Promise<ValorantApiComService.Response<Weapons.Weapons<L>[]>> {
         return this.axios.get("/weapons");
     }
 
-    public getSkins(): Promise<ValorantApiCom.Response.Data<Weapons.WeaponSkins[]>> {
+    public getSkins(): Promise<ValorantApiComService.Response<Weapons.WeaponSkins<L>[]>> {
         return this.axios.get("/weapons/skins");
     }
 
-    public getSkinChromas(): Promise<ValorantApiCom.Response.Data<Weapons.WeaponSkinChromas[]>> {
+    public getSkinChromas(): Promise<ValorantApiComService.Response<Weapons.WeaponSkinChromas<L>[]>> {
         return this.axios.get("/weapons/skinchromas");
     }
 
-    public getSkinLevels(): Promise<ValorantApiCom.Response.Data<Weapons.WeaponSkinLevels[]>> {
+    public getSkinLevels(): Promise<ValorantApiComService.Response<Weapons.WeaponSkinLevels<L>[]>> {
         return this.axios.get("/weapons/skinlevels");
     }
 
-    public getByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Weapons.Weapons>> {
+    public getByUuid(uuid: string): Promise<ValorantApiComService.Response<Weapons.Weapons<L>>> {
         return this.axios.get(`/weapons/${uuid}`);
     }
 
-    public getSkinByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Weapons.WeaponSkins>> {
+    public getSkinByUuid(uuid: string): Promise<ValorantApiComService.Response<Weapons.WeaponSkins<L>>> {
         return this.axios.get(`/weapons/skins/${uuid}`);
     }
 
-    public getSkinChromaByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Weapons.WeaponSkinChromas>> {
+    public getSkinChromaByUuid(uuid: string): Promise<ValorantApiComService.Response<Weapons.WeaponSkinChromas<L>>> {
         return this.axios.get(`/weapons/skinchromas/${uuid}`);
     }
 
-    public getSkinLevelByUuid(uuid: string): Promise<ValorantApiCom.Response.Data<Weapons.WeaponSkinLevels>> {
+    public getSkinLevelByUuid(uuid: string): Promise<ValorantApiComService.Response<Weapons.WeaponSkinLevels<L>>> {
         return this.axios.get(`/weapons/skinlevels/${uuid}`);
     }
 }
