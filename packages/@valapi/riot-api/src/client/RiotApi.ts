@@ -66,7 +66,7 @@ export class RiotApi {
                             ...RiotApi.Default.config.axiosConfig.headers,
                             ...config.axiosConfig?.headers,
                             ...{
-                                "X-Riot-Token": `${config.apiKey}`
+                                "X-Riot-Token": config.apiKey
                             }
                         }
                     }

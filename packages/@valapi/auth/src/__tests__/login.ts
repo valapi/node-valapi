@@ -54,15 +54,13 @@ describe("auth.login", () => {
 
     test("user auth error", async () => {
         const errorClient = new AuthClient({
-            client: {
-                platform: {
-                    platformChipset: "",
-                    platformOS: "",
-                    platformOSVersion: "",
-                    platformType: ""
-                },
-                version: ""
-            }
+            platform: {
+                platformChipset: "",
+                platformOS: "",
+                platformOSVersion: "",
+                platformType: ""
+            },
+            version: ""
         });
 
         await expect(async () => {

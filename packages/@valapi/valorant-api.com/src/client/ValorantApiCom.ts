@@ -94,7 +94,7 @@ export class ValorantApiCom<L extends ValorantApiCom.Language> {
                             ...ValorantApiCom.Default.config.axiosConfig.params,
                             ...config.axiosConfig?.params,
                             ...{
-                                language: config.language ? config.language : ValorantApiCom.Default.config.language,
+                                language: config.language || ValorantApiCom.Default.config.language,
                                 responseOptions: config.responseOptions && config.responseOptions.ignore_null === true ? "ignore_null" : ""
                             }
                         }

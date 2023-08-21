@@ -52,18 +52,17 @@ export namespace AuthCore {
      */
     export interface Config {
         /**
-         * Client Config
+         * User Agent
          */
-        client?: {
-            /**
-             * Client Version
-             */
-            version?: string;
-            /**
-             * Client Platform
-             */
-            platform?: AuthCore.ClientPlatfrom;
-        };
+        userAgent?: string;
+        /**
+         * Client Version
+         */
+        version?: string;
+        /**
+         * Client Platform
+         */
+        platform?: AuthCore.ClientPlatfrom;
         /**
          * Request Config
          */
@@ -83,9 +82,16 @@ export class AuthCore {
         pbe: "na",
         live: "na"
     };
-    private static readonly DEFAULT_UserAgent: string = `RiotClient/65.0.10.5130441.0 %s (Windows;10;;Professional, x64)`;
-    private static readonly DEFAULT_Ciphers: Array<string> = ["TLS_AES_128_GCM_SHA256", "TLS_CHACHA20_POLY1305_SHA256", "TLS_AES_256_GCM_SHA384", "TLS_AES_128_CCM_SHA256", "TLS_AES_128_CCM_8_SHA256"];
-    private static readonly DEFAULT_ClientVersion: string = `release-07.00-shipping-29-913116`;
+    private static readonly DEFAULT_UserAgent: string = `RiotClient/53.0.0.4494832.4470164 %s (Windows;10;;Professional, x64)`;
+    private static readonly DEFAULT_Ciphers: Array<string> = [
+        "TLS_AES_128_GCM_SHA256",
+        "TLS_CHACHA20_POLY1305_SHA256",
+        "TLS_AES_256_GCM_SHA384",
+        "TLS_AES_128_CCM_SHA256",
+        "TLS_AES_128_CCM_8_SHA256",
+        "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"
+    ];
+    private static readonly DEFAULT_ClientVersion: string = `release-07.03-shipping-10-948900`;
     private static readonly DEFAULT_ClientPlatform: Required<AuthCore.ClientPlatfrom> = {
         platformType: `PC`,
         platformOS: `Windows`,
@@ -93,10 +99,9 @@ export class AuthCore {
         platformChipset: `Unknown`
     };
     private static readonly DEFAULT_config: Required<AuthCore.Config> = {
-        client: {
-            version: AuthCore.DEFAULT_ClientVersion,
-            platform: AuthCore.DEFAULT_ClientPlatform
-        },
+        userAgent: AuthCore.DEFAULT_UserAgent,
+        version: AuthCore.DEFAULT_ClientVersion,
+        platform: AuthCore.DEFAULT_ClientPlatform,
         axiosConfig: {
             headers: {
                 "Content-Type": "application/json",
@@ -107,7 +112,6 @@ export class AuthCore {
     };
     public static readonly Default = {
         region: AuthCore.DEFAULT_Region,
-        userAgent: AuthCore.DEFAULT_UserAgent,
         ciphers: AuthCore.DEFAULT_Ciphers.join(":"),
         config: AuthCore.DEFAULT_config
     };
@@ -160,10 +164,6 @@ export class AuthCore {
             ...this._config,
             ...value,
             ...{
-                client: {
-                    ...this._config.client,
-                    ...value.client
-                },
                 axiosConfig: {
                     ...this._config.axiosConfig,
                     ...value.axiosConfig,
@@ -172,8 +172,9 @@ export class AuthCore {
                             ...this._config.axiosConfig.headers,
                             ...value.axiosConfig?.headers,
                             ...{
-                                "X-Riot-ClientVersion": this._config.client?.version || value.client?.version || AuthCore.Default.config.client.version,
-                                "X-Riot-ClientPlatform": ValBase64.encrypt(JSON.stringify(this._config.client?.platform || value.client?.platform || AuthCore.Default.config.client.platform))
+                                "User-Agent": value.userAgent || this._config.userAgent,
+                                "X-Riot-ClientVersion": value.version || this._config.version,
+                                "X-Riot-ClientPlatform": ValBase64.encrypt(JSON.stringify(value.platform || this._config.platform))
                             }
                         }
                     }
@@ -241,7 +242,7 @@ export class AuthCore {
                 keepAlive: true,
                 ciphers: AuthCore.Default.ciphers,
                 honorCipherOrder: true,
-                minVersion: "TLSv1.3",
+                minVersion: "TLSv1.2",
                 maxVersion: "TLSv1.3",
                 rejectUnauthorized: false,
                 timeout: this.config.axiosConfig?.timeout

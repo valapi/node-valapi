@@ -16,7 +16,7 @@ export class ValError<T = any> extends Error {
 
         this.name = data.name;
         this.message = data.message;
-        this.stack = data.stack ? data.stack : this.stack;
+        this.stack = data.stack || this.stack;
         this.data = data.data;
     }
 

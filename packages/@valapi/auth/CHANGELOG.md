@@ -1,3 +1,14 @@
+# 3.2.1-beta
+
+**Add**
+
+-   `<AuthCore.Config>.userAgent`
+
+**Change**
+
+-   `<AuthCore.Config>.client.version` **-->** `<AuthCore.Config>.version`
+-   `<AuthCore.Config>.client.platform` **-->** `<AuthCore.Config>.platform`
+
 # 3.2.0
 
 **Add**
