@@ -15,6 +15,8 @@ export namespace Sprays {
         displayName: ValorantApiComService.Languages<string, L>;
         category: string;
         themeUuid: string;
+        isNullSpray: boolean;
+        hideIfNotOwned: boolean;
         displayIcon: string;
         fullIcon: string;
         fullTransparentIcon: string;

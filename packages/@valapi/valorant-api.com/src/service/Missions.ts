@@ -11,8 +11,8 @@ export namespace Missions {
         type: string;
         xpGrant: number;
         progressToComplete: number;
-        activationDate: Date;
-        expirationDate: Date;
+        activationDate: string | Date;
+        expirationDate: string | Date;
         tags: Array<string>;
         objectives: Array<{
             objectiveUuid: string;

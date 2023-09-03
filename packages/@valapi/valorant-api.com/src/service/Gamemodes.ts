@@ -6,6 +6,7 @@ export namespace Gamemodes {
         uuid: string;
         displayName: ValorantApiComService.Languages<string, L>;
         duration: ValorantApiComService.Languages<string, L>;
+        economyType: string;
         allowsMatchTimeouts: boolean;
         isTeamVoiceAllowed: boolean;
         isMinimapHidden: boolean;

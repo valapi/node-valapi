@@ -28,6 +28,15 @@ export namespace Agents {
             displayIcon: string;
             assetPath: string;
         };
+        recruitmentData: {
+            counterId: string;
+            milestoneId: string;
+            milestoneThreshold: number;
+            useLevelVpCostOverride: boolean;
+            levelVpCostOverride: number;
+            startDate: string | Date;
+            endDate: string | Date;
+        };
         abilities: Array<{
             slot: string;
             displayName: ValorantApiComService.Languages<string, L>;

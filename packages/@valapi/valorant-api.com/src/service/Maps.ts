@@ -5,6 +5,8 @@ export namespace Maps {
     export interface Maps<L extends ValorantApiCom.Language> {
         uuid: string;
         displayName: ValorantApiComService.Languages<string, L>;
+        narrativeDescription: ValorantApiComService.Languages<string, L>;
+        tacticalDescription: ValorantApiComService.Languages<string, L>;
         coordinates: ValorantApiComService.Languages<string, L>;
         displayIcon: string;
         listViewIcon: string;

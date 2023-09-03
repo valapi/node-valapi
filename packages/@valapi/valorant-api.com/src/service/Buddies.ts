@@ -5,6 +5,7 @@ export namespace Buddies {
     export interface BuddyLevels<L extends ValorantApiCom.Language> {
         uuid: string;
         charmLevel: number;
+        hideIfNotOwned: boolean;
         displayName: ValorantApiComService.Languages<string, L>;
         displayIcon: string;
         assetPath: string;

@@ -2,9 +2,6 @@ import { ValorantApiComService } from "../client/ValorantApiComService";
 import type { ValorantApiCom } from "../client/ValorantApiCom";
 
 export namespace PlayerCards {
-    /**
-     * ! unknown from website
-     */
     export interface PlayerCards<L extends ValorantApiCom.Language> {
         uuid: string;
         displayName: ValorantApiComService.Languages<string, L>;

@@ -1,7 +1,5 @@
 # 3.2.1
 
-this update may change in nearly future
-
 ### Typescript
 
 **Add**

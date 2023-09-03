@@ -16,17 +16,11 @@ export namespace ValorantApiComService {
         data?: T;
         error?: string;
     }
-    export interface DataResponse<T> extends BaseResponse<T> {
-        data: T;
-    }
-    export interface ErrorResponse<T> extends BaseResponse<T> {
-        error: string;
-    }
 
     /**
      * Request Response
      */
-    export type Response<T> = AxiosResponse<DataResponse<T> | ErrorResponse<T>>;
+    export type Response<T> = AxiosResponse<BaseResponse<T>>;
 }
 
 export class ValorantApiComService {

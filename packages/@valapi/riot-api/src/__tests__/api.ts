@@ -11,7 +11,7 @@ describe("riotapi.api", () => {
 
     test("apis", async () => {
         Promise.all([
-            myClient.AccountV1.byRiotId("RealKawin", "In3gG"),
+            myClient.AccountV1.byRiotId("ING", "EMPTY"),
             myClient.ContentV1.contents(Locale.Default.English_United_States),
             myClient.RankedV1.leaderboardsByAct("3e47230a-463c-a301-eb7d-67bb60357d4f", 10, 0),
             myClient.StatusV1.platformData()
