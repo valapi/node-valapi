@@ -64,15 +64,15 @@ NodeJS package that make more easier to use Valorant API
 npm install valorant.ts
 ```
 
-**Yarn:**
+**PNPM:**
 
 ```bash
-yarn add valorant.ts
+pnpm add valorant.ts
 ```
 
 ## Guide
 
-Full Guide: **[valapi.github.io/guide](https://valapi.github.io/guide/MAIN/Intro.html)**
+Full Guide: **[valapi.github.io](https://valapi.github.io)**
 
 ### Example
 

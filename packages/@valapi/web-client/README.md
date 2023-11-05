@@ -45,15 +45,15 @@ API from Web Client
 npm install @valapi/web-client
 ```
 
-**Yarn:**
+**PNPM:**
 
 ```bash
-yarn add @valapi/web-client
+pnpm add @valapi/web-client
 ```
 
 ## Guide
 
-Full Guide: **[valapi.github.io/guide](https://valapi.github.io/guide/API/web-client/Intro.html)**
+Full Guide: **[valapi.github.io](https://valapi.github.io)**
 
 ```typescript
 import { WebClient } from "@valapi/web-client";

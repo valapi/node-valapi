@@ -91,7 +91,7 @@ export class AuthCore {
         "TLS_AES_128_CCM_8_SHA256",
         "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"
     ];
-    private static readonly DEFAULT_ClientVersion: string = `release-07.04-shipping-13-961962`;
+    private static readonly DEFAULT_ClientVersion: string = `release-07.09-shipping-8-1022235`;
     private static readonly DEFAULT_ClientPlatform: Required<AuthCore.ClientPlatfrom> = {
         platformType: `PC`,
         platformOS: `Windows`,

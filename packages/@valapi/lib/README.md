@@ -45,12 +45,12 @@ Library of **@valapi**
 npm install @valapi/lib
 ```
 
-**Yarn:**
+**PNPM:**
 
 ```bash
-yarn add @valapi/lib
+pnpm add @valapi/lib
 ```
 
 ## Guide
 
-Full Guide: **[valapi.github.io/guide](https://valapi.github.io/guide/index.html)**
+Full Guide: **[valapi.github.io](https://valapi.github.io)**

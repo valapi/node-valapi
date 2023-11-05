@@ -45,15 +45,15 @@
 npm install @valapi/valorant-api.com
 ```
 
-**Yarn:**
+**PNPM:**
 
 ```bash
-yarn add @valapi/valorant-api.com
+pnpm add @valapi/valorant-api.com
 ```
 
 ## Guide
 
-Full Guide: **[valapi.github.io/guide](https://valapi.github.io/guide/API/valorant-api.com/Intro.html)**
+Full Guide: **[valapi.github.io](https://valapi.github.io)**
 
 ```typescript
 import { ValorantApiCom } from "@valapi/valorant-api.com";

@@ -45,15 +45,15 @@ Valorant Authentication
 npm install @valapi/auth
 ```
 
-**Yarn:**
+**PNPM:**
 
 ```bash
-yarn add @valapi/auth
+pnpm add @valapi/auth
 ```
 
 ## Guide
 
-Full Guide: **[valapi.github.io/guide](https://valapi.github.io/guide/PACKAGE/auth/Intro.html)**
+Full Guide: **[valapi.github.io](https://valapi.github.io)**
 
 ```typescript
 import { AuthClient } from "@valapi/auth";

@@ -45,15 +45,15 @@ Official Api From Riot Games
 npm install @valapi/riot-api
 ```
 
-**Yarn:**
+**PNPM:**
 
 ```bash
-yarn add @valapi/riot-api
+pnpm add @valapi/riot-api
 ```
 
 ## Guide
 
-Full Guide: **[valapi.github.io/guide](https://valapi.github.io/guide/API/riot-api/Intro.html)**
+Full Guide: **[valapi.github.io](https://valapi.github.io)**
 
 ```typescript
 import { RiotApi } from "@valapi/riot-api";
