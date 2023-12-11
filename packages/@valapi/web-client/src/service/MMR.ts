@@ -113,7 +113,7 @@ export class MMR extends WebClientService {
      * @param {string} subject Player UUID
      * @returns {Promise<AxiosResponse<MMR.Player>>}
      */
-    public fetchPlayer(subject: string): Promise<AxiosResponse<MMR.Player>> {
+    public getPlayer(subject: string): Promise<AxiosResponse<MMR.Player>> {
         return this.axios.get(`${this.apiRegion.url.playerData}/mmr/v1/players/${subject}`);
     }
 
@@ -126,13 +126,13 @@ export class MMR extends WebClientService {
     }
 
     /**
-     * @param {string} seasonId Season ID
+     * @param {string} seasonId Act ID
      * @param {number} startIndex Start Index (default: 0)
      * @param {number} size Size (default: 510)
      * @param {string} serachUsername Search Username
      * @returns {Promise<AxiosResponse<MMR.Leaderboard>>}
      */
-    public fetchLeaderboard(seasonId: string, startIndex = 0, size = 510, serachUsername?: string): Promise<AxiosResponse<MMR.Leaderboard>> {
+    public getLeaderboard(seasonId: string, startIndex = 0, size = 510, serachUsername?: string): Promise<AxiosResponse<MMR.Leaderboard>> {
         let _url = `${this.apiRegion.url.playerData}/mmr/v1/leaderboards/affinity/${this.apiRegion.id}/queue/competitive/season/${seasonId}?startIndex=${startIndex}&size=${size}`;
 
         if (serachUsername) {
@@ -149,7 +149,7 @@ export class MMR extends WebClientService {
      * @param {number} endIndex End Index (default: 10)
      * @returns {Promise<AxiosResponse<MMR.CompetitiveUpdates>>}
      */
-    public fetchCompetitiveUpdates(subject: string, queueId?: QueueId.Identify, startIndex = 0, endIndex = 10): Promise<AxiosResponse<MMR.CompetitiveUpdates>> {
+    public getCompetitiveUpdates(subject: string, queueId?: QueueId.Identify, startIndex = 0, endIndex = 10): Promise<AxiosResponse<MMR.CompetitiveUpdates>> {
         let _url = `${this.apiRegion.url.playerData}/mmr/v1/players/${subject}/competitiveupdates?startIndex=${startIndex}&endIndex=${endIndex}`;
 
         if (queueId) {

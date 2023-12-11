@@ -42,6 +42,7 @@ export enum Default {
     Replication = "onefa",
     Snowball_Fight = "snowball",
     Swiftplay = "swiftplay",
+    Team_Deathmatch = "hurm",
     Custom = "",
     Custom_Tournament = "tournamentmode"
 }

@@ -24,6 +24,8 @@ export namespace Session {
         userinfoValidTime: Date;
         restrictionType: string;
         clientPlatformInfo: AuthCore.ClientPlatfrom;
+        connectionTime: Date;
+        shouldForceInvalidate: boolean;
     }
 
     export interface Reconnect {

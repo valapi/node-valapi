@@ -101,7 +101,7 @@ export class AuthService extends AuthCore {
         } else {
             this.authenticationInfo = {
                 isError: true,
-                message: "fail,entitlements_token"
+                message: "fail;entitlements_token;"
             };
         }
     }
@@ -121,7 +121,7 @@ export class AuthService extends AuthCore {
             if (!Search_URL.hash) {
                 this.authenticationInfo = {
                     isError: true,
-                    message: "fail,access_token"
+                    message: "fail;access_token;"
                 };
 
                 return this.toJSON();
@@ -180,7 +180,7 @@ export class AuthService extends AuthCore {
         if (!TokenResponse.data || !TokenResponse.data.type || TokenResponse.data.type === "error") {
             this.authenticationInfo = {
                 isError: true,
-                message: "fail,data"
+                message: "fail;data;"
             };
 
             return this.toJSON();
@@ -191,7 +191,7 @@ export class AuthService extends AuthCore {
         if (TokenResponse.data.type && TokenResponse.data.type === "multifactor") {
             this.authenticationInfo = {
                 isMultifactor: true,
-                message: "load,verify"
+                message: "load;verify;"
             };
 
             return this.toJSON();
@@ -214,7 +214,7 @@ export class AuthService extends AuthCore {
         if (TokenResponse.data.type !== "response" || !TokenResponse.data.response) {
             this.authenticationInfo = {
                 isError: true,
-                message: "fail,response"
+                message: "fail;response;"
             };
 
             return this.toJSON();

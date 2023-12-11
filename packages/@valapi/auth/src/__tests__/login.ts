@@ -16,7 +16,7 @@ describe("auth.login", () => {
             authenticationInfo: {
                 isMultifactor: false,
                 isError: false,
-                message: "load,client"
+                message: "load;client;"
             },
             cookie: new CookieJar().serializeSync(),
             access_token: "",
@@ -48,7 +48,7 @@ describe("auth.login", () => {
         expect(myClient.toJSON().authenticationInfo).toMatchObject<Partial<AuthCore.JsonAuthenticationInfo>>({
             isMultifactor: false,
             isError: false,
-            message: "success,login"
+            message: "success;login;"
         });
     });
 
@@ -76,7 +76,7 @@ describe("auth.login", () => {
         expect(cookieClient.toJSON().authenticationInfo).toMatchObject<Partial<AuthCore.JsonAuthenticationInfo>>({
             isError: false,
             isMultifactor: false,
-            message: "success,cookie"
+            message: "success;cookie;"
         });
 
         expect(cookieClient.getSubject()).toBe(myClient.getSubject());

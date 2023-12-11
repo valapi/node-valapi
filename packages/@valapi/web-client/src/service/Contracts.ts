@@ -44,6 +44,11 @@ export namespace Contracts {
                 };
                 NumAFKRounds: number;
             };
+            DoughGrants?: {
+                GamePlayed: number;
+                RoundPlayed: number;
+                RoundWon: number;
+            };
             RewardGrants: Record<
                 string,
                 {
@@ -82,7 +87,17 @@ export namespace Contracts {
                     TotalXPAfter: number;
                 }
             >;
+            RecruitmentProgressUpdate?: {
+                GroupID: string;
+                ProgressBefore: number;
+                ProgressAfter: number;
+                MilestoneThreshold: number;
+            };
             CouldProgressMissions: boolean;
+            MatchSummary: {
+                RoundsTotal: number;
+                RoundsWon: number;
+            };
         }>;
         ActiveSpecialContract: string;
         Missions: Array<{
@@ -104,7 +119,7 @@ export class Contracts extends WebClientService {
      * @param {string} subject Player UUID
      * @returns {Promise<AxiosResponse<Contracts.Contracts>>}
      */
-    public fetch(subject: string): Promise<AxiosResponse<Contracts.Contracts>> {
+    public get(subject: string): Promise<AxiosResponse<Contracts.Contracts>> {
         return this.axios.get(`${this.apiRegion.url.playerData}/contracts/v1/contracts/${subject}`);
     }
 
@@ -123,7 +138,7 @@ export class Contracts extends WebClientService {
      * @param {string} definitionId Definition ID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public unlockItemProgress(subject: string, definitionId: string): Promise<AxiosResponse<any>> {
+    public unlockItemProgression(subject: string, definitionId: string): Promise<AxiosResponse<any>> {
         return this.axios.post(`${this.apiRegion.url.playerData}/contracts/v2/item-upgrades/${definitionId}/${subject}`);
     }
 

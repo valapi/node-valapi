@@ -15,12 +15,12 @@ import { ContractDefinitions } from "../service/ContractDefinitions";
 import { Contracts } from "../service/Contracts";
 import { CoreGame } from "../service/CoreGame";
 import { DailyTicket } from "../service/DailyTicket";
-import { DisplayNameService } from "../service/DisplayNameService";
 import { Favorites } from "../service/Favorites";
 import { Latency } from "../service/Latency";
 import { MassRewards } from "../service/MassRewards";
 import { Match } from "../service/Match";
 import { MMR } from "../service/MMR";
+import { NameService } from "../service/NameService";
 import { Party } from "../service/Party";
 import { Personalization } from "../service/Personalization";
 import { PreGame } from "../service/PreGame";
@@ -170,10 +170,6 @@ export class WebClient extends AuthClient {
         return new DailyTicket(this.axios, new WebClientRegion(this.region.live));
     }
 
-    public get DisplayNameService(): DisplayNameService {
-        return new DisplayNameService(this.axios, new WebClientRegion(this.region.live));
-    }
-
     public get Favorites(): Favorites {
         return new Favorites(this.axios, new WebClientRegion(this.region.live));
     }
@@ -192,6 +188,10 @@ export class WebClient extends AuthClient {
 
     public get MMR(): MMR {
         return new MMR(this.axios, new WebClientRegion(this.region.live));
+    }
+
+    public get NameService(): NameService {
+        return new NameService(this.axios, new WebClientRegion(this.region.live));
     }
 
     public get Party(): Party {

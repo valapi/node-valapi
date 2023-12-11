@@ -28,7 +28,7 @@
 | Service | ContractDefinitions | Not Done    |
 | Service | Contracts           | Not Done    |
 | Service | CoreGame            | Not Done    |
-| Service | DailyTicket            | Not Done    |
+| Service | DailyTicket         | Not Done    |
 | Service | DisplayNameService  | Done        |
 | Service | Favorites           | Done        |
 | Service | Latency             | Done        |
@@ -42,3 +42,23 @@
 | Service | Restrictions        | Not Done    |
 | Service | Session             | Done        |
 | Service | Store               | Done        |
+
+-----------
+
+### WAIT_FOR_TEST
+
+Party
+- CustomGame.setBalance
+- Member.*
+  - !get
+  - !setReady
+
+CoreGame
+
+Match
+
+PreGame
+
+Premier
+
+Store

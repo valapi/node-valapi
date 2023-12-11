@@ -137,14 +137,6 @@ export class Store extends WebClientService {
     }
 
     /**
-     * @param {string} subject Player UUID
-     * @returns {Promise<AxiosResponse<Store.Storefront>>}
-     */
-    public getStorefront(subject: string): Promise<AxiosResponse<Store.Storefront>> {
-        return this.axios.get(`${this.apiRegion.url.playerData}/store/v2/storefront/${subject}`);
-    }
-
-    /**
      * @returns {Promise<AxiosResponse<Store.Offers>>}
      */
     public getOffers(): Promise<AxiosResponse<Store.Offers>> {
@@ -167,13 +159,18 @@ export class Store extends WebClientService {
         return this.axios.get(`${this.apiRegion.url.playerData}/store/v1/entitlements/${subject}/${itemTypeId}`);
     }
 
+    public get StoreFront(): StoreFront {
+        return new StoreFront(this.axios, this.apiRegion);
+    }
+}
+
+export class StoreFront extends WebClientService {
     /**
-     * @deprecated Please, Contact us if you find out how its works
      * @param {string} subject Player UUID
-     * @returns {Promise<AxiosResponse<any>>}
+     * @returns {Promise<AxiosResponse<Store.Storefront>>}
      */
-    public revealNightMarketOffers(subject: string): Promise<AxiosResponse<any>> {
-        return this.axios.post(`${this.apiRegion.url.playerData}/store/v2/storefront/${subject}/nightmarket/offers`);
+    public get(subject: string): Promise<AxiosResponse<Store.Storefront>> {
+        return this.axios.get(`${this.apiRegion.url.playerData}/store/v2/storefront/${subject}`);
     }
 
     /**
@@ -181,5 +178,14 @@ export class Store extends WebClientService {
      */
     public getAgent(): Promise<AxiosResponse<Store.Agent>> {
         return this.axios.get(`${this.apiRegion.url.playerData}/store/v1/storefronts/agent`);
+    }
+
+    /**
+     * @deprecated Please, Contact us if you find out how its works
+     * @param {string} subject Player UUID
+     * @returns {Promise<AxiosResponse<any>>}
+     */
+    public revealNightMarketOffers(subject: string): Promise<AxiosResponse<any>> {
+        return this.axios.post(`${this.apiRegion.url.playerData}/store/v2/storefront/${subject}/nightmarket/offers`);
     }
 }

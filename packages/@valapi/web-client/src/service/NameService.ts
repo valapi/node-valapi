@@ -2,7 +2,7 @@ import type { AxiosResponse } from "axios";
 
 import { WebClientService } from "../client/WebClientService";
 
-export namespace DisplayNameService {
+export namespace NameService {
     // response
 
     export type Player = Array<{
@@ -13,12 +13,12 @@ export namespace DisplayNameService {
     }>;
 }
 
-export class DisplayNameService extends WebClientService {
+export class NameService extends WebClientService {
     /**
      * @param {string} subject Player UUID
-     * @returns {Promise<AxiosResponse<DisplayNameService.Player>>}
+     * @returns {Promise<AxiosResponse<NameService.Player>>}
      */
-    public fetchPlayers(subject: string): Promise<AxiosResponse<DisplayNameService.Player>> {
+    public getPlayer(subject: string): Promise<AxiosResponse<NameService.Player>> {
         return this.axios.put(`${this.apiRegion.url.playerData}/name-service/v2/players`, [`${subject}`]);
     }
 }

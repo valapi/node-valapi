@@ -2,9 +2,6 @@
  * Error data structures
  */
 export class ValError<T = any> extends Error {
-    public readonly name: string;
-    public readonly message: string;
-    public readonly stack?: string;
     public readonly data: T;
 
     /**
@@ -14,9 +11,6 @@ export class ValError<T = any> extends Error {
     public constructor(data: ValError) {
         super(data.message);
 
-        this.name = data.name;
-        this.message = data.message;
-        this.stack = data.stack || this.stack;
         this.data = data.data;
     }
 
@@ -25,7 +19,7 @@ export class ValError<T = any> extends Error {
      * @param {Error} error Error
      * @returns {ValError<T>}
      */
-    public static fromError<T>(error: Error): ValError<T> {
+    public static parse<T>(error: Error): ValError<T> {
         return new ValError({
             name: error.name,
             message: error.message,

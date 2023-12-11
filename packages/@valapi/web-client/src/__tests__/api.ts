@@ -13,8 +13,8 @@ describe("webclient.api", () => {
         Promise.all([
             myClient.getUserInfo(),
             myClient.AccountXP.getPlayer(subject),
-            myClient.ContractDefinitions.fetchItemProgression(),
-            myClient.DisplayNameService.fetchPlayers(subject),
+            myClient.ContractDefinitions.getItemProgression(),
+            myClient.NameService.getPlayer(subject),
             myClient.Favorites.get(subject),
             myClient.MassRewards.reconcilePlayer(subject),
             myClient.Match.fetchMatchHistory(subject),

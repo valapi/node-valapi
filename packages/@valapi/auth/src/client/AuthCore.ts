@@ -13,7 +13,7 @@ export namespace AuthCore {
         live: Region.Identify;
     }
 
-    export type JsonAuthenticationInfoMessage = `${"load" | "fail" | "success"},${string}`;
+    export type JsonAuthenticationInfoMessage = `${"load" | "fail" | "success"};${string};`;
 
     export interface JsonAuthenticationInfo {
         isError: boolean;
@@ -121,7 +121,7 @@ export class AuthCore {
     private _authenticationInfo: AuthCore.JsonAuthenticationInfo = {
         isError: false,
         isMultifactor: false,
-        message: "load,client"
+        message: "load;client;"
     };
 
     private _createAt: number = Date.now();
@@ -252,11 +252,11 @@ export class AuthCore {
                       path: this.config.axiosConfig?.socketPath
                   }
                 : this.config.axiosConfig?.proxy
-                ? {
-                      host: this.config.axiosConfig?.proxy.host,
-                      port: this.config.axiosConfig?.proxy.port
-                  }
-                : {})
+                  ? {
+                        host: this.config.axiosConfig?.proxy.host,
+                        port: this.config.axiosConfig?.proxy.port
+                    }
+                  : {})
         });
     }
 

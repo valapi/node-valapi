@@ -53,7 +53,7 @@ export class Personalization extends WebClientService {
      * @param {Omit<Personalization.Loadout, "Subject" | "Version">} loadout Loadout
      * @returns {Promise<AxiosResponse<Personalization.Loadout>>}
      */
-    public playerLoadoutUpdate(subject: string, loadout: Omit<Personalization.Loadout, "Subject" | "Version">): Promise<AxiosResponse<Personalization.Loadout>> {
+    public changePlayerLoadout(subject: string, loadout: Omit<Personalization.Loadout, "Subject" | "Version">): Promise<AxiosResponse<Personalization.Loadout>> {
         return this.axios.put(`${this.apiRegion.url.playerData}/personalization/v2/players/${subject}/playerloadout`, loadout);
     }
 }

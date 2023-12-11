@@ -60,7 +60,7 @@ npm run test
 
 **dotenv**
 
-Regions: [guide/build-in/Region](https://valapi.github.io/guide/PACKAGE/build-in/Region.html#usage-1)
+Regions: [valapi.github.io/build-in/Region](https://valapi.github.io/build/PACKAGE/build-in/Region.html)
 
 ```dosini
 # multi-factor must be "disable"

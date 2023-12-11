@@ -10,7 +10,9 @@ export namespace ContractDefinitions {
         ItemID: string;
     }
 
-    export type ItemAmount = ContractDefinitions.Item & { Amount: number };
+    export interface ItemAmount extends ContractDefinitions.Item {
+        Amount: number;
+    }
 
     export interface ItemProgression {
         Definitions: Array<{
@@ -59,7 +61,7 @@ export class ContractDefinitions extends WebClientService {
      * @deprecated Please, Contact us if you find out how its works
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public fetchActiveStory(): Promise<AxiosResponse<any>> {
+    public getActiveStory(): Promise<AxiosResponse<any>> {
         return this.axios.get(`${this.apiRegion.url.playerData}/contract-definitions/v2/definitions/story`);
     }
 
@@ -67,7 +69,7 @@ export class ContractDefinitions extends WebClientService {
      * @deprecated Please, Contact us if you find out how its works
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public fetch(): Promise<AxiosResponse<any>> {
+    public get(): Promise<AxiosResponse<any>> {
         return this.axios.get(`${this.apiRegion.url.playerData}/contract-definitions/v2/definitions`);
     }
 
@@ -76,7 +78,7 @@ export class ContractDefinitions extends WebClientService {
     /**
      * @returns {Promise<AxiosResponse<ContractDefinitions.ItemProgression>>}
      */
-    public fetchItemProgression(): Promise<AxiosResponse<ContractDefinitions.ItemProgression>> {
+    public getItemProgression(): Promise<AxiosResponse<ContractDefinitions.ItemProgression>> {
         return this.axios.get(`${this.apiRegion.url.playerData}/contract-definitions/v3/item-upgrades`);
     }
 }

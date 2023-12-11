@@ -15,7 +15,7 @@ export class Config extends WebClientService {
     /**
      * @returns {Promise<AxiosResponse<Config.Config>>}
      */
-    public fetchConfig(): Promise<AxiosResponse<Config.Config>> {
+    public get(): Promise<AxiosResponse<Config.Config>> {
         return this.axios.get(`${this.apiRegion.url.sharedData}/v1/config/${this.apiRegion.id}`);
     }
 }
