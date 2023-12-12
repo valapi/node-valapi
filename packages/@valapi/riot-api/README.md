@@ -53,7 +53,7 @@ pnpm add @valapi/riot-api
 
 ## Guide
 
-Full Guide: **[valapi.github.io](https://valapi.github.io)**
+Full Guide: **[valapi.github.io](https://valapi.github.io/build/API/riot-api/Intro.html)**
 
 ```typescript
 import { RiotApi } from "@valapi/riot-api";

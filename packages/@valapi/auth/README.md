@@ -53,7 +53,7 @@ pnpm add @valapi/auth
 
 ## Guide
 
-Full Guide: **[valapi.github.io](https://valapi.github.io)**
+Full Guide: **[valapi.github.io](https://valapi.github.io/build/PACKAGE/auth/Intro.html)**
 
 ```typescript
 import { AuthClient } from "@valapi/auth";

@@ -13,4 +13,4 @@ export * as Region from "./resources/Region";
 
 // utils
 
-export { ValBase64 } from "./utils/Base64";
+export { ValEncryption } from "./utils/encryption";

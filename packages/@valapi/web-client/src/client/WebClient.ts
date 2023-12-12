@@ -2,7 +2,7 @@ import axios from "axios";
 import type { AxiosResponse, AxiosInstance } from "axios";
 import { CookieJar } from "tough-cookie";
 
-import type { Region } from "@valapi/lib";
+import type { Region, Locale } from "@valapi/lib";
 import { AuthClient } from "@valapi/auth";
 import type { AuthCore } from "@valapi/auth";
 
@@ -32,6 +32,39 @@ import { Store } from "../service/Store";
 export namespace WebClient {
     export interface UserJson extends Omit<AuthCore.Json, "id_token" | "expires_in" | "token_type" | "session_state" | "createAt" | "authenticationInfo" | "region"> {
         region: Region.Identify;
+    }
+
+    export interface UserInfo {
+        country: string;
+        sub: string;
+        email_verified: boolean;
+        player_plocale: any; // * unknown
+        country_at: number;
+        pw: {
+            cng_at: number;
+            reset: boolean;
+            must_reset: boolean;
+        };
+        phone_number_verified: boolean;
+        account_verified: boolean;
+        ppid: any; // * unknown
+        federated_identity_details: Array<{
+            provider_name: string;
+            provider_environment: any; // * unknown
+        }>;
+        federated_identity_providers: Array<string>;
+        player_locale: Locale.Identify;
+        acct: {
+            type: number;
+            state: string;
+            adm: boolean;
+            game_name: string;
+            tag_line: string;
+            created_at: number;
+        };
+        age: number;
+        jti: string;
+        affinity: Record<string, string>;
     }
 }
 
@@ -112,9 +145,9 @@ export class WebClient extends AuthClient {
     }
 
     /**
-     * @returns {Promise<AxiosResponse<any>>}
+     * @returns {Promise<AxiosResponse<WebClient.UserInfo>>}
      */
-    public getUserInfo(): Promise<AxiosResponse<any>> {
+    public getUserInfo(): Promise<AxiosResponse<WebClient.UserInfo>> {
         return this.axios.post(`https://auth.riotgames.com/userinfo`);
     }
 

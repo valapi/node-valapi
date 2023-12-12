@@ -53,7 +53,7 @@ pnpm add @valapi/valorant-api.com
 
 ## Guide
 
-Full Guide: **[valapi.github.io](https://valapi.github.io)**
+Full Guide: **[valapi.github.io](https://valapi.github.io/build/API/valorant-api.com/Intro.html)**
 
 ```typescript
 import { ValorantApiCom } from "@valapi/valorant-api.com";

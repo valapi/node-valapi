@@ -60,5 +60,3 @@ Match
 PreGame
 
 Premier
-
-Store

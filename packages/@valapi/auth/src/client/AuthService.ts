@@ -134,7 +134,7 @@ export class AuthService extends AuthCore {
 
         this.access_token = String(Search_Params.get(Search_Token));
         this.id_token = Search_Params.get("id_token") || "";
-        this.expires_in = Number(Search_Params.get("expires_in") || AuthCore.expires_in);
+        this.expires_in = Number(Search_Params.get("expires_in")) || AuthCore.expires_in;
         this.token_type = Search_Params.get("token_type") || AuthCore.token_type;
         this.session_state = Search_Params.get("session_state") || "";
 

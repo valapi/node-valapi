@@ -19,7 +19,7 @@
   
 [![Profile][githubrepo_image]][github_url]
 
-API from Web Client
+Web API
 
 [![Downloads][download_image]][download_url]
 [![install size][size_image]][size_url]
@@ -53,7 +53,7 @@ pnpm add @valapi/web-client
 
 ## Guide
 
-Full Guide: **[valapi.github.io](https://valapi.github.io)**
+Full Guide: **[valapi.github.io](https://valapi.github.io/build/API/web-client/Intro.html)**
 
 ```typescript
 import { WebClient } from "@valapi/web-client";

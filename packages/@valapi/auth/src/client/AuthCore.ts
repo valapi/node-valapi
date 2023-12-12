@@ -5,7 +5,7 @@ import type { CookieAgent } from "http-cookie-agent/http";
 import type { Agent as HttpAgent } from "http";
 import type { Agent as HttpsAgent } from "https";
 
-import { Region, ValBase64 } from "@valapi/lib";
+import { Region, ValEncryption } from "@valapi/lib";
 
 export namespace AuthCore {
     export interface JsonRegion {
@@ -174,7 +174,7 @@ export class AuthCore {
                             ...{
                                 "User-Agent": value.userAgent || this._config.userAgent,
                                 "X-Riot-ClientVersion": value.version || this._config.version,
-                                "X-Riot-ClientPlatform": ValBase64.encrypt(JSON.stringify(value.platform || this._config.platform))
+                                "X-Riot-ClientPlatform": ValEncryption.encryptJson(value.platform || this._config.platform)
                             }
                         }
                     }
@@ -393,7 +393,7 @@ export class AuthCore {
      * @returns {string} Subject
      */
     public getSubject(token: string = this.access_token): string {
-        const _token: { sub: string } = JSON.parse(ValBase64.decrypt(token.split(".")[1]));
+        const _token: { sub: string } = ValEncryption.decryptJson(token.split(".")[1]);
 
         return _token.sub;
     }
@@ -404,7 +404,7 @@ export class AuthCore {
      * @returns {number} Expiration date
      */
     public getExpirationDate(token: string = this.access_token): number {
-        const _token: { exp: number } = JSON.parse(ValBase64.decrypt(token.split(".")[1]));
+        const _token: { exp: number } = ValEncryption.decryptJson(token.split(".")[1]);
 
         return _token.exp * 1000;
     }

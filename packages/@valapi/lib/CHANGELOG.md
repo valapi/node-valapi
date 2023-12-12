@@ -1,3 +1,15 @@
+# 4.0.0
+
+**Add**
+
+-   `ValEncryption.encryptJson(object)`
+-   `ValEncryption.decryptJson(object)`
+
+**Change**
+
+-   ~~`ValError.fromError`~~ **-->** `ValError.parse`
+-   ~~`ValBase64`~~ **-->** `ValEncryption`
+
 # 3.1.0
 
 **Remove**
