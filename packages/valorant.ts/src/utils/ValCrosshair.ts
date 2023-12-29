@@ -1180,7 +1180,7 @@ export class ValCrosshair {
             if (data[i]) {
                 const _index: Array<number> = index.concat([Number.parseInt(i)]);
 
-                if (callback(data[i], _index) === true) {
+                if (callback(data[i], _index)) {
                     return data[i];
                 }
 
@@ -1320,7 +1320,7 @@ export class ValCrosshair {
             S: []
         });
 
-        if (sort === true) {
+        if (sort) {
             _export["0"].sort((a, b) => a.priority - b.priority);
             _export["A"].sort((a, b) => a.priority - b.priority);
             _export["P"].sort((a, b) => a.priority - b.priority);

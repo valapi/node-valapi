@@ -373,7 +373,7 @@ export class AuthCore {
     // region
 
     protected set region(value: Partial<AuthCore.JsonRegion>) {
-        if (this._isRegionConfig == false) {
+        if (!this._isRegionConfig) {
             this._region = {
                 pbe: value.pbe ? value.pbe : this._region.pbe,
                 live: value.live ? value.live : this._region.live

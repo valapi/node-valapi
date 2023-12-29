@@ -142,7 +142,7 @@ export class AuthService extends AuthCore {
 
         // REGION
 
-        if (this.id_token && this.authenticationInfo.isError === false) {
+        if (this.id_token && !this.authenticationInfo.isError) {
             const RegionResponse: AxiosResponse<{
                 token: string;
                 affinities: {
