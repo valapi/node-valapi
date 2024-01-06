@@ -25,16 +25,18 @@
     "jest": "29.7.0",
     "rimraf": "^5.0.5",
     "ts-jest": "^29.1.1",
+    "typedoc": "^0.25.6",
     "typescript": "^5.3.3"
   },
   "scripts": {
-    "clean": "npm exec --workspaces -- npx rimraf \"build\" \"tsconfig.tsbuildinfo\"",
-    "compile": "npx tsc --build tsconfig.json",
-    "compile:clean": "npm run clean && npm run compile",
-    "format": "prettier --config ./.prettierrc --ignore-path ./.prettierignore --write \"packages/**/*\"",
-    "format:check": "prettier --config ./.prettierrc --ignore-path ./.prettierignore --check \"packages/**/*\"",
-    "lint": "npx eslint packages",
     "test": "jest --detectOpenHandles",
-    "build": "npm run format && npm run lint && npm run compile:clean"
+    "format": "prettier --config ./.prettierrc --ignore-path ./.prettierignore --write \"packages/**/*\"",
+    "lint": "npx eslint packages",
+    "compile": "npx tsc --build tsconfig.json",
+    "compile:clean": "npm exec --workspaces -- npx rimraf \"build\" \"tsconfig.tsbuildinfo\"",
+    "docs": "typedoc",
+    "docs:clean": "rimraf \"docs\"",
+    "clean": "npm run compile:clean && npm run docs:clean",
+    "build": "npm run clean && npm run format && npm run lint && npm run compile"
   }
 }

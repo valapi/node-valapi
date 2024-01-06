@@ -32,9 +32,6 @@ export namespace ValorantApiCom {
      */
     export type Language = Exclude<Locale.Identify, "en-GB"> | "all";
 
-    /**
-     * {@link Client} Config
-     */
     export interface Config<L extends ValorantApiCom.Language> {
         /**
          * Language

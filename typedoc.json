@@ -1,0 +1,16 @@
+{
+  "name": "npmjs/@valapi",
+  "entryPoints": [
+    "packages/@valapi/auth",
+    "packages/@valapi/lib",
+    "packages/@valapi/riot-api",
+    "packages/@valapi/valorant-api.com",
+    "packages/@valapi/web-client"
+  ],
+  "entryPointStrategy": "packages",
+  "cleanOutputDir": true,
+  "out": "./docs",
+  "readme": "packages/valorant.ts/README.md",
+  "jsDocCompatibility": true,
+  "includeVersion": false
+}

@@ -37,6 +37,7 @@ temp/
 
 # project
 build/
+docs/
 
 # test
 test/

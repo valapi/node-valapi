@@ -12,9 +12,6 @@ import { RankedV1 } from "../service/RankedV1";
 import { StatusV1 } from "../service/StatusV1";
 
 export namespace RiotApi {
-    /**
-     * {@link Client} Config
-     */
     export interface Config {
         /**
          * API Key
