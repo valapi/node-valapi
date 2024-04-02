@@ -65,6 +65,6 @@ export class StatusV1 extends RiotApiService {
      * @returns {Promise<AxiosResponse<StatusV1.PlatformDataDto>>}
      */
     public platformData(): Promise<AxiosResponse<StatusV1.PlatformDataDto>> {
-        return this.axios.get(`${this.apiRegion.url.server}/val/status/v1/platform-data`);
+        return this.axios.get(`${this.apiRegion.url.region}/val/status/v1/platform-data`);
     }
 }

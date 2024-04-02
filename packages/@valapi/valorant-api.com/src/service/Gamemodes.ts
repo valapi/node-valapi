@@ -25,6 +25,7 @@ export namespace Gamemodes {
             state: boolean;
         }>;
         displayIcon: string;
+        listViewIconTall: string;
         assetPath: string;
     }
 

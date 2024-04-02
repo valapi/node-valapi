@@ -10,7 +10,10 @@ export namespace Maps {
         coordinates: ValorantApiComService.Languages<string, L>;
         displayIcon: string;
         listViewIcon: string;
+        listViewIconTall: string;
         splash: string;
+        stylizedBackgroundImage: string;
+        premierBackgroundImage: string;
         assetPath: string;
         mapUrl: string;
         xMultiplier: number;

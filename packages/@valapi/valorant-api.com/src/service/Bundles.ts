@@ -12,6 +12,7 @@ export namespace Bundles {
         useAdditionalContext: boolean;
         displayIcon: string;
         displayIcon2: string;
+        logoIcon: string;
         verticalPromoImage: string;
         assetPath: string;
     }

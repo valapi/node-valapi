@@ -8,7 +8,7 @@ import { randomBytes } from "node:crypto";
 
 describe("auth.login", () => {
     const myClient = new AuthClient({
-        region: <Region.Identify>env.VAL_REGION
+        region: <Region.ID>env.VAL_REGION
     });
 
     test("new client", () => {
@@ -27,7 +27,7 @@ describe("auth.login", () => {
             entitlements_token: "",
             region: {
                 pbe: Region.Default.North_America,
-                live: <Region.Identify>env.VAL_REGION
+                live: <Region.ID>env.VAL_REGION
             }
         });
 
@@ -70,7 +70,7 @@ describe("auth.login", () => {
 
     test("cookie auth", async () => {
         const cookieClient = await AuthClient.fromCookie(myClient.cookie, {
-            region: <Region.Identify>env.VAL_REGION
+            region: <Region.ID>env.VAL_REGION
         });
 
         expect(cookieClient.toJSON().authenticationInfo).toMatchObject<Partial<AuthCore.JsonAuthenticationInfo>>({

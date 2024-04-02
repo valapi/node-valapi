@@ -146,8 +146,8 @@ export class AuthService extends AuthCore {
             const RegionResponse: AxiosResponse<{
                 token: string;
                 affinities: {
-                    pbe: Region.Identify;
-                    live: Region.Identify;
+                    pbe: Region.ID;
+                    live: Region.ID;
                 };
             }> = await this.axios.put(
                 "https://riot-geo.pas.si.riotgames.com/pas/v1/product/valorant",

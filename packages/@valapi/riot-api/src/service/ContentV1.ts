@@ -61,6 +61,6 @@ export class ContentV1 extends RiotApiService {
      * @returns {Promise<AxiosResponse<ContentV1.ContentDto>>}
      */
     public contents(locale: Locale.ID = "en-US"): Promise<AxiosResponse<ContentV1.ContentDto>> {
-        return this.axios.get(`${this.apiRegion.url.server}/val/content/v1/contents?locale=${locale}`);
+        return this.axios.get(`${this.apiRegion.url.region}/val/content/v1/contents?locale=${locale}`);
     }
 }

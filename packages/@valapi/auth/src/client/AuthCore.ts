@@ -9,8 +9,8 @@ import { Region, ValEncryption } from "@valapi/lib";
 
 export namespace AuthCore {
     export interface JsonRegion {
-        pbe: Region.Identify;
-        live: Region.Identify;
+        pbe: Region.ID;
+        live: Region.ID;
     }
 
     export type JsonAuthenticationInfoMessage = `${"load" | "fail" | "success"};${string};`;
@@ -70,7 +70,7 @@ export namespace AuthCore {
         /**
          * Region
          */
-        region?: Region.Identify;
+        region?: Region.ID;
     }
 }
 

@@ -1,3 +1,9 @@
+# 4.0.0
+
+**Change**
+
+-   ~~`Agents.get(isPlayableCharacter?)`~~ **-->** `Agents.get(isPlayableCharacter = true)`
+
 # 3.2.1
 
 ### Typescript

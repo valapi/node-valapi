@@ -8,6 +8,7 @@ export namespace Version {
         buildVersion: string;
         engineVersion: string;
         riotClientVersion: string;
+        riotClientBuild: string;
         buildDate: string | Date;
     }
 }

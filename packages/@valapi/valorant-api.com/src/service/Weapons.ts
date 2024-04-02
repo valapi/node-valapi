@@ -79,6 +79,7 @@ export namespace Weapons {
         shopData: {
             cost: number;
             category: string;
+            shopOrderPriority: number;
             categoryText: ValorantApiComService.Languages<string, L>;
             gridPosition: {
                 row: number;

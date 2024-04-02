@@ -11,6 +11,7 @@ export namespace Gear {
         shopData: {
             cost: number;
             category: string;
+            shopOrderPriority: number;
             categoryText: ValorantApiComService.Languages<string, L>;
             gridPosition: {
                 row: number;

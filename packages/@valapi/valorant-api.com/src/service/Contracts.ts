@@ -7,6 +7,8 @@ export namespace Contracts {
         displayName: ValorantApiComService.Languages<string, L>;
         displayIcon: string;
         shipIt: boolean;
+        useLevelVPCostOverride: boolean;
+        levelVPCostOverride: number;
         freeRewardScheduleUuid: string;
         content: {
             relationType: string;
@@ -23,6 +25,8 @@ export namespace Contracts {
                     xp: number;
                     vpCost: number;
                     isPurchasableWithVP: boolean;
+                    doughCost: number;
+                    isPurchasableWithDough: boolean;
                 }>;
                 freeRewards: Array<{
                     type: string;

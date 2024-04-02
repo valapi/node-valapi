@@ -6,13 +6,13 @@ describe("riotapi.region", () => {
         const _region = new RiotApiRegion(Region.Default.Public_Beta_Environment);
 
         const id = "na";
-        const riotRegion = "pbe1";
+        const continent = "pbe1";
 
         expect(_region.id).toBe(id);
-        expect(_region.riotRegion).toBe(riotRegion);
+        expect(_region.continent).toBe(continent);
 
         expect(_region.url).toMatchObject({
-            api: `https://${riotRegion}.api.riotgames.com`,
+            api: `https://${continent}.api.riotgames.com`,
             server: `https://${id}.api.riotgames.com`
         });
     });

@@ -12,7 +12,7 @@ export const Default = <const>{
     Custom_Tournament: "tournamentmode",
 
     // * change when having a new map
-    New_Map: null
+    New_Map: undefined
 };
 
 export type Name = keyof typeof Default;

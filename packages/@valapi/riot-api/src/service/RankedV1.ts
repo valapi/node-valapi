@@ -51,6 +51,6 @@ export class RankedV1 extends RiotApiService {
      * @returns {Promise<AxiosResponse<RankedV1.LeaderboardDto>>}
      */
     public leaderboardsByAct(actId: string, size: number = 200, startIndex: number = 0): Promise<AxiosResponse<RankedV1.LeaderboardDto>> {
-        return this.axios.get(`${this.apiRegion.url.server}/val/ranked/v1/leaderboards/by-act/${actId}?size=${size}&startIndex=${startIndex}`);
+        return this.axios.get(`${this.apiRegion.url.region}/val/ranked/v1/leaderboards/by-act/${actId}?size=${size}&startIndex=${startIndex}`);
     }
 }

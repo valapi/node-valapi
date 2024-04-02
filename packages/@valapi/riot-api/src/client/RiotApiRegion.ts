@@ -2,20 +2,20 @@ import { ValRegion } from "@valapi/lib";
 import type { Region } from "@valapi/lib";
 
 export class RiotApiRegion extends ValRegion {
-    public readonly riotRegion: string;
+    public readonly continent: string;
     public readonly url: {
         /**
          * $.api.riotgames.com
          */
-        api: string;
+        region: string;
+        /**
+         * $.api.riotgames.com
+         */
+        continent: string;
         /**
          * esports.api.riotgames.com
          */
         esports: string;
-        /**
-         * $.api.riotgames.com
-         */
-        server: string;
     };
 
     /**
@@ -25,7 +25,7 @@ export class RiotApiRegion extends ValRegion {
     public constructor(region?: Region.ID) {
         super(region);
 
-        this.riotRegion = "americas";
+        this.continent = "americas";
         switch (region) {
             case "na": {
                 break;
@@ -37,27 +37,27 @@ export class RiotApiRegion extends ValRegion {
                 break;
             }
             case "pbe": {
-                this.riotRegion = "pbe1";
+                this.continent = "pbe1";
                 break;
             }
             case "eu": {
-                this.riotRegion = "europe";
+                this.continent = "europe";
                 break;
             }
             case "kr": {
-                this.riotRegion = "asia";
+                this.continent = "asia";
                 break;
             }
             case "ap": {
-                this.riotRegion = "asia";
+                this.continent = "asia";
                 break;
             }
         }
 
         this.url = {
-            api: `https://${this.riotRegion}.api.riotgames.com`,
-            esports: `https://esports.api.riotgames.com`,
-            server: `https://${this.id}.api.riotgames.com`
+            region: `https://${this.id}.api.riotgames.com`,
+            continent: `https://${this.continent}.api.riotgames.com`,
+            esports: `https://esports.api.riotgames.com`
         };
     }
 }

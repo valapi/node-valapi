@@ -91,8 +91,7 @@ export class ValorantApiCom<L extends ValorantApiCom.Language> {
                             ...ValorantApiCom.Default.config.axiosConfig.params,
                             ...config.axiosConfig?.params,
                             ...{
-                                language: config.language || ValorantApiCom.Default.config.language,
-                                responseOptions: config.responseOptions && config.responseOptions.ignore_null ? "ignore_null" : ""
+                                language: config.language || ValorantApiCom.Default.config.language
                             }
                         }
                     }
@@ -103,6 +102,10 @@ export class ValorantApiCom<L extends ValorantApiCom.Language> {
                 }
             }
         };
+        this.config.axiosConfig.params.responseOptions = Object.entries(this.config.responseOptions)
+            .filter((x) => x[1])
+            .map((x) => x[0])
+            .join(" ");
 
         this.axios = axios.create(this.config.axiosConfig);
     }
@@ -155,8 +158,8 @@ export class ValorantApiCom<L extends ValorantApiCom.Language> {
         return new Gear<L>(this.axios);
     }
 
-    public get LevelBorders(): LevelBorders {
-        return new LevelBorders(this.axios);
+    public get LevelBorders(): LevelBorders<L> {
+        return new LevelBorders<L>(this.axios);
     }
 
     public get Maps(): Maps<L> {

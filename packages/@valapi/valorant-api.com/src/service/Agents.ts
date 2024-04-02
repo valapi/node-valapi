@@ -56,7 +56,7 @@ export namespace Agents {
 }
 
 export class Agents<L extends ValorantApiCom.Language = any> extends ValorantApiComService {
-    public get(isPlayableCharacter?: boolean): Promise<ValorantApiComService.Response<Agents.Agents<L>[]>> {
+    public get(isPlayableCharacter: boolean = true): Promise<ValorantApiComService.Response<Agents.Agents<L>[]>> {
         return this.axios.get(`/agents`, {
             params: {
                 isPlayableCharacter: isPlayableCharacter
