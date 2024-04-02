@@ -22,7 +22,7 @@ export class RiotApiRegion extends ValRegion {
      *
      * @param {string} region Region (default: na)
      */
-    public constructor(region?: Region.Identify) {
+    public constructor(region?: Region.ID) {
         super(region);
 
         this.riotRegion = "americas";

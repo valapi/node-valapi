@@ -31,7 +31,7 @@ import { Store } from "../service/Store";
 
 export namespace WebClient {
     export interface UserJson extends Omit<AuthCore.Json, "id_token" | "expires_in" | "token_type" | "session_state" | "createAt" | "authenticationInfo" | "region"> {
-        region: Region.Identify;
+        region: Region.ID;
     }
 
     export interface UserInfo {
@@ -53,7 +53,7 @@ export namespace WebClient {
             provider_environment: any; // * unknown
         }>;
         federated_identity_providers: Array<string>;
-        player_locale: Locale.Identify;
+        player_locale: Locale.ID;
         acct: {
             type: number;
             state: string;

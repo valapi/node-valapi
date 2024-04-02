@@ -31,10 +31,10 @@ export class MatchV1 extends RiotApiService {
 
     /**
      * Get recent matches
-     * @param {QueueId.Identify} queueId Queue ID
+     * @param {QueueId.ID} queueId Queue ID
      * @returns {Promise<AxiosResponse<any>>}
      */
-    public recentByQueue(queueId: QueueId.Identify): Promise<AxiosResponse<any>> {
+    public recentByQueue(queueId: QueueId.ID): Promise<AxiosResponse<any>> {
         return this.axios.get(`${this.apiRegion.url.server}/val/match/v1/recent-matches/by-queue/${queueId}`);
     }
 }

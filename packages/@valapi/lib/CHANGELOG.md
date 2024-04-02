@@ -10,6 +10,18 @@
 -   ~~`ValError.fromError`~~ **-->** `ValError.parse`
 -   ~~`ValBase64`~~ **-->** `ValEncryption`
 
+-   ~~`[Resources].fromString()`~~ **-->** `[Resources].fromID()`
+
+**Remove**
+
+-   `[Resources].Data`
+
+### Typescript
+
+**Change**
+
+-   ~~`[Resources].Identify`~~ **-->** `[Resources].ID`
+
 # 3.1.0
 
 **Remove**

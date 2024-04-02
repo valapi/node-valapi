@@ -48,11 +48,11 @@ export namespace ValCrosshair {
         export interface Color<TName extends string = "Color"> extends ValCrosshair.Data.BaseType<0 | 1, `${TName}.isHex`> {
             type: "Color";
             components: [
-                ValCrosshair.Data.String<`${TName}.Color`, CrosshairColor.Identify, ["0", "1", "2", "3", "4", "5", "6", "7", "8"]>,
+                ValCrosshair.Data.String<`${TName}.Color`, CrosshairColor.ID, ["0", "1", "2", "3", "4", "5", "6", "7", "8"]>,
                 /**
                  * When hex is enable
                  */
-                ValCrosshair.Data.String<`${TName}.Hex`, CrosshairColor.ColorHex, ["FFFFFF", "00FF00", "7FFF00", "DFFF00", "FFFF00", "00FFFF", "FF00FF", "FF0000"]>
+                ValCrosshair.Data.String<`${TName}.Hex`, CrosshairColor.IdHex, ["FFFFFF", "00FF00", "7FFF00", "DFFF00", "FFFF00", "00FFFF", "FF00FF", "FF0000"]>
             ];
         }
 
@@ -163,8 +163,8 @@ export class ValCrosshair {
                         path: "P.u",
                         priority: 5,
                         name: "Primary.Crosshair.Color.Hex",
-                        data: CrosshairColor.fromStringHex("0"),
-                        default: CrosshairColor.fromStringHex("0")
+                        data: <CrosshairColor.IdHex>CrosshairColor.fromColorHex("White"),
+                        default: <CrosshairColor.IdHex>CrosshairColor.fromColorHex("White")
                     },
                     components: []
                 }
@@ -643,8 +643,8 @@ export class ValCrosshair {
                         path: "A.u",
                         priority: 39,
                         name: "AimDownSights.Crosshair.Color.Hex",
-                        data: CrosshairColor.fromStringHex("0"),
-                        default: CrosshairColor.fromStringHex("0")
+                        data: <CrosshairColor.IdHex>CrosshairColor.fromColorHex("White"),
+                        default: <CrosshairColor.IdHex>CrosshairColor.fromColorHex("White")
                     },
                     components: []
                 }
@@ -1111,8 +1111,8 @@ export class ValCrosshair {
                                 path: "S.t",
                                 priority: 73,
                                 name: "SniperScope.CenterDot.Color.Hex",
-                                data: CrosshairColor.fromStringHex("0"),
-                                default: CrosshairColor.fromStringHex("0")
+                                data: <CrosshairColor.IdHex>CrosshairColor.fromColorHex("White"),
+                                default: <CrosshairColor.IdHex>CrosshairColor.fromColorHex("White")
                             },
                             components: []
                         }

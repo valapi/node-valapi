@@ -2,7 +2,7 @@ import { ValRegion } from "@valapi/lib";
 import type { Region } from "@valapi/lib";
 
 export class WebClientRegion extends ValRegion {
-    public readonly shard: Region.Identify;
+    public readonly shard: Region.ID;
     public readonly url: {
         /**
          * pd.$.a.pvp.net
@@ -22,7 +22,7 @@ export class WebClientRegion extends ValRegion {
      *
      * @param {string} region Region (default: na)
      */
-    public constructor(region?: Region.Identify) {
+    public constructor(region?: Region.ID) {
         super(region);
 
         this.shard = "na";

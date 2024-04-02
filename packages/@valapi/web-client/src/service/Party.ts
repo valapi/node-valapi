@@ -34,7 +34,7 @@ export namespace Party {
             EnabledMaps: Array<string>;
             EnabledModes: Array<string>;
             Queues: Array<{
-                QueueID: QueueId.Identify;
+                QueueID: QueueId.ID;
                 Enabled: boolean;
                 TeamSize: number;
                 NumTeams: number;
@@ -136,7 +136,7 @@ export namespace Party {
             HasRecoveryData: boolean;
         };
         MatchmakingData: {
-            QueueID: QueueId.Identify;
+            QueueID: QueueId.ID;
             PreferredGamePods: Array<string>;
             SkillDisparityRRPenalty: number;
         };
@@ -148,7 +148,7 @@ export namespace Party {
             ErroredPlayers: any; // * unknown
         };
         RestrictedSeconds: number;
-        EligibleQueues: Array<QueueId.Identify>;
+        EligibleQueues: Array<QueueId.ID>;
         QueueIneligibilities: Array<any>; // * unknown
         CheatData: {
             GamePodOverride: string;
@@ -264,10 +264,10 @@ export class Party extends WebClientService {
 export class MatchMaking extends WebClientService {
     /**
      * @param {string} partyId Party ID
-     * @param {QueueId.Identify} queueId Queue (EligibleQueues)
+     * @param {QueueId.ID} queueId Queue (EligibleQueues)
      * @returns {Promise<AxiosResponse<Party.Party>>}
      */
-    public changeQueue(partyId: string, queueId: QueueId.Identify): Promise<AxiosResponse<Party.Party>> {
+    public changeQueue(partyId: string, queueId: QueueId.ID): Promise<AxiosResponse<Party.Party>> {
         return this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/queue`, {
             queueID: queueId
         });
@@ -275,10 +275,10 @@ export class MatchMaking extends WebClientService {
 
     /**
      * @param {string} partyId Party ID
-     * @param {QueueId.Identify} queueId Queue
+     * @param {QueueId.ID} queueId Queue
      * @returns {Promise<AxiosResponse<Party.Party>>}
      */
-    public makeDefaultQueue(partyId: string, queueId: QueueId.Identify): Promise<AxiosResponse<Party.Party>> {
+    public makeDefaultQueue(partyId: string, queueId: QueueId.ID): Promise<AxiosResponse<Party.Party>> {
         return this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/makedefault?queueID=${queueId}`);
     }
 

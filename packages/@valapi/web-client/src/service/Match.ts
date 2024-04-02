@@ -48,7 +48,7 @@ export namespace Match {
             isCompleted: boolean;
             customGameName: string;
             forcePostProcessing: boolean;
-            queueID: QueueId.Identify;
+            queueID: QueueId.ID;
             gameMode: string;
             isRanked: boolean;
             isMatchSampled: boolean;
@@ -218,7 +218,7 @@ export namespace Match {
         History: Array<{
             MatchID: string;
             GameStartTime: number;
-            QueueID: QueueId.Identify;
+            QueueID: QueueId.ID;
         }>;
     }
 }
@@ -235,12 +235,12 @@ export class Match extends WebClientService {
 
     /**
      * @param {string} subject Player UUID
-     * @param {QueueId.Identify} queueId Queue
+     * @param {QueueId.ID} queueId Queue
      * @param {number} startIndex Start Index (default: 0)
      * @param {number} endIndex End Index (default: 10)
      * @returns {Promise<AxiosResponse<Match.History>>}
      */
-    public fetchMatchHistory(subject: string, queueId?: QueueId.Identify, startIndex = 0, endIndex = 10): Promise<AxiosResponse<Match.History>> {
+    public fetchMatchHistory(subject: string, queueId?: QueueId.ID, startIndex = 0, endIndex = 10): Promise<AxiosResponse<Match.History>> {
         let _url = `${this.apiRegion.url.playerData}/match-history/v1/history/${subject}?startIndex=${startIndex}&endIndex=${endIndex}`;
 
         if (queueId) {

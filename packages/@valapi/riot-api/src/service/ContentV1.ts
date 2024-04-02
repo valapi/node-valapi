@@ -10,7 +10,7 @@ export namespace ContentV1 {
         /**
          * This field is excluded from the response when a locale is set
          */
-        localizedNames?: Record<Locale.Identify, string>;
+        localizedNames?: Record<Locale.ID, string>;
         id: string;
         isActive: boolean;
 
@@ -22,7 +22,7 @@ export namespace ContentV1 {
         /**
          * This field is excluded from the response when a locale is set
          */
-        localizedNames?: Record<Locale.Identify, string>;
+        localizedNames?: Record<Locale.ID, string>;
         id: string;
         assetName: string;
         /**
@@ -57,10 +57,10 @@ export namespace ContentV1 {
 export class ContentV1 extends RiotApiService {
     /**
      * Get content optionally filtered by locale
-     * @param {Locale.Identify} locale Locale (default: en-US)
+     * @param {Locale.ID} locale Locale (default: en-US)
      * @returns {Promise<AxiosResponse<ContentV1.ContentDto>>}
      */
-    public contents(locale: Locale.Identify = "en-US"): Promise<AxiosResponse<ContentV1.ContentDto>> {
+    public contents(locale: Locale.ID = "en-US"): Promise<AxiosResponse<ContentV1.ContentDto>> {
         return this.axios.get(`${this.apiRegion.url.server}/val/content/v1/contents?locale=${locale}`);
     }
 }

@@ -33,7 +33,7 @@ export namespace MMR {
         Version: number;
         Subject: string;
         NewPlayerExperienceFinished: boolean;
-        QueueSkills: Record<QueueId.Identify | "seeding", MMR.QueueSkill>;
+        QueueSkills: Record<QueueId.ID | "seeding", MMR.QueueSkill>;
         LatestCompetitiveUpdate: {
             MatchID: string;
             MapID: string;
@@ -144,12 +144,12 @@ export class MMR extends WebClientService {
 
     /**
      * @param {string} subject Player UUID
-     * @param {QueueId.Identify} queueId Queue
+     * @param {QueueId.ID} queueId Queue
      * @param {number} startIndex Start Index (default: 0)
      * @param {number} endIndex End Index (default: 10)
      * @returns {Promise<AxiosResponse<MMR.CompetitiveUpdates>>}
      */
-    public getCompetitiveUpdates(subject: string, queueId?: QueueId.Identify, startIndex = 0, endIndex = 10): Promise<AxiosResponse<MMR.CompetitiveUpdates>> {
+    public getCompetitiveUpdates(subject: string, queueId?: QueueId.ID, startIndex = 0, endIndex = 10): Promise<AxiosResponse<MMR.CompetitiveUpdates>> {
         let _url = `${this.apiRegion.url.playerData}/mmr/v1/players/${subject}/competitiveupdates?startIndex=${startIndex}&endIndex=${endIndex}`;
 
         if (queueId) {

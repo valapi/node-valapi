@@ -2,7 +2,7 @@ import { ValEncryption } from "../index";
 
 describe("lib.util", () => {
     test("base64", () => {
-        expect(ValEncryption.decryptJson("eyJ2YWxvcmFudC50cyI6ICJ0aGUgYmVzdCBOb2RlLmpzIGxpYnJhcnkgdG8gdXNpbmcgVmFsb3JhbnQgQVBJIn0=")).toBe({
+        expect(ValEncryption.decryptJson("eyJ2YWxvcmFudC50cyI6ICJ0aGUgYmVzdCBOb2RlLmpzIGxpYnJhcnkgdG8gdXNpbmcgVmFsb3JhbnQgQVBJIn0=")).toStrictEqual({
             "valorant.ts": "the best Node.js library to using Valorant API"
         });
         expect(ValEncryption.encryptJson({ 1: "2kov83v4yj1v8y09", ":)": "18ny9c8ny91c8ny9cn9" })).toBe("eyIxIjoiMmtvdjgzdjR5ajF2OHkwOSIsIjopIjoiMThueTljOG55OTFjOG55OWNuOSJ9");

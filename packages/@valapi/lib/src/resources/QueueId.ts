@@ -1,77 +1,43 @@
-export default class Data {
+export const Default = <const>{
+    Unrated: "unrated",
+    Competitive: "competitive",
+    Spikerush: "spikerush",
+    Deathmatch: "deathmatch",
+    Escalation: "ggteam",
+    Replication: "onefa",
+    Snowball_Fight: "snowball",
+    Swiftplay: "swiftplay",
+    Team_Deathmatch: "hurm",
+    Custom: "",
+    Custom_Tournament: "tournamentmode",
+
     // * change when having a new map
-    public static readonly newmap = "undefined";
+    New_Map: null
+};
 
-    public static readonly from = {
-        unrated: "Unrated",
-        competitive: "Competitive",
-        spikerush: "Spikerush",
-        deathmatch: "Deathmatch",
-        ggteam: "Escalation",
-        onefa: "Replication",
-        snowball: "Snowball_Fight",
-        swiftplay: "Swiftplay",
-        hurm: "Team_Deathmatch",
-        "": "Custom",
-        tournamentmode: "Custom_Tournament",
-
-        newmap: Data.newmap
-    };
-
-    public static readonly to = {
-        Unrated: "unrated",
-        Competitive: "competitive",
-        Spikerush: "spikerush",
-        Deathmatch: "deathmatch",
-        Escalation: "ggteam",
-        Replication: "onefa",
-        Snowball_Fight: "snowball",
-        Swiftplay: "swiftplay",
-        Team_Deathmatch: "hurm",
-        Custom: "",
-        Custom_Tournament: "tournamentmode"
-    };
-}
-
-export enum Default {
-    Unrated = "unrated",
-    Competitive = "competitive",
-    Spikerush = "spikerush",
-    Deathmatch = "deathmatch",
-    Escalation = "ggteam",
-    Replication = "onefa",
-    Snowball_Fight = "snowball",
-    Swiftplay = "swiftplay",
-    Team_Deathmatch = "hurm",
-    Custom = "",
-    Custom_Tournament = "tournamentmode"
-}
-
-export type Identify = keyof typeof Data.from;
-export type Name = keyof typeof Data.to | typeof Data.newmap;
+export type Name = keyof typeof Default;
+export type ID = Exclude<(typeof Default)[Name], (typeof Default)["New_Map"]>;
 
 /**
- * Change from {@link Name} to {@link Identify String}
+ * Change from {@link Name} to {@link ID}
  * @param {Name} x Name
- * @returns {Identify} String
+ * @returns {ID} ID
  */
-export function fromName(x: Name): Identify {
-    if (x === Data.newmap) {
-        return "newmap";
-    }
-
-    return <Exclude<Identify, "newmap">>Data.to[x];
+export function fromName(x: Name): ID | undefined {
+    return <ID>Default[x];
 }
 
 /**
- * Change from {@link Identify String} to {@link Name}
- * @param {Identify} x String
+ * Change from {@link ID} to {@link Name}
+ * @param {ID} x ID
  * @returns {Name} Name
  */
-export function fromString(x: Identify): Name {
-    if (x === "newmap") {
-        return Data.newmap;
+export function fromID(x: ID): Name | undefined {
+    for (const data of Object.entries(Default)) {
+        if (typeof data[1] == "string" && data[1] == x) {
+            return <Name>data[0];
+        }
     }
 
-    return <Name>Data.from[x];
+    return undefined;
 }

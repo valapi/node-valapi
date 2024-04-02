@@ -151,10 +151,10 @@ export class Store extends WebClientService {
     public getEntitlements(subject: string, itemTypeId: "dd3bf334-87f3-40bd-b043-682a57a8dc3a"): Promise<AxiosResponse<Store.EntitlementsWithInstance>>;
     /**
      * @param {string} subject Player UUID
-     * @param {ItemTypeId.Identify} itemTypeId Item Type
+     * @param {ItemTypeId.ID} itemTypeId Item Type
      * @returns {Promise<AxiosResponse<Store.Entitlements>>}
      */
-    public getEntitlements(subject: string, itemTypeId: ItemTypeId.Identify): Promise<AxiosResponse<Store.Entitlements>>;
+    public getEntitlements(subject: string, itemTypeId: ItemTypeId.ID): Promise<AxiosResponse<Store.Entitlements>>;
     public getEntitlements(subject: string, itemTypeId: string): Promise<AxiosResponse<any>> {
         return this.axios.get(`${this.apiRegion.url.playerData}/store/v1/entitlements/${subject}/${itemTypeId}`);
     }

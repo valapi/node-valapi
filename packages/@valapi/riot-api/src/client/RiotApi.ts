@@ -20,7 +20,7 @@ export namespace RiotApi {
         /**
          * Region
          */
-        region: Region.Identify;
+        region: Region.ID;
         /**
          * Request Config
          */
