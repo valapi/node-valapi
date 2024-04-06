@@ -22,6 +22,7 @@ export namespace CoreGame {
         AllMUCName: string;
         TeamMUCName: string;
         TeamVoiceID: string;
+        TeamMatchToken: string;
         IsReconnectable: boolean;
         ConnectionDetails: {
             GameServerHosts: Array<string>;
@@ -70,11 +71,19 @@ export namespace CoreGame {
         Loadouts: Array<{
             CharacterID: string;
             Loadout: {
+                Subject: string;
                 Sprays: {
                     SpraySelections: Array<{
                         SocketID: string;
                         SprayID: string;
                         LevelID: string;
+                    }>;
+                };
+                Expressions: {
+                    AESSelections: Array<{
+                        SocketID: string;
+                        AssetID: string;
+                        TypeID: string;
                     }>;
                 };
                 Items: Record<

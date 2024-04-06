@@ -1,4 +1,4 @@
-import { ValError, CrosshairColor } from "@valapi/lib";
+import { ValError, CrosshairColor, CrosshairHexColor } from "@valapi/lib";
 
 export namespace ValCrosshair {
     export type Category = "0" | "P" | "A" | "S";
@@ -52,7 +52,7 @@ export namespace ValCrosshair {
                 /**
                  * When hex is enable
                  */
-                ValCrosshair.Data.String<`${TName}.Hex`, CrosshairColor.IdHex, ["FFFFFF", "00FF00", "7FFF00", "DFFF00", "FFFF00", "00FFFF", "FF00FF", "FF0000"]>
+                ValCrosshair.Data.String<`${TName}.Hex`, CrosshairHexColor.Hex, ["FFFFFF", "00FF00", "7FFF00", "DFFF00", "FFFF00", "00FFFF", "FF00FF", "FF0000"]>
             ];
         }
 
@@ -163,8 +163,8 @@ export class ValCrosshair {
                         path: "P.u",
                         priority: 5,
                         name: "Primary.Crosshair.Color.Hex",
-                        data: <CrosshairColor.IdHex>CrosshairColor.fromColorHex("White"),
-                        default: <CrosshairColor.IdHex>CrosshairColor.fromColorHex("White")
+                        data: <CrosshairHexColor.Hex>CrosshairHexColor.fromName("White"),
+                        default: <CrosshairHexColor.Hex>CrosshairHexColor.fromName("White")
                     },
                     components: []
                 }
@@ -643,8 +643,8 @@ export class ValCrosshair {
                         path: "A.u",
                         priority: 39,
                         name: "AimDownSights.Crosshair.Color.Hex",
-                        data: <CrosshairColor.IdHex>CrosshairColor.fromColorHex("White"),
-                        default: <CrosshairColor.IdHex>CrosshairColor.fromColorHex("White")
+                        data: <CrosshairHexColor.Hex>CrosshairHexColor.fromName("White"),
+                        default: <CrosshairHexColor.Hex>CrosshairHexColor.fromName("White")
                     },
                     components: []
                 }
@@ -1111,8 +1111,8 @@ export class ValCrosshair {
                                 path: "S.t",
                                 priority: 73,
                                 name: "SniperScope.CenterDot.Color.Hex",
-                                data: <CrosshairColor.IdHex>CrosshairColor.fromColorHex("White"),
-                                default: <CrosshairColor.IdHex>CrosshairColor.fromColorHex("White")
+                                data: <CrosshairHexColor.Hex>CrosshairHexColor.fromName("White"),
+                                default: <CrosshairHexColor.Hex>CrosshairHexColor.fromName("White")
                             },
                             components: []
                         }
@@ -1333,19 +1333,19 @@ export class ValCrosshair {
             P: [],
             S: []
         };
-        _export["0"].map((a) => {
+        _export["0"].map(a => {
             _sort["0"].push(a.path);
             _sort["0"].push(a.value);
         });
-        _export["A"].map((a) => {
+        _export["A"].map(a => {
             _sort["A"].push(a.path);
             _sort["A"].push(a.value);
         });
-        _export["P"].map((a) => {
+        _export["P"].map(a => {
             _sort["P"].push(a.path);
             _sort["P"].push(a.value);
         });
-        _export["S"].map((a) => {
+        _export["S"].map(a => {
             _sort["S"].push(a.path);
             _sort["S"].push(a.value);
         });

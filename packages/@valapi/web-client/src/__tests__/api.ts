@@ -20,8 +20,8 @@ describe("webclient.api", () => {
             myClient.Match.fetchMatchHistory(subject),
             myClient.Personalization.getPlayerLoadout(subject),
             myClient.Store.getOffers()
-        ]).then((values) => {
-            values.forEach((element) => {
+        ]).then(values => {
+            values.forEach(element => {
                 expect(element.status === 200).toBe(true);
             });
         });

@@ -4,23 +4,42 @@
 
 -   `ValEncryption.encryptJson(object)`
 -   `ValEncryption.decryptJson(object)`
+-   `CrosshairHexColor`
 
 **Change**
 
 -   ~~`ValError.fromError`~~ **-->** `ValError.parse`
 -   ~~`ValBase64`~~ **-->** `ValEncryption`
 
--   ~~`[Resources].fromString()`~~ **-->** `[Resources].fromID()`
+-   ~~`CrosshairColor.fromColor()`~~ **-->** `CrosshairColor.fromName()`
+-   ~~`CrosshairColor.fromString()`~~ **-->** `CrosshairColor.fromID()`
+-   ~~`CrosshairColor.fromColorHex()`~~ **-->** `CrosshairHexColor.fromName()`
+-   ~~`CrosshairColor.fromStringHex()`~~ **-->** `CrosshairHexColor.fromHex()`
+-   ~~`ItemTypeId.fromString()`~~ **-->** `ItemTypeId.fromID()`
+-   ~~`Locale.fromString()`~~ **-->** `Locale.fromID()`
+-   ~~`QueueId.fromString()`~~ **-->** `QueueId.fromID()`
+-   ~~`Region.fromString()`~~ **-->** `Region.fromID()`
 
 **Remove**
 
--   `[Resources].Data`
+-   `CrosshairColor.Data`
+-   `ItemTypeId.Data`
+-   `Locale.Data`
+-   `QueueId.Data`
+-   `Region.Data`
 
 ### Typescript
 
 **Change**
 
--   ~~`[Resources].Identify`~~ **-->** `[Resources].ID`
+-   ~~`CrosshairColor.Color`~~ **-->** `CrosshairColor.Name`
+-   ~~`CrosshairColor.Identify`~~ **-->** `CrosshairColor.ID`
+-   ~~`CrosshairColor.ColorHex`~~ **-->** `CrosshairHexColor.Name`
+-   ~~`CrosshairColor.IdentifyHex`~~ **-->** `CrosshairHexColor.Hex`
+-   ~~`ItemTypeId.Identify`~~ **-->** `ItemTypeId.ID`
+-   ~~`Locale.Identify`~~ **-->** `Locale.ID`
+-   ~~`QueueId.Identify`~~ **-->** `QueueId.ID`
+-   ~~`Region.Identify`~~ **-->** `Region.ID`
 
 # 3.1.0
 

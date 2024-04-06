@@ -12,12 +12,6 @@
 
 ### Typescript
 
-**@/riot-api**
-
-| Type    | Name    | Progression |
-| ------- | ------- | ----------- |
-| Service | MatchV1 | Missing     |
-
 **@/web-client**
 
 | Type    | Name                | Progression |
@@ -28,7 +22,7 @@
 | Service | ContractDefinitions | Not Done    |
 | Service | Contracts           | Not Done    |
 | Service | CoreGame            | Not Done    |
-| Service | DailyTicket         | Not Done    |
+| Service | DailyTicket         | Done        |
 | Service | DisplayNameService  | Done        |
 | Service | Favorites           | Done        |
 | Service | Latency             | Done        |
@@ -44,19 +38,3 @@
 | Service | Store               | Done        |
 
 -----------
-
-### WAIT_FOR_TEST
-
-Party
-- CustomGame.setBalance
-- Member.*
-  - !get
-  - !setReady
-
-CoreGame
-
-Match
-
-PreGame
-
-Premier

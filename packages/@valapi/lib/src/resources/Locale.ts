@@ -1,3 +1,5 @@
+import { ValError } from "../client/ValError";
+
 export const Default = <const>{
     Arabic_United_Arab_Emirates: "ar-AE",
     German_Germany: "de-DE",
@@ -28,7 +30,7 @@ export type ID = (typeof Default)[Name];
  * @param {Name} x Name
  * @returns {ID} ID
  */
-export function fromName(x: Name): ID | undefined {
+export function fromName(x: Name): ID {
     return <ID>Default[x];
 }
 
@@ -37,12 +39,16 @@ export function fromName(x: Name): ID | undefined {
  * @param {ID} x ID
  * @returns {Name} Name
  */
-export function fromID(x: ID): Name | undefined {
+export function fromID(x: ID): Name {
     for (const data of Object.entries(Default)) {
         if (data[1] == x) {
             return <Name>data[0];
         }
     }
 
-    return undefined;
+    throw new ValError({
+        name: "Resource_Error",
+        message: "Resource Not Found",
+        data: x
+    });
 }

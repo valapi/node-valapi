@@ -24,7 +24,6 @@ export namespace DailyTicket {
             WasPenalized: boolean;
             BonusesApplied: number;
             DailyBonusState: [boolean, boolean, boolean, boolean];
-            RewardGrants: any; // * unknown
         }>;
     }
 }

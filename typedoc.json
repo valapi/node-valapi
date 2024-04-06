@@ -5,7 +5,8 @@
     "packages/@valapi/lib",
     "packages/@valapi/riot-api",
     "packages/@valapi/valorant-api.com",
-    "packages/@valapi/web-client"
+    "packages/@valapi/web-client",
+    "packages/valroant.ts"
   ],
   "entryPointStrategy": "packages",
   "cleanOutputDir": true,

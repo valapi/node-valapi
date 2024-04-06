@@ -18,14 +18,14 @@ export namespace MatchV1 {
         isRanked: boolean;
         seasonId: string;
     }
-    
+
     export interface AbilityCastsDto {
         grenadeCasts: number;
         ability1Casts: number;
         ability2Casts: number;
         ultimateCasts: number;
     }
-    
+
     export interface PlayerStatsDto {
         score: number;
         roundsPlayed: number;
@@ -35,8 +35,7 @@ export namespace MatchV1 {
         playtimeMillis: number;
         abilityCasts: MatchV1.AbilityCastsDto;
     }
-    
-    
+
     export interface PlayerDto {
         puuid: string;
         gameName: string;
@@ -44,17 +43,17 @@ export namespace MatchV1 {
         teamId: string;
         partyId: string;
         characterId: string;
-        stats: 	MatchV1.PlayerStatsDto;
+        stats: MatchV1.PlayerStatsDto;
         competitiveTier: number;
         playerCard: string;
         playerTitle: string;
     }
-    
+
     export interface CoachDto {
         puuid: string;
         teamId: string;
     }
-    
+
     export interface TeamDto {
         teamId: string;
         won: boolean;
@@ -62,25 +61,24 @@ export namespace MatchV1 {
         roundsWon: number;
         numPoints: number;
     }
-    
+
     export interface LocationDto {
         x: number;
         y: number;
     }
-    
+
     export interface PlayerLocationsDto {
         puuid: string;
         viewRadians: number;
         location: MatchV1.LocationDto;
     }
-    
+
     export interface FinishingDamageDto {
         damageType: string;
         damageItem: string;
         isSecondaryFireMode: boolean;
     }
-    
-    
+
     export interface KillDto {
         timeSinceGameStartMillis: number;
         timeSinceRoundStartMillis: number;
@@ -91,7 +89,7 @@ export namespace MatchV1 {
         playerLocations: Array<MatchV1.PlayerLocationsDto>;
         finishingDamage: MatchV1.FinishingDamageDto;
     }
-    
+
     export interface DamageDto {
         receiver: string;
         damage: number;
@@ -99,7 +97,7 @@ export namespace MatchV1 {
         bodyshots: number;
         headshots: number;
     }
-    
+
     export interface EconomyDto {
         loadoutValue: number;
         weapon: string;
@@ -107,14 +105,14 @@ export namespace MatchV1 {
         remaining: number;
         spent: number;
     }
-    
+
     export interface AbilityDto {
         grenadeEffects: string;
         ability1Effects: string;
         ability2Effects: string;
         ultimateEffects: string;
     }
-    
+
     export interface PlayerRoundStatsDto {
         puuid: string;
         kills: Array<MatchV1.KillDto>;
@@ -123,11 +121,11 @@ export namespace MatchV1 {
         economy: MatchV1.EconomyDto;
         ability: MatchV1.AbilityDto;
     }
-    
+
     export interface RoundResultDto {
         roundNum: number;
         roundResult: string;
-        roundCeremony: string;	
+        roundCeremony: string;
         winningTeam: string;
         bombPlanter: string;
         bombDefuser: string;
@@ -141,7 +139,7 @@ export namespace MatchV1 {
         playerStats: Array<MatchV1.PlayerRoundStatsDto>;
         roundResultCode: string;
     }
-    
+
     export interface MatchDto {
         matchInfo: MatchV1.MatchInfoDto;
         players: Array<MatchV1.PlayerDto>;

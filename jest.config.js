@@ -1,21 +1,20 @@
 /** @type {import('ts-jest').JestConfigWithTsJest} */
 module.exports = {
-  preset: 'ts-jest',
-  transform: {
-		'^.+\\.m?[tj]sx?$': [
-      'ts-jest',
-      {
-        tsconfig: 'tsconfig.test.json'
-      },
+    transform: {
+        "^.+\\.tsx?$": [
+            "ts-jest",
+            {
+                tsconfig: "tsconfig.test.json"
+            },
+        ],
+    },
+    testEnvironment: "node",
+    clearMocks: true,
+    collectCoverage: true,
+    coverageDirectory: "coverage",
+    setupFiles: [
+        "dotenv/config"
     ],
-	},
-  testEnvironment: 'node',
-  clearMocks: true,
-  collectCoverage: true,
-  coverageDirectory: "coverage",
-  coverageProvider: "v8",
-  setupFiles: [
-    "dotenv/config",
-    "./jest.setup.js"
-  ],
-};
+    // 3 minute
+    testTimeout: 3 * 60 * 1000
+}

@@ -12,8 +12,8 @@ describe("riotapi.region", () => {
         expect(_region.continent).toBe(continent);
 
         expect(_region.url).toMatchObject({
-            api: `https://${continent}.api.riotgames.com`,
-            server: `https://${id}.api.riotgames.com`
+            region: `https://${id}.api.riotgames.com`,
+            continent: `https://${continent}.api.riotgames.com`
         });
     });
 });

@@ -1,8 +1,8 @@
 {
     "compilerOptions": {
       "composite": true,
-      "target": "es2022",
-      "lib": [ "es2022", "es2022.error", "es2021.promise" ],
+      "target": "es2023",
+      "lib": [ "es2023", "es2022.error", "es2021.promise" ],
       "module": "commonjs",
       "moduleResolution": "node",
       "resolveJsonModule": true,

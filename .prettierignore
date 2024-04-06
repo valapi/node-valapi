@@ -1,9 +1,7 @@
 .git/
-.github/
 
 # nodejs
 npm-debug.log*
-report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 package.json
 
 # log
@@ -19,6 +17,5 @@ npm-debug.log*
 
 # project
 LICENSE
-tsconfig.tsbuildinfo
 
 build/

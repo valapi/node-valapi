@@ -1,0 +1,5 @@
+{
+    "name": "valorant.ts",
+    "extends": ["../../typedoc.base.json"],
+    "entryPoints": ["src/index.ts"]
+}

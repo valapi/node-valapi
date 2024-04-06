@@ -15,8 +15,8 @@ describe("riotapi.api", () => {
             myClient.ContentV1.contents(Locale.Default.English_United_States),
             myClient.RankedV1.leaderboardsByAct("3e47230a-463c-a301-eb7d-67bb60357d4f", 10, 0),
             myClient.StatusV1.platformData()
-        ]).then((values) => {
-            values.forEach((element) => {
+        ]).then(values => {
+            values.forEach(element => {
                 expect(element.status === 200).toBe(true);
                 expect(element.data).not.toMatchObject({
                     status: {

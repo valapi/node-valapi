@@ -11,6 +11,18 @@ export namespace Store {
 
     export interface Wallet {
         Balances: Store.Currency;
+        CurrencyLimits: Record<
+            string,
+            {
+                Limits: Record<
+                    string,
+                    {
+                        amount: number;
+                        limitType: string;
+                    }
+                >;
+            }
+        >;
     }
 
     export interface Offer {

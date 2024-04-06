@@ -15,7 +15,9 @@
         "sourceType": "module"
     },
     "ignorePatterns": [
-        "build" // Ignore built files
+        "build",
+        "*.js",
+        "*.d.ts"
     ],
     "plugins": [
         "@typescript-eslint"

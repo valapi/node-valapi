@@ -2,17 +2,15 @@
 
 # nodejs
 npm-debug.log*
-report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 package-lock.json
 node_modules/
 
 # env
 .env
-.env.test
-.env.local
+.env.development.local
 .env.test.local
 .env.production.local
-.env.development.local
+.env.local
 
 # vscode
 .vscode/
@@ -42,3 +40,5 @@ docs/
 # test
 test/
 tests/
+
+coverage/

@@ -55,6 +55,7 @@ export namespace Match {
             seasonId: string;
             completionState: string;
             platformType: string;
+            premierMatchInfo: any; // * unknown
             partyRRPenalties: Record<string, number>;
             shouldMatchDisablePenalties: boolean;
         };
@@ -99,11 +100,12 @@ export namespace Match {
             behaviorFactors: {
                 afkRounds: number;
                 collisions: number;
+                commsRatingRecovery: number;
                 damageParticipationOutgoing: number;
                 friendlyFireIncoming: number;
                 friendlyFireOutgoing: number;
                 mouseMovement: number;
-                postGameText: number;
+                selfDamage: number;
                 stayedInSpawnRounds: number;
             };
             newPlayerExperienceDetails: {

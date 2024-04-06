@@ -33,7 +33,7 @@
     "format": "prettier --config ./.prettierrc --ignore-path ./.prettierignore --write \"packages/**/*\"",
     "lint": "npx eslint packages",
     "compile": "npx tsc --build tsconfig.json",
-    "compile:clean": "npm exec --workspaces -- npx rimraf \"build\" \"tsconfig.tsbuildinfo\"",
+    "compile:clean": "npm exec --workspaces -- rimraf \"build\" \"tsconfig.tsbuildinfo\"",
     "docs": "typedoc",
     "docs:clean": "rimraf \"docs\"",
     "clean": "npm run compile:clean && npm run docs:clean",

@@ -38,8 +38,8 @@ describe("valapicom.api", () => {
             myClient.Version.get(),
             myClient.Weapons.get(),
             myClient.Weapons.getSkins()
-        ]).then((values) => {
-            values.forEach((element) => {
+        ]).then(values => {
+            values.forEach(element => {
                 expect(element.status === 200).toBe(true);
                 expect(element.data.data).not.toBe([]);
                 expect(element.data.data).not.toContain([undefined]);

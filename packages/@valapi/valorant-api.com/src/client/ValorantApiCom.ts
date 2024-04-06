@@ -103,8 +103,8 @@ export class ValorantApiCom<L extends ValorantApiCom.Language> {
             }
         };
         this.config.axiosConfig.params.responseOptions = Object.entries(this.config.responseOptions)
-            .filter((x) => x[1])
-            .map((x) => x[0])
+            .filter(x => x[1])
+            .map(x => x[0])
             .join(" ");
 
         this.axios = axios.create(this.config.axiosConfig);

@@ -64,6 +64,7 @@ export namespace PreGame {
         Mode: string;
         VoiceSessionID: string;
         MUCName: string;
+        TeamMatchToken: string;
         QueueID: string;
         ProvisioningFlowID: string;
         IsRanked: boolean;
@@ -77,10 +78,38 @@ export namespace PreGame {
     export interface Loadout {
         Loadouts: [
             {
+                Subject: string;
                 Sprays: {
-                    SpraySelections: any; // * unknown
+                    SpraySelections: Array<{
+                        SocketID: string;
+                        SprayID: string;
+                        LevelID: string;
+                    }>;
                 };
-                Items: any; // * unknown
+                Expressions: {
+                    AESSelections: Array<{
+                        SocketID: string;
+                        AssetID: string;
+                        TypeID: string;
+                    }>;
+                };
+                Items: Record<
+                    string,
+                    {
+                        ID: string;
+                        TypeID: string;
+                        Sockets: Record<
+                            string,
+                            {
+                                ID: string;
+                                Item: {
+                                    ID: string;
+                                    TypeID: string;
+                                };
+                            }
+                        >;
+                    }
+                >;
             }
         ];
         LoadoutsValid: boolean;

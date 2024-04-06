@@ -55,7 +55,7 @@ describe("valorant_ts.crosshair", () => {
 
         crosshair.import("0;s;1");
 
-        expect(crosshair.find((value) => value.value.path === "0.s")).toStrictEqual({
+        expect(crosshair.find(value => value.value.path === "0.s")).toStrictEqual({
             type: "Boolean",
             value: {
                 path: "0.s",
