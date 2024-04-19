@@ -5,7 +5,7 @@
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
-  "description": "Valorant Api - Support Multifactor",
+  "description": "Valorant API",
   "keywords": [
     "riot",
     "api",

@@ -15,7 +15,7 @@
 
 <div align="center">
 
-# Valorant API - Support Multifactor
+# Valorant API
 
 [![Profile][githubrepo_image]][github_url]
 
@@ -39,7 +39,6 @@ NodeJS package that make more easier to use Valorant API
 
 ## Why Valorant.ts ?
 
--   Support **Two-Factor Authentication**
 -   All-In-One
     -   Authentication
     -   API
@@ -82,12 +81,6 @@ Authentication
 await AuthClient.login("BestUsername", "SuperSecretPassword");
 ```
 
-Two-Factor Authentication
-
-```javascript
-await AuthClient.verify(428793 /* <--- Verification Code */);
-```
-
 Daily Offers
 
 ```javascript
@@ -113,7 +106,7 @@ async function getOffersOf(ItemsId: string) {
     };
 }
 
-const todayStore = await WebClient.Store.getStorefront(WebClient.getSubject());
+const todayStore = await WebClient.Store.StoreFront.get(WebClient.getSubject());
 
 for (const ItemID of todayStore.data.SkinsPanelLayout.SingleItemOffers) {
     console.log(await getOffersOf(ItemID));

@@ -40,6 +40,7 @@ export class AuthClient extends AuthCore {
 
     /**
      * Multi-Factor Authentication
+     * @deprecated Please, Contact us if you find out how its works
      * @param {number} verificationCode Verification Code
      * @returns {Promise<void>}
      */

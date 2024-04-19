@@ -30,7 +30,7 @@
   "homepage": "https://github.com/valapi/node-valapi/tree/master/packages/@valapi/auth#readme",
   "dependencies": {
     "@valapi/lib": "^4.0.0",
-    "http-cookie-agent": "^6.0.1",
+    "http-cookie-agent": "^6.0.3",
     "tough-cookie": "^4.1.3"
   },
   "devDependencies": {

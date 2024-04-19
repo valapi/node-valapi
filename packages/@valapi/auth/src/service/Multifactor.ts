@@ -5,6 +5,7 @@ import type { AuthCore } from "../client/AuthCore";
 
 export class Multifactor extends AuthService {
     /**
+     * @deprecated Please, Contact us if you find out how its works
      * @param {number} verificationCode Verification Code
      * @returns {Promise<AuthCore.Json>}
      */

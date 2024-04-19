@@ -71,14 +71,6 @@ const authClient = new AuthClient();
 await authClient.login("BestUsername", "SuperSecretPassword");
 ```
 
-```typescript
-if (client.authenticationInfo.isMultifactor) {
-    const verificationCode = 428793;
-
-    await authClient.verify(verificationCode);
-}
-```
-
 **Subject** (PlayerUUID)
 
 ```typescript

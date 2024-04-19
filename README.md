@@ -68,11 +68,6 @@ VAL_REGION="na"
 VAL_USER="RiotUsername"
 VAL_PASS="Passowrd"
 
-# multi-factor must be "enable"
-VAL_MFA_REGION="ap"
-VAL_MFA_USER="RiotUsername"
-VAL_MFA_PASS="Password"
-
 # https://developer.riotgames.com
 VAL_RIOT_API="API_KEY_123"
 ```
