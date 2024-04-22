@@ -1,6 +1,6 @@
 {
   "name": "@valapi/auth",
-  "version": "4.0.0",
+  "version": "5.0.0-alpha.0",
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
     "access": "public"
@@ -19,7 +19,7 @@
   "types": "./build/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/valapi/node-valapi.git",
+    "url": "git+https://github.com/valapi/node-valapi.git",
     "directory": "packages/@valapi/auth"
   },
   "author": "ing3kth (https://github.com/KTNG-3)",

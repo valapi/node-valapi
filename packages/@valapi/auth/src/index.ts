@@ -1,15 +1,16 @@
 // import
 
-import { AuthClient } from "./client/AuthClient";
+import { Auth } from "./client/Auth";
 
 // export
 
-export { AuthClient };
-export { AuthService } from "./client/AuthService";
-export { AuthCore } from "./client/AuthCore";
+export { Auth };
+export type { AuthRequestResponse, EntitlementsTokenResponse, RegionTokenResponse, AuthConfig } from "./client/Auth";
 
-export { User } from "./service/User";
-export { Multifactor } from "./service/Multifactor";
-export { Cookie } from "./service/Cookie";
+export { AuthInstance } from "./client/AuthInstance";
+export type { UserAuthInfo, UserTokenParse } from "./client/AuthInstance";
 
-export default AuthClient;
+export { AuthRequest } from "./client/AuthRequest";
+export type { AuthPromiseResponse, AuthResponse, AuthRequestPlatfrom, AuthRequestConfig } from "./client/AuthRequest";
+
+export default Auth;

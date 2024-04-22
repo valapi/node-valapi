@@ -17,7 +17,7 @@
   "types": "./build/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/valapi/node-valapi.git",
+    "url": "git+https://github.com/valapi/node-valapi.git",
     "directory": "packages/valorant.ts"
   },
   "author": "ing3kth (https://github.com/KTNG-3)",

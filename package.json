@@ -9,9 +9,10 @@
   ],
   "private": true,
   "name": "node-valapi",
+  "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/valapi/node-valapi.git"
+    "url": "git+https://github.com/valapi/node-valapi.git"
   },
   "author": "ing3kth (https://github.com/KTNG-3)",
   "license": "MIT",

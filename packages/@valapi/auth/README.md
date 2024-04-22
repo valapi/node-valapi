@@ -62,33 +62,27 @@ import { AuthClient } from "@valapi/auth";
 ### Client
 
 ```typescript
-const authClient = new AuthClient();
+const auth = new Auth();
 ```
 
 ### Auth
 
 ```typescript
-await authClient.login("BestUsername", "SuperSecretPassword");
+await auth.login("BestUsername", "SuperSecretPassword");
 ```
 
 **Subject** (PlayerUUID)
 
 ```typescript
-const subject = authClient.getSubject();
-```
-
-### Cookie
-
-```typescript
-const authClient = await AuthClient.fromCookie(cookie);
+const subject = auth.subject;
 ```
 
 **Save**
 
 ```typescript
-const authClient = AuthClient.fromJSON(oldAuthClient.toJSON());
+auth.fromJSON(legacyAuth.toJSON());
 
-if (Date.now() >= client.getExpirationDate()) {
-    await authClient.refresh();
+if (new Date() >= auth.expirationDate) {
+    await auth.reauthorize();
 }
 ```
