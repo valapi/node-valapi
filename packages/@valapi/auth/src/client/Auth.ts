@@ -4,6 +4,7 @@ import type { Region } from "@valapi/lib";
 import { AuthRequest } from "./AuthRequest";
 import type { AuthPromiseResponse, AuthResponse, AuthRequestConfig } from "./AuthRequest";
 import { AuthInstance } from "./AuthInstance";
+import type { UserAuthInfo } from "./AuthInstance";
 
 export type AuthRequestResponse =
     | {
@@ -67,7 +68,19 @@ export class Auth extends AuthInstance {
         });
     }
 
-    protected async authorize(ignoreCookie: boolean = false): AuthPromiseResponse<AuthRequestResponse> {
+    private analyzeCookie(key: string) {
+        if (!this.cookie.getCookiesSync("https://auth.riotgames.com").find(x => x.key === key)) {
+            throw new ValError({
+                name: "Auth_Cookie_Error",
+                message: `${key} cookie not found`,
+                data: this.cookie.getSetCookieStringsSync("https://auth.riotgames.com")
+            });
+        }
+
+        this.request.headers.set("Cookie", this.cookie.getSetCookieStringsSync("https://auth.riotgames.com"));
+    }
+
+    protected async authorize(): AuthPromiseResponse<AuthRequestResponse> {
         const response = await this.request.post<AuthRequestResponse>("https://auth.riotgames.com/api/v1/authorization", {
             client_id: "play-valorant-web-prod",
             nonce: "1",
@@ -86,15 +99,6 @@ export class Auth extends AuthInstance {
             });
         }
 
-        // COOKIE
-        if (!ignoreCookie && !this.cookie.getCookiesSync("https://auth.riotgames.com").find(x => x.key === "asid")) {
-            throw new ValError({
-                name: "Auth_Cookie_Error",
-                message: "Cookie not found",
-                data: this.cookie.getSetCookieStringsSync("https://auth.riotgames.com")
-            });
-        }
-
         return response;
     }
 
@@ -102,6 +106,7 @@ export class Auth extends AuthInstance {
         this.cookie.removeAllCookiesSync();
 
         const response = await this.authorize();
+        this.analyzeCookie("ssid");
 
         // URI
         if (response.data.type === "response") {
@@ -119,8 +124,7 @@ export class Auth extends AuthInstance {
 
     public async login(username: string, password: string) {
         const response = await this.authorize();
-
-        this.request.headers.set("Cookie", this.cookie.getSetCookieStringsSync("https://auth.riotgames.com"));
+        this.analyzeCookie("asid");
 
         const TokenResponse: AuthResponse<AuthRequestResponse> = await this.request.put("https://auth.riotgames.com/api/v1/authorization", {
             type: "auth",
@@ -128,6 +132,7 @@ export class Auth extends AuthInstance {
             password: password,
             remember: true
         });
+        this.analyzeCookie("ssid");
 
         // MFA
         if (TokenResponse.data.type === "multifactor") {
@@ -156,10 +161,9 @@ export class Auth extends AuthInstance {
 
         this.access_token = <string>url.searchParams.get("access_token");
         this.id_token = <string>url.searchParams.get("id_token");
-        const token_type = <string>url.searchParams.get("token_type");
         this.session_state = <string>url.searchParams.get("session_state");
 
-        this.request.headers.setAuthorization(`${token_type} ${this.access_token}`);
+        this.request.headers.setAuthorization(`Bearer ${this.access_token}`);
 
         super.getTokenInfo();
     }
@@ -170,7 +174,7 @@ export class Auth extends AuthInstance {
         if (!response.data.entitlements_token) {
             throw new ValError({
                 name: "Auth_Entitlement_Error",
-                message: "Unknown response",
+                message: "Entitlement token is undefined",
                 data: response
             });
         }
@@ -186,5 +190,13 @@ export class Auth extends AuthInstance {
         });
 
         return response.data.affinities.live;
+    }
+
+    public fromJSON(user: UserAuthInfo): void {
+        super.fromJSON(user);
+
+        this.request.headers.setAuthorization(`Bearer ${this.access_token}`);
+        this.request.headers.set("X-Riot-Entitlements-JWT", this.entitlements_token);
+        this.request.headers.set("Cookie", this.cookie.getSetCookieStringsSync("https://auth.riotgames.com"));
     }
 }

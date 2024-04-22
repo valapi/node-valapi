@@ -1,5 +1,5 @@
-import { Region } from "@valapi/lib";
-import { AuthClient, AuthCore } from "../index";
+import type { Region } from "@valapi/lib";
+import { Auth, type UserAuthInfo } from "../index";
 
 import { CookieJar } from "tough-cookie";
 
@@ -7,53 +7,33 @@ import { env } from "node:process";
 import { randomBytes } from "node:crypto";
 
 describe("auth.login", () => {
-    const myClient = new AuthClient({
-        region: <Region.ID>env.VAL_REGION
-    });
+    const auth = new Auth();
 
     test("new client", () => {
-        expect(myClient.toJSON()).toMatchObject<Partial<AuthCore.Json>>({
-            authenticationInfo: {
-                isMultifactor: false,
-                isError: false,
-                message: "load;client;"
-            },
+        expect(auth.toJSON()).toMatchObject<UserAuthInfo>({
             cookie: new CookieJar().serializeSync(),
+            isMultifactor: false,
             access_token: "",
             id_token: "",
-            expires_in: 3600,
-            token_type: "Bearer",
             session_state: "",
-            entitlements_token: "",
-            region: {
-                pbe: Region.Default.North_America,
-                live: <Region.ID>env.VAL_REGION
-            }
+            entitlements_token: ""
         });
 
-        expect(() => {
-            myClient.getSubject();
-        }).toThrow();
+        expect(auth.subject).toBe("");
     });
 
     test("empty refresh", async () => {
-        await expect(async () => {
-            return myClient.refresh();
-        }).rejects.toThrow();
+        await expect(auth.reauthorize()).rejects.toThrow();
     });
 
     test("user auth", async () => {
-        await myClient.login(<string>env.VAL_USER, <string>env.VAL_PASS);
+        await auth.login(<string>env.VAL_USER, <string>env.VAL_PASS);
 
-        expect(myClient.toJSON().authenticationInfo).toMatchObject<Partial<AuthCore.JsonAuthenticationInfo>>({
-            isMultifactor: false,
-            isError: false,
-            message: "success;login;"
-        });
+        expect(auth.isMultifactor).toBe(false);
     });
 
     test("user auth error", async () => {
-        const errorClient = new AuthClient({
+        const errorAuth = new Auth({
             platform: {
                 platformChipset: "",
                 platformOS: "",
@@ -63,24 +43,26 @@ describe("auth.login", () => {
             version: ""
         });
 
-        await expect(async () => {
-            return errorClient.login(randomBytes(10).toString("hex"), randomBytes(15).toString("hex"));
-        }).rejects.toThrow();
+        await expect(errorAuth.login(randomBytes(10).toString("hex"), randomBytes(15).toString("hex"))).rejects.toThrow();
+    });
+
+    test("user region", async () => {
+        await expect(auth.regionTokenization()).resolves.toBe(<Region.ID>env.VAL_REGION);
     });
 
     test("cookie auth", async () => {
-        const cookieClient = await AuthClient.fromCookie(myClient.cookie, {
-            region: <Region.ID>env.VAL_REGION
+        const cookieAuth = new Auth();
+        cookieAuth.fromJSON({
+            ...new Auth().toJSON(),
+            ...{
+                cookie: auth.cookie.toJSON()
+            }
         });
 
-        expect(cookieClient.toJSON().authenticationInfo).toMatchObject<Partial<AuthCore.JsonAuthenticationInfo>>({
-            isError: false,
-            isMultifactor: false,
-            message: "success;cookie;"
-        });
+        await cookieAuth.reauthorize();
 
-        expect(cookieClient.getSubject()).toBe(myClient.getSubject());
-
-        expect(myClient.cookie.serializeSync()).not.toStrictEqual(cookieClient.cookie.serializeSync());
+        expect(cookieAuth.isMultifactor).toBe(false);
+        expect(cookieAuth.subject).toBe(auth.subject);
+        expect(cookieAuth.cookie.serializeSync()).not.toStrictEqual(auth.cookie.serializeSync());
     });
 });

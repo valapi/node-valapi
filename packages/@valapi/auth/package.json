@@ -1,6 +1,6 @@
 {
   "name": "@valapi/auth",
-  "version": "5.0.0-alpha.0",
+  "version": "5.0.0",
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
     "access": "public"

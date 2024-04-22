@@ -1,7 +1,6 @@
 import type { Agent } from "node:https";
 
-import axios from "axios";
-import { AxiosHeaders } from "axios";
+import axios, { AxiosHeaders } from "axios";
 import type { AxiosRequestConfig, AxiosResponse } from "axios";
 import { HttpsCookieAgent } from "http-cookie-agent/http";
 import type { CookieAgent } from "http-cookie-agent/http";
@@ -39,10 +38,10 @@ export class AuthRequest {
                 userAgent: "RiotClient/53.0.0.4494832.4470164 %s (Windows;10;;Professional, x64)",
                 version: "release-08.07-shipping-9-2444158",
                 platform: {
-                    platformType: `PC`,
-                    platformOS: `Windows`,
-                    platformOSVersion: `10.0.19043.1.256.64bit`,
-                    platformChipset: `Unknown`
+                    platformType: "PC",
+                    platformOS: "Windows",
+                    platformOSVersion: "10.0.19043.1.256.64bit",
+                    platformChipset: "Unknown"
                 }
             },
             ...config
