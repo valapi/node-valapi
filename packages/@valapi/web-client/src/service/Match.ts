@@ -1,13 +1,9 @@
-import type { AxiosResponse } from "axios";
-
 import type { QueueId } from "@valapi/lib";
-import type { AuthCore } from "@valapi/auth";
+import type { PromiseResponse, ClientPlatfrom } from "@valapi/auth";
 
 import { WebClientService } from "../client/WebClientService";
 
 export namespace Match {
-    // response
-
     export interface Location {
         x: number;
         y: number;
@@ -63,7 +59,7 @@ export namespace Match {
             subject: string;
             gameName: string;
             tagLine: string;
-            platformInfo: AuthCore.ClientPlatfrom;
+            platformInfo: ClientPlatfrom;
             teamId: string;
             partyId: string;
             characterId: string;
@@ -226,37 +222,28 @@ export namespace Match {
 }
 
 export class Match extends WebClientService {
-    /**
-     *
-     * @param {string} matchId Match ID
-     * @returns {Promise<AxiosResponse<Match.Detail>>}
-     */
-    public fetchMatchDetails(matchId: string): Promise<AxiosResponse<Match.Detail>> {
-        return this.axios.get(`${this.apiRegion.url.playerData}/match-details/v1/matches/${matchId}`);
+    public fetchMatchDetails(matchId: string): PromiseResponse<Match.Detail> {
+        return this.request.get(`${this.regionURL.url.playerData}/match-details/v1/matches/${matchId}`);
     }
 
     /**
-     * @param {string} subject Player UUID
-     * @param {QueueId.ID} queueId Queue
-     * @param {number} startIndex Start Index (default: 0)
-     * @param {number} endIndex End Index (default: 10)
-     * @returns {Promise<AxiosResponse<Match.History>>}
+     * @param startIndex (default: 0)
+     * @param endIndex (default: 10)
      */
-    public fetchMatchHistory(subject: string, queueId?: QueueId.ID, startIndex = 0, endIndex = 10): Promise<AxiosResponse<Match.History>> {
-        let _url = `${this.apiRegion.url.playerData}/match-history/v1/history/${subject}?startIndex=${startIndex}&endIndex=${endIndex}`;
+    public fetchMatchHistory(subject: string, queueId?: QueueId.ID, startIndex: number = 0, endIndex: number = 10): PromiseResponse<Match.History> {
+        let _url = `${this.regionURL.url.playerData}/match-history/v1/history/${subject}?startIndex=${startIndex}&endIndex=${endIndex}`;
 
         if (queueId) {
             _url += `&queue=${queueId}`;
         }
 
-        return this.axios.get(_url);
+        return this.request.get(_url);
     }
 
     /**
      * @deprecated Please, Contact us if you find out how its works
-     * @returns {Promise<AxiosResponse<any>>}
      */
-    public fetchQueueData(): Promise<AxiosResponse<any>> {
-        return this.axios.get(`${this.apiRegion.url.partyService}/matchmaking/v1/queues/configs`);
+    public fetchQueueData(): PromiseResponse<any> {
+        return this.request.get(`${this.regionURL.url.partyService}/matchmaking/v1/queues/configs`);
     }
 }

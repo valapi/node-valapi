@@ -1,10 +1,11 @@
+import type { Language } from "../client/ValorantApiCom";
 import { ValorantApiComService } from "../client/ValorantApiComService";
-import type { ValorantApiCom } from "../client/ValorantApiCom";
+import type { LanguageResponse, Response } from "../client/ValorantApiComService";
 
 export namespace Contracts {
-    export interface Contracts<L extends ValorantApiCom.Language> {
+    export interface Contracts<L extends Language> {
         uuid: string;
-        displayName: ValorantApiComService.Languages<string, L>;
+        displayName: LanguageResponse<string, L>;
         displayIcon: string;
         shipIt: boolean;
         useLevelVPCostOverride: boolean;
@@ -42,12 +43,12 @@ export namespace Contracts {
     }
 }
 
-export class Contracts<L extends ValorantApiCom.Language = any> extends ValorantApiComService {
-    public get(): Promise<ValorantApiComService.Response<Contracts.Contracts<L>[]>> {
-        return this.axios.get("/contracts");
+export class Contracts<L extends Language = any> extends ValorantApiComService {
+    public get(): Response<Contracts.Contracts<L>[]> {
+        return this.request.get("/contracts");
     }
 
-    public getByUuid(uuid: string): Promise<ValorantApiComService.Response<Contracts.Contracts<L>>> {
-        return this.axios.get(`/contracts/${uuid}`);
+    public getByUuid(uuid: string): Response<Contracts.Contracts<L>> {
+        return this.request.get(`/contracts/${uuid}`);
     }
 }

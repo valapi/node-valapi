@@ -57,10 +57,9 @@ export namespace ContentV1 {
 export class ContentV1 extends RiotApiService {
     /**
      * Get content optionally filtered by locale
-     * @param {Locale.ID} locale Locale (default: en-US)
-     * @returns {Promise<AxiosResponse<ContentV1.ContentDto>>}
+     * @param locale (default: en-US)
      */
     public contents(locale: Locale.ID = "en-US"): Promise<AxiosResponse<ContentV1.ContentDto>> {
-        return this.axios.get(`${this.apiRegion.url.region}/val/content/v1/contents?locale=${locale}`);
+        return this.request.get(`${this.regionURL.url.region}/val/content/v1/contents?locale=${locale}`);
     }
 }

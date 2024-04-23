@@ -1,10 +1,8 @@
-import type { AxiosResponse } from "axios";
+import type { PromiseResponse } from "@valapi/auth";
 
 import { WebClientService } from "../client/WebClientService";
 
 export namespace ContractDefinitions {
-    // response
-
     export interface Item {
         ItemTypeID: string;
         ItemID: string;
@@ -59,26 +57,21 @@ export namespace ContractDefinitions {
 export class ContractDefinitions extends WebClientService {
     /**
      * @deprecated Please, Contact us if you find out how its works
-     * @returns {Promise<AxiosResponse<any>>}
      */
-    public getActiveStory(): Promise<AxiosResponse<any>> {
-        return this.axios.get(`${this.apiRegion.url.playerData}/contract-definitions/v2/definitions/story`);
+    public getActiveStory(): PromiseResponse<any> {
+        return this.request.get(`${this.regionURL.url.playerData}/contract-definitions/v2/definitions/story`);
     }
 
     /**
      * @deprecated Please, Contact us if you find out how its works
-     * @returns {Promise<AxiosResponse<any>>}
      */
-    public get(): Promise<AxiosResponse<any>> {
-        return this.axios.get(`${this.apiRegion.url.playerData}/contract-definitions/v2/definitions`);
+    public get(): PromiseResponse<any> {
+        return this.request.get(`${this.regionURL.url.playerData}/contract-definitions/v2/definitions`);
     }
 
     // ItemProgressionDefinitionsV2
 
-    /**
-     * @returns {Promise<AxiosResponse<ContractDefinitions.ItemProgression>>}
-     */
-    public getItemProgression(): Promise<AxiosResponse<ContractDefinitions.ItemProgression>> {
-        return this.axios.get(`${this.apiRegion.url.playerData}/contract-definitions/v3/item-upgrades`);
+    public getItemProgression(): PromiseResponse<ContractDefinitions.ItemProgression> {
+        return this.request.get(`${this.regionURL.url.playerData}/contract-definitions/v3/item-upgrades`);
     }
 }

@@ -14,20 +14,10 @@ export const Default = <const>{
 export type Name = keyof typeof Default;
 export type Hex = (typeof Default)[Name];
 
-/**
- * Change from {@link Name} to {@link Hex}
- * @param {Name} x Name
- * @returns {Hex} Hex
- */
 export function fromName(x: Name): Hex {
     return <Hex>Default[x];
 }
 
-/**
- * Change from {@link Hex} to {@link Name}
- * @param {Hex} x Hex
- * @returns {Name} Name
- */
 export function fromHex(x: Hex): Name {
     for (const data of Object.entries(Default)) {
         if (data[1] == x) {

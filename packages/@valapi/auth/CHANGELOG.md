@@ -1,3 +1,22 @@
+# 5.0.0
+
+**Change**
+
+-   ~~`AuthInstance.fromJSON(user)`~~
+    -   **-->** `new AuthInstance(user?)`
+    -   **-->** `new Auth({ user })`
+
+### Typescript
+
+**Change**
+
+-   ~~`UserAuthInfo`~~ **-->** `AuthUserInfo`
+-   ~~`AuthConfig`~~ **-->** `Config`
+-   ~~`AuthPromiseResponse`~~ **-->** `PromiseResponse`
+-   ~~`AuthResponse`~~ **-->** `Response`
+-   ~~`AuthRequestPlatform`~~ **-->** `ClientPlatform`
+-   ~~`AuthRequestConfig`~~ **-->** `RequestConfig`
+
 # 5.0.0-alpha.0
 
 **Add**
@@ -29,7 +48,7 @@
 -   `User`
 -   `AuthCore.authenticationInfo`
 
-static
+_static_
 
 -   `AuthClient.fromCookie()`
 -   `AuthClient.fromJSON()`
@@ -98,7 +117,7 @@ static
 -   `AuthCore.getExpirationDate()`
 -   `Cookie.authorize()`
 
-static
+_static_
 
 -   `AuthCore.expires_in`
 -   `AuthCore.token_type`

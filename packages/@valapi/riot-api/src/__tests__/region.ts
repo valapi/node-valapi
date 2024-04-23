@@ -1,9 +1,10 @@
-import { RiotApiRegion } from "../index";
 import { Region } from "@valapi/lib";
+
+import { RiotApiRegionURL } from "../index";
 
 describe("riotapi.region", () => {
     test("public_beta_environment", () => {
-        const _region = new RiotApiRegion(Region.Default.Public_Beta_Environment);
+        const _region = new RiotApiRegionURL(Region.Default.Public_Beta_Environment);
 
         const id = "na";
         const continent = "pbe1";

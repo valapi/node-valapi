@@ -1,38 +1,25 @@
-import type { Region } from "@valapi/lib";
-import { Auth, type UserAuthInfo } from "../index";
-
-import { CookieJar } from "tough-cookie";
-
 import { env } from "node:process";
 import { randomBytes } from "node:crypto";
 
-describe("auth.login", () => {
+import type { Region } from "@valapi/lib";
+
+import { Auth } from "../index";
+
+describe("auth.client", () => {
     const auth = new Auth();
 
-    test("new client", () => {
-        expect(auth.toJSON()).toMatchObject<UserAuthInfo>({
-            cookie: new CookieJar().serializeSync(),
-            isMultifactor: false,
-            access_token: "",
-            id_token: "",
-            session_state: "",
-            entitlements_token: ""
-        });
-
-        expect(auth.subject).toBe("");
-    });
-
-    test("empty refresh", async () => {
+    test("empty_reauth", async () => {
         await expect(auth.reauthorize()).rejects.toThrow();
     });
 
-    test("user auth", async () => {
+    test("login", async () => {
         await auth.login(<string>env.VAL_USER, <string>env.VAL_PASS);
 
         expect(auth.isMultifactor).toBe(false);
+        expect(auth.isAuthenticated).toBe(true);
     });
 
-    test("user auth error", async () => {
+    test("error", async () => {
         const errorAuth = new Auth({
             platform: {
                 platformChipset: "",
@@ -46,16 +33,17 @@ describe("auth.login", () => {
         await expect(errorAuth.login(randomBytes(10).toString("hex"), randomBytes(15).toString("hex"))).rejects.toThrow();
     });
 
-    test("user region", async () => {
+    test("region", async () => {
         await expect(auth.regionTokenization()).resolves.toBe(<Region.ID>env.VAL_REGION);
     });
 
-    test("cookie auth", async () => {
-        const cookieAuth = new Auth();
-        cookieAuth.fromJSON({
-            ...new Auth().toJSON(),
-            ...{
-                cookie: auth.cookie.toJSON()
+    test("reauth", async () => {
+        const cookieAuth = new Auth({
+            user: {
+                ...new Auth().toJSON(),
+                ...{
+                    cookie: auth.cookie.toJSON()
+                }
             }
         });
 

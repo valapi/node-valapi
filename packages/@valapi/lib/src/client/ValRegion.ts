@@ -1,14 +1,10 @@
 import * as Region from "../resources/Region";
 
 export class ValRegion {
-    /**
-     * Region ID
-     */
     public readonly id: Region.ID;
 
     /**
-     *
-     * @param {Region.ID} region Region (default: na)
+     * @param region (default: na)
      */
     public constructor(region: Region.ID = Region.Default.North_America) {
         this.id = "na";

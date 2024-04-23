@@ -1,31 +1,30 @@
 import { ValRegion } from "@valapi/lib";
 import type { Region } from "@valapi/lib";
 
-export class RiotApiRegion extends ValRegion {
-    public readonly continent: string;
+export class WebClientRegionURL extends ValRegion {
+    public readonly shard: Region.ID;
     public readonly url: {
         /**
-         * $.api.riotgames.com
+         * pd.$.a.pvp.net
          */
-        region: string;
+        playerData: string;
         /**
-         * $.api.riotgames.com
+         * glz-$-1.$.a.pvp.net
          */
-        continent: string;
+        partyService: string;
         /**
-         * esports.api.riotgames.com
+         * shared.$.a.pvp.net
          */
-        esports: string;
+        sharedData: string;
     };
 
     /**
-     *
-     * @param {string} region Region (default: na)
+     * @param region (default: na)
      */
     public constructor(region?: Region.ID) {
         super(region);
 
-        this.continent = "americas";
+        this.shard = "na";
         switch (region) {
             case "na": {
                 break;
@@ -37,27 +36,27 @@ export class RiotApiRegion extends ValRegion {
                 break;
             }
             case "pbe": {
-                this.continent = "pbe1";
+                this.shard = "pbe";
                 break;
             }
             case "eu": {
-                this.continent = "europe";
+                this.shard = "eu";
                 break;
             }
             case "kr": {
-                this.continent = "asia";
+                this.shard = "kr";
                 break;
             }
             case "ap": {
-                this.continent = "asia";
+                this.shard = "ap";
                 break;
             }
         }
 
         this.url = {
-            region: `https://${this.id}.api.riotgames.com`,
-            continent: `https://${this.continent}.api.riotgames.com`,
-            esports: `https://esports.api.riotgames.com`
+            playerData: `https://pd.${this.shard}.a.pvp.net`,
+            partyService: `https://glz-${this.id}-1.${this.shard}.a.pvp.net`,
+            sharedData: `https://shared.${this.shard}.a.pvp.net`
         };
     }
 }

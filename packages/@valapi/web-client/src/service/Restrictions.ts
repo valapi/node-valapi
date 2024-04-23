@@ -1,10 +1,8 @@
-import type { AxiosResponse } from "axios";
+import type { PromiseResponse } from "@valapi/auth";
 
 import { WebClientService } from "../client/WebClientService";
 
 export namespace Restrictions {
-    // response
-
     export interface Player {
         Subject: string;
         Penalties: Array<{
@@ -40,20 +38,11 @@ export namespace Restrictions {
 }
 
 export class Restrictions extends WebClientService {
-    /**
-     * @param {string} matchId Match ID
-     * @param {string} offenderSubject PlayerUUID (offender)
-     * @returns {Promise<AxiosResponse<Restrictions.ReportToken>>}
-     */
-    public fetchPlayerReportToken(matchId: string, offenderSubject: string): Promise<AxiosResponse<Restrictions.ReportToken>> {
-        return this.axios.get(`${this.apiRegion.url.playerData}/restrictions/v1/playerReportToken/${matchId}/${offenderSubject}`);
+    public fetchPlayerReportToken(matchId: string, offenderSubject: string): PromiseResponse<Restrictions.ReportToken> {
+        return this.request.get(`${this.regionURL.url.playerData}/restrictions/v1/playerReportToken/${matchId}/${offenderSubject}`);
     }
 
-    /**
-     *
-     * @returns {Promise<AxiosResponse<Restrictions.Player>>}
-     */
-    public fetchPlayerRestrictions(): Promise<AxiosResponse<Restrictions.Player>> {
-        return this.axios.get(`${this.apiRegion.url.playerData}/restrictions/v3/penalties`);
+    public fetchPlayerRestrictions(): PromiseResponse<Restrictions.Player> {
+        return this.request.get(`${this.regionURL.url.playerData}/restrictions/v3/penalties`);
     }
 }

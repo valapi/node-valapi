@@ -27,11 +27,11 @@
   },
   "homepage": "https://github.com/valapi/node-valapi/tree/master/packages/valorant.ts#readme",
   "dependencies": {
-    "@valapi/auth": "^4.0.0",
+    "@valapi/auth": "^5.0.0",
     "@valapi/lib": "^4.0.0",
-    "@valapi/riot-api": "^4.0.0",
-    "@valapi/valorant-api.com": "^4.0.0",
-    "@valapi/web-client": "^4.0.0"
+    "@valapi/riot-api": "^5.0.0",
+    "@valapi/valorant-api.com": "^5.0.0",
+    "@valapi/web-client": "^5.0.0"
   },
   "directories": {
     "lib": "build",

@@ -1,3 +1,28 @@
+# 5.0.0
+
+**Add**
+
+-   `RiotApi.regionURL`
+
+**Change**
+
+-   ~~`RiotApi.axios`~~ **-->** `RiotApi.request`
+-   ~~`RiotApiRegion`~~ **-->** `RiotApiRegionURL`
+-   ~~`RiotApiService.axios`~~ **-->** `RiotApiService.request`
+-   ~~`RiotApiService.apiRegion`~~ **-->** `RiotApiService.regionURL`
+
+**Remove**
+
+-   `RiotApi.config`
+-   `RiotApi.createAt`
+-   `RiotApi.Default`
+
+### Typescript
+
+**Change**
+
+-   ~~`RiotApi.Config`~~ **-->** `Config`
+
 # 4.0.0
 
 **Change**

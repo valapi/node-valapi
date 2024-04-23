@@ -1,13 +1,14 @@
+import type { Language } from "../client/ValorantApiCom";
 import { ValorantApiComService } from "../client/ValorantApiComService";
-import type { ValorantApiCom } from "../client/ValorantApiCom";
+import type { LanguageResponse, Response } from "../client/ValorantApiComService";
 
 export namespace Maps {
-    export interface Maps<L extends ValorantApiCom.Language> {
+    export interface Maps<L extends Language> {
         uuid: string;
-        displayName: ValorantApiComService.Languages<string, L>;
-        narrativeDescription: ValorantApiComService.Languages<string, L>;
-        tacticalDescription: ValorantApiComService.Languages<string, L>;
-        coordinates: ValorantApiComService.Languages<string, L>;
+        displayName: LanguageResponse<string, L>;
+        narrativeDescription: LanguageResponse<string, L>;
+        tacticalDescription: LanguageResponse<string, L>;
+        coordinates: LanguageResponse<string, L>;
         displayIcon: string;
         listViewIcon: string;
         listViewIconTall: string;
@@ -21,8 +22,8 @@ export namespace Maps {
         xScalarToAdd: number;
         yScalarToAdd: number;
         callouts: Array<{
-            regionName: ValorantApiComService.Languages<string, L>;
-            superRegionName: ValorantApiComService.Languages<string, L>;
+            regionName: LanguageResponse<string, L>;
+            superRegionName: LanguageResponse<string, L>;
             location: {
                 x: number;
                 y: number;
@@ -31,12 +32,12 @@ export namespace Maps {
     }
 }
 
-export class Maps<L extends ValorantApiCom.Language = any> extends ValorantApiComService {
-    public get(): Promise<ValorantApiComService.Response<Maps.Maps<L>[]>> {
-        return this.axios.get("/maps");
+export class Maps<L extends Language = any> extends ValorantApiComService {
+    public get(): Response<Maps.Maps<L>[]> {
+        return this.request.get("/maps");
     }
 
-    public getByUuid(uuid: string): Promise<ValorantApiComService.Response<Maps.Maps<L>>> {
-        return this.axios.get(`/maps/${uuid}`);
+    public getByUuid(uuid: string): Response<Maps.Maps<L>> {
+        return this.request.get(`/maps/${uuid}`);
     }
 }

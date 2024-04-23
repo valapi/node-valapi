@@ -1,10 +1,8 @@
-import type { AxiosResponse } from "axios";
+import type { PromiseResponse } from "@valapi/auth";
 
 import { WebClientService } from "../client/WebClientService";
 
 export namespace AccountXP {
-    // response
-
     export interface Level {
         Level: number;
         XP: number;
@@ -35,11 +33,7 @@ export namespace AccountXP {
 }
 
 export class AccountXP extends WebClientService {
-    /**
-     * @param {string} subject PlayerUUID
-     * @returns {Promise<AxiosResponse<AccountXP.Player>>}
-     */
-    public getPlayer(subject: string): Promise<AxiosResponse<AccountXP.Player>> {
-        return this.axios.get(`${this.apiRegion.url.playerData}/account-xp/v1/players/${subject}`);
+    public getPlayer(subject: string): PromiseResponse<AccountXP.Player> {
+        return this.request.get(`${this.regionURL.url.playerData}/account-xp/v1/players/${subject}`);
     }
 }

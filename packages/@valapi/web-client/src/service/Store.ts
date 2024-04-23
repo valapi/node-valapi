@@ -1,12 +1,9 @@
-import type { AxiosResponse } from "axios";
-
 import type { ItemTypeId } from "@valapi/lib";
+import type { PromiseResponse } from "@valapi/auth";
 
 import { WebClientService } from "../client/WebClientService";
 
 export namespace Store {
-    // response
-
     export type Currency = Record<string, number>;
 
     export interface Wallet {
@@ -140,64 +137,38 @@ export namespace Store {
 }
 
 export class Store extends WebClientService {
-    /**
-     * @param {string} subject Player UUID
-     * @returns {Promise<AxiosResponse<Store.Wallet>>}
-     */
-    public getWallet(subject: string): Promise<AxiosResponse<Store.Wallet>> {
-        return this.axios.get(`${this.apiRegion.url.playerData}/store/v1/wallet/${subject}`);
+    public getWallet(subject: string): PromiseResponse<Store.Wallet> {
+        return this.request.get(`${this.regionURL.url.playerData}/store/v1/wallet/${subject}`);
     }
 
-    /**
-     * @returns {Promise<AxiosResponse<Store.Offers>>}
-     */
-    public getOffers(): Promise<AxiosResponse<Store.Offers>> {
-        return this.axios.get(`${this.apiRegion.url.playerData}/store/v1/offers/`);
+    public getOffers(): PromiseResponse<Store.Offers> {
+        return this.request.get(`${this.regionURL.url.playerData}/store/v1/offers/`);
     }
 
-    /**
-     * @param {string} subject Player UUID
-     * @param {ItemTypeId.ID} itemTypeId Item Type
-     * @returns {Promise<AxiosResponse<Store.EntitlementsWithInstance>>}
-     */
-    public getEntitlements(subject: string, itemTypeId: "dd3bf334-87f3-40bd-b043-682a57a8dc3a"): Promise<AxiosResponse<Store.EntitlementsWithInstance>>;
-    /**
-     * @param {string} subject Player UUID
-     * @param {ItemTypeId.ID} itemTypeId Item Type
-     * @returns {Promise<AxiosResponse<Store.Entitlements>>}
-     */
-    public getEntitlements(subject: string, itemTypeId: ItemTypeId.ID): Promise<AxiosResponse<Store.Entitlements>>;
-    public getEntitlements(subject: string, itemTypeId: string): Promise<AxiosResponse<any>> {
-        return this.axios.get(`${this.apiRegion.url.playerData}/store/v1/entitlements/${subject}/${itemTypeId}`);
+    public getEntitlements(subject: string, itemTypeId: "dd3bf334-87f3-40bd-b043-682a57a8dc3a"): PromiseResponse<Store.EntitlementsWithInstance>;
+    public getEntitlements(subject: string, itemTypeId: ItemTypeId.ID): PromiseResponse<Store.Entitlements>;
+    public getEntitlements(subject: string, itemTypeId: string): PromiseResponse<any> {
+        return this.request.get(`${this.regionURL.url.playerData}/store/v1/entitlements/${subject}/${itemTypeId}`);
     }
 
     public get StoreFront(): StoreFront {
-        return new StoreFront(this.axios, this.apiRegion);
+        return new StoreFront(this.request, this.regionURL);
     }
 }
 
 export class StoreFront extends WebClientService {
-    /**
-     * @param {string} subject Player UUID
-     * @returns {Promise<AxiosResponse<Store.Storefront>>}
-     */
-    public get(subject: string): Promise<AxiosResponse<Store.Storefront>> {
-        return this.axios.get(`${this.apiRegion.url.playerData}/store/v2/storefront/${subject}`);
+    public get(subject: string): PromiseResponse<Store.Storefront> {
+        return this.request.get(`${this.regionURL.url.playerData}/store/v2/storefront/${subject}`);
     }
 
-    /**
-     * @returns {Promise<AxiosResponse<Store.Agent>>}
-     */
-    public getAgent(): Promise<AxiosResponse<Store.Agent>> {
-        return this.axios.get(`${this.apiRegion.url.playerData}/store/v1/storefronts/agent`);
+    public getAgent(): PromiseResponse<Store.Agent> {
+        return this.request.get(`${this.regionURL.url.playerData}/store/v1/storefronts/agent`);
     }
 
     /**
      * @deprecated Please, Contact us if you find out how its works
-     * @param {string} subject Player UUID
-     * @returns {Promise<AxiosResponse<any>>}
      */
-    public revealNightMarketOffers(subject: string): Promise<AxiosResponse<any>> {
-        return this.axios.post(`${this.apiRegion.url.playerData}/store/v2/storefront/${subject}/nightmarket/offers`);
+    public revealNightMarketOffers(subject: string): PromiseResponse<any> {
+        return this.request.post(`${this.regionURL.url.playerData}/store/v2/storefront/${subject}/nightmarket/offers`);
     }
 }

@@ -1,15 +1,12 @@
-// import
-
 import { WebClient } from "./client/WebClient";
 
-// export
-
 export { WebClient };
-export { WebClientRegion } from "./client/WebClientRegion";
+export type { Config, UserInfoResponse } from "./client/WebClient";
+export { WebClientRegionURL } from "./client/WebClientRegionURL";
 export { WebClientService } from "./client/WebClientService";
 
 export { AccountXP } from "./service/AccountXP";
-export { Config } from "./service/Config";
+export { Configuration } from "./service/Configuration";
 export { Content } from "./service/Content";
 export { ContractDefinitions } from "./service/ContractDefinitions";
 export { Contracts } from "./service/Contracts";

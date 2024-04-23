@@ -1,10 +1,8 @@
-import type { AxiosResponse } from "axios";
+import type { PromiseResponse } from "@valapi/auth";
 
 import { WebClientService } from "../client/WebClientService";
 
 export namespace Contracts {
-    // response
-
     export interface Contracts {
         Version: number;
         Subject: string;
@@ -115,62 +113,39 @@ export namespace Contracts {
 }
 
 export class Contracts extends WebClientService {
-    /**
-     * @param {string} subject Player UUID
-     * @returns {Promise<AxiosResponse<Contracts.Contracts>>}
-     */
-    public get(subject: string): Promise<AxiosResponse<Contracts.Contracts>> {
-        return this.axios.get(`${this.apiRegion.url.playerData}/contracts/v1/contracts/${subject}`);
+    public get(subject: string): PromiseResponse<Contracts.Contracts> {
+        return this.request.get(`${this.regionURL.url.playerData}/contracts/v1/contracts/${subject}`);
     }
 
-    /**
-     * @param {string} subject Player UUID
-     * @param {string} contractId Contract ID
-     * @returns {Promise<AxiosResponse<Contracts.Contracts>>}
-     */
-    public activate(subject: string, contractId: string): Promise<AxiosResponse<Contracts.Contracts>> {
-        return this.axios.post(`${this.apiRegion.url.playerData}/contracts/v1/contracts/${subject}/special/${contractId}`);
+    public activate(subject: string, contractId: string): PromiseResponse<Contracts.Contracts> {
+        return this.request.post(`${this.regionURL.url.playerData}/contracts/v1/contracts/${subject}/special/${contractId}`);
     }
 
     /**
      * @deprecated Please, Contact us if you find out how its works
-     * @param {string} subject Player UUID
-     * @param {string} definitionId Definition ID
-     * @returns {Promise<AxiosResponse<any>>}
      */
-    public unlockItemProgression(subject: string, definitionId: string): Promise<AxiosResponse<any>> {
-        return this.axios.post(`${this.apiRegion.url.playerData}/contracts/v2/item-upgrades/${definitionId}/${subject}`);
+    public unlockItemProgression(subject: string, definitionId: string): PromiseResponse<any> {
+        return this.request.post(`${this.regionURL.url.playerData}/contracts/v2/item-upgrades/${definitionId}/${subject}`);
     }
 
     /**
      * @deprecated Please, Contact us if you find out how its works
-     * @param {string} subject Player UUID
-     * @param {string} contractId Contract ID
-     * @returns {Promise<AxiosResponse<any>>}
      */
-    public unlockContractProgression(subject: string, contractId: string): Promise<AxiosResponse<any>> {
-        return this.axios.post(`${this.apiRegion.url.playerData}/contracts/v1/contracts/${subject}/contracts/${contractId}/unlock`);
+    public unlockContractProgression(subject: string, contractId: string): PromiseResponse<any> {
+        return this.request.post(`${this.regionURL.url.playerData}/contracts/v1/contracts/${subject}/contracts/${contractId}/unlock`);
     }
 
     /**
      * @deprecated Please, Contact us if you find out how its works
-     * @param {string} subject Player UUID
-     * @param {string} definitionId Definition ID
-     * @param {string} sidegradeId Sidegrade ID
-     * @param {string} optionId Option ID
-     * @returns {Promise<AxiosResponse<any>>}
      */
-    public unlockItemSidegrade(subject: string, definitionId: string, sidegradeId: string, optionId: string): Promise<AxiosResponse<any>> {
-        return this.axios.post(`${this.apiRegion.url.playerData}/contracts/v1/item-upgrades/${definitionId}/sidegrades/${sidegradeId}/options/${optionId}/${subject}`);
+    public unlockItemSidegrade(subject: string, definitionId: string, sidegradeId: string, optionId: string): PromiseResponse<any> {
+        return this.request.post(`${this.regionURL.url.playerData}/contracts/v1/item-upgrades/${definitionId}/sidegrades/${sidegradeId}/options/${optionId}/${subject}`);
     }
 
     /**
      * @deprecated Please, Contact us if you find out how its works
-     * @param {string} subject Player UUID
-     * @param {string} contractId Contract ID
-     * @returns {Promise<AxiosResponse<any>>}
      */
-    public upgrade(subject: string, contractId: string): Promise<AxiosResponse<any>> {
-        return this.axios.post(`${this.apiRegion.url.playerData}/contracts/v1/contracts/${subject}/special/${contractId}/upgrade`);
+    public upgrade(subject: string, contractId: string): PromiseResponse<any> {
+        return this.request.post(`${this.regionURL.url.playerData}/contracts/v1/contracts/${subject}/special/${contractId}/upgrade`);
     }
 }

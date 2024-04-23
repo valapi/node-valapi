@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosHeaders } from "axios";
 import type { AxiosInstance, CreateAxiosDefaults } from "axios";
 
 import { Locale } from "@valapi/lib";
@@ -26,31 +26,17 @@ import { Themes } from "../service/Themes";
 import { Version } from "../service/Version";
 import { Weapons } from "../service/Weapons";
 
-export namespace ValorantApiCom {
-    /**
-     * All Language Available
-     */
-    export type Language = Exclude<Locale.ID, "en-GB"> | "all";
+export type Language = Exclude<Locale.ID, "en-GB"> | "all";
 
-    export interface Config<L extends ValorantApiCom.Language> {
+export interface Config<L extends Language> {
+    language?: L;
+    axiosConfig?: CreateAxiosDefaults;
+    responseOptions?: {
         /**
-         * Language
+         * Delete properties that have a `null` value
          */
-        language?: L;
-        /**
-         * Request Config
-         */
-        axiosConfig?: CreateAxiosDefaults;
-        /**
-         * Response Option
-         */
-        responseOptions?: {
-            /**
-             * Delete properties that have a `null` value
-             */
-            ignore_null?: boolean;
-        };
-    }
+        ignore_null?: boolean;
+    };
 }
 
 /**
@@ -58,147 +44,122 @@ export namespace ValorantApiCom {
  *
  * https://valorant-api.com
  */
-export class ValorantApiCom<L extends ValorantApiCom.Language> {
-    private static readonly DEFAULT_config: Required<ValorantApiCom.Config<any>> = {
-        language: Locale.Default.English_United_States,
-        axiosConfig: {},
-        responseOptions: {
-            ignore_null: true
-        }
-    };
-    public static readonly Default = {
-        config: ValorantApiCom.DEFAULT_config
-    };
+export class ValorantApiCom<L extends Language> {
+    protected readonly request: AxiosInstance;
 
-    public readonly config: Required<ValorantApiCom.Config<L>>;
-    protected readonly axios: AxiosInstance;
+    public constructor(config: Config<L> = {}) {
+        const headers = new AxiosHeaders();
+        headers.setContentType("application/json");
 
-    /**
-     *
-     * @param {ValorantApiCom.Config<L>} config Config
-     */
-    public constructor(config: ValorantApiCom.Config<L> = {}) {
-        this.config = {
-            ...ValorantApiCom.Default.config,
-            ...config,
+        this.request = axios.create({
+            ...config.axiosConfig,
             ...{
-                axiosConfig: {
-                    ...ValorantApiCom.Default.config.axiosConfig,
-                    ...config.axiosConfig,
-                    ...{
-                        baseURL: "https://valorant-api.com/v1",
-                        params: {
-                            ...ValorantApiCom.Default.config.axiosConfig.params,
-                            ...config.axiosConfig?.params,
-                            ...{
-                                language: config.language || ValorantApiCom.Default.config.language
-                            }
-                        }
-                    }
+                baseURL: "https://valorant-api.com/v1",
+                headers: {
+                    ...config.axiosConfig?.headers,
+                    ...headers.toJSON()
                 },
-                responseOptions: {
-                    ...ValorantApiCom.Default.config.responseOptions,
-                    ...config.responseOptions
+                params: {
+                    ...config.axiosConfig?.params,
+                    ...{
+                        language: config.language,
+                        responseOptions: config.responseOptions
+                            ? Object.entries(config.responseOptions)
+                                  .filter(x => x[1])
+                                  .map(x => x[0])
+                                  .join(" ")
+                            : undefined
+                    }
                 }
             }
-        };
-        this.config.axiosConfig.params.responseOptions = Object.entries(this.config.responseOptions)
-            .filter(x => x[1])
-            .map(x => x[0])
-            .join(" ");
-
-        this.axios = axios.create(this.config.axiosConfig);
-    }
-
-    public get request() {
-        return this.axios.request;
+        });
     }
 
     public get Agents(): Agents<L> {
-        return new Agents<L>(this.axios);
+        return new Agents<L>(this.request);
     }
 
     public get Buddies(): Buddies<L> {
-        return new Buddies<L>(this.axios);
+        return new Buddies<L>(this.request);
     }
 
     public get Bundles(): Bundles<L> {
-        return new Bundles<L>(this.axios);
+        return new Bundles<L>(this.request);
     }
 
     public get Ceremonies(): Ceremonies<L> {
-        return new Ceremonies<L>(this.axios);
+        return new Ceremonies<L>(this.request);
     }
 
     public get CompetitiveTiers(): CompetitiveTiers<L> {
-        return new CompetitiveTiers<L>(this.axios);
+        return new CompetitiveTiers<L>(this.request);
     }
 
     public get ContentTiers(): ContentTiers<L> {
-        return new ContentTiers<L>(this.axios);
+        return new ContentTiers<L>(this.request);
     }
 
     public get Contracts(): Contracts<L> {
-        return new Contracts<L>(this.axios);
+        return new Contracts<L>(this.request);
     }
 
     public get Currencies(): Currencies<L> {
-        return new Currencies<L>(this.axios);
+        return new Currencies<L>(this.request);
     }
 
     public get Events(): Events<L> {
-        return new Events<L>(this.axios);
+        return new Events<L>(this.request);
     }
 
     public get Gamemodes(): Gamemodes<L> {
-        return new Gamemodes<L>(this.axios);
+        return new Gamemodes<L>(this.request);
     }
 
     public get Gear(): Gear<L> {
-        return new Gear<L>(this.axios);
+        return new Gear<L>(this.request);
     }
 
     public get LevelBorders(): LevelBorders<L> {
-        return new LevelBorders<L>(this.axios);
+        return new LevelBorders<L>(this.request);
     }
 
     public get Maps(): Maps<L> {
-        return new Maps<L>(this.axios);
+        return new Maps<L>(this.request);
     }
 
     public get Missions(): Missions {
-        return new Missions(this.axios);
+        return new Missions(this.request);
     }
 
     public get Objectives(): Objectives {
-        return new Objectives(this.axios);
+        return new Objectives(this.request);
     }
 
     public get PlayerCards(): PlayerCards<L> {
-        return new PlayerCards<L>(this.axios);
+        return new PlayerCards<L>(this.request);
     }
 
     public get PlayerTitles(): PlayerTitles<L> {
-        return new PlayerTitles<L>(this.axios);
+        return new PlayerTitles<L>(this.request);
     }
 
     public get Seasons(): Seasons<L> {
-        return new Seasons<L>(this.axios);
+        return new Seasons<L>(this.request);
     }
 
     public get Sprays(): Sprays<L> {
-        return new Sprays<L>(this.axios);
+        return new Sprays<L>(this.request);
     }
 
     public get Themes(): Themes<L> {
-        return new Themes<L>(this.axios);
+        return new Themes<L>(this.request);
     }
 
     public get Version(): Version {
-        return new Version(this.axios);
+        return new Version(this.request);
     }
 
     public get Weapons(): Weapons<L> {
-        return new Weapons<L>(this.axios);
+        return new Weapons<L>(this.request);
     }
 }

@@ -14,10 +14,6 @@ export class ValPatchNote {
         pageData: string;
     };
 
-    /**
-     *
-     * @param {string} language Language of the patch note
-     */
     private constructor(language: Locale.ID = Locale.Default.English_United_States) {
         const _languageLowerCase = language.toLowerCase();
 
@@ -27,12 +23,6 @@ export class ValPatchNote {
         };
     }
 
-    /**
-     *
-     * @param {ValVersion.Version} version Version
-     * @param {Locale.ID} language Language
-     * @returns {string} Url
-     */
     public static getUrl(version?: ValVersion.Version, language?: Locale.ID): string {
         const patchNoteInstance = new ValPatchNote(language);
 
@@ -43,12 +33,6 @@ export class ValPatchNote {
         return `${patchNoteInstance.url.default}/news/game-updates/valorant-patch-notes-${ValVersion.parse(version).replace(".", "-")}`;
     }
 
-    /**
-     *
-     * @param {Locale.ID} language Language
-     * @param {AxiosRequestConfig} axiosConfig Config
-     * @returns {Promise<AxiosResponse<any>>} Patch Note Content
-     */
     public static async getContent(language?: Locale.ID, axiosConfig?: AxiosRequestConfig): Promise<AxiosResponse<any>> {
         const patchNoteInstance = new ValPatchNote(language);
 

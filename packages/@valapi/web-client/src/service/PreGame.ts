@@ -1,10 +1,8 @@
-import type { AxiosResponse } from "axios";
+import type { PromiseResponse } from "@valapi/auth";
 
 import { WebClientService } from "../client/WebClientService";
 
 export namespace PreGame {
-    // response
-
     export interface Player {
         Subject: string;
         MatchID: string;
@@ -117,74 +115,50 @@ export namespace PreGame {
 }
 
 export class PreGame extends WebClientService {
-    /**
-     * @param {string} subject Player UUID
-     * @returns {Promise<AxiosResponse<PreGame.Player>>}
-     */
-    public getPlayer(subject: string): Promise<AxiosResponse<PreGame.Player>> {
-        return this.axios.get(`${this.apiRegion.url.partyService}/pregame/v1/players/${subject}`);
+    public getPlayer(subject: string): PromiseResponse<PreGame.Player> {
+        return this.request.get(`${this.regionURL.url.partyService}/pregame/v1/players/${subject}`);
     }
 
-    /**
-     * @param {string} matchId Match ID
-     * @returns {Promise<AxiosResponse<PreGame.Match>>}
-     */
-    public getMatch(matchId: string): Promise<AxiosResponse<PreGame.Match>> {
-        return this.axios.get(`${this.apiRegion.url.partyService}/pregame/v1/matches/${matchId}`);
+    public getMatch(matchId: string): PromiseResponse<PreGame.Match> {
+        return this.request.get(`${this.regionURL.url.partyService}/pregame/v1/matches/${matchId}`);
     }
 
-    /**
-     * @param {string} matchId Match ID
-     * @returns {Promise<AxiosResponse<PreGame.Loadout>>}
-     */
-    public getMatchLoadouts(matchId: string): Promise<AxiosResponse<PreGame.Loadout>> {
-        return this.axios.get(`${this.apiRegion.url.partyService}/pregame/v1/matches/${matchId}/loadouts`);
+    public getMatchLoadouts(matchId: string): PromiseResponse<PreGame.Loadout> {
+        return this.request.get(`${this.regionURL.url.partyService}/pregame/v1/matches/${matchId}/loadouts`);
     }
 
     /**
      * ! Careful to use, Riot will immediately shut down your Project.
-     * @param {string} matchId Match ID
-     * @param {string} agentId Character ID
-     * @returns {Promise<AxiosResponse<PreGame.Match>>}
      */
-    public selectCharacter(matchId: string, agentId: string): Promise<AxiosResponse<PreGame.Match>> {
-        return this.axios.post(`${this.apiRegion.url.partyService}/pregame/v1/matches/${matchId}/select/${agentId}`);
+    public selectCharacter(matchId: string, agentId: string): PromiseResponse<PreGame.Match> {
+        return this.request.post(`${this.regionURL.url.partyService}/pregame/v1/matches/${matchId}/select/${agentId}`);
     }
 
     /**
      * ! Careful to use, Riot will immediately shut down your Project.
-     * @param {string} matchId Match ID
-     * @param {string} agentId Character ID
-     * @returns {Promise<AxiosResponse<PreGame.Match>>}
      */
-    public lockCharacter(matchId: string, agentId: string): Promise<AxiosResponse<PreGame.Match>> {
-        return this.axios.post(`${this.apiRegion.url.partyService}/pregame/v1/matches/${matchId}/lock/${agentId}`);
+    public lockCharacter(matchId: string, agentId: string): PromiseResponse<PreGame.Match> {
+        return this.request.post(`${this.regionURL.url.partyService}/pregame/v1/matches/${matchId}/lock/${agentId}`);
     }
 
     /**
      * @deprecated Please, Contact us if you find out how its works
-     * @param {string} matchId Match ID
-     * @returns {Promise<AxiosResponse<any>>}
      */
-    public fetchVoiceToken(matchId: string): Promise<AxiosResponse<any>> {
-        return this.axios.get(`${this.apiRegion.url.partyService}/pregame/v1/matches/${matchId}/voicetoken`);
+    public fetchVoiceToken(matchId: string): PromiseResponse<any> {
+        return this.request.get(`${this.regionURL.url.partyService}/pregame/v1/matches/${matchId}/voicetoken`);
     }
 
     /**
      * @deprecated Please, Contact us if you find out how its works
-     * @param {string} matchId Match ID
-     * @returns {Promise<AxiosResponse<any>>}
      */
-    public fetchChatToken(matchId: string): Promise<AxiosResponse<any>> {
-        return this.axios.get(`${this.apiRegion.url.partyService}/pregame/v1/matches/${matchId}/chattoken`);
+    public fetchChatToken(matchId: string): PromiseResponse<any> {
+        return this.request.get(`${this.regionURL.url.partyService}/pregame/v1/matches/${matchId}/chattoken`);
     }
 
     /**
      * ! Careful to use, Riot will immediately shut down your Project.
-     * @param {string} matchId Match ID
-     * @returns {Promise<AxiosResponse<any>>}
      */
-    public quitMatch(matchId: string): Promise<AxiosResponse<any>> {
-        return this.axios.post(`${this.apiRegion.url.partyService}/pregame/v1/matches/${matchId}/quit`);
+    public quitMatch(matchId: string): PromiseResponse<any> {
+        return this.request.post(`${this.regionURL.url.partyService}/pregame/v1/matches/${matchId}/quit`);
     }
 }

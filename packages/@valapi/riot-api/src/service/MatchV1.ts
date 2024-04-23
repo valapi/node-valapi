@@ -180,28 +180,22 @@ export namespace MatchV1 {
 export class MatchV1 extends RiotApiService {
     /**
      * Get match by id
-     * @param {string} matchId Match ID
-     * @returns {Promise<AxiosResponse<MatchV1.MatchDto>>}
      */
     public byMatchId(matchId: string): Promise<AxiosResponse<MatchV1.MatchDto>> {
-        return this.axios.get(`${this.apiRegion.url.region}/val/match/v1/matches/${matchId}`);
+        return this.request.get(`${this.regionURL.url.region}/val/match/v1/matches/${matchId}`);
     }
 
     /**
      * Get matchlist for games played by puuid
-     * @param {string} puuid Player UUID
-     * @returns {Promise<AxiosResponse<MatchV1.MatchlistDto>>}
      */
     public listByPuuid(puuid: string): Promise<AxiosResponse<MatchV1.MatchlistDto>> {
-        return this.axios.get(`${this.apiRegion.url.region}/val/match/v1/matchlists/by-puuid/${puuid}`);
+        return this.request.get(`${this.regionURL.url.region}/val/match/v1/matchlists/by-puuid/${puuid}`);
     }
 
     /**
      * Get recent matches
-     * @param {QueueId.ID} queueId Queue ID
-     * @returns {Promise<AxiosResponse<MatchV1.RecentMatchesDto>>}
      */
     public recentByQueue(queueId: QueueId.ID): Promise<AxiosResponse<MatchV1.RecentMatchesDto>> {
-        return this.axios.get(`${this.apiRegion.url.region}/val/match/v1/recent-matches/by-queue/${queueId}`);
+        return this.request.get(`${this.regionURL.url.region}/val/match/v1/recent-matches/by-queue/${queueId}`);
     }
 }

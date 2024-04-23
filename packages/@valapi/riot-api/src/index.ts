@@ -1,11 +1,8 @@
-// import
-
 import { RiotApi } from "./client/RiotApi";
 
-// export
-
 export { RiotApi };
-export { RiotApiRegion } from "./client/RiotApiRegion";
+export type { Config } from "./client/RiotApi";
+export { RiotApiRegionURL } from "./client/RiotApiRegionURL";
 export { RiotApiService } from "./client/RiotApiService";
 
 export { AccountV1 } from "./service/AccountV1";

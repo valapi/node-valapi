@@ -1,11 +1,9 @@
-// import
-
 import { ValorantApiCom } from "./client/ValorantApiCom";
 
-// export
-
 export { ValorantApiCom };
+export type { Language, Config } from "./client/ValorantApiCom";
 export { ValorantApiComService } from "./client/ValorantApiComService";
+export type { AllLanguageResponse, LanguageResponse, Response } from "./client/ValorantApiComService";
 
 export { Agents } from "./service/Agents";
 export { Buddies } from "./service/Buddies";

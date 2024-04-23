@@ -2,11 +2,11 @@ import { ValError } from "@valapi/lib";
 import type { Region } from "@valapi/lib";
 
 import { AuthRequest } from "./AuthRequest";
-import type { AuthPromiseResponse, AuthResponse, AuthRequestConfig } from "./AuthRequest";
+import type { PromiseResponse, Response, RequestConfig } from "./AuthRequest";
 import { AuthInstance } from "./AuthInstance";
-import type { UserAuthInfo } from "./AuthInstance";
+import type { AuthUserInfo } from "./AuthInstance";
 
-export type AuthRequestResponse =
+type AuthRequestResponse =
     | {
           type: "error";
           error: string;
@@ -40,11 +40,11 @@ export type AuthRequestResponse =
           country: string;
       };
 
-export interface EntitlementsTokenResponse {
+interface EntitlementsTokenResponse {
     entitlements_token?: string;
 }
 
-export interface RegionTokenResponse {
+interface RegionTokenResponse {
     token: string;
     affinities: {
         pbe: Region.ID;
@@ -52,13 +52,15 @@ export interface RegionTokenResponse {
     };
 }
 
-export type AuthConfig = Omit<AuthRequestConfig, "cookie">;
+export interface Config extends Omit<RequestConfig, "cookie"> {
+    user?: AuthUserInfo;
+}
 
 export class Auth extends AuthInstance {
     public readonly request: AuthRequest;
 
-    constructor(config: AuthConfig = {}) {
-        super();
+    public constructor(config: Config = {}) {
+        super(config.user);
 
         this.request = new AuthRequest({
             ...config,
@@ -66,6 +68,12 @@ export class Auth extends AuthInstance {
                 cookie: this.cookie
             }
         });
+
+        if (this.isAuthenticated) {
+            this.request.headers.setAuthorization(`Bearer ${this.access_token}`);
+            this.request.headers.set("X-Riot-Entitlements-JWT", this.entitlements_token);
+        }
+        this.request.headers.set("Cookie", this.cookie.getSetCookieStringsSync("https://auth.riotgames.com"));
     }
 
     private analyzeCookie(key: string) {
@@ -80,7 +88,7 @@ export class Auth extends AuthInstance {
         this.request.headers.set("Cookie", this.cookie.getSetCookieStringsSync("https://auth.riotgames.com"));
     }
 
-    protected async authorize(): AuthPromiseResponse<AuthRequestResponse> {
+    protected async authorize(): PromiseResponse<AuthRequestResponse> {
         const response = await this.request.post<AuthRequestResponse>("https://auth.riotgames.com/api/v1/authorization", {
             client_id: "play-valorant-web-prod",
             nonce: "1",
@@ -111,6 +119,7 @@ export class Auth extends AuthInstance {
         // URI
         if (response.data.type === "response") {
             this.uriTokenization(response.data.response.parameters.uri);
+            await this.entitlementsTokenization();
 
             return;
         }
@@ -126,7 +135,7 @@ export class Auth extends AuthInstance {
         const response = await this.authorize();
         this.analyzeCookie("asid");
 
-        const TokenResponse: AuthResponse<AuthRequestResponse> = await this.request.put("https://auth.riotgames.com/api/v1/authorization", {
+        const TokenResponse: Response<AuthRequestResponse> = await this.request.put("https://auth.riotgames.com/api/v1/authorization", {
             type: "auth",
             username: username,
             password: password,
@@ -169,7 +178,7 @@ export class Auth extends AuthInstance {
     }
 
     protected async entitlementsTokenization() {
-        const response: AuthResponse<EntitlementsTokenResponse> = await this.request.post("https://entitlements.auth.riotgames.com/api/token/v1");
+        const response: Response<EntitlementsTokenResponse> = await this.request.post("https://entitlements.auth.riotgames.com/api/token/v1");
 
         if (!response.data.entitlements_token) {
             throw new ValError({
@@ -185,18 +194,10 @@ export class Auth extends AuthInstance {
     }
 
     public async regionTokenization(): Promise<Region.ID> {
-        const response: AuthResponse<RegionTokenResponse> = await this.request.put("https://riot-geo.pas.si.riotgames.com/pas/v1/product/valorant", {
+        const response: Response<RegionTokenResponse> = await this.request.put("https://riot-geo.pas.si.riotgames.com/pas/v1/product/valorant", {
             id_token: this.id_token
         });
 
         return response.data.affinities.live;
-    }
-
-    public fromJSON(user: UserAuthInfo): void {
-        super.fromJSON(user);
-
-        this.request.headers.setAuthorization(`Bearer ${this.access_token}`);
-        this.request.headers.set("X-Riot-Entitlements-JWT", this.entitlements_token);
-        this.request.headers.set("Cookie", this.cookie.getSetCookieStringsSync("https://auth.riotgames.com"));
     }
 }

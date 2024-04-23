@@ -91,9 +91,6 @@ export namespace ValCrosshair {
     }
 }
 
-/**
- * Valorant Crosshair
- */
 export class ValCrosshair {
     public data: Array<ValCrosshair.Data.Any> = [
         // * 0 (Others)
@@ -1166,11 +1163,6 @@ export class ValCrosshair {
         }
     }
 
-    /**
-     *
-     * @param {function (value: Omit<ValCrosshair.Data.Any, "components">, index: Array<number>): void} callback callback function
-     * @returns {void}
-     */
     public forEach(callback: (value: Omit<ValCrosshair.Data.Any, "components">, index: Array<number>) => void): void {
         this._forEach(this.data, [], callback);
     }
@@ -1194,11 +1186,6 @@ export class ValCrosshair {
         return undefined;
     }
 
-    /**
-     *
-     * @param {function (value: Omit<ValCrosshair.Data.Any, "components">, index: Array<number>): boolean} callback callback function
-     * @returns {ValCrosshair.Data.Any | undefined}
-     */
     public find(callback: (value: Omit<ValCrosshair.Data.Any, "components">, index: Array<number>) => boolean): ValCrosshair.Data.Any | undefined {
         return this._find(this.data, [], callback);
     }
@@ -1225,21 +1212,10 @@ export class ValCrosshair {
         return items;
     }
 
-    /**
-     *
-     * @param {function (value: Omit<ValCrosshair.Data.Any, "components">, index: Array<number>): T} callback callback function
-     * @returns {Array<T>}
-     */
     public map<T>(callback: (value: Omit<ValCrosshair.Data.Any, "components">, index: Array<number>) => T): Array<T> {
         return this._map<T>(this.data, [], callback);
     }
 
-    /**
-     *
-     * @param {Array<number>} index Index
-     * @param {string | number} data Data
-     * @returns {void}
-     */
     public set(index: Array<number>, data: string | number): void {
         switch (index.length) {
             case 0: {
@@ -1309,8 +1285,7 @@ export class ValCrosshair {
 
     /**
      * Export Profile Code
-     * @param {boolean} sort Sort by priority
-     * @returns {string}
+     * @param sort Sort by priority
      */
     public export(sort = true): string {
         const _export = this._export(this.data, {
@@ -1371,8 +1346,6 @@ export class ValCrosshair {
 
     /**
      * Import Profile Code
-     * @param {string} profileCode Crosshair Code
-     * @returns {void}
      */
     public import(profileCode: string): void {
         const _code: Array<string> = profileCode.split(";");

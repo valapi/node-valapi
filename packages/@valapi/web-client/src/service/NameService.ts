@@ -1,10 +1,8 @@
-import type { AxiosResponse } from "axios";
+import type { PromiseResponse } from "@valapi/auth";
 
 import { WebClientService } from "../client/WebClientService";
 
 export namespace NameService {
-    // response
-
     export type Player = Array<{
         DisplayName: string;
         Subject: string;
@@ -14,11 +12,7 @@ export namespace NameService {
 }
 
 export class NameService extends WebClientService {
-    /**
-     * @param {string} subject Player UUID
-     * @returns {Promise<AxiosResponse<NameService.Player>>}
-     */
-    public getPlayer(subject: string): Promise<AxiosResponse<NameService.Player>> {
-        return this.axios.put(`${this.apiRegion.url.playerData}/name-service/v2/players`, [`${subject}`]);
+    public getPlayer(subject: string): PromiseResponse<NameService.Player> {
+        return this.request.put(`${this.regionURL.url.playerData}/name-service/v2/players`, [`${subject}`]);
     }
 }

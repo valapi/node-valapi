@@ -1,6 +1,6 @@
 {
   "name": "@valapi/valorant-api.com",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
     "access": "public"

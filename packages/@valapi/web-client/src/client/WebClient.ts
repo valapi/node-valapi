@@ -1,15 +1,14 @@
-import axios from "axios";
-import type { AxiosResponse, AxiosInstance } from "axios";
-import { CookieJar } from "tough-cookie";
+import type { AxiosInstance } from "axios";
 
+import { ValError } from "@valapi/lib";
 import type { Region, Locale } from "@valapi/lib";
-import { AuthClient } from "@valapi/auth";
-import type { AuthCore } from "@valapi/auth";
+import { Auth } from "@valapi/auth";
+import type { Config as AuthConfig, PromiseResponse } from "@valapi/auth";
 
-import { WebClientRegion } from "./WebClientRegion";
+import { WebClientRegionURL } from "./WebClientRegionURL";
 
 import { AccountXP } from "../service/AccountXP";
-import { Config } from "../service/Config";
+import { Configuration } from "../service/Configuration";
 import { Content } from "../service/Content";
 import { ContractDefinitions } from "../service/ContractDefinitions";
 import { Contracts } from "../service/Contracts";
@@ -29,229 +28,168 @@ import { Restrictions } from "../service/Restrictions";
 import { Session } from "../service/Session";
 import { Store } from "../service/Store";
 
-export namespace WebClient {
-    export interface UserJson extends Omit<AuthCore.Json, "id_token" | "expires_in" | "token_type" | "session_state" | "createAt" | "authenticationInfo" | "region"> {
-        region: Region.ID;
-    }
+export interface Config extends Omit<AuthConfig, "user"> {
+    user: NonNullable<AuthConfig["user"]>;
+    region: Region.ID;
+}
 
-    export interface UserInfo {
-        country: string;
-        sub: string;
-        email_verified: boolean;
-        player_plocale: any; // * unknown
-        country_at: number;
-        pw: {
-            cng_at: number;
-            reset: boolean;
-            must_reset: boolean;
-        };
-        phone_number_verified: boolean;
-        account_verified: boolean;
-        ppid: any; // * unknown
-        federated_identity_details: Array<{
-            provider_name: string;
-            provider_environment: any; // * unknown
-        }>;
-        federated_identity_providers: Array<string>;
-        player_locale: Locale.ID;
-        acct: {
-            type: number;
-            state: string;
-            adm: boolean;
-            game_name: string;
-            tag_line: string;
-            created_at: number;
-        };
-        age: number;
-        jti: string;
-        affinity: Record<string, string>;
-    }
+export interface UserInfoResponse {
+    country: string;
+    sub: string;
+    email_verified: boolean;
+    player_plocale: any; // * unknown
+    country_at: number;
+    pw: {
+        cng_at: number;
+        reset: boolean;
+        must_reset: boolean;
+    };
+    phone_number_verified: boolean;
+    account_verified: boolean;
+    ppid: any; // * unknown
+    federated_identity_details: Array<{
+        provider_name: string;
+        provider_environment: any; // * unknown
+    }>;
+    federated_identity_providers: Array<string>;
+    player_locale: Locale.ID;
+    acct: {
+        type: number;
+        state: string;
+        adm: boolean;
+        game_name: string;
+        tag_line: string;
+        created_at: number;
+    };
+    age: number;
+    jti: string;
+    affinity: Record<string, string>;
 }
 
 /**
  * API from Web Client
  */
-export class WebClient extends AuthClient {
-    protected get axios(): AxiosInstance {
-        return axios.create(this.config.axiosConfig);
+export class WebClient {
+    protected readonly request: AxiosInstance;
+    protected readonly regionURL: WebClientRegionURL;
+
+    public readonly subject: string;
+
+    public constructor(config: Config) {
+        const auth = new Auth(config);
+
+        if (!auth.isAuthenticated) {
+            throw new ValError({
+                name: "WebClient_Constructor_Error",
+                message: `user is not authenticated`,
+                data: config.user
+            });
+        }
+
+        this.request = auth.request.create();
+        this.regionURL = new WebClientRegionURL(config.region);
+
+        this.subject = auth.subject;
     }
 
-    // data
-
-    /**
-     *
-     * @returns {WebClient.UserJson} Account Data
-     */
-    public toUserJSON(): WebClient.UserJson {
-        return {
-            cookie: this.cookie.serializeSync(),
-            access_token: this.access_token,
-            entitlements_token: this.entitlements_token,
-            region: this.region.live
-        };
-    }
-
-    /**
-     *
-     * @param {WebClient.UserJson} account {@link WebClient.UserJson JSON} Account Data
-     * @returns {void}
-     */
-    public fromUserJSON(account: WebClient.UserJson): void {
-        this.cookie = CookieJar.deserializeSync(JSON.stringify(account.cookie));
-        this.access_token = account.access_token;
-        this.entitlements_token = account.entitlements_token;
-        this.region = {
-            live: account.region
-        };
-    }
-
-    /**
-     *
-     * @param {WebClient.UserJson} account {@link WebClient.UserJson JSON} Account Data
-     * @param {AuthCore.Config} config Config
-     * @returns {WebClient}
-     */
-    public static fromUserJSON(account: WebClient.UserJson, config?: AuthCore.Config): WebClient {
-        const webClient = new WebClient(config);
-        webClient.fromUserJSON(account);
-
-        return webClient;
-    }
-
-    /**
-     *
-     * @param {CookieJar} cookie CookieJar
-     * @param {AuthCore.Config} config Config
-     * @returns {Promise<WebClient>}
-     */
-    public static async fromCookie(cookie: CookieJar, config?: AuthCore.Config): Promise<WebClient> {
-        const webClient = new WebClient(config);
-        await webClient.fromCookie(cookie);
-
-        return webClient;
-    }
-
-    /**
-     *
-     * @param {AuthCore.Json} account {@link AuthCore.Json JSON} Account Data
-     * @param {AuthCore.Config} config Config
-     * @returns {WebClient}
-     */
-    public static fromJSON(account: AuthCore.Json, config?: AuthCore.Config): WebClient {
-        const webClient = new WebClient(config);
-        webClient.fromJSON(account);
-
-        return webClient;
-    }
-
-    /**
-     * @returns {Promise<AxiosResponse<WebClient.UserInfo>>}
-     */
-    public getUserInfo(): Promise<AxiosResponse<WebClient.UserInfo>> {
-        return this.axios.post(`https://auth.riotgames.com/userinfo`);
+    public getUserInfo(): PromiseResponse<UserInfoResponse> {
+        return this.request.post(`https://auth.riotgames.com/userinfo`);
     }
 
     /**
      * @deprecated Please, Contact us if you find out how its works
-     * @returns {Promise<AxiosResponse<any>>}
      */
-    public getUserSettings(): Promise<AxiosResponse<any>> {
-        return this.axios.get(`https://playerpreferences.riotgames.com/playerPref/v3/getPreference/Ares.PlayerSettings`);
+    public getUserSettings(): PromiseResponse<any> {
+        return this.request.get(`https://playerpreferences.riotgames.com/playerPref/v3/getPreference/Ares.PlayerSettings`);
     }
 
     /**
      * @deprecated Please, Contact us if you find out how its works
-     * @param {any} data Settings Data to update
-     * @returns {Promise<AxiosResponse<any>>}
      */
-    public updateUserSettings(data: any): Promise<AxiosResponse<any>> {
-        return this.axios.put(`https://playerpreferences.riotgames.com/playerPref/v3/getPreference`, {
+    public updateUserSettings(data: any): PromiseResponse<any> {
+        return this.request.put(`https://playerpreferences.riotgames.com/playerPref/v3/getPreference`, {
             type: "Ares.PlayerSettings",
             data: data
         });
     }
 
-    public get request() {
-        return this.axios.request;
-    }
-
     public get AccountXP(): AccountXP {
-        return new AccountXP(this.axios, new WebClientRegion(this.region.live));
+        return new AccountXP(this.request, this.regionURL);
     }
 
-    public get Config(): Config {
-        return new Config(this.axios, new WebClientRegion(this.region.live));
+    public get Configuration(): Configuration {
+        return new Configuration(this.request, this.regionURL);
     }
 
     public get Content(): Content {
-        return new Content(this.axios, new WebClientRegion(this.region.live));
+        return new Content(this.request, this.regionURL);
     }
 
     public get ContractDefinitions(): ContractDefinitions {
-        return new ContractDefinitions(this.axios, new WebClientRegion(this.region.live));
+        return new ContractDefinitions(this.request, this.regionURL);
     }
 
     public get Contracts(): Contracts {
-        return new Contracts(this.axios, new WebClientRegion(this.region.live));
+        return new Contracts(this.request, this.regionURL);
     }
 
     public get CoreGame(): CoreGame {
-        return new CoreGame(this.axios, new WebClientRegion(this.region.live));
+        return new CoreGame(this.request, this.regionURL);
     }
 
     public get DailyTicket(): DailyTicket {
-        return new DailyTicket(this.axios, new WebClientRegion(this.region.live));
+        return new DailyTicket(this.request, this.regionURL);
     }
 
     public get Favorites(): Favorites {
-        return new Favorites(this.axios, new WebClientRegion(this.region.live));
+        return new Favorites(this.request, this.regionURL);
     }
 
     public get Latency(): Latency {
-        return new Latency(this.axios, new WebClientRegion(this.region.live));
+        return new Latency(this.request, this.regionURL);
     }
 
     public get MassRewards(): MassRewards {
-        return new MassRewards(this.axios, new WebClientRegion(this.region.live));
+        return new MassRewards(this.request, this.regionURL);
     }
 
     public get Match(): Match {
-        return new Match(this.axios, new WebClientRegion(this.region.live));
+        return new Match(this.request, this.regionURL);
     }
 
     public get MMR(): MMR {
-        return new MMR(this.axios, new WebClientRegion(this.region.live));
+        return new MMR(this.request, this.regionURL);
     }
 
     public get NameService(): NameService {
-        return new NameService(this.axios, new WebClientRegion(this.region.live));
+        return new NameService(this.request, this.regionURL);
     }
 
     public get Party(): Party {
-        return new Party(this.axios, new WebClientRegion(this.region.live));
+        return new Party(this.request, this.regionURL);
     }
 
     public get Personalization(): Personalization {
-        return new Personalization(this.axios, new WebClientRegion(this.region.live));
+        return new Personalization(this.request, this.regionURL);
     }
 
     public get PreGame(): PreGame {
-        return new PreGame(this.axios, new WebClientRegion(this.region.live));
+        return new PreGame(this.request, this.regionURL);
     }
 
     public get Premier(): Premier {
-        return new Premier(this.axios, new WebClientRegion(this.region.live));
+        return new Premier(this.request, this.regionURL);
     }
 
     public get Restrictions(): Restrictions {
-        return new Restrictions(this.axios, new WebClientRegion(this.region.live));
+        return new Restrictions(this.request, this.regionURL);
     }
 
     public get Session(): Session {
-        return new Session(this.axios, new WebClientRegion(this.region.live));
+        return new Session(this.request, this.regionURL);
     }
 
     public get Store(): Store {
-        return new Store(this.axios, new WebClientRegion(this.region.live));
+        return new Store(this.request, this.regionURL);
     }
 }

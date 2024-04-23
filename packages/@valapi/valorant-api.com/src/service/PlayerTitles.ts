@@ -1,22 +1,23 @@
+import type { Language } from "../client/ValorantApiCom";
 import { ValorantApiComService } from "../client/ValorantApiComService";
-import type { ValorantApiCom } from "../client/ValorantApiCom";
+import type { LanguageResponse, Response } from "../client/ValorantApiComService";
 
 export namespace PlayerTitles {
-    export interface PlayerTitles<L extends ValorantApiCom.Language> {
+    export interface PlayerTitles<L extends Language> {
         uuid: string;
-        displayName: ValorantApiComService.Languages<string, L>;
-        titleText: ValorantApiComService.Languages<string, L>;
+        displayName: LanguageResponse<string, L>;
+        titleText: LanguageResponse<string, L>;
         isHiddenIfNotOwned: boolean;
         assetPath: string;
     }
 }
 
-export class PlayerTitles<L extends ValorantApiCom.Language = any> extends ValorantApiComService {
-    public get(): Promise<ValorantApiComService.Response<PlayerTitles.PlayerTitles<L>[]>> {
-        return this.axios.get("/playertitles");
+export class PlayerTitles<L extends Language = any> extends ValorantApiComService {
+    public get(): Response<PlayerTitles.PlayerTitles<L>[]> {
+        return this.request.get("/playertitles");
     }
 
-    public getByUuid(uuid: string): Promise<ValorantApiComService.Response<PlayerTitles.PlayerTitles<L>>> {
-        return this.axios.get(`/playertitles/${uuid}`);
+    public getByUuid(uuid: string): Response<PlayerTitles.PlayerTitles<L>> {
+        return this.request.get(`/playertitles/${uuid}`);
     }
 }

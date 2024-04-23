@@ -1,10 +1,11 @@
+import type { Language } from "../client/ValorantApiCom";
 import { ValorantApiComService } from "../client/ValorantApiComService";
-import type { ValorantApiCom } from "../client/ValorantApiCom";
+import type { LanguageResponse, Response } from "../client/ValorantApiComService";
 
 export namespace Seasons {
-    export interface Seasons<L extends ValorantApiCom.Language> {
+    export interface Seasons<L extends Language> {
         uuid: string;
-        displayName: ValorantApiComService.Languages<string, L>;
+        displayName: LanguageResponse<string, L>;
         type: string;
         startTime: string | Date;
         endTime: string | Date;
@@ -30,20 +31,20 @@ export namespace Seasons {
     }
 }
 
-export class Seasons<L extends ValorantApiCom.Language = any> extends ValorantApiComService {
-    public get(): Promise<ValorantApiComService.Response<Seasons.Seasons<L>[]>> {
-        return this.axios.get("/seasons");
+export class Seasons<L extends Language = any> extends ValorantApiComService {
+    public get(): Response<Seasons.Seasons<L>[]> {
+        return this.request.get("/seasons");
     }
 
-    public getCompetitiveSeasons(): Promise<ValorantApiComService.Response<Seasons.CompetitiveSeasons[]>> {
-        return this.axios.get("/seasons/competitive");
+    public getCompetitiveSeasons(): Response<Seasons.CompetitiveSeasons[]> {
+        return this.request.get("/seasons/competitive");
     }
 
-    public getByUuid(uuid: string): Promise<ValorantApiComService.Response<Seasons.Seasons<L>>> {
-        return this.axios.get(`/seasons/${uuid}`);
+    public getByUuid(uuid: string): Response<Seasons.Seasons<L>> {
+        return this.request.get(`/seasons/${uuid}`);
     }
 
-    public getCompetitiveSeasonByUuid(uuid: string): Promise<ValorantApiComService.Response<Seasons.CompetitiveSeasons>> {
-        return this.axios.get(`/seasons/competitive/${uuid}`);
+    public getCompetitiveSeasonByUuid(uuid: string): Response<Seasons.CompetitiveSeasons> {
+        return this.request.get(`/seasons/competitive/${uuid}`);
     }
 }

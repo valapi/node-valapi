@@ -20,20 +20,10 @@ export const Default = <const>{
 export type Name = keyof typeof Default;
 export type ID = Exclude<(typeof Default)[Name], (typeof Default)["New_Map"] | "">;
 
-/**
- * Change from {@link Name} to {@link ID}
- * @param {Name} x Name
- * @returns {ID} ID
- */
 export function fromName(x: Name): ID {
     return <ID>Default[x];
 }
 
-/**
- * Change from {@link ID} to {@link Name}
- * @param {ID} x ID
- * @returns {Name} Name
- */
 export function fromID(x: ID): Name {
     for (const data of Object.entries(Default)) {
         if (typeof data[1] == "string" && data[1] == x) {

@@ -1,13 +1,14 @@
+import type { Language } from "../client/ValorantApiCom";
 import { ValorantApiComService } from "../client/ValorantApiComService";
-import type { ValorantApiCom } from "../client/ValorantApiCom";
+import type { LanguageResponse, Response } from "../client/ValorantApiComService";
 
 export namespace Agents {
-    export interface Agents<L extends ValorantApiCom.Language> {
+    export interface Agents<L extends Language> {
         uuid: string;
-        displayName: ValorantApiComService.Languages<string, L>;
-        description: ValorantApiComService.Languages<string, L>;
+        displayName: LanguageResponse<string, L>;
+        description: LanguageResponse<string, L>;
         developerName: string;
-        characterTags: ValorantApiComService.Languages<Array<string>, L>;
+        characterTags: LanguageResponse<Array<string>, L>;
         displayIcon: string;
         displayIconSmall: string;
         bustPortrait: string;
@@ -23,8 +24,8 @@ export namespace Agents {
         isBaseContent: boolean;
         role: {
             uuid: string;
-            displayName: ValorantApiComService.Languages<string, L>;
-            description: ValorantApiComService.Languages<string, L>;
+            displayName: LanguageResponse<string, L>;
+            description: LanguageResponse<string, L>;
             displayIcon: string;
             assetPath: string;
         };
@@ -39,8 +40,8 @@ export namespace Agents {
         };
         abilities: Array<{
             slot: string;
-            displayName: ValorantApiComService.Languages<string, L>;
-            description: ValorantApiComService.Languages<string, L>;
+            displayName: LanguageResponse<string, L>;
+            description: LanguageResponse<string, L>;
             displayIcon: string;
         }>;
         voiceLines: {
@@ -55,16 +56,16 @@ export namespace Agents {
     }
 }
 
-export class Agents<L extends ValorantApiCom.Language = any> extends ValorantApiComService {
-    public get(isPlayableCharacter: boolean = true): Promise<ValorantApiComService.Response<Agents.Agents<L>[]>> {
-        return this.axios.get(`/agents`, {
+export class Agents<L extends Language = any> extends ValorantApiComService {
+    public get(isPlayableCharacter: boolean = true): Response<Agents.Agents<L>[]> {
+        return this.request.get(`/agents`, {
             params: {
                 isPlayableCharacter: isPlayableCharacter
             }
         });
     }
 
-    public getByUuid(uuid: string): Promise<ValorantApiComService.Response<Agents.Agents<L>>> {
-        return this.axios.get(`/agents/${uuid}`);
+    public getByUuid(uuid: string): Response<Agents.Agents<L>> {
+        return this.request.get(`/agents/${uuid}`);
     }
 }

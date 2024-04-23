@@ -1,31 +1,30 @@
 import { ValRegion } from "@valapi/lib";
 import type { Region } from "@valapi/lib";
 
-export class WebClientRegion extends ValRegion {
-    public readonly shard: Region.ID;
+export class RiotApiRegionURL extends ValRegion {
+    public readonly continent: string;
     public readonly url: {
         /**
-         * pd.$.a.pvp.net
+         * $.api.riotgames.com
          */
-        playerData: string;
+        region: string;
         /**
-         * glz-$-1.$.a.pvp.net
+         * $.api.riotgames.com
          */
-        partyService: string;
+        continent: string;
         /**
-         * shared.$.a.pvp.net
+         * esports.api.riotgames.com
          */
-        sharedData: string;
+        esports: string;
     };
 
     /**
-     *
-     * @param {string} region Region (default: na)
+     * @param region (default: na)
      */
     public constructor(region?: Region.ID) {
         super(region);
 
-        this.shard = "na";
+        this.continent = "americas";
         switch (region) {
             case "na": {
                 break;
@@ -37,27 +36,27 @@ export class WebClientRegion extends ValRegion {
                 break;
             }
             case "pbe": {
-                this.shard = "pbe";
+                this.continent = "pbe1";
                 break;
             }
             case "eu": {
-                this.shard = "eu";
+                this.continent = "europe";
                 break;
             }
             case "kr": {
-                this.shard = "kr";
+                this.continent = "asia";
                 break;
             }
             case "ap": {
-                this.shard = "ap";
+                this.continent = "asia";
                 break;
             }
         }
 
         this.url = {
-            playerData: `https://pd.${this.shard}.a.pvp.net`,
-            partyService: `https://glz-${this.id}-1.${this.shard}.a.pvp.net`,
-            sharedData: `https://shared.${this.shard}.a.pvp.net`
+            region: `https://${this.id}.api.riotgames.com`,
+            continent: `https://${this.continent}.api.riotgames.com`,
+            esports: `https://esports.api.riotgames.com`
         };
     }
 }

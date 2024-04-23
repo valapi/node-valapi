@@ -1,7 +1,7 @@
 import { ValEncryption } from "../index";
 
 describe("lib.util", () => {
-    test("base64", () => {
+    test("encryption", () => {
         expect(ValEncryption.decryptJson("eyJ2YWxvcmFudC50cyI6ICJ0aGUgYmVzdCBOb2RlLmpzIGxpYnJhcnkgdG8gdXNpbmcgVmFsb3JhbnQgQVBJIn0=")).toStrictEqual({
             "valorant.ts": "the best Node.js library to using Valorant API"
         });

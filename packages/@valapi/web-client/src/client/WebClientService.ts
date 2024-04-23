@@ -1,18 +1,13 @@
 import type { AxiosInstance } from "axios";
 
-import type { WebClientRegion } from "./WebClientRegion";
+import type { WebClientRegionURL } from "./WebClientRegionURL";
 
 export class WebClientService {
-    protected readonly axios: AxiosInstance;
-    protected readonly apiRegion: WebClientRegion;
+    protected readonly request: AxiosInstance;
+    protected readonly regionURL: WebClientRegionURL;
 
-    /**
-     *
-     * @param {AxiosInstance} axios Request Client
-     * @param {WebClientRegion} apiRegion Region Service
-     */
-    public constructor(axios: AxiosInstance, apiRegion: WebClientRegion) {
-        this.axios = axios;
-        this.apiRegion = apiRegion;
+    public constructor(request: AxiosInstance, regionURL: WebClientRegionURL) {
+        this.request = request;
+        this.regionURL = regionURL;
     }
 }

@@ -1,10 +1,8 @@
-import type { AxiosResponse } from "axios";
+import type { PromiseResponse } from "@valapi/auth";
 
 import { WebClientService } from "../client/WebClientService";
 
 export namespace DailyTicket {
-    // response
-
     export interface DailyTicket {
         Version: number;
         DailyRewards: {
@@ -29,19 +27,11 @@ export namespace DailyTicket {
 }
 
 export class DailyTicket extends WebClientService {
-    /**
-     * @param {string} subject Player UUID
-     * @returns {Promise<AxiosResponse<DailyTicket.DailyTicket>>}
-     */
-    public get(subject: string): Promise<AxiosResponse<DailyTicket.DailyTicket>> {
-        return this.axios.get(`${this.apiRegion.url.playerData}/daily-ticket/v1/${subject}`);
+    public get(subject: string): PromiseResponse<DailyTicket.DailyTicket> {
+        return this.request.get(`${this.regionURL.url.playerData}/daily-ticket/v1/${subject}`);
     }
 
-    /**
-     * @param {string} subject Player UUID
-     * @returns {Promise<AxiosResponse<DailyTicket.DailyTicket>>}
-     */
-    public renew(subject: string): Promise<AxiosResponse<DailyTicket.DailyTicket>> {
-        return this.axios.post(`${this.apiRegion.url.playerData}/daily-ticket/v1/${subject}/renew`);
+    public renew(subject: string): PromiseResponse<DailyTicket.DailyTicket> {
+        return this.request.post(`${this.regionURL.url.playerData}/daily-ticket/v1/${subject}/renew`);
     }
 }

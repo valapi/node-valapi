@@ -1,4 +1,5 @@
 import { ValorantApiComService } from "../client/ValorantApiComService";
+import type { Response } from "../client/ValorantApiComService";
 
 export namespace Missions {
     /**
@@ -23,11 +24,11 @@ export namespace Missions {
 }
 
 export class Missions extends ValorantApiComService {
-    public get(): Promise<ValorantApiComService.Response<Missions.Missions[]>> {
-        return this.axios.get("/missions");
+    public get(): Response<Missions.Missions[]> {
+        return this.request.get("/missions");
     }
 
-    public getByUuid(uuid: string): Promise<ValorantApiComService.Response<Missions.Missions>> {
-        return this.axios.get(`/missions/${uuid}`);
+    public getByUuid(uuid: string): Response<Missions.Missions> {
+        return this.request.get(`/missions/${uuid}`);
     }
 }

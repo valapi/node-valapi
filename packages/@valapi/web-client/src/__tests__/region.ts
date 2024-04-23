@@ -1,9 +1,10 @@
-import { WebClientRegion } from "../index";
 import { Region } from "@valapi/lib";
+
+import { WebClientRegionURL } from "../index";
 
 describe("webclient.region", () => {
     test("korea", () => {
-        const _region = new WebClientRegion(Region.Default.Korea);
+        const _region = new WebClientRegionURL(Region.Default.Korea);
 
         const id = "kr";
         const shard = "kr";

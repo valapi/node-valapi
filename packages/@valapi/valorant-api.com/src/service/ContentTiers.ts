@@ -1,10 +1,11 @@
+import type { Language } from "../client/ValorantApiCom";
 import { ValorantApiComService } from "../client/ValorantApiComService";
-import type { ValorantApiCom } from "../client/ValorantApiCom";
+import type { LanguageResponse, Response } from "../client/ValorantApiComService";
 
 export namespace ContentTiers {
-    export interface ContentTiers<L extends ValorantApiCom.Language> {
+    export interface ContentTiers<L extends Language> {
         uuid: string;
-        displayName: ValorantApiComService.Languages<string, L>;
+        displayName: LanguageResponse<string, L>;
         devName: string;
         rank: number;
         juiceValue: number;
@@ -15,12 +16,12 @@ export namespace ContentTiers {
     }
 }
 
-export class ContentTiers<L extends ValorantApiCom.Language = any> extends ValorantApiComService {
-    public get(): Promise<ValorantApiComService.Response<ContentTiers.ContentTiers<L>[]>> {
-        return this.axios.get("/contenttiers");
+export class ContentTiers<L extends Language = any> extends ValorantApiComService {
+    public get(): Response<ContentTiers.ContentTiers<L>[]> {
+        return this.request.get("/contenttiers");
     }
 
-    public getByUuid(uuid: string): Promise<ValorantApiComService.Response<ContentTiers.ContentTiers<L>>> {
-        return this.axios.get(`/contenttiers/${uuid}`);
+    public getByUuid(uuid: string): Response<ContentTiers.ContentTiers<L>> {
+        return this.request.get(`/contenttiers/${uuid}`);
     }
 }

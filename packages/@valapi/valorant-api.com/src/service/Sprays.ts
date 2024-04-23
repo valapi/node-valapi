@@ -1,18 +1,19 @@
+import type { Language } from "../client/ValorantApiCom";
 import { ValorantApiComService } from "../client/ValorantApiComService";
-import type { ValorantApiCom } from "../client/ValorantApiCom";
+import type { LanguageResponse, Response } from "../client/ValorantApiComService";
 
 export namespace Sprays {
-    export interface SprayLevels<L extends ValorantApiCom.Language> {
+    export interface SprayLevels<L extends Language> {
         uuid: string;
         sprayLevel: number;
-        displayName: ValorantApiComService.Languages<string, L>;
+        displayName: LanguageResponse<string, L>;
         displayIcon: string;
         assetPath: string;
     }
 
-    export interface Sprays<L extends ValorantApiCom.Language> {
+    export interface Sprays<L extends Language> {
         uuid: string;
-        displayName: ValorantApiComService.Languages<string, L>;
+        displayName: LanguageResponse<string, L>;
         category: string;
         themeUuid: string;
         isNullSpray: boolean;
@@ -27,20 +28,20 @@ export namespace Sprays {
     }
 }
 
-export class Sprays<L extends ValorantApiCom.Language = any> extends ValorantApiComService {
-    public get(): Promise<ValorantApiComService.Response<Sprays.Sprays<L>[]>> {
-        return this.axios.get("/sprays");
+export class Sprays<L extends Language = any> extends ValorantApiComService {
+    public get(): Response<Sprays.Sprays<L>[]> {
+        return this.request.get("/sprays");
     }
 
-    public getLevels(): Promise<ValorantApiComService.Response<Sprays.SprayLevels<L>[]>> {
-        return this.axios.get(`/sprays/levels`);
+    public getLevels(): Response<Sprays.SprayLevels<L>[]> {
+        return this.request.get(`/sprays/levels`);
     }
 
-    public getByUuid(uuid: string): Promise<ValorantApiComService.Response<Sprays.Sprays<L>>> {
-        return this.axios.get(`/sprays/${uuid}`);
+    public getByUuid(uuid: string): Response<Sprays.Sprays<L>> {
+        return this.request.get(`/sprays/${uuid}`);
     }
 
-    public getLevelByUuid(uuid: string): Promise<ValorantApiComService.Response<Sprays.SprayLevels<L>>> {
-        return this.axios.get(`/sprays/levels/${uuid}`);
+    public getLevelByUuid(uuid: string): Response<Sprays.SprayLevels<L>> {
+        return this.request.get(`/sprays/levels/${uuid}`);
     }
 }

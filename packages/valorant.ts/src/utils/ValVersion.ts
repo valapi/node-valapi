@@ -4,9 +4,6 @@ export namespace ValVersion {
     export type Version = `${number}.${number}`;
 }
 
-/**
- * Valorant Version
- */
 export class ValVersion {
     public static parse(version: ValVersion.Version): ValVersion.Version {
         const split_version: Array<string> = version.split(".");

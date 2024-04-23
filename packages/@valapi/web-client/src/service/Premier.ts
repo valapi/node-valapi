@@ -1,4 +1,4 @@
-import type { AxiosResponse } from "axios";
+import type { PromiseResponse } from "@valapi/auth";
 
 import { WebClientService } from "../client/WebClientService";
 
@@ -43,147 +43,106 @@ export namespace Premier {
 export class Premier extends WebClientService {
     /**
      * @deprecated Please, Contact us if you find out how its works
-     * @returns {Promise<AxiosResponse<any>>}
      */
-    public getEligibility(): Promise<AxiosResponse<any>> {
-        return this.axios.get(`${this.apiRegion.url.playerData}/premier/v1/player/eligibility`);
+    public getEligibility(): PromiseResponse<any> {
+        return this.request.get(`${this.regionURL.url.playerData}/premier/v1/player/eligibility`);
     }
 
-    /**
-     * @returns {Promise<AxiosResponse<Premier.Conferences>>}
-     */
-    public getPremierConferences(): Promise<AxiosResponse<Premier.Conferences>> {
-        return this.axios.get(`${this.apiRegion.url.playerData}/premier/v1/affinities/${this.apiRegion.id}/conferences`);
+    public getPremierConferences(): PromiseResponse<Premier.Conferences> {
+        return this.request.get(`${this.regionURL.url.playerData}/premier/v1/affinities/${this.regionURL.id}/conferences`);
     }
 
-    /**
-     * @returns {Promise<AxiosResponse<Premier.Seasons>>}
-     */
-    public fetchPremierSeasons(): Promise<AxiosResponse<Premier.Seasons>> {
-        return this.axios.get(`${this.apiRegion.url.playerData}/premier/v1/affinities/${this.apiRegion.id}/premier-seasons`);
+    public fetchPremierSeasons(): PromiseResponse<Premier.Seasons> {
+        return this.request.get(`${this.regionURL.url.playerData}/premier/v1/affinities/${this.regionURL.id}/premier-seasons`);
     }
 
     /**
      * @deprecated Please, Contact us if you find out how its works
-     * @returns {Promise<AxiosResponse<any>>}
      */
-    public getActivePremierSeason(): Promise<AxiosResponse<any>> {
-        return this.axios.get(`${this.apiRegion.url.playerData}/premier/v1/affinities/${this.apiRegion.id}/premier-seasons/active`);
+    public getActivePremierSeason(): PromiseResponse<any> {
+        return this.request.get(`${this.regionURL.url.playerData}/premier/v1/affinities/${this.regionURL.id}/premier-seasons/active`);
     }
 
     /**
      * @deprecated Please, Contact us if you find out how its works
-     * @param {string} realm Realm
-     * @param {string} rosterId Roster ID
-     * @returns {Promise<AxiosResponse<any>>}
      */
-    public getMUCToken(realm: string, rosterId: string): Promise<AxiosResponse<any>> {
-        return this.axios.get(`${this.apiRegion.url.playerData}/premier/v1/rsp/rosters/v1/${realm}/roster/${rosterId}/muctoken`);
+    public getMUCToken(realm: string, rosterId: string): PromiseResponse<any> {
+        return this.request.get(`${this.regionURL.url.playerData}/premier/v1/rsp/rosters/v1/${realm}/roster/${rosterId}/muctoken`);
     }
 
-    /**
-     * @param {string} subject Player UUID
-     * @returns {Promise<AxiosResponse<Premier.Player>>}
-     */
-    public getPlayer(subject: string): Promise<AxiosResponse<Premier.Player>> {
-        return this.axios.get(`${this.apiRegion.url.playerData}/premier/v2/players/${subject}`);
+    public getPlayer(subject: string): PromiseResponse<Premier.Player> {
+        return this.request.get(`${this.regionURL.url.playerData}/premier/v2/players/${subject}`);
     }
 
     /**
      * @deprecated Please, Contact us if you find out how its works
-     * @param {string} rosterId Roster ID
-     * @returns {Promise<AxiosResponse<any>>}
      */
-    public GetRosterV1(rosterId: string): Promise<AxiosResponse<any>> {
-        return this.axios.get(`${this.apiRegion.url.playerData}/premier/v1/rosters/${rosterId}`);
+    public GetRosterV1(rosterId: string): PromiseResponse<any> {
+        return this.request.get(`${this.regionURL.url.playerData}/premier/v1/rosters/${rosterId}`);
     }
 
     /**
      * @deprecated Please, Contact us if you find out how its works
-     * @param {string} rosterId Roster ID
-     * @returns {Promise<AxiosResponse<any>>}
      */
-    public GetRosterV2(rosterId: string): Promise<AxiosResponse<any>> {
-        return this.axios.get(`${this.apiRegion.url.playerData}/premier/v2/rosters/${rosterId}`);
+    public GetRosterV2(rosterId: string): PromiseResponse<any> {
+        return this.request.get(`${this.regionURL.url.playerData}/premier/v2/rosters/${rosterId}`);
     }
 
     /**
      * @deprecated Please, Contact us if you find out how its works
-     * @param {string} realm Realm
-     * @param {string} rosterId Roster ID
-     * @returns {Promise<AxiosResponse<any>>}
      */
-    public getRosterByProxy(realm: string, rosterId: string): Promise<AxiosResponse<any>> {
-        return this.axios.get(`${this.apiRegion.url.playerData}/premier/v1/rsp/rosters/v1/${realm}/roster/${rosterId}`);
+    public getRosterByProxy(realm: string, rosterId: string): PromiseResponse<any> {
+        return this.request.get(`${this.regionURL.url.playerData}/premier/v1/rsp/rosters/v1/${realm}/roster/${rosterId}`);
     }
 
     /**
      * @deprecated Please, Contact us if you find out how its works
-     * @param {string} rosterId Roster ID
-     * @param {Premier.RosterCustomization} rosterCustomization Roster Customization
-     * @returns {Promise<AxiosResponse<any>>}
      */
-    public setPremierRosterCustomization(rosterId: string, rosterCustomization: Premier.RosterCustomization): Promise<AxiosResponse<any>> {
-        return this.axios.put(`${this.apiRegion.url.playerData}/premier/v1/rosters/${rosterId}/customization`, rosterCustomization);
+    public setPremierRosterCustomization(rosterId: string, rosterCustomization: Premier.RosterCustomization): PromiseResponse<any> {
+        return this.request.put(`${this.regionURL.url.playerData}/premier/v1/rosters/${rosterId}/customization`, rosterCustomization);
     }
 
     /**
      * @deprecated Please, Contact us if you find out how its works
-     * @param {string} realm Realm
-     * @param {string} rosterId Roster ID
-     * @returns {Promise<AxiosResponse<any>>}
      */
-    public deleteRosterByProxy(realm: string, rosterId: string): Promise<AxiosResponse<any>> {
-        return this.axios.delete(`${this.apiRegion.url.playerData}/premier/v1/rsp/rosters/v1/${realm}/roster/${rosterId}`);
+    public deleteRosterByProxy(realm: string, rosterId: string): PromiseResponse<any> {
+        return this.request.delete(`${this.regionURL.url.playerData}/premier/v1/rsp/rosters/v1/${realm}/roster/${rosterId}`);
     }
 
     /**
      * @deprecated Please, Contact us if you find out how its works
-     * @param {string} rosterId Roster ID
-     * @param {string} conferenceId Conference ID
-     * @returns {Promise<AxiosResponse<any>>}
      */
-    public rosterEnroll(rosterId: string, conferenceId: string): Promise<AxiosResponse<any>> {
-        return this.axios.put(`${this.apiRegion.url.playerData}/premier/v1/rosters/${rosterId}/enroll`, {
+    public rosterEnroll(rosterId: string, conferenceId: string): PromiseResponse<any> {
+        return this.request.put(`${this.regionURL.url.playerData}/premier/v1/rosters/${rosterId}/enroll`, {
             id: conferenceId
         });
     }
 
     /**
      * @deprecated Please, Contact us if you find out how its works
-     * @param {string} rosterId Roster ID
-     * @param {string} subject Player UUID
-     * @returns {Promise<AxiosResponse<any>>}
      */
-    public createInvite(rosterId: string, subject: string): Promise<AxiosResponse<any>> {
-        return this.axios.post(`${this.apiRegion.url.playerData}/premier/v2/rosters/${rosterId}/invites/${subject}`);
+    public createInvite(rosterId: string, subject: string): PromiseResponse<any> {
+        return this.request.post(`${this.regionURL.url.playerData}/premier/v2/rosters/${rosterId}/invites/${subject}`);
     }
 
     /**
      * @deprecated Please, Contact us if you find out how its works
-     * @param {string} rosterId Roster ID
-     * @returns {Promise<AxiosResponse<any>>}
      */
-    public getPremierRosterMatchHistory(rosterId: string): Promise<AxiosResponse<any>> {
-        return this.axios.get(`${this.apiRegion.url.playerData}/premier/v1/rosters/${rosterId}/matchhistory`);
+    public getPremierRosterMatchHistory(rosterId: string): PromiseResponse<any> {
+        return this.request.get(`${this.regionURL.url.playerData}/premier/v1/rosters/${rosterId}/matchhistory`);
     }
 
     /**
      * @deprecated Please, Contact us if you find out how its works
-     * @param {string} rosterId Roster ID
-     * @param {string} subject Player UUID
-     * @returns {Promise<AxiosResponse<any>>}
      */
-    public acceptInvite(rosterId: string, subject: string): Promise<AxiosResponse<any>> {
-        return this.axios.post(`${this.apiRegion.url.playerData}/premier/v2/rosters/${rosterId}/invites/${subject}/accept`);
+    public acceptInvite(rosterId: string, subject: string): PromiseResponse<any> {
+        return this.request.post(`${this.regionURL.url.playerData}/premier/v2/rosters/${rosterId}/invites/${subject}/accept`);
     }
 
     /**
      * @deprecated Please, Contact us if you find out how its works
-     * @param {string} partyId Party ID
-     * @returns {Promise<AxiosResponse<any>>}
      */
-    public makePremierGame(partyId: string): Promise<AxiosResponse<any>> {
-        return this.axios.post(`${this.apiRegion.url.partyService}/parties/v1/parties/${partyId}/makePremierGame`, {});
+    public makePremierGame(partyId: string): PromiseResponse<any> {
+        return this.request.post(`${this.regionURL.url.partyService}/parties/v1/parties/${partyId}/makePremierGame`, {});
     }
 }

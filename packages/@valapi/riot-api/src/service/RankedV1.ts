@@ -45,12 +45,10 @@ export namespace RankedV1 {
 export class RankedV1 extends RiotApiService {
     /**
      * Get leaderboard for the competitive queue
-     * @param {string} actId Act ID
-     * @param {number} size Size (default: 200)
-     * @param {number} startIndex Start Index (default: 0)
-     * @returns {Promise<AxiosResponse<RankedV1.LeaderboardDto>>}
+     * @param size (default: 200)
+     * @param startIndex (default: 0)
      */
     public leaderboardsByAct(actId: string, size: number = 200, startIndex: number = 0): Promise<AxiosResponse<RankedV1.LeaderboardDto>> {
-        return this.axios.get(`${this.apiRegion.url.region}/val/ranked/v1/leaderboards/by-act/${actId}?size=${size}&startIndex=${startIndex}`);
+        return this.request.get(`${this.regionURL.url.region}/val/ranked/v1/leaderboards/by-act/${actId}?size=${size}&startIndex=${startIndex}`);
     }
 }

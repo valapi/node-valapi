@@ -1,3 +1,30 @@
+# 5.0.0
+
+**Change**
+
+-   ~~`ValorantApiCom.axios`~~ **-->** `ValorantApiCom.request`
+-   ~~`ValorantApiComService.axios`~~ **-->** `ValorantApiComService.request`
+
+**Remove**
+
+-   `ValorantApiCom.Default`
+-   `ValorantApiCom.config`
+
+### Typescript
+
+**Change**
+
+-   ~~`ValorantApiCom.Language`~~ **-->** `Language`
+-   ~~`ValorantApiCom.Config`~~ **-->** `Config`
+-   ~~`ValorantApiComService.MultipleLanguage`~~ **-->** `AllLanguageResponse`
+-   ~~`ValorantApiComService.Languages`~~ **-->** `LanguageResponse`
+-   ~~`ValorantApiComService.Response`~~ **-->** `Response`
+
+**Remove**
+
+-   `ValorantApiComService.SingleLanguage`
+-   `ValorantApiComService.BaseResponse`
+
 # 4.0.0
 
 **Change**

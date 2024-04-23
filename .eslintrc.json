@@ -43,17 +43,11 @@
         "semi": "warn",
         "new-cap": "warn",
         "spaced-comment": "warn",
-        "require-jsdoc": "warn",
         "brace-style": "warn",
         "curly": "warn",
         "guard-for-in": "warn",
         "no-empty-pattern": "warn",
         "no-new-wrappers": "warn",
-        "valid-jsdoc": ["warn", {
-            "requireParamDescription": true,
-            "requireReturnDescription": false,
-            "requireReturn": true
-        }],
         "valid-typeof": "warn"
     },
     "settings": {

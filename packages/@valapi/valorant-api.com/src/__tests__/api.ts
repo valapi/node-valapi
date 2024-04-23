@@ -2,47 +2,47 @@ import { Locale } from "@valapi/lib";
 import { ValorantApiCom } from "../index";
 
 describe("valapicom.api", () => {
-    const myClient = new ValorantApiCom({
+    const client = new ValorantApiCom({
         language: Locale.Default.Thai_Thailand,
         responseOptions: {
             ignore_null: true
         }
     });
 
-    test("apis", async () => {
+    test("apis", () => {
         Promise.all([
-            myClient.Agents.get(),
-            myClient.Buddies.get(),
-            myClient.Buddies.getLevels(),
-            myClient.Bundles.get(),
-            myClient.Ceremonies.get(),
-            myClient.CompetitiveTiers.get(),
-            myClient.ContentTiers.get(),
-            myClient.Contracts.get(),
-            myClient.Currencies.get(),
-            myClient.Events.get(),
-            myClient.Gamemodes.get(),
-            myClient.Gamemodes.getEquippables(),
-            myClient.Gear.get(),
-            myClient.LevelBorders.get(),
-            myClient.Maps.get(),
-            myClient.Missions.get(),
-            myClient.Objectives.get(),
-            myClient.PlayerCards.get(),
-            myClient.PlayerTitles.get(),
-            myClient.Seasons.get(),
-            myClient.Seasons.getCompetitiveSeasons(),
-            myClient.Sprays.get(),
-            myClient.Sprays.getLevels(),
-            myClient.Themes.get(),
-            myClient.Version.get(),
-            myClient.Weapons.get(),
-            myClient.Weapons.getSkins()
+            client.Agents.get(),
+            client.Buddies.get(),
+            client.Buddies.getLevels(),
+            client.Bundles.get(),
+            client.Ceremonies.get(),
+            client.CompetitiveTiers.get(),
+            client.ContentTiers.get(),
+            client.Contracts.get(),
+            client.Currencies.get(),
+            client.Events.get(),
+            client.Gamemodes.get(),
+            client.Gamemodes.getEquippables(),
+            client.Gear.get(),
+            client.LevelBorders.get(),
+            client.Maps.get(),
+            client.Missions.get(),
+            client.Objectives.get(),
+            client.PlayerCards.get(),
+            client.PlayerTitles.get(),
+            client.Seasons.get(),
+            client.Seasons.getCompetitiveSeasons(),
+            client.Sprays.get(),
+            client.Sprays.getLevels(),
+            client.Themes.get(),
+            client.Version.get(),
+            client.Weapons.get(),
+            client.Weapons.getSkins()
         ]).then(values => {
-            values.forEach(element => {
-                expect(element.status === 200).toBe(true);
-                expect(element.data.data).not.toBe([]);
-                expect(element.data.data).not.toContain([undefined]);
+            values.forEach(x => {
+                expect(x.status === 200).toBe(true);
+                expect(x.data.data).not.toBe([]);
+                expect(x.data.data).not.toContain([undefined]);
             });
         });
     });

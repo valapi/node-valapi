@@ -1,10 +1,8 @@
-import type { AxiosResponse } from "axios";
+import type { PromiseResponse } from "@valapi/auth";
 
 import { WebClientService } from "../client/WebClientService";
 
 export namespace MassRewards {
-    // response
-
     export interface PlayerReconcile {
         Version: number;
         Subject: string;
@@ -26,11 +24,7 @@ export namespace MassRewards {
 }
 
 export class MassRewards extends WebClientService {
-    /**
-     * @param {string} subject Player UUID
-     * @returns {Promise<AxiosResponse<MassRewards.PlayerReconcile>>}
-     */
-    public reconcilePlayer(subject: string): Promise<AxiosResponse<MassRewards.PlayerReconcile>> {
-        return this.axios.post(`${this.apiRegion.url.playerData}/mass-rewards/v1/players/${subject}/reconcile`);
+    public reconcilePlayer(subject: string): PromiseResponse<MassRewards.PlayerReconcile> {
+        return this.request.post(`${this.regionURL.url.playerData}/mass-rewards/v1/players/${subject}/reconcile`);
     }
 }

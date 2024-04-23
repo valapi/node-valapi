@@ -1,18 +1,13 @@
 import type { AxiosInstance } from "axios";
 
-import type { RiotApiRegion } from "./RiotApiRegion";
+import type { RiotApiRegionURL } from "./RiotApiRegionURL";
 
 export class RiotApiService {
-    protected readonly axios: AxiosInstance;
-    protected readonly apiRegion: RiotApiRegion;
+    protected readonly request: AxiosInstance;
+    protected readonly regionURL: RiotApiRegionURL;
 
-    /**
-     *
-     * @param {AxiosInstance} axios Request Client
-     * @param {RiotApiRegion} apiRegion Region Service
-     */
-    public constructor(axios: AxiosInstance, apiRegion: RiotApiRegion) {
-        this.axios = axios;
-        this.apiRegion = apiRegion;
+    public constructor(request: AxiosInstance, regionURL: RiotApiRegionURL) {
+        this.request = request;
+        this.regionURL = regionURL;
     }
 }

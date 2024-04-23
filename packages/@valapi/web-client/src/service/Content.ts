@@ -1,10 +1,8 @@
-import type { AxiosResponse } from "axios";
+import type { PromiseResponse } from "@valapi/auth";
 
 import { WebClientService } from "../client/WebClientService";
 
 export namespace Content {
-    // response
-
     export interface ContentElements {
         ID: string;
         Name: string;
@@ -25,10 +23,7 @@ export namespace Content {
 }
 
 export class Content extends WebClientService {
-    /**
-     * @returns {Promise<AxiosResponse<Content.Content>>}
-     */
-    public get(): Promise<AxiosResponse<Content.Content>> {
-        return this.axios.get(`${this.apiRegion.url.sharedData}/content-service/v3/content`);
+    public get(): PromiseResponse<Content.Content> {
+        return this.request.get(`${this.regionURL.url.sharedData}/content-service/v3/content`);
     }
 }

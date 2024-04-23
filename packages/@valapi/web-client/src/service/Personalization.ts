@@ -1,10 +1,8 @@
-import type { AxiosResponse } from "axios";
+import type { PromiseResponse } from "@valapi/auth";
 
 import { WebClientService } from "../client/WebClientService";
 
 export namespace Personalization {
-    // response
-
     export interface LoadoutGun {
         ID: string;
         SkinID: string;
@@ -40,20 +38,11 @@ export namespace Personalization {
 }
 
 export class Personalization extends WebClientService {
-    /**
-     * @param {string} subject Player UUID
-     * @returns {Promise<AxiosResponse<Required<Personalization.Loadout>>>}
-     */
-    public getPlayerLoadout(subject: string): Promise<AxiosResponse<Required<Personalization.Loadout>>> {
-        return this.axios.get(`${this.apiRegion.url.playerData}/personalization/v2/players/${subject}/playerloadout`);
+    public getPlayerLoadout(subject: string): PromiseResponse<Required<Personalization.Loadout>> {
+        return this.request.get(`${this.regionURL.url.playerData}/personalization/v2/players/${subject}/playerloadout`);
     }
 
-    /**
-     * @param {string} subject Player UUID
-     * @param {Omit<Personalization.Loadout, "Subject" | "Version">} loadout Loadout
-     * @returns {Promise<AxiosResponse<Personalization.Loadout>>}
-     */
-    public changePlayerLoadout(subject: string, loadout: Omit<Personalization.Loadout, "Subject" | "Version">): Promise<AxiosResponse<Personalization.Loadout>> {
-        return this.axios.put(`${this.apiRegion.url.playerData}/personalization/v2/players/${subject}/playerloadout`, loadout);
+    public changePlayerLoadout(subject: string, loadout: Omit<Personalization.Loadout, "Subject" | "Version">): PromiseResponse<Personalization.Loadout> {
+        return this.request.put(`${this.regionURL.url.playerData}/personalization/v2/players/${subject}/playerloadout`, loadout);
     }
 }

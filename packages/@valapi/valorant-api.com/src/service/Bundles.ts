@@ -1,14 +1,15 @@
+import type { Language } from "../client/ValorantApiCom";
 import { ValorantApiComService } from "../client/ValorantApiComService";
-import type { ValorantApiCom } from "../client/ValorantApiCom";
+import type { LanguageResponse, Response } from "../client/ValorantApiComService";
 
 export namespace Bundles {
-    export interface Bundles<L extends ValorantApiCom.Language> {
+    export interface Bundles<L extends Language> {
         uuid: string;
-        displayName: ValorantApiComService.Languages<string, L>;
-        displayNameSubText: ValorantApiComService.Languages<string, L>;
-        description: ValorantApiComService.Languages<string, L>;
-        extraDescription: ValorantApiComService.Languages<string, L>;
-        promoDescription: ValorantApiComService.Languages<string, L>;
+        displayName: LanguageResponse<string, L>;
+        displayNameSubText: LanguageResponse<string, L>;
+        description: LanguageResponse<string, L>;
+        extraDescription: LanguageResponse<string, L>;
+        promoDescription: LanguageResponse<string, L>;
         useAdditionalContext: boolean;
         displayIcon: string;
         displayIcon2: string;
@@ -18,12 +19,12 @@ export namespace Bundles {
     }
 }
 
-export class Bundles<L extends ValorantApiCom.Language = any> extends ValorantApiComService {
-    public get(): Promise<ValorantApiComService.Response<Bundles.Bundles<L>[]>> {
-        return this.axios.get("/bundles");
+export class Bundles<L extends Language = any> extends ValorantApiComService {
+    public get(): Response<Bundles.Bundles<L>[]> {
+        return this.request.get("/bundles");
     }
 
-    public getByUuid(uuid: string): Promise<ValorantApiComService.Response<Bundles.Bundles<L>>> {
-        return this.axios.get(`/bundles/${uuid}`);
+    public getByUuid(uuid: string): Response<Bundles.Bundles<L>> {
+        return this.request.get(`/bundles/${uuid}`);
     }
 }

@@ -1,3 +1,47 @@
+# 5.0.0
+
+**Add**
+
+-   `WebClient.regionURL`
+
+**Change**
+
+-   ~~`WebClient.axios`~~ **-->** `WebClient.request`
+-   ~~`WebClientRegion`~~ **-->** `WebClientRegionURL`
+-   ~~`WebClientService.axios`~~ **-->** `WebClientService.request`
+-   ~~`WebClientService.apiRegion`~~ **-->** `WebClientService.regionURL`
+-   ~~`Config`~~ **-->** `Configuration`
+
+_refactor_
+
+-   `WebClient`~~`extends AuthClient`~~ **-->** `new WebClient({ user: Auth.toJSON() })`
+
+**Remove**
+
+-   `WebClient.toUserJSON()`
+-   `WebClient.fromUserJSON()`
+-   `WebClient.request`
+
+_static_
+
+-   `WebClient.fromUserJSON()`
+-   `WebClient.fromCookie()`
+-   `WebClient.fromJSON()`
+
+### Typescript
+
+**Add**
+
+-   `Config`
+
+**Change**
+
+-   ~~`WebClient.UserInfo`~~ **-->** `UserInfoResponse`
+
+**Remove**
+
+-   `WebClient.UserJson`
+
 # 4.0.0
 
 _endpoints_
@@ -62,7 +106,7 @@ _endpoints_
 
 **Add**
 
--   `WebClient.request()`
+-   `WebClient.request`
 
 _endpoints_
 

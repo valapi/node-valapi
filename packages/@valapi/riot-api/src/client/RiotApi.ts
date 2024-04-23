@@ -1,9 +1,9 @@
-import axios from "axios";
+import axios, { AxiosHeaders } from "axios";
 import type { AxiosInstance, CreateAxiosDefaults } from "axios";
 
-import { Region } from "@valapi/lib";
+import type { Region } from "@valapi/lib";
 
-import { RiotApiRegion } from "./RiotApiRegion";
+import { RiotApiRegionURL } from "./RiotApiRegionURL";
 
 import { AccountV1 } from "../service/AccountV1";
 import { ContentV1 } from "../service/ContentV1";
@@ -11,90 +11,54 @@ import { MatchV1 } from "../service/MatchV1";
 import { RankedV1 } from "../service/RankedV1";
 import { StatusV1 } from "../service/StatusV1";
 
-export namespace RiotApi {
-    export interface Config {
-        /**
-         * API Key
-         */
-        apiKey: string;
-        /**
-         * Region
-         */
-        region: Region.ID;
-        /**
-         * Request Config
-         */
-        axiosConfig?: CreateAxiosDefaults;
-    }
+export interface Config {
+    apiKey: string;
+    region: Region.ID;
+    axiosConfig?: CreateAxiosDefaults;
 }
 
 /**
  * Official Api From Riot Games
  */
 export class RiotApi {
-    private static readonly DEFAULT_config: Required<RiotApi.Config> = {
-        apiKey: "",
-        region: Region.Default.North_America,
-        axiosConfig: {}
-    };
-    public static readonly Default = {
-        config: RiotApi.DEFAULT_config
-    };
+    public readonly request: AxiosInstance;
+    public readonly regionURL: RiotApiRegionURL;
 
-    public readonly config: Required<RiotApi.Config>;
-    protected readonly axios: AxiosInstance;
+    public constructor(config: Config) {
+        const headers = new AxiosHeaders();
+        headers.setContentType("application/json");
+        headers.set("X-Riot-Token", config.apiKey);
 
-    public readonly createAt: number = Date.now();
-
-    /**
-     *
-     * @param {RiotApi.Config} config Config
-     */
-    public constructor(config: RiotApi.Config) {
-        this.config = {
-            ...RiotApi.Default.config,
-            ...config,
+        this.request = axios.create({
+            ...config.axiosConfig,
             ...{
-                axiosConfig: {
-                    ...RiotApi.Default.config.axiosConfig,
-                    ...config.axiosConfig,
-                    ...{
-                        headers: {
-                            ...RiotApi.Default.config.axiosConfig.headers,
-                            ...config.axiosConfig?.headers,
-                            ...{
-                                "X-Riot-Token": config.apiKey
-                            }
-                        }
-                    }
+                headers: {
+                    ...config.axiosConfig?.headers,
+                    ...headers.toJSON()
                 }
             }
-        };
+        });
 
-        this.axios = axios.create(this.config.axiosConfig);
-    }
-
-    public get request() {
-        return this.axios.request;
+        this.regionURL = new RiotApiRegionURL(config.region);
     }
 
     public get AccountV1(): AccountV1 {
-        return new AccountV1(this.axios, new RiotApiRegion(this.config.region));
+        return new AccountV1(this.request, this.regionURL);
     }
 
     public get ContentV1(): ContentV1 {
-        return new ContentV1(this.axios, new RiotApiRegion(this.config.region));
+        return new ContentV1(this.request, this.regionURL);
     }
 
     public get MatchV1(): MatchV1 {
-        return new MatchV1(this.axios, new RiotApiRegion(this.config.region));
+        return new MatchV1(this.request, this.regionURL);
     }
 
     public get RankedV1(): RankedV1 {
-        return new RankedV1(this.axios, new RiotApiRegion(this.config.region));
+        return new RankedV1(this.request, this.regionURL);
     }
 
     public get StatusV1(): StatusV1 {
-        return new StatusV1(this.axios, new RiotApiRegion(this.config.region));
+        return new StatusV1(this.request, this.regionURL);
     }
 }

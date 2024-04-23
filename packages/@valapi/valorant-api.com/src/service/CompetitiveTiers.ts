@@ -1,15 +1,16 @@
+import type { Language } from "../client/ValorantApiCom";
 import { ValorantApiComService } from "../client/ValorantApiComService";
-import type { ValorantApiCom } from "../client/ValorantApiCom";
+import type { LanguageResponse, Response } from "../client/ValorantApiComService";
 
 export namespace CompetitiveTiers {
-    export interface CompetitiveTiers<L extends ValorantApiCom.Language> {
+    export interface CompetitiveTiers<L extends Language> {
         uuid: string;
         assetObjectName: string;
         tiers: Array<{
             tier: number;
-            tierName: ValorantApiComService.Languages<string, L>;
+            tierName: LanguageResponse<string, L>;
             division: string;
-            divisionName: ValorantApiComService.Languages<string, L>;
+            divisionName: LanguageResponse<string, L>;
             color: string;
             backgroundColor: string;
             smallIcon: string;
@@ -21,12 +22,12 @@ export namespace CompetitiveTiers {
     }
 }
 
-export class CompetitiveTiers<L extends ValorantApiCom.Language = any> extends ValorantApiComService {
-    public get(): Promise<ValorantApiComService.Response<CompetitiveTiers.CompetitiveTiers<L>[]>> {
-        return this.axios.get("/competitivetiers");
+export class CompetitiveTiers<L extends Language = any> extends ValorantApiComService {
+    public get(): Response<CompetitiveTiers.CompetitiveTiers<L>[]> {
+        return this.request.get("/competitivetiers");
     }
 
-    public getByUuid(uuid: string): Promise<ValorantApiComService.Response<CompetitiveTiers.CompetitiveTiers<L>>> {
-        return this.axios.get(`/competitivetiers/${uuid}`);
+    public getByUuid(uuid: string): Response<CompetitiveTiers.CompetitiveTiers<L>> {
+        return this.request.get(`/competitivetiers/${uuid}`);
     }
 }
