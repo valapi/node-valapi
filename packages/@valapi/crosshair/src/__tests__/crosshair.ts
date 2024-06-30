@@ -1,6 +1,6 @@
 import { ValCrosshair } from "../index";
 
-describe("valorant_ts.crosshair", () => {
+describe("crosshair", () => {
     test("set", () => {
         const crosshair: ValCrosshair = new ValCrosshair();
 

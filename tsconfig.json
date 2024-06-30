@@ -4,6 +4,9 @@
       "path": "./packages/@valapi/auth"
     },
     {
+      "path": "./packages/@valapi/crosshair"
+    },
+    {
       "path": "./packages/@valapi/lib"
     },
     {
@@ -14,9 +17,6 @@
     },
     {
       "path": "./packages/@valapi/web-client"
-    },
-    {
-      "path": "./packages/valorant.ts"
     }
   ],
   "files": []

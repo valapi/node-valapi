@@ -26,6 +26,13 @@ describe("lib.resource", () => {
         expect(QueueId.fromID("onefa")).toBe("Replication");
     });
 
+    test("queue.newmap", () => {
+        const newMapID = <QueueId.ID>"abyss";
+
+        expect(QueueId.fromName("New_Map", newMapID)).toBe(newMapID);
+        expect(QueueId.fromID(newMapID, newMapID)).toBe("New_Map");
+    });
+
     test("region", () => {
         expect(Region.fromName("Brazil")).toBe("br");
         expect(Region.fromID("pbe")).toBe("Public_Beta_Environment");

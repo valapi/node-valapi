@@ -1,3 +1,14 @@
+# 5.0.0-beta.0
+
+**Add**
+
+-   `ValVersion`
+
+**Change**
+
+-   ~~`QueueId.fromName(x)`~~ **-->** `QueueId.fromName(x, newMapID?)`
+-   ~~`QueueId.fromID(x)`~~ **-->** `QueueId.fromID(x, newMapID?)`
+
 # 4.0.0
 
 **Add**

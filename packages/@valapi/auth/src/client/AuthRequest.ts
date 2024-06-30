@@ -37,7 +37,7 @@ export class AuthRequest {
         const requestConfig = {
             ...{
                 userAgent: "RiotClient/53.0.0.4494832.4470164 %s (Windows;10;;Professional, x64)",
-                version: "release-08.07-shipping-9-2444158",
+                version: "release-09.00-shipping-28-2628993",
                 platform: {
                     platformType: "PC",
                     platformOS: "Windows",

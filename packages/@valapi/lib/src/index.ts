@@ -8,4 +8,5 @@ export * as Locale from "./resources/Locale";
 export * as QueueId from "./resources/QueueId";
 export * as Region from "./resources/Region";
 
-export { ValEncryption } from "./utils/encryption";
+export { ValEncryption } from "./utils/ValEncryption";
+export { ValVersion } from "./utils/ValVersion";

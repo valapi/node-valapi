@@ -2,11 +2,11 @@
   "name": "npmjs/@valapi",
   "entryPoints": [
     "packages/@valapi/auth",
+    "packages/@valapi/crosshair",
     "packages/@valapi/lib",
     "packages/@valapi/riot-api",
     "packages/@valapi/valorant-api.com",
-    "packages/@valapi/web-client",
-    "packages/valroant.ts"
+    "packages/@valapi/web-client"
   ],
   "entryPointStrategy": "packages",
   "cleanOutputDir": true,

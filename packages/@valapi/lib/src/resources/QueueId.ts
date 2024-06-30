@@ -13,20 +13,27 @@ export const Default = <const>{
     Custom: "",
     Custom_Tournament: "tournamentmode",
 
-    // * change when having a new map
-    New_Map: undefined
+    New_Map: "newmap"
 };
 
 export type Name = keyof typeof Default;
 export type ID = Exclude<(typeof Default)[Name], (typeof Default)["New_Map"] | "">;
 
-export function fromName(x: Name): ID {
+export function fromName(x: Name, newMapID: string = "abyss"): ID {
+    if (x == "New_Map") {
+        return <ID>newMapID;
+    }
+
     return <ID>Default[x];
 }
 
-export function fromID(x: ID): Name {
+export function fromID(x: ID, newMapID: string = "abyss"): Name {
     for (const data of Object.entries(Default)) {
-        if (typeof data[1] == "string" && data[1] == x) {
+        if (data[1] == "newmap" && x == newMapID) {
+            return "New_Map";
+        }
+
+        if (data[1] == x) {
             return <Name>data[0];
         }
     }

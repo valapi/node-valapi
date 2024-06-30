@@ -4,7 +4,7 @@
 | ---------- | ----------- |
 | Rate Limit | Missing     |
 
-**@/valorant.ts**
+**@/crosshair**
 
 | Type  | Name         | Progression |
 | ----- | ------------ | ----------- |
