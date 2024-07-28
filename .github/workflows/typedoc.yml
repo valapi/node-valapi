@@ -17,6 +17,8 @@ jobs:
         steps:
             - name: Checkout
               uses: actions/checkout@v4
+            - name: Setup Pages
+              uses: actions/configure-pages@v5
             - name: Setup Node
               uses: "actions/setup-node@v4"
             - name: Install Dependencies
@@ -25,7 +27,9 @@ jobs:
               run: npm run compile
             - name: Build
               run: npm run docs
-            - name: Clone
-              uses: actions/checkout@v4
+            - name: Upload artifact
+              uses: actions/upload-pages-artifact@v3
               with:
-                  repository: valapi/docs
+                  path: './docs'
+            - name: Deploy to GitHub Pages
+              uses: actions/deploy-pages@v4
