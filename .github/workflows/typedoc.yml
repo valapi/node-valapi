@@ -21,6 +21,8 @@ jobs:
               uses: "actions/setup-node@v4"
             - name: Install Dependencies
               run: npm install
+            - name: Compile
+              run: npm run compile
             - name: Build
               run: npm run docs
             - name: Clone
