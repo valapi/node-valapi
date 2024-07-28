@@ -25,12 +25,7 @@ jobs:
               run: npm run compile
             - name: Build
               run: npm run docs
-            - name: Upload artifact
-              uses: actions/upload-pages-artifact@v3
-              with:
-                  path: './docs'
             - name: Clone
               uses: actions/checkout@v4
               with:
                   repository: valapi/docs
-                  sparse-checkout: docs
