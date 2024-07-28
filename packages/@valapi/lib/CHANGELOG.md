@@ -1,3 +1,11 @@
+# 5.0.0-beta.1
+
+**Add**
+
+_static_
+
+-   `ValEncryption.randomString(size)`
+
 # 5.0.0-beta.0
 
 **Add**

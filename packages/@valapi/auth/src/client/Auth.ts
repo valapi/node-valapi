@@ -5,6 +5,7 @@ import { AuthRequest } from "./AuthRequest";
 import type { PromiseResponse, Response, RequestConfig } from "./AuthRequest";
 import { AuthInstance } from "./AuthInstance";
 import type { AuthUserInfo } from "./AuthInstance";
+import { getResponseCookies } from "../utils/cookie";
 
 type AuthRequestResponse =
     | {
@@ -76,8 +77,12 @@ export class Auth extends AuthInstance {
         this.request.headers.set("Cookie", this.cookie.getSetCookieStringsSync("https://auth.riotgames.com"));
     }
 
+    private hasCookie(key: string): boolean {
+        return this.cookie.getCookiesSync("https://auth.riotgames.com").find(x => x.key === key) !== undefined;
+    }
+
     private analyzeCookie(key: string) {
-        if (!this.cookie.getCookiesSync("https://auth.riotgames.com").find(x => x.key === key)) {
+        if (!this.hasCookie(key)) {
             throw new ValError({
                 name: "Auth_Cookie_Error",
                 message: `${key} cookie not found`,
@@ -86,6 +91,18 @@ export class Auth extends AuthInstance {
         }
 
         this.request.headers.set("Cookie", this.cookie.getSetCookieStringsSync("https://auth.riotgames.com"));
+    }
+
+    private analyzeResponseCookie(key: string, response: Response<any>) {
+        if (!this.hasCookie(key)) {
+            const cookies = getResponseCookies(response);
+
+            for (const cookie of cookies) {
+                this.cookie.setCookieSync(cookie, response.config.url ?? cookie.domain ?? "riotgames.com");
+            }
+        }
+
+        this.analyzeCookie(key);
     }
 
     protected async authorize(): PromiseResponse<AuthRequestResponse> {
@@ -114,7 +131,7 @@ export class Auth extends AuthInstance {
         this.cookie.removeAllCookiesSync();
 
         const response = await this.authorize();
-        this.analyzeCookie("ssid");
+        this.analyzeResponseCookie("ssid", response);
 
         // URI
         if (response.data.type === "response") {
@@ -133,26 +150,26 @@ export class Auth extends AuthInstance {
 
     public async login(username: string, password: string) {
         const response = await this.authorize();
-        this.analyzeCookie("asid");
+        this.analyzeResponseCookie("asid", response);
 
-        const TokenResponse: Response<AuthRequestResponse> = await this.request.put("https://auth.riotgames.com/api/v1/authorization", {
+        const tokenResponse: Response<AuthRequestResponse> = await this.request.put("https://auth.riotgames.com/api/v1/authorization", {
             type: "auth",
             username: username,
             password: password,
             remember: true
         });
-        this.analyzeCookie("ssid");
+        this.analyzeResponseCookie("ssid", tokenResponse);
 
         // MFA
-        if (TokenResponse.data.type === "multifactor") {
+        if (tokenResponse.data.type === "multifactor") {
             this.isMultifactor = true;
 
             return;
         }
 
         // URI
-        if (TokenResponse.data.type === "response") {
-            this.uriTokenization(TokenResponse.data.response.parameters.uri);
+        if (tokenResponse.data.type === "response") {
+            this.uriTokenization(tokenResponse.data.response.parameters.uri);
             await this.entitlementsTokenization();
 
             return;

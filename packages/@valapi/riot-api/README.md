@@ -53,7 +53,7 @@ pnpm add @valapi/riot-api
 
 ## Guide
 
-Full Guide: **[valapi.github.io](https://valapi.github.io/build/API/riot-api/Intro.html)**
+Full Guide: **[valapi.github.io/guide](https://valapi.github.io/guide)**
 
 ```typescript
 import { RiotApi } from "@valapi/riot-api";
@@ -62,7 +62,7 @@ import { RiotApi } from "@valapi/riot-api";
 ### Client
 
 ```typescript
-const riotApi = new RiotApi({
+const client = new RiotApi({
     apiKey: "LoooooongApiKey_123456789",
     region: "ap"
 });
@@ -71,13 +71,13 @@ const riotApi = new RiotApi({
 ### API
 
 ```typescript
-const status = await riotApi.StatusV1.platformData();
+const status = await client.StatusV1.platformData();
 
 console.log(status.data);
 ```
 
 ```typescript
-const accountData = await riotApi.AccountV1.byRiotId("PRX f0rsakeN", "Huh");
+const accountData = await client.AccountV1.byRiotId("PRX f0rsakeN", "Huh");
 
 console.log(accountData.data);
 ```

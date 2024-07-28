@@ -53,4 +53,4 @@ pnpm add @valapi/lib
 
 ## Guide
 
-Full Guide: **[valapi.github.io](https://valapi.github.io)**
+Full Guide: **[valapi.github.io/guide](https://valapi.github.io/guide)**

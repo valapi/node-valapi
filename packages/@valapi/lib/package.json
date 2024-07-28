@@ -1,6 +1,6 @@
 {
   "name": "@valapi/lib",
-  "version": "5.0.0-beta.0",
+  "version": "5.0.0-beta.1",
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
     "access": "public"
@@ -24,9 +24,8 @@
   "bugs": {
     "url": "https://github.com/valapi/node-valapi/issues"
   },
-  "homepage": "https://github.com/valapi/node-valapi/tree/master/packages/@valapi/lib#readme",
+  "homepage": "https://valapi.github.io/guide",
   "dependencies": {
-    "axios": "^1.7.2",
     "tslib": "^2.6.3"
   },
   "directories": {

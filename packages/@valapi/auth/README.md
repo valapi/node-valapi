@@ -53,10 +53,10 @@ pnpm add @valapi/auth
 
 ## Guide
 
-Full Guide: **[valapi.github.io](https://valapi.github.io/build/PACKAGE/auth/Intro.html)**
+Full Guide: **[valapi.github.io/guide](https://valapi.github.io/guide)**
 
 ```typescript
-import { AuthClient } from "@valapi/auth";
+import { Auth } from "@valapi/auth";
 ```
 
 ### Client
@@ -80,7 +80,7 @@ const subject = auth.subject;
 **Save**
 
 ```typescript
-auth.fromJSON(legacyAuth.toJSON());
+const auth = new Auth({ user: oldAuth.toJSON() });
 
 if (new Date() >= auth.expirationDate) {
     await auth.reauthorize();

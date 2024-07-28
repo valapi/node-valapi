@@ -1,3 +1,13 @@
+# 5.0.0-beta.1
+
+**Add**
+
+-   `getResponseCookies(response)`
+
+_static_
+
+-   `AuthRequest.newUserAgent(build, app?)`
+
 # 5.0.0-beta.0
 
 **Change**

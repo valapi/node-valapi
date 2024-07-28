@@ -53,7 +53,7 @@ pnpm add @valapi/valorant-api.com
 
 ## Guide
 
-Full Guide: **[valapi.github.io](https://valapi.github.io/build/API/valorant-api.com/Intro.html)**
+Full Guide: **[valapi.github.io/guide](https://valapi.github.io/guide)**
 
 ```typescript
 import { ValorantApiCom } from "@valapi/valorant-api.com";
@@ -62,7 +62,7 @@ import { ValorantApiCom } from "@valapi/valorant-api.com";
 ### Client
 
 ```typescript
-const valorantApiCom = new ValorantApiCom({
+const client = new ValorantApiCom({
     language: "en-US"
 });
 ```
@@ -70,14 +70,14 @@ const valorantApiCom = new ValorantApiCom({
 ### API
 
 ```typescript
-const versions = await valorantApiCom.Versions.get();
+const versions = await client.Versions.get();
 
 console.log(versions.data);
 ```
 
 ```typescript
 const mapUuid = "7eaecc1b-4337-bbf6-6ab9-04b8f06b3319"; /* Ascent */
-const map = await valorantApiCom.Maps.getByUuid(mapUuid);
+const map = await client.Maps.getByUuid(mapUuid);
 
 console.log(events.data);
 ```

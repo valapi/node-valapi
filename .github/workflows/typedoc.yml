@@ -1,0 +1,32 @@
+name: "Deploy typedoc to Pages"
+
+on:
+    push:
+        branches: ["main"]
+
+permissions:
+    pages: write
+    id-token: write
+
+jobs:
+    deploy:
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+            - name: Setup Pages
+              uses: actions/configure-pages@v5
+            - name: Setup Node
+              uses: "actions/setup-node@v4"
+            - name: Install Dependencies
+              run: npm install
+            - name: Build
+              run: npm run docs
+            - name: Clone
+              uses: actions/checkout@v4
+              with:
+                  repository: valapi/docs
+                  sparse-checkout: docs

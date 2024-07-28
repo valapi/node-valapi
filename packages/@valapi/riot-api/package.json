@@ -1,6 +1,6 @@
 {
   "name": "@valapi/riot-api",
-  "version": "5.0.0-beta.0",
+  "version": "5.0.0-beta.1",
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
     "access": "public"
@@ -10,7 +10,8 @@
     "riot",
     "api",
     "val",
-    "valorant"
+    "valorant",
+    "official"
   ],
   "main": "build/index.js",
   "types": "./build/index.d.ts",
@@ -24,9 +25,10 @@
   "bugs": {
     "url": "https://github.com/valapi/node-valapi/issues"
   },
-  "homepage": "https://github.com/valapi/node-valapi/tree/master/packages/@valapi/riot-api#readme",
+  "homepage": "https://valapi.github.io/guide",
   "dependencies": {
-    "@valapi/lib": "5.0.0-beta.0"
+    "@valapi/lib": "5.0.0-beta.1",
+    "axios": "^1.7.2"
   },
   "directories": {
     "lib": "build",

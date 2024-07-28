@@ -53,7 +53,7 @@ pnpm add @valapi/web-client
 
 ## Guide
 
-Full Guide: **[valapi.github.io](https://valapi.github.io/build/API/web-client/Intro.html)**
+Full Guide: **[valapi.github.io/guide](https://valapi.github.io/guide)**
 
 ```typescript
 import { WebClient } from "@valapi/web-client";
@@ -62,20 +62,20 @@ import { WebClient } from "@valapi/web-client";
 ### API
 
 ```typescript
-const userInfo = await webClient.getUserInfo();
+const userInfo = await client.getUserInfo();
 
 console.log(userInfo.data);
 ```
 
 ```typescript
 const mapId = "match-id-1234567890";
-const matchDetails = await webClient.Match.fetchMatchDetails(mapId);
+const matchDetails = await client.Match.fetchMatchDetails(mapId);
 
 console.log(matchDetails.data);
 ```
 
 ```typescript
-const wallet = await webClient.Store.getWallet(subject);
+const wallet = await client.Store.getWallet(subject);
 
 console.log(wallet.data);
 ```

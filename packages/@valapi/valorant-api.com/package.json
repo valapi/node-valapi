@@ -1,6 +1,6 @@
 {
   "name": "@valapi/valorant-api.com",
-  "version": "5.0.0-beta.0",
+  "version": "5.0.0-beta.1",
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
     "access": "public"
@@ -25,9 +25,10 @@
   "bugs": {
     "url": "https://github.com/valapi/node-valapi/issues"
   },
-  "homepage": "https://github.com/valapi/node-valapi/tree/master/packages/@valapi/valorant-api.com#readme",
+  "homepage": "https://valapi.github.io/guide",
   "dependencies": {
-    "@valapi/lib": "5.0.0-beta.0"
+    "@valapi/lib": "5.0.0-beta.1",
+    "axios": "^1.7.2"
   },
   "directories": {
     "lib": "build",

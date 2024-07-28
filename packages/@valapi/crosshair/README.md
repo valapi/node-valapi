@@ -19,7 +19,7 @@
   
 [![Profile][githubrepo_image]][github_url]
 
-Valorant Crosshair Parser
+Valorant Crosshair Compiler
 
 [![Downloads][download_image]][download_url]
 [![install size][size_image]][size_url]
@@ -50,3 +50,7 @@ npm install @valapi/crosshair
 ```bash
 pnpm add @valapi/crosshair
 ```
+
+## Guide
+
+Full Guide: **[valapi.github.io/guide](https://valapi.github.io/guide)**

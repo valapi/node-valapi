@@ -36,7 +36,7 @@ export class AuthRequest {
     constructor(config: RequestConfig) {
         const requestConfig = {
             ...{
-                userAgent: "RiotClient/53.0.0.4494832.4470164 %s (Windows;10;;Professional, x64)",
+                userAgent: AuthRequest.newUserAgent("89.0.3.1742.3775", "rso-auth"),
                 version: "release-09.00-shipping-28-2628993",
                 platform: {
                     platformType: "PC",
@@ -53,6 +53,7 @@ export class AuthRequest {
 
         this.headers = new AxiosHeaders()
             .setContentType("application/json")
+            .setAccept("application/json")
             .setUserAgent(requestConfig.userAgent)
             .set({
                 "X-Riot-ClientVersion": requestConfig.version,
@@ -93,6 +94,12 @@ export class AuthRequest {
                 }
             }
         };
+    }
+
+    public static newUserAgent(build: string, app: string = "%s"): string {
+        // const sdk = build.split('.')[1];
+
+        return `RiotClient/${build} ${app} (Windows;10;;Professional, x64)`;
     }
 
     public create(): AxiosInstance {

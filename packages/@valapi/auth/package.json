@@ -1,6 +1,6 @@
 {
   "name": "@valapi/auth",
-  "version": "5.0.0-beta.0",
+  "version": "5.0.0-beta.1",
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
     "access": "public"
@@ -27,9 +27,10 @@
   "bugs": {
     "url": "https://github.com/valapi/node-valapi/issues"
   },
-  "homepage": "https://github.com/valapi/node-valapi/tree/master/packages/@valapi/auth#readme",
+  "homepage": "https://valapi.github.io/guide",
   "dependencies": {
-    "@valapi/lib": "5.0.0-beta.0",
+    "@valapi/lib": "5.0.0-beta.1",
+    "axios": "^1.7.2",
     "http-cookie-agent": "^6.0.5",
     "tough-cookie": "^4.1.4"
   },
