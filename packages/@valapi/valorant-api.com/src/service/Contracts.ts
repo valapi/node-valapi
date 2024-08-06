@@ -45,10 +45,10 @@ export namespace Contracts {
 
 export class Contracts<L extends Language = any> extends ValorantApiComService {
     public get(): Response<Contracts.Contracts<L>[]> {
-        return this.request.get("/contracts");
+        return this.request.get(`/v1/contracts`);
     }
 
     public getByUuid(uuid: string): Response<Contracts.Contracts<L>> {
-        return this.request.get(`/contracts/${uuid}`);
+        return this.request.get(`/v1/contracts/${uuid}`);
     }
 }

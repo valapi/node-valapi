@@ -12,10 +12,10 @@ export namespace Ceremonies {
 
 export class Ceremonies<L extends Language = any> extends ValorantApiComService {
     public get(): Response<Ceremonies.Ceremonies<L>[]> {
-        return this.request.get("/ceremonies");
+        return this.request.get(`/v1/ceremonies`);
     }
 
     public getByUuid(uuid: string): Response<Ceremonies.Ceremonies<L>> {
-        return this.request.get(`/ceremonies/${uuid}`);
+        return this.request.get(`/v1/ceremonies/${uuid}`);
     }
 }

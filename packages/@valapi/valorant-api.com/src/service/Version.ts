@@ -16,6 +16,6 @@ export namespace Version {
 
 export class Version extends ValorantApiComService {
     public get(): Response<Version.Version> {
-        return this.request.get("/version");
+        return this.request.get(`/v1/version`);
     }
 }

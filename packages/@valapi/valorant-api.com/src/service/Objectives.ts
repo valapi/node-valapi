@@ -5,6 +5,7 @@ export namespace Objectives {
     /**
      * ! unknown from website
      */
+
     export interface Objectives {
         uuid: string;
         directive: string;
@@ -14,10 +15,10 @@ export namespace Objectives {
 
 export class Objectives extends ValorantApiComService {
     public get(): Response<Objectives.Objectives[]> {
-        return this.request.get("/objectives");
+        return this.request.get(`/v1/objectives`);
     }
 
     public getByUuid(uuid: string): Response<Objectives.Objectives> {
-        return this.request.get(`/objectives/${uuid}`);
+        return this.request.get(`/v1/objectives/${uuid}`);
     }
 }

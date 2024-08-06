@@ -25,18 +25,18 @@ export namespace Buddies {
 
 export class Buddies<L extends Language = any> extends ValorantApiComService {
     public get(): Response<Buddies.Buddies<L>[]> {
-        return this.request.get("/buddies");
+        return this.request.get(`/v1/buddies`);
     }
 
     public getLevels(): Response<Buddies.BuddyLevels<L>[]> {
-        return this.request.get(`/buddies/levels`);
+        return this.request.get(`/v1/buddies/levels`);
     }
 
     public getByUuid(uuid: string): Response<Buddies.Buddies<L>> {
-        return this.request.get(`/buddies/${uuid}`);
+        return this.request.get(`/v1/buddies/${uuid}`);
     }
 
     public getLevelByUuid(uuid: string): Response<Buddies.BuddyLevels<L>> {
-        return this.request.get(`/buddies/levels/${uuid}`);
+        return this.request.get(`/v1/buddies/levels/${uuid}`);
     }
 }

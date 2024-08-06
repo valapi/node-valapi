@@ -15,10 +15,10 @@ export namespace Currencies {
 
 export class Currencies<L extends Language = any> extends ValorantApiComService {
     public get(): Response<Currencies.Currencies<L>[]> {
-        return this.request.get("/currencies");
+        return this.request.get(`/v1/currencies`);
     }
 
     public getByUuid(uuid: string): Response<Currencies.Currencies<L>> {
-        return this.request.get(`/currencies/${uuid}`);
+        return this.request.get(`/v1/currencies/${uuid}`);
     }
 }

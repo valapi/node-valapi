@@ -1,3 +1,12 @@
+# 5.0.0-beta.2
+
+**Add**
+
+_service_
+
+-   `Internal.uuid()`
+-   `Internal.riotClientVersion()`
+
 # 5.0.0-beta.0
 
 **Change**

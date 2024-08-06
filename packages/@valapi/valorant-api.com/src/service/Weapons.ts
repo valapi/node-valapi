@@ -98,34 +98,34 @@ export namespace Weapons {
 
 export class Weapons<L extends Language = any> extends ValorantApiComService {
     public get(): Response<Weapons.Weapons<L>[]> {
-        return this.request.get("/weapons");
+        return this.request.get(`/v1/weapons`);
     }
 
     public getSkins(): Response<Weapons.WeaponSkins<L>[]> {
-        return this.request.get("/weapons/skins");
+        return this.request.get(`/v1/weapons/skins`);
     }
 
     public getSkinChromas(): Response<Weapons.WeaponSkinChromas<L>[]> {
-        return this.request.get("/weapons/skinchromas");
+        return this.request.get(`/v1/weapons/skinchromas`);
     }
 
     public getSkinLevels(): Response<Weapons.WeaponSkinLevels<L>[]> {
-        return this.request.get("/weapons/skinlevels");
+        return this.request.get(`/v1/weapons/skinlevels`);
     }
 
     public getByUuid(uuid: string): Response<Weapons.Weapons<L>> {
-        return this.request.get(`/weapons/${uuid}`);
+        return this.request.get(`/v1/weapons/${uuid}`);
     }
 
     public getSkinByUuid(uuid: string): Response<Weapons.WeaponSkins<L>> {
-        return this.request.get(`/weapons/skins/${uuid}`);
+        return this.request.get(`/v1/weapons/skins/${uuid}`);
     }
 
     public getSkinChromaByUuid(uuid: string): Response<Weapons.WeaponSkinChromas<L>> {
-        return this.request.get(`/weapons/skinchromas/${uuid}`);
+        return this.request.get(`/v1/weapons/skinchromas/${uuid}`);
     }
 
     public getSkinLevelByUuid(uuid: string): Response<Weapons.WeaponSkinLevels<L>> {
-        return this.request.get(`/weapons/skinlevels/${uuid}`);
+        return this.request.get(`/v1/weapons/skinlevels/${uuid}`);
     }
 }

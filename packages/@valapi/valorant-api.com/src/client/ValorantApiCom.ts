@@ -14,6 +14,7 @@ import { Currencies } from "../service/Currencies";
 import { Events } from "../service/Events";
 import { Gamemodes } from "../service/Gamemodes";
 import { Gear } from "../service/Gear";
+import { Internal } from "../service/Internal";
 import { LevelBorders } from "../service/LevelBorders";
 import { Maps } from "../service/Maps";
 import { Missions } from "../service/Missions";
@@ -54,7 +55,7 @@ export class ValorantApiCom<L extends Language> {
         this.request = axios.create({
             ...config.axiosConfig,
             ...{
-                baseURL: "https://valorant-api.com/v1",
+                baseURL: "https://valorant-api.com",
                 headers: {
                     ...config.axiosConfig?.headers,
                     ...headers.toJSON()
@@ -117,6 +118,10 @@ export class ValorantApiCom<L extends Language> {
 
     public get Gear(): Gear<L> {
         return new Gear<L>(this.request);
+    }
+
+    public get Internal(): Internal<L> {
+        return new Internal<L>(this.request);
     }
 
     public get LevelBorders(): LevelBorders<L> {

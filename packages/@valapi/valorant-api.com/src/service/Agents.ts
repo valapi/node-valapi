@@ -58,7 +58,7 @@ export namespace Agents {
 
 export class Agents<L extends Language = any> extends ValorantApiComService {
     public get(isPlayableCharacter: boolean = true): Response<Agents.Agents<L>[]> {
-        return this.request.get(`/agents`, {
+        return this.request.get(`/v1/agents`, {
             params: {
                 isPlayableCharacter: isPlayableCharacter
             }
@@ -66,6 +66,6 @@ export class Agents<L extends Language = any> extends ValorantApiComService {
     }
 
     public getByUuid(uuid: string): Response<Agents.Agents<L>> {
-        return this.request.get(`/agents/${uuid}`);
+        return this.request.get(`/v1/agents/${uuid}`);
     }
 }

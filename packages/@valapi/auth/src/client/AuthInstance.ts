@@ -5,6 +5,7 @@ import { ValEncryption } from "@valapi/lib";
 export interface AuthUserInfo {
     cookie: CookieJar.Serialized;
     isMultifactor: boolean;
+    login_token: string;
     access_token: string;
     id_token: string;
     session_state: string;
@@ -20,6 +21,7 @@ export class AuthInstance implements Omit<AuthUserInfo, "cookie"> {
     public cookie: CookieJar = new CookieJar();
     public isMultifactor: boolean = false;
 
+    public login_token: string = "";
     public access_token: string = "";
     public id_token: string = "";
     public session_state: string = "";
@@ -40,6 +42,7 @@ export class AuthInstance implements Omit<AuthUserInfo, "cookie"> {
         this.cookie = CookieJar.deserializeSync(user.cookie);
         this.isMultifactor = user.isMultifactor;
 
+        this.login_token = user.login_token;
         this.access_token = user.access_token;
         this.id_token = user.id_token;
         this.session_state = user.session_state;
@@ -63,6 +66,7 @@ export class AuthInstance implements Omit<AuthUserInfo, "cookie"> {
         return {
             cookie: this.cookie.serializeSync(),
             isMultifactor: this.isMultifactor,
+            login_token: this.login_token,
             access_token: this.access_token,
             id_token: this.id_token,
             session_state: this.session_state,

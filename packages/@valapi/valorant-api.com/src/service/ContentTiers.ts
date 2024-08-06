@@ -18,10 +18,10 @@ export namespace ContentTiers {
 
 export class ContentTiers<L extends Language = any> extends ValorantApiComService {
     public get(): Response<ContentTiers.ContentTiers<L>[]> {
-        return this.request.get("/contenttiers");
+        return this.request.get(`/v1/contenttiers`);
     }
 
     public getByUuid(uuid: string): Response<ContentTiers.ContentTiers<L>> {
-        return this.request.get(`/contenttiers/${uuid}`);
+        return this.request.get(`/v1/contenttiers/${uuid}`);
     }
 }

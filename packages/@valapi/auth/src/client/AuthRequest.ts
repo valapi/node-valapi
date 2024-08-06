@@ -1,3 +1,4 @@
+import { createSecureContext, type SecureContextOptions } from "node:tls";
 import type { Agent, AgentOptions } from "node:https";
 
 import axios, { AxiosHeaders } from "axios";
@@ -5,6 +6,7 @@ import type { AxiosRequestConfig, AxiosResponse, AxiosInstance } from "axios";
 import { HttpsCookieAgent } from "http-cookie-agent/http";
 import type { CookieAgent, CookieAgentOptions } from "http-cookie-agent/http";
 import type { CookieJar } from "tough-cookie";
+import * as selfsigned from "selfsigned";
 
 import { ValEncryption } from "@valapi/lib";
 
@@ -19,7 +21,7 @@ export interface ClientPlatfrom {
 }
 
 export interface RequestConfig {
-    userAgent?: string;
+    build?: string;
     version?: string;
     platform?: ClientPlatfrom;
     axiosConfig?: AxiosRequestConfig;
@@ -28,57 +30,92 @@ export interface RequestConfig {
 }
 
 export class AuthRequest {
+    public readonly certificate: selfsigned.GenerateResult;
+
     public readonly headers: AxiosHeaders;
     public readonly agent: CookieAgent<Agent>;
 
-    public readonly defaultAxiosConfig: AxiosRequestConfig;
+    readonly defaultAxiosConfig: AxiosRequestConfig;
 
     constructor(config: RequestConfig) {
-        const requestConfig = {
+        const __config = <Required<RequestConfig>>{
             ...{
-                userAgent: AuthRequest.newUserAgent("89.0.3.1742.3775", "rso-auth"),
-                version: "release-09.00-shipping-28-2628993",
+                build: "91.0.2.1870.3774", // GET https://valorant-api.com/v1/version["data"]["riotClientBuild"]
+                version: "release-09.00-shipping-28-2628993", // GET https://valorant-api.com/v1/version["data"]["riotClientVersion"]
                 platform: {
                     platformType: "PC",
                     platformOS: "Windows",
                     platformOSVersion: "10.0.19043.1.256.64bit",
                     platformChipset: "Unknown"
                 },
-                axiosConfig: {}
+                axiosConfig: {
+                    withCredentials: true
+                }
             },
             ...config
         };
 
-        this.defaultAxiosConfig = requestConfig.axiosConfig;
+        this.defaultAxiosConfig = __config.axiosConfig;
+
+        this.certificate = selfsigned.generate([], {
+            days: 30,
+            pkcs7: true,
+            clientCertificate: true,
+            clientCertificateCN: ValEncryption.randomString(16)
+        });
 
         this.headers = new AxiosHeaders()
             .setContentType("application/json")
             .setAccept("application/json")
-            .setUserAgent(requestConfig.userAgent)
+            .setUserAgent(AuthRequest.newUserAgent(__config.build, "rso-auth"))
             .set({
-                "X-Riot-ClientVersion": requestConfig.version,
-                "X-Riot-ClientPlatform": ValEncryption.encryptJson(requestConfig.platform)
+                "X-Riot-ClientVersion": __config.version,
+                "X-Riot-ClientPlatform": ValEncryption.encryptJson(__config.platform)
             });
 
+        const ctx_options: SecureContextOptions = {
+            cert: this.certificate.cert,
+            sigalgs: [
+                "ecdsa_secp256r1_sha256",
+                "rsa_pss_rsae_sha256",
+                "rsa_pkcs1_sha256",
+                "ecdsa_secp384r1_sha384",
+                "rsa_pss_rsae_sha384",
+                "rsa_pkcs1_sha384",
+                "rsa_pss_rsae_sha512",
+                "rsa_pkcs1_sha512",
+                "rsa_pkcs1_sha1"
+            ].join(":"),
+            ciphers: [
+                "TLS_AES_128_GCM_SHA256",
+                "TLS_CHACHA20_POLY1305_SHA256",
+                "TLS_AES_256_GCM_SHA384",
+                "TLS_AES_128_CCM_SHA256",
+                "TLS_AES_128_CCM_8_SHA256",
+                "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"
+            ].join(":"),
+            honorCipherOrder: true,
+            key: this.certificate.private,
+            maxVersion: "TLSv1.3",
+            minVersion: "TLSv1.2"
+        };
+
         this.agent = new HttpsCookieAgent({
-            ...requestConfig.agentConfig,
+            ...__config.agentConfig,
+            ...ctx_options,
             ...{
-                cookies: {
-                    jar: requestConfig.cookie
-                },
+                // #TcpSocketConnectOpts
                 keepAlive: true,
-                ciphers: [
-                    "TLS_AES_128_GCM_SHA256",
-                    "TLS_CHACHA20_POLY1305_SHA256",
-                    "TLS_AES_256_GCM_SHA384",
-                    "TLS_AES_128_CCM_SHA256",
-                    "TLS_AES_128_CCM_8_SHA256",
-                    "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"
-                ].join(":"),
-                honorCipherOrder: true,
-                minVersion: "TLSv1.2",
-                maxVersion: "TLSv1.3",
-                rejectUnauthorized: false
+
+                // #CommonConnectionOptions
+                requestCert: false,
+                secureContext: createSecureContext(ctx_options),
+                rejectUnauthorized: false,
+
+                // #CookieAgentOptions
+                cookies: {
+                    jar: __config.cookie
+                }
             }
         });
     }
@@ -96,10 +133,8 @@ export class AuthRequest {
         };
     }
 
-    public static newUserAgent(build: string, app: string = "%s"): string {
-        // const sdk = build.split('.')[1];
-
-        return `RiotClient/${build} ${app} (Windows;10;;Professional, x64)`;
+    public static newUserAgent(build: string, app: string = "%s", os: string = "Windows;10;;Professional, x64"): string {
+        return `RiotClient/${build} ${app} (${os})`;
     }
 
     public create(): AxiosInstance {

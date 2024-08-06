@@ -15,10 +15,10 @@ export namespace LevelBorders {
 
 export class LevelBorders<L extends Language = any> extends ValorantApiComService {
     public get(): Response<LevelBorders.LevelBorders<L>[]> {
-        return this.request.get("/levelborders");
+        return this.request.get(`/v1/levelborders`);
     }
 
     public getByUuid(uuid: string): Response<LevelBorders.LevelBorders<L>> {
-        return this.request.get(`/levelborders/${uuid}`);
+        return this.request.get(`/v1/levelborders/${uuid}`);
     }
 }

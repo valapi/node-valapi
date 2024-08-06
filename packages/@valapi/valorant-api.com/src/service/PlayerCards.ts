@@ -18,10 +18,10 @@ export namespace PlayerCards {
 
 export class PlayerCards<L extends Language = any> extends ValorantApiComService {
     public get(): Response<PlayerCards.PlayerCards<L>[]> {
-        return this.request.get("/playercards");
+        return this.request.get(`/v1/playercards`);
     }
 
     public getByUuid(uuid: string): Response<PlayerCards.PlayerCards<L>> {
-        return this.request.get(`/playercards/${uuid}`);
+        return this.request.get(`/v1/playercards/${uuid}`);
     }
 }

@@ -5,6 +5,7 @@ export namespace Missions {
     /**
      * ! unknown from website
      */
+
     export interface Missions {
         uuid: string;
         displayName: string;
@@ -25,10 +26,10 @@ export namespace Missions {
 
 export class Missions extends ValorantApiComService {
     public get(): Response<Missions.Missions[]> {
-        return this.request.get("/missions");
+        return this.request.get(`/v1/missions`);
     }
 
     public getByUuid(uuid: string): Response<Missions.Missions> {
-        return this.request.get(`/missions/${uuid}`);
+        return this.request.get(`/v1/missions/${uuid}`);
     }
 }

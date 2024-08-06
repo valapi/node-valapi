@@ -34,10 +34,10 @@ export namespace Maps {
 
 export class Maps<L extends Language = any> extends ValorantApiComService {
     public get(): Response<Maps.Maps<L>[]> {
-        return this.request.get("/maps");
+        return this.request.get(`/v1/maps`);
     }
 
     public getByUuid(uuid: string): Response<Maps.Maps<L>> {
-        return this.request.get(`/maps/${uuid}`);
+        return this.request.get(`/v1/maps/${uuid}`);
     }
 }

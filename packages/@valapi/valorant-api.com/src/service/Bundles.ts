@@ -21,10 +21,10 @@ export namespace Bundles {
 
 export class Bundles<L extends Language = any> extends ValorantApiComService {
     public get(): Response<Bundles.Bundles<L>[]> {
-        return this.request.get("/bundles");
+        return this.request.get(`/v1/bundles`);
     }
 
     public getByUuid(uuid: string): Response<Bundles.Bundles<L>> {
-        return this.request.get(`/bundles/${uuid}`);
+        return this.request.get(`/v1/bundles/${uuid}`);
     }
 }

@@ -30,18 +30,18 @@ export namespace Sprays {
 
 export class Sprays<L extends Language = any> extends ValorantApiComService {
     public get(): Response<Sprays.Sprays<L>[]> {
-        return this.request.get("/sprays");
+        return this.request.get(`/v1/sprays`);
     }
 
     public getLevels(): Response<Sprays.SprayLevels<L>[]> {
-        return this.request.get(`/sprays/levels`);
+        return this.request.get(`/v1/sprays/levels`);
     }
 
     public getByUuid(uuid: string): Response<Sprays.Sprays<L>> {
-        return this.request.get(`/sprays/${uuid}`);
+        return this.request.get(`/v1/sprays/${uuid}`);
     }
 
     public getLevelByUuid(uuid: string): Response<Sprays.SprayLevels<L>> {
-        return this.request.get(`/sprays/levels/${uuid}`);
+        return this.request.get(`/v1/sprays/levels/${uuid}`);
     }
 }

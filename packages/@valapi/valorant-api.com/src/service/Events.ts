@@ -15,10 +15,10 @@ export namespace Events {
 
 export class Events<L extends Language = any> extends ValorantApiComService {
     public get(): Response<Events.Events<L>[]> {
-        return this.request.get("/events");
+        return this.request.get(`/v1/events`);
     }
 
     public getByUuid(uuid: string): Response<Events.Events<L>> {
-        return this.request.get(`/events/${uuid}`);
+        return this.request.get(`/v1/events/${uuid}`);
     }
 }

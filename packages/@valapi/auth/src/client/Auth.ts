@@ -1,4 +1,4 @@
-import { ValError } from "@valapi/lib";
+import { ValError, ValEncryption } from "@valapi/lib";
 import type { Region } from "@valapi/lib";
 
 import { AuthRequest } from "./AuthRequest";
@@ -7,7 +7,69 @@ import { AuthInstance } from "./AuthInstance";
 import type { AuthUserInfo } from "./AuthInstance";
 import { getResponseCookies } from "../utils/cookie";
 
-type AuthRequestResponse =
+interface CookieRegisterResponse {
+    type: "auth";
+    country: string;
+}
+
+interface CaptchaTokenResponse {
+    type: "auth";
+    auth: {
+        auth_method: "riot_identity";
+    };
+    captcha: {
+        type: "hcaptcha";
+        hcaptcha: {
+            key: string;
+            data: string;
+        };
+    };
+    suuid: string;
+    cluster: string;
+    country: string;
+    platform: string;
+}
+
+type CaptchaResponse =
+    | CaptchaTokenResponse
+    | {
+          type: "error";
+          error: string;
+          country: string;
+      };
+
+interface CaptchaTokenErrorResponse extends CaptchaTokenResponse {
+    error: string;
+}
+
+type RiotIdentityResponse =
+    | CaptchaTokenErrorResponse
+    | {
+          type: "success";
+          success: {
+              login_token: string;
+              redirect_url: string;
+              is_console_link_session: boolean;
+              auth_method: "riot_identity";
+              puuid: string;
+          };
+          country: string;
+          platform: string;
+      }
+    | {
+          type: "multifactor";
+          multifactor: {
+              method: string;
+              methods: Array<string>;
+              email: string;
+              mode: string;
+              auth_method: "riot_identity";
+          };
+          country: string;
+          platform: string;
+      };
+
+type UriResponse =
     | {
           type: "error";
           error: string;
@@ -24,18 +86,6 @@ type AuthRequestResponse =
           country: string;
       }
     | {
-          type: "multifactor";
-          multifactor: {
-              email: string;
-              method: string;
-              methods: Array<string>;
-              multiFactorCodeLength: number;
-              mfaVersion: string;
-          };
-          country: string;
-          securityProfile: string;
-      }
-    | {
           type: "auth";
           error?: string;
           country: string;
@@ -45,7 +95,7 @@ interface EntitlementsTokenResponse {
     entitlements_token?: string;
 }
 
-interface RegionTokenResponse {
+interface GeoTokenResponse {
     token: string;
     affinities: {
         pbe: Region.ID;
@@ -53,12 +103,26 @@ interface RegionTokenResponse {
     };
 }
 
+export interface hCaptcha {
+    sitekey: string;
+    rqdata: string;
+}
+
+export interface LoginData {
+    username: string;
+    password: string;
+    captcha: string;
+}
+
 export interface Config extends Omit<RequestConfig, "cookie"> {
     user?: AuthUserInfo;
+    sdkVersion?: string;
 }
 
 export class Auth extends AuthInstance {
     public readonly request: AuthRequest;
+
+    readonly sdkVersion;
 
     public constructor(config: Config = {}) {
         super(config.user);
@@ -75,6 +139,9 @@ export class Auth extends AuthInstance {
             this.request.headers.set("X-Riot-Entitlements-JWT", this.entitlements_token);
         }
         this.request.headers.set("Cookie", this.cookie.getSetCookieStringsSync("https://auth.riotgames.com"));
+
+        // GET https://valorant-api.com/internal/ritoclientversion["riotGamesApiInfo"]["VS_FIXEDFILEINFO"]["FileVersion"]
+        this.sdkVersion = config.sdkVersion || "24.6.1.3774";
     }
 
     private hasCookie(key: string): boolean {
@@ -105,71 +172,132 @@ export class Auth extends AuthInstance {
         this.analyzeCookie(key);
     }
 
-    protected async authorize(): PromiseResponse<AuthRequestResponse> {
-        const response = await this.request.post<AuthRequestResponse>("https://auth.riotgames.com/api/v1/authorization", {
-            client_id: "play-valorant-web-prod",
-            nonce: "1",
-            redirect_uri: "https://playvalorant.com/opt_in",
-            response_mode: "query",
-            response_type: "token id_token",
-            scope: "account openid"
+    public async captcha(): Promise<hCaptcha> {
+        const response = await this.request.post<CaptchaResponse>("https://authenticate.riotgames.com/api/v1/login", {
+            clientId: "riot-client",
+            language: "",
+            platform: "windows",
+            remember: false,
+            riot_identity: {
+                language: "en_US",
+                state: "auth"
+            },
+            sdkVersion: this.sdkVersion,
+            type: "auth"
         });
 
-        // RESPONSE
-        if (!response.data || response.data.type === "error" || (response.data.type === "auth" && response.data.error)) {
+        if (response.data.type == "error") {
             throw new ValError({
-                name: "Auth_Request_Error",
-                message: "Request Error",
+                name: "Auth_Captcha_Error",
+                message: "unaccept captcha token request",
                 data: response
             });
         }
 
-        return response;
+        return {
+            sitekey: response.data.captcha.hcaptcha.key,
+            rqdata: response.data.captcha.hcaptcha.data
+        };
+    }
+
+    protected async authorize<T>(): PromiseResponse<T> {
+        return this.request.post<T>("https://auth.riotgames.com/api/v1/authorization", {
+            client_id: "riot-client",
+            nonce: ValEncryption.randomString(16),
+            redirect_uri: "http://localhost/redirect",
+            response_type: "token id_token",
+            scope: "account openid"
+        });
     }
 
     public async reauthorize() {
         this.cookie.removeAllCookiesSync();
 
-        const response = await this.authorize();
-        this.analyzeResponseCookie("ssid", response);
+        const uriResponse = await this.authorize<UriResponse>();
+        // this.analyzeResponseCookie("ssid", uriResponse);
 
-        // URI
-        if (response.data.type === "response") {
-            this.uriTokenization(response.data.response.parameters.uri);
-            await this.entitlementsTokenization();
-
-            return;
-        }
-
-        throw new ValError({
-            name: "Auth_ReAuth_Error",
-            message: "Unknown response",
-            data: response
-        });
+        await this.uriTokenization(uriResponse);
     }
 
-    public async login(username: string, password: string) {
-        const response = await this.authorize();
+    public async login(data: LoginData) {
+        const response = await this.authorize<CookieRegisterResponse>();
         this.analyzeResponseCookie("asid", response);
 
-        const tokenResponse: Response<AuthRequestResponse> = await this.request.put("https://auth.riotgames.com/api/v1/authorization", {
-            type: "auth",
-            username: username,
-            password: password,
-            remember: true
+        const loginResponse: Response<RiotIdentityResponse> = await this.request.put("https://authenticate.riotgames.com/api/v1/login", {
+            riot_identity: {
+                captcha: `hcaptcha ${data.captcha}`,
+                language: "en_US",
+                password: data.password,
+                remember: true,
+                username: data.username
+            },
+            type: "auth"
         });
-        this.analyzeResponseCookie("ssid", tokenResponse);
+
+        if (loginResponse.data.type === "auth") {
+            throw new ValError({
+                name: "Auth_Login_Error",
+                message: loginResponse.data.error,
+                data: loginResponse
+            });
+        }
 
         // MFA
-        if (tokenResponse.data.type === "multifactor") {
+
+        if (loginResponse.data.type === "multifactor") {
             this.isMultifactor = true;
 
             return;
         }
 
+        // TOKEN
+
+        await this.loginTokenization(loginResponse.data.success.login_token);
+    }
+
+    public async multifactor(loginCode: number) {
+        const mfaResponse = await this.request.put<RiotIdentityResponse>("https://authenticate.riotgames.com/api/v1/login", {
+            multifactor: {
+                otp: `${loginCode}`,
+                rememberDevice: true
+            },
+            type: "multifactor"
+        });
+
+        if (mfaResponse.data.type !== "success") {
+            throw new ValError({
+                name: "Auth_MFA_Error",
+                message: "Unknown mfa response",
+                data: mfaResponse
+            });
+        }
+
+        await this.loginTokenization(mfaResponse.data.success.login_token);
+    }
+
+    protected async loginTokenization(loginToken: string) {
+        this.login_token = loginToken;
+
+        // COOKIE LOGIN
+
+        const cookieLoginResponse = await this.request.post("https://auth.riotgames.com/api/v1/login-token", {
+            authentication_type: "RiotAuth",
+            code_verifier: "",
+            login_token: this.login_token,
+            persist_login: true // remember
+        });
+        this.analyzeResponseCookie("ssid", cookieLoginResponse);
+
         // URI
-        if (tokenResponse.data.type === "response") {
-            this.uriTokenization(tokenResponse.data.response.parameters.uri);
+
+        const uriResponse = await this.authorize<UriResponse>();
+
+        await this.uriTokenization(uriResponse);
+    }
+
+    protected async uriTokenization(uriResponse: Response<UriResponse>) {
+        if (uriResponse.data.type === "response") {
+            this.uriParamsTokenization(uriResponse.data.response.parameters.uri);
             await this.entitlementsTokenization();
 
             return;
@@ -178,16 +306,31 @@ export class Auth extends AuthInstance {
         throw new ValError({
             name: "Auth_Login_Error",
             message: "Unknown response",
-            data: response
+            data: uriResponse
         });
     }
 
-    protected uriTokenization(uri: string) {
+    protected uriParamsTokenization(uri: string) {
         const url: URL = new URL(uri);
 
-        this.access_token = <string>url.searchParams.get("access_token");
-        this.id_token = <string>url.searchParams.get("id_token");
-        this.session_state = <string>url.searchParams.get("session_state");
+        let searchParams: URLSearchParams;
+        if (url.search) {
+            // access_token=eyJ....
+            searchParams = new URLSearchParams(url.search);
+        } else if (url.hash) {
+            // #access_token=eyJ....
+            searchParams = new URLSearchParams(url.hash.substring(1, url.hash.length));
+        } else {
+            throw new ValError({
+                name: "URI_Token_Error",
+                message: "unknown uri",
+                data: uri
+            });
+        }
+
+        this.access_token = <string>searchParams.get("access_token");
+        this.id_token = <string>searchParams.get("id_token");
+        this.session_state = <string>searchParams.get("session_state");
 
         this.request.headers.setAuthorization(`Bearer ${this.access_token}`);
 
@@ -211,7 +354,7 @@ export class Auth extends AuthInstance {
     }
 
     public async regionTokenization(): Promise<Region.ID> {
-        const response: Response<RegionTokenResponse> = await this.request.put("https://riot-geo.pas.si.riotgames.com/pas/v1/product/valorant", {
+        const response: Response<GeoTokenResponse> = await this.request.put("https://riot-geo.pas.si.riotgames.com/pas/v1/product/valorant", {
             id_token: this.id_token
         });
 

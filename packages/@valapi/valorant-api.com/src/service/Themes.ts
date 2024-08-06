@@ -14,10 +14,10 @@ export namespace Themes {
 
 export class Themes<L extends Language = any> extends ValorantApiComService {
     public get(): Response<Themes.Themes<L>[]> {
-        return this.request.get("/themes");
+        return this.request.get(`/v1/themes`);
     }
 
     public getByUuid(uuid: string): Response<Themes.Themes<L>> {
-        return this.request.get(`/themes/${uuid}`);
+        return this.request.get(`/v1/themes/${uuid}`);
     }
 }

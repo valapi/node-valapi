@@ -42,18 +42,18 @@ export namespace Gamemodes {
 
 export class Gamemodes<L extends Language = any> extends ValorantApiComService {
     public get(): Response<Gamemodes.Gamemodes<L>[]> {
-        return this.request.get("/gamemodes");
+        return this.request.get(`/v1/gamemodes`);
     }
 
     public getEquippables(): Response<Gamemodes.GamemodeEquippables<L>[]> {
-        return this.request.get(`/gamemodes/equippables`);
+        return this.request.get(`/v1/gamemodes/equippables`);
     }
 
     public getByUuid(uuid: string): Response<Gamemodes.Gamemodes<L>> {
-        return this.request.get(`/gamemodes/${uuid}`);
+        return this.request.get(`/v1/gamemodes/${uuid}`);
     }
 
     public getEquippableByUuid(uuid: string): Response<Gamemodes.GamemodeEquippables<L>> {
-        return this.request.get(`/gamemodes/equippables/${uuid}`);
+        return this.request.get(`/v1/gamemodes/equippables/${uuid}`);
     }
 }

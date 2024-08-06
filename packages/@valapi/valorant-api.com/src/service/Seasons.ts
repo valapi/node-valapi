@@ -33,18 +33,18 @@ export namespace Seasons {
 
 export class Seasons<L extends Language = any> extends ValorantApiComService {
     public get(): Response<Seasons.Seasons<L>[]> {
-        return this.request.get("/seasons");
+        return this.request.get(`/v1/seasons`);
     }
 
     public getCompetitiveSeasons(): Response<Seasons.CompetitiveSeasons[]> {
-        return this.request.get("/seasons/competitive");
+        return this.request.get(`/v1/seasons/competitive`);
     }
 
     public getByUuid(uuid: string): Response<Seasons.Seasons<L>> {
-        return this.request.get(`/seasons/${uuid}`);
+        return this.request.get(`/v1/seasons/${uuid}`);
     }
 
     public getCompetitiveSeasonByUuid(uuid: string): Response<Seasons.CompetitiveSeasons> {
-        return this.request.get(`/seasons/competitive/${uuid}`);
+        return this.request.get(`/v1/seasons/competitive/${uuid}`);
     }
 }

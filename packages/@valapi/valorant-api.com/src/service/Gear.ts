@@ -29,10 +29,10 @@ export namespace Gear {
 
 export class Gear<L extends Language = any> extends ValorantApiComService {
     public get(): Response<Gear.Gear<L>[]> {
-        return this.request.get("/gear");
+        return this.request.get(`/v1/gear`);
     }
 
     public getByUuid(uuid: string): Response<Gear.Gear<L>> {
-        return this.request.get(`/gear/${uuid}`);
+        return this.request.get(`/v1/gear/${uuid}`);
     }
 }

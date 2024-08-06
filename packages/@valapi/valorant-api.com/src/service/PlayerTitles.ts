@@ -14,10 +14,10 @@ export namespace PlayerTitles {
 
 export class PlayerTitles<L extends Language = any> extends ValorantApiComService {
     public get(): Response<PlayerTitles.PlayerTitles<L>[]> {
-        return this.request.get("/playertitles");
+        return this.request.get(`/v1/playertitles`);
     }
 
     public getByUuid(uuid: string): Response<PlayerTitles.PlayerTitles<L>> {
-        return this.request.get(`/playertitles/${uuid}`);
+        return this.request.get(`/v1/playertitles/${uuid}`);
     }
 }

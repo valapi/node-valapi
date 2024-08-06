@@ -1,3 +1,36 @@
+# 5.0.0-beta.2
+
+***[Blocked by Cloudflare #9](https://github.com/valapi/node-valapi/issues/9)***
+
+**Add**
+
+-   `AuthRequest.certificate`
+-   `Auth.captcha()`
+-   `Auth.multifactor(loginCode)`
+
+_packages_
+
+-   [x] `npmjs/selfsigned`
+
+**Change**
+
+-   ~~`Auth.login(username, password)`~~ **-->** `Auth.login({ username, password, captcha })`
+
+_static_
+
+-   ~~`AuthRequest.newUserAgent(build, app?)`~~ **-->** `AuthRequest.newUserAgent(build, app?, os?)`
+
+### Typescript
+
+**Add**
+
+-   `RequestConfig.build`
+-   `AuthUserInfo.login_token`
+
+**Remove**
+
+-   `RequestConfig.userAgent`
+
 # 5.0.0-beta.1
 
 **Add**
