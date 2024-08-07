@@ -29,8 +29,8 @@ NodeJS packages that make more easier to use Valorant API
 
 ## Projects
 
-- [valorant.ts](./packages/valorant.ts)
 - [@valapi/auth](./packages/@valapi/auth)
+- [@valapi/crosshair](./packages/@valapi/crosshair)
 - [@valapi/lib](./packages/@valapi/lib)
 - [@valapi/riot-api](./packages/@valapi/riot-api)
 - [@valapi/valorant-api.com](./packages/@valapi/valorant-api.com)

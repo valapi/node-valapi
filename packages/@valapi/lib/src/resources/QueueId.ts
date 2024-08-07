@@ -20,7 +20,7 @@ export type Name = keyof typeof Default;
 export type ID = Exclude<(typeof Default)[Name], (typeof Default)["New_Map"] | "">;
 
 export function fromName(x: Name, newMapID: string = "abyss"): ID {
-    if (x == "New_Map") {
+    if (x === "New_Map") {
         return <ID>newMapID;
     }
 
@@ -29,11 +29,11 @@ export function fromName(x: Name, newMapID: string = "abyss"): ID {
 
 export function fromID(x: ID, newMapID: string = "abyss"): Name {
     for (const data of Object.entries(Default)) {
-        if (data[1] == "newmap" && x == newMapID) {
+        if (data[1] === "newmap" && x === newMapID) {
             return "New_Map";
         }
 
-        if (data[1] == x) {
+        if (data[1] === x) {
             return <Name>data[0];
         }
     }

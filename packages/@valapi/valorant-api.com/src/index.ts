@@ -16,6 +16,7 @@ export { Currencies } from "./service/Currencies";
 export { Events } from "./service/Events";
 export { Gamemodes } from "./service/Gamemodes";
 export { Gear } from "./service/Gear";
+export { Internal } from "./service/Internal";
 export { LevelBorders } from "./service/LevelBorders";
 export { Maps } from "./service/Maps";
 export { Missions } from "./service/Missions";

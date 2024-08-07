@@ -1,12 +1,20 @@
-# 5.0.0-beta.2
+# 5.0.0-beta.1
 
-***[Blocked by Cloudflare #9](https://github.com/valapi/node-valapi/issues/9)***
+**_[Blocked by Cloudflare #9](https://github.com/valapi/node-valapi/issues/9)_**
 
 **Add**
 
 -   `AuthRequest.certificate`
 -   `Auth.captcha()`
 -   `Auth.multifactor(loginCode)`
+
+_utils_
+
+-   `getResponseCookies(response)`
+
+_static_
+
+-   `AuthRequest.newUserAgent(build, app?, os?)`
 
 _packages_
 
@@ -16,30 +24,17 @@ _packages_
 
 -   ~~`Auth.login(username, password)`~~ **-->** `Auth.login({ username, password, captcha })`
 
-_static_
-
--   ~~`AuthRequest.newUserAgent(build, app?)`~~ **-->** `AuthRequest.newUserAgent(build, app?, os?)`
-
 ### Typescript
 
 **Add**
 
 -   `RequestConfig.build`
+-   `Config.sdk`
 -   `AuthUserInfo.login_token`
 
 **Remove**
 
 -   `RequestConfig.userAgent`
-
-# 5.0.0-beta.1
-
-**Add**
-
--   `getResponseCookies(response)`
-
-_static_
-
--   `AuthRequest.newUserAgent(build, app?)`
 
 # 5.0.0-beta.0
 

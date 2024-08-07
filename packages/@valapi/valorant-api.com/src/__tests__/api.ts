@@ -24,6 +24,7 @@ describe("valapicom.api", () => {
             client.Gamemodes.get(),
             client.Gamemodes.getEquippables(),
             client.Gear.get(),
+            client.Internal.riotClientVersion(),
             client.LevelBorders.get(),
             client.Maps.get(),
             client.Missions.get(),

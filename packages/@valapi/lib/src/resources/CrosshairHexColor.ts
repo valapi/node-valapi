@@ -20,7 +20,7 @@ export function fromName(x: Name): Hex {
 
 export function fromHex(x: Hex): Name {
     for (const data of Object.entries(Default)) {
-        if (data[1] == x) {
+        if (data[1] === x) {
             return <Name>data[0];
         }
     }

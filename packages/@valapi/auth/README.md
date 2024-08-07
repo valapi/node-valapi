@@ -71,6 +71,14 @@ const auth = new Auth();
 await auth.login("BestUsername", "SuperSecretPassword");
 ```
 
+```typescript
+if (auth.isMultifactor) {
+    const loginCode = 428793;
+
+    await auth.multifactor(loginCode);
+}
+```
+
 **Subject** (PlayerUUID)
 
 ```typescript

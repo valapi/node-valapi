@@ -1,6 +1,6 @@
 {
   "name": "@valapi/lib",
-  "version": "5.0.0-beta.2",
+  "version": "5.0.0-beta.1",
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
     "access": "public"

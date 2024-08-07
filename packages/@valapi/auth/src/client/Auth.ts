@@ -7,10 +7,18 @@ import { AuthInstance } from "./AuthInstance";
 import type { AuthUserInfo } from "./AuthInstance";
 import { getResponseCookies } from "../utils/cookie";
 
-interface CookieRegisterResponse {
-    type: "auth";
+interface ErrorResponse {
+    type: "error";
+    error: string;
     country: string;
 }
+
+type CookieRegisterResponse =
+    | ErrorResponse
+    | {
+          type: "auth";
+          country: string;
+      };
 
 interface CaptchaTokenResponse {
     type: "auth";
@@ -30,13 +38,7 @@ interface CaptchaTokenResponse {
     platform: string;
 }
 
-type CaptchaResponse =
-    | CaptchaTokenResponse
-    | {
-          type: "error";
-          error: string;
-          country: string;
-      };
+type CaptchaResponse = CaptchaTokenResponse | ErrorResponse;
 
 interface CaptchaTokenErrorResponse extends CaptchaTokenResponse {
     error: string;
@@ -54,6 +56,7 @@ type RiotIdentityResponse =
               puuid: string;
           };
           country: string;
+          timestamp: `${number}`;
           platform: string;
       }
     | {
@@ -66,15 +69,13 @@ type RiotIdentityResponse =
               auth_method: "riot_identity";
           };
           country: string;
+          timestamp: `${number}`;
           platform: string;
+          error?: string;
       };
 
 type UriResponse =
-    | {
-          type: "error";
-          error: string;
-          country: string;
-      }
+    | ErrorResponse
     | {
           type: "response";
           response: {
@@ -83,11 +84,6 @@ type UriResponse =
                   uri: string;
               };
           };
-          country: string;
-      }
-    | {
-          type: "auth";
-          error?: string;
           country: string;
       };
 
@@ -116,13 +112,13 @@ export interface LoginData {
 
 export interface Config extends Omit<RequestConfig, "cookie"> {
     user?: AuthUserInfo;
-    sdkVersion?: string;
+    sdk?: string;
 }
 
 export class Auth extends AuthInstance {
     public readonly request: AuthRequest;
 
-    readonly sdkVersion;
+    readonly sdk;
 
     public constructor(config: Config = {}) {
         super(config.user);
@@ -141,7 +137,7 @@ export class Auth extends AuthInstance {
         this.request.headers.set("Cookie", this.cookie.getSetCookieStringsSync("https://auth.riotgames.com"));
 
         // GET https://valorant-api.com/internal/ritoclientversion["riotGamesApiInfo"]["VS_FIXEDFILEINFO"]["FileVersion"]
-        this.sdkVersion = config.sdkVersion || "24.6.1.3774";
+        this.sdk = config.sdk || "24.6.1.3774";
     }
 
     private hasCookie(key: string): boolean {
@@ -182,14 +178,14 @@ export class Auth extends AuthInstance {
                 language: "en_US",
                 state: "auth"
             },
-            sdkVersion: this.sdkVersion,
+            sdkVersion: this.sdk,
             type: "auth"
         });
 
-        if (response.data.type == "error") {
+        if (response.data.type === "error") {
             throw new ValError({
                 name: "Auth_Captcha_Error",
-                message: "unaccept captcha token request",
+                message: "Unaccept captcha token request",
                 data: response
             });
         }
@@ -200,7 +196,7 @@ export class Auth extends AuthInstance {
         };
     }
 
-    protected async authorize<T>(): PromiseResponse<T> {
+    protected authorize<T>(): PromiseResponse<T> {
         return this.request.post<T>("https://auth.riotgames.com/api/v1/authorization", {
             client_id: "riot-client",
             nonce: ValEncryption.randomString(16),
@@ -214,14 +210,28 @@ export class Auth extends AuthInstance {
         this.cookie.removeAllCookiesSync();
 
         const uriResponse = await this.authorize<UriResponse>();
-        // this.analyzeResponseCookie("ssid", uriResponse);
+
+        this.analyzeResponseCookie("ssid", uriResponse);
 
         await this.uriTokenization(uriResponse);
     }
 
     public async login(data: LoginData) {
+        // # register
+
         const response = await this.authorize<CookieRegisterResponse>();
+
+        if (response.data.type === "error") {
+            throw new ValError({
+                name: "Auth_Cookie_Error",
+                message: "Cookie Register Error",
+                data: response
+            });
+        }
+
         this.analyzeResponseCookie("asid", response);
+
+        // # login
 
         const loginResponse: Response<RiotIdentityResponse> = await this.request.put("https://authenticate.riotgames.com/api/v1/login", {
             riot_identity: {
@@ -236,13 +246,13 @@ export class Auth extends AuthInstance {
 
         if (loginResponse.data.type === "auth") {
             throw new ValError({
-                name: "Auth_Login_Error",
+                name: "Auth_Identity_Error",
                 message: loginResponse.data.error,
                 data: loginResponse
             });
         }
 
-        // MFA
+        // # mfa
 
         if (loginResponse.data.type === "multifactor") {
             this.isMultifactor = true;
@@ -250,12 +260,14 @@ export class Auth extends AuthInstance {
             return;
         }
 
-        // TOKEN
+        // # token
 
         await this.loginTokenization(loginResponse.data.success.login_token);
     }
 
     public async multifactor(loginCode: number) {
+        // # mfa
+
         const mfaResponse = await this.request.put<RiotIdentityResponse>("https://authenticate.riotgames.com/api/v1/login", {
             multifactor: {
                 otp: `${loginCode}`,
@@ -266,11 +278,13 @@ export class Auth extends AuthInstance {
 
         if (mfaResponse.data.type !== "success") {
             throw new ValError({
-                name: "Auth_MFA_Error",
-                message: "Unknown mfa response",
+                name: "Auth_Identity_Error",
+                message: mfaResponse.data.error ?? "Unknown MFA response",
                 data: mfaResponse
             });
         }
+
+        // # token
 
         await this.loginTokenization(mfaResponse.data.success.login_token);
     }
@@ -278,7 +292,7 @@ export class Auth extends AuthInstance {
     protected async loginTokenization(loginToken: string) {
         this.login_token = loginToken;
 
-        // COOKIE LOGIN
+        // # cookie login
 
         const cookieLoginResponse = await this.request.post("https://auth.riotgames.com/api/v1/login-token", {
             authentication_type: "RiotAuth",
@@ -286,9 +300,10 @@ export class Auth extends AuthInstance {
             login_token: this.login_token,
             persist_login: true // remember
         });
+
         this.analyzeResponseCookie("ssid", cookieLoginResponse);
 
-        // URI
+        // # uri
 
         const uriResponse = await this.authorize<UriResponse>();
 
@@ -296,18 +311,17 @@ export class Auth extends AuthInstance {
     }
 
     protected async uriTokenization(uriResponse: Response<UriResponse>) {
-        if (uriResponse.data.type === "response") {
-            this.uriParamsTokenization(uriResponse.data.response.parameters.uri);
-            await this.entitlementsTokenization();
-
-            return;
+        if (uriResponse.data.type !== "response") {
+            throw new ValError({
+                name: "Auth_Token_Error",
+                message: "Unknown URI response",
+                data: uriResponse
+            });
         }
 
-        throw new ValError({
-            name: "Auth_Login_Error",
-            message: "Unknown response",
-            data: uriResponse
-        });
+        this.uriParamsTokenization(uriResponse.data.response.parameters.uri);
+
+        await this.entitlementsTokenization();
     }
 
     protected uriParamsTokenization(uri: string) {
@@ -322,8 +336,8 @@ export class Auth extends AuthInstance {
             searchParams = new URLSearchParams(url.hash.substring(1, url.hash.length));
         } else {
             throw new ValError({
-                name: "URI_Token_Error",
-                message: "unknown uri",
+                name: "Auth_Token_Error",
+                message: "Unknown URI",
                 data: uri
             });
         }
@@ -342,7 +356,7 @@ export class Auth extends AuthInstance {
 
         if (!response.data.entitlements_token) {
             throw new ValError({
-                name: "Auth_Entitlement_Error",
+                name: "Auth_Token_Error",
                 message: "Entitlement token is undefined",
                 data: response
             });
