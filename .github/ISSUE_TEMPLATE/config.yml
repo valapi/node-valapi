@@ -2,7 +2,10 @@ blank_issues_enabled: false
 contact_links: 
   - name: Discord Server
     about: 'Q & A'
-    url: 'https://valapi.github.io/link/discord'
+    url: 'https://discord.gg/pbyWbUYjyt'
+  - name: 'Documentation'
+    about: 'Generated Documentation'
+    url: 'https://valapi.github.io/guide'
   - name: 'Guide'
-    about: 'How to use'
-    url: 'https://valapi.github.io'
+    about: 'Basic usage'
+    url: 'https://valapi.github.io/guide'

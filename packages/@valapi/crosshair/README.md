@@ -29,6 +29,9 @@ Valorant Crosshair Compiler
 [![Github][github_image]][github_url]
 [![Discord][discord_image]][discord_url]
 
+Documentation: [valapi.github.io/docs](https://valapi.github.io/docs)
+Guide: [valapi.github.io/guide](https://valapi.github.io/guide)
+
 </div>
 
 ---
@@ -50,7 +53,3 @@ npm install @valapi/crosshair
 ```bash
 pnpm add @valapi/crosshair
 ```
-
-## Guide
-
-Full Guide: **[valapi.github.io/guide](https://valapi.github.io/guide)**

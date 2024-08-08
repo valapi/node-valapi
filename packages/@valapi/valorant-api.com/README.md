@@ -29,6 +29,9 @@
 [![Github][github_image]][github_url]
 [![Discord][discord_image]][discord_url]
 
+Documentation: [valapi.github.io/docs](https://valapi.github.io/docs)
+Guide: [valapi.github.io/guide](https://valapi.github.io/guide)
+
 </div>
 
 ---
@@ -53,13 +56,9 @@ pnpm add @valapi/valorant-api.com
 
 ## Guide
 
-Full Guide: **[valapi.github.io/guide](https://valapi.github.io/guide)**
-
 ```typescript
 import { ValorantApiCom } from "@valapi/valorant-api.com";
 ```
-
-### Client
 
 ```typescript
 const client = new ValorantApiCom({

@@ -31,7 +31,7 @@ export class AuthInstance implements Omit<AuthUserInfo, "cookie"> {
     public expirationDate: Date = new Date(-1);
 
     public get isAuthenticated() {
-        return new Date() < this.expirationDate && Boolean(this.id_token) && Boolean(this.entitlements_token);
+        return new Date() < this.expirationDate && Boolean(this.access_token) && Boolean(this.entitlements_token);
     }
 
     public constructor(user?: AuthUserInfo) {

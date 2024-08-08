@@ -8,7 +8,6 @@ body:
       value: |
         - Do not share your personal information (token, username, password)
         - Make sure it's an issue
-        - You are using the latest version
   - type: textarea
     id: description
     attributes:
@@ -47,5 +46,5 @@ body:
     id: valapi
     attributes:
       label: '@valapi Version'
-      description: 'npm --version valorant.ts'
+      description: 'npm --version @valapi/lib'
       placeholder: 'e.g. 1.4.2'

@@ -29,6 +29,9 @@ Valorant Authentication
 [![Github][github_image]][github_url]
 [![Discord][discord_image]][discord_url]
 
+Documentation: [valapi.github.io/docs](https://valapi.github.io/docs)
+Guide: [valapi.github.io/guide](https://valapi.github.io/guide)
+
 </div>
 
 ---
@@ -53,22 +56,30 @@ pnpm add @valapi/auth
 
 ## Guide
 
-Full Guide: **[valapi.github.io/guide](https://valapi.github.io/guide)**
-
 ```typescript
 import { Auth } from "@valapi/auth";
 ```
-
-### Client
 
 ```typescript
 const auth = new Auth();
 ```
 
+### Captcha
+
+```typescript
+const data = await auth.captcha();
+
+const captchaResponse = await getCaptchaResponse(data); // P1_eyJ...
+```
+
 ### Auth
 
 ```typescript
-await auth.login("BestUsername", "SuperSecretPassword");
+await auth.login({
+    username: "BestUsername", 
+    password: "SuperSecretPassword", 
+    captcha: captchaResponse
+});
 ```
 
 ```typescript
@@ -90,7 +101,7 @@ const subject = auth.subject;
 ```typescript
 const auth = new Auth({ user: oldAuth.toJSON() });
 
-if (new Date() >= auth.expirationDate) {
+if (!auth.isAuthenticated) {
     await auth.reauthorize();
 }
 ```

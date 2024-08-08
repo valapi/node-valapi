@@ -29,6 +29,9 @@ Web API
 [![Github][github_image]][github_url]
 [![Discord][discord_image]][discord_url]
 
+Documentation: [valapi.github.io/docs](https://valapi.github.io/docs)
+Guide: [valapi.github.io/guide](https://valapi.github.io/guide)
+
 </div>
 
 ---
@@ -53,10 +56,15 @@ pnpm add @valapi/web-client
 
 ## Guide
 
-Full Guide: **[valapi.github.io/guide](https://valapi.github.io/guide)**
-
 ```typescript
 import { WebClient } from "@valapi/web-client";
+```
+
+```typescript
+const client = new WebClient({
+    user: auth.toJSON(),
+    region: await auth.regionTokenization()
+});
 ```
 
 ### API

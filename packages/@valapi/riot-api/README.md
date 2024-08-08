@@ -29,6 +29,9 @@ Official Api From Riot Games
 [![Github][github_image]][github_url]
 [![Discord][discord_image]][discord_url]
 
+Documentation: [valapi.github.io/docs](https://valapi.github.io/docs)
+Guide: [valapi.github.io/guide](https://valapi.github.io/guide)
+
 </div>
 
 ---
@@ -53,13 +56,9 @@ pnpm add @valapi/riot-api
 
 ## Guide
 
-Full Guide: **[valapi.github.io/guide](https://valapi.github.io/guide)**
-
 ```typescript
 import { RiotApi } from "@valapi/riot-api";
 ```
-
-### Client
 
 ```typescript
 const client = new RiotApi({
