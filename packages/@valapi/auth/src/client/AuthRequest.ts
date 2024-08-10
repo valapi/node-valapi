@@ -26,12 +26,12 @@ export interface RequestConfig {
     platform?: ClientPlatfrom;
     axiosConfig?: AxiosRequestConfig;
     agentConfig?: AgentOptions & CookieAgentOptions;
+    certificate?: selfsigned.GenerateResult;
     cookie: CookieJar;
 }
 
 export class AuthRequest {
     public readonly certificate: selfsigned.GenerateResult;
-
     public readonly headers: AxiosHeaders;
     public readonly agent: CookieAgent<Agent>;
 
@@ -57,12 +57,14 @@ export class AuthRequest {
 
         this.defaultAxiosConfig = __config.axiosConfig;
 
-        this.certificate = selfsigned.generate([], {
-            days: 30,
-            pkcs7: true,
-            clientCertificate: true,
-            clientCertificateCN: ValEncryption.randomString(16)
-        });
+        this.certificate =
+            __config.certificate ??
+            selfsigned.generate([], {
+                days: 30,
+                pkcs7: true,
+                clientCertificate: true,
+                clientCertificateCN: ValEncryption.randomString(16)
+            });
 
         this.headers = new AxiosHeaders()
             .setContentType("application/json")

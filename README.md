@@ -20,6 +20,7 @@ NodeJS packages that make more easier to use Valorant API
 [![Discord][discord_image]][discord_url]
 
 Documentation: [valapi.github.io/docs](https://valapi.github.io/docs)
+
 Guide: [valapi.github.io/guide](https://valapi.github.io/guide)
 
 </div>

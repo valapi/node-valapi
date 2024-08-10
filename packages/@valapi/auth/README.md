@@ -30,6 +30,7 @@ Valorant Authentication
 [![Discord][discord_image]][discord_url]
 
 Documentation: [valapi.github.io/docs](https://valapi.github.io/docs)
+
 Guide: [valapi.github.io/guide](https://valapi.github.io/guide)
 
 </div>
@@ -66,6 +67,8 @@ const auth = new Auth();
 
 ### Captcha
 
+_This is only an example function_
+
 ```typescript
 const data = await auth.captcha();
 
@@ -76,8 +79,8 @@ const captchaResponse = await getCaptchaResponse(data); // P1_eyJ...
 
 ```typescript
 await auth.login({
-    username: "BestUsername", 
-    password: "SuperSecretPassword", 
+    username: "BestUsername",
+    password: "SuperSecretPassword",
     captcha: captchaResponse
 });
 ```
@@ -96,7 +99,7 @@ if (auth.isMultifactor) {
 const subject = auth.subject;
 ```
 
-**Save**
+**Serialize**
 
 ```typescript
 const auth = new Auth({ user: oldAuth.toJSON() });

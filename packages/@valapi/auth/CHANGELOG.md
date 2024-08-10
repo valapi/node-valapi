@@ -1,3 +1,13 @@
+# 5.0.0-beta.2
+
+Fix serializer
+
+### Typescript
+
+**Add**
+
+-   `RequestConfig.certificate`
+
 # 5.0.0-beta.1
 
 **_[Blocked by Cloudflare #9](https://github.com/valapi/node-valapi/issues/9)_**
