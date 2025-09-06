@@ -5,7 +5,8 @@ contact_links:
     url: 'https://discord.gg/pbyWbUYjyt'
   - name: 'Documentation'
     about: 'Generated Documentation'
-    url: 'https://valapi.github.io/guide'
+    url: 'https://valapi.github.io/docs'
   - name: 'Guide'
     about: 'Basic usage'
+
     url: 'https://valapi.github.io/guide'
