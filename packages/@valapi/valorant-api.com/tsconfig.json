@@ -1,0 +1,17 @@
+{
+    "extends": "../../../tsconfig.base.json",
+    "compilerOptions": {
+        "rootDir": "./src",
+        "outDir": "./build",
+        "paths": {
+            "@valapi/lib": [
+                "../lib/src"
+            ]
+        }
+    },
+    "references": [
+        {
+            "path": "../lib"
+        }
+    ]
+}

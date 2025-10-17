@@ -1,0 +1,42 @@
+{
+  "name": "@valapi/lib",
+  "version": "6.0.0",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
+  "description": "Valorant API Wrapper - Library",
+  "keywords": [
+    "riot",
+    "api",
+    "val",
+    "valorant"
+  ],
+  "main": "build/index.js",
+  "types": "./build/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/valapi/node-valapi.git",
+    "directory": "packages/@valapi/lib"
+  },
+  "author": "node-valapi Collaborators",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/valapi/node-valapi/issues"
+  },
+  "homepage": "https://valapi.github.io/guide",
+  "dependencies": {
+    "tslib": "^2.8.1"
+  },
+  "directories": {
+    "lib": "build",
+    "test": "src/__tests__"
+  },
+  "files": [
+    "build",
+    "LICENSE",
+    "package.json",
+    "README.md",
+    "SECURITY.md"
+  ]
+}
