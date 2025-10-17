@@ -1,9 +1,0 @@
-{
-  "name": "npmjs/@valapi",
-  "entryPoints": ["packages/@valapi/*"],
-  "entryPointStrategy": "packages",
-  "cleanOutputDir": true,
-  "out": "./docs",
-  "jsDocCompatibility": true,
-  "includeVersion": false
-}

@@ -1,5 +1,0 @@
-{
-    "name": "valorant-api.com",
-    "extends": ["../../../typedoc.base.json"],
-    "entryPoints": ["src/index.ts"]
-}

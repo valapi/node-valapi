@@ -1,5 +1,0 @@
-{
-    "name": "web-client",
-    "extends": ["../../../typedoc.base.json"],
-    "entryPoints": ["src/index.ts"]
-}
