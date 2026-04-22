@@ -31,6 +31,8 @@ Guide: [valapi.github.io/guide](https://valapi.github.io/guide)
 > -   **node-valapi** was created under [Riot Games' "Legal Jibber Jabber"](https://www.riotgames.com/en/legal) policy using assets owned by Riot Games. Riot Games does not endorse or sponsor this project.
 > -   [MIT License][license_url]
 
+@valapi is discontinue.
+
 ## Projects
 
 - [@valapi/auth](./packages/@valapi/auth)
