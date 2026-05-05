@@ -19,9 +19,9 @@ NodeJS packages that make more easier to use Valorant API
 [![Github][github_image]][github_url]
 [![Discord][discord_image]][discord_url]
 
-Documentation: [valapi.github.io/docs](https://valapi.github.io/docs)
+Documentation: [valapi.github.io/docs](https://npmjs-valapi.github.io/docs)
 
-Guide: [valapi.github.io/guide](https://valapi.github.io/guide)
+Guide: [valapi.github.io/guide](https://npmjs-valapi.github.io/guide)
 
 </div>
 
@@ -66,7 +66,7 @@ npm run test
 
 **dotenv**
 
-Regions: [valapi.github.io/guide/lib/region](https://valapi.github.io/guide/packages/lib/region.html)
+Regions: [npmjs-valapi.github.io/guide/lib/region](https://npmjs-valapi.github.io/guide/packages/lib/region.html)
 
 ```dosini
 # multi-factor must be "disable"
