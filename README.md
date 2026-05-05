@@ -19,9 +19,9 @@ NodeJS packages that make more easier to use Valorant API
 [![Github][github_image]][github_url]
 [![Discord][discord_image]][discord_url]
 
-Documentation: [valapi.github.io/docs](https://npmjs-valapi.github.io/docs)
+Documentation: [npmjs-valapi.github.io/docs](https://npmjs-valapi.github.io/docs)
 
-Guide: [valapi.github.io/guide](https://npmjs-valapi.github.io/guide)
+Guide: [npmjs-valapi.github.io/guide](https://npmjs-valapi.github.io/guide)
 
 </div>
 
